@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 
 interface Card {
   id: number;
@@ -7,6 +7,10 @@ interface Card {
   isMatched: boolean;
 }
 
+/**
+ * It is a memory game component that allows the user to flip cards and match them.
+ * It is a simple game that can be used to test the user's memory.
+ */
 const MemoryGame: React.FC = () => {
   const emojis: string[] = useMemo(() => {
     const allEmojis = [
@@ -135,7 +139,7 @@ const MemoryGame: React.FC = () => {
     }
   };
 
-  const restartGame = () => {
+  const restartGame = useCallback(() => {
     const shuffledCards: Card[] = [...emojis, ...emojis]
       .sort(() => Math.random() - 0.5)
       .map((emoji, index) => ({
@@ -148,7 +152,7 @@ const MemoryGame: React.FC = () => {
     setMoves(0);
     setIsComplete(false);
     setFlippedCards([]);
-  };
+  }, [emojis]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 p-4 my-64">
