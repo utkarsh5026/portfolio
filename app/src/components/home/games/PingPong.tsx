@@ -151,13 +151,13 @@ const PingPongAnimation: React.FC = () => {
         gameState.ballY <= 0 ||
         gameState.ballY >= containerHeight - ballSize
       ) {
-        gameState.ballVY *= -1.05;
+        gameState.ballVY *= -1;
         createHitEffect(gameState.ballX, gameState.ballY);
       }
 
       // Check for paddle collisions
       if (checkCollision()) {
-        gameState.ballVX *= -1.05;
+        gameState.ballVX *= -1;
         gameState.ballVY += (Math.random() - 0.5) * 1; // Small random angle change
       }
 
@@ -220,7 +220,7 @@ const PingPongAnimation: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center w-full min-h-screen bg-gray-900 p-4">
+    <div className="flex items-center justify-center w-full min-h-screen bg-gray-900 p-4 my-32">
       <div
         ref={containerRef}
         className="relative w-[600px] h-[300px] rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden"
