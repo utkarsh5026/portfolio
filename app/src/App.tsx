@@ -1,6 +1,6 @@
 import { ThemeProvider } from "./components/base/ThemeProvider";
 
-import PersonalHeader from "./components/home/PersonalHeader";
+import PersonalHeader from "./components/home/intro/PersonalHeader";
 import NavigationBar from "./components/base/NavigationBar";
 import Skills from "./components/home/skills/Skills";
 import Projects from "./components/home/projects/Projects";
