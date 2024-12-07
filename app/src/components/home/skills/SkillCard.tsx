@@ -12,7 +12,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, icon, items }) => {
   return (
     <div className="skill-card relative group w-full">
       <div className="absolute inset-0 bg-gradient-to-r blur-xl group-hover:blur-2xl transition-all duration-300 rounded-lg opacity-50 w-full" />
-      <Card className="relative bg-background/60 backdrop-blur-sm border-muted hover:border-muted-foreground/50 transition-all duration-300">
+      <Card className="relative bg-background/60 backdrop-blur-sm border-4 hover:border-muted-foreground/50 transition-all duration-300">
         <CardHeader>
           <CardTitle className="flex items-center">
             {icon || <ChevronRight className="w-4 h-4 mr-2" />}
