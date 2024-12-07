@@ -59,8 +59,6 @@ const SkillCardMoving: React.FC = () => {
       element.appendChild(clone);
     });
 
-    console.log(element.children.length);
-
     const animation = anime({
       targets: element,
       translateX: [0, -element.scrollWidth / 2],
@@ -73,7 +71,7 @@ const SkillCardMoving: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full overflow-hidden bg-black py-8 rounded-lg m-8">
+    <div className="w-full overflow-hidden bg-black py-8 rounded-lg mb-8">
       <div ref={elementRef} className="flex whitespace-nowrap">
         {skills.map((skill, index) => (
           <div
