@@ -53,6 +53,22 @@ export default {
           5: "hsl(var(--chart-5))",
         },
       },
+      animation: {
+        "gradient-x": "gradient-x 1s cubic-bezier(0.4, 0, 0.2, 1) infinite",
+      },
+      keyframes: {
+        "gradient-x": {
+          "0%": {
+            "background-position": "0% 50%",
+          },
+          "20%": {
+            "background-position": "50% 50%",
+          },
+          "100%": {
+            "background-position": "100% 50%",
+          },
+        },
+      },
     },
   },
   plugins: [
