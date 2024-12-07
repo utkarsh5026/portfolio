@@ -1,60 +1,104 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
-import { useState, useEffect } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import anime from "animejs";
+
+// Constants
+const TYPING_SPEED = 50;
+const ERASING_SPEED = 30;
+const PAUSE_BEFORE_ERASE = 2000;
+const PAUSE_BEFORE_NEXT = 200;
 
 interface AnimatedTextProps {
   statements: string[];
 }
 
+/**
+ * AnimatedText Component
+ *
+ * A React component that displays text with a typing animation effect.
+ * It cycles through an array of statements, typing them out character by character,
+ * then erasing them before moving to the next statement.
+ *
+ * @param {Object} props - Component props
+ * @param {string[]} props.statements - Array of strings to be animated
+ *
+ * @returns {JSX.Element} A div containing the animated text with a cursor
+ */
 const AnimatedText: React.FC<AnimatedTextProps> = ({ statements }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
 
-  useEffect(() => {
-    let timeout: NodeJS.Timeout;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLSpanElement>(null);
 
-    if (isTyping) {
-      if (displayText !== statements[currentIndex]) {
-        timeout = setTimeout(() => {
-          setDisplayText(
-            statements[currentIndex].slice(0, displayText.length + 1)
-          );
-        }, 50);
-      } else {
-        timeout = setTimeout(() => setIsTyping(false), 1000);
-      }
+  /**
+   * Handles the typing animation logic
+   * @returns {NodeJS.Timeout} Timeout ID for cleanup
+   */
+  const handleTyping = useCallback(() => {
+    let timeout: NodeJS.Timeout;
+    if (displayText !== statements[currentIndex]) {
+      timeout = setTimeout(() => {
+        setDisplayText(
+          statements[currentIndex].slice(0, displayText.length + 1)
+        );
+      }, TYPING_SPEED);
     } else {
-      if (displayText === "") {
+      timeout = setTimeout(() => setIsTyping(false), PAUSE_BEFORE_ERASE);
+    }
+    return timeout;
+  }, [displayText, statements, currentIndex]);
+
+  /**
+   * Handles the erasing animation logic
+   * @returns {NodeJS.Timeout} Timeout ID for cleanup
+   */
+  const handleErasing = useCallback(() => {
+    let timeout: NodeJS.Timeout;
+    if (displayText === "") {
+      timeout = setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % statements.length);
         setIsTyping(true);
-      } else {
-        timeout = setTimeout(() => {
-          setDisplayText(displayText.slice(0, -1));
-        }, 30);
-      }
+      }, PAUSE_BEFORE_NEXT);
+    } else {
+      timeout = setTimeout(() => {
+        setDisplayText(displayText.slice(0, -1));
+      }, ERASING_SPEED);
     }
+    return timeout;
+  }, [displayText, statements.length]);
 
+  // Effect for handling typing and erasing animations
+  useEffect(() => {
+    const timeout = isTyping ? handleTyping() : handleErasing();
     return () => clearTimeout(timeout);
-  }, [displayText, isTyping, currentIndex, statements]);
+  }, [displayText, isTyping, handleTyping, handleErasing]);
+
+  // Effect for cursor blinking animation
+  useEffect(() => {
+    if (cursorRef.current) {
+      anime({
+        targets: cursorRef.current,
+        opacity: [1, 0],
+        duration: 500,
+        loop: true,
+        easing: "steps(2)",
+        direction: "alternate",
+      });
+    }
+  }, []);
 
   return (
-    <motion.div
-      className="flex items-center gap-2 text-2xl md:text-3xl text-slate-200"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
+    <div
+      ref={containerRef}
+      className="flex items-center gap-2 text-2xl md:text-3xl font-mono bg-slate-900/50 p-4 rounded-lg w-full"
     >
-      <ChevronRight className="h-6 w-6 text-purple-500" />
-      <span>{displayText}</span>
-      <motion.span
-        animate={{ opacity: [1, 0] }}
-        transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-      >
-        |
-      </motion.span>
-    </motion.div>
+      <span className="text-emerald-300 font-extrabold">&gt;</span>
+      <span className="text-emerald-300 font-bold">{displayText}</span>
+      <span ref={cursorRef} className="text-emerald-300 font-extrabold w-3">
+        █
+      </span>
+    </div>
   );
 };
 
