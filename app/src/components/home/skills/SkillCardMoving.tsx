@@ -7,7 +7,6 @@ import {
   SiTypescript,
   SiNodedotjs,
   SiPython,
-  SiGoland,
   SiKubernetes,
   SiGit,
   SiMongodb,
@@ -20,6 +19,7 @@ import {
   SiFastapi,
   SiExpress,
   SiLangchain,
+  SiGo,
 } from "react-icons/si";
 
 const SkillCardMoving: React.FC = () => {
@@ -34,7 +34,7 @@ const SkillCardMoving: React.FC = () => {
     { icon: <SiTypescript className="text-blue-500" />, name: "TypeScript" },
     { icon: <SiNodedotjs className="text-green-500" />, name: "Node.js" },
     { icon: <SiPython className="text-yellow-500" />, name: "Python" },
-    { icon: <SiGoland className="text-blue-500" />, name: "Golang" },
+    { icon: <SiGo className="text-blue-500" />, name: "Golang" },
     { icon: <SiKubernetes className="text-blue-500" />, name: "Kubernetes" },
     { icon: <SiGit className="text-red-800" />, name: "Git" },
     { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
