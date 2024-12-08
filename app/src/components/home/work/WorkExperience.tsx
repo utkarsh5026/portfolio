@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Section from "@/components/base/Section";
 import { experiences } from "./experienceDump";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import techIconMap from "@/components/base/techIcons";
 import { FaDatabase, FaSearch, FaDocker } from "react-icons/fa";
-
 // Fix icon mapping - change from IconType to JSX.Element
 const iconMap: { [key: string]: JSX.Element } = {
   FaDatabase: <FaDatabase />,
@@ -186,7 +186,7 @@ const WorkExperience: React.FC = () => {
               {experiences[selectedExp].achievements.map(
                 (achievement, index) => (
                   <div
-                    key={`project-${index}`}
+                    key={`project-${index}-${achievement.title}`}
                     className="flex items-start gap-4 p-4 rounded-lg transition-all hover:bg-gray-50 dark:hover:bg-gray-900 border border-gray-100 dark:border-gray-800"
                   >
                     {achievement.icon && iconMap[achievement.icon] && (
@@ -201,7 +201,7 @@ const WorkExperience: React.FC = () => {
                       <ul className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed list-disc pl-4">
                         {achievement.description.map((desc, i) => (
                           <li
-                            key={i}
+                            key={`${index}-${i}`}
                             className="text-green-500 marker:text-green-500"
                           >
                             <span className="text-gray-600 dark:text-gray-300">
@@ -220,8 +220,11 @@ const WorkExperience: React.FC = () => {
               {experiences[selectedExp].technologies.map((tech, index) => (
                 <span
                   key={`${tech}-${index}`}
-                  className="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm"
+                  className="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm flex items-center gap-2"
                 >
+                  {techIconMap[tech] && (
+                    <span className="text-base">{techIconMap[tech]}</span>
+                  )}
                   {tech}
                 </span>
               ))}
