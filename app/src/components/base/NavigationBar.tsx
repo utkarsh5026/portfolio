@@ -28,16 +28,26 @@ const NavigationBar: React.FC = () => {
             <li key={item} className="w-1/3 sm:w-auto text-center">
               <button
                 onClick={() => scrollToSection(item)}
-                className="w-full sm:w-auto text-slate-300 hover:text-white transition-colors duration-200 text-xs sm:text-sm font-medium px-2 py-1 sm:px-3"
+                className="w-full sm:w-auto text-slate-300 hover:text-white font-semibold transition-colors duration-200 text-xs sm:text-sm  px-2 py-1 sm:px-3"
               >
                 {item.charAt(0).toUpperCase() + item.slice(1)}
               </button>
             </li>
           ))}
         </ul>
-        <Button className="w-full sm:w-auto rounded-full px-4 sm:px-6 md:px-8 py-2 bg-gradient-to-r from-purple-500 to-blue-500 hover:opacity-90 transition-opacity duration-200 text-xs sm:text-sm font-medium shadow-lg shadow-purple-500/20">
-          <DownloadIcon className="mr-2 h-4 w-4" />
-          Download CV
+        <Button
+          className="w-full sm:w-auto rounded-full 
+          px-4 sm:px-6 md:px-8 py-2.5
+          bg-gradient-to-r from-violet-600 to-indigo-600
+          hover:from-violet-500 hover:to-indigo-500
+          text-white font-semibold text-xs sm:text-sm
+          transition-all duration-300 ease-out
+          shadow-lg shadow-indigo-500/30
+          border border-indigo-400/30
+          flex items-center justify-center gap-2"
+        >
+          <DownloadIcon className="h-4 w-4 text-slate-900" />
+          <span className="hidden sm:inline text-slate-900">Download CV</span>
         </Button>
       </div>
     </div>
