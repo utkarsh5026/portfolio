@@ -19,7 +19,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
         <p className="text-gray-400 text-sm my-6 text-left  ">{description}</p>
         <Button
           onClick={() => window.open(link, "_blank")}
-          className="bg-transparent w-fit text-white hover:border-white hover:bg-transparent hover:border-2"
+          className="bg-transparent w-fit text-white hover:border-orange-500 hover:bg-transparent hover:border-2"
         >
           Read more
         </Button>
