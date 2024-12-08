@@ -77,16 +77,28 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ statements }) => {
   // Effect for cursor blinking animation
   useEffect(() => {
     if (cursorRef.current) {
-      anime({
-        targets: cursorRef.current,
-        opacity: [1, 0],
-        duration: 500,
-        loop: true,
-        easing: "steps(2)",
-        direction: "alternate",
-      });
+      const cursor = cursorRef.current;
+      cursor.style.opacity = "1";
+
+      if (!isTyping && displayText.length === 0) {
+        const animation = anime({
+          targets: cursor,
+          opacity: [1, 0],
+          duration: 800,
+          loop: true,
+          easing: "easeInOutQuad",
+          direction: "alternate",
+        });
+
+        return () => {
+          animation.pause();
+          if (cursor) {
+            cursor.style.opacity = "1";
+          }
+        };
+      }
     }
-  }, []);
+  }, [isTyping, displayText]);
 
   return (
     <div
@@ -96,7 +108,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ statements }) => {
       <span className="text-emerald-300 font-extrabold">&gt;</span>
       <span className="text-emerald-300 font-bold">{displayText}</span>
       <span ref={cursorRef} className="text-emerald-300 font-extrabold w-3">
-        █
+        |
       </span>
     </div>
   );
