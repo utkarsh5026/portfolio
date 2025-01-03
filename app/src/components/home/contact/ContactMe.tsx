@@ -1,3 +1,9 @@
+/* 
+    This is the Contact Me section of the home page.
+    It contains a card with a form to send an email to the user.    
+    It also contains a list of social media links.
+*/
+
 import React from "react";
 import Section from "@/components/base/Section";
 import { Card, CardContent } from "@/components/ui/card";
