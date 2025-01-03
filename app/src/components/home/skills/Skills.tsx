@@ -3,8 +3,15 @@ import SkillCard from "./SkillCard";
 import { Languages, Database, Server } from "lucide-react";
 import Framework from "./Framework";
 import Section from "@/components/base/Section";
-import TechnologiesUsed from "./TechnologoiesUsed";
+import CurrentLearning from "./CurrentLearning";
 import SkillCardMoving from "./SkillCardMoving";
+import {
+  currentLearningTechnologies,
+  databases,
+  languages,
+  frameworks,
+  tools,
+} from "./data";
 
 const Skills: React.FC = () => {
   return (
@@ -16,40 +23,21 @@ const Skills: React.FC = () => {
             <SkillCard
               skill="Languages"
               icon={<Languages className="w-4 h-4 mr-2" />}
-              items={["JavaScript", "TypeScript", "Python", "Java", "Golang"]}
+              items={[...languages]}
             />
-            <Framework
-              frameworks={{
-                "Javascript/Typescript": [
-                  "React",
-                  "Next.js",
-                  "Tailwind CSS",
-                  "Socket.io",
-                  "Express",
-                ],
-                Python: ["FastAPI", "Flask", "Django", "Pandas"],
-                Golang: ["Gin", "Gorm"],
-              }}
-            />
+            <Framework frameworks={frameworks} />
             <SkillCard
               skill="Databases"
               icon={<Database className="w-4 h-4 mr-2" />}
-              items={[
-                "PostgreSQL",
-                "SQLite",
-                "MongoDB",
-                "Redis",
-                "Firebase",
-                "Supabase",
-              ]}
+              items={[...databases]}
             />
             <SkillCard
               skill="Tools"
               icon={<Server className="w-4 h-4 mr-2" />}
-              items={["Docker", "Git", "AWS", "Linux"]}
+              items={[...tools]}
             />
           </div>
-          <TechnologiesUsed technologies={[]} />
+          <CurrentLearning technologies={currentLearningTechnologies} />
         </div>
       </div>
     </Section>
