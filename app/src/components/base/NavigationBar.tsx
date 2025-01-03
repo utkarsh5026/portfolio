@@ -36,6 +36,12 @@ const NavigationBar: React.FC = () => {
           ))}
         </ul>
         <Button
+          onClick={() =>
+            window.open(
+              "https://ybyhphtolmvomxzjridt.supabase.co/storage/v1/object/public/Resume/resume.pdf?t=2025-01-03T20%3A29%3A03.413Z",
+              "_blank"
+            )
+          }
           className="w-full sm:w-auto rounded-full 
           px-4 sm:px-6 md:px-8 py-2.5
           bg-gradient-to-r from-violet-600 to-indigo-600
