@@ -8,7 +8,7 @@ import Articles from "./components/home/articles/Articles";
 import PingPong from "./components/home/games/PingPong";
 import MemoryGame from "./components/home/games/MemoryGame";
 import WorkExperience from "./components/home/work/WorkExperience";
-
+import ContactMe from "./components/home/contact/ContactMe";
 function App() {
   return (
     <ThemeProvider defaultTheme="dark">
@@ -23,6 +23,7 @@ function App() {
           <Projects />
           <WorkExperience />
           <Articles />
+          <ContactMe />
         </main>
       </div>
     </ThemeProvider>
