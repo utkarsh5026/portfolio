@@ -17,23 +17,22 @@
  */
 
 import type { TechnologyLearning } from "@/types";
-import { Database, Search, Brain, Smartphone, Terminal } from "lucide-react";
+import {
+  Database,
+  Brain,
+  Smartphone,
+  Terminal,
+  Server,
+  Video,
+} from "lucide-react";
 
 export const currentLearningTechnologies: TechnologyLearning[] = [
   {
-    name: "Vector Databases & Similarity Search",
-    icon: <Search className="w-4 h-4" />,
-    description:
-      "Implementing vector similarity search using Pinecone, exploring embeddings for semantic search and content recommendation",
-    repoLink: "https://github.com/yourusername/vector-search-project",
-    category: "Database",
-  },
-  {
-    name: "RAG (Retrieval Augmented Generation)",
+    name: "Vector Databases & RAG",
     icon: <Brain className="w-4 h-4" />,
     description:
-      "Building RAG applications with LangChain, combining vector stores with LLMs for context-aware AI responses",
-    repoLink: "https://github.com/yourusername/rag-implementation",
+      "Implementing a code editor like cursor in the browser with RAG and vector database for context aware code search, autocomplete and chat with code.",
+    repoLink: "https://github.com/utkarsh5026/gep",
     category: "AI/ML",
   },
   {
@@ -57,8 +56,24 @@ export const currentLearningTechnologies: TechnologyLearning[] = [
     name: "Custom Programming Language Interpreter and Compiler",
     icon: <Terminal className="w-4 h-4" />,
     description:
-      "Developing a custom programming language interpreter from scratch, implementing lexical analysis, parsing, and runtime execution to understand language design principles, also creating a frontend to show a progrmmer how a programming language works.",
+      "Building a custom programming language interpreter with a visual frontend to demonstrate language internals.",
     repoLink: "https://github.com/utkarsh5026/enigma",
+    category: "Backend",
+  },
+  {
+    name: "Container Orchestration Platform",
+    icon: <Server className="w-4 h-4" />,
+    description:
+      "Building a lightweight container orchestration system to learn core Kubernetes concepts like scheduling, service discovery and cluster management.",
+    repoLink: "https://github.com/utkarsh5026/Orchestra",
+    category: "DevOps",
+  },
+  {
+    name: "Media Streaming",
+    icon: <Video className="w-4 h-4" />,
+    description:
+      "I want to build a projects using WebRTC and HLS protocols, implementing live broadcasting and video-on-demand features while learning streaming architectures.",
+    repoLink: "https://github.com/utkarsh5026/stream-connect",
     category: "Backend",
   },
 ];
