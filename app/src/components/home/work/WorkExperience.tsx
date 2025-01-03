@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Section from "@/components/base/Section";
 import { experiences } from "./experienceDump";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import techIconMap from "@/components/base/techIcons";
 import { FaDatabase, FaSearch, FaDocker } from "react-icons/fa";
+import TechBadge from "@/components/base/TechBadge";
 // Fix icon mapping - change from IconType to JSX.Element
 const iconMap: { [key: string]: JSX.Element } = {
   FaDatabase: <FaDatabase />,
@@ -218,15 +218,7 @@ const WorkExperience: React.FC = () => {
 
             <div className="flex flex-wrap gap-2">
               {experiences[selectedExp].technologies.map((tech, index) => (
-                <span
-                  key={`${tech}-${index}`}
-                  className="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm flex items-center gap-2"
-                >
-                  {techIconMap[tech] && (
-                    <span className="text-base">{techIconMap[tech]}</span>
-                  )}
-                  {tech}
-                </span>
+                <TechBadge tech={tech} key={`${tech}-${index}`} />
               ))}
             </div>
           </div>
