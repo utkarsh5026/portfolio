@@ -9,25 +9,30 @@ interface FrameworkProps {
 const Framework: React.FC<FrameworkProps> = ({ frameworks }) => {
   return (
     <div className="skill-card relative group w-full">
-      <div className="absolute inset-0 blur-xl group-hover:blur-2xl transition-all duration-300 rounded-lg opacity-50" />
-      <Card className="relative bg-background/60 backdrop-blur-sm border-muted hover:border-muted-foreground/50 transition-all duration-300">
-        <CardHeader>
-          <CardTitle className="flex items-center">
-            <Code2 className="w-4 h-4 mr-2" />
-            <span className="text-lg">Frameworks & Libraries</span>
+      <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 blur-xl group-hover:blur-2xl transition-all duration-300 rounded-lg opacity-50 w-full" />
+      <Card className="relative bg-background/60 backdrop-blur-sm border border-muted/20 hover:border-muted-foreground/30 transition-all duration-300 shadow-lg hover:shadow-xl">
+        <CardHeader className="pb-4">
+          <CardTitle className="flex items-center space-x-3">
+            <Code2 className="w-5 h-5 text-purple-400" />
+            <span className="text-xl font-semibold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              Frameworks & Libraries
+            </span>
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <ul className="space-y-4">
+          <ul className="space-y-6">
             {Object.entries(frameworks).map(([language, libs], index) => (
-              <li key={index}>
-                <h3 className="text-base mb-2 pl-6 relative flex items-center before:absolute before:left-0 before:top-1/2 before:transform before:-translate-y-1/2 before:h-2 before:w-2 before:rounded-full before:bg-gradient-to-r from-purple-500 to-blue-500">
+              <li key={`${language}-${index}`}>
+                <h3 className="text-base mb-3 pl-6 relative before:absolute before:left-0 before:top-[0.4em] before:h-2 before:w-2 before:rounded-full before:bg-gradient-to-r before:from-purple-400 before:to-blue-400">
                   {language}
                 </h3>
-                <ul className="flex flex-wrap gap-2 pl-8">
+                <ul className="flex flex-wrap gap-3 pl-6">
                   {libs.map((framework, fIndex) => (
-                    <li key={fIndex} className="text-sm text-muted-foreground">
-                      {framework} |
+                    <li
+                      key={`${framework}-${fIndex}`}
+                      className="flex items-center text-base text-muted-foreground/80 hover:text-primary transition-colors duration-200"
+                    >
+                      {framework}
                     </li>
                   ))}
                 </ul>
