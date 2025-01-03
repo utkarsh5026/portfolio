@@ -1,3 +1,10 @@
+/* 
+    Hey! This is a card component for showing off skills.
+    Each card has a nice gradient background, an icon, and lists out
+    related skills or technologies. It's designed to look clean
+    while still having some nice hover effects.
+*/
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronRight } from "lucide-react";
 import React from "react";
