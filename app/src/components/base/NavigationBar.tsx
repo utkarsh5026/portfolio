@@ -38,8 +38,7 @@ const NavigationBar: React.FC = () => {
         <Button
           onClick={() =>
             window.open(
-              "https://ybyhphtolmvomxzjridt.supabase.co/storage/v1/object/public/Resume/resume.pdf?t=2025-01-03T20%3A29%3A03.413Z",
-              "_blank"
+              "https://ybyhphtolmvomxzjridt.supabase.co/storage/v1/object/public/Resume/Utkarsh_Priyadarshi_Resume.pdf?t=2025-01-03T20%3A37%3A04.739Z"
             )
           }
           className="w-full sm:w-auto rounded-full 
