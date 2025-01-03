@@ -20,8 +20,10 @@ const CurrentLearning: React.FC<CurrentLearningProps> = ({ technologies }) => {
               className="border border-muted hover:border-primary transition-colors"
             >
               <CardContent className="p-4">
-                <div className="flex items-center gap-2 mb-2">
-                  {tech.icon}
+                <div className="flex items-center gap-6 mb-2">
+                  <div className="w-6 h-6 flex items-center justify-center">
+                    {tech.icon}
+                  </div>
                   <h3 className="font-semibold">{tech.name}</h3>
                 </div>
                 <p className="text-sm text-muted-foreground mb-2">

@@ -49,6 +49,7 @@ export const experiences: WorkExperience[] = [
       },
     ],
     technologies: [
+      "Linux",
       "Golang",
       "Python",
       "PowerShell",
@@ -56,6 +57,7 @@ export const experiences: WorkExperience[] = [
       "FastAPI",
       "Docker",
       "Python",
+      "Sqlite",
     ],
     companyUrl: "https://www.ideas.com/",
   },
