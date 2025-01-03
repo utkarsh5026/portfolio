@@ -11,20 +11,22 @@ interface SkillCardProps {
 const SkillCard: React.FC<SkillCardProps> = ({ skill, icon, items }) => {
   return (
     <div className="skill-card relative group w-full">
-      <div className="absolute inset-0 bg-gradient-to-r blur-xl group-hover:blur-2xl transition-all duration-300 rounded-lg opacity-50 w-full" />
-      <Card className="relative bg-background/60 backdrop-blur-sm border-4 hover:border-muted-foreground/50 transition-all duration-300">
-        <CardHeader>
-          <CardTitle className="flex items-center">
-            {icon || <ChevronRight className="w-4 h-4 mr-2" />}
-            <span className="text-lg">{skill}</span>
+      <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 blur-xl group-hover:blur-2xl transition-all duration-300 rounded-lg opacity-50 w-full" />
+      <Card className="relative bg-background/60 backdrop-blur-sm border border-muted/20 hover:border-muted-foreground/30 transition-all duration-300 shadow-lg hover:shadow-xl">
+        <CardHeader className="pb-4">
+          <CardTitle className="flex items-center space-x-3">
+            {icon || <ChevronRight className="w-5 h-5 text-purple-400" />}
+            <span className="text-xl font-semibold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              {skill}
+            </span>
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <ul className="flex flex-wrap gap-2">
+          <ul className="flex flex-wrap gap-3">
             {items.map((item, index) => (
               <li
-                key={index}
-                className="text-base text-muted-foreground pl-6 relative before:absolute before:left-0 before:top-[0.4em] before:h-2 before:w-2 before:rounded-full before:bg-gradient-to-r from-purple-500 to-blue-500 mx-2"
+                key={`${item}-${index}`}
+                className="text-base text-muted-foreground/80 pl-6 relative before:absolute before:left-0 before:top-[0.4em] before:h-2 before:w-2 before:rounded-full before:bg-gradient-to-r before:from-purple-400 before:to-blue-400 hover:text-primary transition-colors duration-200"
               >
                 {item}
               </li>
