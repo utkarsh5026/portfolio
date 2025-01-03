@@ -14,11 +14,12 @@ const TechBadge: React.FC<TechBadgeProps> = ({ tech }) => {
 
   return (
     <button
-      className="px-3 py-1.5 bg-gray-100 dark:bg-gray-700 rounded-full text-sm 
+      className="px-3 py-1.5 bg-gray-900 dark:bg-black rounded-full text-sm 
       flex items-center gap-2.5 cursor-pointer transition-all duration-300 
-      hover:bg-gray-200 dark:hover:bg-gray-600 hover:scale-105 
-      hover:shadow-md dark:hover:shadow-gray-800 
-      active:scale-95"
+      border border-transparent hover:border-primary/40
+      hover:scale-105 hover:shadow-xl hover:shadow-primary/10
+      dark:hover:shadow-primary/5 
+      active:scale-95 text-white dark:text-gray-200"
       onClick={handleTechClick}
     >
       {technologies[techName]?.icon && (
