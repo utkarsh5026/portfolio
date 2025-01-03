@@ -1,3 +1,21 @@
+/**
+ * Skills and Technologies Data Configuration
+ *
+ * This file contains the structured data that powers the Skills section of the portfolio/website.
+ * It defines several key data structures:
+ *
+ * - currentLearningTechnologies: Array of current learning projects/technologies with detailed
+ *   information including name, icon, description, repository links, and categories
+ *
+ * - databases: List of database technologies/platforms used
+ *
+ * - languages: Core programming languages proficiency
+ *
+ * - frameworks: Organized mapping of frameworks/libraries by programming language
+ *
+ * - tools: DevOps and development tools expertise
+ */
+
 import type { TechnologyLearning } from "@/types";
 import { Database, Search, Brain, Smartphone, Terminal } from "lucide-react";
 
