@@ -1,3 +1,10 @@
+/* 
+    Hey! This is where I show off what I'm currently learning.
+    It's basically a grid of fancy cards - each one has an icon,
+    the tech/project name, what it's about, and a link to check
+    it out if you're interested.
+*/
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import React from "react";
 import type { TechnologyLearning } from "@/types";
