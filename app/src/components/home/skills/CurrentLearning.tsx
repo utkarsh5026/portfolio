@@ -29,7 +29,7 @@ const CurrentLearning: React.FC<CurrentLearningProps> = ({ technologies }) => {
           {technologies.map((tech) => (
             <Card
               key={tech.name}
-              className="group relative overflow-hidden border border-muted hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 bg-background/60 backdrop-blur-sm"
+              className="group relative overflow-hidden border border-muted hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 bg-background/60 backdrop-blur-sm cursor-pointer"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <CardContent className="p-6 relative">
