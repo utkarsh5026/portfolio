@@ -17,10 +17,10 @@ const ContactMe = lazy(() => import("./components/home/contact/ContactMe"));
 function App() {
   return (
     <ThemeProvider defaultTheme="dark">
-      <div className="min-h-screen bg-slate-950 w-full overflow-y-auto scrollbar-hide p-32">
+      <div className="min-h-screen bg-slate-950 w-full overflow-y-auto scrollbar-hide p-4 sm:p-8 md:p-16 lg:p-32">
         <NavigationBar />
 
-        <main className="flex flex-col gap-32">
+        <main className="flex flex-col gap-8 sm:gap-16 md:gap-24 lg:gap-32">
           {/* Keep PersonalHeader eager loaded as it's above the fold */}
           <section id="home">
             <PersonalHeader />
