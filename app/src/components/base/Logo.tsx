@@ -1,3 +1,17 @@
+/**
+ * The animated logo component for our site! ✨
+ *
+ * This creates that cool animated "utkarsh.me" text in the header.
+ * When the page loads, it splits the text into parts and animates them in:
+ * - "utkarsh" slides in from the left
+ * - "me" slides in from the right
+ * - The dot bounces in from above
+ *
+ * Bonus: Click it to refresh the page and see the animation again!
+ *
+ * Uses anime.js for those smooth spring animations.
+ */
+
 import React, { useEffect, useRef } from "react";
 import anime from "animejs";
 
