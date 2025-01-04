@@ -1,3 +1,16 @@
+/**
+ * Our technology stack configuration! 🚀
+ *
+ * This is where we keep track of all the tech we use or know about.
+ * Each entry includes:
+ * - The tech's display name
+ * - A link to learn more about it
+ * - Its official icon (with the correct brand color!)
+ *
+ * We use this to power our tech badges throughout the site -
+ * just import the technologies object and grab what you need!
+ */
+
 import type { Technology } from "@/types";
 import {
   SiGo,
