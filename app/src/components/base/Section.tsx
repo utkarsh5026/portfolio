@@ -1,3 +1,18 @@
+/**
+ * This is our main Section component - it's used all over the app to create those
+ * fancy content sections with the cool hover effects and gradient backgrounds.
+ *
+ * Each section comes with:
+ * - A big gradient title that animates on hover
+ * - Some floating background blobs that move around
+ * - A subtle gradient overlay that appears on hover
+ * - Those three little animated dots above the title
+ * - A fancy divider line below the heading
+ *
+ * You'll see these sections used for things like the About, Projects,
+ * and Contact areas of the site.
+ */
+
 import React from "react";
 import GradientText from "../utils/GradientText";
 
