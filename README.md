@@ -4,8 +4,10 @@ Hey there! 👋 Welcome to my portfolio website repo. I built this using React, 
 
 🔗 **Check it out live:** [utkarsh5026.github.io/Portfolio](https://utkarsh5026.github.io/Portfolio)
 
-![Profile Header](./images/profile_header.png)
-![Profile Skills](./images/skills.png)
+<div align="center">
+  <img src="./images/profile_header.png" alt="Profile Header" />
+  <img src="./images/skills.png" alt="Profile Skills" />
+</div>
 
 ## ✨ What's Cool About It?
 
