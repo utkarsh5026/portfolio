@@ -22,7 +22,7 @@ const Section: React.FC<SectionProps> = ({
       <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl" />
 
       <div className="relative">
-        <GradientText className="text-8xl font-bold text-right tracking-tight transform transition-all duration-500 hover:scale-[1.02] hover:tracking-normal">
+        <GradientText className="text-4xl md:text-6xl lg:text-8xl font-bold text-right tracking-tight transform transition-all duration-500 hover:scale-[1.02] hover:tracking-normal">
           {label}
         </GradientText>
 
