@@ -1,3 +1,19 @@
+/**
+ * A fancy card component to show off our cool projects! 🚀
+ *
+ * This card displays project info with some neat interactive features:
+ * - Hover effects with subtle shadows and border highlights
+ * - Project thumbnail with zoom effect on hover
+ * - Expandable section for showing detailed features
+ * - Quick links to GitHub and live demo
+ * - Tech stack badges for each project
+ *
+ * The whole card is clickable to visit the GitHub repo, except for
+ * the buttons and expanded content (they have their own actions).
+ *
+ * Used in the Projects section to display our portfolio items in style!
+ */
+
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
