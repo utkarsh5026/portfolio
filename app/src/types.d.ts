@@ -1,3 +1,5 @@
+import React from "react";
+
 export type TechnologyLearning = {
   name: string;
   icon: React.ReactNode;
@@ -20,10 +22,7 @@ export type Project = {
   technologies: Technology[];
   features: string[];
   thumbnail?: string;
-  category: "Web" | "Mobile" | "Backend" | "DevOps" | "AI/ML";
+  category: "Web" | "Mobile" | "Backend" | "DevOps" | "AI/ML" | "Library";
   status: "Completed" | "In Progress" | "Planned";
-  timeline: string;
-  role?: string;
-  collaborators?: string[];
   highlights?: string[];
 };
