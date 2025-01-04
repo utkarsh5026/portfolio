@@ -41,30 +41,30 @@ const ContactMe: React.FC = () => {
 
   return (
     <Section id="contact" label="Contact">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <Card className="border-2 border-muted bg-background/60 backdrop-blur-sm hover:border-primary/20 transition-all duration-500">
-          <CardContent className="p-8">
-            <div className="text-center space-y-6">
-              <h3 className="text-2xl font-bold text-primary">
+          <CardContent className="p-4 sm:p-8">
+            <div className="text-center space-y-4 sm:space-y-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-primary">
                 Let's Work Together!
               </h3>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
                 I'm always open to discussing new projects, creative ideas, or
                 opportunities to be part of your visions. Feel free to reach out
                 through any of the following channels. If you have any
                 questions, email me at{" "}
-                <span className="border-b-2 border-primary hover:border-primary/50 transition-all duration-300">
+                <span className="border-b-2 border-primary hover:border-primary/50 transition-all duration-300 break-all">
                   utkarshpriyadarshi5026@gmail.com
                 </span>
               </p>
 
-              <div className="flex flex-wrap justify-center gap-4 mt-8">
+              <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-4 mt-4 sm:mt-8">
                 {socialLinks.map((link) => (
                   <Button
                     key={link.name}
                     variant="outline"
-                    size="lg"
-                    className={`group relative overflow-hidden transition-all duration-300 ${link.color}`}
+                    size="default"
+                    className={`w-full sm:w-auto group relative overflow-hidden transition-all duration-300 ${link.color}`}
                     onClick={() => window.open(link.href, "_blank")}
                   >
                     <div className="relative flex items-center gap-2">
@@ -76,11 +76,11 @@ const ContactMe: React.FC = () => {
                 ))}
               </div>
 
-              <div className="mt-12 p-6 bg-muted/30 rounded-lg">
-                <h4 className="text-lg font-semibold mb-2">
+              <div className="mt-8 sm:mt-12 p-4 sm:p-6 bg-muted/30 rounded-lg">
+                <h4 className="text-base sm:text-lg font-semibold mb-2">
                   Available for Opportunities
                 </h4>
-                <p className="text-muted-foreground">
+                <p className="text-sm sm:text-base text-muted-foreground">
                   Currently open to Web Development and Automation
                   opportunities. Let's create something amazing together!
                 </p>
