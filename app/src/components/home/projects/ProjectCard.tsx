@@ -14,8 +14,22 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  const handleCardClick = (e: React.MouseEvent) => {
+    // Prevent triggering if clicking on buttons or expanded content
+    if (
+      e.target instanceof Element &&
+      (e.target.closest("button") || isExpanded)
+    ) {
+      return;
+    }
+    window.open(project.githubLink, "_blank");
+  };
+
   return (
-    <Card className="group hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 hover:border-primary/50 backdrop-blur-sm bg-background/50">
+    <Card
+      className="group hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 hover:border-primary/50 backdrop-blur-sm bg-background/50 cursor-pointer"
+      onClick={handleCardClick}
+    >
       {project.thumbnail && (
         <div className="relative h-56 overflow-hidden">
           <img
