@@ -26,10 +26,12 @@ import {
   SiJavascript,
   SiDjango,
   SiFlask,
+  SiBittorrent,
 } from "react-icons/si";
 import { FaAws, FaLinux, FaNode } from "react-icons/fa";
 import { VscTerminalPowershell } from "react-icons/vsc";
 import { TbApi } from "react-icons/tb";
+import { IoIosGitNetwork } from "react-icons/io";
 
 export const technologies: Record<string, Technology> = {
   golang: {
@@ -121,5 +123,15 @@ export const technologies: Record<string, Technology> = {
     name: "Flask",
     aboutLink: "https://flask.palletsprojects.com/",
     icon: <SiFlask className="text-[#000000]" />,
+  },
+  bittorrent: {
+    name: "BitTorrent",
+    aboutLink: "https://en.wikipedia.org/wiki/BitTorrent",
+    icon: <SiBittorrent className="text-[#000000]" />,
+  },
+  tcpip: {
+    name: "TCP/IP",
+    aboutLink: "https://en.wikipedia.org/wiki/TCP/IP",
+    icon: <IoIosGitNetwork className="text-[#000000]" />,
   },
 };

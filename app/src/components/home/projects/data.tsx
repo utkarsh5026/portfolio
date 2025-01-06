@@ -112,6 +112,36 @@ export const projects: Project[] = [
       "Type-safe implementation with modern Python features",
     ],
   },
+  {
+    name: "BitTorrent Client",
+    description:
+      "A fully functional BitTorrent client built in Go that can download files from the BitTorrent network. Implements core protocol features including peer wire protocol, tracker communication, and piece management.",
+    githubLink: "https://github.com/utkarsh5026/current",
+    technologies: [
+      technologies.golang,
+      technologies.bittorrent,
+      technologies.tcpip,
+      technologies.concurrent,
+    ],
+    features: [
+      "Parse and decode .torrent files using custom bencode parser",
+      "Connect and communicate with BitTorrent trackers",
+      "Manage peer connections and handshakes",
+      "Download file pieces from multiple peers simultaneously",
+      "Verify downloaded pieces using SHA1 hashing",
+      "Track download progress in real-time",
+      "Handle concurrent TCP connections efficiently",
+    ],
+    category: "Backend",
+    status: "Completed",
+    highlights: [
+      "Custom implementation of the bencode format parser/encoder",
+      "Efficient piece management with concurrent downloads",
+      "Clean separation of concerns with modular package design",
+      "Robust error handling and data verification",
+      "Support for both single-file and multi-file torrents",
+    ],
+  },
 ];
 
 export default projects;
