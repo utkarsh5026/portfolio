@@ -24,9 +24,12 @@ import {
   SiPostgresql,
   SiSqlite,
   SiJavascript,
+  SiDjango,
+  SiFlask,
 } from "react-icons/si";
 import { FaAws, FaLinux, FaNode } from "react-icons/fa";
 import { VscTerminalPowershell } from "react-icons/vsc";
+import { TbApi } from "react-icons/tb";
 
 export const technologies: Record<string, Technology> = {
   golang: {
@@ -103,5 +106,20 @@ export const technologies: Record<string, Technology> = {
     name: "JavaScript",
     aboutLink: "https://www.javascript.com/",
     icon: <SiJavascript className="text-[#F7DF1E]" />,
+  },
+  rest: {
+    name: "REST",
+    aboutLink: "https://restfulapi.net/",
+    icon: <TbApi className="text-[#F7DF1E]" />,
+  },
+  django: {
+    name: "Django",
+    aboutLink: "https://www.djangoproject.com/",
+    icon: <SiDjango className="text-[#092E20]" />,
+  },
+  flask: {
+    name: "Flask",
+    aboutLink: "https://flask.palletsprojects.com/",
+    icon: <SiFlask className="text-[#000000]" />,
   },
 };

@@ -82,6 +82,36 @@ export const projects: Project[] = [
     category: "Library",
     status: "Completed",
   },
+  {
+    name: "PAuth",
+    description:
+      "A modern Python library that simplifies OAuth 2.0 authentication implementation by providing a clean, consistent, and secure interface for multiple providers like Google, GitHub, Facebook, and Twitter.",
+    githubLink: "https://github.com/utkarsh5026/pauth",
+    technologies: [
+      technologies.python,
+      technologies.flask,
+      technologies.django,
+      technologies.rest,
+    ],
+    features: [
+      "Complete OAuth 2.0 implementation with modern security features",
+      "Multiple provider support (Google, GitHub, Facebook, Twitter)",
+      "Framework integration with Flask and Django",
+      "Built-in PKCE (Proof Key for Code Exchange) support",
+      "Customizable token storage",
+      "Comprehensive error handling",
+      "Type hints for better developer experience",
+    ],
+    category: "Library",
+    status: "In Progress",
+    highlights: [
+      "Security-first approach with PKCE implementation and state validation",
+      "Framework-agnostic core with seamless integrations",
+      "Extensible provider system with consistent interface",
+      "Comprehensive documentation and examples",
+      "Type-safe implementation with modern Python features",
+    ],
+  },
 ];
 
 export default projects;
