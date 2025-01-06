@@ -118,10 +118,9 @@ export const projects: Project[] = [
       "A fully functional BitTorrent client built in Go that can download files from the BitTorrent network. Implements core protocol features including peer wire protocol, tracker communication, and piece management.",
     githubLink: "https://github.com/utkarsh5026/current",
     technologies: [
-      technologies.golang,
-      technologies.bittorrent,
-      technologies.tcpip,
-      technologies.concurrent,
+      technologies["golang"],
+      technologies["bittorrent"],
+      technologies["tcpip"],
     ],
     features: [
       "Parse and decode .torrent files using custom bencode parser",
