@@ -28,10 +28,18 @@ export default defineConfig({
   },
   base: "/Portfolio/",
   build: {
-    sourcemap: true,
+    sourcemap: process.env.NODE_ENV === "development",
     chunkSizeWarningLimit: 500,
     rollupOptions: {
-      output: {},
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"],
+          animations: ["animejs"],
+          ui: ["@radix-ui/react-avatar", "@radix-ui/react-slot"],
+          icons: ["lucide-react", "react-icons"],
+          game: ["phaser"],
+        },
+      },
     },
   },
 });
