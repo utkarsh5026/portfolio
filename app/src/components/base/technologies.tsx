@@ -31,6 +31,7 @@ import {
 import { FaAws, FaLinux, FaNode } from "react-icons/fa";
 import { VscTerminalPowershell } from "react-icons/vsc";
 import { TbApi } from "react-icons/tb";
+import { GoCommandPalette } from "react-icons/go";
 
 export const technologies: Record<string, Technology> = {
   golang: {
@@ -127,5 +128,10 @@ export const technologies: Record<string, Technology> = {
     name: "BitTorrent",
     aboutLink: "https://en.wikipedia.org/wiki/BitTorrent",
     icon: <SiBittorrent />,
+  },
+  cli: {
+    name: "CLI",
+    aboutLink: "https://en.wikipedia.org/wiki/Command-line_interface",
+    icon: <GoCommandPalette />,
   },
 };

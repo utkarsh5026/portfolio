@@ -150,6 +150,28 @@ export const projects: Project[] = [
       "Support for both single-file and multi-file torrents",
     ],
   },
+  {
+    name: "Cope",
+    description:
+      "A custom implementation of the grep command-line tool in Go, focusing on regular expression pattern matching and text searching capabilities, as it is a part of the CodeCrafters platform challenge",
+    githubLink: "https://github.com/utkarsh5026/cope",
+    technologies: [technologies.golang, technologies.cli],
+    features: [
+      "Pattern matching using regular expressions",
+      "Command-line interface",
+      "File content searching",
+      "Test-driven development approach",
+      "Support for various input formats",
+    ],
+    category: "Backend",
+    status: "In Progress",
+    highlights: [
+      "Built as part of the CodeCrafters platform challenge",
+      "Implements core grep functionality in pure Go",
+      "Includes comprehensive test coverage",
+      "Uses modern Go tooling and practices (Go 1.22+)",
+    ],
+  },
 ];
 
 export default projects;
