@@ -1,3 +1,16 @@
+/**
+ * My projects showcase! 🛠️
+ *
+ * This is where I keep all the juicy details about my projects.
+ * Each project entry includes:
+ * - Project name and description
+ * - Links to GitHub (and live demos where available)
+ * - Tech stack used (linked to my technologies config)
+ * - Key features and highlights
+ * - Project status (Completed/In Progress)
+ * - Category (DevOps, AI/ML, Library, etc.)
+ */
+
 import type { Project } from "@/types";
 import { technologies } from "@/components/base/technologies";
 
