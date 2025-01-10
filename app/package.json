@@ -17,6 +17,7 @@
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tooltip": "^1.1.6",
     "@types/animejs": "^3.1.12",
     "animejs": "^3.2.2",
     "class-variance-authority": "^0.7.1",
