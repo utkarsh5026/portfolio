@@ -16,6 +16,46 @@ import { technologies } from "@/components/base/technologies";
 
 export const projects: Project[] = [
   {
+    name: "Automotive Training & Workforce Analytics DSS",
+    description:
+      "A comprehensive Decision Support System for Skoda Auto, Volkswagen, and Audi to analyze training effectiveness, workforce demographics, and employee retention metrics. The system processes large-scale training history and manpower data to provide actionable insights for management decision-making.",
+
+    githubLink: "private-repository",
+
+    technologies: [
+      technologies.react,
+      technologies.python,
+      technologies.django,
+      technologies.pandas,
+      technologies.plotly,
+      technologies.sqlite,
+    ],
+
+    features: [
+      "Multi-brand workforce analytics (Skoda, VW, Audi)",
+      "Training success rate analysis by trainer/location",
+      "Employee aging and retention tracking",
+      "Customizable trend analysis with date ranges",
+      "Zone and dealer-wise performance metrics",
+      "Data visualization with interactive charts",
+      "Automated data processing pipelines",
+      "Role-based access control",
+      "Export functionality for reports",
+    ],
+
+    category: "Web",
+
+    status: "Completed",
+
+    highlights: [
+      "Processes 200,000+ training records across 3 major automotive brands",
+      "Reduced reporting time from days to minutes",
+      "Interactive dashboards for real-time decision making",
+      "Automated data validation and cleaning pipelines",
+      "Cross-brand comparative analysis capabilities",
+    ],
+  },
+  {
     name: "Container Management Platform",
     description:
       "A web-based container management solution featuring real-time monitoring and control of Docker containers.",
@@ -34,7 +74,6 @@ export const projects: Project[] = [
       "Container log streaming and search",
       "Image and volume management",
     ],
-    thumbnail: "/projects/container-platform.png",
     category: "DevOps",
     status: "Completed",
   },

@@ -27,6 +27,11 @@ import {
   SiDjango,
   SiFlask,
   SiBittorrent,
+  SiAxios,
+  SiMui,
+  SiMysql,
+  SiPlotly,
+  SiPandas,
 } from "react-icons/si";
 import { FaAws, FaLinux, FaNode } from "react-icons/fa";
 import { VscTerminalPowershell } from "react-icons/vsc";
@@ -117,7 +122,7 @@ export const technologies: Record<string, Technology> = {
   django: {
     name: "Django",
     aboutLink: "https://www.djangoproject.com/",
-    icon: <SiDjango className="text-[#092E20]" />,
+    icon: <SiDjango className="text-[#0F4D32]" />,
   },
   flask: {
     name: "Flask",
@@ -133,5 +138,30 @@ export const technologies: Record<string, Technology> = {
     name: "CLI",
     aboutLink: "https://en.wikipedia.org/wiki/Command-line_interface",
     icon: <GoCommandPalette />,
+  },
+  axios: {
+    name: "Axios",
+    aboutLink: "https://axios-http.com/",
+    icon: <SiAxios />,
+  },
+  materialui: {
+    name: "Material-UI",
+    aboutLink: "https://mui.com/",
+    icon: <SiMui />,
+  },
+  mysql: {
+    name: "MySQL",
+    aboutLink: "https://www.mysql.com/",
+    icon: <SiMysql />,
+  },
+  plotly: {
+    name: "Plotly",
+    aboutLink: "https://plotly.com/",
+    icon: <SiPlotly />,
+  },
+  pandas: {
+    name: "Pandas",
+    aboutLink: "https://pandas.pydata.org/",
+    icon: <SiPandas />,
   },
 };
