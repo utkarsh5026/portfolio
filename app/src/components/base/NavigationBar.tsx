@@ -1,7 +1,14 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { DownloadIcon } from "lucide-react";
+import { FiDownload } from "react-icons/fi";
+import { FaGithub } from "react-icons/fa";
 import Logo from "./Logo";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const NavigationBar: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
@@ -35,25 +42,46 @@ const NavigationBar: React.FC = () => {
             </li>
           ))}
         </ul>
-        <Button
-          onClick={() =>
-            window.open(
-              "https://ybyhphtolmvomxzjridt.supabase.co/storage/v1/object/public/Resume/Utkarsh_Priyadarshi_Resume.pdf?t=2025-01-03T20%3A37%3A04.739Z"
-            )
-          }
-          className="w-full sm:w-auto rounded-full 
-          px-4 sm:px-6 md:px-8 py-2.5
-          bg-gradient-to-r from-violet-600 to-indigo-600
-          hover:from-violet-500 hover:to-indigo-500
-          text-white font-semibold text-xs sm:text-sm
-          transition-all duration-300 ease-out
-          shadow-lg shadow-indigo-500/30
-          border border-indigo-400/30
-          flex items-center justify-center gap-2"
-        >
-          <DownloadIcon className="h-4 w-4 text-slate-900" />
-          <span className="hidden sm:inline text-slate-900">Download CV</span>
-        </Button>
+        <div className="flex gap-2 w-full sm:w-auto">
+          <Button
+            onClick={() =>
+              window.open(
+                "https://ybyhphtolmvomxzjridt.supabase.co/storage/v1/object/public/Resume/Utkarsh_Priyadarshi_Resume.pdf?t=2025-01-03T20%3A37%3A04.739Z"
+              )
+            }
+            className="w-full sm:w-auto rounded-full 
+            px-4 sm:px-6 md:px-8 py-2.5
+            bg-gradient-to-r from-violet-600 to-indigo-600
+            hover:from-violet-500 hover:to-indigo-500
+            text-white font-semibold text-xs sm:text-sm
+            transition-all duration-300 ease-out
+            shadow-lg shadow-indigo-500/30
+            border border-indigo-400/30
+            flex items-center justify-center gap-2"
+          >
+            <FiDownload className="h-4 w-4 text-slate-900" />
+            <span className="hidden sm:inline text-slate-900">Download CV</span>
+          </Button>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  onClick={() =>
+                    window.open("https://github.com/utkarsh5026/Portfolio")
+                  }
+                  variant="ghost"
+                  size="icon"
+                  className="rounded-full"
+                >
+                  <FaGithub className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>View GitHub Repository</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
       </div>
     </div>
   );

@@ -21,13 +21,11 @@ function App() {
         <NavigationBar />
 
         <main className="flex flex-col gap-8 sm:gap-16 md:gap-24 lg:gap-32">
-          {/* Keep PersonalHeader eager loaded as it's above the fold */}
-          <section id="home">
+          <section id="home" className="scroll-mt-16">
             <PersonalHeader />
           </section>
 
-          {/* Wrap lazy loaded components in Suspense */}
-          <section id="games">
+          <section id="games" className="scroll-mt-16">
             <Suspense
               fallback={
                 <div className="h-96 animate-pulse bg-slate-800/20 rounded-lg" />
@@ -36,7 +34,7 @@ function App() {
               <PingPong />
             </Suspense>
           </section>
-          <section id="skills">
+          <section id="skills" className="scroll-mt-16">
             <Suspense
               fallback={
                 <div className="h-96 animate-pulse bg-slate-800/20 rounded-lg" />
@@ -45,7 +43,7 @@ function App() {
               <Skills />
             </Suspense>
           </section>
-          <section id="memory">
+          <section id="memory" className="scroll-mt-16">
             <Suspense
               fallback={
                 <div className="h-96 animate-pulse bg-slate-800/20 rounded-lg" />
@@ -54,7 +52,7 @@ function App() {
               <MemoryGame />
             </Suspense>
           </section>
-          <section id="projects">
+          <section id="projects" className="scroll-mt-16">
             <Suspense
               fallback={
                 <div className="h-96 animate-pulse bg-slate-800/20 rounded-lg" />
@@ -63,7 +61,7 @@ function App() {
               <Projects />
             </Suspense>
           </section>
-          <section id="experience">
+          <section id="experience" className="scroll-mt-16">
             <Suspense
               fallback={
                 <div className="h-96 animate-pulse bg-slate-800/20 rounded-lg" />
@@ -72,7 +70,7 @@ function App() {
               <WorkExperience />
             </Suspense>
           </section>
-          <section id="articles">
+          <section id="articles" className="scroll-mt-16">
             <Suspense
               fallback={
                 <div className="h-96 animate-pulse bg-slate-800/20 rounded-lg" />
@@ -81,7 +79,7 @@ function App() {
               <Articles />
             </Suspense>
           </section>
-          <section id="contact">
+          <section id="contact" className="scroll-mt-16">
             <Suspense
               fallback={
                 <div className="h-96 animate-pulse bg-slate-800/20 rounded-lg" />
