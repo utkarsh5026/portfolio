@@ -63,7 +63,7 @@ const Logo: React.FC = () => {
       }}
       aria-label="Reload page"
     >
-      <div className="hidden sm:block cursor-pointer group">
+      <div className="cursor-pointer group">
         <div className="relative inline-flex">
           <div className="flex items-center font-semibold">
             <span ref={leftTextRef} className="text-white opacity-0">
