@@ -103,7 +103,7 @@ export const frameworks = {
     "Socket.io",
     "Express",
   ],
-  Python: ["FastAPI", "Flask", "Django", "Pandas"],
+  Python: ["FastAPI", "Flask", "Django", "Pandas", "Langchain"],
   Golang: ["Gin", "Gorm"],
 };
 
