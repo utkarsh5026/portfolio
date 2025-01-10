@@ -26,7 +26,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/Portfolio/",
+  base: "/",
   build: {
     sourcemap: process.env.NODE_ENV === "development",
     chunkSizeWarningLimit: 500,
