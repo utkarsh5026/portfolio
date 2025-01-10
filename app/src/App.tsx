@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react";
 import { ThemeProvider } from "./components/base/ThemeProvider";
 import PersonalHeader from "./components/home/intro/PersonalHeader";
-import NavigationBar from "./components/base/NavigationBar";
+import NavigationBar from "./components/home/appbar/NavigationBar";
 
 // Replace direct imports with lazy imports
 const Skills = lazy(() => import("./components/home/skills/Skills"));
