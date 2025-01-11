@@ -7,8 +7,7 @@ import NavigationBar from "./components/home/appbar/NavigationBar";
 const Skills = lazy(() => import("./components/home/skills/Skills"));
 const Projects = lazy(() => import("./components/home/projects/Projects"));
 const Articles = lazy(() => import("./components/home/articles/Articles"));
-const PingPong = lazy(() => import("./components/home/games/PingPong"));
-const MemoryGame = lazy(() => import("./components/home/games/MemoryGame"));
+
 const WorkExperience = lazy(
   () => import("./components/home/work/WorkExperience")
 );
@@ -25,15 +24,6 @@ function App() {
             <PersonalHeader />
           </section>
 
-          <section id="games" className="scroll-mt-16">
-            <Suspense
-              fallback={
-                <div className="h-96 animate-pulse bg-slate-800/20 rounded-lg" />
-              }
-            >
-              <PingPong />
-            </Suspense>
-          </section>
           <section id="skills" className="scroll-mt-16">
             <Suspense
               fallback={
@@ -41,15 +31,6 @@ function App() {
               }
             >
               <Skills />
-            </Suspense>
-          </section>
-          <section id="memory" className="scroll-mt-16">
-            <Suspense
-              fallback={
-                <div className="h-96 animate-pulse bg-slate-800/20 rounded-lg" />
-              }
-            >
-              <MemoryGame />
             </Suspense>
           </section>
           <section id="projects" className="scroll-mt-16">
