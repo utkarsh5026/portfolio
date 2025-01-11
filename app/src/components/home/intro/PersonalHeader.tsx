@@ -7,8 +7,9 @@ const PersonalHeader: React.FC = () => {
     () => [
       "I build things for the web",
       "I love creating user interfaces",
-      "I transform ideas into code",
-      "I'm passionate about web development",
+      "I speak JavaScript, Python & Go",
+      "I want to write code that humans can read",
+      "I am currently exploring databases and LLMs",
     ],
     []
   );
@@ -27,10 +28,12 @@ const PersonalHeader: React.FC = () => {
 
             <AnimatedText statements={statements} />
 
-            <p className="text-slate-400 max-w-[500px] text-lg">
-              Former digital-marketing specialist, seeking to apply competent
-              development skills with focus on collaboration, communication, and
-              passion
+            <p className="text-slate-400 max-w-[600px] text-lg">
+              I'm a software engineer with a passion for creating user-friendly
+              and efficient web applications. I'm a quick learner and I'm always
+              looking to expand my skills. I develop mostly full-stack web
+              applications and currently, I am looking for opportunities to work
+              with a team of passionate developers.
             </p>
           </div>
 
