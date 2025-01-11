@@ -103,11 +103,14 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ statements }) => {
   return (
     <div
       ref={containerRef}
-      className="flex items-center gap-2 text-2xl md:text-3xl font-mono bg-slate-900/50 p-4 rounded-lg w-full"
+      className="flex items-center gap-1 sm:gap-2 text-lg sm:text-xl md:text-2xl lg:text-3xl font-mono bg-slate-900/50 p-2 sm:p-3 md:p-4 rounded-lg w-full"
     >
       <span className="text-emerald-300 font-extrabold">&gt;</span>
       <span className="text-emerald-300 font-bold">{displayText}</span>
-      <span ref={cursorRef} className="text-emerald-300 font-extrabold w-3">
+      <span
+        ref={cursorRef}
+        className="text-emerald-300 font-extrabold w-2 sm:w-3"
+      >
         |
       </span>
     </div>
