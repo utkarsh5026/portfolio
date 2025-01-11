@@ -59,27 +59,45 @@ const SkillCardMoving: React.FC = () => {
       element.appendChild(clone);
     });
 
-    const animation = anime({
-      targets: element,
-      translateX: [0, -element.scrollWidth / 2],
-      duration: 80000,
-      easing: "linear",
-      loop: true,
-    });
+    const updateAnimation = () => {
+      const duration = Math.max(45000, window.innerWidth * 75);
 
-    return () => animation.pause();
+      return anime({
+        targets: element,
+        translateX: [0, -element.scrollWidth / 2],
+        duration: duration,
+        easing: "linear",
+        loop: true,
+      });
+    };
+
+    let animation = updateAnimation();
+
+    const handleResize = () => {
+      animation.pause();
+      animation = updateAnimation();
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      animation.pause();
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
-    <div className="w-full overflow-hidden bg-black py-8 rounded-lg mb-8">
+    <div className="w-full overflow-hidden bg-black py-4 sm:py-6 md:py-8 rounded-lg mb-8">
       <div ref={elementRef} className="flex whitespace-nowrap">
         {skills.map((skill, index) => (
           <div
             key={`${skill.name}-${index}`}
-            className="mx-8 flex items-center space-x-4 text-white"
+            className="mx-4 sm:mx-6 md:mx-8 flex items-center space-x-2 sm:space-x-3 md:space-x-4 text-white"
           >
-            <div className="text-xl">{skill.icon}</div>
-            <span className="text-xl">{skill.name}</span>
+            <div className="text-base sm:text-lg md:text-xl">{skill.icon}</div>
+            <span className="text-base sm:text-lg md:text-xl">
+              {skill.name}
+            </span>
           </div>
         ))}
       </div>
