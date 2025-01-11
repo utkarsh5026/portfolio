@@ -15,8 +15,14 @@ const PersonalHeader: React.FC = () => {
   );
 
   return (
-    <div className="bg-slate-950 min-h-[500px] sm:min-h-[600px] lg:min-h-[700px] flex items-center pt-24 sm:pt-16 md:pt-0">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+    <div className="relative bg-slate-950 min-h-[500px] sm:min-h-[600px] lg:min-h-[700px] flex items-center pt-24 sm:pt-16 md:pt-0 overflow-hidden rounded-3xl">
+      <div className="absolute inset-0 opacity-20">
+        <div className="smoke-1 absolute inset-0 bg-gradient-to-r from-purple-900/30 to-blue-900/30 animate-smoke-1" />
+        <div className="smoke-2 absolute inset-0 bg-gradient-to-l from-indigo-900/30 to-slate-900/30 animate-smoke-2" />
+        <div className="smoke-3 absolute inset-0 bg-gradient-to-t from-slate-900/30 to-purple-900/30 animate-smoke-3" />
+      </div>
+
+      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-12">
           <div className="space-y-4 sm:space-y-6 p-4 flex flex-col justify-start items-start">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">

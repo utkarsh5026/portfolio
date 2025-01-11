@@ -57,6 +57,9 @@ export default {
         "gradient-x": "gradient-x 1s cubic-bezier(0.4, 0, 0.2, 1) infinite",
         fadeIn: "fadeIn 0.5s ease-out forwards",
         pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "smoke-1": "smoke-1 20s ease-in-out infinite",
+        "smoke-2": "smoke-2 25s ease-in-out infinite",
+        "smoke-3": "smoke-3 30s ease-in-out infinite",
       },
       keyframes: {
         "gradient-x": {
@@ -77,6 +80,18 @@ export default {
         pulse: {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.5" },
+        },
+        "smoke-1": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1.5)" },
+          "50%": { transform: "translate(20%, 10%) scale(1.3)" },
+        },
+        "smoke-2": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1.4)" },
+          "50%": { transform: "translate(-15%, 5%) scale(1.6)" },
+        },
+        "smoke-3": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1.3)" },
+          "50%": { transform: "translate(15%, -10%) scale(1.5)" },
         },
       },
     },
