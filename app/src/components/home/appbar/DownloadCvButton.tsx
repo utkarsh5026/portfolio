@@ -10,18 +10,24 @@ const DownloadCvButton = () => {
         )
       }
       className="w-full sm:w-auto rounded-full 
-            px-3 sm:px-6 md:px-8 py-2 sm:py-2.5
-            bg-gradient-to-r from-violet-600 to-indigo-600
-            hover:from-violet-500 hover:to-indigo-500
-            text-white font-semibold text-xs sm:text-sm
+            px-3 sm:px-6 md:px-8 py-2.5 sm:py-3
+            bg-black
+            hover:bg-zinc-900
+            text-white font-medium text-xs sm:text-sm
             transition-all duration-300 ease-out
-            shadow-lg shadow-indigo-500/30
-            border border-indigo-400/30
-            flex items-center justify-center gap-1.5 sm:gap-2"
+            shadow-[0_4px_12px_rgba(255,255,255,0.15),0_2px_4px_rgba(255,255,255,0.05),inset_0_1px_1px_rgba(255,255,255,0.1)]
+            hover:shadow-[0_8px_20px_rgba(255,255,255,0.2),0_4px_8px_rgba(255,255,255,0.1),inset_0_1px_1px_rgba(255,255,255,0.15)]
+            border border-zinc-800
+            hover:border-zinc-700
+            backdrop-blur-sm
+            hover:scale-[1.02]
+            flex items-center justify-center gap-1.5 sm:gap-2
+            relative overflow-hidden
+            hover:ring-1 hover:ring-white/20"
     >
-      <FiDownload className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-slate-900" />
-      <span className="text-slate-900">CV</span>
-      <span className="hidden sm:inline text-slate-900">Download</span>
+      <FiDownload className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-zinc-300" />
+      <span className="text-zinc-200">Download</span>
+      <span className="hidden sm:inline text-zinc-300">CV</span>
     </Button>
   );
 };
