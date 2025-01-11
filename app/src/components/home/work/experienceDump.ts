@@ -1,16 +1,4 @@
-export type WorkExperience = {
-  company: string;
-  position: string;
-  duration: string;
-  achievements: {
-    title: string;
-    description: string[];
-    icon?: string;
-  }[];
-  technologies: string[];
-  imageSrc: string;
-  companyUrl: string;
-};
+import type { WorkExperience } from "@/types";
 
 export const experiences: WorkExperience[] = [
   {

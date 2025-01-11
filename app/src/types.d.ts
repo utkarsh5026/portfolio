@@ -32,3 +32,17 @@ export type Article = {
   description: string;
   link: string;
 };
+
+export type WorkExperience = {
+  company: string;
+  position: string;
+  duration: string;
+  achievements: {
+    title: string;
+    description: string[];
+    icon?: string;
+  }[];
+  technologies: string[];
+  imageSrc: string;
+  companyUrl: string;
+};

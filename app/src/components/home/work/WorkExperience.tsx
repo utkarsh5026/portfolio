@@ -58,14 +58,14 @@ const WorkExperience: React.FC = () => {
 
   return (
     <Section id="work" label="Work Experience">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="grid md:grid-cols-[1fr,2fr] gap-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="grid lg:grid-cols-[1fr,2fr] md:grid-cols-[1.2fr,2fr] gap-4 sm:gap-6 lg:gap-8">
           {/* Timeline */}
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {experiences.map((exp, index) => (
               <button
                 key={`${exp.duration}-${index}`}
-                className={`w-full text-left p-4 rounded-lg transition-all
+                className={`w-full text-left p-3 sm:p-4 rounded-lg transition-all
                   ${
                     selectedExp === index
                       ? "bg-blue-500 text-white"
@@ -74,17 +74,17 @@ const WorkExperience: React.FC = () => {
                 onClick={() => handleExperienceClick(index)}
               >
                 <div className="flex flex-col">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Avatar className="w-6 h-6">
-                      <AvatarImage
-                        src={exp.imageSrc}
-                        alt={exp.company}
-                        className=""
-                      />
+                  <div className="flex items-center gap-2 mb-1 sm:mb-2">
+                    <Avatar className="w-5 h-5 sm:w-6 sm:h-6">
+                      <AvatarImage src={exp.imageSrc} alt={exp.company} />
                     </Avatar>
-                    <h3 className="font-bold">{exp.company}</h3>
+                    <h3 className="font-bold text-sm sm:text-base">
+                      {exp.company}
+                    </h3>
                   </div>
-                  <p className="text-sm opacity-80 ml-8">{exp.duration}</p>
+                  <p className="text-xs sm:text-sm opacity-80 ml-7 sm:ml-8">
+                    {exp.duration}
+                  </p>
                 </div>
               </button>
             ))}
@@ -93,7 +93,7 @@ const WorkExperience: React.FC = () => {
           {/* Experience Details */}
           <div
             ref={containerRef}
-            className="bg-white dark:bg-gray-950 p-6 rounded-lg shadow-lg relative min-h-[300px]"
+            className="bg-white dark:bg-gray-950 p-4 sm:p-6 rounded-lg shadow-lg relative min-h-[300px]"
           >
             {/* Border Container for SVG Animation */}
             <div className="absolute inset-0 pointer-events-none">
@@ -165,8 +165,8 @@ const WorkExperience: React.FC = () => {
               </svg>
             </div>
 
-            <div className="flex items-center gap-2 text-lg">
-              <span className="text-lg font-bold">
+            <div className="flex items-center gap-2">
+              <span className="text-base sm:text-lg font-bold">
                 {experiences[selectedExp].position}
               </span>
             </div>
@@ -182,23 +182,25 @@ const WorkExperience: React.FC = () => {
               </button>
             </div>
 
-            <div className="space-y-8 mb-8">
+            <div className="space-y-6 sm:space-y-8 mb-6 sm:mb-8">
               {experiences[selectedExp].achievements.map(
                 (achievement, index) => (
                   <div
                     key={`project-${index}-${achievement.title}`}
-                    className="flex items-start gap-4 p-4 rounded-lg transition-all hover:bg-gray-50 dark:hover:bg-gray-900 border border-gray-100 dark:border-gray-800"
+                    className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg transition-all hover:bg-gray-50 dark:hover:bg-gray-900 border border-gray-100 dark:border-gray-800"
                   >
                     {achievement.icon && iconMap[achievement.icon] && (
-                      <div className="flex-shrink-0 p-2 bg-blue-100 dark:bg-blue-900 rounded-lg">
-                        {iconMap[achievement.icon]}
+                      <div className="flex-shrink-0 p-1.5 sm:p-2 bg-blue-100 dark:bg-blue-900 rounded-lg">
+                        <div className="text-sm sm:text-base">
+                          {iconMap[achievement.icon]}
+                        </div>
                       </div>
                     )}
                     <div className="flex-1">
-                      <h4 className="font-semibold text-base mb-2 text-blue-600 dark:text-blue-400">
+                      <h4 className="font-semibold text-sm sm:text-base mb-2 text-blue-600 dark:text-blue-400">
                         {achievement.title}
                       </h4>
-                      <ul className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed list-disc pl-4">
+                      <ul className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed list-disc pl-4">
                         {achievement.description.map((desc, i) => (
                           <li
                             key={`${index}-${i}`}
@@ -216,7 +218,7 @@ const WorkExperience: React.FC = () => {
               )}
             </div>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {experiences[selectedExp].technologies.map((tech, index) => (
                 <TechBadge tech={tech} key={`${tech}-${index}`} />
               ))}
