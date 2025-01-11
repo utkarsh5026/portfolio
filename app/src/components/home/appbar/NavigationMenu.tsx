@@ -1,16 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import anime from "animejs";
-
-const navigationItems = [
-  "home",
-  "about",
-  "projects",
-  "skills",
-  "work",
-  "articles",
-  "contact",
-];
-
+import navigationItems from "./navItems";
 interface NavigationMenuProps {
   isMenuOpen: boolean;
   setIsMenuOpen: (isMenuOpen: boolean) => void;
