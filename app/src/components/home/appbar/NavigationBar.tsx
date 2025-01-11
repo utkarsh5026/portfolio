@@ -10,8 +10,8 @@ const NavigationBar: React.FC = () => {
 
   return (
     <div className="fixed top-0 w-full bg-slate-950/95 backdrop-blur-sm border-b border-slate-900 z-50">
-      <div className="w-full mx-auto p-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-0">
-        <div className="w-full sm:w-auto flex justify-between items-center self-start">
+      <div className="w-full mx-auto px-12 py-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-0">
+        <div className="w-full sm:w-auto flex justify-between items-center">
           <Logo />
           <MobileMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         </div>
@@ -22,7 +22,7 @@ const NavigationBar: React.FC = () => {
             isMenuOpen={isMenuOpen}
             setIsMenuOpen={setIsMenuOpen}
           />
-          <div className="flex-1 flex justify-end gap-2">
+          <div className="flex-1 flex justify-end gap-2 items-center">
             <DownloadCvButton />
             <GithubRepoButton />
           </div>
