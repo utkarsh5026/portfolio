@@ -15,11 +15,11 @@ const PersonalHeader: React.FC = () => {
   );
 
   return (
-    <div className="bg-slate-950 min-h-[500px] flex items-center">
-      <div className="container mx-auto px-4 py-16">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className=" space-y-6  p-4 flex flex-col justify-start items-start gap-4">
-            <h1 className="text-4xl md:text-5xl font-bold">
+    <div className="bg-slate-950 min-h-[500px] sm:min-h-[600px] lg:min-h-[700px] flex items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-12">
+          <div className="space-y-4 sm:space-y-6 p-4 flex flex-col justify-start items-start">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
               Hello, I'm{" "}
               <span className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
                 Utkarsh Priyadarshi
@@ -28,7 +28,7 @@ const PersonalHeader: React.FC = () => {
 
             <AnimatedText statements={statements} />
 
-            <p className="text-slate-400 max-w-[600px] text-lg">
+            <p className="text-slate-400 max-w-[600px] text-base sm:text-lg lg:text-xl">
               I'm a software engineer with a passion for creating user-friendly
               and efficient web applications. I'm a quick learner and I'm always
               looking to expand my skills. I develop mostly full-stack web
@@ -37,7 +37,9 @@ const PersonalHeader: React.FC = () => {
             </p>
           </div>
 
-          <ProfileAvatar />
+          <div className="w-full md:w-auto flex justify-center md:justify-start">
+            <ProfileAvatar />
+          </div>
         </div>
       </div>
     </div>
