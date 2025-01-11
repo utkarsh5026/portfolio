@@ -71,7 +71,7 @@ const Logo: React.FC = () => {
             </span>
             <span
               ref={dotRef}
-              className="text-orange-500 font-bold text-xl opacity-0"
+              className="text-orange-500 font-bold opacity-0 leading-none"
             >
               .
             </span>
