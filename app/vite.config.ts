@@ -37,7 +37,6 @@ export default defineConfig({
           animations: ["animejs"],
           ui: ["@radix-ui/react-avatar", "@radix-ui/react-slot"],
           icons: ["lucide-react", "react-icons"],
-          game: ["phaser"],
         },
       },
     },

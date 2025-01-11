@@ -32,7 +32,7 @@ const Section: React.FC<SectionProps> = ({
   return (
     <div
       id={id}
-      className={`mt-32 sm:mt-48 md:mt-64 ${className} relative group px-4 sm:px-2 md:px-8 lg:px-10`}
+      className={`mt-24 sm:mt-32 md:mt-48 ${className} relative group px-4 sm:px-6 md:px-8 lg:px-10`}
     >
       <div className="absolute -right-20 -top-20 w-1/2 h-96 rounded-full bg-gradient-to-br from-purple-500/5 to-blue-500/5 blur-xl transform group-hover:scale-110 transition-transform duration-700" />
       <div className="absolute -left-32 top-10 w-64 h-64 rounded-full bg-gradient-to-tr from-blue-500/5 to-purple-500/5 blur-xl transform group-hover:scale-110 transition-transform duration-700" />
