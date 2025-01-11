@@ -15,7 +15,7 @@ const PersonalHeader: React.FC = () => {
   );
 
   return (
-    <div className="bg-slate-950 min-h-[500px] sm:min-h-[600px] lg:min-h-[700px] flex items-center">
+    <div className="bg-slate-950 min-h-[500px] sm:min-h-[600px] lg:min-h-[700px] flex items-center pt-24 sm:pt-16 md:pt-0">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-12">
           <div className="space-y-4 sm:space-y-6 p-4 flex flex-col justify-start items-start">
