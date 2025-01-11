@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://utkarsh5026.github.io/Portfolio",
+  "homepage": "https://utkarsh5026.github.io/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
