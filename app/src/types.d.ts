@@ -26,3 +26,9 @@ export type Project = {
   status: "Completed" | "In Progress" | "Planned";
   highlights?: string[];
 };
+
+export type Article = {
+  title: string;
+  description: string;
+  link: string;
+};
