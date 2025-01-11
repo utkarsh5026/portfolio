@@ -18,7 +18,7 @@ function App() {
     <ThemeProvider defaultTheme="dark">
       <NavigationBar />
 
-      <div className="min-h-screen bg-gray-950 w-full overflow-y-auto scrollbar-hide p-4 sm:p-8 md:p-16 lg:p-32">
+      <div className="min-h-screen bg-[#030712] w-full overflow-y-auto scrollbar-hide p-4 sm:p-8 md:p-16 lg:p-32">
         <main className="flex flex-col gap-8 sm:gap-16 md:gap-24 lg:gap-32">
           <section id="home" className="scroll-mt-16">
             <PersonalHeader />
@@ -27,7 +27,7 @@ function App() {
           <section id="skills" className="scroll-mt-16">
             <Suspense
               fallback={
-                <div className="h-96 animate-pulse bg-slate-800/20 rounded-lg" />
+                <div className="h-96 animate-pulse bg-[#1e293b33] rounded-lg" />
               }
             >
               <Skills />
@@ -36,7 +36,7 @@ function App() {
           <section id="projects" className="scroll-mt-16">
             <Suspense
               fallback={
-                <div className="h-96 animate-pulse bg-slate-800/20 rounded-lg" />
+                <div className="h-96 animate-pulse bg-[#1e293b33] rounded-lg" />
               }
             >
               <Projects />
@@ -45,7 +45,7 @@ function App() {
           <section id="experience" className="scroll-mt-16">
             <Suspense
               fallback={
-                <div className="h-96 animate-pulse bg-slate-800/20 rounded-lg" />
+                <div className="h-96 animate-pulse bg-[#1e293b33] rounded-lg" />
               }
             >
               <WorkExperience />
@@ -54,7 +54,7 @@ function App() {
           <section id="articles" className="scroll-mt-16">
             <Suspense
               fallback={
-                <div className="h-96 animate-pulse bg-slate-800/20 rounded-lg" />
+                <div className="h-96 animate-pulse bg-[#1e293b33] rounded-lg" />
               }
             >
               <Articles />
@@ -63,7 +63,7 @@ function App() {
           <section id="contact" className="scroll-mt-16">
             <Suspense
               fallback={
-                <div className="h-96 animate-pulse bg-slate-800/20 rounded-lg" />
+                <div className="h-96 animate-pulse bg-[#1e293b33] rounded-lg" />
               }
             >
               <ContactMe />
