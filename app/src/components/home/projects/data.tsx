@@ -211,6 +211,41 @@ export const projects: Project[] = [
       "Uses modern Go tooling and practices (Go 1.22+)",
     ],
   },
+
+  {
+    name: "Mayonation",
+    description:
+      "A lightweight and performant animation library for the web that provides a simple yet powerful API for creating complex animations. Built with TypeScript, it offers precise control over CSS properties and SVG animations with a chainable API.",
+    githubLink: "https://github.com/utkarsh5026/mayonation",
+    liveLink: "https://utkarsh5026.github.io/mayosite/",
+    technologies: [technologies.typescript, technologies.css, technologies.svg],
+    features: [
+      "Fluent chainable API for simple animations",
+      "Complex timeline-based animations",
+      "CSS property and transform animations",
+      "SVG path animations",
+      "Keyframe-based animations",
+      "Custom easing functions",
+      "Event handling system",
+      "Performance optimized animation loop",
+      "TypeScript type safety",
+      "Automatic element selection and handling",
+      "Relative and absolute timing control",
+    ],
+    category: "Library",
+    status: "Completed",
+    highlights: [
+      "Lightweight bundle size with zero dependencies",
+      "60fps performance with requestAnimationFrame",
+      "Comprehensive test coverage with Vitest",
+      "Full TypeScript support with detailed type definitions",
+      "Timeline system for complex animation sequences",
+      "Smart handling of transform properties",
+      "Automatic detection of SVG elements",
+      "Browser-native animation performance",
+      "Precise timing control with sub-millisecond precision",
+    ],
+  },
 ];
 
 export default projects;

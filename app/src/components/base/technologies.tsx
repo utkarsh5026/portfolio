@@ -32,6 +32,8 @@ import {
   SiMysql,
   SiPlotly,
   SiPandas,
+  SiCss3,
+  SiSvg,
 } from "react-icons/si";
 import { FaAws, FaLinux, FaNode } from "react-icons/fa";
 import { VscTerminalPowershell } from "react-icons/vsc";
@@ -163,5 +165,15 @@ export const technologies: Record<string, Technology> = {
     name: "Pandas",
     aboutLink: "https://pandas.pydata.org/",
     icon: <SiPandas />,
+  },
+  css: {
+    name: "CSS",
+    aboutLink: "https://www.w3.org/Style/CSS/",
+    icon: <SiCss3 />,
+  },
+  svg: {
+    name: "SVG",
+    aboutLink: "https://www.w3.org/Graphics/SVG/",
+    icon: <SiSvg />,
   },
 };
