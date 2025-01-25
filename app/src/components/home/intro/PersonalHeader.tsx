@@ -15,7 +15,7 @@ const PersonalHeader: React.FC = () => {
   );
 
   return (
-    <div className="relative bg-slate-950 min-h-[500px] sm:min-h-[600px] lg:min-h-[700px] flex items-center pt-24 sm:pt-16 md:pt-0 overflow-hidden rounded-3xl">
+    <div className="relative bg-slate-950 min-h-[500px] sm:min-h-[600px] lg:min-h-[700px] flex items-center pt-24 sm:pt-16 md:pt-0 overflow-hidden rounded-3xl bg-gradient-border">
       <div className="absolute inset-0 opacity-20">
         <div className="smoke-1 absolute inset-0 bg-gradient-to-r from-purple-900/30 to-blue-900/30 animate-smoke-1" />
         <div className="smoke-2 absolute inset-0 bg-gradient-to-l from-indigo-900/30 to-slate-900/30 animate-smoke-2" />
