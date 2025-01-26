@@ -87,10 +87,10 @@
 
 @keyframes mistGlow {
   0%, 100% {
-    filter: drop-shadow(0 0 10px rgba(147, 51, 234, 0.2));
+    filter: drop-shadow(0 0 10px rgba(255, 236, 25, 0.2));
   }
   50% {
-    filter: drop-shadow(0 0 15px rgba(147, 51, 234, 0.3));
+    filter: drop-shadow(0 0 15px rgba(162, 255, 0, 0.4));
   }
 }
 
@@ -106,9 +106,10 @@
   inset: 0;
   padding: 8px;
   background: linear-gradient(45deg,
-      rgba(122, 0, 255, 0.8),
-      rgba(0, 43, 255, 0.8),
-      rgba(122, 0, 255, 0.8));
+      rgba(255, 236, 25, 0.8),
+      rgba(162, 255, 0, 0.8),
+      rgba(255, 220, 0, 0.8),
+      rgba(0, 255, 70, 0.8));
   background-size: 200% 200%;
   animation: borderAnimation 8s ease infinite;
   border-radius: inherit;
