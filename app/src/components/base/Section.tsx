@@ -23,7 +23,7 @@ interface SectionProps {
   children: React.ReactNode;
 }
 
-const Section: React.FC<SectionProps> = ({
+const SectionComponent: React.FC<SectionProps> = ({
   id,
   label,
   className,
@@ -62,4 +62,5 @@ const Section: React.FC<SectionProps> = ({
   );
 };
 
+const Section = React.memo(SectionComponent);
 export default Section;
