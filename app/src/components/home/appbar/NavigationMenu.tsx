@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from "react";
-import anime from "animejs";
+import React, { useRef } from "react";
 import navigationItems from "./navItems";
+
 interface NavigationMenuProps {
   isMenuOpen: boolean;
   setIsMenuOpen: (isMenuOpen: boolean) => void;
@@ -12,34 +12,11 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
 }) => {
   const menuRef = useRef<HTMLUListElement>(null);
 
-  useEffect(() => {
-    // Initial animation for all screen sizes
-    anime({
-      targets: ".nav-item",
-      opacity: [0, 1],
-      translateY: [20, 0],
-      delay: anime.stagger(100),
-      duration: 800,
-      easing: "easeOutElastic(1, .5)",
-    });
-
-    // Mobile menu animation
-    if (isMenuOpen) {
-      anime({
-        targets: ".nav-item.mobile-only",
-        opacity: [0, 1],
-        translateY: [20, 0],
-        delay: anime.stagger(100),
-        duration: 800,
-        easing: "easeOutElastic(1, .5)",
-      });
-    }
-  }, [isMenuOpen]);
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: "smooth" });
   };
+
   return (
     <ul
       ref={menuRef}
@@ -48,12 +25,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
       } sm:flex flex-col sm:flex-row w-full sm:w-auto gap-2 sm:gap-4 md:gap-6 lg:gap-8`}
     >
       {navigationItems.map((item) => (
-        <li
-          key={item}
-          className={`w-full sm:w-auto text-center nav-item opacity-0 ${
-            isMenuOpen ? "mobile-only" : ""
-          }`}
-        >
+        <li key={item} className="w-full sm:w-auto text-center">
           <button
             onClick={() => {
               scrollToSection(item);
@@ -69,4 +41,5 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
   );
 };
 
-export default NavigationMenu;
+const NavigationMenuComponent = React.memo(NavigationMenu);
+export default NavigationMenuComponent;
