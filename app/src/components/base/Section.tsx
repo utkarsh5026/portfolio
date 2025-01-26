@@ -39,7 +39,12 @@ const Section: React.FC<SectionProps> = ({
     <div
       ref={ref}
       id={id}
-      className={`mt-24 sm:mt-32 md:mt-48 ${className} relative group px-4 sm:px-6 md:px-8 lg:px-10 sm:py-12 lg:py-16 md:py-12`}
+      className={`mt-24 sm:mt-32 md:mt-48 ${className} relative group px-4 sm:px-6 md:px-8 lg:px-10 sm:py-12 lg:py-16 md:py-12
+        before:absolute before:inset-0 before:border-2 before:border-purple-500/20 before:rounded-3xl
+        before:transition-all before:duration-700 hover:before:scale-[1.02] before:shadow-[0_0_30px_rgba(168,85,247,0.15)]
+        after:absolute after:inset-0 after:border-2 after:border-blue-500/20 after:rounded-3xl
+        after:transition-all after:duration-700 hover:after:scale-[1.01] after:shadow-[0_0_30px_rgba(59,130,246,0.15)]
+        transform transition-transform duration-700 hover:-translate-y-2`}
     >
       <div
         className={`absolute -right-20 -top-20 w-1/2 h-96 rounded-full bg-gradient-to-br from-purple-500/5 to-blue-500/5 blur-xl transform transition-transform duration-700 ${
