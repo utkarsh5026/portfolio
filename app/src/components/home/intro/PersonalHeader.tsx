@@ -2,7 +2,7 @@ import AnimatedText from "./AnimatedText";
 import React, { useMemo } from "react";
 import ProfileAvatar from "./ProfileAvatar";
 
-const PersonalHeader: React.FC = () => {
+const PersonalHeaderComponent: React.FC = () => {
   const statements = useMemo(
     () => [
       "I build things for the web",
@@ -22,18 +22,24 @@ const PersonalHeader: React.FC = () => {
       </div>
 
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-12">
-          <div className="space-y-4 sm:space-y-6 flex flex-col justify-start items-start">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 lg:gap-8">
+          <div className="w-full space-y-4 sm:space-y-5 flex flex-col justify-start items-start md:order-1">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold order-1">
               Hello, I'm{" "}
               <span className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
                 Utkarsh Priyadarshi
               </span>
             </h1>
 
-            <AnimatedText statements={statements} />
+            <div className="w-full md:hidden order-2 flex justify-center">
+              <ProfileAvatar />
+            </div>
 
-            <p className="text-slate-400 max-w-[600px] text-base sm:text-lg lg:text-xl">
+            <div className="order-3 px-2 sm:px-4">
+              <AnimatedText statements={statements} />
+            </div>
+
+            <p className="text-slate-400 max-w-[600px] text-base sm:text-lg lg:text-xl order-4 px-2 sm:px-4">
               I'm a software engineer with a passion for creating user-friendly
               and efficient web applications. I'm a quick learner and I'm always
               looking to expand my skills. I develop mostly full-stack web
@@ -42,7 +48,7 @@ const PersonalHeader: React.FC = () => {
             </p>
           </div>
 
-          <div className="w-full md:w-auto flex justify-center md:justify-start">
+          <div className="hidden md:flex w-full md:w-auto justify-center md:justify-start md:order-2">
             <ProfileAvatar />
           </div>
         </div>
@@ -51,4 +57,5 @@ const PersonalHeader: React.FC = () => {
   );
 };
 
+const PersonalHeader = React.memo(PersonalHeaderComponent);
 export default PersonalHeader;
