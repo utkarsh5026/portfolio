@@ -8,6 +8,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronRight } from "lucide-react";
 import React from "react";
+import SkillItem from "./SkillItem";
 
 interface SkillCardProps {
   skill: string;
@@ -17,8 +18,11 @@ interface SkillCardProps {
 
 const SkillCard: React.FC<SkillCardProps> = ({ skill, icon, items }) => {
   return (
-    <div className="skill-card relative group w-full">
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 blur-xl group-hover:blur-2xl transition-all duration-300 rounded-lg opacity-50 w-full" />
+    <div className="skill-card group relative w-full">
+      <div className="absolute inset-0 overflow-hidden rounded-lg">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 opacity-50 transform transition-transform duration-300 group-hover:scale-110" />
+      </div>
+
       <Card className="relative bg-background/60 backdrop-blur-sm border border-muted/20 hover:border-muted-foreground/30 transition-all duration-300 shadow-lg hover:shadow-xl">
         <CardHeader className="pb-2 sm:pb-4">
           <CardTitle className="flex items-center space-x-3">
@@ -32,13 +36,8 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, icon, items }) => {
         </CardHeader>
         <CardContent>
           <ul className="flex flex-wrap gap-2 sm:gap-3">
-            {items.map((item, index) => (
-              <li
-                key={`${item}-${index}`}
-                className="text-sm sm:text-base text-muted-foreground/80 pl-4 sm:pl-6 relative before:absolute before:left-0 before:top-[0.4em] before:h-1.5 before:w-1.5 sm:before:h-2 sm:before:w-2 before:rounded-full before:bg-gradient-to-r before:from-purple-400 before:to-blue-400 hover:text-primary transition-colors duration-200"
-              >
-                {item}
-              </li>
+            {items.map((item) => (
+              <SkillItem key={item} item={item} />
             ))}
           </ul>
         </CardContent>
@@ -47,4 +46,5 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, icon, items }) => {
   );
 };
 
-export default SkillCard;
+const SkillCardComponent = React.memo(SkillCard);
+export default SkillCardComponent;
