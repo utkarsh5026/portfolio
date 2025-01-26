@@ -56,7 +56,7 @@
     --chart-5: 340 75% 55%;
   }
   html {
-    font-family: "Fira Code", monospace;
+    font-family: "Cascadia Mono", monospace;
     overflow-y: auto;
     scrollbar-width: none;
   }

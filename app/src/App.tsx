@@ -18,7 +18,7 @@ function App() {
     <ThemeProvider defaultTheme="dark">
       <NavigationBar />
 
-      <div className="min-h-screen bg-[#030712] w-full overflow-y-auto scrollbar-hide p-4 sm:p-8 md:p-16 lg:p-32">
+      <div className="min-h-screen bg-[#030712] w-full overflow-y-auto scrollbar-hide p-4 pt-24 sm:p-8 sm:pt-28 md:p-16 md:pt-32 lg:p-32 lg:pt-40">
         <main className="flex flex-col gap-8 sm:gap-16 md:gap-24 lg:gap-32">
           <section id="home" className="scroll-mt-16">
             <PersonalHeader />
