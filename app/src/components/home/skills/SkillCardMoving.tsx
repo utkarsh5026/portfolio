@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import anime from "animejs";
+import { useInView } from "react-intersection-observer";
+import { useSkillAnimation, useCloneElements } from "./hooks";
 import {
   SiJavascript,
   SiDocker,
@@ -47,49 +48,67 @@ const skills = [
   { name: "Langchain", icon: <SiLangchain className="text-red-500" /> },
 ];
 
+const debounce = <T extends (...args: unknown[]) => unknown>(
+  fn: T,
+  delay: number
+) => {
+  let timeoutId: number;
+  return (...args: Parameters<T>): void => {
+    if (timeoutId) window.clearTimeout(timeoutId);
+    timeoutId = window.setTimeout(() => fn(...args), delay);
+  };
+};
+
 const SkillCardMoving: React.FC = () => {
+  const [ref, inView] = useInView({
+    threshold: 0,
+    triggerOnce: false,
+  });
   const elementRef = useRef<HTMLDivElement>(null);
+  const { startAnimation, stopAnimation, updateAnimation } =
+    useSkillAnimation(elementRef);
+  const { isInitialized, initializeClones } = useCloneElements(elementRef);
 
   useEffect(() => {
-    const element = elementRef.current;
-    if (!element) return;
+    if (!elementRef.current || isInitialized) return;
+    initializeClones();
+  }, [isInitialized, initializeClones]);
 
-    const itemsToClone = Array.from(element.children);
-    itemsToClone.forEach((item) => {
-      const clone = item.cloneNode(true);
-      element.appendChild(clone);
-    });
+  useEffect(() => {
+    if (!isInitialized) return;
 
-    const updateAnimation = () => {
-      const duration = Math.max(45000, window.innerWidth * 75);
+    if (inView) startAnimation();
+    else stopAnimation();
 
-      return anime({
-        targets: element,
-        translateX: [0, -element.scrollWidth / 2],
-        duration: duration,
-        easing: "linear",
-        loop: true,
-      });
-    };
+    const handleResize = debounce(() => {
+      updateAnimation();
+    }, 150);
 
-    let animation = updateAnimation();
-
-    const handleResize = () => {
-      animation.pause();
-      animation = updateAnimation();
-    };
-
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize, { passive: true });
 
     return () => {
-      animation.pause();
       window.removeEventListener("resize", handleResize);
+      stopAnimation();
     };
-  }, []);
+  }, [inView, isInitialized, startAnimation, stopAnimation, updateAnimation]);
 
   return (
-    <div className="w-full overflow-hidden bg-black py-4 sm:py-6 md:py-8 rounded-lg mb-8">
-      <div ref={elementRef} className="flex whitespace-nowrap">
+    <div
+      ref={ref}
+      className="w-full overflow-hidden bg-black py-4 sm:py-6 md:py-8 rounded-lg mb-8"
+      style={{
+        willChange: "transform",
+        contain: "content",
+      }}
+    >
+      <div
+        ref={elementRef}
+        className="flex whitespace-nowrap"
+        style={{
+          transform: "translateZ(0)",
+          backfaceVisibility: "hidden",
+        }}
+      >
         {skills.map((skill, index) => (
           <div
             key={`${skill.name}-${index}`}
@@ -106,4 +125,5 @@ const SkillCardMoving: React.FC = () => {
   );
 };
 
-export default SkillCardMoving;
+const SkillCardMovingComponent = React.memo(SkillCardMoving);
+export default SkillCardMovingComponent;
