@@ -31,7 +31,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleCardClick = (e: React.MouseEvent) => {
-    // Prevent triggering if clicking on buttons or expanded content
     if (
       e.target instanceof Element &&
       (e.target.closest("button") || isExpanded)
