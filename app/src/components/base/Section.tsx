@@ -56,10 +56,8 @@ const SectionComponent: React.FC<SectionProps> = ({
       id={id}
       className={`mt-24 sm:mt-32 md:mt-48 ${className} relative group px-4 sm:px-6 md:px-8 lg:px-10 sm:py-12 lg:py-16 md:py-12 section-animate`}
     >
-      {/* Border gradient effect */}
       <div className="relative bg-slate-950 rounded-2xl overflow-hidden section-gradient-border">
-        <div className="relative p-6 sm:p-8 md:p-10">
-          {/* Section Title */}
+        <div className="relative p-6 sm:p-8 md:p-12">
           <div className="relative">
             <GradientText className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold text-right tracking-tight">
               {label}
