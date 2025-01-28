@@ -13,6 +13,8 @@ import {
   tools,
 } from "./data";
 
+const iconClassName = "w-5 h-5 text-purple-400";
+
 const Skills: React.FC = () => {
   return (
     <Section id="skills" label="Skills">
@@ -22,18 +24,18 @@ const Skills: React.FC = () => {
           <div className="flex flex-col gap-4 flex-2">
             <SkillCard
               skill="Languages"
-              icon={<Languages className="w-4 h-4 mr-2" />}
+              icon={<Languages className={iconClassName} />}
               items={[...languages]}
             />
             <Framework frameworks={frameworks} />
             <SkillCard
               skill="Databases"
-              icon={<Database className="w-4 h-4 mr-2" />}
+              icon={<Database className={iconClassName} />}
               items={[...databases]}
             />
             <SkillCard
               skill="Tools"
-              icon={<Server className="w-4 h-4 mr-2" />}
+              icon={<Server className={iconClassName} />}
               items={[...tools]}
             />
           </div>
