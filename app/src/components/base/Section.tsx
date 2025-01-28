@@ -13,7 +13,7 @@
  * and Contact areas of the site.
  */
 
-import React, { useEffect, useRef, useMemo } from "react";
+import React, { useMemo } from "react";
 import GradientText from "../utils/GradientText";
 
 interface SectionProps {
@@ -29,36 +29,6 @@ const SectionComponent: React.FC<SectionProps> = ({
   className,
   children,
 }) => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("section-visible");
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "50px",
-      }
-    );
-
-    const currentRef = sectionRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-      observer.disconnect();
-    };
-  }, []);
-
   const dots = useMemo(
     () =>
       [...Array(3)].map((_, i) => (
@@ -84,9 +54,8 @@ const SectionComponent: React.FC<SectionProps> = ({
 
   return (
     <div
-      ref={sectionRef}
       id={id}
-      className={`${className} relative group px-4 sm:px-6 md:px-8 lg:px-10 sm:py-12 lg:py-16 md:py-12 section-animate`}
+      className={`${className} relative group px-4 sm:px-6 md:px-8 lg:px-10 sm:py-12 lg:py-16 md:py-12 section-animate section-visible`}
     >
       <div className="relative bg-slate-950 rounded-2xl overflow-hidden section-gradient-border">
         <div className="relative p-6 sm:p-8 md:p-12 lg:p-20">
