@@ -41,9 +41,9 @@ const ProjectsComponent: React.FC = () => {
     <Section id="projects" label="Projects">
       <div className="flex flex-col md:flex-row gap-8 max-w-6xl mx-auto">
         {/* Left side - Project tabs */}
-        <div className="md:w-1/3 flex flex-col gap-4">
-          <div className="space-y-3 sticky top-24">
-            <div className="flex flex-col gap-3">
+        <div className="md:w-1/3">
+          <div className="space-y-3 sticky top-24 max-h-[70vh] overflow-y-auto scrollbar-hide">
+            <div className="flex flex-col gap-3 pr-4">
               {projects.map((project) => (
                 <ProjectTab
                   key={project.name}
