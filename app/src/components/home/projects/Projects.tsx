@@ -1,55 +1,70 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, memo, useRef } from "react";
 import ProjectCard from "./ProjectCard";
 import Section from "@/components/base/Section";
 import projects from "./data";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import anime from "animejs";
+import { Project } from "@/types";
+import ProjectTab from "./ProjectTab";
 
-const Projects: React.FC = () => {
+const ProjectsComponent: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState(projects[0]);
+  const cardContainerRef = useRef<HTMLDivElement>(null);
 
-  // Prevent event bubbling and ensure state updates
-  const handleProjectSelect =
-    (project: (typeof projects)[0]) => (e: React.MouseEvent) => {
+  const handleProjectSelect = useCallback(
+    (project: Project) => (e: React.MouseEvent) => {
       e.preventDefault();
-      e.stopPropagation();
-      setSelectedProject(project);
-    };
+
+      if (cardContainerRef.current) {
+        anime({
+          targets: cardContainerRef.current,
+          opacity: [1, 0],
+          translateY: [0, 20],
+          duration: 300,
+          easing: "easeOutCubic",
+          complete: () => {
+            setSelectedProject(project);
+            anime({
+              targets: cardContainerRef.current,
+              opacity: [0, 1],
+              translateY: [20, 0],
+              duration: 300,
+              easing: "easeOutCubic",
+            });
+          },
+        });
+      }
+    },
+    []
+  );
 
   return (
     <Section id="projects" label="Projects">
-      <div className="flex flex-col md:flex-row gap-6">
+      <div className="flex flex-col md:flex-row gap-8 max-w-6xl mx-auto">
         {/* Left side - Project tabs */}
-        <div className="md:w-1/3 flex flex-col gap-2">
-          {projects.map((project) => (
-            <Button
-              key={project.name}
-              onClick={handleProjectSelect(project)}
-              type="button"
-              variant="ghost"
-              className={cn(
-                "w-full justify-start px-4 py-6 text-left transition-all duration-300",
-                "hover:bg-gradient-to-r hover:from-purple-500/10 hover:to-blue-500/10",
-                "border border-transparent group relative z-10",
-                selectedProject.name === project.name
-                  ? "bg-gradient-to-r from-purple-500/20 to-blue-500/20 border-purple-500/50"
-                  : "hover:border-purple-500/30"
-              )}
-            >
-              <span className="font-semibold text-base truncate block w-full group-hover:text-primary">
-                {project.name}
-              </span>
-            </Button>
-          ))}
+        <div className="md:w-1/3 flex flex-col gap-4">
+          <div className="space-y-3 sticky top-24">
+            <div className="flex flex-col gap-3">
+              {projects.map((project) => (
+                <ProjectTab
+                  key={project.name}
+                  project={project}
+                  isSelected={selectedProject.name === project.name}
+                  onSelect={handleProjectSelect}
+                />
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Right side - Selected project card */}
-        <div className="md:w-2/3">
+        <div className="md:w-2/3" ref={cardContainerRef}>
           <ProjectCard key={selectedProject.name} project={selectedProject} />
         </div>
       </div>
     </Section>
   );
 };
+
+const Projects = memo(ProjectsComponent);
 
 export default Projects;

@@ -43,10 +43,6 @@ export const projects: Project[] = [
       "Export functionality for reports",
     ],
 
-    category: "Web",
-
-    status: "Completed",
-
     tags: [
       "Dashboard",
       "Data",
@@ -77,8 +73,6 @@ export const projects: Project[] = [
       "Container log streaming and search",
       "Image and volume management",
     ],
-    category: "DevOps",
-    status: "Completed",
     tags: ["Docker", "Golang", "React", "Typescript"],
   },
   {
@@ -97,8 +91,6 @@ export const projects: Project[] = [
       "Performance optimization suggestions",
     ],
     tags: ["AI", "ML", "Python", "FastAPI", "Langchain"],
-    category: "AI/ML",
-    status: "In Progress",
   },
   {
     name: "Microservices Orchestration Platform",
@@ -117,8 +109,6 @@ export const projects: Project[] = [
       "Health monitoring and self-healing",
     ],
     tags: ["Kubernetes", "Docker", "Go", "Distributed Systems"],
-    category: "DevOps",
-    status: "Completed",
   },
   {
     name: "Reducer",
@@ -137,8 +127,6 @@ export const projects: Project[] = [
       "Comprehensive test coverage",
     ],
     tags: ["Redux", "TypeScript", "NodeJS", "State Management"],
-    category: "Library",
-    status: "Completed",
   },
   {
     name: "PAuth",
@@ -160,15 +148,7 @@ export const projects: Project[] = [
       "Comprehensive error handling",
       "Type hints for better developer experience",
     ],
-    category: "Library",
-    status: "In Progress",
-    highlights: [
-      "Security-first approach with PKCE implementation and state validation",
-      "Framework-agnostic core with seamless integrations",
-      "Extensible provider system with consistent interface",
-      "Comprehensive documentation and examples",
-      "Type-safe implementation with modern Python features",
-    ],
+
     tags: ["OAuth", "Python", "Flask", "Django", "REST", "PKCE"],
   },
   {
@@ -186,8 +166,6 @@ export const projects: Project[] = [
       "Track download progress in real-time",
       "Handle concurrent TCP connections efficiently",
     ],
-    category: "Backend",
-    status: "Completed",
     highlights: [
       "Custom implementation of the bencode format parser/encoder",
       "Efficient piece management with concurrent downloads",
@@ -210,8 +188,6 @@ export const projects: Project[] = [
       "Test-driven development approach",
       "Support for various input formats",
     ],
-    category: "Backend",
-    status: "In Progress",
     highlights: [
       "Built as part of the CodeCrafters platform challenge",
       "Implements core grep functionality in pure Go",
@@ -241,8 +217,6 @@ export const projects: Project[] = [
       "Automatic element selection and handling",
       "Relative and absolute timing control",
     ],
-    category: "Library",
-    status: "Completed",
     highlights: [
       "Lightweight bundle size with zero dependencies",
       "60fps performance with requestAnimationFrame",
