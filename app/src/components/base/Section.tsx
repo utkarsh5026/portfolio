@@ -73,10 +73,10 @@ const SectionComponent: React.FC<SectionProps> = ({
 
   const smokeEffects = useMemo(
     () => (
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="smoke-1 absolute inset-0" />
-        <div className="smoke-2 absolute inset-0" />
-        <div className="smoke-3 absolute inset-0" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="smoke-1 absolute inset-0 pointer-events-none" />
+        <div className="smoke-2 absolute inset-0 pointer-events-none" />
+        <div className="smoke-3 absolute inset-0 pointer-events-none" />
       </div>
     ),
     []
@@ -86,7 +86,7 @@ const SectionComponent: React.FC<SectionProps> = ({
     <div
       ref={sectionRef}
       id={id}
-      className={`mt-24 sm:mt-32 md:mt-48 ${className} relative group px-4 sm:px-6 md:px-8 lg:px-10 sm:py-12 lg:py-16 md:py-12 section-animate`}
+      className={`${className} relative group px-4 sm:px-6 md:px-8 lg:px-10 sm:py-12 lg:py-16 md:py-12 section-animate`}
     >
       <div className="relative bg-slate-950 rounded-2xl overflow-hidden section-gradient-border">
         <div className="relative p-6 sm:p-8 md:p-12">
