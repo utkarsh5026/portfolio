@@ -136,6 +136,7 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = ({
         {
           targets: gojoFlash,
           opacity: [0, 0.3, 0],
+          scale: [0.2, 1.5],
           duration: 1000,
           easing: "easeInOutQuad",
         },
