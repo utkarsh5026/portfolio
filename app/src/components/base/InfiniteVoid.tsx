@@ -5,6 +5,7 @@ interface DomainExpansionProps {
   onAnimationComplete?: () => void;
 }
 
+// Enhanced visual effects with proper layering
 const VISUAL_EFFECTS = {
   sphereGradients: {
     red: `radial-gradient(circle, 
@@ -22,7 +23,7 @@ const VISUAL_EFFECTS = {
   },
   
   hollowEffects: {
-    // Initial background
+    // Initial background (will be completely hidden during shrink)
     background: `radial-gradient(circle, 
       rgba(107,31,194,0.4) 0%,
       rgba(107,31,194,0.2) 40%,
@@ -30,58 +31,53 @@ const VISUAL_EFFECTS = {
       rgba(0,0,0,1) 100%
     )`,
     
-    // Enhanced hollow sphere with brighter center
+    // Hollow sphere with intense center for better shrinking effect
     hollow: `radial-gradient(circle, 
-      rgba(255,255,255,1) 0%,
-      rgba(107,31,194,1) 10%,
-      rgba(107,31,194,0.8) 30%,
-      rgba(107,31,194,0.4) 60%,
-      rgba(107,31,194,0) 100%
+      rgb(255,255,255) 0%,
+      rgba(147,51,234,1) 20%,
+      rgba(147,51,234,0.8) 40%,
+      rgba(147,51,234,0.4) 70%,
+      transparent 100%
     )`,
     
-    // Final expansion with more intense purple
+    // Expansion effect with smooth gradient
     expansion: `radial-gradient(circle, 
-      rgba(255,255,255,1) 0%,
-      rgba(107,31,194,1) 10%,
-      rgba(107,31,194,0.8) 30%,
-      rgba(107,31,194,0.5) 60%,
+      rgb(255,255,255) 0%,
+      rgba(147,51,234,1) 10%,
+      rgba(147,51,234,0.8) 40%,
+      rgba(0,0,0,0.95) 70%,
       rgba(0,0,0,1) 100%
     )`,
   },
-  
-  glowEffects: {
-    red: "0 0 80px 40px rgba(180,20,20,0.4), 0 0 120px 80px rgba(180,20,20,0.1)",
-    blue: "0 0 80px 40px rgba(0,80,200,0.4), 0 0 120px 80px rgba(0,80,200,0.1)",
-    purple: "0 0 150px 75px rgba(107,31,194,0.6), 0 0 200px 100px rgba(107,31,194,0.2)",
-  },
 };
 
-// Helper functions remain the same
-const createElement = (className: string, styles: Partial<CSSStyleDeclaration>) => {
+// Helper function for element creation with z-index support
+const createElement = (className: string, styles: Partial<CSSStyleDeclaration>, zIndex = 0) => {
   const element = document.createElement("div");
   element.className = `${className} will-change-transform`;
   Object.assign(element.style, {
     backfaceVisibility: 'hidden',
+    zIndex: String(zIndex),
     ...styles
   });
   return element;
 };
 
+// Create energy spheres with proper z-indexing
 const createEnergySphere = (position: string, isRed: boolean) => {
-  const gradient = isRed ? VISUAL_EFFECTS.sphereGradients.red : VISUAL_EFFECTS.sphereGradients.blue;
-  const glow = isRed ? VISUAL_EFFECTS.glowEffects.red : VISUAL_EFFECTS.glowEffects.blue;
-  
+  const color = isRed ? "180,20,20" : "0,80,200";
   return createElement(
     `absolute ${position} top-1/2 rounded-full mix-blend-screen`,
     {
       width: "200px",
       height: "200px",
-      background: gradient,
+      background: isRed ? VISUAL_EFFECTS.sphereGradients.red : VISUAL_EFFECTS.sphereGradients.blue,
       filter: "blur(8px) brightness(1.5)",
-      boxShadow: glow,
+      boxShadow: `0 0 80px 40px rgba(${color},0.4), 0 0 120px 80px rgba(${color},0.1)`,
       transform: "translate(-50%, -50%) scale(0.9)",
       opacity: "0",
-    }
+    },
+    2
   );
 };
 
@@ -96,24 +92,25 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(({ onAnimationComplete
 
     const setupAnimation = async () => {
       try {
+        // Create elements with proper layering
         const elements = {
-          // Dark overlay for background transition
-          darkOverlay: createElement("absolute inset-0", {
+          // Base black background (always present)
+          baseBackground: createElement("absolute inset-0", {
             background: "black",
-            opacity: "0",
-          }),
-          
-          // Initial background
-          background: createElement("absolute inset-0", {
+            opacity: "1",
+          }, 0),
+
+          // Initial purple background (fades with shrink)
+          purpleBackground: createElement("absolute inset-0", {
             background: VISUAL_EFFECTS.hollowEffects.background,
             opacity: "0",
-          }),
+          }, 1),
           
           // Energy spheres
           redSphere: createEnergySphere("left-1/3", true),
           blueSphere: createEnergySphere("left-2/3", false),
           
-          // Gojo image
+          // Gojo image effect
           gojoFlash: createElement("absolute inset-0", {
             backgroundImage: "url('/gojo.jpg')",
             backgroundSize: "cover",
@@ -122,9 +119,15 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(({ onAnimationComplete
             filter: "brightness(1.3) contrast(1.2)",
             mixBlendMode: "screen",
             transform: "scale(1.1)",
-          }),
+          }, 3),
           
-          // Hollow sphere
+          // Main hollow sphere container
+          hollowContainer: createElement("absolute inset-0", {
+            perspective: "1000px",
+            transformStyle: "preserve-3d",
+          }, 4),
+          
+          // The actual hollow sphere effect
           hollowSphere: createElement("absolute left-1/2 top-1/2 rounded-full", {
             width: "400px",
             height: "400px",
@@ -132,45 +135,45 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(({ onAnimationComplete
             filter: "blur(12px) brightness(1.2)",
             transform: "translate(-50%, -50%) scale(0)",
             opacity: "0",
-            boxShadow: VISUAL_EFFECTS.glowEffects.purple,
-          }),
+            mixBlendMode: "screen",
+          }, 5),
           
-          // Tiny point of light that remains
+          // Point of light for the pause
           voidPoint: createElement("absolute left-1/2 top-1/2 rounded-full", {
             width: "4px",
             height: "4px",
-            background: "rgba(255,255,255,1)",
+            background: "rgb(255,255,255)",
             filter: "blur(1px) brightness(2)",
             transform: "translate(-50%, -50%) scale(0)",
             opacity: "0",
-            boxShadow: "0 0 10px 5px rgba(107,31,194,1)",
-          }),
+            boxShadow: "0 0 10px 5px rgba(147,51,234,1)",
+          }, 6),
           
-          // Final expansion element
+          // Final expansion effect
           expansion: createElement("absolute left-1/2 top-1/2 rounded-full", {
-            width: "100vh", // Using viewport height for consistent circular expansion
+            width: "100vh",
             height: "100vh",
             background: VISUAL_EFFECTS.hollowEffects.expansion,
             transform: "translate(-50%, -50%) scale(0)",
             opacity: "0",
             filter: "blur(2px)",
-          }),
+          }, 7),
         };
 
-        // Add elements to container
+        // Add all elements to the container
         const fragment = document.createDocumentFragment();
         Object.values(elements).forEach(el => fragment.appendChild(el));
         container.appendChild(fragment);
 
-        // Create animation sequence
+        // Create the animation sequence
         const timeline = anime.timeline({
           easing: "easeOutExpo",
         });
 
         timeline
-          // Initial fade in
+          // Initial background fade in
           .add({
-            targets: elements.background,
+            targets: elements.purpleBackground,
             opacity: [0, 1],
             duration: 800,
             easing: "easeInOutQuad",
@@ -208,17 +211,23 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(({ onAnimationComplete
             duration: 400,
             easing: "easeOutQuad",
           })
-          // Simultaneous shrink and darkness
+          // Coordinated shrink of all elements
           .add({
-            targets: [elements.hollowSphere, elements.darkOverlay],
-            scale: [2, 0.01], // For hollow sphere
-            opacity: {
-              value: [1, { value: 1, duration: 100 }], // For dark overlay
+            targets: [
+              elements.purpleBackground,
+              elements.redSphere,
+              elements.blueSphere,
+              elements.hollowSphere,
+            ],
+            opacity: [1, 0],
+            scale: function(target: Element) {
+              // Different scale for background vs spheres
+              return target === elements.purpleBackground ? [1, 0] : [2, 0.01];
             },
             duration: 300,
             easing: "easeInExpo",
           })
-          // Show tiny point
+          // Show point of light
           .add({
             targets: elements.voidPoint,
             scale: [0, 1],
@@ -236,7 +245,10 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(({ onAnimationComplete
           .add({
             targets: elements.expansion,
             scale: [0, 5],
-            opacity: [0, 1],
+            opacity: {
+              value: [0, 1],
+              duration: 400,
+            },
             duration: 1500,
             easing: "easeInExpo",
             complete: onAnimationComplete,
