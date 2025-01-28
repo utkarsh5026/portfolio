@@ -86,12 +86,4 @@ const SectionComponent: React.FC<SectionProps> = ({
   );
 };
 
-const Section = React.memo(SectionComponent, (prevProps, nextProps) => {
-  return (
-    prevProps.id === nextProps.id &&
-    prevProps.label === nextProps.label &&
-    prevProps.className === nextProps.className
-  );
-});
-
-export default Section;
+export default SectionComponent;

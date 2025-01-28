@@ -23,12 +23,13 @@ import GradientText from "@/components/utils/GradientText";
 import { cn } from "@/lib/utils";
 import { Project } from "@/types";
 import TechBadge from "@/components/base/TechBadge";
+
 interface ProjectCardProps {
   project: Project;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   const handleCardClick = (e: React.MouseEvent) => {
     if (
