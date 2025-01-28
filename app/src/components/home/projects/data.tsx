@@ -81,7 +81,7 @@ export const projects: Project[] = [
     name: "AI-Powered Code Review Assistant",
     description:
       "An intelligent code analysis tool that provides continuous code quality assurance through machine learning. This system performs automated code reviews, detecting potential issues and suggesting optimizations while learning from complex code patterns to offer architectural insights and maintain consistent code quality standards.",
-    githubLink: "https://github.com/yourusername/code-reviewer",
+    githubLink: "https://github.com/utkarsh5026/gep",
     technologies: [
       technologies.python,
       technologies.fastapi,
@@ -91,7 +91,6 @@ export const projects: Project[] = [
       "Automated code quality analysis",
       "Security vulnerability detection",
       "Performance optimization suggestions",
-      "Integration with GitHub Actions",
     ],
     category: "AI/ML",
     status: "In Progress",
