@@ -34,6 +34,7 @@ const VISUAL_EFFECTS = {
       rgba(255,255,255, 0.1) 0%,
       rgba(88,31,140,1) 10%,    /* Darker purple */
       rgba(48,16,75,0.9) 30%,   /* Even darker purple */
+      rgba(120,45,150,0.7) 40%, /* Lighter purple */
       rgba(0,0,0,0.98) 60%,
       rgba(0,0,0,1) 100%
     )`,
