@@ -5,9 +5,7 @@ interface DomainExpansionProps {
   onAnimationComplete?: () => void;
 }
 
-// Define our visual effects with enhanced hollow purple effects
 const VISUAL_EFFECTS = {
-  // Energy sphere gradients remain the same for consistency
   sphereGradients: {
     red: `radial-gradient(circle, 
       rgba(180,20,20,1) 0%, 
@@ -23,9 +21,8 @@ const VISUAL_EFFECTS = {
     )`,
   },
   
-  // Enhanced hollow purple effects for more dramatic expansion
   hollowEffects: {
-    // Initial background with subtle gradient
+    // Initial background
     background: `radial-gradient(circle, 
       rgba(107,31,194,0.4) 0%,
       rgba(107,31,194,0.2) 40%,
@@ -33,34 +30,33 @@ const VISUAL_EFFECTS = {
       rgba(0,0,0,1) 100%
     )`,
     
-    // Enhanced hollow sphere with more intense center
+    // Enhanced hollow sphere with brighter center
     hollow: `radial-gradient(circle, 
-      rgba(0,0,0,1) 0%,
-      rgba(107,31,194,1) 15%,
+      rgba(255,255,255,1) 0%,
+      rgba(107,31,194,1) 10%,
       rgba(107,31,194,0.8) 30%,
       rgba(107,31,194,0.4) 60%,
       rgba(107,31,194,0) 100%
     )`,
     
-    // Final expansion effect with darker edges
+    // Final expansion with more intense purple
     expansion: `radial-gradient(circle, 
-      rgba(0,0,0,1) 0%,
-      rgba(107,31,194,0.9) 20%,
-      rgba(107,31,194,0.6) 40%,
-      rgba(0,0,0,0.95) 70%,
+      rgba(255,255,255,1) 0%,
+      rgba(107,31,194,1) 10%,
+      rgba(107,31,194,0.8) 30%,
+      rgba(107,31,194,0.5) 60%,
       rgba(0,0,0,1) 100%
     )`,
   },
   
-  // Glow effects for energy spheres
   glowEffects: {
     red: "0 0 80px 40px rgba(180,20,20,0.4), 0 0 120px 80px rgba(180,20,20,0.1)",
     blue: "0 0 80px 40px rgba(0,80,200,0.4), 0 0 120px 80px rgba(0,80,200,0.1)",
-    purple: "0 0 150px 75px rgba(107,31,194,0.4), 0 0 200px 100px rgba(107,31,194,0.1)",
+    purple: "0 0 150px 75px rgba(107,31,194,0.6), 0 0 200px 100px rgba(107,31,194,0.2)",
   },
 };
 
-// Helper function for creating elements with performance optimizations
+// Helper functions remain the same
 const createElement = (className: string, styles: Partial<CSSStyleDeclaration>) => {
   const element = document.createElement("div");
   element.className = `${className} will-change-transform`;
@@ -71,7 +67,6 @@ const createElement = (className: string, styles: Partial<CSSStyleDeclaration>) 
   return element;
 };
 
-// Create energy spheres with consistent styling
 const createEnergySphere = (position: string, isRed: boolean) => {
   const gradient = isRed ? VISUAL_EFFECTS.sphereGradients.red : VISUAL_EFFECTS.sphereGradients.blue;
   const glow = isRed ? VISUAL_EFFECTS.glowEffects.red : VISUAL_EFFECTS.glowEffects.blue;
@@ -101,8 +96,13 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(({ onAnimationComplete
 
     const setupAnimation = async () => {
       try {
-        // Create all the elements for our animation sequence
         const elements = {
+          // Dark overlay for background transition
+          darkOverlay: createElement("absolute inset-0", {
+            background: "black",
+            opacity: "0",
+          }),
+          
           // Initial background
           background: createElement("absolute inset-0", {
             background: VISUAL_EFFECTS.hollowEffects.background,
@@ -113,7 +113,7 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(({ onAnimationComplete
           redSphere: createEnergySphere("left-1/3", true),
           blueSphere: createEnergySphere("left-2/3", false),
           
-          // Gojo image effect
+          // Gojo image
           gojoFlash: createElement("absolute inset-0", {
             backgroundImage: "url('/gojo.jpg')",
             backgroundSize: "cover",
@@ -124,7 +124,7 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(({ onAnimationComplete
             transform: "scale(1.1)",
           }),
           
-          // Hollow sphere for the sudden shrink
+          // Hollow sphere
           hollowSphere: createElement("absolute left-1/2 top-1/2 rounded-full", {
             width: "400px",
             height: "400px",
@@ -135,38 +135,40 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(({ onAnimationComplete
             boxShadow: VISUAL_EFFECTS.glowEffects.purple,
           }),
           
-          // Point of light during pause
+          // Tiny point of light that remains
           voidPoint: createElement("absolute left-1/2 top-1/2 rounded-full", {
-            width: "8px",
-            height: "8px",
-            background: "rgba(107,31,194,1)",
-            filter: "blur(2px) brightness(2)",
+            width: "4px",
+            height: "4px",
+            background: "rgba(255,255,255,1)",
+            filter: "blur(1px) brightness(2)",
             transform: "translate(-50%, -50%) scale(0)",
             opacity: "0",
-            boxShadow: "0 0 20px 10px rgba(107,31,194,0.8)",
+            boxShadow: "0 0 10px 5px rgba(107,31,194,1)",
           }),
           
-          // Final expansion effect
-          expansion: createElement("absolute inset-0", {
+          // Final expansion element
+          expansion: createElement("absolute left-1/2 top-1/2 rounded-full", {
+            width: "100vh", // Using viewport height for consistent circular expansion
+            height: "100vh",
             background: VISUAL_EFFECTS.hollowEffects.expansion,
+            transform: "translate(-50%, -50%) scale(0)",
             opacity: "0",
-            transform: "scale(0)",
-            transformOrigin: "center",
+            filter: "blur(2px)",
           }),
         };
 
-        // Add all elements to the container efficiently
+        // Add elements to container
         const fragment = document.createDocumentFragment();
         Object.values(elements).forEach(el => fragment.appendChild(el));
         container.appendChild(fragment);
 
-        // Create our animation sequence
+        // Create animation sequence
         const timeline = anime.timeline({
           easing: "easeOutExpo",
         });
 
         timeline
-          // Initial background fade in
+          // Initial fade in
           .add({
             targets: elements.background,
             opacity: [0, 1],
@@ -198,42 +200,43 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(({ onAnimationComplete
             duration: 700,
             easing: "easeInOutQuad",
           })
-          // Quick hollow sphere appearance
+          // Show hollow sphere
           .add({
             targets: elements.hollowSphere,
             scale: [0, 2],
             opacity: 1,
-            duration: 300,
+            duration: 400,
             easing: "easeOutQuad",
           })
-          // Sudden shrink to point
+          // Simultaneous shrink and darkness
           .add({
-            targets: elements.hollowSphere,
-            scale: 0.01,
-            opacity: 0,
-            duration: 200, // Very quick shrink
+            targets: [elements.hollowSphere, elements.darkOverlay],
+            scale: [2, 0.01], // For hollow sphere
+            opacity: {
+              value: [1, { value: 1, duration: 100 }], // For dark overlay
+            },
+            duration: 300,
             easing: "easeInExpo",
           })
-          // Show point of light
+          // Show tiny point
           .add({
             targets: elements.voidPoint,
             scale: [0, 1],
             opacity: 1,
             duration: 200,
-            easing: "easeOutQuad",
           })
-          // Dramatic pause with subtle pulse
+          // Hold the pause
           .add({
             targets: elements.voidPoint,
-            scale: [1, 1.2, 1],
-            duration: 1000, // Extended pause
+            scale: 1,
+            duration: 800,
             easing: "easeInOutQuad",
           })
-          // Final engulfing expansion
+          // Final expansion
           .add({
             targets: elements.expansion,
+            scale: [0, 5],
             opacity: [0, 1],
-            scale: [0, 10],
             duration: 1500,
             easing: "easeInExpo",
             complete: onAnimationComplete,
