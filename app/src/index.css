@@ -151,19 +151,22 @@
     inset 0 0 20px rgba(236, 72, 153, 0.05);
   transition: box-shadow 0.3s ease-in-out;
   overflow: hidden;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 .section-gradient-border::before {
   content: '';
   position: absolute;
   inset: 0;
-  padding: 8px;
+  padding: 4px;
   background: linear-gradient(45deg,
         rgba(147, 51, 234, 0.8),
         rgba(59, 130, 246, 0.8),
         rgba(236, 72, 153, 0.8),
         rgba(99, 102, 241, 0.8));
   background-size: 200% 200%;
-  animation: sectionBorder 8s ease infinite;
+  animation: sectionBorder 30s ease infinite;
   border-radius: inherit;
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
@@ -177,7 +180,6 @@
 
 
 @keyframes sectionBorder {
-
   0%,
   100% {
     background-position: 0% 50%;
@@ -270,12 +272,18 @@
   }
 }
 
+.smoke-1, .smoke-2, .smoke-3 {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
 .smoke-1 {
   background: radial-gradient(circle at center,
       rgba(147, 51, 234, 0.3),  
       rgba(59, 130, 246, 0.2),  
       transparent 70%);
-  animation: smoke-1 25s infinite ease-in-out;
+  animation: smoke-1 30s infinite ease-in-out;
   mix-blend-mode: screen;
 }
 
@@ -284,7 +292,7 @@
       rgba(236, 72, 153, 0.3),  
       rgba(99, 102, 241, 0.2),  
       transparent 70%);
-  animation: smoke-2 30s infinite ease-in-out;
+  animation: smoke-2 35s infinite ease-in-out;
   mix-blend-mode: screen;
 }
 
@@ -293,7 +301,7 @@
       rgba(59, 130, 246, 0.3),  
       rgba(147, 51, 234, 0.2),  
       transparent 70%);
-  animation: smoke-3 28s infinite ease-in-out;
+  animation: smoke-3 33s infinite ease-in-out;
   mix-blend-mode: screen;
 }
 
@@ -314,7 +322,8 @@
 
 @media (max-width: 768px) {
   .smoke-1, .smoke-2, .smoke-3 {
-    animation-duration: 15s;
+    animation-duration: 20s;
+    will-change: transform;
   }
   
   .section-gradient-border {

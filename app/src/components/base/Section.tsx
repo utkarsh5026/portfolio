@@ -13,7 +13,7 @@
  * and Contact areas of the site.
  */
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 import GradientText from "../utils/GradientText";
 
 interface SectionProps {
@@ -40,15 +40,47 @@ const SectionComponent: React.FC<SectionProps> = ({
           }
         });
       },
-      { threshold: 0.1 }
+      {
+        threshold: 0.1,
+        rootMargin: "50px",
+      }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentRef = sectionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+      observer.disconnect();
+    };
   }, []);
+
+  const dots = useMemo(
+    () =>
+      [...Array(3)].map((_, i) => (
+        <div
+          key={`${i}-${label}`}
+          className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 opacity-50 animate-pulse"
+          style={{ animationDelay: `${i * 200}ms` }}
+        />
+      )),
+    [label]
+  );
+
+  const smokeEffects = useMemo(
+    () => (
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="smoke-1 absolute inset-0" />
+        <div className="smoke-2 absolute inset-0" />
+        <div className="smoke-3 absolute inset-0" />
+      </div>
+    ),
+    []
+  );
 
   return (
     <div
@@ -64,13 +96,7 @@ const SectionComponent: React.FC<SectionProps> = ({
             </GradientText>
 
             <div className="absolute -top-2 sm:-top-3 md:-top-4 right-0 flex gap-1 sm:gap-2">
-              {[...Array(3)].map((_, i) => (
-                <div
-                  key={`${i}-${label}`}
-                  className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 opacity-50 animate-pulse"
-                  style={{ animationDelay: `${i * 200}ms` }}
-                />
-              ))}
+              {dots}
             </div>
           </div>
 
@@ -80,22 +106,23 @@ const SectionComponent: React.FC<SectionProps> = ({
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-blue-500/5 to-purple-500/0 blur-sm" />
           </div>
 
-          {/* Content */}
           <div className="relative z-10 animate-fadeIn backdrop-blur-sm max-w-7xl mx-auto">
             {children}
           </div>
         </div>
       </div>
 
-      {/* Smoke effects */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="smoke-1 absolute inset-0" />
-        <div className="smoke-2 absolute inset-0" />
-        <div className="smoke-3 absolute inset-0" />
-      </div>
+      {smokeEffects}
     </div>
   );
 };
 
-const Section = React.memo(SectionComponent);
+const Section = React.memo(SectionComponent, (prevProps, nextProps) => {
+  return (
+    prevProps.id === nextProps.id &&
+    prevProps.label === nextProps.label &&
+    prevProps.className === nextProps.className
+  );
+});
+
 export default Section;
