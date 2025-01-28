@@ -110,10 +110,8 @@ const PersonalHeaderComponent: React.FC = () => {
         <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-l from-purple-500 to-blue-500 -rotate-12 transform scale-150 blur-3xl" />
       </div>
 
-      {/* Content container */}
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 h-full">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 lg:gap-16 h-full">
-          {/* Text content */}
           <div className="w-full space-y-8 sm:space-y-6 flex flex-col justify-start items-start md:order-1">
             <h1
               ref={headerRef}
@@ -128,7 +126,6 @@ const PersonalHeaderComponent: React.FC = () => {
               </span>
             </h1>
 
-            {/* Mobile avatar */}
             <div className="w-full md:hidden order-2 flex justify-center mb-8">
               <div ref={avatarRef} className="opacity-0">
                 <div className="relative">
@@ -138,7 +135,6 @@ const PersonalHeaderComponent: React.FC = () => {
               </div>
             </div>
 
-            {/* Animated text statements */}
             <div className="order-3 px-2 sm:px-4 w-full">
               <AnimatedText statements={statements} />
             </div>
