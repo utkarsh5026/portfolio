@@ -1,194 +1,260 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, memo } from "react";
 import anime from "animejs";
 
 interface DomainExpansionProps {
   onAnimationComplete?: () => void;
 }
 
-const gojoImage = new Image();
-gojoImage.src = "/gojo.jpg";
+// Define our visual effects with enhanced hollow purple effects
+const VISUAL_EFFECTS = {
+  // Energy sphere gradients remain the same for consistency
+  sphereGradients: {
+    red: `radial-gradient(circle, 
+      rgba(180,20,20,1) 0%, 
+      rgba(180,0,0,0.85) 35%,
+      rgba(180,0,0,0.4) 65%,
+      rgba(180,0,0,0) 100%
+    )`,
+    blue: `radial-gradient(circle, 
+      rgba(0,100,200,1) 0%, 
+      rgba(0,80,200,0.85) 35%,
+      rgba(0,80,200,0.4) 65%,
+      rgba(0,80,200,0) 100%
+    )`,
+  },
+  
+  // Enhanced hollow purple effects for more dramatic expansion
+  hollowEffects: {
+    // Initial background with subtle gradient
+    background: `radial-gradient(circle, 
+      rgba(107,31,194,0.4) 0%,
+      rgba(107,31,194,0.2) 40%,
+      rgba(0,0,0,0.95) 70%,
+      rgba(0,0,0,1) 100%
+    )`,
+    
+    // Enhanced hollow sphere with more intense center
+    hollow: `radial-gradient(circle, 
+      rgba(0,0,0,1) 0%,
+      rgba(107,31,194,1) 15%,
+      rgba(107,31,194,0.8) 30%,
+      rgba(107,31,194,0.4) 60%,
+      rgba(107,31,194,0) 100%
+    )`,
+    
+    // Final expansion effect with darker edges
+    expansion: `radial-gradient(circle, 
+      rgba(0,0,0,1) 0%,
+      rgba(107,31,194,0.9) 20%,
+      rgba(107,31,194,0.6) 40%,
+      rgba(0,0,0,0.95) 70%,
+      rgba(0,0,0,1) 100%
+    )`,
+  },
+  
+  // Glow effects for energy spheres
+  glowEffects: {
+    red: "0 0 80px 40px rgba(180,20,20,0.4), 0 0 120px 80px rgba(180,20,20,0.1)",
+    blue: "0 0 80px 40px rgba(0,80,200,0.4), 0 0 120px 80px rgba(0,80,200,0.1)",
+    purple: "0 0 150px 75px rgba(107,31,194,0.4), 0 0 200px 100px rgba(107,31,194,0.1)",
+  },
+};
 
-const InfiniteVoid: React.FC<DomainExpansionProps> = ({
-  onAnimationComplete,
-}) => {
+// Helper function for creating elements with performance optimizations
+const createElement = (className: string, styles: Partial<CSSStyleDeclaration>) => {
+  const element = document.createElement("div");
+  element.className = `${className} will-change-transform`;
+  Object.assign(element.style, {
+    backfaceVisibility: 'hidden',
+    ...styles
+  });
+  return element;
+};
+
+// Create energy spheres with consistent styling
+const createEnergySphere = (position: string, isRed: boolean) => {
+  const gradient = isRed ? VISUAL_EFFECTS.sphereGradients.red : VISUAL_EFFECTS.sphereGradients.blue;
+  const glow = isRed ? VISUAL_EFFECTS.glowEffects.red : VISUAL_EFFECTS.glowEffects.blue;
+  
+  return createElement(
+    `absolute ${position} top-1/2 rounded-full mix-blend-screen`,
+    {
+      width: "200px",
+      height: "200px",
+      background: gradient,
+      filter: "blur(8px) brightness(1.5)",
+      boxShadow: glow,
+      transform: "translate(-50%, -50%) scale(0.9)",
+      opacity: "0",
+    }
+  );
+};
+
+const InfiniteVoid: React.FC<DomainExpansionProps> = memo(({ onAnimationComplete }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-
+  
   useEffect(() => {
     if (!containerRef.current) return;
-
+    
     const container = containerRef.current;
     container.innerHTML = "";
 
-    // Create intense energy spheres
-    const redSphere = document.createElement("div");
-    redSphere.className =
-      "absolute left-1/3 top-1/2 rounded-full mix-blend-screen";
-    redSphere.style.width = "200px";
-    redSphere.style.height = "200px";
-    redSphere.style.background = `
-      radial-gradient(circle, 
-        rgba(255,50,50,1) 0%, 
-        rgba(255,0,0,0.8) 40%,
-        rgba(255,0,0,0.4) 70%,
-        rgba(255,0,0,0) 100%)
-    `;
-    redSphere.style.filter = "blur(8px) brightness(2)";
-    redSphere.style.boxShadow = "0 0 80px 40px rgba(255,0,0,0.4)";
-    redSphere.style.transform = "translate(-50%, -50%)";
-    container.appendChild(redSphere);
+    const setupAnimation = async () => {
+      try {
+        // Create all the elements for our animation sequence
+        const elements = {
+          // Initial background
+          background: createElement("absolute inset-0", {
+            background: VISUAL_EFFECTS.hollowEffects.background,
+            opacity: "0",
+          }),
+          
+          // Energy spheres
+          redSphere: createEnergySphere("left-1/3", true),
+          blueSphere: createEnergySphere("left-2/3", false),
+          
+          // Gojo image effect
+          gojoFlash: createElement("absolute inset-0", {
+            backgroundImage: "url('/gojo.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: "0",
+            filter: "brightness(1.3) contrast(1.2)",
+            mixBlendMode: "screen",
+            transform: "scale(1.1)",
+          }),
+          
+          // Hollow sphere for the sudden shrink
+          hollowSphere: createElement("absolute left-1/2 top-1/2 rounded-full", {
+            width: "400px",
+            height: "400px",
+            background: VISUAL_EFFECTS.hollowEffects.hollow,
+            filter: "blur(12px) brightness(1.2)",
+            transform: "translate(-50%, -50%) scale(0)",
+            opacity: "0",
+            boxShadow: VISUAL_EFFECTS.glowEffects.purple,
+          }),
+          
+          // Point of light during pause
+          voidPoint: createElement("absolute left-1/2 top-1/2 rounded-full", {
+            width: "8px",
+            height: "8px",
+            background: "rgba(107,31,194,1)",
+            filter: "blur(2px) brightness(2)",
+            transform: "translate(-50%, -50%) scale(0)",
+            opacity: "0",
+            boxShadow: "0 0 20px 10px rgba(107,31,194,0.8)",
+          }),
+          
+          // Final expansion effect
+          expansion: createElement("absolute inset-0", {
+            background: VISUAL_EFFECTS.hollowEffects.expansion,
+            opacity: "0",
+            transform: "scale(0)",
+            transformOrigin: "center",
+          }),
+        };
 
-    const blueSphere = document.createElement("div");
-    blueSphere.className =
-      "absolute left-2/3 top-1/2 rounded-full mix-blend-screen";
-    blueSphere.style.width = "200px";
-    blueSphere.style.height = "200px";
-    blueSphere.style.background = `
-      radial-gradient(circle, 
-        rgba(0,150,255,1) 0%, 
-        rgba(0,100,255,0.8) 40%,
-        rgba(0,100,255,0.4) 70%,
-        rgba(0,100,255,0) 100%)
-    `;
-    blueSphere.style.filter = "blur(8px) brightness(2)";
-    blueSphere.style.boxShadow = "0 0 80px 40px rgba(0,100,255,0.4)";
-    blueSphere.style.transform = "translate(-50%, -50%)";
-    container.appendChild(blueSphere);
+        // Add all elements to the container efficiently
+        const fragment = document.createDocumentFragment();
+        Object.values(elements).forEach(el => fragment.appendChild(el));
+        container.appendChild(fragment);
 
-    // Create explosion effect at collision point
-    const explosion = document.createElement("div");
-    explosion.className = "absolute left-1/2 top-1/2 rounded-full opacity-0";
-    explosion.style.width = "300px";
-    explosion.style.height = "300px";
-    explosion.style.background = `
-      radial-gradient(circle, 
-        rgba(255,255,255,1) 0%,
-        rgba(147,51,234,0.9) 30%,
-        rgba(147,51,234,0.5) 60%,
-        rgba(147,51,234,0) 100%)
-    `;
-    explosion.style.filter = "blur(20px) brightness(2)";
-    explosion.style.transform = "translate(-50%, -50%) scale(0)";
-    container.appendChild(explosion);
+        // Create our animation sequence
+        const timeline = anime.timeline({
+          easing: "easeOutExpo",
+        });
 
-    const hollowPurple = document.createElement("div");
-    hollowPurple.className = "absolute left-1/2 top-1/2 rounded-full opacity-0";
-    hollowPurple.style.width = "400px";
-    hollowPurple.style.height = "400px";
-    hollowPurple.style.background = `
-      radial-gradient(circle, 
-        rgba(0,0,0,1) 0%,
-        rgba(147,51,234,1) 20%,
-        rgba(147,51,234,0.7) 40%,
-        rgba(147,51,234,0.3) 70%,
-        rgba(147,51,234,0) 100%)
-    `;
-    hollowPurple.style.filter = "blur(15px) brightness(1.5)";
-    hollowPurple.style.boxShadow = "0 0 150px 75px rgba(147,51,234,0.4)";
-    hollowPurple.style.transform = "translate(-50%, -50%) scale(0)";
-    container.appendChild(hollowPurple);
+        timeline
+          // Initial background fade in
+          .add({
+            targets: elements.background,
+            opacity: [0, 1],
+            duration: 800,
+            easing: "easeInOutQuad",
+          })
+          // Energy spheres appear
+          .add({
+            targets: [elements.redSphere, elements.blueSphere],
+            opacity: [0, 1],
+            scale: [0.9, 1],
+            duration: 800,
+            delay: anime.stagger(150),
+            easing: "easeOutElastic(1, 0.7)",
+          })
+          // Spheres move to center
+          .add({
+            targets: [elements.redSphere, elements.blueSphere],
+            left: "50%",
+            scale: [1, 2],
+            duration: 900,
+            easing: "easeInOutQuad",
+          })
+          // Gojo image flash
+          .add({
+            targets: elements.gojoFlash,
+            opacity: [0, 0.8, 0],
+            scale: [1.1, 1],
+            duration: 700,
+            easing: "easeInOutQuad",
+          })
+          // Quick hollow sphere appearance
+          .add({
+            targets: elements.hollowSphere,
+            scale: [0, 2],
+            opacity: 1,
+            duration: 300,
+            easing: "easeOutQuad",
+          })
+          // Sudden shrink to point
+          .add({
+            targets: elements.hollowSphere,
+            scale: 0.01,
+            opacity: 0,
+            duration: 200, // Very quick shrink
+            easing: "easeInExpo",
+          })
+          // Show point of light
+          .add({
+            targets: elements.voidPoint,
+            scale: [0, 1],
+            opacity: 1,
+            duration: 200,
+            easing: "easeOutQuad",
+          })
+          // Dramatic pause with subtle pulse
+          .add({
+            targets: elements.voidPoint,
+            scale: [1, 1.2, 1],
+            duration: 1000, // Extended pause
+            easing: "easeInOutQuad",
+          })
+          // Final engulfing expansion
+          .add({
+            targets: elements.expansion,
+            opacity: [0, 1],
+            scale: [0, 10],
+            duration: 1500,
+            easing: "easeInExpo",
+            complete: onAnimationComplete,
+          });
 
-    const createVoidRings = () => {
-      const rings = [];
-      for (let i = 0; i < 8; i++) {
-        const ring = document.createElement("div");
-        ring.className = "absolute left-1/2 top-1/2 rounded-full opacity-0";
-        ring.style.width = "400px";
-        ring.style.height = "400px";
-        ring.style.border = "4px solid rgba(147, 51, 234, 0.3)";
-        ring.style.transform = "translate(-50%, -50%) scale(0)";
-        container.appendChild(ring);
-        rings.push(ring);
+        // Preload Gojo image
+        await new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = resolve;
+          img.onerror = reject;
+          img.src = '/gojo.jpg';
+        });
+
+      } catch (error) {
+        console.error('Animation setup failed:', error);
       }
-      return rings;
     };
 
-    const voidRings = createVoidRings();
-    const voidContainer = document.createElement("div");
-    voidContainer.className = "absolute inset-0 opacity-0";
-    voidContainer.style.background = `
-      radial-gradient(circle at center,
-        rgba(0,0,0,1) 0%,
-        rgba(147,51,234,0.4) 30%,
-        rgba(0,0,0,0.95) 60%,
-        rgba(0,0,0,1) 100%)
-    `;
-    container.appendChild(voidContainer);
-
-    const gojoFlash = document.createElement("div");
-    gojoFlash.className = "absolute inset-0 opacity-0";
-    gojoFlash.style.backgroundImage = "url('/gojo.jpg')";
-    gojoFlash.style.backgroundSize = "cover";
-    gojoFlash.style.backgroundPosition = "center";
-    gojoFlash.style.mixBlendMode = "screen";
-    container.appendChild(gojoFlash);
-
-    // Animation timeline
-    const timeline = anime.timeline({
-      easing: "easeOutExpo",
-    });
-
-    timeline
-      .add({
-        targets: [redSphere, blueSphere],
-        left: "50%",
-        scale: [1, 2.2],
-        duration: 1000,
-        easing: "easeInOutQuad",
-      })
-      .add(
-        {
-          targets: gojoFlash,
-          opacity: [0, 0.3, 0],
-          scale: [0.2, 1.5],
-          duration: 1000,
-          easing: "easeInOutQuad",
-        },
-        "-=200"
-      )
-      .add(
-        {
-          targets: hollowPurple,
-          scale: [0, 2],
-          opacity: [0, 1],
-          duration: 600,
-          easing: "easeOutElastic(1, 0.5)",
-        },
-        "-=600"
-      )
-      .add(
-        {
-          targets: voidRings,
-          scale: [0, 16],
-          opacity: [0.8, 0],
-          duration: 1000,
-          delay: anime.stagger(50),
-          easing: "easeOutExpo",
-        },
-        "-=400"
-      )
-      .add(
-        {
-          targets: voidContainer,
-          opacity: [0, 1],
-          duration: 600,
-          easing: "easeInOutQuad",
-        },
-        "-=800"
-      )
-      .add({
-        targets: [hollowPurple, voidContainer],
-        scale: [1, 100],
-        duration: 1200,
-        easing: "easeInExpo",
-        complete: () => {
-          if (onAnimationComplete) {
-            onAnimationComplete();
-          }
-        },
-      });
+    setupAnimation();
 
     return () => {
-      timeline.pause();
       container.innerHTML = "";
     };
   }, [onAnimationComplete]);
@@ -200,9 +266,13 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = ({
       style={{
         perspective: "1000px",
         transformStyle: "preserve-3d",
+        willChange: "transform",
+        isolation: "isolate",
       }}
     />
   );
-};
+});
+
+InfiniteVoid.displayName = "InfiniteVoid";
 
 export default InfiniteVoid;
