@@ -89,9 +89,9 @@ const SectionComponent: React.FC<SectionProps> = ({
       className={`${className} relative group px-4 sm:px-6 md:px-8 lg:px-10 sm:py-12 lg:py-16 md:py-12 section-animate`}
     >
       <div className="relative bg-slate-950 rounded-2xl overflow-hidden section-gradient-border">
-        <div className="relative p-6 sm:p-8 md:p-12">
+        <div className="relative p-6 sm:p-8 md:p-12 lg:p-20">
           <div className="relative">
-            <GradientText className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold text-right tracking-tight">
+            <GradientText className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-right tracking-tight">
               {label}
             </GradientText>
 
