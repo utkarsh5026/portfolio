@@ -42,10 +42,10 @@ function App() {
             onNavClick={(section) => setActiveSection(section)}
             activeSection={activeSection}
           />
-          <div className="min-h-screen bg-[#030712] w-full overflow-y-auto scrollbar-hide p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16">
-            <main className="flex flex-col">
+          <div className="min-h-screen bg-[#030712] w-full overflow-y-auto scrollbar-hide p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 flex flex-col">
+            <main className="flex flex-col flex-1">
               <Suspense fallback={<SectionLoader />}>
-                <div className="animate-fadeIn">
+                <div className="animate-fadeIn h-full">
                   {sections[activeSection as keyof typeof sections]}
                 </div>
               </Suspense>
