@@ -340,3 +340,10 @@
       inset 0 0 20px rgba(236, 72, 153, 0.1);
   }
 }
+
+.infinite-void {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  will-change: transform;
+  isolation: isolate;
+}
