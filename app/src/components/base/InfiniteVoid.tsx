@@ -177,25 +177,28 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(
             .add({
               targets: [elements.redSphere, elements.blueSphere],
               opacity: [0, 1],
-              scale: [0.9, 1],
+              scale: [0.6, 1],
               duration: 800,
-              delay: anime.stagger(150),
+              delay: anime.stagger(300),
               easing: "easeOutElastic(1, 0.7)",
             })
             .add({
               targets: [elements.redSphere, elements.blueSphere],
               left: "50%",
               scale: [1, 2],
-              duration: 900,
+              duration: 600,
               easing: "easeInOutQuad",
             })
-            .add({
-              targets: elements.gojoFlash,
-              opacity: [0, 0.8, 0],
-              scale: [1.1, 1],
-              duration: 700,
-              easing: "easeInOutQuad",
-            })
+            .add(
+              {
+                targets: elements.gojoFlash,
+                opacity: [0, 0.8, 0],
+                scale: [0.6, 1.2],
+                duration: 700,
+                easing: "easeInOutQuad",
+              },
+              "-=300"
+            )
             .add({
               targets: elements.hollowSphere,
               scale: [0, 2],
