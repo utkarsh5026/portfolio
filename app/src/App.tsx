@@ -2,6 +2,7 @@ import { lazy, Suspense, useState } from "react";
 import { ThemeProvider } from "./components/base/ThemeProvider";
 import PersonalHeader from "./components/home/intro/PersonalHeader";
 import NavigationBar from "./components/home/appbar/NavigationBar";
+import InfiniteVoid from "./components/base/InfiniteVoid";
 
 // Lazy loaded components
 const Skills = lazy(() => import("./components/home/skills/Skills"));
@@ -18,6 +19,7 @@ const SectionLoader = () => (
 
 function App() {
   const [activeSection, setActiveSection] = useState("home");
+  const [isGridAnimationComplete, setIsGridAnimationComplete] = useState(false);
 
   const sections = {
     home: <PersonalHeader />,
@@ -30,19 +32,27 @@ function App() {
 
   return (
     <ThemeProvider defaultTheme="dark">
-      <NavigationBar
-        onNavClick={(section) => setActiveSection(section)}
-        activeSection={activeSection}
-      />
-      <div className="min-h-screen bg-[#030712] w-full overflow-y-auto scrollbar-hide p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16">
-        <main className="flex flex-col">
-          <Suspense fallback={<SectionLoader />}>
-            <div className="animate-fadeIn">
-              {sections[activeSection as keyof typeof sections]}
-            </div>
-          </Suspense>
-        </main>
-      </div>
+      {!isGridAnimationComplete ? (
+        <InfiniteVoid
+          onAnimationComplete={() => setIsGridAnimationComplete(true)}
+        />
+      ) : (
+        <>
+          <NavigationBar
+            onNavClick={(section) => setActiveSection(section)}
+            activeSection={activeSection}
+          />
+          <div className="min-h-screen bg-[#030712] w-full overflow-y-auto scrollbar-hide p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16">
+            <main className="flex flex-col">
+              <Suspense fallback={<SectionLoader />}>
+                <div className="animate-fadeIn">
+                  {sections[activeSection as keyof typeof sections]}
+                </div>
+              </Suspense>
+            </main>
+          </div>
+        </>
+      )}
     </ThemeProvider>
   );
 }
