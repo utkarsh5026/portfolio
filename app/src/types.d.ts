@@ -25,6 +25,7 @@ export type Project = {
   category: "Web" | "Mobile" | "Backend" | "DevOps" | "AI/ML" | "Library";
   status: "Completed" | "In Progress" | "Planned";
   highlights?: string[];
+  tags?: string[];
 };
 
 export type Article = {

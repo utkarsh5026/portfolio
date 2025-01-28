@@ -47,12 +47,15 @@ export const projects: Project[] = [
 
     status: "Completed",
 
-    highlights: [
-      "Processes 200,000+ training records across 3 major automotive brands",
-      "Reduced reporting time from days to minutes",
-      "Interactive dashboards for real-time decision making",
-      "Automated data validation and cleaning pipelines",
-      "Cross-brand comparative analysis capabilities",
+    tags: [
+      "Dashboard",
+      "Data",
+      "Analytics",
+      "React",
+      "Python",
+      "Django",
+      "Pandas",
+      "Plotly",
     ],
   },
   {
@@ -76,6 +79,7 @@ export const projects: Project[] = [
     ],
     category: "DevOps",
     status: "Completed",
+    tags: ["Docker", "Golang", "React", "Typescript"],
   },
   {
     name: "AI-Powered Code Review Assistant",
@@ -92,6 +96,7 @@ export const projects: Project[] = [
       "Security vulnerability detection",
       "Performance optimization suggestions",
     ],
+    tags: ["AI", "ML", "Python", "FastAPI", "Langchain"],
     category: "AI/ML",
     status: "In Progress",
   },
@@ -111,6 +116,7 @@ export const projects: Project[] = [
       "Automated scaling and failover",
       "Health monitoring and self-healing",
     ],
+    tags: ["Kubernetes", "Docker", "Go", "Distributed Systems"],
     category: "DevOps",
     status: "Completed",
   },
@@ -130,6 +136,7 @@ export const projects: Project[] = [
       "State change subscription system",
       "Comprehensive test coverage",
     ],
+    tags: ["Redux", "TypeScript", "NodeJS", "State Management"],
     category: "Library",
     status: "Completed",
   },
@@ -162,6 +169,7 @@ export const projects: Project[] = [
       "Comprehensive documentation and examples",
       "Type-safe implementation with modern Python features",
     ],
+    tags: ["OAuth", "Python", "Flask", "Django", "REST", "PKCE"],
   },
   {
     name: "Current",
@@ -187,6 +195,7 @@ export const projects: Project[] = [
       "Robust error handling and data verification",
       "Support for both single-file and multi-file torrents",
     ],
+    tags: ["BitTorrent", "Go", "Network Programming", "CodeCrafters", "CLI"],
   },
   {
     name: "Cope",
@@ -209,6 +218,7 @@ export const projects: Project[] = [
       "Includes comprehensive test coverage",
       "Uses modern Go tooling and practices (Go 1.22+)",
     ],
+    tags: ["CLI", "Go", "Grep", "CodeCrafters"],
   },
 
   {
@@ -244,6 +254,7 @@ export const projects: Project[] = [
       "Browser-native animation performance",
       "Precise timing control with sub-millisecond precision",
     ],
+    tags: ["Animation", "TypeScript", "CSS", "SVG", "NodeJS"],
   },
 ];
 
