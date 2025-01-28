@@ -22,8 +22,6 @@ export type Project = {
   technologies: Technology[];
   features: string[];
   thumbnail?: string;
-  category: "Web" | "Mobile" | "Backend" | "DevOps" | "AI/ML" | "Library";
-  status: "Completed" | "In Progress" | "Planned";
   highlights?: string[];
   tags?: string[];
 };
