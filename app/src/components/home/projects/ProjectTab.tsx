@@ -44,11 +44,14 @@ const ProjectTab = memo(
           "overflow-hidden",
           isSelected
             ? "bg-gradient-to-r from-purple-500/20 to-blue-500/20 border-purple-500/50 shadow-lg"
-            : "hover:border-purple-500/30"
+            : [
+                "hover:border-purple-500/30",
+                "border-b border-gray-700/30 last:border-b-0",
+              ]
         )}
       >
-        <div className="flex flex-col gap-3 p-4 justify-start items-start">
-          <h3 className="font-semibold text-base group-hover:text-primary">
+        <div className="flex flex-col gap-3 p-4 w-full items-start">
+          <h3 className="font-semibold text-base group-hover:text-primary text-left w-full">
             {project.name}
           </h3>
 
