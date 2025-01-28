@@ -5,6 +5,9 @@ interface DomainExpansionProps {
   onAnimationComplete?: () => void;
 }
 
+const gojoImage = new Image();
+gojoImage.src = "/gojo.jpg";
+
 const InfiniteVoid: React.FC<DomainExpansionProps> = ({
   onAnimationComplete,
 }) => {
