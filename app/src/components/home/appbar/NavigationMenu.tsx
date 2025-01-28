@@ -2,20 +2,19 @@ import React, { useRef } from "react";
 import navigationItems from "./navItems";
 
 interface NavigationMenuProps {
+  activeSection: string;
+  onNavClick: (section: string) => void;
   isMenuOpen: boolean;
   setIsMenuOpen: (isMenuOpen: boolean) => void;
 }
 
 const NavigationMenu: React.FC<NavigationMenuProps> = ({
+  activeSection,
+  onNavClick,
   isMenuOpen,
   setIsMenuOpen,
 }) => {
   const menuRef = useRef<HTMLUListElement>(null);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <ul
@@ -28,10 +27,15 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
         <li key={item} className="w-full sm:w-auto text-center">
           <button
             onClick={() => {
-              scrollToSection(item);
+              onNavClick(item);
               setIsMenuOpen(false);
             }}
-            className="w-full text-slate-300 hover:text-white font-semibold transition-colors duration-200 text-sm px-3 py-2 sm:py-1"
+            className={`w-full text-slate-300 hover:text-white font-semibold transition-colors duration-200 text-sm px-3 py-2 sm:py-1 
+              ${
+                activeSection === item
+                  ? "text-white border-b-2 border-white"
+                  : ""
+              }`}
           >
             {item.charAt(0).toUpperCase() + item.slice(1)}
           </button>

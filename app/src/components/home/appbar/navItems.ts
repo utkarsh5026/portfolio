@@ -1,11 +1,11 @@
 const navigationItems = [
   "home",
-  "about",
-  "projects",
   "skills",
-  "work",
+  "projects",
+  "experience",
   "articles",
   "contact",
-];
+] as const;
 
+export type NavigationItem = (typeof navigationItems)[number];
 export default navigationItems;

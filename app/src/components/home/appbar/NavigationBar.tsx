@@ -5,7 +5,15 @@ import DownloadCvButton from "./DownloadCvButton";
 import NavigationMenu from "./NavigationMenu";
 import MobileMenu from "./MobileMenu";
 
-const NavigationBar: React.FC = () => {
+interface NavigationBarProps {
+  activeSection: string;
+  onNavClick: (section: string) => void;
+}
+
+const NavigationBar: React.FC<NavigationBarProps> = ({
+  activeSection,
+  onNavClick,
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -19,6 +27,8 @@ const NavigationBar: React.FC = () => {
         <div className="hidden sm:flex flex-1 justify-center items-center">
           <div className="flex-1 max-w-[200px]" />
           <NavigationMenu
+            activeSection={activeSection}
+            onNavClick={onNavClick}
             isMenuOpen={isMenuOpen}
             setIsMenuOpen={setIsMenuOpen}
           />
@@ -32,10 +42,11 @@ const NavigationBar: React.FC = () => {
           {isMenuOpen && (
             <>
               <NavigationMenu
+                activeSection={activeSection}
+                onNavClick={onNavClick}
                 isMenuOpen={isMenuOpen}
                 setIsMenuOpen={setIsMenuOpen}
               />
-
               <div className="flex flex-col gap-2 justify-center mt-4">
                 <DownloadCvButton />
                 <GithubRepoButton />

@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import { ThemeProvider } from "./components/base/ThemeProvider";
 import PersonalHeader from "./components/home/intro/PersonalHeader";
 import NavigationBar from "./components/home/appbar/NavigationBar";
@@ -16,48 +16,31 @@ const SectionLoader = () => (
   <div className="h-96 animate-pulse bg-[#1e293b33] rounded-lg" />
 );
 
-// Reusable section component
-const Section = ({
-  id,
-  children,
-}: {
-  id: string;
-  children: React.ReactNode;
-}) => (
-  <section id={id} className="scroll-mt-16">
-    <Suspense fallback={<SectionLoader />}>{children}</Suspense>
-  </section>
-);
-
 function App() {
+  const [activeSection, setActiveSection] = useState("home");
+
+  const sections = {
+    home: <PersonalHeader />,
+    skills: <Skills />,
+    projects: <Projects />,
+    experience: <WorkExperience />,
+    articles: <Articles />,
+    contact: <ContactMe />,
+  };
+
   return (
     <ThemeProvider defaultTheme="dark">
-      <NavigationBar />
-      <div className="min-h-screen bg-[#030712] w-full overflow-y-auto scrollbar-hide p-4 pt-24 sm:p-8 sm:pt-28 md:p-16 md:pt-32 lg:p-32 lg:pt-40">
-        <main className="flex flex-col gap-8 sm:gap-16 md:gap-24 lg:gap-32">
-          <section id="home" className="scroll-mt-16">
-            <PersonalHeader />
-          </section>
-
-          <Section id="skills">
-            <Skills />
-          </Section>
-
-          <Section id="projects">
-            <Projects />
-          </Section>
-
-          <Section id="experience">
-            <WorkExperience />
-          </Section>
-
-          <Section id="articles">
-            <Articles />
-          </Section>
-
-          <Section id="contact">
-            <ContactMe />
-          </Section>
+      <NavigationBar
+        onNavClick={(section) => setActiveSection(section)}
+        activeSection={activeSection}
+      />
+      <div className="min-h-screen bg-[#030712] w-full overflow-y-auto scrollbar-hide p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16">
+        <main className="flex flex-col">
+          <Suspense fallback={<SectionLoader />}>
+            <div className="animate-fadeIn">
+              {sections[activeSection as keyof typeof sections]}
+            </div>
+          </Suspense>
         </main>
       </div>
     </ThemeProvider>
