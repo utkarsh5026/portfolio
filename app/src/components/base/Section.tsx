@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useMemo } from "react";
 import anime from "animejs";
+import NewtonCradle from "./NewtonCradle";
 
 interface SectionProps {
   id: string;
@@ -17,7 +18,6 @@ const EnhancedSection: React.FC<SectionProps> = ({
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const particlesRef = useRef<HTMLDivElement[]>([]);
-  const dotsRef = useRef<HTMLDivElement[]>([]);
 
   const mouseEffectRef = useRef({ x: 0, y: 0 });
 
@@ -25,7 +25,6 @@ const EnhancedSection: React.FC<SectionProps> = ({
     const section = sectionRef.current;
     const title = titleRef.current;
     const particles = particlesRef.current;
-    const dots = dotsRef.current;
 
     anime({
       targets: section,
@@ -106,24 +105,11 @@ const EnhancedSection: React.FC<SectionProps> = ({
       });
     });
 
-    dots.forEach((dot, index) => {
-      anime({
-        targets: dot,
-        scale: [1, 1.2, 1],
-        opacity: [0.3, 1, 0.3],
-        duration: 2000,
-        delay: index * 300,
-        loop: true,
-        easing: "easeInOutSine",
-      });
-    });
-
     // Cleanup animations on unmount
     return () => {
       anime.remove(section);
       anime.remove(title);
       anime.remove(particles);
-      anime.remove(dots);
     };
   }, []);
 
@@ -177,19 +163,6 @@ const EnhancedSection: React.FC<SectionProps> = ({
     []
   );
 
-  // Create animated dots
-  const dots = useMemo(
-    () =>
-      [...Array(3)].map((_, i) => (
-        <div
-          key={`dot-${i}`}
-          ref={(el) => el && (dotsRef.current[i] = el)}
-          className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-500 to-blue-500"
-        />
-      )),
-    []
-  );
-
   return (
     <div
       ref={sectionRef}
@@ -204,10 +177,8 @@ const EnhancedSection: React.FC<SectionProps> = ({
         {/* Mouse-following gradient */}
         <div className="mouse-gradient absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-        {/* Particle container */}
         <div className="absolute inset-0 overflow-hidden">{particles}</div>
 
-        {/* Content section */}
         <div className="relative p-8 md:p-12 lg:p-16">
           <div className="relative">
             <div
@@ -219,11 +190,11 @@ const EnhancedSection: React.FC<SectionProps> = ({
               </span>
             </div>
 
-            {/* Animated dots */}
-            <div className="absolute -top-4 right-0 flex gap-2">{dots}</div>
+            <div className="absolute -top-12 left-0">
+              <NewtonCradle />
+            </div>
           </div>
 
-          {/* Divider */}
           <div className="relative my-8 md:my-12">
             <div className="h-px bg-gradient-to-r from-transparent via-gray-200/10 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-blue-500/10 to-purple-500/0 blur" />
