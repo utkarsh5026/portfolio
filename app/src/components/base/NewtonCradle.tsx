@@ -5,7 +5,7 @@ const collisionEffect = (selector: string) => ({
   targets: selector,
   scale: [
     { value: 1, duration: 0 },
-    { value: 0.8, duration: 100 },
+    { value: 0.95, duration: 100 },
     { value: 1, duration: 100 },
   ],
   boxShadow: [
@@ -40,9 +40,9 @@ const NewtonCradle: React.FC = () => {
         duration: swingDuration / 2,
         easing: "cubicBezier(.5,.05,.65,1)",
       })
-      .add(collisionEffect(".pendulum-1 .ball"), "-=100")
-      .add(collisionEffect(".pendulum-2 .ball"), "-=50")
-      .add(collisionEffect(".pendulum-3 .ball"), "-=50")
+      .add(collisionEffect(".pendulum-1"), "-=100")
+      .add(collisionEffect(".pendulum-2"), "-=50")
+      .add(collisionEffect(".pendulum-3"), "-=50")
       .add({
         targets: ".pendulum-4",
         rotate: -swingAngle,
@@ -56,9 +56,9 @@ const NewtonCradle: React.FC = () => {
         duration: swingDuration / 2,
         easing: "cubicBezier(.5,.05,.65,1)",
       })
-      .add(collisionEffect(".pendulum-3 .ball"), "-=100")
-      .add(collisionEffect(".pendulum-2 .ball"), "-=50")
-      .add(collisionEffect(".pendulum-1 .ball"), "-=50");
+      .add(collisionEffect(".pendulum-3"), "-=100")
+      .add(collisionEffect(".pendulum-2"), "-=50")
+      .add(collisionEffect(".pendulum-1"), "-=50");
 
     return () => tl.pause();
   }, []);
