@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, memo } from "react";
+import React, { useEffect, useRef, memo, useState } from "react";
 import anime from "animejs";
+import Logo from "../home/appbar/Logo";
 
 interface DomainExpansionProps {
   onAnimationComplete?: () => void;
@@ -78,6 +79,7 @@ const createEnergySphere = (position: string, isRed: boolean) => {
 const InfiniteVoid: React.FC<DomainExpansionProps> = memo(
   ({ onAnimationComplete }) => {
     const containerRef = useRef<HTMLDivElement>(null);
+    const [showLogo, setShowLogo] = useState(false);
 
     useEffect(() => {
       if (!containerRef.current) return;
@@ -96,10 +98,8 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(
               },
               0
             ),
-
             redSphere: createEnergySphere("left-1/3", true),
             blueSphere: createEnergySphere("left-2/3", false),
-
             gojoFlash: createElement(
               "absolute inset-0",
               {
@@ -113,16 +113,6 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(
               },
               3
             ),
-
-            hollowContainer: createElement(
-              "absolute inset-0",
-              {
-                perspective: "1000px",
-                transformStyle: "preserve-3d",
-              },
-              4
-            ),
-
             hollowSphere: createElement(
               "absolute left-1/2 top-1/2 rounded-full",
               {
@@ -136,7 +126,6 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(
               },
               5
             ),
-
             voidPoint: createElement(
               "absolute left-1/2 top-1/2 rounded-full",
               {
@@ -150,7 +139,6 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(
               },
               6
             ),
-
             expansion: createElement(
               "absolute left-1/2 top-1/2 rounded-full",
               {
@@ -193,8 +181,8 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(
               {
                 targets: elements.gojoFlash,
                 opacity: [0, 0.8, 0],
-                scale: [0.6, 1.2],
-                duration: 700,
+                scale: [0.6, 1.8],
+                duration: 1000,
                 easing: "easeInOutQuad",
               },
               "-=300"
@@ -212,34 +200,27 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(
                 elements.blueSphere,
                 elements.hollowSphere,
               ],
-              opacity: [1, 0],
-              scale: [2, 0.01],
-              duration: 300,
+              opacity: [1, 0.1],
+              scale: [2, 0.1],
+              duration: 1000,
               easing: "easeInExpo",
             })
             .add({
               targets: elements.voidPoint,
-              scale: [0, 1],
+              scale: [0, 1, 0],
               opacity: 1,
-              duration: 200,
-            })
-            .add({
-              targets: elements.voidPoint,
-              scale: 1,
-              duration: 800,
-              easing: "easeInOutQuad",
-            })
-            .add({
-              targets: elements.expansion,
-              scale: [0, 5],
-              opacity: {
-                value: [0, 1],
-                duration: 400,
-              },
               duration: 1500,
-              easing: "easeInExpo",
-              complete: onAnimationComplete,
-            });
+              easing: "easeInOutQuad",
+              complete: () => {
+                setShowLogo(true);
+              },
+            })
+            .add(
+              {
+                complete: onAnimationComplete,
+              },
+              "+=2000"
+            );
 
           await new Promise((resolve, reject) => {
             const img = new Image();
@@ -263,7 +244,13 @@ const InfiniteVoid: React.FC<DomainExpansionProps> = memo(
       <div
         ref={containerRef}
         className="infinite-void absolute inset-0 overflow-hidden bg-black"
-      />
+      >
+        {showLogo && (
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[7] scale-[2]">
+            <Logo />
+          </div>
+        )}
+      </div>
     );
   }
 );

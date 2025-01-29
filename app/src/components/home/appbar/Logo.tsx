@@ -15,7 +15,11 @@
 import React, { useEffect, useRef } from "react";
 import anime from "animejs";
 
-const Logo: React.FC = () => {
+interface LogoProps {
+  centerDot?: boolean;
+}
+
+const Logo: React.FC<LogoProps> = ({ centerDot }) => {
   const dotRef = useRef<HTMLSpanElement>(null);
   const leftTextRef = useRef<HTMLSpanElement>(null);
   const rightTextRef = useRef<HTMLSpanElement>(null);
@@ -25,35 +29,68 @@ const Logo: React.FC = () => {
       easing: "easeOutExpo",
     });
 
-    timeline
-      .add({
-        targets: leftTextRef.current,
-        translateX: [-100, 0],
-        opacity: [0, 1],
-        duration: 1200,
-        easing: "spring(1, 80, 10, 0)",
-      })
-      .add(
-        {
-          targets: rightTextRef.current,
-          translateX: [100, 0],
-          opacity: [0, 1],
-          duration: 1200,
-          easing: "spring(1, 80, 10, 0)",
-        },
-        "-=1000"
-      )
-      .add(
-        {
+    if (centerDot) {
+      // Special animation for InfiniteVoid integration
+      timeline
+        .add({
           targets: dotRef.current,
           translateY: [-50, 0],
           opacity: [0, 1],
           duration: 1000,
           easing: "easeOutBounce",
-        },
-        "-=800"
-      );
-  }, []);
+        })
+        .add(
+          {
+            targets: leftTextRef.current,
+            translateX: [-100, -20],
+            opacity: [0, 1],
+            duration: 1200,
+            easing: "spring(1, 80, 10, 0)",
+          },
+          "-=400"
+        )
+        .add(
+          {
+            targets: rightTextRef.current,
+            translateX: [100, 20],
+            opacity: [0, 1],
+            duration: 1200,
+            easing: "spring(1, 80, 10, 0)",
+          },
+          "-=1200"
+        );
+    } else {
+      // Original animation for navbar
+      timeline
+        .add({
+          targets: leftTextRef.current,
+          translateX: [-100, 0],
+          opacity: [0, 1],
+          duration: 1200,
+          easing: "spring(1, 80, 10, 0)",
+        })
+        .add(
+          {
+            targets: rightTextRef.current,
+            translateX: [100, 0],
+            opacity: [0, 1],
+            duration: 1200,
+            easing: "spring(1, 80, 10, 0)",
+          },
+          "-=1000"
+        )
+        .add(
+          {
+            targets: dotRef.current,
+            translateY: [-50, 0],
+            opacity: [0, 1],
+            duration: 1000,
+            easing: "easeOutBounce",
+          },
+          "-=800"
+        );
+    }
+  }, [centerDot]);
 
   return (
     <button
@@ -64,18 +101,35 @@ const Logo: React.FC = () => {
       aria-label="Reload page"
     >
       <div className="cursor-pointer group">
-        <div className="relative inline-flex">
+        <div
+          className={`relative inline-flex ${
+            centerDot ? "justify-center" : ""
+          }`}
+        >
           <div className="flex items-center font-semibold">
-            <span ref={leftTextRef} className="text-white opacity-0">
+            <span
+              ref={leftTextRef}
+              className={`text-white opacity-0 ${
+                centerDot ? "relative right-[10px]" : ""
+              }`}
+            >
               utkarsh
             </span>
             <span
               ref={dotRef}
-              className="text-orange-500 font-bold opacity-0 leading-none"
+              className={`text-orange-500 font-bold opacity-0 leading-none ${
+                centerDot ? "absolute left-1/2 -translate-x-1/2" : ""
+              }`}
+              style={centerDot ? { fontSize: "2em" } : {}}
             >
               .
             </span>
-            <span ref={rightTextRef} className="text-white opacity-0">
+            <span
+              ref={rightTextRef}
+              className={`text-white opacity-0 ${
+                centerDot ? "relative left-[10px]" : ""
+              }`}
+            >
               me
             </span>
           </div>
