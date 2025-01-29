@@ -9,7 +9,7 @@ interface SectionProps {
   children: React.ReactNode;
 }
 
-const EnhancedSection: React.FC<SectionProps> = ({
+const Section: React.FC<SectionProps> = ({
   id,
   label,
   className,
@@ -105,7 +105,6 @@ const EnhancedSection: React.FC<SectionProps> = ({
       });
     });
 
-    // Cleanup animations on unmount
     return () => {
       anime.remove(section);
       anime.remove(title);
@@ -172,9 +171,7 @@ const EnhancedSection: React.FC<SectionProps> = ({
     >
       <div className="absolute inset-0 p-0.5 rounded-3xl bg-gradient-to-r from-purple-500/50 via-blue-500/50 to-purple-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-      {/* Main content container */}
       <div className="relative bg-slate-950 rounded-2xl overflow-hidden">
-        {/* Mouse-following gradient */}
         <div className="mouse-gradient absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
         <div className="absolute inset-0 overflow-hidden">{particles}</div>
@@ -208,4 +205,4 @@ const EnhancedSection: React.FC<SectionProps> = ({
   );
 };
 
-export default EnhancedSection;
+export default Section;
