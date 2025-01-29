@@ -3,38 +3,40 @@ import anime from "animejs";
 
 const NewtonCradle: React.FC = () => {
   const ballCount = 3;
-  const gap = 8;
+  const gap = 8.5;
   useEffect(() => {
-    const swingAngle = 30;
-    const swingDuration = 1200;
+    const swingAngle = 35;
+    const swingDuration = 800;
 
     const tl = anime.timeline({
       loop: true,
-      easing: "easeInOutSine",
+      easing: "cubicBezier(.45,.05,.55,.95)",
     });
 
     tl.add({
       targets: ".pendulum-0",
       rotate: swingAngle,
       duration: swingDuration / 2,
-      easing: "easeInOutSine",
+      easing: "cubicBezier(.35,0,.25,1)",
     })
       .add({
         targets: ".pendulum-0",
         rotate: 0,
         duration: swingDuration / 2,
-        easing: "easeInOutSine",
+        easing: "cubicBezier(.5,.05,.65,1)",
       })
       .add({
         targets: ".pendulum-2",
         rotate: -swingAngle,
         duration: swingDuration / 2,
-        offset: "-=500",
+        offset: "-=300",
+        easing: "cubicBezier(.35,0,.25,1)",
       })
       .add({
         targets: ".pendulum-2",
         rotate: 0,
         duration: swingDuration / 2,
+        easing: "cubicBezier(.5,.05,.65,1)",
       });
 
     return () => tl.pause();
