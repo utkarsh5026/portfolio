@@ -47,5 +47,7 @@ export const experiences: WorkExperience[] = [
       "Python",
     ],
     companyUrl: "https://www.ideas.com/",
+    docsUrl:
+      "https://docs.google.com/document/d/1i49PfchVxw91BQUkKSIgXbXLSQ-K-Jk8Snv5-kyN27g/edit?usp=sharing",
   },
 ];

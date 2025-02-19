@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Section from "@/components/base/Section";
 import { experiences } from "./experienceDump";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { FaDatabase, FaSearch, FaDocker } from "react-icons/fa";
+import { FaDatabase, FaSearch, FaDocker, FaFileAlt } from "react-icons/fa";
 import TechBadge from "@/components/base/TechBadge";
 // Fix icon mapping - change from IconType to JSX.Element
 const iconMap: { [key: string]: JSX.Element } = {
@@ -180,6 +180,18 @@ const WorkExperience: React.FC = () => {
               >
                 {experiences[selectedExp].company}
               </button>
+              {experiences[selectedExp].docsUrl && (
+                <button
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-md bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors dark:bg-blue-900/50 dark:text-blue-300 dark:hover:bg-blue-900/70"
+                  onClick={() =>
+                    window.open(experiences[selectedExp].docsUrl, "_blank")
+                  }
+                  aria-label="View detailed experience"
+                >
+                  <FaFileAlt className="text-xs" />
+                  <span>View Details</span>
+                </button>
+              )}
             </div>
 
             <div className="space-y-6 sm:space-y-8 mb-6 sm:mb-8">

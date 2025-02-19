@@ -44,4 +44,5 @@ export type WorkExperience = {
   technologies: string[];
   imageSrc: string;
   companyUrl: string;
+  docsUrl?: string;
 };
