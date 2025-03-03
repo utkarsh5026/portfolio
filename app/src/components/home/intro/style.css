@@ -1,0 +1,84 @@
+/* Clean, subtle code theme additions to your CSS */
+@keyframes matrix {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(1000%);
+    }
+}
+
+
+/* Animated border gradient - more subtle */
+@keyframes border {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.animate-border {
+    background-size: 300% 300%;
+    animation: border 6s ease infinite;
+}
+
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.cursor-blink {
+    animation: blink 1s infinite;
+}
+
+/* macOS dots */
+.shadow-glow-red {
+  box-shadow: 0 0 6px rgba(255, 95, 86, 0.8);
+}
+
+.shadow-glow-yellow {
+  box-shadow: 0 0 6px rgba(255, 189, 46, 0.8);
+}
+
+.shadow-glow-green {
+  box-shadow: 0 0 6px rgba(39, 201, 63, 0.8);
+}
+
+
+
+@keyframes float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(500px);
+  }
+}
+
+
+@keyframes subtlePulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse {
+  animation: subtlePulse 3s ease-in-out infinite;
+}
