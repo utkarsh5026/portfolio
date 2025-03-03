@@ -17,43 +17,43 @@ const ContactMe: React.FC = () => {
       name: "Email",
       icon: <MdEmail className="w-6 h-6" />,
       href: "mailto:utkarshpriyadarshi5026@gmail.com",
-      color: "hover:text-blue-500",
+      color: "hover:text-ctp-blue",
     },
     {
       name: "GitHub",
       icon: <FaGithub className="w-6 h-6" />,
       href: "https://github.com/utkarsh5026",
-      color: "hover:text-purple-500",
+      color: "hover:text-ctp-mauve",
     },
     {
       name: "LinkedIn",
       icon: <FaLinkedin className="w-6 h-6" />,
       href: "https://www.linkedin.com/in/utkarsh-priyadarshi-8b5a731b9/",
-      color: "hover:text-blue-600",
+      color: "hover:text-ctp-sapphire",
     },
     {
       name: "Twitter",
       icon: <FaTwitter className="w-6 h-6" />,
       href: "https://x.com/UtkarshPriyad10",
-      color: "hover:text-blue-400",
+      color: "hover:text-ctp-sky",
     },
   ];
 
   return (
     <Section id="contact" label="Contact">
       <div className="max-w-4xl mx-auto px-4 md:px-8 lg:px-12">
-        <Card className="border-2 border-muted bg-background/60 backdrop-blur-sm hover:border-primary/20 transition-all duration-500">
+        <Card className="border-2 border-ctp-surface0 bg-ctp-base/60 backdrop-blur-sm hover:border-ctp-mauve/20 transition-all duration-500">
           <CardContent className="p-4 sm:p-6 md:p-8 lg:p-10">
             <div className="text-center space-y-4 sm:space-y-6 md:space-y-8">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-ctp-mauve">
                 Let's Work Together!
               </h3>
-              <p className="text-sm sm:text-base md:text-lg sm:my-4 md:my-6 lg:my-8 text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base md:text-lg sm:my-4 md:my-6 lg:my-8 text-ctp-pink max-w-2xl mx-auto">
                 I'm always open to discussing new projects, creative ideas, or
                 opportunities to be part of your visions. Feel free to reach out
                 through any of the following channels. If you have any
                 questions, email me at{" "}
-                <span className="border-b-2 border-primary hover:border-primary/50 transition-all duration-300 break-all">
+                <span className="border-b-2 border-ctp-pink hover:border-ctp-pink/50 transition-all duration-300 break-all">
                   utkarshpriyadarshi5026@gmail.com
                 </span>
               </p>
@@ -71,16 +71,16 @@ const ContactMe: React.FC = () => {
                       {link.icon}
                       <span>{link.name}</span>
                     </div>
-                    <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-primary/5 to-primary/10 transition-transform duration-300 group-hover:translate-y-0" />
+                    <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-ctp-mauve/5 to-ctp-mauve/10 transition-transform duration-300 group-hover:translate-y-0" />
                   </Button>
                 ))}
               </div>
 
-              <div className="mt-6 sm:mt-12 md:mt-16 p-4 sm:p-6 md:p-8 bg-muted/30 rounded-lg">
-                <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-2 md:mb-4">
+              <div className="mt-6 sm:mt-12 md:mt-16 p-4 sm:p-6 md:p-8 bg-ctp-surface0/30 rounded-lg">
+                <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-2 md:mb-4 text-ctp-lavender">
                   Available for Opportunities
                 </h4>
-                <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
+                <p className="text-sm sm:text-base md:text-lg text-ctp-subtext1">
                   Currently open to Web Development and Automation
                   opportunities. Let's create something amazing together!
                 </p>
