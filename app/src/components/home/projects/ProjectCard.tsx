@@ -6,6 +6,7 @@ import { SiGithub } from "react-icons/si";
 import { cn } from "@/lib/utils";
 import { Project } from "@/types";
 import TechBadge from "@/components/base/TechBadge";
+import GradientText from "@/components/utils/GradientText";
 import anime from "animejs";
 
 interface ProjectCardProps {
@@ -14,7 +15,6 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const [isExpanded, setIsExpanded] = useState(true);
-  const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
   // Animation effect when card comes into view
@@ -45,8 +45,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       ref={cardRef}
       className="group cursor-pointer overflow-hidden border border-ctp-surface0 hover:border-ctp-lavender transition-all duration-500 bg-gradient-to-br from-ctp-crust to-ctp-mantle backdrop-blur-sm shadow-lg hover:shadow-xl"
       onClick={handleCardClick}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Project thumbnail with overlay */}
       {project.thumbnail && (
@@ -70,9 +68,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       {/* Project title with gradient text */}
       <CardHeader className="relative z-10 pb-2">
         <CardTitle className="text-2xl font-bold tracking-tight">
-          <span className="bg-gradient-to-r from-ctp-lavender via-ctp-blue to-ctp-lavender bg-clip-text text-transparent">
-            {project.name}
-          </span>
+          <GradientText>{project.name}</GradientText>
         </CardTitle>
       </CardHeader>
 
