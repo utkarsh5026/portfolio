@@ -11,7 +11,7 @@ import {
   FaTerminal,
 } from "react-icons/fa";
 import TechBadge from "@/components/base/TechBadge";
-// Fix icon mapping - change from IconType to JSX.Element
+
 const iconMap: { [key: string]: JSX.Element } = {
   FaDatabase: <FaDatabase />,
   FaSearchDatabase: <FaSearch />,
@@ -45,7 +45,6 @@ const WorkExperience: React.FC = () => {
     setSelectedExp(index);
   };
 
-  // Create a rounded rectangle path
   const cornerRadius = 8;
   const offset = 4;
   const width = dimensions.width - 2 * offset;
@@ -66,7 +65,7 @@ const WorkExperience: React.FC = () => {
   `;
 
   return (
-    <Section id="work" label="Work Experience">
+    <Section id="work" label="Work Experience" icon="database">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="relative">
           {/* Subtle header - more readable */}
@@ -82,7 +81,6 @@ const WorkExperience: React.FC = () => {
             } gap-4 sm:gap-6 lg:gap-8`}
           >
             {experiences.length > 1 && (
-              /* Timeline - only show if there are multiple experiences */
               <div className="space-y-3 sm:space-y-4">
                 {experiences.map((exp, index) => (
                   <button
@@ -113,7 +111,6 @@ const WorkExperience: React.FC = () => {
               </div>
             )}
 
-            {/* Experience Details */}
             <div
               ref={containerRef}
               className="bg-ctp-base dark:bg-ctp-crust p-4 sm:p-6 rounded-lg shadow-lg relative min-h-[300px]"
@@ -151,7 +148,6 @@ const WorkExperience: React.FC = () => {
                     className="text-ctp-lavender"
                   />
 
-                  {/* Animated tracing effect */}
                   <path
                     d={pathD}
                     fill="none"
@@ -169,29 +165,6 @@ const WorkExperience: React.FC = () => {
                       repeatCount="indefinite"
                     />
                   </path>
-
-                  {/* Glowing dot */}
-                  <circle r="3" className="text-ctp-blue fill-current">
-                    <animateMotion
-                      dur="4s"
-                      repeatCount="indefinite"
-                      path={pathD}
-                      rotate="auto"
-                    >
-                      <animate
-                        attributeName="r"
-                        values="3;4;3"
-                        dur="2s"
-                        repeatCount="indefinite"
-                      />
-                    </animateMotion>
-                    <animate
-                      attributeName="opacity"
-                      values="0.8;1;0.8"
-                      dur="2s"
-                      repeatCount="indefinite"
-                    />
-                  </circle>
                 </svg>
               </div>
 
