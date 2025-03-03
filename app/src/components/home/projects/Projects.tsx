@@ -6,8 +6,8 @@ import anime from "animejs";
 import { Project } from "@/types";
 import ProjectTab from "./ProjectTab";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Code, ArrowRight } from "lucide-react";
 import "./style.css";
+import FeaturedProject from "./FeaturedProject";
 
 const ProjectsComponent: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState(projects[0]);
@@ -76,7 +76,6 @@ const ProjectsComponent: React.FC = () => {
     setPreviewProject(null);
   };
 
-  // Generate decoration particles
   const generateParticles = (count: number) => {
     const particles = [];
     const shapes = ["circle", "triangle", "square", "diamond"];
@@ -120,7 +119,6 @@ const ProjectsComponent: React.FC = () => {
     return particles;
   };
 
-  // Featured project highlight
   const featuredProject = projects[0];
 
   return (
@@ -144,66 +142,10 @@ const ProjectsComponent: React.FC = () => {
           <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-ctp-lavender/10 rounded-full blur-3xl" />
         </div>
 
-        {/* Featured project highlight (above main content) */}
-        <div className="mb-12 max-w-6xl mx-auto">
-          <div className="flex items-center gap-3 mb-6">
-            <Sparkles className="w-5 h-5 text-ctp-peach" />
-            <h3 className="text-xl text-ctp-peach font-medium">
-              Featured Project
-            </h3>
-            <div className="h-px flex-grow bg-gradient-to-r from-ctp-peach/40 to-transparent" />
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="p-0.5 bg-gradient-to-r from-ctp-peach/50 via-ctp-mauve/30 to-ctp-blue/30 rounded-xl"
-          >
-            <div className="bg-gradient-to-r from-ctp-crust to-ctp-mantle p-6 rounded-lg">
-              <div className="flex flex-col md:flex-row gap-6 items-center">
-                <div className="md:w-1/2">
-                  <h4 className="text-2xl font-bold text-ctp-text mb-3">
-                    {featuredProject.name}
-                  </h4>
-                  <p className="text-ctp-subtext0 mb-4">
-                    {featuredProject.description.substring(0, 150)}...
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {featuredProject.technologies.slice(0, 4).map((tech) => (
-                      <span
-                        key={tech.name}
-                        className="text-xs px-3 py-1 rounded-full bg-ctp-surface0 text-ctp-blue"
-                      >
-                        {tech.name}
-                      </span>
-                    ))}
-                  </div>
-                  <button
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-ctp-surface0 text-ctp-blue hover:bg-ctp-surface1 transition-colors"
-                    onClick={handleProjectSelect(featuredProject)}
-                  >
-                    <span>View Details</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-                <div className="md:w-1/2 max-h-52 overflow-hidden rounded-lg">
-                  {featuredProject.thumbnail ? (
-                    <img
-                      src={featuredProject.thumbnail}
-                      alt={featuredProject.name}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-ctp-surface0 flex items-center justify-center">
-                      <Code className="w-12 h-12 text-ctp-blue opacity-40" />
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+        <FeaturedProject
+          featuredProject={featuredProject}
+          handleProjectSelect={handleProjectSelect}
+        />
 
         {/* Main projects content */}
         <div className="flex flex-col md:flex-row gap-8 max-w-6xl mx-auto">
