@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState, memo } from "react";
 import Cursor from "./Cursor";
+import { motion } from "framer-motion";
 
-// Constants
 const TYPING_SPEED = 50;
 const ERASING_SPEED = 30;
 const PAUSE_BEFORE_ERASE = 2000;
@@ -11,18 +11,25 @@ interface AnimatedTextProps {
   statements: string[];
 }
 
-/**
- * AnimatedText Component
- *
- * A React component that displays text with a typing animation effect.
- * It cycles through an array of statements, typing them out character by character,
- * then erasing them before moving to the next statement.
- *
- * @param {Object} props - Component props
- * @param {string[]} props.statements - Array of strings to be animated
- *
- * @returns {JSX.Element} A div containing the animated text with a cursor
- */
+const getSyntaxColor = (statement: string): string => {
+  if (statement.includes("build")) {
+    return "text-[#f9e2af]";
+  } else if (statement.includes("love")) {
+    return "text-[#f5c2e7]";
+  } else if (
+    statement.includes("JavaScript") ||
+    statement.includes("Python") ||
+    statement.includes("Go")
+  ) {
+    return "text-[#89b4fa]";
+  } else if (statement.includes("code")) {
+    return "text-[#a6e3a1]";
+  } else if (statement.includes("exploring")) {
+    return "text-[#cba6f7]";
+  }
+  return "text-[#cdd6f4]";
+};
+
 const AnimatedText: React.FC<AnimatedTextProps> = memo(({ statements }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
@@ -64,7 +71,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = memo(({ statements }) => {
 
       animationFrameRef.current = requestAnimationFrame(animate);
     },
-    [displayText, isTyping, currentIndex, statements]
+    [currentIndex, displayText, isTyping, statements]
   );
 
   useEffect(() => {
@@ -76,12 +83,21 @@ const AnimatedText: React.FC<AnimatedTextProps> = memo(({ statements }) => {
     };
   }, [animate]);
 
+  const syntaxClass = getSyntaxColor(statements[currentIndex]);
+
   return (
-    <div className="flex items-center gap-1 sm:gap-2 text-lg sm:text-xl md:text-2xl lg:text-3xl font-mono bg-slate-900/50 p-2 sm:p-3 md:p-4 rounded-lg w-full">
-      <span className="text-emerald-300 font-extrabold">&gt;</span>
-      <span className="text-emerald-300 font-bold">{displayText}</span>
-      <Cursor isTyping={isTyping} isEmpty={displayText.length === 0} />
-    </div>
+    <motion.div
+      className="font-roboto-mono bg-[#181825]/80 p-3 rounded-lg w-full border border-[#313244] relative overflow-hidden"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="flex items-center gap-2 text-lg sm:text-xl md:text-xl lg:text-2xl">
+        <span className="text-[#f38ba8] font-medium text-sm">$</span>
+        <span className={`${syntaxClass} text-sm`}>{displayText}</span>
+        <Cursor isTyping={isTyping} isEmpty={displayText.length === 0} />
+      </div>
+    </motion.div>
   );
 });
 

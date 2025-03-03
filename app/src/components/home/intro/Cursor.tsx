@@ -19,9 +19,9 @@ const CursorComponent: React.FC<CursorProps> = ({ isTyping, isEmpty }) => {
       const animation = anime({
         targets: cursor,
         opacity: [1, 0],
-        duration: 800,
+        duration: 600,
         loop: true,
-        easing: "easeInOutQuad",
+        easing: "steps(2, end)",
         direction: "alternate",
       });
 
@@ -35,10 +35,13 @@ const CursorComponent: React.FC<CursorProps> = ({ isTyping, isEmpty }) => {
   return (
     <span
       ref={cursorRef}
-      className="text-emerald-300 font-extrabold w-2 sm:w-3"
-    >
-      |
-    </span>
+      className="text-[#cdd6f4] font-mono h-5 w-[2px] sm:w-[3px] inline-block bg-[#89b4fa] animate-pulse"
+      style={{
+        animationDuration: "1s",
+        verticalAlign: "middle",
+        transform: "translateY(1px)",
+      }}
+    ></span>
   );
 };
 
