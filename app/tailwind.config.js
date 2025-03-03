@@ -1,6 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-import { mochaPalette } from "@catppuccin/tailwindcss";
-
 export default {
   darkMode: ["class"],
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -54,7 +52,33 @@ export default {
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
         },
-        mocha: mochaPalette,
+        // Catppuccin Mocha palette
+        "ctp-rosewater": "#f5e0dc",
+        "ctp-flamingo": "#f2cdcd",
+        "ctp-pink": "#f5c2e7",
+        "ctp-mauve": "#cba6f7",
+        "ctp-red": "#f38ba8",
+        "ctp-maroon": "#eba0ac",
+        "ctp-peach": "#fab387",
+        "ctp-yellow": "#f9e2af",
+        "ctp-green": "#a6e3a1",
+        "ctp-teal": "#94e2d5",
+        "ctp-sky": "#89dceb",
+        "ctp-sapphire": "#74c7ec",
+        "ctp-blue": "#89b4fa",
+        "ctp-lavender": "#b4befe",
+        "ctp-text": "#cdd6f4",
+        "ctp-subtext1": "#bac2de",
+        "ctp-subtext0": "#a6adc8",
+        "ctp-overlay2": "#9399b2",
+        "ctp-overlay1": "#7f849c",
+        "ctp-overlay0": "#6c7086",
+        "ctp-surface2": "#585b70",
+        "ctp-surface1": "#45475a",
+        "ctp-surface0": "#313244",
+        "ctp-base": "#1e1e2e",
+        "ctp-mantle": "#181825",
+        "ctp-crust": "#11111b",
       },
       animation: {
         "gradient-x": "gradient-x 1s cubic-bezier(0.4, 0, 0.2, 1) infinite",
@@ -98,16 +122,15 @@ export default {
         },
       },
       fontFamily: {
-        source: ['"Source Code Pro"', "monospace"],
-        "roboto-mono": ['"Roboto Mono"', "monospace"],
+        sans: ["Source Code Pro", "sans-serif"],
+        serif: ["JetBrains Mono", "serif"],
+        mono: ["JetBrains Mono", "monospace"],
+        source: ["JetBrains Mono", "monospace"],
+        "roboto-mono": ["Cascadia Code", "monospace"],
       },
     },
   },
   plugins: [
-    require("@catppuccin/tailwindcss")({
-      prefix: "ctp",
-      defaultFlavour: "mocha",
-    }),
     function ({ addUtilities }) {
       addUtilities({
         ".scrollbar-hide": {

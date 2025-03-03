@@ -68,11 +68,17 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-  html {
-    font-family: "Source Code Pro", monospace;
-    overflow-y: auto;
-    scrollbar-width: none;
-  }
+    :root,
+    .latte {
+      --radius: 0.5rem;
+    }
+  
+    .dark,
+    .mocha,
+    .macchiato,
+    .frappe {
+      color-scheme: dark;
+    }
 }
 @layer base {
   * {
@@ -161,18 +167,7 @@
   }
 }
 
-.code-particle {
-  position: fixed;
-  color: rgba(150, 255, 180, 0.07);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.2rem;
-  user-select: none;
-  pointer-events: none;
-  z-index: -1;
-  overflow: hidden;
-  white-space: nowrap;
-  animation: matrix 20s linear infinite;
-}
+
 
 .infinite-void {
   perspective: 1000px;
@@ -271,27 +266,3 @@
   animation: blink 1s infinite;
 }
 
-/* Animated gradient border */
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(
-    45deg,
-    rgba(137, 180, 250, 1),
-    rgba(203, 166, 247, 1),
-    rgba(245, 194, 231, 1),
-    rgba(243, 139, 168, 1),
-    rgba(249, 226, 175, 1),
-    rgba(166, 227, 161, 1)
-  );
-  background-size: 300% 300%;
-  animation: border 6s ease infinite;
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
