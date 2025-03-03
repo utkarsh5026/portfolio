@@ -8,8 +8,9 @@ import React from "react";
 import Section from "@/components/base/Section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MdEmail } from "react-icons/md";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { MdEmail, MdLocationPin } from "react-icons/md";
+import { FaGithub, FaHeart, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const ContactMe: React.FC = () => {
   const socialLinks = [
@@ -48,7 +49,7 @@ const ContactMe: React.FC = () => {
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-ctp-mauve">
                 Let's Work Together!
               </h3>
-              <p className="text-sm sm:text-base md:text-lg sm:my-4 md:my-6 lg:my-8 text-ctp-pink max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base md:text-lg sm:my-4 md:my-6 lg:my-8 text-ctp-text max-w-2xl mx-auto">
                 I'm always open to discussing new projects, creative ideas, or
                 opportunities to be part of your visions. Feel free to reach out
                 through any of the following channels. If you have any
@@ -76,15 +77,59 @@ const ContactMe: React.FC = () => {
                 ))}
               </div>
 
-              <div className="mt-6 sm:mt-12 md:mt-16 p-4 sm:p-6 md:p-8 bg-ctp-surface0/30 rounded-lg">
-                <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-2 md:mb-4 text-ctp-lavender">
-                  Available for Opportunities
-                </h4>
-                <p className="text-sm sm:text-base md:text-lg text-ctp-subtext1">
-                  Currently open to Web Development and Automation
-                  opportunities. Let's create something amazing together!
-                </p>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+                className="relative"
+              >
+                <div className="p-6 sm:p-8 md:p-10 rounded-xl backdrop-blur-sm relative overflow-hidden">
+                  {/* Background with gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-ctp-crust via-ctp-mantle to-ctp-crust opacity-90 z-0"></div>
+
+                  {/* Border glow */}
+                  <div
+                    className="absolute inset-0 rounded-xl z-0"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, transparent, var(--ctp-lavender), transparent)",
+                      backgroundSize: "200% 100%",
+                      animation: "shimmer 3s infinite linear",
+                      opacity: 0.2,
+                    }}
+                  ></div>
+
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-4 mb-4 md:mb-6">
+                      <div className="p-2 rounded-full bg-ctp-lavender/10">
+                        <MdLocationPin className="w-5 h-5 text-ctp-lavender" />
+                      </div>
+                      <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-ctp-lavender">
+                        Available for Opportunities
+                      </h4>
+                    </div>
+
+                    <p className="text-sm sm:text-base md:text-lg text-ctp-text ml-12">
+                      Currently open to{" "}
+                      <span className="text-ctp-green font-medium">
+                        Web Development
+                      </span>{" "}
+                      and{" "}
+                      <span className="text-ctp-peach font-medium">
+                        Automation
+                      </span>{" "}
+                      opportunities. Let's create something amazing together!
+                    </p>
+
+                    <div className="flex items-center justify-center mt-6 text-ctp-pink">
+                      <FaHeart className="w-5 h-5 mr-2" />
+                      <span className="text-sm opacity-80">
+                        Looking forward to collaborating with you
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </CardContent>
         </Card>
