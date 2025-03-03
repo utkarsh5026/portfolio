@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import { mochaPalette } from "@catppuccin/tailwindcss";
+
 export default {
   darkMode: ["class"],
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -52,6 +54,7 @@ export default {
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
         },
+        mocha: mochaPalette,
       },
       animation: {
         "gradient-x": "gradient-x 1s cubic-bezier(0.4, 0, 0.2, 1) infinite",
@@ -95,12 +98,16 @@ export default {
         },
       },
       fontFamily: {
-        'source': ['"Source Code Pro"', 'monospace'],
-        'roboto-mono': ['"Roboto Mono"', 'monospace'],
+        source: ['"Source Code Pro"', "monospace"],
+        "roboto-mono": ['"Roboto Mono"', "monospace"],
       },
     },
   },
   plugins: [
+    require("@catppuccin/tailwindcss")({
+      prefix: "ctp",
+      defaultFlavour: "mocha",
+    }),
     function ({ addUtilities }) {
       addUtilities({
         ".scrollbar-hide": {
