@@ -1,10 +1,3 @@
-/* 
-    Hey! This is a card component for showing off skills.
-    Each card has a nice gradient background, an icon, and lists out
-    related skills or technologies. It's designed to look clean
-    while still having some nice hover effects.
-*/
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronRight } from "lucide-react";
 import React from "react";
@@ -14,30 +7,72 @@ interface SkillCardProps {
   skill: string;
   icon?: React.ReactNode;
   items: string[];
+  accentColor?:
+    | "mauve"
+    | "blue"
+    | "lavender"
+    | "sapphire"
+    | "teal"
+    | "green"
+    | "red"
+    | "peach";
 }
 
-const SkillCard: React.FC<SkillCardProps> = ({ skill, icon, items }) => {
+const SkillCardComponent: React.FC<SkillCardProps> = ({
+  skill,
+  icon,
+  items,
+  accentColor = "lavender",
+}) => {
+  // Define complementary colors for gradients
+  const colorPairs = {
+    mauve: "blue",
+    blue: "lavender",
+    lavender: "sapphire",
+    sapphire: "sky",
+    teal: "green",
+    green: "teal",
+    red: "peach",
+    peach: "yellow",
+  };
+
+  const secondaryColor = colorPairs[accentColor] || "blue";
+
   return (
-    <div className="skill-card group relative w-full">
+    <div className="skill-card group relative w-full transition-all duration-300 hover:transform hover:-translate-y-1">
+      {/* Background gradient effect */}
       <div className="absolute inset-0 overflow-hidden rounded-lg">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 opacity-50 transform transition-transform duration-300 group-hover:scale-110" />
+        <div
+          className={`absolute inset-0 bg-gradient-to-r from-ctp-${accentColor}/20 to-ctp-${secondaryColor}/20 opacity-50 transform transition-transform duration-300 group-hover:scale-110`}
+        />
       </div>
 
-      <Card className="relative bg-background/60 backdrop-blur-sm border border-muted/20 hover:border-muted-foreground/30 transition-all duration-300 shadow-lg hover:shadow-xl">
+      {/* Main card */}
+      <Card className="relative bg-ctp-mantle border border-ctp-surface0 hover:border-ctp-surface2 transition-all duration-300 shadow hover:shadow-lg">
         <CardHeader className="pb-2 sm:pb-4">
-          <CardTitle className="flex items-center space-x-3">
-            {icon || (
-              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
-            )}
-            <span className="text-lg sm:text-xl font-semibold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+          <CardTitle className="flex items-center gap-3">
+            {/* Icon with accent color */}
+            <div
+              className={`p-2 rounded-lg bg-ctp-${accentColor}/10 flex items-center justify-center`}
+            >
+              {icon || (
+                <ChevronRight
+                  className={`w-4 h-4 sm:w-5 sm:h-5 text-ctp-${accentColor}`}
+                />
+              )}
+            </div>
+
+            {/* Skill title with gradient */}
+            <span className={`text-lg sm:text-xl font-semibold text-ctp-peach`}>
               {skill}
             </span>
           </CardTitle>
         </CardHeader>
+
         <CardContent>
           <ul className="flex flex-wrap gap-2 sm:gap-3">
             {items.map((item) => (
-              <SkillItem key={item} item={item} />
+              <SkillItem key={item} item={item} accentColor={accentColor} />
             ))}
           </ul>
         </CardContent>
@@ -46,5 +81,6 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, icon, items }) => {
   );
 };
 
-const SkillCardComponent = React.memo(SkillCard);
-export default SkillCardComponent;
+const SkillCard = React.memo(SkillCardComponent);
+
+export default SkillCard;

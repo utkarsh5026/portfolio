@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useSkillAnimation, useCloneElements } from "./hooks";
 import {
@@ -22,30 +22,51 @@ import {
   SiLangchain,
   SiGo,
 } from "react-icons/si";
+import { motion } from "framer-motion";
+
+// Map skills to Catppuccin colors
+const skillColors: Record<string, string> = {
+  JavaScript: "yellow",
+  Docker: "blue",
+  React: "sapphire",
+  TypeScript: "lavender",
+  "Node.js": "green",
+  Python: "yellow",
+  Golang: "blue",
+  Kubernetes: "blue",
+  Git: "maroon",
+  MongoDB: "green",
+  PostgreSQL: "blue",
+  Redis: "red",
+  AWS: "peach",
+  Django: "green",
+  Firebase: "peach",
+  Tailwind: "blue",
+  FastAPI: "green",
+  Express: "mauve",
+  Langchain: "pink",
+};
 
 const skills = [
-  {
-    icon: <SiJavascript className="text-yellow-500" />,
-    name: "JavaScript",
-  },
-  { icon: <SiDocker className="text-blue-500" />, name: "Docker" },
-  { icon: <SiReact className="text-blue-500" />, name: "React" },
-  { icon: <SiTypescript className="text-blue-500" />, name: "TypeScript" },
-  { icon: <SiNodedotjs className="text-green-500" />, name: "Node.js" },
-  { icon: <SiPython className="text-yellow-500" />, name: "Python" },
-  { icon: <SiGo className="text-blue-500" />, name: "Golang" },
-  { icon: <SiKubernetes className="text-blue-500" />, name: "Kubernetes" },
-  { icon: <SiGit className="text-red-800" />, name: "Git" },
-  { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
-  { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-500" /> },
-  { name: "Redis", icon: <SiRedis className="text-red-700" /> },
-  { name: "AWS", icon: <SiAmazon className="text-orange-500" /> },
-  { name: "Django", icon: <SiDjango className="text-green-500" /> },
-  { name: "Firebase", icon: <SiFirebase className="text-yellow-500" /> },
-  { name: "Tailwind", icon: <SiTailwindcss className="text-blue-500" /> },
-  { name: "FastAPI", icon: <SiFastapi className="text-green-500" /> },
-  { name: "Express", icon: <SiExpress className="text-red-500" /> },
-  { name: "Langchain", icon: <SiLangchain className="text-red-500" /> },
+  { icon: <SiJavascript />, name: "JavaScript" },
+  { icon: <SiDocker />, name: "Docker" },
+  { icon: <SiReact />, name: "React" },
+  { icon: <SiTypescript />, name: "TypeScript" },
+  { icon: <SiNodedotjs />, name: "Node.js" },
+  { icon: <SiPython />, name: "Python" },
+  { icon: <SiGo />, name: "Golang" },
+  { icon: <SiKubernetes />, name: "Kubernetes" },
+  { icon: <SiGit />, name: "Git" },
+  { name: "MongoDB", icon: <SiMongodb /> },
+  { name: "PostgreSQL", icon: <SiPostgresql /> },
+  { name: "Redis", icon: <SiRedis /> },
+  { name: "AWS", icon: <SiAmazon /> },
+  { name: "Django", icon: <SiDjango /> },
+  { name: "Firebase", icon: <SiFirebase /> },
+  { name: "Tailwind", icon: <SiTailwindcss /> },
+  { name: "FastAPI", icon: <SiFastapi /> },
+  { name: "Express", icon: <SiExpress /> },
+  { name: "Langchain", icon: <SiLangchain /> },
 ];
 
 const debounce = <T extends (...args: unknown[]) => unknown>(
@@ -68,6 +89,7 @@ const SkillCardMoving: React.FC = () => {
   const { startAnimation, stopAnimation, updateAnimation } =
     useSkillAnimation(elementRef);
   const { isInitialized, initializeClones } = useCloneElements(elementRef);
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
   useEffect(() => {
     if (!elementRef.current || isInitialized) return;
@@ -95,35 +117,104 @@ const SkillCardMoving: React.FC = () => {
   return (
     <div
       ref={ref}
-      className="w-full overflow-hidden bg-black py-4 sm:py-6 md:py-8 rounded-lg mb-8"
+      className="w-full overflow-hidden rounded-xl relative"
       style={{
         willChange: "transform",
         contain: "content",
       }}
     >
+      {/* Decorative background with gradient */}
+      <div className="absolute inset-0 bg-gradient-to-r from-ctp-crust via-ctp-mantle to-ctp-crust z-0"></div>
+
+      {/* Subtle pattern overlay */}
       <div
-        ref={elementRef}
-        className="flex whitespace-nowrap"
+        className="absolute inset-0 opacity-5 z-0"
         style={{
-          transform: "translateZ(0)",
-          backfaceVisibility: "hidden",
+          backgroundImage: `radial-gradient(circle, var(--ctp-overlay0) 1px, transparent 1px)`,
+          backgroundSize: "20px 20px",
         }}
-      >
-        {skills.map((skill, index) => (
-          <div
-            key={`${skill.name}-${index}`}
-            className="mx-4 sm:mx-6 md:mx-8 flex items-center space-x-2 sm:space-x-3 md:space-x-4 text-white"
-          >
-            <div className="text-base sm:text-lg md:text-xl">{skill.icon}</div>
-            <span className="text-base sm:text-lg md:text-xl">
-              {skill.name}
-            </span>
-          </div>
-        ))}
+      ></div>
+
+      {/* Top and bottom gradients for fading effect */}
+      {/* <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-ctp-mauve via-ctp-blue to-ctp-lavender opacity-50 z-10"></div>
+      <div className="absolute bottom-0 inset-x-0 h-1 bg-gradient-to-r from-ctp-lavender via-ctp-blue to-ctp-mauve opacity-50 z-10"></div> */}
+
+      {/* Skills slider */}
+      <div className="relative py-3 sm:py-4 md:py-5 z-10">
+        <div
+          ref={elementRef}
+          className="flex whitespace-nowrap"
+          style={{
+            transform: "translateZ(0)",
+            backfaceVisibility: "hidden",
+          }}
+          onMouseLeave={() => setHoveredSkill(null)}
+        >
+          {skills.map((skill, index) => {
+            const isHovered = hoveredSkill === `${skill.name}-${index}`;
+            const color = skillColors[skill.name] || "ctp-text";
+
+            return (
+              <div
+                key={`${skill.name}-${index}`}
+                className="mx-4 sm:mx-6 md:mx-8"
+                onMouseEnter={() => setHoveredSkill(`${skill.name}-${index}`)}
+              >
+                <motion.div
+                  className={`
+                    flex items-center gap-2 px-3 py-1 rounded-full
+                    bg-ctp-surface0/50 backdrop-blur-sm
+                    border border-ctp-surface0 hover:border-ctp-${color}
+                    transition-all duration-300
+                    ${isHovered ? `shadow-md shadow-ctp-${color}/20` : ""}
+                  `}
+                  animate={{
+                    scale: isHovered ? 1.05 : 1,
+                    y: isHovered ? -2 : 0,
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {/* Icon with dynamic color */}
+                  <div
+                    className={`
+                    text-ctp-${color} text-xs sm:text-sm md:text-base
+                    transition-all duration-300
+                    ${isHovered ? "scale-110" : ""}
+                  `}
+                  >
+                    {skill.icon}
+                  </div>
+
+                  {/* Skill name */}
+                  <span
+                    className={`
+                    text-sm  font-medium
+                    transition-colors duration-300
+                    ${isHovered ? `text-ctp-${color}` : "text-ctp-text"}
+                  `}
+                  >
+                    {skill.name}
+                  </span>
+
+                  {/* Hover indicator dot */}
+                  {isHovered && (
+                    <motion.div
+                      className={`absolute -right-1 -top-1 w-2 h-2 rounded-full bg-ctp-${color}`}
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0, opacity: 0 }}
+                    />
+                  )}
+                </motion.div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
 };
 
 const SkillCardMovingComponent = React.memo(SkillCardMoving);
+
 export default SkillCardMovingComponent;
