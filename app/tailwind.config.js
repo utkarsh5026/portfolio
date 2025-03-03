@@ -94,6 +94,10 @@ export default {
           "50%": { transform: "translate(15%, -10%) scale(1.5)" },
         },
       },
+      fontFamily: {
+        'source': ['"Source Code Pro"', 'monospace'],
+        'roboto-mono': ['"Roboto Mono"', 'monospace'],
+      },
     },
   },
   plugins: [
