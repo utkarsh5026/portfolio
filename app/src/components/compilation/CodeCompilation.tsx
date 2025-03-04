@@ -5,15 +5,14 @@ import { codeSnippets, COMPILE_STAGES } from "./content";
 import MatrixEffect from "../animations/MatrixEffect";
 import Code from "./Code";
 import AfterBuild from "./AfterBuild";
+import "./style.css";
 
 interface CodeCompilationProps {
   onLoadComplete: () => void;
 }
 
-// Reduce the total duration to make it feel snappier
-const TOTAL_DURATION_MS = 9000; // 6 seconds total (half the original time)
-// Process multiple lines per update to speed things up
-const LINES_PER_UPDATE = 2;
+const TOTAL_DURATION_MS = 3000;
+const BATCH_SIZE = 4;
 
 const CodeCompilation: React.FC<CodeCompilationProps> = ({
   onLoadComplete,
@@ -31,13 +30,26 @@ const CodeCompilation: React.FC<CodeCompilationProps> = ({
     charIndex: 0,
   });
   const [glitchEffect, setGlitchEffect] = useState(false);
+
+  // Store batch delay in a ref so it doesn't change
+  const batchDelayRef = useRef(
+    TOTAL_DURATION_MS / Math.ceil(codeSnippets.length / BATCH_SIZE)
+  );
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Calculate delay between batches - much shorter than original
-  const BATCH_DELAY =
-    TOTAL_DURATION_MS / Math.ceil(codeSnippets.length / LINES_PER_UPDATE);
+  // Store key values in refs to stabilize dependencies
+  const cursorPositionRef = useRef(cursorPosition);
+  cursorPositionRef.current = cursorPosition;
+
+  const currentStageRef = useRef(currentStage);
+  currentStageRef.current = currentStage;
 
   const finishTypingAnimation = useCallback(() => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+
     setCompilationProgress(100);
     setCurrentStage(COMPILE_STAGES.length - 1);
     setGlitchEffect(true);
@@ -50,24 +62,27 @@ const CodeCompilation: React.FC<CodeCompilationProps> = ({
           targets: terminalRef.current,
           translateY: [0, 20],
           opacity: [1, 0],
-          duration: 300, // Even faster exit animation
+          duration: 500,
           easing: "easeInOutQuad",
           complete: () => {
             setShowCompilation(false);
             setTimeout(() => {
               onLoadComplete();
-            }, 500); // Reduced delay here too
+            }, 1000);
           },
         });
       }
-    }, 150); // Shorter glitch effect
+    }, 200);
   }, [onLoadComplete]);
 
+  // Stabilize processBatch with minimal dependencies
   const processBatch = useCallback(() => {
-    const startLine = cursorPosition.lineIndex;
-    const endLine = Math.min(startLine + LINES_PER_UPDATE, codeSnippets.length);
+    // Use ref values to avoid dependency changes
+    const position = cursorPositionRef.current;
+    const startLine = position.lineIndex;
+    const endLine = Math.min(startLine + BATCH_SIZE, codeSnippets.length);
 
-    // Update multiple lines at once for faster animation
+    // Process multiple lines at once for speed
     setTypedText((prev) => {
       const newTypedText = [...prev];
       for (let i = startLine; i < endLine; i++) {
@@ -76,45 +91,53 @@ const CodeCompilation: React.FC<CodeCompilationProps> = ({
       return newTypedText;
     });
 
-    if (endLine < codeSnippets.length) {
-      setCursorPosition({
-        lineIndex: endLine,
-        charIndex: 0,
-      });
+    // Update cursor position
+    setCursorPosition({
+      lineIndex: endLine,
+      charIndex: 0,
+    });
 
-      // Schedule next batch with a short delay
-      timerRef.current = setTimeout(processBatch, BATCH_DELAY);
-    } else {
-      // Finish animation immediately when all lines are processed
-      finishTypingAnimation();
-    }
-
-    // Update progress and stage
+    // Calculate and update progress
     const progress = (endLine / codeSnippets.length) * 100;
     setCompilationProgress(progress);
 
+    // Update stage if needed
     const stageIndex = Math.floor((progress / 100) * COMPILE_STAGES.length);
-    if (stageIndex < COMPILE_STAGES.length && stageIndex !== currentStage) {
+    if (
+      stageIndex < COMPILE_STAGES.length &&
+      stageIndex !== currentStageRef.current
+    ) {
       setCurrentStage(stageIndex);
       setGlitchEffect(true);
-      setTimeout(() => setGlitchEffect(false), 50); // Shorter glitch effect
+      setTimeout(() => setGlitchEffect(false), 100);
     }
-  }, [cursorPosition, currentStage, finishTypingAnimation, BATCH_DELAY]);
 
+    // Schedule next batch or finish
+    if (endLine < codeSnippets.length) {
+      // Important: use the ref value to maintain consistent timing
+      timerRef.current = setTimeout(processBatch, batchDelayRef.current);
+    } else {
+      finishTypingAnimation();
+    }
+  }, [finishTypingAnimation]); // Only depend on finishTypingAnimation
+
+  // Initialize the animation
   useEffect(() => {
     if (!showCompilation) return;
 
-    // Start processing immediately
-    processBatch();
+    // Start the first batch after a short delay
+    timerRef.current = setTimeout(processBatch, 100);
 
+    // Clean up any timers when component unmounts or dependencies change
     return () => {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
+        timerRef.current = null;
       }
     };
   }, [processBatch, showCompilation]);
 
-  // Terminal visual effects
+  // Terminal visual effects setup
   useEffect(() => {
     if (!containerRef.current) return;
 
