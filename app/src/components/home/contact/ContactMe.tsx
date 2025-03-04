@@ -11,35 +11,40 @@ import { Button } from "@/components/ui/button";
 import { MdEmail, MdLocationPin } from "react-icons/md";
 import { FaGithub, FaHeart, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { motion } from "framer-motion";
+import OutlineNode from "../editor/outline/OutlineNode";
+
+const socialLinks = [
+  {
+    name: "Email",
+    icon: <MdEmail className="w-6 h-6" />,
+    href: "mailto:utkarshpriyadarshi5026@gmail.com",
+    color: "hover:text-ctp-blue",
+    outlineIcon: <MdEmail className="w-3 h-3 text-ctp-blue" />,
+  },
+  {
+    name: "GitHub",
+    icon: <FaGithub className="w-6 h-6" />,
+    href: "https://github.com/utkarsh5026",
+    color: "hover:text-ctp-mauve",
+    outlineIcon: <FaGithub className="w-3 h-3 text-ctp-mauve" />,
+  },
+  {
+    name: "LinkedIn",
+    icon: <FaLinkedin className="w-6 h-6" />,
+    href: "https://www.linkedin.com/in/utkarsh-priyadarshi-8b5a731b9/",
+    color: "hover:text-ctp-sapphire",
+    outlineIcon: <FaLinkedin className="w-3 h-3 text-ctp-sapphire" />,
+  },
+  {
+    name: "Twitter",
+    icon: <FaTwitter className="w-6 h-6" />,
+    href: "https://x.com/UtkarshPriyad10",
+    color: "hover:text-ctp-sky",
+    outlineIcon: <FaTwitter className="w-3 h-3 text-ctp-sky" />,
+  },
+];
 
 const ContactMe: React.FC = () => {
-  const socialLinks = [
-    {
-      name: "Email",
-      icon: <MdEmail className="w-6 h-6" />,
-      href: "mailto:utkarshpriyadarshi5026@gmail.com",
-      color: "hover:text-ctp-blue",
-    },
-    {
-      name: "GitHub",
-      icon: <FaGithub className="w-6 h-6" />,
-      href: "https://github.com/utkarsh5026",
-      color: "hover:text-ctp-mauve",
-    },
-    {
-      name: "LinkedIn",
-      icon: <FaLinkedin className="w-6 h-6" />,
-      href: "https://www.linkedin.com/in/utkarsh-priyadarshi-8b5a731b9/",
-      color: "hover:text-ctp-sapphire",
-    },
-    {
-      name: "Twitter",
-      icon: <FaTwitter className="w-6 h-6" />,
-      href: "https://x.com/UtkarshPriyad10",
-      color: "hover:text-ctp-sky",
-    },
-  ];
-
   return (
     <Section id="contact" label="Contact" glowAccent="mauve" scanlines={true}>
       <div className="max-w-4xl mx-auto px-4 md:px-8 lg:px-12">
@@ -61,19 +66,27 @@ const ContactMe: React.FC = () => {
 
               <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mt-4 sm:mt-6 md:mt-8">
                 {socialLinks.map((link) => (
-                  <Button
+                  <OutlineNode
                     key={link.name}
-                    variant="outline"
-                    size="default"
-                    className={`w-full sm:w-[calc(50%-0.5rem)] md:w-auto group relative overflow-hidden transition-all duration-300 ${link.color}`}
-                    onClick={() => window.open(link.href, "_blank")}
+                    id={link.name}
+                    label={link.name}
+                    level={1}
+                    parentId="contact"
+                    icon={link.outlineIcon}
                   >
-                    <div className="relative flex items-center gap-2">
-                      {link.icon}
-                      <span>{link.name}</span>
-                    </div>
-                    <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-ctp-mauve/5 to-ctp-mauve/10 transition-transform duration-300 group-hover:translate-y-0" />
-                  </Button>
+                    <Button
+                      variant="outline"
+                      size="default"
+                      className={`w-full sm:w-[calc(50%-0.5rem)] md:w-auto group relative overflow-hidden transition-all duration-300 ${link.color}`}
+                      onClick={() => window.open(link.href, "_blank")}
+                    >
+                      <div className="relative flex items-center gap-2">
+                        {link.icon}
+                        <span>{link.name}</span>
+                      </div>
+                      <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-ctp-mauve/5 to-ctp-mauve/10 transition-transform duration-300 group-hover:translate-y-0" />
+                    </Button>
+                  </OutlineNode>
                 ))}
               </div>
 
@@ -89,13 +102,12 @@ const ContactMe: React.FC = () => {
 
                   {/* Border glow */}
                   <div
-                    className="absolute inset-0 rounded-xl z-0"
+                    className="absolute inset-0 rounded-xl z-0 opacity-20"
                     style={{
                       background:
                         "linear-gradient(90deg, transparent, var(--ctp-lavender), transparent)",
                       backgroundSize: "200% 100%",
                       animation: "shimmer 3s infinite linear",
-                      opacity: 0.2,
                     }}
                   ></div>
 
