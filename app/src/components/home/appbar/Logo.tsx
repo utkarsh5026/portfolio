@@ -14,6 +14,7 @@
 
 import React, { useEffect, useRef } from "react";
 import anime from "animejs";
+import "./logo.css";
 
 interface LogoProps {
   centerDot?: boolean;
@@ -118,9 +119,8 @@ const Logo: React.FC<LogoProps> = ({ centerDot }) => {
             <span
               ref={dotRef}
               className={`text-orange-500 font-bold opacity-0 leading-none ${
-                centerDot ? "absolute left-1/2 -translate-x-1/2" : ""
+                centerDot ? "absolute left-1/2 -translate-x-1/2 dot-center" : ""
               }`}
-              style={centerDot ? { fontSize: "2em" } : {}}
             >
               .
             </span>
