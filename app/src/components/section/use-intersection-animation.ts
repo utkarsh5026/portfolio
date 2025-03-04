@@ -2,6 +2,7 @@ import { useState, useEffect, RefObject } from "react";
 import anime from "animejs";
 
 export const useIntersectionAnimation = (
+  id: string,
   sectionRef: RefObject<HTMLDivElement>,
   label: string,
   glowAccent: string
@@ -10,6 +11,7 @@ export const useIntersectionAnimation = (
   const [titleWidth, setTitleWidth] = useState(0);
 
   useEffect(() => {
+    console.log(id);
     const section = sectionRef.current;
     if (!section) return;
 
@@ -64,7 +66,7 @@ export const useIntersectionAnimation = (
     };
 
     return () => observer.disconnect();
-  }, [sectionRef, label, glowAccent]);
+  }, [sectionRef, label, glowAccent, id]);
 
   return { isActive, titleWidth };
 };
