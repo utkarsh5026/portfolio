@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Section from "@/components/base/Section";
+import Section from "@/components/section/Section";
 import { experiences } from "./experienceDump";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import {
