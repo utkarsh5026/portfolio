@@ -14,7 +14,7 @@ type Tech = {
   name: string;
   color: string;
   bg: string;
-  intensity: "medium" | "low" | "high" | "custom";
+  intensity: "medium" | "low" | "high";
   delay: number;
 };
 
