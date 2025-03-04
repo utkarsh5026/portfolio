@@ -3,11 +3,13 @@ import ProjectCard from "./ProjectCard";
 import Section from "@/components/section/Section";
 import projects from "./data";
 import anime from "animejs";
-import { Project } from "@/types";
+import type { Project } from "@/types";
 import ProjectTab from "./ProjectTab";
 import { motion, AnimatePresence } from "framer-motion";
 import "./style.css";
 import FeaturedProject from "./FeaturedProject";
+import OutlineNode from "../editor/outline/OutlineNode";
+import { Sparkles, CircleDot } from "lucide-react";
 
 const ProjectsComponent: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState(projects[0]);
@@ -76,49 +78,6 @@ const ProjectsComponent: React.FC = () => {
     setPreviewProject(null);
   };
 
-  const generateParticles = (count: number) => {
-    const particles = [];
-    const shapes = ["circle", "triangle", "square", "diamond"];
-    const catpColors = [
-      "ctp-lavender",
-      "ctp-blue",
-      "ctp-mauve",
-      "ctp-sapphire",
-      "ctp-teal",
-    ];
-
-    for (let i = 0; i < count; i++) {
-      const shape = shapes[Math.floor(Math.random() * shapes.length)];
-      const color = catpColors[Math.floor(Math.random() * catpColors.length)];
-      const size = 5 + Math.random() * 10;
-      const top = Math.random() * 100;
-      const left = Math.random() * 100;
-
-      particles.push(
-        <div
-          key={i}
-          className={`particle absolute bg-${color}/20 ${
-            shape === "circle"
-              ? "rounded-full"
-              : shape === "triangle"
-              ? "triangle"
-              : shape === "diamond"
-              ? "diamond"
-              : "rounded-sm"
-          }`}
-          style={{
-            width: `${size}px`,
-            height: `${size}px`,
-            top: `${top}%`,
-            left: `${left}%`,
-          }}
-        />
-      );
-    }
-
-    return particles;
-  };
-
   const featuredProject = projects[0];
 
   return (
@@ -126,8 +85,6 @@ const ProjectsComponent: React.FC = () => {
       <div ref={sectionRef} className="relative mx-auto px-4 overflow-hidden">
         {/* Decorative background elements */}
         <div className="absolute inset-0 overflow-hidden opacity-30 pointer-events-none z-0">
-          {generateParticles(20)}
-
           {/* Subtle grid pattern */}
           <div
             className="absolute inset-0 opacity-10"
@@ -142,10 +99,18 @@ const ProjectsComponent: React.FC = () => {
           <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-ctp-lavender/10 rounded-full blur-3xl" />
         </div>
 
-        <FeaturedProject
-          featuredProject={featuredProject}
-          handleProjectSelect={handleProjectSelect}
-        />
+        <OutlineNode
+          id="featured-project"
+          label="Featured Project"
+          level={1}
+          parentId="projects"
+          icon={<Sparkles className="w-3 h-3 text-ctp-lavender" />}
+        >
+          <FeaturedProject
+            featuredProject={featuredProject}
+            handleProjectSelect={handleProjectSelect}
+          />
+        </OutlineNode>
 
         {/* Main projects content */}
         <div className="flex flex-col md:flex-row gap-8 max-w-6xl mx-auto">
@@ -173,11 +138,20 @@ const ProjectsComponent: React.FC = () => {
                       onMouseEnter={() => handleProjectPreview(project)}
                       onMouseLeave={handlePreviewEnd}
                     >
-                      <ProjectTab
-                        project={project}
-                        isSelected={selectedProject.name === project.name}
-                        onSelect={handleProjectSelect}
-                      />
+                      <OutlineNode
+                        id={`projects-${project.name}`}
+                        label={project.name}
+                        level={1}
+                        parentId="projects"
+                        icon={<CircleDot className="w-3 h-3 text-ctp-green" />}
+                      >
+                        <ProjectTab
+                          outlineID={`projects-${project.name}`}
+                          project={project}
+                          isSelected={selectedProject.name === project.name}
+                          onSelect={handleProjectSelect}
+                        />
+                      </OutlineNode>
                     </motion.div>
                   ))}
                 </AnimatePresence>
