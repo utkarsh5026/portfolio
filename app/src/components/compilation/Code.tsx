@@ -74,12 +74,12 @@ const Code: React.FC<CodeProps> = ({ typedText, cursorPosition }) => {
                   )
                   .replace(
                     /(\/\/ .*$)/g,
-                    (match) => `<span class="text-[#6c7086]">${match}</span>`
+                    (match) => `<span class="text-ctp-blue">${match}</span>`
                   ),
               }}
             />
             {cursorPosition.lineIndex === index && (
-              <span className="inline-block w-2 h-4 ml-px bg-[#89b4fa] animate-blink"></span>
+              <span className="inline-block w-2 h-4 ml-px bg-ctp-blue animate-blink"></span>
             )}
           </pre>
         </div>
