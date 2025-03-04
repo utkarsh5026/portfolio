@@ -2,23 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import Section from "@/components/section/Section";
 import { experiences } from "./experienceDump";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import {
-  FaDatabase,
-  FaSearch,
-  FaDocker,
-  FaFileAlt,
-  FaCode,
-  FaTerminal,
-} from "react-icons/fa";
+import { FaFileAlt } from "react-icons/fa";
 import TechBadge from "@/components/base/TechBadge";
+import Achievements from "./Achievements";
+import OutlineNode from "../editor/outline/OutlineNode";
 
-const iconMap: { [key: string]: JSX.Element } = {
-  FaDatabase: <FaDatabase />,
-  FaSearchDatabase: <FaSearch />,
-  FaDocker: <FaDocker />,
-  FaCode: <FaCode />,
-  FaTerminal: <FaTerminal />,
-};
+const EXPERIENCE_ID = "experience";
 
 const WorkExperience: React.FC = () => {
   const [selectedExp, setSelectedExp] = useState<number>(0);
@@ -65,7 +54,7 @@ const WorkExperience: React.FC = () => {
   `;
 
   return (
-    <Section id="work" label="Work Experience" icon="database">
+    <Section id={EXPERIENCE_ID} label="Work Experience" icon="database">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="relative">
           {/* Subtle header - more readable */}
@@ -178,78 +167,65 @@ const WorkExperience: React.FC = () => {
                   </span>
                 </div>
 
-                <div className="flex items-center gap-2 justify-start align-middle my-4">
-                  <span className="font-semibold text-ctp-mauve">Company:</span>
-                  <button
-                    className="text-ctp-blue hover:text-ctp-lavender hover:underline"
-                    onClick={() =>
-                      window.open(experiences[selectedExp].companyUrl, "_blank")
-                    }
-                    aria-label={`Visit ${experiences[selectedExp].company} website`}
-                  >
-                    {experiences[selectedExp].company}
-                  </button>
-                  {experiences[selectedExp].docsUrl && (
+                <OutlineNode
+                  id={`${experiences[selectedExp].company}-company`}
+                  label="Company"
+                  level={1}
+                  parentId={EXPERIENCE_ID}
+                >
+                  <div className="flex items-center gap-2 justify-start align-middle my-4">
+                    <span className="font-semibold text-ctp-mauve">
+                      Company:
+                    </span>
                     <button
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-md bg-ctp-surface0 text-ctp-blue hover:bg-ctp-surface1 transition-colors dark:bg-ctp-surface0 dark:text-ctp-sky dark:hover:bg-ctp-surface1"
+                      className="text-ctp-blue hover:text-ctp-lavender hover:underline"
                       onClick={() =>
-                        window.open(experiences[selectedExp].docsUrl, "_blank")
+                        window.open(
+                          experiences[selectedExp].companyUrl,
+                          "_blank"
+                        )
                       }
-                      aria-label="View detailed experience"
+                      aria-label={`Visit ${experiences[selectedExp].company} website`}
                     >
-                      <FaFileAlt className="text-xs" />
-                      <span>View Details</span>
+                      {experiences[selectedExp].company}
                     </button>
-                  )}
-                </div>
-
-                <div className="font-semibold text-ctp-mauve mb-2">
-                  Achievements:
-                </div>
-                <div className="space-y-6 sm:space-y-8 mb-6 sm:mb-8 ml-4">
-                  {experiences[selectedExp].achievements.map(
-                    (achievement, index) => (
-                      <div
-                        key={`project-${index}-${achievement.title}`}
-                        className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg transition-all hover:bg-ctp-surface0 dark:hover:bg-ctp-surface0 border border-ctp-surface0 dark:border-ctp-surface1"
+                    {experiences[selectedExp].docsUrl && (
+                      <button
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-md bg-ctp-surface0 text-ctp-blue hover:bg-ctp-surface1 transition-colors dark:bg-ctp-surface0 dark:text-ctp-sky dark:hover:bg-ctp-surface1"
+                        onClick={() =>
+                          window.open(
+                            experiences[selectedExp].docsUrl,
+                            "_blank"
+                          )
+                        }
+                        aria-label="View detailed experience"
                       >
-                        {achievement.icon && iconMap[achievement.icon] && (
-                          <div className="flex-shrink-0 p-1.5 sm:p-2 bg-ctp-surface0 dark:bg-ctp-surface0 rounded-lg text-ctp-sky">
-                            <div className="text-sm sm:text-base">
-                              {iconMap[achievement.icon]}
-                            </div>
-                          </div>
-                        )}
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-sm sm:text-base mb-2 text-ctp-blue dark:text-ctp-sky">
-                            {achievement.title}
-                          </h4>
-                          <ul className="text-xs sm:text-sm text-ctp-subtext1 dark:text-ctp-subtext0 leading-relaxed list-disc pl-4">
-                            {achievement.description.map((desc, i) => (
-                              <li
-                                key={`${index}-${i}`}
-                                className="marker:text-ctp-green"
-                              >
-                                <span className="text-ctp-subtext1 dark:text-ctp-subtext0">
-                                  {desc}
-                                </span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    )
-                  )}
-                </div>
+                        <FaFileAlt className="text-xs" />
+                        <span>View Details</span>
+                      </button>
+                    )}
+                  </div>
+                </OutlineNode>
 
-                <div className="font-semibold text-ctp-mauve mb-2">
-                  Technologies:
-                </div>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 ml-4 mb-4">
-                  {experiences[selectedExp].technologies.map((tech, index) => (
-                    <TechBadge tech={tech} key={`${tech}-${index}`} />
-                  ))}
-                </div>
+                <Achievements selectedExp={selectedExp} />
+
+                <OutlineNode
+                  id={`${experiences[selectedExp].company}-technologies`}
+                  label="Technologies"
+                  level={1}
+                  parentId={EXPERIENCE_ID}
+                >
+                  <div className="font-semibold text-ctp-mauve mb-2">
+                    Technologies:
+                  </div>
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 ml-4 mb-4">
+                    {experiences[selectedExp].technologies.map(
+                      (tech, index) => (
+                        <TechBadge tech={tech} key={`${tech}-${index}`} />
+                      )
+                    )}
+                  </div>
+                </OutlineNode>
               </div>
             </div>
           </div>
