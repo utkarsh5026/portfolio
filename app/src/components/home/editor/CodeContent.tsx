@@ -31,7 +31,7 @@ const CodeContent: React.FC<CodeContentProps> = ({ sections }) => {
           <div className="animate-fadeIn">
             {/* Line numbers */}
             <div className="absolute left-0 top-0 bottom-0 w-12 border-r border-[#313244] bg-[#181825]/50 flex flex-col items-end px-2 pt-8 text-xs text-[#6c7086] font-mono">
-              {Array.from({ length: 30 }).map((_, i) => (
+              {Array.from({ length: 50 }).map((_, i) => (
                 <div key={i} className="leading-6">
                   {i + 1}
                 </div>

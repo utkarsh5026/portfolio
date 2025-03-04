@@ -1,38 +1,36 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-type Theme = "dark" | "light";
+type CatppuccinFlavor = "latte" | "frappe" | "macchiato" | "mocha";
 
 type ThemeProviderProps = {
   children: React.ReactNode;
-  defaultTheme?: Theme;
+  defaultFlavor?: CatppuccinFlavor;
 };
 
 type ThemeProviderState = {
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
+  flavor: CatppuccinFlavor;
+  setFlavor: (flavor: CatppuccinFlavor) => void;
 };
 
-const initialState: ThemeProviderState = {
-  theme: "dark",
-  setTheme: () => null,
-};
-
-const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
+const ThemeProviderContext = createContext<ThemeProviderState>({
+  flavor: "mocha",
+  setFlavor: () => null,
+});
 
 export function ThemeProvider({
   children,
-  defaultTheme = "dark",
+  defaultFlavor = "mocha",
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(defaultTheme);
+  const [flavor, setFlavor] = useState<CatppuccinFlavor>(defaultFlavor);
 
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove("light", "dark");
-    root.classList.add(theme);
-  }, [theme]);
+    root.classList.remove("latte", "frappe", "macchiato", "mocha");
+    root.classList.add(flavor);
+  }, [flavor]);
 
   return (
-    <ThemeProviderContext.Provider value={{ theme, setTheme }}>
+    <ThemeProviderContext.Provider value={{ flavor, setFlavor }}>
       {children}
     </ThemeProviderContext.Provider>
   );
@@ -40,9 +38,8 @@ export function ThemeProvider({
 
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext);
-
-  if (context === undefined)
+  if (context === undefined) {
     throw new Error("useTheme must be used within a ThemeProvider");
-
+  }
   return context;
 };
