@@ -1,6 +1,6 @@
 import React, { useState, useCallback, memo, useRef, useEffect } from "react";
 import ProjectCard from "./ProjectCard";
-import Section from "@/components/base/Section";
+import Section from "@/components/section/Section";
 import projects from "./data";
 import anime from "animejs";
 import { Project } from "@/types";
