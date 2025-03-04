@@ -1,3 +1,4 @@
+import React, { useEffect, useRef } from "react";
 import { codeSnippets } from "./content";
 
 interface CodeProps {
@@ -9,10 +10,41 @@ interface CodeProps {
 }
 
 const Code: React.FC<CodeProps> = ({ typedText, cursorPosition }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const activeLineRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (containerRef.current && activeLineRef.current) {
+      const container = containerRef.current;
+      const activeLine = activeLineRef.current;
+
+      const containerHeight = container.clientHeight;
+      const activeLineTop = activeLine.offsetTop;
+      const activeLineHeight = activeLine.clientHeight;
+
+      const idealScrollTop =
+        activeLineTop - containerHeight / 2 + activeLineHeight;
+
+      const scrollTop = Math.max(0, idealScrollTop);
+
+      container.scrollTo({
+        top: scrollTop,
+        behavior: "smooth",
+      });
+    }
+  }, [typedText, cursorPosition]);
+
   return (
-    <div className="bg-[#11111b] p-4 rounded mb-6 h-[400px] overflow-y-auto terminal-scrollbar">
+    <div
+      ref={containerRef}
+      className="bg-[#11111b] p-4 rounded mb-6 h-[400px] overflow-y-auto terminal-scrollbar"
+    >
       {codeSnippets.map((line, index) => (
-        <div key={line} className="flex mb-1 relative">
+        <div
+          key={line}
+          className="flex mb-1 relative"
+          ref={cursorPosition.lineIndex === index ? activeLineRef : null}
+        >
           <span className="text-[#6c7086] w-10 text-right pr-4 select-none">
             {index + 1}
           </span>

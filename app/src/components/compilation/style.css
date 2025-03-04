@@ -81,6 +81,170 @@
     animation: illuminate 4s ease-in-out infinite;
 }
 
+/* Screen shake animation definitions */
+@keyframes shake-light {
 
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0);
+    }
+
+    10% {
+        transform: translate(-1px, -1px) rotate(-0.5deg);
+    }
+
+    20% {
+        transform: translate(1px, 0) rotate(0.5deg);
+    }
+
+    30% {
+        transform: translate(-1px, 1px) rotate(-0.5deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(0.5deg);
+    }
+
+    50% {
+        transform: translate(-1px, 0) rotate(-0.5deg);
+    }
+
+    60% {
+        transform: translate(0, 1px) rotate(0);
+    }
+
+    70% {
+        transform: translate(-1px, -1px) rotate(-0.5deg);
+    }
+
+    80% {
+        transform: translate(1px, 1px) rotate(0.5deg);
+    }
+
+    90% {
+        transform: translate(0, -1px) rotate(0);
+    }
+}
+
+@keyframes shake-medium {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0);
+    }
+
+    10% {
+        transform: translate(-2px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(2px, 0) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(-2px, 2px) rotate(-0.5deg);
+    }
+
+    40% {
+        transform: translate(2px, -2px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-2px, 1px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(2px, 2px) rotate(0.5deg);
+    }
+
+    70% {
+        transform: translate(-2px, -1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(2px, 1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(-1px, -2px) rotate(-0.5deg);
+    }
+}
+
+@keyframes shake-strong {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0);
+    }
+
+    10% {
+        transform: translate(-3px, -3px) rotate(-1.5deg);
+    }
+
+    20% {
+        transform: translate(3px, 0) rotate(1.5deg);
+    }
+
+    30% {
+        transform: translate(-3px, 3px) rotate(-1deg);
+    }
+
+    40% {
+        transform: translate(3px, -2px) rotate(2deg);
+    }
+
+    50% {
+        transform: translate(-3px, 2px) rotate(-1.5deg);
+    }
+
+    60% {
+        transform: translate(3px, 3px) rotate(1deg);
+    }
+
+    70% {
+        transform: translate(-3px, -2px) rotate(-1.5deg);
+    }
+
+    80% {
+        transform: translate(3px, 2px) rotate(1.5deg);
+    }
+
+    90% {
+        transform: translate(-2px, -3px) rotate(-1deg);
+    }
+}
+
+/* The screen shake effect class */
+.screen-shake {
+    animation: shake-medium 0.5s cubic-bezier(.36, .07, .19, .97) both;
+    transform-origin: center;
+}
+
+/* Apply different intensities based on data attribute */
+.screen-shake[data-shake-intensity="light"] {
+    animation-name: shake-light;
+}
+
+.screen-shake[data-shake-intensity="medium"] {
+    animation-name: shake-medium;
+}
+
+.screen-shake[data-shake-intensity="strong"] {
+    animation-name: shake-strong;
+}
+
+/* Add a subtle motion blur during shake for more cinematic feel */
+.screen-shake * {
+    transition: filter 0.1s;
+    filter: blur(0);
+}
+
+.screen-shake[data-shake-intensity="medium"] * {
+    filter: blur(0.3px);
+}
+
+.screen-shake[data-shake-intensity="strong"] * {
+    filter: blur(0.5px);
+}
 
 
