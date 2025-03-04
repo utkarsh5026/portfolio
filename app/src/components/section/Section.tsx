@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import SectionHeader from "./SectionHeader";
 import MatrixEffect from "@/components/animations/MatrixEffect";
 import BlurBackground from "./BlurBackground";
@@ -49,16 +49,13 @@ const Section: React.FC<SectionProps> = ({
 }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-
-  // Use custom hook for intersection and animations
   const { isActive, titleWidth } = useIntersectionAnimation(
     sectionRef,
     label,
     glowAccent
   );
 
-  // Animate content when section becomes active
-  React.useEffect(() => {
+  useEffect(() => {
     if (isActive && contentRef.current) {
       anime({
         targets: contentRef.current,
@@ -66,7 +63,7 @@ const Section: React.FC<SectionProps> = ({
         translateY: [10, 0],
         duration: 800,
         easing: "easeOutExpo",
-        delay: 800, // Delay after main section animation
+        delay: 800,
       });
     }
   }, [isActive]);
@@ -96,7 +93,6 @@ const Section: React.FC<SectionProps> = ({
           </div>
         )}
 
-        {/* Blur background effect */}
         <BlurBackground isActive={isActive} glowAccent={glowAccent} />
 
         <SectionHeader
@@ -106,9 +102,7 @@ const Section: React.FC<SectionProps> = ({
           titleWidth={titleWidth}
         />
 
-        {/* Content area with potential line numbers */}
         <div className="flex relative z-10">
-          {/* Actual content */}
           <div
             ref={contentRef}
             className="p-5 opacity-0 flex-1 overflow-hidden"

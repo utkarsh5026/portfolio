@@ -5,7 +5,7 @@
 */
 
 import React from "react";
-import Section from "@/components/base/Section";
+import Section from "@/components/section/Section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MdEmail, MdLocationPin } from "react-icons/md";
@@ -41,7 +41,7 @@ const ContactMe: React.FC = () => {
   ];
 
   return (
-    <Section id="contact" label="Contact">
+    <Section id="contact" label="Contact" glowAccent="mauve" scanlines={true}>
       <div className="max-w-4xl mx-auto px-4 md:px-8 lg:px-12">
         <Card className="border-2 border-ctp-surface0 bg-ctp-base/60 backdrop-blur-sm hover:border-ctp-mauve/20 transition-all duration-500">
           <CardContent className="p-4 sm:p-6 md:p-8 lg:p-10">

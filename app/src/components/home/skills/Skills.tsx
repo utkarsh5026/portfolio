@@ -3,7 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import SkillCard from "./SkillCard";
 import Framework from "./Framework";
-import Section from "@/components/base/Section";
+import Section from "@/components/section/Section";
 import { databases, languages, frameworks, tools } from "./data";
 import { Languages, Database, Server } from "lucide-react";
 import SkillCardMovingComponent from "./SkillCardMoving";
