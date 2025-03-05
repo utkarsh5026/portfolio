@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { useEffect, useState, useCallback, useMemo, useRef } from "react";
 import { FiDownload } from "react-icons/fi";
 import { SiGooglechrome } from "react-icons/si";
-import anime from "animejs";
+import "./BrowserWindow.css";
 import Twitter from "./Twitter";
 import MacosTrafficController from "../../macos/MacosTrafficController";
 import BrowserActions from "./BrowserActions";
@@ -39,17 +39,10 @@ const BrowserWindow = ({
           `tab-${browserTabs[tabIndex].id}`
         );
         if (tabElement) {
-          anime({
-            targets: tabElement,
-            scale: [1, 1.05, 1],
-            backgroundColor: [
-              "rgba(24, 24, 37, 0.8)",
-              "rgba(137, 180, 250, 0.2)",
-              "rgba(24, 24, 37, 0.8)",
-            ],
-            duration: 300,
-            easing: "easeOutQuad",
-          });
+          tabElement.classList.add("tab-pulse-animation");
+          setTimeout(() => {
+            tabElement.classList.remove("tab-pulse-animation");
+          }, 300);
         }
       }
 
@@ -87,13 +80,8 @@ const BrowserWindow = ({
 
   useEffect(() => {
     if (browserRef.current) {
-      anime({
-        targets: browserRef.current,
-        opacity: [0, 1],
-        scale: [0.4, 1.0, 1.5, 0.8],
-        duration: totalTabSwitchDuration,
-        easing: "easeOutQuad",
-      });
+      browserRef.current.classList.add("browser-appear-animation");
+      browserRef.current.style.animationDuration = `${totalTabSwitchDuration}ms`;
     }
   }, [totalTabSwitchDuration]);
 

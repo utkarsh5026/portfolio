@@ -1,0 +1,50 @@
+/* Browser window appear animation */
+.browser-appear-animation {
+  animation: browserAppear forwards;
+  animation-timing-function: ease-out-quad;
+}
+
+/* Tab pulse animation */
+.tab-pulse-animation {
+  animation: tabPulse 300ms ease-out-quad forwards;
+}
+
+/* Keyframes for browser appear animation */
+@keyframes browserAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  33% {
+    transform: scale(1.0);
+  }
+  66% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Keyframes for tab pulse animation */
+@keyframes tabPulse {
+  0% {
+    transform: scale(1);
+    background-color: rgba(24, 24, 37, 0.8);
+  }
+  50% {
+    transform: scale(1.05);
+    background-color: rgba(137, 180, 250, 0.2);
+  }
+  100% {
+    transform: scale(1);
+    background-color: rgba(24, 24, 37, 0.8);
+  }
+}
+
+/* Easing function approximation */
+@keyframes ease-out-quad {
+  0% { transform: scale(0.4); opacity: 0; }
+  100% { transform: scale(0.8); opacity: 1; }
+} 
