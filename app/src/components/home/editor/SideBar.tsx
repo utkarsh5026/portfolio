@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import {
   FaCode,
   FaFolder,
+  FaFolderOpen,
   FaGithub,
   FaTerminal,
   FaLinkedin,
@@ -108,6 +109,12 @@ const SideBar: React.FC = () => {
       />
 
       <div className="flex-1"></div>
+
+      <SideBarButton
+        icon={<FaFolderOpen className="w-5 h-5 text-ctp-mauve" />}
+        label="Github Repo for Portfolio"
+        onClick={() => window.open("https://github.com/utkarsh5026/Portfolio")}
+      />
 
       <SideBarButton
         icon={<FaTerminal className="w-5 h-5 text-ctp-peach" />}
