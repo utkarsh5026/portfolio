@@ -1,0 +1,64 @@
+/* User message animation */
+.llm-animate-fade-in-up {
+    animation: fadeInUp 2000ms ease-in-out forwards;
+}
+
+/* Assistant message animation with delay */
+.llm-animate-fade-in-up-delayed {
+    animation: fadeInUp 1000ms ease-in-out forwards;
+    animation-delay: 300ms;
+    opacity: 0;
+}
+
+/* Card animation */
+.llm-animate-card-appear {
+    animation: cardAppear forwards 2000ms ease-in-out;
+}
+
+/* Keyframes for fade in up animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframes for card appear animation */
+@keyframes cardAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* For custom easing, approximating easeOutExpo */
+@keyframes ease-out-expo {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    80% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
