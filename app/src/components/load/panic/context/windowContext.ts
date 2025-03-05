@@ -11,7 +11,8 @@ export type ActiveWindow =
 
 export type WindowContextType = {
   activeWindow: ActiveWindow;
-  setActiveWindow: (window: ActiveWindow) => void;
+  goToWindow: (window: ActiveWindow) => void;
+  loadedWindows: Set<ActiveWindow>;
 };
 
 export const WindowContext = createContext<WindowContextType | undefined>(
