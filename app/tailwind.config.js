@@ -124,8 +124,8 @@ export default {
       fontFamily: {
         sans: ["Source Code Pro", "sans-serif"],
         serif: ["JetBrains Mono", "serif"],
-        mono: ["JetBrains Mono", "monospace"],
-        source: ["JetBrains Mono", "monospace"],
+        mono: ["Cascadia Code", "monospace"],
+        source: ["Source Code Pro", "monospace"],
         "roboto-mono": ["Cascadia Code", "monospace"],
       },
     },
