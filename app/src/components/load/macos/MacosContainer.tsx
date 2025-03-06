@@ -166,7 +166,6 @@ const MacOSContainer: React.FC<MacOSContainerProps> = ({
         {children}
       </div>
 
-      {/* Desktop icons */}
       {showDesktopIcons && (
         <div className="absolute top-10 right-6 flex flex-col gap-5 z-10">
           {desktopIcons.map((icon) => (
