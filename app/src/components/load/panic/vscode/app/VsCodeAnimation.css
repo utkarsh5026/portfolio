@@ -1,0 +1,228 @@
+
+
+/* Code line appearance animation */
+@keyframes lineAppear {
+    from {
+        opacity: 0;
+        transform: translateY(2px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.typed-line {
+    opacity: 0;
+    animation: lineAppear 0.2s ease-out forwards;
+}
+
+/* Line number animations */
+.visible-line-number {
+    opacity: 1;
+    transition: opacity 0.15s ease-in;
+}
+
+.invisible-line-number {
+    opacity: 0.3;
+    transition: opacity 0.15s ease-in;
+}
+
+/* VSCode UI component entrance animations */
+.vscode-menu-appear {
+    animation: slideInFromTop 0.3s ease-out forwards;
+}
+
+.vscode-sidebar-appear {
+    animation: slideInFromLeft 0.3s ease-out forwards;
+}
+
+.vscode-tabs-appear {
+    animation: slideInFromTop 0.3s ease-out 0.1s forwards;
+    opacity: 0;
+}
+
+.vscode-content-appear {
+    animation: fadeIn 0.3s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+.vscode-editor-appear {
+    animation: scaleIn 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards;
+}
+
+.vscode-minimap-appear {
+    animation: slideInFromRight 0.3s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+/* Animation keyframes */
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0.8;
+        transform: scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Cursor blinking animation */
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.animate-blink {
+    animation: blink 1s infinite;
+}
+
+/* CodeEditor component animations for crisp transitions */
+.code-window-enter-animation {
+    animation: codeWindowEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes codeWindowEnter {
+    0% {
+        opacity: 0;
+        transform: scale(0.92) translateY(10px);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.02) translateY(-2px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.code-window-exit-animation {
+    animation: codeWindowExit 0.4s ease-out forwards;
+}
+
+@keyframes codeWindowExit {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+}
+
+/* File completion animation */
+@keyframes fileComplete {
+    0% {
+        box-shadow: 0 0 0 rgba(59, 130, 246, 0);
+    }
+
+    20% {
+        box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
+    }
+
+    100% {
+        box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+    }
+}
+
+.file-complete {
+    animation: fileComplete 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+/* Status bar appearance */
+.status-bar-appear {
+    animation: slideInFromBottom 0.3s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Progress indicator pulse */
+@keyframes progressPulse {
+    0% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.7;
+    }
+}
+
+.progress-pulse {
+    animation: progressPulse 2s infinite;
+}

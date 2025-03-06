@@ -6,6 +6,7 @@ interface StatusBarProps {
   language: string;
   typingProgress?: number;
   totalLines?: number;
+  timeRemaining?: boolean;
 }
 
 const StatusBar: React.FC<StatusBarProps> = ({
@@ -13,6 +14,7 @@ const StatusBar: React.FC<StatusBarProps> = ({
   language,
   typingProgress = 0,
   totalLines = 0,
+  timeRemaining = false,
 }) => {
   const progressPercentage =
     totalLines > 0 ? Math.round((typingProgress / totalLines) * 100) : 0;
@@ -33,13 +35,22 @@ const StatusBar: React.FC<StatusBarProps> = ({
           </span>
         )}
 
+        {/* Typing progress information */}
         <span className="flex items-center">
           {isComplete ? (
             <span className="text-green-200">File Complete</span>
           ) : (
-            <span>
-              <span className="text-yellow-200">Writing</span>{" "}
-              {progressPercentage}%
+            <span className="flex items-center">
+              <span
+                className={
+                  timeRemaining
+                    ? "text-yellow-200 mr-1"
+                    : "text-yellow-200 mr-1 progress-pulse"
+                }
+              >
+                Writing
+              </span>
+              <span>{progressPercentage}%</span>
             </span>
           )}
         </span>
