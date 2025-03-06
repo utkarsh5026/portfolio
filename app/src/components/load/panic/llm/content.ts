@@ -16,3 +16,27 @@ export const aiCodeResponse = `useEffect(() => {
   };
   animate();
 }, []);`;
+
+export const conversationHistory = [
+  { id: 1, title: "Portfolio Animation Ideas", date: "Today", isActive: true },
+  {
+    id: 2,
+    title: "React Performance Tips",
+    date: "Yesterday",
+    isActive: false,
+  },
+  { id: 3, title: "CSS Grid vs Flexbox", date: "2 days ago", isActive: false },
+  { id: 4, title: "Next.js API Routes", date: "4 days ago", isActive: false },
+  {
+    id: 5,
+    title: "State Management Options",
+    date: "1 week ago",
+    isActive: false,
+  },
+  {
+    id: 6,
+    title: "Responsive Design Best Practices",
+    date: "2 weeks ago",
+    isActive: false,
+  },
+];
