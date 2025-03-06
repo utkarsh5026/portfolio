@@ -1,0 +1,91 @@
+/* Cursor blinking animation */
+.code-cursor-blink {
+    animation: cursorBlink 800ms steps(2) infinite;
+}
+
+@keyframes cursorBlink {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* File fade in animation */
+.file-fade-in {
+    animation: fileFadeIn 300ms ease-out-quad forwards;
+}
+
+@keyframes fileFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Window enter animation - separated for performance */
+.code-window-enter-animation {
+    animation:
+        codeWindowEnterTransform 1200ms cubic-bezier(0.17, 1.55, 0.38, 0.8) forwards,
+        codeWindowEnterOpacity 1200ms cubic-bezier(0.17, 1.55, 0.38, 0.8) forwards;
+}
+
+@keyframes codeWindowEnterTransform {
+    0% {
+        transform: scale(0.95) translateZ(-20px);
+    }
+
+    50% {
+        transform: scale(1.02) translateZ(5px);
+    }
+
+    100% {
+        transform: scale(1) translateZ(0px);
+    }
+}
+
+@keyframes codeWindowEnterOpacity {
+    0% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Window exit animation - separated for performance */
+.code-window-exit-animation {
+    animation:
+        codeWindowExitTransform 200ms ease-out-quad forwards,
+        codeWindowExitOpacity 200ms ease-out-quad forwards;
+}
+
+@keyframes codeWindowExitTransform {
+    from {
+        transform: scale(1) translateZ(0px);
+    }
+
+    to {
+        transform: scale(0.98) translateZ(-20px);
+    }
+}
+
+@keyframes codeWindowExitOpacity {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.8;
+    }
+}
+
+
+
