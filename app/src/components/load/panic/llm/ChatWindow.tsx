@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { AiFillOpenAI } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
@@ -15,7 +15,7 @@ import { useWindowContext } from "../context/windowcontext";
 import MacosTrafficController from "../../macos/MacosTrafficController";
 import { SiOpenai } from "react-icons/si";
 
-import "./style.css";
+import "./ChatWindowAnimations.css";
 
 interface ChatWindowProps {
   panicPhase: string;
@@ -23,6 +23,7 @@ interface ChatWindowProps {
 
 const ChatWindow: React.FC<ChatWindowProps> = ({ panicPhase }) => {
   const { activeWindow } = useWindowContext();
+  const chatWindowRef = useRef<HTMLDivElement>(null);
 
   // Animation code commented out in original
 
@@ -35,10 +36,15 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ panicPhase }) => {
     return () => clearTimeout(highlightTimeout);
   }, []);
 
+  useEffect(() => {
+    chatWindowRef.current?.classList.add("llm-animate-card-appear");
+  }, []);
+
   return (
     <Card
+      ref={chatWindowRef}
       className={cn(
-        "chat-window llm-animate-card-appear absolute w-[70%] h-[80%] shadow-xl transition-all duration-300 z-50 overflow-hidden font-serif text-sm top-[30%] left-[5%] rounded-lg",
+        "chat-window absolute w-[70%] h-[80%] shadow-xl transition-all duration-300 z-50 overflow-hidden font-serif text-sm top-[30%] left-[5%] rounded-lg",
         activeWindow === "chat" ? "opacity-100" : "opacity-0",
         panicPhase === "assistance" && "opacity-100"
       )}
