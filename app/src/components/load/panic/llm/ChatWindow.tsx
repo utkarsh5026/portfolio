@@ -1,57 +1,127 @@
-import React, { useEffect, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+  useCallback,
+} from "react";
 import { Card } from "@/components/ui/card";
 import { AiFillOpenAI } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { FiSend, FiUser } from "react-icons/fi";
-import { RxChatBubble } from "react-icons/rx";
-import { FaRegThumbsUp, FaRegThumbsDown, FaRegCopy } from "react-icons/fa";
-import { useWindowContext } from "../context/windowcontext";
+import { FiSend } from "react-icons/fi";
 import MacosTrafficController from "../../macos/MacosTrafficController";
 import { SiOpenai } from "react-icons/si";
-import ReactCodeLine from "@/components/load/utls/ReactCodeLine";
+import { humanMessage, aiNormalResponse, aiCodeResponse } from "./content";
+import UserMessage from "./UserMessage";
+import AiMessage from "./AiMessage";
 
 import "./ChatWindowAnimations.css";
 
+type AiResponseStage = "thinking" | "typing" | "complete" | "waiting";
+type UserInputStage = "typing" | "sent" | "waiting";
+
 interface ChatWindowProps {
-  panicPhase: string;
+  totalAnimationTimeMS: number;
 }
 
-const ChatWindow: React.FC<ChatWindowProps> = ({ panicPhase }) => {
-  const { activeWindow } = useWindowContext();
+const ChatWindow: React.FC<ChatWindowProps> = ({ totalAnimationTimeMS }) => {
   const chatWindowRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const exampleCode = `useEffect(() => {
-  const animate = () => {
-    anime({
-      targets: '.section-animate',
-      opacity: [0, 1],
-      translateY: [50, 0],
-      duration: 800,
-      easing: 'easeOutExpo',
-      delay: anime.stagger(150)
-    });
-  };
-  
-  animate();
-}, []);`;
+  const [userInputStage, setUserInputStage] =
+    useState<UserInputStage>("waiting");
+  const [userInput, setUserInput] = useState("");
 
-  const codeLines = exampleCode.split("\n");
+  const [aiResponseStage, setAiResponseStage] =
+    useState<AiResponseStage>("waiting");
+  const [aiResponse, setAiResponse] = useState("");
+
+  const [showCode, setShowCode] = useState(false);
+  const [codeTyping, setCodeTyping] = useState(false);
+  const [codeLines, setCodeLines] = useState<string[]>([]);
+  const [visibleCodeLines, setVisibleCodeLines] = useState<number>(0);
+
+  const timings = useMemo(
+    () => calculateTimings(totalAnimationTimeMS),
+    [totalAnimationTimeMS]
+  );
+
+  const startCodeTypingAnimation = useCallback(() => {
+    const lines = aiCodeResponse.split("\n");
+    setCodeLines(lines);
+    setCodeTyping(true);
+
+    let currentLine = 0;
+    const codeInterval = setInterval(() => {
+      if (currentLine < lines.length) {
+        setVisibleCodeLines(currentLine + 1);
+        currentLine++;
+      } else {
+        clearInterval(codeInterval);
+        setCodeTyping(false);
+      }
+    }, timings.codeTypingSpeed);
+  }, [timings.codeTypingSpeed]);
+
+  const startAiResponseAnimation = useCallback(() => {
+    setAiResponseStage("thinking");
+
+    const startTyping = () => {
+      setAiResponseStage("typing");
+      let currentIndex = 0;
+
+      const typingInterval = setInterval(() => {
+        if (currentIndex < aiNormalResponse.length) {
+          setAiResponse(aiNormalResponse.slice(0, currentIndex + 1));
+          currentIndex++;
+          return;
+        }
+
+        clearInterval(typingInterval);
+        setAiResponseStage("complete");
+        setShowCode(true);
+        startCodeTypingAnimation();
+      }, timings.aiTypingSpeed);
+    };
+
+    setTimeout(startTyping, timings.aiThinkingTime);
+  }, [timings.aiTypingSpeed, timings.aiThinkingTime, startCodeTypingAnimation]);
+
+  const startUserTypingAnimation = useCallback(() => {
+    setUserInputStage("typing");
+    let currentIndex = 0;
+
+    const typingInterval = setInterval(() => {
+      if (currentIndex < humanMessage.length) {
+        setUserInput(humanMessage.slice(0, currentIndex + 1));
+        currentIndex++;
+        return;
+      }
+      clearInterval(typingInterval);
+      setUserInputStage("sent");
+      startAiResponseAnimation();
+    }, timings.userTypingSpeed);
+  }, [timings.userTypingSpeed, startAiResponseAnimation]);
 
   useEffect(() => {
     chatWindowRef.current?.classList.add("llm-animate-card-appear");
-  }, []);
+    setTimeout(() => {
+      startUserTypingAnimation();
+    }, timings.windowAppearanceTime);
+  }, [timings.windowAppearanceTime, startUserTypingAnimation]);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ block: "end" });
+  }, [userInput, aiResponse, visibleCodeLines]);
 
   return (
     <Card
       ref={chatWindowRef}
       className={cn(
-        "chat-window absolute w-[70%] h-[80%] z-10 shadow-xl transition-all duration-300  overflow-hidden font-serif text-sm top-[30%] left-[5%] rounded-lg",
-        panicPhase === "assistance" && "opacity-100"
+        "chat-window absolute w-[70%] h-[80%] shadow-xl transition-all duration-300 z-10 overflow-hidden font-serif text-sm top-[15%] left-[5%] rounded-lg"
       )}
       style={{
-        transform:
-          activeWindow === "chat" ? "translateZ(0px)" : "translateZ(-50px)",
         backgroundColor: "#202123", // Dark background
         borderColor: "#343541", // Dark border
       }}
@@ -59,7 +129,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ panicPhase }) => {
       <MacosTrafficController
         appIcon={<AiFillOpenAI className="text-green-500 h-6 w-6" />}
         appName="ChatGPT"
-      />
+      />{" "}
       <div className="h-14 bg-[#202123] px-4 flex items-center justify-between border-b border-[#343541]">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center text-xl flex-shrink-0 text-white">
@@ -106,7 +176,6 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ panicPhase }) => {
           </Button>
         </div>
       </div>
-
       {/* Chat messages area */}
       <div className="flex flex-col h-[calc(100%-56px-64px)] bg-[#343541]">
         {/* Welcome message at the top */}
@@ -119,101 +188,77 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ panicPhase }) => {
           </p>
         </div>
 
-        <div
-          className="chat-messages flex-grow p-0 overflow-y-auto space-y-0"
-          style={{ height: "calc(100% - 74px)" }}
-        >
-          <div
-            id="message-0"
-            className="px-4 py-6 bg-[#343541] border-b border-[#444654] llm-animate-fade-in-up"
-          >
-            <div className="max-w-4xl mx-auto flex gap-4">
-              <div className="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-gray-300 flex-shrink-0">
-                <FiUser size={16} />
-              </div>
-              <div className="text-gray-200 text-base leading-relaxed">
-                Help! I need to add animations to my portfolio ASAP. A visitor
-                is looking at it right now! Can you give me some code for smooth
-                section entrance animations using AnimeJS?
-              </div>
-            </div>
-          </div>
-
-          <div
-            id="message-1"
-            className="px-4 py-6 bg-[#444654] llm-animate-fade-in-up-delayed"
-          >
-            <div className="max-w-4xl mx-auto flex gap-4">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center text-white flex-shrink-0">
-                <RxChatBubble size={16} />
-              </div>
-              <div className="flex-1">
-                <div className="text-gray-200 text-base leading-relaxed">
-                  <p className="mb-4">
-                    I'll help you implement smooth section entrance animations
-                    with AnimeJS. Here's some code you can use immediately:
-                  </p>
-                  <div className="relative mb-4 group">
-                    <div className="bg-[#1e1e2e] rounded-md overflow-hidden border border-gray-700">
-                      <div className="flex items-center justify-between px-4 py-2 bg-[#2d2d3a] text-xs text-gray-200">
-                        <span>JavaScript</span>
-                        <span className="hover:bg-gray-700 p-1 rounded">
-                          <FaRegCopy size={14} />
-                        </span>
-                      </div>
-                      <pre className="!bg-[#1e1e2e] !m-0 !p-4 overflow-x-auto text-sm">
-                        {/* Replace Prism with our custom ReactCodeLine component */}
-                        <div className="font-mono">
-                          {codeLines.map((line, index) => (
-                            <div key={index} className="leading-6">
-                              <ReactCodeLine line={line} />
-                            </div>
-                          ))}
-                        </div>
-                      </pre>
-                    </div>
-                    <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3 mt-4 text-gray-400">
-                  <button className="hover:bg-gray-600 p-1.5 rounded-md flex items-center text-xs gap-1.5">
-                    <FaRegThumbsUp size={14} />
-                    <span>Helpful</span>
-                  </button>
-                  <button className="hover:bg-gray-600 p-1.5 rounded-md flex items-center text-xs gap-1.5">
-                    <FaRegThumbsDown size={14} />
-                    <span>Not helpful</span>
-                  </button>
-                  <button className="hover:bg-gray-600 p-1.5 rounded-md flex items-center text-xs gap-1.5">
-                    <FaRegCopy size={14} />
-                    <span>Copy</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="chat-messages flex-grow p-0 overflow-y-auto space-y-0 h-[calc(100%-24px)]">
+          {userInputStage !== "waiting" && (
+            <UserMessage
+              userInput={userInput}
+              isTyping={userInputStage === "typing"}
+            />
+          )}
+          {aiResponseStage !== "waiting" && (
+            <AiMessage
+              aiResponse={aiResponse}
+              aiResponseStage={aiResponseStage}
+              showCode={showCode}
+              codeLines={codeLines}
+              visibleCodeLines={visibleCodeLines}
+              codeTyping={codeTyping}
+            />
+          )}
+          <div ref={messagesEndRef} />
         </div>
       </div>
-
       {/* Input area */}
       <div className="chat-input h-16 px-4 border-t border-[#444654] flex items-center gap-3 bg-[#343541]">
         <div className="flex-grow relative">
           <div className="absolute inset-0 flex items-center pointer-events-none opacity-60">
             <input
               type="text"
-              placeholder="Thanks for the code! Let me implement..."
+              placeholder={
+                userInputStage === "sent"
+                  ? "Send a message..."
+                  : "Thanks for the code! Let me implement..."
+              }
               disabled
               className="w-full bg-transparent border-none outline-none text-gray-300 placeholder-gray-500 text-sm pl-4"
             />
           </div>
         </div>
-        <Button className="chat-button send-button h-10 w-10 p-0 flex items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-teal-500 text-white hover:opacity-90">
+        <Button
+          className={`chat-button send-button h-10 w-10 p-0 flex items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-teal-500 text-white hover:opacity-90 ${
+            userInputStage === "sent" ? "" : "opacity-50"
+          }`}
+        >
           <FiSend size={18} />
         </Button>
       </div>
     </Card>
   );
+};
+
+const calculateTimings = (totalAnimationTimeMS: number) => {
+  const userMessageLength = humanMessage.length;
+  const aiResponseLength = aiNormalResponse.length;
+  const codeLinesCount = aiCodeResponse.split("\n").length;
+
+  const windowAppearanceTime = totalAnimationTimeMS * 0.05;
+  const userTypingTime = totalAnimationTimeMS * 0.25;
+  const aiThinkingTime = totalAnimationTimeMS * 0.1;
+  const aiTypingTime = totalAnimationTimeMS * 0.3;
+  const codeTypingTime = totalAnimationTimeMS * 0.3;
+
+  // Calculate speeds
+  const userTypingSpeed = userTypingTime / userMessageLength;
+  const aiTypingSpeed = aiTypingTime / aiResponseLength;
+  const codeTypingSpeed = codeTypingTime / codeLinesCount;
+
+  return {
+    windowAppearanceTime,
+    userTypingSpeed,
+    aiThinkingTime,
+    aiTypingSpeed,
+    codeTypingSpeed,
+  };
 };
 
 export default ChatWindow;
