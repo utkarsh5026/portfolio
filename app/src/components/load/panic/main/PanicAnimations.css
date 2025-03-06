@@ -58,61 +58,70 @@
 }
 
 
-/*Last  Container fade out animation */
+/* Container fade out animation - separated for performance */
 .container-fade-out-animation {
-    animation: containerFadeOutGlitch 1000ms ease-in-out forwards;
+    animation: 
+        containerFadeOutTransform 1000ms ease-in-out forwards,
+        containerFadeOutOpacity 1000ms ease-in-out forwards;
 }
 
-@keyframes containerFadeOutGlitch {
+@keyframes containerFadeOutTransform {
     0% {
-        opacity: 1;
         transform: scale(1) rotate(0deg) translate(0, 0);
-        filter: none;
     }
-
     40% {
-        opacity: 1;
         transform: scale(1.05) rotate(1deg) translate(0, 0);
     }
-
     50% {
-        opacity: 0.95;
         transform: scale(1.1) rotate(-2deg) translate(-2px, 2px);
     }
+    55% {
+        transform: scale(1.3) rotate(3deg) translate(3px, -3px);
+    }
+    60% {
+        transform: scale(1.5) rotate(-4deg) translate(-4px, 4px);
+    }
+    70% {
+        transform: scale(1.7) rotate(6deg) translate(6px, -6px);
+    }
+    80% {
+        transform: scale(2) rotate(-8deg) translate(-8px, 8px);
+    }
+    90% {
+        transform: scale(2.2) rotate(10deg) translate(10px, -10px);
+    }
+    100% {
+        transform: scale(2.5) rotate(0deg) translate(0, 0);
+    }
+}
 
+@keyframes containerFadeOutOpacity {
+    0% {
+        opacity: 1;
+        filter: none;
+    }
     55% {
         opacity: 0.9;
-        transform: scale(1.3) rotate(3deg) translate(3px, -3px);
         filter: blur(1px);
     }
-
     60% {
         opacity: 0.8;
-        transform: scale(1.5) rotate(-4deg) translate(-4px, 4px);
         filter: blur(1.5px);
     }
-
     70% {
         opacity: 0.6;
-        transform: scale(1.7) rotate(6deg) translate(6px, -6px);
         filter: blur(2px);
     }
-
     80% {
         opacity: 0.4;
-        transform: scale(2) rotate(-8deg) translate(-8px, 8px);
         filter: blur(2.5px);
     }
-
     90% {
         opacity: 0.2;
-        transform: scale(2.2) rotate(10deg) translate(10px, -10px);
         filter: blur(3px);
     }
-
     100% {
         opacity: 0;
-        transform: scale(2.5) rotate(0deg) translate(0, 0);
         filter: blur(3.5px);
     }
 }
