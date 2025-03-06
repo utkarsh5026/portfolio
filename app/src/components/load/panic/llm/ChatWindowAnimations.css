@@ -1,25 +1,104 @@
-/* User message animation */
-.llm-animate-fade-in-up {
-    animation: fadeInUp 2000ms ease-in-out forwards;
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
-/* Assistant message animation with delay */
-.llm-animate-fade-in-up-delayed {
-    animation: fadeInUp 1000ms ease-in-out forwards;
-    animation-delay: 300ms;
-    opacity: 0;
-}
-
-/* Card animation */
 .llm-animate-card-appear {
-    animation: cardAppear forwards 2000ms ease-in-out;
+    animation: cardAppear 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Keyframes for fade in up animation */
+/* Typing cursor animation */
+@keyframes cursorBlink {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.typing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 16px;
+    background-color: #a0aec0;
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: cursorBlink 0.8s infinite;
+}
+
+/* Typing indicator animation (three dots) */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 24px;
+    padding: 0 8px;
+}
+
+.typing-indicator span {
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: #a0aec0;
+    border-radius: 50%;
+    animation: typingBounce 1.4s infinite ease-in-out both;
+}
+
+.typing-indicator span:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes typingBounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0.6);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+}
+
+/* Code line appearance animation */
+@keyframes codeLineAppear {
+    from {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.code-line-appear {
+    animation: codeLineAppear 0.2s ease-out forwards;
+}
+
+/* Response controls appearance animation */
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(10px);
     }
 
     to {
@@ -28,37 +107,119 @@
     }
 }
 
-/* Keyframes for card appear animation */
-@keyframes cardAppear {
-    0% {
+.response-controls-appear {
+    animation: fadeInUp 0.3s ease-out forwards;
+}
+
+/* Message fade-in animation */
+@keyframes fadeIn {
+    from {
         opacity: 0;
-        transform: scale(0.8);
     }
 
-    50% {
+    to {
         opacity: 1;
-        transform: scale(1.5);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1);
     }
 }
 
-/* For custom easing, approximating easeOutExpo */
-@keyframes ease-out-expo {
-    0% {
-        transform: scale(0.8);
+.fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Sidebar animations */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-20px);
         opacity: 0;
     }
 
-    80% {
-        transform: scale(1.05);
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.sidebar-item-appear {
+    animation: slideInLeft 0.3s ease-out forwards;
+    opacity: 0;
+}
+
+/* Staggered animation for sidebar items */
+.sidebar-item-1 {
+    animation-delay: 0.05s;
+}
+
+.sidebar-item-2 {
+    animation-delay: 0.1s;
+}
+
+.sidebar-item-3 {
+    animation-delay: 0.15s;
+}
+
+.sidebar-item-4 {
+    animation-delay: 0.2s;
+}
+
+.sidebar-item-5 {
+    animation-delay: 0.25s;
+}
+
+.sidebar-item-6 {
+    animation-delay: 0.3s;
+}
+
+/* Pulse animation for new message indicator */
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(74, 222, 128, 0);
     }
 
     100% {
-        transform: scale(1);
-        opacity: 1;
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
     }
+}
+
+.new-message-indicator {
+    animation: pulse 2s infinite;
+}
+
+/* Hover effects for buttons */
+.button-hover-effect {
+    transition: all 0.2s ease;
+}
+
+.button-hover-effect:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+}
+
+/* Fix for scrolling issues */
+.chat-messages {
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+}
+
+/* Tooltip animation */
+@keyframes tooltipAppear {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tooltip {
+    animation: tooltipAppear 0.2s ease-out forwards;
 }

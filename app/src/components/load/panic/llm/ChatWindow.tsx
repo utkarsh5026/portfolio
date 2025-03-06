@@ -10,13 +10,15 @@ import { AiFillOpenAI } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { FiSend } from "react-icons/fi";
+
 import MacosTrafficController from "../../macos/MacosTrafficController";
-import { SiOpenai } from "react-icons/si";
 import { humanMessage, aiNormalResponse, aiCodeResponse } from "./content";
 import UserMessage from "./UserMessage";
 import AiMessage from "./AiMessage";
+import SideBar from "./SideBar";
 
 import "./ChatWindowAnimations.css";
+import ChatHeader from "./ChatHeader";
 
 type AiResponseStage = "thinking" | "typing" | "complete" | "waiting";
 type UserInputStage = "typing" | "sent" | "waiting";
@@ -28,6 +30,7 @@ interface ChatWindowProps {
 const ChatWindow: React.FC<ChatWindowProps> = ({ totalAnimationTimeMS }) => {
   const chatWindowRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatMessagesRef = useRef<HTMLDivElement>(null);
 
   const [userInputStage, setUserInputStage] =
     useState<UserInputStage>("waiting");
@@ -86,7 +89,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ totalAnimationTimeMS }) => {
     };
 
     setTimeout(startTyping, timings.aiThinkingTime);
-  }, [timings.aiTypingSpeed, timings.aiThinkingTime, startCodeTypingAnimation]);
+  }, [timings.aiThinkingTime, timings.aiTypingSpeed, startCodeTypingAnimation]);
 
   const startUserTypingAnimation = useCallback(() => {
     setUserInputStage("typing");
@@ -112,125 +115,97 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ totalAnimationTimeMS }) => {
   }, [timings.windowAppearanceTime, startUserTypingAnimation]);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ block: "end" });
+    if (chatMessagesRef.current && messagesEndRef.current) {
+      chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight;
+    }
   }, [userInput, aiResponse, visibleCodeLines]);
 
   return (
     <Card
       ref={chatWindowRef}
       className={cn(
-        "chat-window absolute w-[70%] h-[80%] shadow-xl transition-all duration-300 z-10 overflow-hidden font-serif text-sm top-[15%] left-[5%] rounded-lg"
+        "chat-window absolute w-[80%] h-[80%] shadow-xl transition-all duration-300 z-10 overflow-hidden font-sans text-sm top-[15%] left-[5%] rounded-lg flex flex-col"
       )}
       style={{
-        backgroundColor: "#202123", // Dark background
-        borderColor: "#343541", // Dark border
+        backgroundColor: "#202123",
+        borderColor: "#343541",
       }}
     >
       <MacosTrafficController
         appIcon={<AiFillOpenAI className="text-green-500 h-6 w-6" />}
-        appName="ChatGPT"
-      />{" "}
-      <div className="h-14 bg-[#202123] px-4 flex items-center justify-between border-b border-[#343541]">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center text-xl flex-shrink-0 text-white">
-            <SiOpenai className="text-white h-8 w-8" />
-          </div>
-          <div>
-            <div className="text-sm font-semibold text-gray-200">
-              AI Assistant
-            </div>
-            <div className="text-xs text-green-400 flex items-center">
-              <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5"></span>
-              Online
-            </div>
-          </div>
-        </div>
-        <div className="flex gap-3">
-          <Button
-            variant="outline"
-            size="sm"
-            className="h-8 border-gray-700 text-gray-300 hover:bg-gray-800 bg-[#343541]"
-          >
-            New Chat
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            className="h-8 border-gray-700 text-gray-300 hover:bg-gray-800 bg-[#343541]"
-          >
-            <span className="sr-only">Settings</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="12" cy="12" r="3"></circle>
-              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-            </svg>
-          </Button>
-        </div>
-      </div>
-      {/* Chat messages area */}
-      <div className="flex flex-col h-[calc(100%-56px-64px)] bg-[#343541]">
-        {/* Welcome message at the top */}
-        <div className="py-4 px-6 text-center border-b border-[#444654]">
-          <h3 className="text-lg font-medium text-gray-200">
-            Welcome to the AI Assistant
-          </h3>
-          <p className="text-sm text-gray-400 mt-1">
-            Ask anything about building your portfolio
-          </p>
-        </div>
+        appName="ChatGPT 🙂"
+      />
 
-        <div className="chat-messages flex-grow p-0 overflow-y-auto space-y-0 h-[calc(100%-24px)]">
-          {userInputStage !== "waiting" && (
-            <UserMessage
-              userInput={userInput}
-              isTyping={userInputStage === "typing"}
-            />
-          )}
-          {aiResponseStage !== "waiting" && (
-            <AiMessage
-              aiResponse={aiResponse}
-              aiResponseStage={aiResponseStage}
-              showCode={showCode}
-              codeLines={codeLines}
-              visibleCodeLines={visibleCodeLines}
-              codeTyping={codeTyping}
-            />
-          )}
-          <div ref={messagesEndRef} />
-        </div>
-      </div>
-      {/* Input area */}
-      <div className="chat-input h-16 px-4 border-t border-[#444654] flex items-center gap-3 bg-[#343541]">
-        <div className="flex-grow relative">
-          <div className="absolute inset-0 flex items-center pointer-events-none opacity-60">
-            <input
-              type="text"
-              placeholder={
-                userInputStage === "sent"
-                  ? "Send a message..."
-                  : "Thanks for the code! Let me implement..."
-              }
-              disabled
-              className="w-full bg-transparent border-none outline-none text-gray-300 placeholder-gray-500 text-sm pl-4"
-            />
+      <div className="flex flex-1 overflow-hidden">
+        <SideBar />
+
+        <div className="flex-1 flex flex-col bg-[#343541] relative">
+          <ChatHeader />
+
+          <div className="flex flex-col flex-1 overflow-hidden bg-[#343541]">
+            <div className="py-4 px-6 text-center border-b border-[#444654]">
+              <h3 className="text-lg font-medium text-gray-200">
+                Welcome to the AI Assistant
+              </h3>
+              <p className="text-sm text-gray-400 mt-1">
+                Ask anything about building your portfolio
+              </p>
+            </div>
+
+            <div
+              ref={chatMessagesRef}
+              className="chat-messages flex-grow p-0 overflow-y-auto space-y-0 h-full"
+            >
+              {userInputStage !== "waiting" && (
+                <UserMessage
+                  userInput={userInput}
+                  isTyping={userInputStage === "typing"}
+                />
+              )}
+              {aiResponseStage !== "waiting" && (
+                <AiMessage
+                  aiResponse={aiResponse}
+                  aiResponseStage={aiResponseStage}
+                  showCode={showCode}
+                  codeLines={codeLines}
+                  visibleCodeLines={visibleCodeLines}
+                  codeTyping={codeTyping}
+                />
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+          </div>
+
+          <div className="px-4 py-3 border-t border-[#444654] bg-[#343541]">
+            <div className="max-w-3xl mx-auto">
+              <div className="relative">
+                <textarea
+                  placeholder={
+                    userInputStage === "sent"
+                      ? "Send a message..."
+                      : "Thanks for the code! Let me implement..."
+                  }
+                  disabled
+                  className="w-full bg-[#40414f] border border-[#565869] rounded-xl py-3 pl-4 pr-12 text-gray-200 placeholder-gray-500 text-sm min-h-[48px] resize-none focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  rows={1}
+                ></textarea>
+                <Button
+                  className={`absolute right-2 bottom-1.5 chat-button send-button h-8 w-8 p-0 flex items-center justify-center rounded-md bg-transparent text-gray-400 hover:text-gray-200 ${
+                    userInputStage === "sent" ? "" : "opacity-50"
+                  }`}
+                >
+                  <FiSend size={16} />
+                </Button>
+              </div>
+              <div className="text-xs text-center text-gray-500 mt-2">
+                <span>ChatGPT can make mistakes. </span>
+                <span className="hover:underline cursor-pointer">
+                  Consider checking important information.
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-        <Button
-          className={`chat-button send-button h-10 w-10 p-0 flex items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-teal-500 text-white hover:opacity-90 ${
-            userInputStage === "sent" ? "" : "opacity-50"
-          }`}
-        >
-          <FiSend size={18} />
-        </Button>
       </div>
     </Card>
   );
