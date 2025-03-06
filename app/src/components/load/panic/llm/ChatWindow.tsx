@@ -6,14 +6,10 @@ import { cn } from "@/lib/utils";
 import { FiSend, FiUser } from "react-icons/fi";
 import { RxChatBubble } from "react-icons/rx";
 import { FaRegThumbsUp, FaRegThumbsDown, FaRegCopy } from "react-icons/fa";
-import Prism from "prismjs";
-import "prismjs/themes/prism-tomorrow.css";
-import "prismjs/components/prism-jsx";
-import "prismjs/components/prism-javascript";
-import "prismjs/components/prism-css";
 import { useWindowContext } from "../context/windowcontext";
 import MacosTrafficController from "../../macos/MacosTrafficController";
 import { SiOpenai } from "react-icons/si";
+import ReactCodeLine from "@/components/load/utls/ReactCodeLine";
 
 import "./ChatWindowAnimations.css";
 
@@ -25,16 +21,22 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ panicPhase }) => {
   const { activeWindow } = useWindowContext();
   const chatWindowRef = useRef<HTMLDivElement>(null);
 
-  // Animation code commented out in original
+  const exampleCode = `useEffect(() => {
+  const animate = () => {
+    anime({
+      targets: '.section-animate',
+      opacity: [0, 1],
+      translateY: [50, 0],
+      duration: 800,
+      easing: 'easeOutExpo',
+      delay: anime.stagger(150)
+    });
+  };
+  
+  animate();
+}, []);`;
 
-  useEffect(() => {
-    const highlightTimeout = setTimeout(() => {
-      Prism.highlightAll();
-      console.log("Syntax highlighting applied");
-    }, 100);
-
-    return () => clearTimeout(highlightTimeout);
-  }, []);
+  const codeLines = exampleCode.split("\n");
 
   useEffect(() => {
     chatWindowRef.current?.classList.add("llm-animate-card-appear");
@@ -44,8 +46,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ panicPhase }) => {
     <Card
       ref={chatWindowRef}
       className={cn(
-        "chat-window absolute w-[70%] h-[80%] shadow-xl transition-all duration-300 z-50 overflow-hidden font-serif text-sm top-[30%] left-[5%] rounded-lg",
-        activeWindow === "chat" ? "opacity-100" : "opacity-0",
+        "chat-window absolute w-[70%] h-[80%] z-10 shadow-xl transition-all duration-300  overflow-hidden font-serif text-sm top-[30%] left-[5%] rounded-lg",
         panicPhase === "assistance" && "opacity-100"
       )}
       style={{
@@ -161,22 +162,14 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ panicPhase }) => {
                         </span>
                       </div>
                       <pre className="!bg-[#1e1e2e] !m-0 !p-4 overflow-x-auto text-sm">
-                        <code className="language-javascript">
-                          {`useEffect(() => {
-  const animate = () => {
-    anime({
-      targets: '.section-animate',
-      opacity: [0, 1],
-      translateY: [50, 0],
-      duration: 800,
-      easing: 'easeOutExpo',
-      delay: anime.stagger(150)
-    });
-  };
-  
-  animate();
-}, []);`}
-                        </code>
+                        {/* Replace Prism with our custom ReactCodeLine component */}
+                        <div className="font-mono">
+                          {codeLines.map((line, index) => (
+                            <div key={index} className="leading-6">
+                              <ReactCodeLine line={line} />
+                            </div>
+                          ))}
+                        </div>
                       </pre>
                     </div>
                     <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity"></div>
