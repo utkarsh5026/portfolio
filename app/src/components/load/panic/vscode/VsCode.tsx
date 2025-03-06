@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import MacosTrafficController from "../../macos/MacosTrafficController";
 import { BiLogoVisualStudio } from "react-icons/bi";
 import {
@@ -14,16 +14,36 @@ import { SiReact, SiCss3, SiJavascript } from "react-icons/si";
 import StatusBar from "./StatusBar";
 import SideBar from "./SideBar";
 import { getFileInfo, getSyntaxClass } from "./syntax";
-import { useWindowContext } from "../context/windowcontext";
 
 interface VsCodeProps {
   filename: CodeType;
   typingProgress: Record<CodeType, number>;
+  isActiveFile?: boolean; // New prop to indicate if this is the active file
 }
 
-const VsCode: React.FC<VsCodeProps> = ({ filename, typingProgress }) => {
-  const { activeWindow } = useWindowContext();
+const VsCode: React.FC<VsCodeProps> = ({
+  filename,
+  typingProgress,
+  isActiveFile = false,
+}) => {
   const { language, filename: fileType, problems } = getFileInfo(filename);
+  const codeEditorRef = useRef<HTMLDivElement>(null);
+
+  // Update scroll position as we type
+  useEffect(() => {
+    if (codeEditorRef.current && isActiveFile && typingProgress[filename] > 0) {
+      const lineHeight = 24; // Height of each line in pixels
+      const currentLine = typingProgress[filename] - 1;
+      const scrollTarget = currentLine * lineHeight;
+
+      // Scroll to keep the current line in view
+      codeEditorRef.current.scrollTo({
+        top: Math.max(0, scrollTarget - 100), // Offset to show some context
+        behavior: "smooth",
+      });
+    }
+  }, [typingProgress, filename, isActiveFile]);
+
   return (
     <div className="flex flex-col h-full w-full overflow-hidden bg-[#1e1e1e]">
       {/* Title bar */}
@@ -33,7 +53,7 @@ const VsCode: React.FC<VsCodeProps> = ({ filename, typingProgress }) => {
       />
 
       {/* VS Code top menu */}
-      <div className="h-6 bg-[#252526] px-4 flex items-center text-[#cccccc] text-xs border-b border-[#1a1a1a]">
+      <div className="h-6 bg-[#252526] px-4 flex items-center text-[#cccccc] text-xs border-b border-[#1a1a1a] vscode-menu-appear">
         <div className="flex items-center space-x-4">
           <span>File</span>
           <span>Edit</span>
@@ -48,7 +68,7 @@ const VsCode: React.FC<VsCodeProps> = ({ filename, typingProgress }) => {
 
       <div className="flex flex-1 overflow-hidden">
         {/* Left sidebar */}
-        <div className="w-12 bg-[#252526] flex-shrink-0 flex flex-col items-center py-2 text-[#858585] border-r border-[#1a1a1a]">
+        <div className="w-12 bg-[#252526] flex-shrink-0 flex flex-col items-center py-2 text-[#858585] border-r border-[#1a1a1a] vscode-sidebar-appear">
           <div className="flex flex-col space-y-6">
             <SideBarElement icon={<VscFiles size={24} />} />
             <SideBarElement icon={<VscSearch size={24} />} />
@@ -64,9 +84,9 @@ const VsCode: React.FC<VsCodeProps> = ({ filename, typingProgress }) => {
         <SideBar file={filename} />
 
         {/* Main editor */}
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 flex flex-col overflow-hidden vscode-editor-appear">
           {/* Editor tabs */}
-          <div className="h-9 bg-[#252526] flex items-center text-[#969696] text-xs border-b border-[#1a1a1a] pl-1">
+          <div className="h-9 bg-[#252526] flex items-center text-[#969696] text-xs border-b border-[#1a1a1a] pl-1 vscode-tabs-appear">
             <div
               className={`flex h-9 items-center px-3 border-t-2 ${
                 filename === "reactComponent"
@@ -115,12 +135,22 @@ const VsCode: React.FC<VsCodeProps> = ({ filename, typingProgress }) => {
           </div>
 
           {/* Code editor */}
-          <div className="code-editor flex-1 overflow-auto bg-[#1e1e1e]">
+          <div
+            ref={codeEditorRef}
+            className="code-editor flex-1 overflow-auto bg-[#1e1e1e] vscode-content-appear"
+          >
             <div className="flex font-mono text-sm leading-relaxed h-full">
               {/* Line numbers */}
               <div className="w-12 flex-shrink-0 py-2.5 text-right bg-[#1e1e1e] text-[#6e7681] select-none border-r border-[#323233]">
                 {codeContent[filename].map((_, i) => (
-                  <div key={i} className="h-6 px-2 hover:text-[#cccccc]">
+                  <div
+                    key={i}
+                    className={`h-6 px-2 hover:text-[#cccccc] ${
+                      i < (typingProgress[filename] || 0)
+                        ? "visible-line-number"
+                        : "invisible-line-number"
+                    }`}
+                  >
                     {i + 1}
                   </div>
                 ))}
@@ -131,27 +161,35 @@ const VsCode: React.FC<VsCodeProps> = ({ filename, typingProgress }) => {
                 <div className="space-y-0">
                   {codeContent[filename]
                     .slice(0, typingProgress[filename] || 0)
-                    .map((line, i) => (
-                      <div
-                        key={i}
-                        className="h-6 flex items-center text-[#abb2bf] whitespace-pre"
-                      >
-                        {/* Simple token parsing for syntax highlighting */}
-                        {line
-                          .split(
-                            /(\s+|[{}();,=><]|\/\/.*$|(['"])(?:(?=(\\?))\3.)*?\2)/
-                          )
-                          .filter(Boolean)
-                          .map((token, j) => (
-                            <span
-                              key={j}
-                              className={getSyntaxClass(token, language)}
-                            >
-                              {token}
-                            </span>
-                          ))}
-                      </div>
-                    ))}
+                    .map((line, i) => {
+                      // Calculate a staggered delay for more natural typing appearance
+                      const appearanceStyle = {
+                        animationDelay: `${Math.min(i * 20, 300)}ms`,
+                      };
+
+                      return (
+                        <div
+                          key={i}
+                          className="h-6 flex items-center text-[#abb2bf] whitespace-pre typed-line"
+                          style={appearanceStyle}
+                        >
+                          {/* Simple token parsing for syntax highlighting */}
+                          {line
+                            .split(
+                              /(\s+|[{}();,=><]|\/\/.*$|(['"])(?:(?=(\\?))\3.)*?\2)/
+                            )
+                            .filter(Boolean)
+                            .map((token, j) => (
+                              <span
+                                key={j}
+                                className={getSyntaxClass(token, language)}
+                              >
+                                {token}
+                              </span>
+                            ))}
+                        </div>
+                      );
+                    })}
                 </div>
                 <div
                   className="code-cursor absolute w-0.5 h-[18px] bg-[#aeafad] opacity-60 animate-blink"
@@ -166,7 +204,7 @@ const VsCode: React.FC<VsCodeProps> = ({ filename, typingProgress }) => {
               </div>
 
               {/* Minimap */}
-              <div className="w-[60px] bg-[#252526] flex-shrink-0 relative">
+              <div className="w-[60px] bg-[#252526] flex-shrink-0 relative vscode-minimap-appear">
                 <div className="absolute top-0 left-0 w-full h-full opacity-30">
                   {codeContent[filename].map((line, i) => (
                     <div
@@ -175,6 +213,7 @@ const VsCode: React.FC<VsCodeProps> = ({ filename, typingProgress }) => {
                       style={{
                         width: `${Math.min(line.length * 0.5, 50)}px`,
                         opacity: i < (typingProgress[filename] || 0) ? 1 : 0,
+                        transition: "opacity 0.1s ease-in",
                       }}
                     ></div>
                   ))}
@@ -185,7 +224,12 @@ const VsCode: React.FC<VsCodeProps> = ({ filename, typingProgress }) => {
           </div>
 
           {/* Status bar */}
-          <StatusBar problems={problems} language={language} />
+          <StatusBar
+            problems={problems}
+            language={language}
+            typingProgress={typingProgress[filename] || 0}
+            totalLines={codeContent[filename].length}
+          />
         </div>
       </div>
     </div>
