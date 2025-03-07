@@ -18,43 +18,49 @@ import {
 import { useWindowContext } from "../context/windowcontext";
 import "./PanicAnimations.css";
 
-const INIT_MESSAGE_TIME = 2000;
+const INIT_MESSAGE_TIME = 1000;
 
 interface PanicSceneProps {
   onComplete: () => void;
 }
 
-// Enhanced narrative content with a more coherent story
+// Enhanced narrative content with a more coherent story and emojis
 const narrative = {
   intro: {
-    title: "OH NO!",
+    title: "OH NO! 😱",
     content:
       "Someone is viewing my unfinished portfolio right now! I need to get it ready ASAP.",
+    emoji: "😱",
   },
   research: {
-    title: "Research Phase",
+    title: "Research Phase 🔍",
     content: "Let me check what modern portfolios should look like...",
     followup: "I need animations to make this look professional!",
+    emoji: "🔍",
   },
   assistance: {
-    title: "Getting Help",
+    title: "Getting Help 🤖",
     content: "Maybe an AI assistant can help me with some animation code?",
     followup: "Perfect! This code looks exactly what I need.",
+    emoji: "🤖",
   },
   coding: {
-    title: "Implementation",
+    title: "Implementation 💻",
     content: "Time to implement these animations in my React components...",
     followup: "Almost there! Just need to integrate everything.",
+    emoji: "💻",
   },
   commands: {
-    title: "Deployment",
+    title: "Deployment 🚀",
     content: "Let's install the dependencies and deploy this right away!",
     followup: "Success! Portfolio is now live with animations.",
+    emoji: "🚀",
   },
   complete: {
-    title: "PHEW!",
+    title: "PHEW! 😅",
     content:
       "Crisis averted! Portfolio is now live with professional animations.",
+    emoji: "😅",
   },
 };
 
@@ -62,6 +68,7 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const visitorRef = useRef<HTMLDivElement>(null);
   const narrativeRef = useRef<HTMLDivElement>(null);
+  const emojiRef = useRef<HTMLDivElement>(null);
   const {
     panicPhase,
     setPanicPhase,
@@ -80,8 +87,10 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
   const [narrativeContent, setNarrativeContent] = useState({
     title: "",
     content: "",
+    emoji: "",
   });
   const [narrativeProgress, setNarrativeProgress] = useState(0);
+  const [emojiAnimating, setEmojiAnimating] = useState(false);
 
   // Animation phase timing functions
   const waitForChatAnimation = useCallback(async () => {
@@ -109,6 +118,7 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
   const showNarrative = useCallback(
     (phase: keyof typeof narrative, isFollowup = false) => {
       setNarrativeVisible(false);
+      setEmojiAnimating(false);
 
       return new Promise<void>((resolveNarrative) => {
         setTimeout(() => {
@@ -121,10 +131,12 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
             ? {
                 title: narrative[phase].title,
                 content: narrative[phase]?.followup,
+                emoji: narrative[phase].emoji,
               }
             : {
                 title: narrative[phase].title,
                 content: narrative[phase].content,
+                emoji: narrative[phase].emoji,
               };
 
           setNarrativeContent(content);
@@ -147,12 +159,15 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
 
             if (progress >= textLength) {
               clearInterval(typingTimer);
+              // Start emoji animation when typing is complete
+              setEmojiAnimating(true);
             }
           }, typingInterval);
 
           // Schedule the hiding and resolution
           const hideTimer = setTimeout(() => {
             setNarrativeVisible(false);
+            setEmojiAnimating(false);
             resolveNarrative();
           }, totalDuration);
 
@@ -328,10 +343,8 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
           <div
             ref={narrativeRef}
             className={cn(
-              "fixed top-[70%] left-[10%] z-[90] narrative-container",
-              narrativePhase === "intro" || narrativePhase === "complete"
-                ? "narrative-spotlight"
-                : "narrative-bubble"
+              "fixed top-[70%] left-[10%] z-[90]",
+              "narrative-bubble"
             )}
           >
             <div
@@ -342,10 +355,20 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
                   : "bg-black/60 border border-purple-500"
               )}
             >
+              {/* Title bar with emoji */}
               {(narrativePhase === "intro" ||
                 narrativePhase === "complete") && (
-                <div className="bg-yellow-600/30 px-5 py-2 font-bold text-yellow-200">
-                  {narrativeContent.title}
+                <div className="bg-yellow-600/30 px-5 py-2 font-bold text-yellow-200 flex items-center justify-between">
+                  <span>{narrativeContent.title}</span>
+                  <div
+                    ref={emojiRef}
+                    className={cn(
+                      "text-2xl transition-all",
+                      emojiAnimating ? "emoji-bounce" : ""
+                    )}
+                  >
+                    {narrativeContent.emoji}
+                  </div>
                 </div>
               )}
               <div className="p-5 relative">
@@ -353,18 +376,35 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
                   narrativePhase !== "complete" && (
                     <div className="absolute -top-2 -left-2 text-xl">💭</div>
                   )}
-                <div
-                  className={cn(
-                    "text-base leading-relaxed space-y-1",
-                    narrativePhase === "intro" || narrativePhase === "complete"
-                      ? "text-white font-medium"
-                      : "text-pink-100"
-                  )}
-                >
-                  {narrativeContent.content.substring(0, narrativeProgress)}
-                  {narrativeProgress < narrativeContent.content.length && (
-                    <span className="typing-cursor">|</span>
-                  )}
+                <div className="flex items-start gap-4">
+                  {/* Main content */}
+                  <div
+                    className={cn(
+                      "text-base leading-relaxed space-y-1 flex-grow",
+                      narrativePhase === "intro" ||
+                        narrativePhase === "complete"
+                        ? "text-white font-medium"
+                        : "text-pink-100"
+                    )}
+                  >
+                    {narrativeContent.content.substring(0, narrativeProgress)}
+                    {narrativeProgress < narrativeContent.content.length && (
+                      <span className="typing-cursor">|</span>
+                    )}
+                  </div>
+
+                  {/* Phase emoji (only for thought bubbles) */}
+                  {narrativePhase !== "intro" &&
+                    narrativePhase !== "complete" && (
+                      <div
+                        className={cn(
+                          "text-2xl ml-2 transition-all",
+                          emojiAnimating ? "emoji-bounce" : ""
+                        )}
+                      >
+                        {narrativeContent.emoji}
+                      </div>
+                    )}
                 </div>
                 {narrativePhase !== "intro" &&
                   narrativePhase !== "complete" && (

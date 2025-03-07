@@ -242,3 +242,94 @@
 .progress-fill {
     animation: progressFill var(--duration, 5s) linear forwards;
 }
+
+/* Emoji animations */
+.emoji-bounce {
+    display: inline-block;
+    animation: emojiBounce 0.8s ease infinite;
+    transform-origin: bottom;
+}
+
+@keyframes emojiBounce {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    40% {
+        transform: translateY(-10px) scale(1.1);
+    }
+
+    60% {
+        transform: translateY(-5px) scale(1.05);
+    }
+}
+
+/* Enhanced narrative appear/disappear animations */
+.narrative-container {
+    animation: narrativeAppear 4.4s ease forwards;
+}
+
+@keyframes narrativeAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Enhancing the glowing effect for narrative boxes */
+.narrative-spotlight .bg-black\/75 {
+    box-shadow: 0 0 20px 5px rgba(255, 215, 0, 0.3);
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 25px 10px rgba(255, 215, 0, 0.5);
+    }
+}
+
+/* Sparkle effect for the narrative thought bubbles */
+.narrative-bubble .bg-black\/60 {
+    position: relative;
+    overflow: hidden;
+}
+
+.narrative-bubble .bg-black\/60:after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+    opacity: 0;
+    animation: sparkle 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1) rotate(180deg);
+    }
+}
