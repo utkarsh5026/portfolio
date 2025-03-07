@@ -1,0 +1,553 @@
+/* ChaoticGlitchEffects.css - Animation-focused version */
+
+/* ===== ANIMATION KEYFRAMES ===== */
+@keyframes moveLines {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 0 100%;
+    }
+}
+
+@keyframes rgbShift {
+
+    0%,
+    100% {
+        box-shadow: inset -2px 0 0 rgba(255, 0, 0, 0.2),
+            inset 2px 0 0 rgba(0, 255, 0, 0.2);
+    }
+
+    25% {
+        box-shadow: inset 2px 0 0 rgba(0, 0, 255, 0.2),
+            inset -2px 0 0 rgba(255, 0, 0, 0.2);
+    }
+
+    50% {
+        box-shadow: inset -4px 0 0 rgba(0, 255, 0, 0.2),
+            inset 4px 0 0 rgba(0, 0, 255, 0.2);
+    }
+
+    75% {
+        box-shadow: inset 4px 0 0 rgba(255, 0, 0, 0.2),
+            inset -4px 0 0 rgba(0, 255, 0, 0.2);
+    }
+}
+
+@keyframes noiseAnimation {
+
+    0%,
+    100% {
+        opacity: 0.05;
+    }
+
+    50% {
+        opacity: 0.1;
+    }
+}
+
+@keyframes layoutGlitch {
+
+    0%,
+    100% {
+        transform: none;
+    }
+
+    10% {
+        transform: translateX(5px) skewX(-5deg);
+    }
+
+    20% {
+        transform: translateX(-5px) skewX(5deg);
+    }
+
+    30% {
+        transform: translateY(5px) skewY(-2deg);
+    }
+
+    40% {
+        transform: translateY(-5px) skewY(2deg);
+    }
+
+    50% {
+        transform: scale(1.02, 0.98);
+    }
+
+    60% {
+        transform: scale(0.98, 1.02);
+    }
+
+    70% {
+        transform: rotate(1deg);
+    }
+
+    80% {
+        transform: rotate(-1deg);
+    }
+
+    90% {
+        transform: translateX(3px) translateY(-3px) rotate(-1deg);
+    }
+}
+
+@keyframes megaGlitch {
+
+    0%,
+    100% {
+        transform: none;
+        filter: none;
+    }
+
+    10% {
+        transform: skew(-2deg, 0deg);
+        filter: hue-rotate(90deg);
+    }
+
+    /* ... rest of the keyframes ... */
+}
+
+@keyframes violentShake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-8px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(8px);
+    }
+
+    15%,
+    35%,
+    55%,
+    75%,
+    95% {
+        transform: translateY(-3px);
+    }
+
+    25%,
+    45%,
+    65%,
+    85% {
+        transform: translateY(3px);
+    }
+}
+
+@keyframes screenTear {
+    /* ... keyframe definitions ... */
+}
+
+@keyframes glitchOverlay {
+    /* ... keyframe definitions ... */
+}
+
+@keyframes textGlitch {
+    /* ... keyframe definitions ... */
+}
+
+@keyframes criticalPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes centerThoughtAnimation {
+    0% {
+        transform: translateX(-50%) scale(0.5);
+        opacity: 0;
+    }
+
+    /* ... rest of the keyframes ... */
+}
+
+@keyframes thoughtAppear {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 0.95;
+    }
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    /* ... rest of the keyframes ... */
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes newErrorFlash {
+
+    0%,
+    100% {
+        background-color: transparent;
+    }
+
+    50% {
+        background-color: rgba(255, 0, 0, 0.2);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 6px rgba(255, 59, 48, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 59, 48, 0);
+    }
+}
+
+@keyframes newVisitorPulse {
+
+    0%,
+    100% {
+        background-color: rgba(255, 0, 0, 0.2);
+    }
+
+    50% {
+        background-color: rgba(255, 0, 0, 0.4);
+    }
+}
+
+@keyframes alertGlitch {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    5% {
+        transform: translate(-50%, -50%) scale(1) translateX(5px);
+    }
+
+    /* ... rest of the keyframes ... */
+}
+
+@keyframes flashingText {
+
+    0%,
+    49% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes errorPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 50px rgba(255, 0, 0, 0.7);
+    }
+}
+
+@keyframes rotateSkull {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(15deg);
+    }
+
+    75% {
+        transform: rotate(-15deg);
+    }
+}
+
+@keyframes errorFlicker {
+    /* ... keyframe definitions ... */
+}
+
+@keyframes buttonFlash {
+
+    0%,
+    100% {
+        background-color: #ff3333;
+    }
+
+    50% {
+        background-color: #cc0000;
+    }
+}
+
+/* ===== GLITCH OVERLAY ELEMENTS ===== */
+.glitch-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    background: linear-gradient(transparent 50%, rgba(255, 0, 0, 0.05) 50%);
+    background-size: 100% 4px;
+    animation: moveLines 2s infinite linear;
+}
+
+.rgb-shift {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 11;
+    animation: rgbShift 5s infinite;
+}
+
+.noise-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 12;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    animation: noiseAnimation 0.5s infinite;
+}
+
+/* ===== LAYOUT ANIMATIONS ===== */
+.layout-broken {
+    animation: layoutGlitch 4s infinite;
+}
+
+/* ===== GLITCH EFFECTS ===== */
+.chaotic-portfolio-container.mega-glitching {
+    animation: megaGlitch 3s infinite;
+}
+
+.chaotic-portfolio-container.mega-glitching::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.05);
+    pointer-events: none;
+    z-index: 2;
+    animation: glitchOverlay 2s infinite;
+}
+
+.chaotic-portfolio-container.mega-glitching .html-content {
+    animation: textGlitch 2s infinite;
+}
+
+.chaotic-portfolio-container.violent-shake {
+    animation: violentShake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+.chaotic-portfolio-container.mega-glitching::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: rgba(255, 0, 0, 0.8);
+    z-index: 15;
+    opacity: 0;
+    animation: screenTear 3s infinite;
+}
+
+/* ===== PANIC THOUGHT BUBBLES ===== */
+.panic-thought {
+    position: absolute;
+    max-width: 300px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    z-index: 100;
+    animation: floatUp 9s ease-in-out;
+    opacity: 0.95;
+    transform-origin: center;
+}
+
+.critical-priority {
+    background-color: #ff3333;
+    color: white;
+    border: 2px solid #cc0000;
+    font-size: 18px;
+    animation: criticalPulse 2s infinite, floatUp 9s ease-in-out;
+}
+
+.high-priority {
+    background-color: #ff9900;
+    color: #333;
+    border: 2px solid #cc7700;
+    font-size: 16px;
+}
+
+.medium-priority {
+    background-color: #ffcc00;
+    color: #333;
+    border: 2px solid #cc9900;
+    font-size: 15px;
+}
+
+.left-position {
+    left: 20px;
+}
+
+.right-position {
+    right: 20px;
+}
+
+.center-position {
+    left: 50%;
+    transform: translateX(-50%);
+    animation: centerThoughtAnimation 9s ease-in-out;
+}
+
+/* Dynamic positioning based on order of appearance */
+.panic-thought:nth-of-type(odd) {
+    top: 25%;
+}
+
+.panic-thought:nth-of-type(even) {
+    top: 45%;
+}
+
+.panic-thought:nth-of-type(3n) {
+    top: 15%;
+}
+
+.panic-thought:nth-of-type(4n) {
+    top: 65%;
+}
+
+.panic-thought:nth-of-type(5n) {
+    top: 75%;
+}
+
+.panic-thought:nth-of-type(6n) {
+    top: 5%;
+}
+
+.panic-thought.animate-in {
+    animation: thoughtAppear 0.5s ease-out forwards;
+}
+
+/* ===== ANIMATION CLASSES FOR TERMINAL ===== */
+.console-error.new-error {
+    animation: newErrorFlash 1s;
+}
+
+/* ===== VISITOR COUNTER ANIMATIONS ===== */
+.visitor-dot.pulse {
+    animation: pulse 2s infinite;
+}
+
+.visitor-item.pulse-bg {
+    animation: newVisitorPulse 2s infinite;
+}
+
+/* ===== VISITOR ALERT ANIMATIONS ===== */
+.visitor-alert.show-alert {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    animation: alertGlitch 5s infinite;
+}
+
+.alert-main-message {
+    animation: flashingText 0.8s infinite;
+}
+
+/* ===== FATAL ERROR ANIMATIONS ===== */
+.fatal-error {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.fatal-error-content {
+    animation: errorPulse 2s infinite;
+}
+
+.fatal-error-icon {
+    animation: rotateSkull 10s infinite;
+    display: inline-block;
+}
+
+.fatal-error-title {
+    animation: errorFlicker 2s infinite;
+}
+
+.fatal-error-button {
+    animation: buttonFlash 1.5s infinite;
+}
