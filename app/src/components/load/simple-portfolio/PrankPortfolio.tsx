@@ -33,7 +33,7 @@ const CONSOLE_ERROR_COUNT = 12;
 const INITIAL_DELAY = 1200;
 const TERMINAL_DELAY = INITIAL_DELAY + 3000;
 const FATAL_ERROR_DELAY = INITIAL_DELAY + 4000;
-const TOTAL_ANIMATION_TIMING = FATAL_ERROR_DELAY + 2000;
+const TOTAL_ANIMATION_TIMING = FATAL_ERROR_DELAY + 2500;
 
 const CHAOS_INTERVAL = 400;
 const VIOLENT_SCREEN_SHAKE_INTERVAL = 500;
@@ -47,6 +47,7 @@ const PrankPortfolio: React.FC<ChaoticPortfolioProps> = ({ onComplete }) => {
   const [showFatalError, setShowFatalError] = useState(false);
   const [consoleErrors, setConsoleErrors] = useState<ConsoleError[]>([]);
   const [enableBlackout, setEnableBlackout] = useState(false);
+  const [entrance, setEntrance] = useState(false);
 
   const blackout = useCallback(() => {
     setEnableBlackout(true);
@@ -229,6 +230,8 @@ const PrankPortfolio: React.FC<ChaoticPortfolioProps> = ({ onComplete }) => {
   }, []);
 
   useEffect(() => {
+    if (!entrance) return;
+
     const initialReactionTimeout = setTimeout(
       () => addPanicThought("What the hell is this?! 😱", "high", "left", 2000),
       INITIAL_DELAY
@@ -262,13 +265,21 @@ const PrankPortfolio: React.FC<ChaoticPortfolioProps> = ({ onComplete }) => {
     bringTerminal,
     fatalError,
     blackout,
+    entrance,
   ]);
+
+  useEffect(() => {
+    if (!entrance) {
+      containerRef.current?.classList.add("entrance-chaotic");
+      setTimeout(() => setEntrance(true), 3000);
+    }
+  }, [entrance]);
 
   return (
     <div
       ref={containerRef}
       className={cn(
-        "chaotic-portfolio-container relative w-full h-screen overflow-hidden bg-white text-black font-serif p-5 chaos-shutdown with-flash",
+        "chaotic-portfolio-container relative w-full h-screen overflow-hidden bg-white text-black font-serif p-5",
         enableBlackout && "enable-blackout"
       )}
     >
@@ -278,17 +289,14 @@ const PrankPortfolio: React.FC<ChaoticPortfolioProps> = ({ onComplete }) => {
         <div className="blackout-center"></div>
         <div className="blackout-overlay"></div>
       </div>
-      {/* Glitch overlay elements - keep these with original CSS classes for animations */}
       <div className="glitch-lines"></div>
       <div className="rgb-shift"></div>
-      <div className="noise-overlay"></div>
 
       <BasicPortfolio layoutBroken={layoutBroken} />
 
       {/* Console error terminal */}
       {showTerminal && <Console errors={consoleErrors} />}
 
-      {/* Panic thought bubbles - keep original CSS classes for animations and positioning */}
       {panicThoughts.map((thought) => (
         <div
           key={thought.id}
