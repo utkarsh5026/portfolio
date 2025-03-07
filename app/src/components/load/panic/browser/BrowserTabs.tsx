@@ -1,7 +1,7 @@
 import React from "react";
 import { VscChromeClose } from "react-icons/vsc";
 import { cn } from "@/lib/utils";
-import { browserTabs } from "../content";
+import { browserTabs } from "./tabs";
 
 interface BrowserTabsProps {
   activeTab: number;
@@ -16,7 +16,7 @@ const BrowserTabs: React.FC<BrowserTabsProps> = ({ activeTab, isLoading }) => {
           id={`tab-${tab.id}`}
           key={tab.id}
           className={cn(
-            "flex items-center min-w-[180px] max-w-[240px] h-8 px-3 rounded-t-lg whitespace-nowrap overflow-hidden relative group",
+            "flex items-center min-w-[180px] max-w-[240px] h-8 px-3 rounded-t-lg whitespace-nowrap overflow-hidden relative group browser-tab",
             activeTab === index
               ? "bg-[#202124] text-gray-200"
               : "bg-[#323639] text-gray-400 hover:bg-[#3c4043]"
@@ -47,7 +47,7 @@ const BrowserTabs: React.FC<BrowserTabsProps> = ({ activeTab, isLoading }) => {
             </div>
           ) : (
             <div className="w-4 h-4 bg-blue-500 rounded-full mr-2 flex-shrink-0 flex items-center justify-center text-white text-xs">
-              {tab.title.charAt(0).toUpperCase()}
+              {tab.icon}
             </div>
           )}
 

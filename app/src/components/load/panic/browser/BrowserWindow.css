@@ -1,7 +1,6 @@
 /* Browser window appear animation */
 .browser-appear-animation {
-  animation: browserAppear forwards;
-  animation-timing-function: ease-out-quad;
+  animation: browserAppear 8s ease-in-out forwards;
 }
 
 /* Tab pulse animation */
