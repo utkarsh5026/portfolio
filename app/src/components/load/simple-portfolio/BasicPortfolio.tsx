@@ -51,15 +51,11 @@ const BasicPortfolio: React.FC<BasicPortfolioProps> = ({ layoutBroken }) => {
         <p className="text-base font-serif mb-2">A portfolio website.</p>
       </div>
 
-      <h2 className="text-xl font-serif mt-5 font-bold">Contact</h2>
+      <h2 className="text-xl font-serif mt-5 font-bold">Contact Me 😊</h2>
       <p className="text-base font-serif mb-1">
         Email: utkarshpriyadarshi5026@gmail.com
       </p>
       <p className="text-base font-serif mb-3">Phone: +91 9876543210</p>
-
-      <button className="mt-4 px-3 py-1 bg-gray-200 border border-gray-400 text-gray-800 rounded cursor-pointer hover:bg-gray-300">
-        Contact Me
-      </button>
     </div>
   );
 };

@@ -34,7 +34,6 @@ const MacOSContainer: React.FC<MacOSContainerProps> = ({
     statusBarExtras,
   } = options;
 
-  // State for dynamic elements
   const [currentTime, setCurrentTime] = useState(new Date());
   const [batteryLevel, setBatteryLevel] = useState(100);
   const containerRef = useRef(null);
@@ -61,7 +60,7 @@ const MacOSContainer: React.FC<MacOSContainerProps> = ({
   return (
     <div
       ref={containerRef}
-      className="macos-container relative w-full h-full overflow-hidden font-sans"
+      className="macos-container max-h-screen w-full h-full overflow-hidden font-sans"
       style={{
         ...(wallpaper && {
           backgroundImage:
@@ -167,7 +166,7 @@ const MacOSContainer: React.FC<MacOSContainerProps> = ({
       </div>
 
       {showDesktopIcons && (
-        <div className="absolute top-10 right-6 flex flex-col gap-5 z-10">
+        <div className="absolute top-10 right-6 flex flex-col gap-5">
           {desktopIcons.map((icon) => (
             <DesktopIcon
               key={`desktop-icon-${icon.label}`}

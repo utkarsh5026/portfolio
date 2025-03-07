@@ -10,8 +10,8 @@ import { BiLogoVisualStudio } from "react-icons/bi";
 
 export const dockApps = [
   { icon: <FaChrome size={28} />, name: "Chrome" },
-  { icon: <BiLogoVisualStudio size={28} />, name: "VS Code" },
   { icon: <SiOpenai size={28} />, name: "OpenAI" },
+  { icon: <BiLogoVisualStudio size={28} />, name: "VS Code" },
   { icon: <FaTerminal size={28} />, name: "Terminal" },
   { icon: <SiGithub size={28} />, name: "GitHub" },
   { icon: <SiSlack size={28} />, name: "Slack" },
