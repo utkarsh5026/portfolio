@@ -104,7 +104,45 @@
         filter: hue-rotate(90deg);
     }
 
-    /* ... rest of the keyframes ... */
+    20% {
+        transform: scale(1.02, 0.98) translateX(5px);
+        filter: hue-rotate(0deg) saturate(150%);
+    }
+
+    30% {
+        transform: scale(0.98, 1.02) translateX(-5px);
+        filter: hue-rotate(180deg) contrast(120%);
+    }
+
+    40% {
+        transform: skew(2deg, 1deg) translateY(3px);
+        filter: blur(0.5px) brightness(110%);
+    }
+
+    50% {
+        transform: skew(-1deg, -1deg) translateY(-3px);
+        filter: invert(10%);
+    }
+
+    60% {
+        transform: scale(1.01) rotate(1deg);
+        filter: sepia(30%) contrast(90%);
+    }
+
+    70% {
+        transform: scale(0.99) rotate(-1deg);
+        filter: hue-rotate(270deg) brightness(95%);
+    }
+
+    80% {
+        transform: skew(1deg, 1deg) scale(1.01, 0.99);
+        filter: saturate(130%) contrast(110%);
+    }
+
+    90% {
+        transform: skew(-1deg, -1deg) scale(0.99, 1.01);
+        filter: hue-rotate(45deg) brightness(105%);
+    }
 }
 
 @keyframes violentShake {
@@ -146,15 +184,206 @@
 }
 
 @keyframes screenTear {
-    /* ... keyframe definitions ... */
+
+    0%,
+    90%,
+    100% {
+        top: 0;
+        height: 3px;
+        opacity: 0;
+    }
+
+    2%,
+    5% {
+        top: 10%;
+        height: 3px;
+        opacity: 0.8;
+    }
+
+    6% {
+        top: 10%;
+        height: 0;
+        opacity: 0;
+    }
+
+    20%,
+    25% {
+        top: 40%;
+        height: 4px;
+        opacity: 0.7;
+    }
+
+    26% {
+        top: 40%;
+        height: 0;
+        opacity: 0;
+    }
+
+    40%,
+    45% {
+        top: 70%;
+        height: 5px;
+        opacity: 0.9;
+    }
+
+    46% {
+        top: 70%;
+        height: 0;
+        opacity: 0;
+    }
+
+    60%,
+    65% {
+        top: 30%;
+        height: 2px;
+        opacity: 0.6;
+    }
+
+    66% {
+        top: 30%;
+        height: 0;
+        opacity: 0;
+    }
+
+    80%,
+    85% {
+        top: 60%;
+        height: 3px;
+        opacity: 0.8;
+    }
+
+    86% {
+        top: 60%;
+        height: 0;
+        opacity: 0;
+    }
 }
 
 @keyframes glitchOverlay {
-    /* ... keyframe definitions ... */
+
+    0%,
+    100% {
+        background-color: rgba(255, 0, 0, 0.05);
+        transform: none;
+    }
+
+    10% {
+        background-color: rgba(0, 255, 0, 0.05);
+        transform: translateX(2px);
+    }
+
+    20% {
+        background-color: rgba(0, 0, 255, 0.05);
+        transform: translateX(-2px);
+    }
+
+    30% {
+        background-color: rgba(255, 0, 0, 0.07);
+        transform: translateY(2px);
+    }
+
+    40% {
+        background-color: rgba(0, 255, 0, 0.07);
+        transform: translateY(-2px);
+    }
+
+    50% {
+        background-color: rgba(0, 0, 255, 0.07);
+        transform: none;
+    }
+
+    60% {
+        background-color: rgba(255, 255, 0, 0.05);
+        transform: scale(1.01);
+    }
+
+    70% {
+        background-color: rgba(0, 255, 255, 0.05);
+        transform: scale(0.99);
+    }
+
+    80% {
+        background-color: rgba(255, 0, 255, 0.05);
+        transform: translateX(1px) translateY(1px);
+    }
+
+    90% {
+        background-color: rgba(255, 255, 255, 0.02);
+        transform: translateX(-1px) translateY(-1px);
+    }
 }
 
 @keyframes textGlitch {
-    /* ... keyframe definitions ... */
+
+    0%,
+    100% {
+        transform: none;
+        opacity: 1;
+        text-shadow: none;
+    }
+
+    10%,
+    15% {
+        transform: translateX(3px);
+        opacity: 0.9;
+        text-shadow: -2px 0 red;
+    }
+
+    20%,
+    25% {
+        transform: translateX(-3px);
+        opacity: 0.95;
+        text-shadow: 2px 0 blue;
+    }
+
+    30%,
+    35% {
+        transform: translateY(2px);
+        opacity: 0.9;
+        text-shadow: 0 -1px green;
+    }
+
+    40%,
+    45% {
+        transform: translateY(-2px);
+        opacity: 0.95;
+        text-shadow: 0 1px red;
+    }
+
+    50%,
+    55% {
+        transform: none;
+        opacity: 1;
+        text-shadow: -1px 0 blue, 1px 0 red;
+    }
+
+    60%,
+    65% {
+        transform: skew(2deg);
+        opacity: 0.92;
+        text-shadow: 1px 1px green;
+    }
+
+    70%,
+    75% {
+        transform: skew(-2deg);
+        opacity: 0.95;
+        text-shadow: -1px -1px blue;
+    }
+
+    80%,
+    85% {
+        transform: none;
+        opacity: 0.9;
+        text-shadow: 1px 0 red, -1px 0 green;
+    }
+
+    90%,
+    95% {
+        transform: translateX(1px) translateY(1px);
+        opacity: 0.95;
+        text-shadow: 0 0 3px rgba(0, 0, 255, 0.5);
+    }
 }
 
 @keyframes criticalPulse {
@@ -175,7 +404,20 @@
         opacity: 0;
     }
 
-    /* ... rest of the keyframes ... */
+    10% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.95;
+    }
+
+    80% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.95;
+    }
+
+    100% {
+        transform: translateX(-50%) scale(0.8) translateY(-50px);
+        opacity: 0;
+    }
 }
 
 @keyframes thoughtAppear {
@@ -196,7 +438,20 @@
         opacity: 0;
     }
 
-    /* ... rest of the keyframes ... */
+    10% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.95;
+    }
+
+    80% {
+        transform: translateY(-20px) rotate(1deg);
+        opacity: 0.95;
+    }
+
+    100% {
+        transform: translateY(-80px) rotate(3deg);
+        opacity: 0;
+    }
 }
 
 @keyframes slideUp {
@@ -249,17 +504,7 @@
     }
 }
 
-@keyframes newVisitorPulse {
 
-    0%,
-    100% {
-        background-color: rgba(255, 0, 0, 0.2);
-    }
-
-    50% {
-        background-color: rgba(255, 0, 0, 0.4);
-    }
-}
 
 @keyframes alertGlitch {
 
@@ -272,7 +517,77 @@
         transform: translate(-50%, -50%) scale(1) translateX(5px);
     }
 
-    /* ... rest of the keyframes ... */
+    10% {
+        transform: translate(-50%, -50%) scale(1.02) translateX(-3px);
+    }
+
+    15% {
+        transform: translate(-50%, -50%) scale(0.98) translateY(3px);
+    }
+
+    20% {
+        transform: translate(-50%, -50%) scale(1) translateY(-2px);
+    }
+
+    25% {
+        transform: translate(-50%, -50%) scale(1.01) skewX(2deg);
+    }
+
+    30% {
+        transform: translate(-50%, -50%) scale(0.99) skewX(-2deg);
+    }
+
+    35% {
+        transform: translate(-50%, -50%) scale(1) skewY(1deg);
+    }
+
+    40% {
+        transform: translate(-50%, -50%) scale(1) skewY(-1deg);
+    }
+
+    45% {
+        transform: translate(-50%, -50%) scale(1.03) translateX(2px) translateY(-2px);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(0.97) translateX(-2px) translateY(2px);
+    }
+
+    55% {
+        transform: translate(-50%, -50%) scale(1) translateX(0) translateY(0);
+    }
+
+    60% {
+        transform: translate(-50%, -50%) scale(1.01) rotate(0.5deg);
+    }
+
+    65% {
+        transform: translate(-50%, -50%) scale(0.99) rotate(-0.5deg);
+    }
+
+    70% {
+        transform: translate(-50%, -50%) scale(1) translateX(1px) translateY(-1px);
+    }
+
+    75% {
+        transform: translate(-50%, -50%) scale(1) translateX(-1px) translateY(1px);
+    }
+
+    80% {
+        transform: translate(-50%, -50%) scale(1.02) skewX(1deg);
+    }
+
+    85% {
+        transform: translate(-50%, -50%) scale(0.98) skewX(-1deg);
+    }
+
+    90% {
+        transform: translate(-50%, -50%) scale(1) translateX(3px);
+    }
+
+    95% {
+        transform: translate(-50%, -50%) scale(1) translateX(-3px);
+    }
 }
 
 @keyframes flashingText {
@@ -327,7 +642,62 @@
 }
 
 @keyframes errorFlicker {
-    /* ... keyframe definitions ... */
+
+    0%,
+    100% {
+        text-shadow: 1px 1px 2px rgba(255, 0, 0, 0.7);
+        opacity: 1;
+    }
+
+    25% {
+        text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.9);
+        opacity: 0.9;
+    }
+
+    30% {
+        text-shadow: 1px 1px 2px rgba(255, 0, 0, 0.7);
+        opacity: 1;
+    }
+
+    35% {
+        text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.9);
+        opacity: 0.9;
+    }
+
+    40% {
+        text-shadow: 1px 1px 2px rgba(255, 0, 0, 0.7);
+        opacity: 1;
+    }
+
+    50% {
+        text-shadow: 3px 3px 6px rgba(255, 0, 0, 0.8);
+        opacity: 0.95;
+    }
+
+    55% {
+        text-shadow: 1px 1px 2px rgba(255, 0, 0, 0.7);
+        opacity: 1;
+    }
+
+    75% {
+        text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.9);
+        opacity: 0.9;
+    }
+
+    80% {
+        text-shadow: 1px 1px 2px rgba(255, 0, 0, 0.7);
+        opacity: 1;
+    }
+
+    85% {
+        text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.9);
+        opacity: 0.9;
+    }
+
+    90% {
+        text-shadow: 1px 1px 2px rgba(255, 0, 0, 0.7);
+        opacity: 1;
+    }
 }
 
 @keyframes buttonFlash {
@@ -339,6 +709,51 @@
 
     50% {
         background-color: #cc0000;
+    }
+}
+
+
+@keyframes skullLargePulse {
+    0% {
+        transform: scale(1.2) rotate(0deg);
+        opacity: 0.7;
+        filter: blur(0px);
+    }
+    
+    15% {
+        transform: scale(2.0) rotate(-5deg);
+        opacity: 0.8;
+        filter: blur(0px);
+    }
+    
+    30% {
+        transform: scale(3.2) rotate(3deg);
+        opacity: 0.9;
+        filter: blur(1px);
+    }
+    
+    50% {
+        transform: scale(4.8) rotate(-2deg);
+        opacity: 1;
+        filter: blur(2px) brightness(1.1);
+    }
+    
+    70% {
+        transform: scale(7.5) rotate(4deg);
+        opacity: 0.95;
+        filter: blur(3px) brightness(1.2);
+    }
+    
+    85% {
+        transform: scale(9) rotate(-1deg);
+        opacity: 0.9;
+        filter: blur(4px) brightness(1.3);
+    }
+    
+    100% {
+        transform: scale(12) rotate(0deg);
+        opacity: 0.85;
+        filter: blur(5px) brightness(1.4);
     }
 }
 
@@ -515,9 +930,6 @@
     animation: pulse 2s infinite;
 }
 
-.visitor-item.pulse-bg {
-    animation: newVisitorPulse 2s infinite;
-}
 
 /* ===== VISITOR ALERT ANIMATIONS ===== */
 .visitor-alert.show-alert {
@@ -551,3 +963,215 @@
 .fatal-error-button {
     animation: buttonFlash 1.5s infinite;
 }
+
+.skull-large-pulse {
+    animation: skullLargePulse 1s ease-in-out forwards;
+}
+
+/* ===== SMOOTH CONTRACTION TO BLACKOUT ANIMATION ===== */
+
+/* The main container for the blackout effect */
+.smooth-blackout-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease-in;
+}
+
+/* When active, show the container */
+.enable-blackout .smooth-blackout-container {
+    opacity: 1;
+}
+
+/* The main blackout overlay */
+.blackout-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    transform: scale(1.5);
+    opacity: 0;
+}
+
+/* Animation for the blackout overlay */
+.enable-blackout .blackout-overlay {
+    animation: smoothBlackout 1.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards;
+}
+
+/* The center point that content contracts toward */
+.blackout-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Animation for the center point */
+.enable-blackout .blackout-center {
+    animation: centerPoint 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+}
+
+/* The vignette effect around the edges */
+.blackout-vignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 10%, rgba(0, 0, 0, 0.8) 80%);
+    opacity: 0;
+}
+
+/* Animation for the vignette */
+.enable-blackout .blackout-vignette {
+    animation: vignetteFade 0.8s ease-in forwards;
+}
+
+/* An optional subtle scan line effect */
+.blackout-scanlines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            transparent 50%,
+            rgba(0, 0, 0, 0.05) 50%);
+    background-size: 100% 4px;
+    opacity: 0;
+}
+
+/* Animation for the scan lines */
+.enable-blackout .blackout-scanlines {
+    animation: scanlinesFade 0.6s ease-in forwards;
+}
+
+/* Create the pinch effect on content */
+.enable-blackout .chaotic-portfolio-container {
+    animation: contentPinch 1.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+    transform-origin: center;
+}
+
+/* Keyframes for the smooth blackout animation */
+@keyframes smoothBlackout {
+    0% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+
+    20% {
+        opacity: 0.1;
+        transform: scale(1.3);
+    }
+
+    70% {
+        opacity: 0.5;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Keyframes for the center point animation */
+@keyframes centerPoint {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+
+    15% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0.3;
+    }
+
+    30% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.7;
+    }
+
+    70% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Keyframes for the vignette fade animation */
+@keyframes vignetteFade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Keyframes for the scan lines fade animation */
+@keyframes scanlinesFade {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 0.3;
+    }
+}
+
+/* Keyframes for the content pinch animation */
+@keyframes contentPinch {
+    0% {
+        transform: scale(1);
+        filter: brightness(1) contrast(1) blur(0);
+    }
+
+    20% {
+        transform: scale(0.97);
+        filter: brightness(0.9) contrast(1.05) blur(0);
+    }
+
+    40% {
+        transform: scale(0.9);
+        filter: brightness(0.8) contrast(1.1) blur(1px);
+    }
+
+    70% {
+        transform: scale(0.7);
+        filter: brightness(0.6) contrast(1.2) blur(2px);
+    }
+
+    90% {
+        transform: scale(0.3);
+        filter: brightness(0.3) contrast(1.3) blur(3px);
+    }
+
+    100% {
+        transform: scale(0);
+        filter: brightness(0) contrast(1.5) blur(5px);
+    }
+}
+
