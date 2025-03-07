@@ -1,0 +1,387 @@
+@keyframes floatAnimation {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px rgba(137, 180, 250, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(137, 180, 250, 0.7);
+    }
+}
+
+@keyframes shakeAnimation {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20%,
+    60% {
+        transform: translateX(-5px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+/* Glitch effect */
+.glitch-effect {
+    position: relative;
+    animation: glitch 0.2s linear infinite;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* Enhanced glitch effect for panic mode */
+.panic-mode .glitch-effect {
+    animation: strongGlitch 0.2s linear infinite;
+}
+
+@keyframes strongGlitch {
+    0% {
+        transform: translate(0);
+        filter: hue-rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-5px, 5px);
+        filter: hue-rotate(20deg) brightness(1.2);
+    }
+
+    20% {
+        transform: translate(5px, -5px);
+        filter: hue-rotate(-20deg) brightness(0.8);
+    }
+
+    30% {
+        transform: translate(3px, 3px);
+        filter: hue-rotate(40deg) brightness(1.3);
+    }
+
+    40% {
+        transform: translate(-3px, 3px);
+        filter: hue-rotate(-40deg) brightness(0.9);
+    }
+
+    50% {
+        transform: translate(0);
+        filter: hue-rotate(0deg);
+    }
+
+    60% {
+        transform: translate(4px, -4px);
+        filter: hue-rotate(30deg) brightness(1.1);
+    }
+
+    70% {
+        transform: translate(-4px, -4px);
+        filter: hue-rotate(-30deg) brightness(0.7);
+    }
+
+    80% {
+        transform: translate(-2px, 2px);
+        filter: hue-rotate(10deg) brightness(1.2);
+    }
+
+    90% {
+        transform: translate(2px, -2px);
+        filter: hue-rotate(-10deg) brightness(0.9);
+    }
+
+    100% {
+        transform: translate(0);
+        filter: hue-rotate(0deg);
+    }
+}
+
+/* Background grid */
+.bg-grid {
+    background-image:
+        linear-gradient(rgba(137, 180, 250, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(137, 180, 250, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridPulse 5s infinite alternate;
+}
+
+@keyframes gridPulse {
+    0% {
+        opacity: 0.05;
+        background-size: 40px 40px;
+    }
+
+    100% {
+        opacity: 0.2;
+        background-size: 42px 42px;
+    }
+}
+
+/* Message bubble animations */
+.animate-fadeIn {
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Character emoji animations */
+.character-emoji-notice {
+    animation: lookAround 3s infinite;
+}
+
+@keyframes lookAround {
+
+    0%,
+    100% {
+        transform: scale(1.1) rotate(0deg);
+    }
+
+    25% {
+        transform: scale(1.1) rotate(-5deg);
+    }
+
+    75% {
+        transform: scale(1.1) rotate(5deg);
+    }
+}
+
+.character-emoji-alarm {
+    animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: scale(1.2) translate(0, 0) rotate(0);
+    }
+
+    25% {
+        transform: scale(1.2) translate(3px, 0) rotate(3deg);
+    }
+
+    50% {
+        transform: scale(1.2) translate(0, 2px) rotate(0);
+    }
+
+    75% {
+        transform: scale(1.2) translate(-3px, 0) rotate(-3deg);
+    }
+}
+
+.character-emoji-panic {
+    animation: panic 0.3s infinite;
+}
+
+@keyframes panic {
+
+    0%,
+    100% {
+        transform: scale(1.4) translate(0, 0) rotate(0);
+    }
+
+    20% {
+        transform: scale(1.5) translate(4px, -4px) rotate(5deg);
+    }
+
+    40% {
+        transform: scale(1.4) translate(-3px, 2px) rotate(-5deg);
+    }
+
+    60% {
+        transform: scale(1.5) translate(3px, 3px) rotate(5deg);
+    }
+
+    80% {
+        transform: scale(1.4) translate(-4px, -3px) rotate(-5deg);
+    }
+}
+
+/* Code typing animation */
+.code-line {
+    white-space: pre;
+    transition: all 0.1s ease-out;
+}
+
+.code-cursor {
+    position: absolute;
+    width: 2px;
+    height: 18px;
+    background-color: #cba6f7;
+    animation: cursor-blink 0.7s steps(2) infinite;
+}
+
+@keyframes cursor-blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Typing indicator */
+.typing-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: 20px;
+}
+
+/* Curtain animation */
+.curtain-left,
+.curtain-right {
+    transform-origin: center;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Notification badge pulse */
+.notification-pulse {
+    animation: notification-pulse 2s infinite;
+}
+
+@keyframes notification-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(243, 139, 168, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(243, 139, 168, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(243, 139, 168, 0);
+    }
+}
+
+/* Progress bar animation */
+.progress-bar-animated {
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar-animated::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent);
+    transform: translateX(-100%);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Alert overlay */
+.alert-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(243, 139, 168, 0.1);
+    pointer-events: none;
+    z-index: 30;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.alarm .alert-overlay {
+    animation: alertPulse 2s infinite alternate;
+}
+
+@keyframes alertPulse {
+    0% {
+        opacity: 0.1;
+        background-color: rgba(243, 139, 168, 0.1);
+    }
+
+    100% {
+        opacity: 0.3;
+        background-color: rgba(243, 139, 168, 0.3);
+    }
+}
+
+.panic .alert-overlay {
+    animation: panicPulse 1s infinite alternate;
+}
+
+@keyframes panicPulse {
+    0% {
+        opacity: 0.2;
+        background-color: rgba(235, 50, 80, 0.2);
+    }
+
+    100% {
+        opacity: 0.4;
+        background-color: rgba(235, 50, 80, 0.4);
+    }
+}
+
+/* Transition flash */
+.transition-flash {
+    position: fixed;
+    inset: 0;
+    background-color: white;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0;
+}

@@ -1,0 +1,528 @@
+/* Enhanced animations and cinematic effects for RealizationScene */
+
+/* Character emoji animations - now more dramatic */
+.character-emoji-alarm {
+    animation: head-tilt 0.5s infinite alternate ease-in-out;
+    /* Faster */
+    transform-origin: center bottom;
+}
+
+@keyframes head-tilt {
+    0% {
+        transform: rotate(-5deg) scale(1.2);
+    }
+
+    100% {
+        transform: rotate(5deg) scale(1.2);
+    }
+}
+
+.character-emoji-panic {
+    animation: head-shake 0.3s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+    /* More continuous */
+    transform-origin: center center;
+}
+
+@keyframes head-shake {
+
+    0%,
+    100% {
+        transform: translateX(0) scale(1.4);
+    }
+
+    15% {
+        transform: translateX(-15px) scale(1.4);
+    }
+
+    30% {
+        transform: translateX(12px) scale(1.4);
+    }
+
+    45% {
+        transform: translateX(-10px) scale(1.4);
+    }
+
+    60% {
+        transform: translateX(8px) scale(1.4);
+    }
+
+    75% {
+        transform: translateX(-5px) scale(1.4);
+    }
+}
+
+/* System alert animations - more urgent */
+.system-alert {
+    animation: alert-appear 0.3s ease-out, alert-attention 2s 0.3s infinite;
+}
+
+.system-alert-emergency {
+    animation: alert-appear 0.3s ease-out, emergency-pulse 0.7s infinite alternate;
+    /* Faster */
+}
+
+@keyframes emergency-pulse {
+    from {
+        transform: scale(1);
+        box-shadow: 0 5px 20px rgba(243, 139, 168, 0.5);
+    }
+
+    to {
+        transform: scale(1.05);
+        box-shadow: 0 5px 30px rgba(243, 139, 168, 0.8);
+    }
+}
+
+@keyframes alert-attention {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    10% {
+        transform: translateY(-5px);
+    }
+
+    20% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes alert-appear {
+    from {
+        transform: translateY(-50px) scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Error terminal animations - more urgent */
+.error-terminal {
+    animation: terminal-appear 0.3s ease-out;
+    /* Faster */
+    box-shadow: 0 5px 25px rgba(243, 139, 168, 0.3);
+    /* More glow */
+}
+
+@keyframes terminal-appear {
+    from {
+        transform: translateY(50px) scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Terminal line animations - faster */
+.terminal-line-appear {
+    animation: line-appear 0.2s ease-out;
+    /* Faster */
+}
+
+@keyframes line-appear {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+        /* More movement */
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Blinking text */
+.blink-text {
+    animation: blink-text-animation 0.5s infinite alternate;
+}
+
+@keyframes blink-text-animation {
+    from {
+        opacity: 1;
+        text-shadow: 0 0 5px rgba(243, 139, 168, 0.7);
+    }
+
+    to {
+        opacity: 0.7;
+        text-shadow: 0 0 10px rgba(243, 139, 168, 1);
+    }
+}
+
+/* Alert badge animations - more attention-grabbing */
+.alert-value {
+    animation: value-pulse 0.5s infinite alternate;
+    /* Faster */
+    text-shadow: 0 0 10px rgba(243, 139, 168, 0.5);
+    /* Added glow */
+}
+
+@keyframes value-pulse {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.2);
+        /* More dramatic */
+    }
+}
+
+/* Alarm system light animations - more urgent */
+.alarm-light {
+    animation: alarm-pulse 0.5s infinite alternate;
+    /* Faster */
+}
+
+@keyframes alarm-pulse {
+    from {
+        transform: scale(1);
+        opacity: 0.8;
+        box-shadow: 0 0 20px rgba(243, 139, 168, 0.7);
+    }
+
+    to {
+        transform: scale(1.2);
+        /* More dramatic */
+        opacity: 1;
+        box-shadow: 0 0 35px rgba(243, 139, 168, 1);
+        /* Brighter */
+    }
+}
+
+/* Chart bar animation - more dramatic */
+.alert-bar {
+    animation: bar-pulse 0.7s infinite alternate;
+}
+
+@keyframes bar-pulse {
+    from {
+        opacity: 0.8;
+        box-shadow: 0 0 5px rgba(243, 139, 168, 0.3);
+    }
+
+    to {
+        opacity: 1;
+        box-shadow: 0 0 15px rgba(243, 139, 168, 0.7);
+        /* Added glow */
+    }
+}
+
+/* Analytics alert animation - faster entrance */
+.analytics-alert {
+    animation: alert-slide-in 0.4s ease-out;
+    /* Faster */
+    border-left-width: 6px;
+    /* Thicker border */
+}
+
+@keyframes alert-slide-in {
+    from {
+        transform: translateX(100%) scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Error highlighting in code during panic - more dramatic */
+.panic .error-highlight {
+    animation: error-pulse 0.5s infinite alternate;
+    /* Faster */
+}
+
+@keyframes error-pulse {
+    from {
+        background-color: rgba(243, 139, 168, 0.1);
+        text-shadow: none;
+    }
+
+    to {
+        background-color: rgba(243, 139, 168, 0.4);
+        /* More intense */
+        text-shadow: 0 0 8px rgba(243, 139, 168, 0.8);
+        /* Added text glow */
+    }
+}
+
+/* Global glitch effect */
+.glitch-effect {
+    animation: glitch 0.1s linear 3;
+    /* Very fast, repeats 3 times */
+}
+
+@keyframes glitch {
+    0% {
+        filter: none;
+    }
+
+    20% {
+        filter: hue-rotate(90deg) saturate(200%) contrast(150%);
+        transform: skew(3deg);
+        /* More extreme */
+    }
+
+    40% {
+        filter: hue-rotate(-120deg) saturate(150%);
+        transform: skew(-3deg) scale(1.02);
+        /* More extreme */
+    }
+
+    60% {
+        filter: invert(0.2) hue-rotate(60deg);
+        transform: skew(2deg);
+    }
+
+    80% {
+        filter: saturate(200%) contrast(120%);
+        transform: skew(-2deg) scale(0.98);
+    }
+
+    100% {
+        filter: none;
+    }
+}
+
+/* Vignette effect for adding drama */
+.vignette-effect {
+    background: radial-gradient(circle, transparent 20%, rgba(0, 0, 0, 0.8) 100%);
+    /* Darker vignette */
+    opacity: 0.7;
+    /* More pronounced */
+    transition: opacity 0.5s ease;
+}
+
+.panic .vignette-effect {
+    opacity: 0.85;
+    /* Even darker in panic mode */
+    animation: vignette-pulse 1s infinite alternate;
+}
+
+@keyframes vignette-pulse {
+    from {
+        background: radial-gradient(circle, transparent 20%, rgba(0, 0, 0, 0.8) 100%);
+    }
+
+    to {
+        background: radial-gradient(circle, transparent 15%, rgba(0, 0, 0, 0.9) 100%);
+    }
+}
+
+/* Adding scanlines for retro/tech effect */
+.scan-lines {
+    background: linear-gradient(to bottom,
+            transparent 50%,
+            rgba(0, 0, 0, 0.05) 50%);
+    background-size: 100% 4px;
+    animation: scan-animation 8s linear infinite;
+}
+
+@keyframes scan-animation {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 0 100%;
+    }
+}
+
+/* Static noise effect for panic mode */
+.static-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.2;
+    animation: static-flicker 0.5s steps(4) infinite;
+}
+
+@keyframes static-flicker {
+
+    0%,
+    100% {
+        opacity: 0.1;
+    }
+
+    25% {
+        opacity: 0.15;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+
+    75% {
+        opacity: 0.15;
+    }
+}
+
+/* Window shake animation for panic mode */
+.panic .code-editor {
+    animation: window-shake 0.3s infinite;
+    /* Continuous shaking in panic mode */
+}
+
+@keyframes window-shake {
+
+    0%,
+    100% {
+        transform: translateX(0) translateY(0) rotate(var(--rotate, 0deg));
+    }
+
+    25% {
+        transform: translateX(2px) translateY(-2px) rotate(calc(var(--rotate, 0deg) + 0.3deg));
+    }
+
+    50% {
+        transform: translateX(-2px) translateY(1px) rotate(calc(var(--rotate, 0deg) - 0.3deg));
+    }
+
+    75% {
+        transform: translateX(1px) translateY(-1px) rotate(calc(var(--rotate, 0deg) + 0.3deg));
+    }
+}
+
+/* Enhanced animation for code lines in panic mode */
+.panic .code-line {
+    animation: code-line-panic 3s ease infinite;
+    /* Subtle animation in panic mode */
+}
+
+@keyframes code-line-panic {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10% {
+        transform: translateX(1px);
+    }
+
+    20% {
+        transform: translateX(-1px);
+    }
+
+    30% {
+        transform: translateX(1px);
+    }
+}
+
+/* Special animation for countdown timer */
+.countdown-timer {
+    animation: timer-pulse 1s infinite alternate;
+}
+
+@keyframes timer-pulse {
+    from {
+        box-shadow: 0 0 10px rgba(243, 139, 168, 0.5);
+    }
+
+    to {
+        box-shadow: 0 0 20px rgba(243, 139, 168, 0.8);
+    }
+}
+
+/* Enhanced window appearance */
+.code-editor {
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+    /* Deeper shadow */
+    transform-origin: center center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.code-editor:hover {
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+    /* Even deeper shadow on hover */
+}
+
+/* More dramatic code highlight animation */
+.error-highlight {
+    transition: background-color 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Enhance the flash transition */
+.transition-flash {
+    mix-blend-mode: screen;
+    /* Makes the flash more intense */
+}
+
+/* Animated cursor effect */
+.code-cursor {
+    width: 2px;
+    height: 18px;
+    background-color: #cba6f7;
+    animation: cursor-blink 0.7s steps(2) infinite;
+}
+
+@keyframes cursor-blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Add animation to background color transitions */
+.panic-scene-container {
+    animation: bg-pulse 1.5s ease infinite alternate;
+}
+
+@keyframes bg-pulse {
+    from {
+        background-color: var(--bg-color, #1e1e2e);
+    }
+
+    to {
+        background-color: color-mix(in srgb, var(--bg-color, #1e1e2e), #f38ba8 10%);
+    }
+}
+
+/* Window controls enhancements */
+.window-control.red:hover {
+    box-shadow: 0 0 8px #f38ba8;
+    animation: window-control-glow 1s infinite alternate;
+}
+
+@keyframes window-control-glow {
+    from {
+        box-shadow: 0 0 5px rgba(243, 139, 168, 0.5);
+    }
+
+    to {
+        box-shadow: 0 0 10px rgba(243, 139, 168, 0.8);
+    }
+}
+
+/* Add glow to window titles in panic mode */
+.panic .window-title {
+    text-shadow: 0 0 5px rgba(243, 139, 168, 0.7);
+}
+
+/* Dramatic pulsing for all the badges */
+.alert-badge {
+    animation: badge-pulse 0.7s infinite alternate;
+}
+
+@keyframes badge-pulse {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
