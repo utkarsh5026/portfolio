@@ -1,127 +1,244 @@
-/* Container glitch animation */
+/* Enhanced PanicAnimations.css with narrative styling */
+
+/* Typing cursor animation */
+@keyframes cursorBlink {
+
+    0%,
+    49% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.typing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 16px;
+    background-color: #cccccc;
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: cursorBlink 0.8s step-end infinite;
+}
+
+/* Window glitch effect */
+@keyframes container-glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(var(--glitch-intensity-y-neg, -5px), var(--glitch-intensity, 5px));
+    }
+
+    40% {
+        transform: translate(var(--glitch-intensity, 5px), var(--glitch-intensity-y, 5px));
+    }
+
+    60% {
+        transform: translate(var(--glitch-intensity-y-neg, -5px), var(--glitch-intensity-y-neg, -5px));
+    }
+
+    80% {
+        transform: translate(var(--glitch-intensity, 5px), var(--glitch-intensity-y-neg, -5px));
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
 .container-glitch-animation {
-    animation: containerGlitchX 120ms ease-in-out forwards,
-        containerGlitchY 120ms ease-in-out forwards;
+    animation: container-glitch 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-@keyframes containerGlitchX {
+/* Fade out animation for container */
+@keyframes container-fade-out {
     0% {
-        transform: translateX(0);
-    }
-
-    33% {
-        transform: translateX(var(--glitch-intensity, 4px));
-    }
-
-    66% {
-        transform: translateX(calc(var(--glitch-intensity, 4px) * -1));
+        opacity: 1;
+        filter: brightness(1);
     }
 
     100% {
-        transform: translateX(0);
+        opacity: 0;
+        filter: brightness(3);
     }
 }
 
-@keyframes containerGlitchY {
-    0% {
-        transform: translateY(0);
-    }
-
-    33% {
-        transform: translateY(var(--glitch-intensity-y, 2.8px));
-    }
-
-    66% {
-        transform: translateY(var(--glitch-intensity-y-neg, -2px));
-    }
-
-    100% {
-        transform: translateY(0);
-    }
+.container-fade-out-animation {
+    animation: container-fade-out 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
 /* Visitor alert animation */
-.visitor-alert-animation {
-    animation: visitorAlertAppear 300ms cubic-bezier(0.32, 2.46, 0.4, 0.6) forwards;
+@keyframes visitor-alert {
+    0% {
+        transform: translateX(120%);
+    }
+
+    10% {
+        transform: translateX(-5%);
+    }
+
+    12% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
 }
 
-@keyframes visitorAlertAppear {
-    from {
-        transform: scale(0.9);
+.visitor-alert-animation {
+    animation: visitor-alert 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Enhanced narrative animations */
+/* Bubble entrance animation */
+@keyframes narrativeBubbleEnter {
+    0% {
         opacity: 0;
+        transform: translateY(20px) scale(0.8);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(-5px) scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Spotlight entrance animation for major events */
+@keyframes narrativeSpotlightEnter {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.9);
+        box-shadow: 0 0 0 rgba(234, 179, 8, 0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(0) scale(1.05);
+        box-shadow: 0 0 30px rgba(234, 179, 8, 0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        box-shadow: 0 0 15px rgba(234, 179, 8, 0.3);
+    }
+}
+
+/* Apply animation to narrative containers */
+.narrative-bubble {
+    animation: narrativeBubbleEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.narrative-spotlight {
+    animation: narrativeSpotlightEnter 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Subtle bounce animation for emphasis */
+@keyframes bounce-subtle {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.animate-bounce-subtle {
+    animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+/* Phase transition effect */
+@keyframes phaseTransition {
+    0% {
+        filter: brightness(1) blur(0);
+    }
+
+    50% {
+        filter: brightness(1.2) blur(2px);
+    }
+
+    100% {
+        filter: brightness(1) blur(0);
+    }
+}
+
+.phase-transition {
+    animation: phaseTransition 0.8s ease-out;
+}
+
+/* Text emphasis effects */
+@keyframes textEmphasis {
+    0% {
+        text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    }
+
+    50% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    100% {
+        text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+.text-emphasis {
+    animation: textEmphasis 1.5s ease-in-out;
+}
+
+/* Streak effect for speed/panic emphasis */
+@keyframes speedStreak {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px) skewX(-20deg);
+    }
+
+    30% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(50px) skewX(-20deg);
+    }
+}
+
+.speed-streak {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    animation: speedStreak 0.6s linear;
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* Progress bar animation */
+@keyframes progressFill {
+    from {
+        width: 0%;
     }
 
     to {
-        transform: scale(1);
-        opacity: 1;
+        width: 100%;
     }
 }
 
-
-/* Container fade out animation - separated for performance */
-.container-fade-out-animation {
-    animation: 
-        containerFadeOutTransform 1000ms ease-in-out forwards,
-        containerFadeOutOpacity 1000ms ease-in-out forwards;
-}
-
-@keyframes containerFadeOutTransform {
-    0% {
-        transform: scale(1) rotate(0deg) translate(0, 0);
-    }
-    40% {
-        transform: scale(1.05) rotate(1deg) translate(0, 0);
-    }
-    50% {
-        transform: scale(1.1) rotate(-2deg) translate(-2px, 2px);
-    }
-    55% {
-        transform: scale(1.3) rotate(3deg) translate(3px, -3px);
-    }
-    60% {
-        transform: scale(1.5) rotate(-4deg) translate(-4px, 4px);
-    }
-    70% {
-        transform: scale(1.7) rotate(6deg) translate(6px, -6px);
-    }
-    80% {
-        transform: scale(2) rotate(-8deg) translate(-8px, 8px);
-    }
-    90% {
-        transform: scale(2.2) rotate(10deg) translate(10px, -10px);
-    }
-    100% {
-        transform: scale(2.5) rotate(0deg) translate(0, 0);
-    }
-}
-
-@keyframes containerFadeOutOpacity {
-    0% {
-        opacity: 1;
-        filter: none;
-    }
-    55% {
-        opacity: 0.9;
-        filter: blur(1px);
-    }
-    60% {
-        opacity: 0.8;
-        filter: blur(1.5px);
-    }
-    70% {
-        opacity: 0.6;
-        filter: blur(2px);
-    }
-    80% {
-        opacity: 0.4;
-        filter: blur(2.5px);
-    }
-    90% {
-        opacity: 0.2;
-        filter: blur(3px);
-    }
-    100% {
-        opacity: 0;
-        filter: blur(3.5px);
-    }
+.progress-fill {
+    animation: progressFill var(--duration, 5s) linear forwards;
 }
