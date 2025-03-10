@@ -76,7 +76,7 @@ const Section: React.FC<SectionProps> = ({
       <div
         ref={sectionRef}
         id={id}
-        className={`relative opacity-0 ${className}`}
+        className={`${id}-section relative opacity-0 ${className}`}
       >
         <div className="rounded-lg shadow-lg bg-ctp-base border border-ctp-surface0 overflow-hidden relative">
           {/* Matrix effect canvas */}
