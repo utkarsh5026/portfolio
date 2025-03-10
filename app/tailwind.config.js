@@ -123,7 +123,7 @@ export default {
       },
       fontFamily: {
         sans: ["Source Code Pro", "sans-serif"],
-        serif: ["JetBrains Mono", "serif"],
+        serif: ["Source Code Pro", "serif"],
         mono: ["Cascadia Code", "monospace"],
         source: ["Source Code Pro", "monospace"],
         "roboto-mono": ["Cascadia Code", "monospace"],
