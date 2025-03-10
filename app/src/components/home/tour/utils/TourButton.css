@@ -1,0 +1,47 @@
+.tour-floating-button {
+    transition: all 0.3s ease;
+}
+
+.tour-floating-button:hover {
+    background: #b4befe;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.tour-floating-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.tour-button-icon {
+    font-size: 16px;
+}
+
+/* Add a subtle pulse animation to draw attention */
+@keyframes gentle-pulse {
+    0% {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 4px 20px rgba(137, 180, 250, 0.6);
+    }
+
+    100% {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+}
+
+
+/* Hide text on mobile, just show icon */
+@media (max-width: 640px) {
+    .tour-floating-button {
+        padding: 12px;
+        border-radius: 50%;
+    }
+
+    .tour-button-text {
+        display: none;
+    }
+}
