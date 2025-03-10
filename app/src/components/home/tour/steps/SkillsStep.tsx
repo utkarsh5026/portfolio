@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
 import TypeWriter from "../writer/TypeWriter";
 import Step from "./Step";
-import { databases, languages, tools } from "@/components/home/skills/data";
+import {
+  databases,
+  languages,
+  tools,
+  frameworks,
+} from "@/components/home/skills/data";
 import CodeTypeWriter from "../writer/JsTypeWriter";
 import { cn } from "@/lib/utils";
 
-const categories = ["databases", "languages", "tools"] as const;
+const categories = ["databases", "languages", "tools", "frameworks"] as const;
 type Category = (typeof categories)[number];
+
+const skillsText =
+  "I'm excited to share my technical toolkit with you! These are the technologies I love working with, and I'm always eager to add more to my repertoire. Take a look around! 😊";
 
 const databaseCodeText = `
 const databases = [
@@ -23,6 +31,15 @@ ${languages.map((language) => `"${language}"`).join(",\n")}
 const toolsCodeText = `
 const tools = [
 ${tools.map((tool) => `"${tool}"`).join(",\n")}
+]
+`;
+
+const frameworksCodeText = `
+const frameworks = [
+${Object.values(frameworks)
+  .flat()
+  .map((framework) => `"${framework}"`)
+  .join(",\n")}
 ]
 `;
 
@@ -62,11 +79,7 @@ const SkillsStep: React.FC = () => {
       {typingComplete && (
         <>
           <div className="tour-about-message">
-            <TypeWriter
-              text="Here's a look at my technical skills and areas of expertise. I'm always expanding my knowledge and learning new technologies."
-              speed={20}
-              delay={300}
-            />
+            <TypeWriter text={skillsText} speed={20} delay={300} humanize />
           </div>
 
           <div className="tour-interactive">
@@ -100,6 +113,9 @@ const SkillsStep: React.FC = () => {
                 )}
                 {selectedCategory === "tools" && (
                   <CodeTypeWriter code={toolsCodeText} speed={5} />
+                )}
+                {selectedCategory === "frameworks" && (
+                  <CodeTypeWriter code={frameworksCodeText} speed={5} />
                 )}
               </div>
             </div>
