@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TypeWriter from "../writer/TypeWriter";
 import Step from "./Step";
-import { currentLearningTechnologies } from "@/components/home/skills/data";
+import { currentLearningTechnologies } from "@/components/home/learning/data";
 import CodeTypeWriter from "../writer/JsTypeWriter";
 import { Info, X } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
