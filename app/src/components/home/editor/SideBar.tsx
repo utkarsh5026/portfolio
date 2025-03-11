@@ -55,7 +55,7 @@ const SideBar: React.FC = () => {
   return (
     <div
       className={cn(
-        "w-14 bg-[#181825] border-r border-[#313244] flex flex-col items-center py-4 z-50 fixed inset-y-0 left-0 transition-transform duration-200",
+        "editor-sidebar w-14 bg-[#181825] border-r border-[#313244] flex flex-col items-center py-4 z-50 fixed inset-y-0 left-0 transition-transform duration-200",
         mobileMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
       )}
     >

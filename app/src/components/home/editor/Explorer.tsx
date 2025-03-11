@@ -17,7 +17,7 @@ const Explorer: React.FC = () => {
   return (
     <div
       className={cn(
-        "w-52 bg-[#181825] border-r border-[#313244] py-4 overflow-y-auto fixed inset-y-0 left-14 transition-transform duration-200 z-40",
+        "editor-explorer w-52 bg-[#181825] border-r border-[#313244] py-4 overflow-y-auto fixed inset-y-0 left-14 transition-transform duration-200 z-40",
         mobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
         !explorerOpen && "lg:-translate-x-full"
       )}
