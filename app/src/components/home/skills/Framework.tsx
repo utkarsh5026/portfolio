@@ -2,9 +2,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code2, Braces, Library } from "lucide-react";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { frameworks } from "./data";
 
 interface FrameworkProps {
-  frameworks: Record<string, string[]>;
+  frameworks: typeof frameworks;
 }
 
 const Framework: React.FC<FrameworkProps> = ({ frameworks }) => {
