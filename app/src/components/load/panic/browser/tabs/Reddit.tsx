@@ -23,28 +23,69 @@ import {
 } from "lucide-react";
 import { redditData } from "./data";
 
-const RedditWebDev = React.memo(() => {
+// Define interfaces for our data structures
+interface PortfolioTip {
+  id: number;
+  tip: string;
+  details: string;
+  icon?: React.ReactNode;
+}
+
+interface RelatedSubreddit {
+  name: string;
+  members: string;
+}
+
+interface Portfolio {
+  tech: string[];
+  features: string[];
+  goal: string;
+}
+
+interface Comment {
+  id: number;
+  username: string;
+  initial: string;
+  color: string;
+  timeAgo: string;
+  content: string;
+  upvotes: number;
+  downvotes: number;
+  replies: number;
+  badge: string;
+  portfolio: Portfolio;
+}
+
+interface RedditDataType {
+  commentData: Comment[];
+  portfolioTips: PortfolioTip[];
+  relatedSubreddits: RelatedSubreddit[];
+}
+
+const RedditWebDev: React.FC = React.memo(() => {
   const [expandedComments, setExpandedComments] = useState<
     Record<number, boolean>
   >({});
-  const [votes, setVotes] = useState<Record<number, number>>({});
-  const [sortOrder, setSortOrder] = useState("hot");
-  const [joinedStatus, setJoinedStatus] = useState(false);
-  const [savedPosts, setSavedPosts] = useState<Record<number, boolean>>({});
+  const [votes, setVotes] = useState<Record<string | number, number>>({});
+  const [sortOrder, setSortOrder] = useState<string>("hot");
+  const [joinedStatus, setJoinedStatus] = useState<boolean>(false);
+  const [savedPosts, setSavedPosts] = useState<
+    Record<string | number, boolean>
+  >({});
   const [expandedTip, setExpandedTip] = useState<number | null>(null);
-  const redditRef = useRef(redditData);
+  const redditRef = useRef<RedditDataType>(redditData);
 
   const { commentData, portfolioTips, relatedSubreddits } = redditRef.current;
 
   // Handler functions for interactivity
-  const toggleComment = (id: number) => {
+  const toggleComment = (id: number): void => {
     setExpandedComments({
       ...expandedComments,
       [id]: !expandedComments[id],
     });
   };
 
-  const handleVote = (id: number, direction: "up" | "down") => {
+  const handleVote = (id: string | number, direction: "up" | "down"): void => {
     const currentVotes = votes[id] || 0;
     setVotes({
       ...votes,
@@ -59,7 +100,7 @@ const RedditWebDev = React.memo(() => {
     });
   };
 
-  const toggleSavedPost = (id: number) => {
+  const toggleSavedPost = (id: string | number): void => {
     setSavedPosts({
       ...savedPosts,
       [id]: !savedPosts[id],
@@ -70,15 +111,11 @@ const RedditWebDev = React.memo(() => {
   const getAdjustedVotes = (
     baseUpvotes: number,
     baseDownvotes: number,
-    id: number
-  ) => {
+    id: string | number
+  ): number => {
     const userVote = votes[id] || 0;
     return baseUpvotes - baseDownvotes + userVote;
   };
-
-  // Component for comment author badges
-
-  // Portfolio Tech Badge component
 
   return (
     <div className="w-full mx-auto bg-[#0d1117] min-h-full font-sans">
@@ -110,18 +147,18 @@ const RedditWebDev = React.memo(() => {
         </div>
 
         <div className="flex items-center space-x-3">
-          <button className="p-1.5 rounded-full hover:bg-[#272729] text-gray-400 hidden md:block">
+          <span className="p-1.5 rounded-full hover:bg-[#272729] text-gray-400 hidden md:block">
             <Bell size={20} />
-          </button>
-          <button className="bg-[#ff4500] hover:bg-[#ff5414] text-white px-4 py-1.5 rounded-full text-sm font-medium hidden md:block">
+          </span>
+          <span className="bg-[#ff4500] hover:bg-[#ff5414] text-white px-4 py-1.5 rounded-full text-sm font-medium hidden md:block">
             Sign Up
-          </button>
-          <button className="p-1.5 rounded-full hover:bg-[#272729] text-gray-400 md:hidden">
+          </span>
+          <span className="p-1.5 rounded-full hover:bg-[#272729] text-gray-400 md:hidden">
             <Search size={20} />
-          </button>
-          <button className="p-1.5 rounded-full hover:bg-[#272729] text-gray-400">
+          </span>
+          <span className="p-1.5 rounded-full hover:bg-[#272729] text-gray-400">
             <MoreHorizontal size={20} />
-          </button>
+          </span>
         </div>
       </div>
 
@@ -308,9 +345,9 @@ const RedditWebDev = React.memo(() => {
                       <Bookmark size={16} className="mr-1.5" />
                       {savedPosts["megathread"] ? "Saved" : "Save"}
                     </button>
-                    <button className="p-1.5 rounded-md hover:bg-[#272729]">
+                    <span className="p-1.5 rounded-md hover:bg-[#272729]">
                       <MoreHorizontal size={16} />
-                    </button>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -319,7 +356,10 @@ const RedditWebDev = React.memo(() => {
             {/* Comment sorting */}
             <div className="px-4 py-2 border-t border-[#343536] flex items-center">
               <span className="text-sm text-gray-400 mr-2">Sort by:</span>
-              <select className="bg-[#1a1b1c] text-white text-sm border-none focus:outline-none p-1">
+              <select
+                className="bg-[#1a1b1c] text-white text-sm border-none focus:outline-none p-1"
+                title="Sort by"
+              >
                 <option>Best</option>
                 <option>Top</option>
                 <option>New</option>
@@ -728,7 +768,7 @@ interface AuthorBadgeProps {
 }
 
 const AuthorBadge: React.FC<AuthorBadgeProps> = ({ type }) => {
-  let bgColor, textColor, icon;
+  let bgColor: string, textColor: string, icon: React.ReactNode;
 
   switch (type) {
     case "New Dev":
@@ -767,8 +807,8 @@ interface TechBadgeProps {
 }
 
 const TechBadge: React.FC<TechBadgeProps> = ({ name }) => {
-  const getColorForTech = (tech: string) => {
-    const techColors = {
+  const getColorForTech = (tech: string): string => {
+    const techColors: Record<string, string> = {
       React: "bg-blue-600",
       "Next.js": "bg-black",
       Astro: "bg-purple-600",
