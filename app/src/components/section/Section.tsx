@@ -8,7 +8,6 @@ import anime from "animejs";
 import OutlineNode from "@/components/home/editor/outline/OutlineNode";
 import { getIcon } from "./sec-utils";
 
-// Define props interface for Section component
 interface SectionProps {
   id: string;
   label: string;
