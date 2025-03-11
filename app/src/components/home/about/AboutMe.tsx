@@ -53,15 +53,6 @@ const AboutMe: React.FC = () => {
           </div>
 
           <div className="p-6 relative">
-            {/* Decorative code line numbers */}
-            <div className="absolute left-2 top-6 bottom-6 w-6 text-[#6c7086] text-xs flex flex-col items-end">
-              {Array.from({ length: 10 }).map((_, i) => (
-                <div key={i} className="h-6 opacity-50">
-                  {i + 1}
-                </div>
-              ))}
-            </div>
-
             <div className="space-y-8 pl-8 flex flex-col gap-6">
               <AboutMeSection
                 label="Background"
