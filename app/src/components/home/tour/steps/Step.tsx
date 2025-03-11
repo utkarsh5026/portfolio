@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import {
   useEditorContext,
   SectionType,
@@ -19,7 +19,8 @@ interface StepProps {
  *
  * This component allows users to navigate to different sections of the application
  * while providing a visual indication of the current section. It includes a title
- * that can be animated and a button to navigate to the specified section.
+ * that can be animated, a button to navigate to the specified section, and auto-scrolling
+ * functionality for expanded content.
  *
  * @param {Object} props - The props for the Step component.
  * @param {SectionType | null} props.section - The section to navigate to.
@@ -42,6 +43,9 @@ const Step: React.FC<StepProps> = ({
   const [hasNavigated, setHasNavigated] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
 
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState(0);
+
   useEffect(() => {
     if (!section) return;
     return () => {
@@ -52,7 +56,62 @@ const Step: React.FC<StepProps> = ({
     };
   }, [section]);
 
-  const navigateToSection = () => {
+  useEffect(() => {
+    if (!contentRef.current) return;
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const newHeight = entry.contentRect.height;
+
+        if (newHeight > contentHeight + 2) {
+          setTimeout(() => {
+            if (contentRef.current) {
+              contentRef.current.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+              });
+            }
+          }, 100);
+        }
+
+        setContentHeight(newHeight);
+      }
+    });
+    resizeObserver.observe(contentRef.current);
+
+    const mutationObserver = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.type === "childList" || mutation.type === "attributes") {
+          const expandedElements = contentRef.current?.querySelectorAll(
+            '[class*="expanded"], [class*="active"], [class*="open"]'
+          );
+
+          if (expandedElements?.length && expandedElements.length > 0) {
+            const lastExpanded = expandedElements[expandedElements.length - 1];
+            lastExpanded.scrollIntoView({
+              behavior: "smooth",
+              block: "nearest",
+            });
+          }
+        }
+      }
+    });
+
+    // Configure and start the mutation observer
+    mutationObserver.observe(contentRef.current, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+      attributeFilter: ["class"],
+    });
+
+    // Clean up
+    return () => {
+      resizeObserver.disconnect();
+      mutationObserver.disconnect();
+    };
+  }, [contentHeight]);
+
+  const navigateToSection = useCallback(() => {
     if (!section) return;
 
     setIsClicking(true);
@@ -83,7 +142,7 @@ const Step: React.FC<StepProps> = ({
         }, 2000);
       }
     }, 300);
-  };
+  }, [section, setActiveSection, setHasNavigated]);
 
   const handleTitleComplete = () => {
     setIsTitleComplete(true);
@@ -165,7 +224,10 @@ const Step: React.FC<StepProps> = ({
         )}
       </div>
 
-      <div className="text-ctp-text">{children}</div>
+      {/* Content container with ref for detecting changes and scrolling */}
+      <div className="text-ctp-text step-content-container" ref={contentRef}>
+        {children}
+      </div>
     </div>
   );
 };
