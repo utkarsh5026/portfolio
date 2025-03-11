@@ -11,7 +11,7 @@
     /* Catppuccin Mocha base */
     color: #cdd6f4;
     /* Catppuccin Mocha text */
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Source Code Pro', monospace;
     overflow: hidden;
     z-index: 100;
 }
