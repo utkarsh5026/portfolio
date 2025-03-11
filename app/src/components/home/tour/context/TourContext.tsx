@@ -1,9 +1,9 @@
 import { createContext, useContext } from "react";
-import { TourStep } from "../TourType";
+import { TourStep } from "./TourType";
 
 export type TourContextType = {
   active: boolean;
-  currentStepId: string | null;
+  currentStepId: TourStep | null;
   getCurrentStep: () => {
     id: TourStep;
     placement: string;

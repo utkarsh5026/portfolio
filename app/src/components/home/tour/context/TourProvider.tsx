@@ -6,7 +6,7 @@ import React, {
   useRef,
 } from "react";
 import { TourContext } from "./TourContext";
-import type { TourStep } from "../TourType";
+import type { TourStep } from "./TourType";
 import { tourSteps } from "../steps/registry";
 
 export const TourProvider: React.FC<{ children: React.ReactNode }> = ({
