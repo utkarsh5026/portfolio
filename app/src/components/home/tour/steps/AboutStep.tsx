@@ -15,6 +15,23 @@ const developer = {
 };
 `;
 
+/**
+ * AboutStep Component
+ *
+ * This component represents a step in the tour that introduces the developer.
+ * It utilizes a typewriter effect to display information about the developer's journey.
+ *
+ * Key Features:
+ * - Displays a brief introduction about the developer.
+ * - Shows a code block representing the developer's profile.
+ * - Includes a final message highlighting the developer's passion for web development.
+ *
+ * Props:
+ * - None
+ *
+ * Usage:
+ * <AboutStep />
+ */
 const AboutStep: React.FC = () => {
   const { typingSteps, incrementTypingSteps, isFinalStep } = useSteps(3);
 

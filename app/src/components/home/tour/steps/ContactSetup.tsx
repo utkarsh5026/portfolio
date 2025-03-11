@@ -35,6 +35,21 @@ const contactIcons = [
   },
 ];
 
+/**
+ * ContactStep Component
+ *
+ * This component represents a step in the tour that allows users to contact the developer.
+ * It includes a typewriter effect for a welcoming message, a code block displaying contact options,
+ * and social media icons for direct connections.
+ *
+ * Key Features:
+ * - Displays a message inviting users to get in touch.
+ * - Shows a code block with contact information.
+ * - Provides social media icons for easy access to the developer's profiles.
+ *
+ * Usage:
+ * <ContactStep />
+ */
 const ContactStep: React.FC = () => {
   const { typingSteps, incrementTypingSteps } = useSteps(3);
 
