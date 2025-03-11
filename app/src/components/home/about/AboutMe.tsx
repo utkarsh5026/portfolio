@@ -62,7 +62,7 @@ const AboutMe: React.FC = () => {
               ))}
             </div>
 
-            <div className="space-y-8 pl-8">
+            <div className="space-y-8 pl-8 flex flex-col gap-6">
               <AboutMeSection
                 label="Background"
                 icon={<FaCode />}
