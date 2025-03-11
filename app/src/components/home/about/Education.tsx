@@ -30,6 +30,22 @@ const education = [
   },
 ];
 
+/**
+ * Education Component
+ *
+ * This component displays the educational background of the user in a visually appealing manner.
+ * It utilizes Framer Motion for animations and presents the information in a structured format.
+ *
+ * The component includes:
+ * - A title with an icon indicating the section is about education.
+ * - A list of educational qualifications, each with:
+ *   - Degree name
+ *   - Institution name (clickable link)
+ *   - Duration of the course
+ *   - Highlights of the degree
+ *
+ * The component is responsive and styled to fit within the overall theme of the application.
+ */
 const Education: React.FC = () => {
   return (
     <motion.div
