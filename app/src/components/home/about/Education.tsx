@@ -84,17 +84,12 @@ const Education: React.FC = () => {
                 </a>
               </span>
               <span className="bg-[#313244]/70 px-3 py-1 rounded-full text-[#89b4fa] inline-flex items-center self-start sm:self-auto">
-                <span className="mr-1">🗓️</span> {item.duration}
+                <span className="mr-1 opacity-30">🗓️</span> {item.duration}
               </span>
             </div>
             <ul className="list-disc ml-5 mt-3 text-sm space-y-2">
               {item.highlights.map((highlight) => (
-                <li
-                  key={highlight}
-                  className="hover:text-[#89b4fa] transition-colors duration-200"
-                >
-                  {highlight}
-                </li>
+                <li key={highlight}>{highlight}</li>
               ))}
             </ul>
           </motion.div>
