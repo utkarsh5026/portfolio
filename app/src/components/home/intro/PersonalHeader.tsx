@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo, memo } from "react";
+import React, { useEffect, useRef, memo } from "react";
 import { motion } from "framer-motion";
 import ProfileAvatar from "./ProfileAvatar";
 import AnimatedText from "./AnimatedText";
@@ -6,6 +6,15 @@ import anime from "animejs";
 import { FaTerminal } from "react-icons/fa";
 import TechSkills from "./TechSkills";
 import "./style.css";
+import { useEditorContext } from "@/components/home/editor/context/explorerContext";
+
+const statements = [
+  "I build things for the web",
+  "I love creating user interfaces",
+  "I speak JavaScript, Python & Go",
+  "I want to write code that humans can read",
+  "I am currently exploring databases and LLMs",
+];
 
 const PersonalHeaderComponent: React.FC = () => {
   const headerRef = useRef<HTMLHeadingElement>(null);
@@ -15,17 +24,7 @@ const PersonalHeaderComponent: React.FC = () => {
   const descriptionRef = useRef<HTMLDivElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
   const macDotsRef = useRef<HTMLDivElement>(null);
-
-  const statements = useMemo(
-    () => [
-      "I build things for the web",
-      "I love creating user interfaces",
-      "I speak JavaScript, Python & Go",
-      "I want to write code that humans can read",
-      "I am currently exploring databases and LLMs",
-    ],
-    []
-  );
+  const { setActiveSection } = useEditorContext();
 
   useEffect(() => {
     const nameElement = nameRef.current;
@@ -106,7 +105,7 @@ const PersonalHeaderComponent: React.FC = () => {
         <div className="absolute top-1/2 right-1/4 w-60 h-60 bg-[#f38ba8]/10 rounded-full filter blur-3xl"></div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-10 md:py-16">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-2 md:py-2">
         <div
           ref={macDotsRef}
           className="absolute top-6 left-6 z-10 flex space-x-2 opacity-0"
@@ -197,19 +196,19 @@ const PersonalHeaderComponent: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
-                <a
-                  href="#contact"
+                <button
+                  onClick={() => setActiveSection("contact")}
                   className="group relative inline-flex items-center gap-x-2 rounded-lg bg-[#89b4fa] hover:bg-[#b4befe] px-6 py-3 text-sm font-semibold text-[#1e1e2e] shadow-md shadow-[#89b4fa]/20 transition-all duration-200 overflow-hidden"
                 >
                   <span className="relative z-10">Let's Connect</span>
                   <FaTerminal className="relative z-10" />
-                </a>
-                <a
-                  href="#projects"
+                </button>
+                <button
+                  onClick={() => setActiveSection("projects")}
                   className="group relative inline-flex items-center gap-x-2 rounded-lg border border-[#cba6f7] bg-transparent hover:bg-[#cba6f7]/10 px-6 py-3 text-sm font-semibold text-[#cba6f7] transition-all duration-200"
                 >
                   <span>View Projects</span>
-                </a>
+                </button>
               </motion.div>
             </div>
 
