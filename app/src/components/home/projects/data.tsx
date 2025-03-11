@@ -230,6 +230,6 @@ export const projects: Project[] = [
     ],
     tags: ["Animation", "TypeScript", "CSS", "SVG", "NodeJS"],
   },
-];
+] as const;
 
 export default projects;
