@@ -15,10 +15,10 @@ export const tourStepComponents: Record<TourStep, React.ComponentType> = {
   [TourStepType.SKILLS]: SkillsStep,
   [TourStepType.PROJECTS]: ProjectsStep,
   [TourStepType.EXPERIENCE]: ExperienceStep,
-  [TourStepType.CONTACT]: ContactStep,
-  [TourStepType.THANK_YOU]: ThankYouStep,
   [TourStepType.ARTICLES]: ArticlesStep,
   [TourStepType.LEARNING]: LearningStep,
+  [TourStepType.CONTACT]: ContactStep,
+  [TourStepType.THANK_YOU]: ThankYouStep,
 };
 
 export const tourSteps = [
@@ -49,14 +49,14 @@ export const tourSteps = [
     highlightSelector: ".experience-section",
   },
   {
-    id: TourStepType.LEARNING,
-    placement: "bottom",
-    highlightSelector: ".learning-section",
-  },
-  {
     id: TourStepType.ARTICLES,
     placement: "bottom",
     highlightSelector: ".articles-section",
+  },
+  {
+    id: TourStepType.LEARNING,
+    placement: "bottom",
+    highlightSelector: ".learning-section",
   },
   {
     id: TourStepType.CONTACT,
