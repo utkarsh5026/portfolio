@@ -4,6 +4,12 @@ import { FaTerminal, FaMagic, FaServer, FaDatabase } from "react-icons/fa";
 import { VscDebugConsole, VscSymbolClass } from "react-icons/vsc";
 import { RiCodeSSlashLine } from "react-icons/ri";
 import { SiGraphql } from "react-icons/si";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "../ui/tooltip";
 
 interface SectionHeaderProps {
   icon: string;
@@ -20,7 +26,6 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
 }) => {
   const titleRef = useRef<HTMLDivElement>(null);
 
-  // Enhanced icon map with more options
   const iconMap = {
     terminal: <FaTerminal className="text-ctp-red" />,
     code: <RiCodeSSlashLine className="text-ctp-green" />,
@@ -32,19 +37,16 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
     magic: <FaMagic className="text-ctp-pink" />,
   };
 
-  // Terminal-style typing effect
   useEffect(() => {
     const title = titleRef.current;
     if (!title) return;
 
-    // Clear any existing cursor from previous animations
     const existingCursor = title.querySelector(".cursor-element");
     if (existingCursor) {
       existingCursor.remove();
     }
 
     if (isActive) {
-      // Reset the width to make animation work correctly
       title.style.width = "0px";
 
       anime({
@@ -70,7 +72,6 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
         },
       });
     } else {
-      // Set a small width or display fallback to ensure label is initially visible
       title.style.width = "0px";
     }
   }, [isActive, label, titleWidth]);
@@ -88,13 +89,23 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
           </div>
         </div>
 
-        <div className="ml-auto flex items-center pr-2">
-          <div className="flex space-x-1.5 px-3">
-            <div className="w-3 h-3 rounded-full bg-ctp-red"></div>
-            <div className="w-3 h-3 rounded-full bg-ctp-yellow"></div>
-            <div className="w-3 h-3 rounded-full bg-ctp-green"></div>
-          </div>
-        </div>
+        <TooltipProvider>
+          <Tooltip delayDuration={0}>
+            <TooltipTrigger className="ml-auto flex items-center pr-2">
+              <div className="flex space-x-1.5 px-3">
+                <div className="w-3 h-3 rounded-full bg-ctp-red"></div>
+                <div className="w-3 h-3 rounded-full bg-ctp-yellow"></div>
+                <div className="w-3 h-3 rounded-full bg-ctp-green"></div>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent
+              side="bottom"
+              className="z-[999999] bg-ctp-surface0 text-ctp-text border-ctp-overlay0"
+            >
+              <p>This is just for show 😊</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
     </div>
   );
