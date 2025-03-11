@@ -1,6 +1,18 @@
-import { Code, Layout, Mail, Smartphone, Zap } from "lucide-react";
-import { ArrowRight } from "lucide-react";
-import { FaReact, FaJs } from "react-icons/fa";
+import {
+  Code,
+  Compass,
+  Layers,
+  Layout,
+  Mail,
+  Monitor,
+  Smartphone,
+  Sparkles,
+  Square,
+  TrendingUp,
+  Zap,
+  ArrowRight,
+} from "lucide-react";
+import { FaJs, FaReact } from "react-icons/fa";
 import {
   SiTailwindcss,
   SiTypescript,
@@ -284,7 +296,7 @@ const getColor = (color: Colors): RGB => {
       icon: <SiVercel className="text-white h-5 w-5" />,
     },
   ],
-};
+} as const;
 
 export const redditData = {
   commentData: [
@@ -431,3 +443,89 @@ Looking for feedback on the project descriptions and case studies - do they effe
     },
   ],
 };
+
+export const awaardssData = {
+  portfolioProjects: [
+    {
+      id: 1,
+      title: "Digital Craftsman",
+      creator: "Sarah Johnson",
+      country: "Sweden",
+      designScore: 8.65,
+      usabilityScore: 9.12,
+      creativityScore: 9.87,
+      contentScore: 8.54,
+      mobileScore: 9.36,
+      type: "Portfolio",
+      tags: ["Minimalist", "Interactive", "React", "Three.js"],
+      colors: ["#F2C94C", "#2D9CDB", "#121212"],
+      awardType: "SOD", // Site of the Day
+      pattern: "squares",
+      accentColor: "#F2C94C",
+    },
+    {
+      id: 2,
+      title: "Creative Vision Studio",
+      creator: "Michael Chen",
+      country: "Canada",
+      designScore: 9.22,
+      usabilityScore: 8.85,
+      creativityScore: 9.54,
+      contentScore: 8.92,
+      mobileScore: 8.76,
+      type: "Agency",
+      tags: ["Experimental", "WebGL", "Animation", "GSAP"],
+      colors: ["#EB5757", "#6FCF97", "#232323"],
+      awardType: "DEV", // Developer Award
+      pattern: "circles",
+      accentColor: "#EB5757",
+    },
+    {
+      id: 3,
+      title: "Portfolio 2023",
+      creator: "Emma Davis",
+      country: "Germany",
+      designScore: 9.35,
+      usabilityScore: 9.41,
+      creativityScore: 8.95,
+      contentScore: 9.12,
+      mobileScore: 9.28,
+      type: "Portfolio",
+      tags: ["Typography", "Scrolling", "Parallax", "SVG"],
+      colors: ["#6B66FF", "#F782C2", "#202020"],
+      awardType: "HM", // Honorable Mention
+      pattern: "triangles",
+      accentColor: "#6B66FF",
+    },
+    {
+      id: 4,
+      title: "Interactive Resume",
+      creator: "Carlos Rodriguez",
+      country: "Spain",
+      designScore: 9.18,
+      usabilityScore: 9.33,
+      creativityScore: 8.89,
+      contentScore: 9.47,
+      mobileScore: 8.96,
+      type: "Resume",
+      tags: ["Interactive", "Gamification", "Canvas", "Vue"],
+      colors: ["#F8961E", "#90BE6D", "#1B1B1B"],
+      awardType: "SOTM", // Site of the Month
+      pattern: "mixed",
+      accentColor: "#F8961E",
+    },
+  ],
+  trendingElements: [
+    { title: "Parallax scrolling effects", icon: <Layers size={16} /> },
+    { title: "WebGL animations", icon: <Zap size={16} /> },
+    { title: "Glassmorphism UI elements", icon: <Square size={16} /> },
+    { title: "Horizontal scroll layouts", icon: <Layout size={16} /> },
+    { title: "Page transitions", icon: <Monitor size={16} /> },
+    { title: "Customized cursors", icon: <Compass size={16} /> },
+    { title: "Interactive 3D elements", icon: <Sparkles size={16} /> },
+    { title: "Scroll-triggered animations", icon: <TrendingUp size={16} /> },
+  ],
+} as const;
+
+export type AwwwardsPortfoliosProject =
+  (typeof awaardssData.portfolioProjects)[number];
