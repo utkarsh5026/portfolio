@@ -34,13 +34,10 @@ const FeaturedLearnings: React.FC<FeaturedLearningsProps> = ({
 
   return (
     <div
-      className={`absolute bottom-6 left-0 right-0 px-6 z-20 transition-opacity duration-300 ${
+      className={`px-6 z-20 transition-opacity duration-300 ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <h3 className="text-xl font-bold text-white mb-6">
-        Featured Technologies
-      </h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {Object.entries(categorizedTech).flatMap(([category, techs]) => {
           const currCategoryInfo = categoryInfo[category as Category];

@@ -53,9 +53,9 @@ const CurrentLearning: React.FC = () => {
       icon="code"
       glowAccent="blue"
     >
-      <div className="relative w-full h-[700px] bg-[#232634] rounded-xl overflow-hidden shadow-2xl border border-[#414559]">
+      <div className="relative flex flex-col w-full h-[700px] bg-[#232634] rounded-xl overflow-hidden shadow-2xl border border-[#414559]">
         {/* Header */}
-        <div className="absolute top-0 left-0 right-0 p-8 z-20">
+        <div className="p-8 z-20">
           <h2 className="text-4xl font-bold text-white mb-3">
             Learning Universe
           </h2>
