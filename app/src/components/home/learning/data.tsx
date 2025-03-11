@@ -38,7 +38,7 @@ export const currentLearningTechnologies: TechnologyLearning[] = [
     category: "Frontend",
   },
   {
-    name: "Custom Programming Language Interpreter and Compiler",
+    name: "Programming Language Interpreter and Compiler",
     icon: <Terminal className="w-4 h-4" />,
     description:
       "Building a custom programming language interpreter with a visual frontend to demonstrate language internals.",
