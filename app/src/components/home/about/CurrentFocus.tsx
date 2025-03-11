@@ -1,29 +1,44 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { GiBullseye } from "react-icons/gi";
+
+const focusAreas = [
+  "Advanced microservices architectures with Kubernetes",
+  "Exploring LLM applications in web development",
+  "Performance optimization techniques for modern web apps",
+  "Mastering database design and optimization strategies",
+  "Exploring Web RTC and streaming technologies",
+] as const;
+
 const CurrentFocus: React.FC = () => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.6 }}
+      className="p-4 rounded-lg  backdrop-blur-sm border border-ctp-mantle/50 shadow-md"
     >
-      <div className="flex items-center mb-2">
-        <div className="bg-[#f5c2e7] w-2 h-6 mr-3"></div>
-        <h3 className="text-[#f5c2e7] font-medium text-lg flex items-center">
+      <div className="flex items-center mb-4">
+        <div className="bg-ctp-pink w-2 h-8 mr-3 rounded-full"></div>
+        <h3 className="text-ctp-pink font-semibold text-xl flex items-center">
           <GiBullseye className="mr-2" /> Current Focus
         </h3>
       </div>
-      <div className="text-[#cdd6f4] ml-5">
-        <p className="mb-2">
+      <div className="text-ctp-text ml-5 flex flex-col gap-4">
+        <p className="mb-3 text-[#bac2de]">
           I'm currently focused on deepening my expertise in:
         </p>
-        <ul className="list-disc ml-5 space-y-1">
-          <li>Advanced microservices architectures with Kubernetes</li>
-          <li>Exploring LLM applications in web development</li>
-          <li>Performance optimization techniques for modern web apps</li>
-          <li>Mastering database design and optimization strategies</li>
-        </ul>
+        <div className="bg-[#313244]/30 p-4 rounded-lg">
+          <ul className="list-disc ml-5 space-y-2">
+            {focusAreas.map((area) => (
+              <li key={area}>{area}</li>
+            ))}
+          </ul>
+        </div>
+        <p className="mt-4 text-sm italic text-[#bac2de] bg-[#313244]/20 p-3 rounded-md border-l-2 border-ctp-pink">
+          These focus areas help me stay at the cutting edge of web development
+          and deliver exceptional solutions.
+        </p>
       </div>
     </motion.div>
   );
