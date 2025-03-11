@@ -52,38 +52,52 @@ const Education: React.FC = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
+      className="p-4"
     >
-      <div className="flex items-center mb-3">
-        <div className="bg-gradient-to-r from-[#89b4fa] to-[#89dceb] w-2 h-6 mr-3 rounded-sm"></div>
-        <h3 className="text-[#89b4fa] font-medium text-lg flex items-center">
+      <div className="flex items-center mb-4">
+        <div className="bg-[#89b4fa] w-2 h-8 mr-3 rounded-full"></div>
+        <h3 className="text-[#89b4fa] font-semibold text-xl flex items-center">
           <FaGraduationCap className="mr-2" /> Education
         </h3>
       </div>
-      <div className="text-[#cdd6f4] ml-5 space-y-4 bg-[#1e1e2e]/30 p-4 rounded-md border-l-2 border-[#89b4fa]/30 flex flex-col gap-8">
-        {education.map((item) => (
-          <div key={item.degree}>
-            <div className="font-medium text-[#89b4fa]">{item.degree}</div>
-            <div className="text-sm text-[#bac2de] flex justify-between mt-1 pb-2 border-b border-[#313244]/50">
-              <span>
+      <div className="text-[#cdd6f4] ml-5 space-y-6">
+        {education.map((item, index) => (
+          <motion.div
+            key={item.degree}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.1 * index }}
+            className="bg-[#313244]/30 p-4 rounded-lg hover:shadow-lg transition-all duration-300"
+          >
+            <div className="font-medium text-[#89b4fa] text-lg">
+              {item.degree}
+            </div>
+            <div className="text-sm text-[#bac2de] flex flex-col sm:flex-row sm:justify-between mt-2 pb-3 border-b border-[#313244]/80">
+              <span className="mb-2 sm:mb-0">
                 <a
                   href={item.institutionUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#89b4fa] transition-colors cursor-pointer hover:underline"
+                  className="hover:text-[#89b4fa] transition-colors cursor-pointer hover:underline flex items-center"
                 >
-                  {item.institution}
+                  <span className="mr-1 opacity-10">🏫</span> {item.institution}
                 </a>
               </span>
-              <span className="bg-[#313244]/50 px-2 rounded">
-                {item.duration}
+              <span className="bg-[#313244]/70 px-3 py-1 rounded-full text-[#89b4fa] inline-flex items-center self-start sm:self-auto">
+                <span className="mr-1">🗓️</span> {item.duration}
               </span>
             </div>
-            <ul className="list-disc ml-5 mt-2 text-sm space-y-1">
+            <ul className="list-disc ml-5 mt-3 text-sm space-y-2">
               {item.highlights.map((highlight) => (
-                <li key={highlight}>{highlight}</li>
+                <li
+                  key={highlight}
+                  className="hover:text-[#89b4fa] transition-colors duration-200"
+                >
+                  {highlight}
+                </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         ))}
       </div>
     </motion.div>
