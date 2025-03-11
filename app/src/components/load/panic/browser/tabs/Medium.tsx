@@ -32,7 +32,7 @@ const { relatedArticles } = mediumData;
 const MediumPortfolio: React.FC = () => {
   const [claps, setClaps] = useState(428);
   const [bookmarked, setBookmarked] = useState(false);
-  const [expandedSection, setExpandedSection] = useState(null);
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
   return (
     <div className="w-full max-w-5xl mx-auto px-6 py-8 bg-[#121212] text-gray-200 font-sans">
