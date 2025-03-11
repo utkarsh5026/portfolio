@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
 import { codeContent, type CodeType } from "./code";
 import VsCode from "./app/VsCode";
-import { useWindowContext } from "@/components/load/panic/context/windowcontext";
+import { useWindowContext } from "@/components/load/panic/context/windowContext";
 
 interface CodeEditorsProps {
   totalTimeForCodeInMS: number;

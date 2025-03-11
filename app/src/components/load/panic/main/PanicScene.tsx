@@ -15,7 +15,7 @@ import {
   INITIAL_DELAY,
   TERMINAL_TIMING,
 } from "../timings";
-import { useWindowContext } from "../context/windowcontext";
+import { useWindowContext } from "@/components/load/panic/context/windowContext";
 import "./PanicAnimations.css";
 
 const INIT_MESSAGE_TIME = 1000;
