@@ -1,121 +1,32 @@
 import React, { useState } from "react";
 import {
-  Camera,
   Globe,
   Award,
-  Layers,
-  Zap,
   Star,
   Code,
-  Sparkles,
   Users,
   Eye,
   Heart,
-  MessageCircle,
-  Share2,
   ExternalLink,
-  BarChart2,
   TrendingUp,
-  Layout,
-  Monitor,
-  Compass,
   Square,
   Triangle,
   Circle,
 } from "lucide-react";
+import { awaardssData, type AwwwardsPortfoliosProject } from "./data";
 
-export const AwwwardsPortfolios = () => {
-  // State for active tabs and hover effects
+const { portfolioProjects, trendingElements } = awaardssData;
+
+export const AwwwardsPortfolios: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState("nominees");
   const [activeSorting, setActiveSorting] = useState("latest");
-  const [hoveredProject, setHoveredProject] = useState(null);
-
-  // Portfolio projects data
-  const portfolioProjects = [
-    {
-      id: 1,
-      title: "Digital Craftsman",
-      creator: "Sarah Johnson",
-      country: "Sweden",
-      designScore: 8.65,
-      usabilityScore: 9.12,
-      creativityScore: 9.87,
-      contentScore: 8.54,
-      mobileScore: 9.36,
-      type: "Portfolio",
-      tags: ["Minimalist", "Interactive", "React", "Three.js"],
-      colors: ["#F2C94C", "#2D9CDB", "#121212"],
-      awardType: "SOD", // Site of the Day
-      pattern: "squares",
-      accentColor: "#F2C94C",
-    },
-    {
-      id: 2,
-      title: "Creative Vision Studio",
-      creator: "Michael Chen",
-      country: "Canada",
-      designScore: 9.22,
-      usabilityScore: 8.85,
-      creativityScore: 9.54,
-      contentScore: 8.92,
-      mobileScore: 8.76,
-      type: "Agency",
-      tags: ["Experimental", "WebGL", "Animation", "GSAP"],
-      colors: ["#EB5757", "#6FCF97", "#232323"],
-      awardType: "DEV", // Developer Award
-      pattern: "circles",
-      accentColor: "#EB5757",
-    },
-    {
-      id: 3,
-      title: "Portfolio 2023",
-      creator: "Emma Davis",
-      country: "Germany",
-      designScore: 9.35,
-      usabilityScore: 9.41,
-      creativityScore: 8.95,
-      contentScore: 9.12,
-      mobileScore: 9.28,
-      type: "Portfolio",
-      tags: ["Typography", "Scrolling", "Parallax", "SVG"],
-      colors: ["#6B66FF", "#F782C2", "#202020"],
-      awardType: "HM", // Honorable Mention
-      pattern: "triangles",
-      accentColor: "#6B66FF",
-    },
-    {
-      id: 4,
-      title: "Interactive Resume",
-      creator: "Carlos Rodriguez",
-      country: "Spain",
-      designScore: 9.18,
-      usabilityScore: 9.33,
-      creativityScore: 8.89,
-      contentScore: 9.47,
-      mobileScore: 8.96,
-      type: "Resume",
-      tags: ["Interactive", "Gamification", "Canvas", "Vue"],
-      colors: ["#F8961E", "#90BE6D", "#1B1B1B"],
-      awardType: "SOTM", // Site of the Month
-      pattern: "mixed",
-      accentColor: "#F8961E",
-    },
-  ];
+  const [hoveredProject, setHoveredProject] = useState<
+    (typeof portfolioProjects)[number]["id"] | null
+  >(null);
 
   // Design elements trending in portfolios
-  const trendingElements = [
-    { title: "Parallax scrolling effects", icon: <Layers size={16} /> },
-    { title: "WebGL animations", icon: <Zap size={16} /> },
-    { title: "Glassmorphism UI elements", icon: <Square size={16} /> },
-    { title: "Horizontal scroll layouts", icon: <Layout size={16} /> },
-    { title: "Page transitions", icon: <Monitor size={16} /> },
-    { title: "Customized cursors", icon: <Compass size={16} /> },
-    { title: "Interactive 3D elements", icon: <Sparkles size={16} /> },
-    { title: "Scroll-triggered animations", icon: <TrendingUp size={16} /> },
-  ];
 
-  // Helper function to render abstract pattern based on project type
-  const renderAbstractPattern = (project) => {
+  const renderAbstractPattern = (project: AwwwardsPortfoliosProject) => {
     const { pattern, accentColor } = project;
 
     if (pattern === "squares") {
@@ -270,63 +181,6 @@ export const AwwwardsPortfolios = () => {
     }
   };
 
-  // Award badge component
-  const AwardBadge = ({ type }) => {
-    const getAwardDetails = () => {
-      switch (type) {
-        case "SOD":
-          return {
-            text: "SOD",
-            color: "bg-yellow-400",
-            title: "Site of the Day",
-          };
-        case "SOTM":
-          return {
-            text: "SOTM",
-            color: "bg-yellow-500",
-            title: "Site of the Month",
-          };
-        case "DEV":
-          return {
-            text: "DEV",
-            color: "bg-blue-500",
-            title: "Developer Award",
-          };
-        case "HM":
-          return {
-            text: "HM",
-            color: "bg-purple-500",
-            title: "Honorable Mention",
-          };
-        default:
-          return {
-            text: "SOD",
-            color: "bg-yellow-400",
-            title: "Site of the Day",
-          };
-      }
-    };
-
-    const { text, color, title } = getAwardDetails();
-
-    return (
-      <div
-        className={`w-6 h-6 rounded-full ${color} flex items-center justify-center text-[10px] text-black font-bold`}
-        title={title}
-      >
-        {text}
-      </div>
-    );
-  };
-
-  // Score component
-  const ScoreCategory = ({ label, score }) => (
-    <div className="flex flex-col items-center mr-4">
-      <span className="text-xs text-gray-300">{label}</span>
-      <span className="text-yellow-400 font-bold">{score.toFixed(2)}</span>
-    </div>
-  );
-
   return (
     <div className="w-full max-w-5xl mx-auto px-6 py-8 font-sans">
       {/* Header section */}
@@ -470,12 +324,12 @@ export const AwwwardsPortfolios = () => {
                     />
                   </div>
                   <div className="ml-auto flex space-x-2">
-                    <button className="w-8 h-8 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors">
+                    <span className="w-8 h-8 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors">
                       <Heart size={14} className="text-white" />
-                    </button>
-                    <button className="w-8 h-8 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors">
+                    </span>
+                    <span className="w-8 h-8 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors">
                       <ExternalLink size={14} className="text-white" />
-                    </button>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -621,3 +475,64 @@ export const AwwwardsPortfolios = () => {
     </div>
   );
 };
+
+interface AwardBadgeProps {
+  type: AwwwardsPortfoliosProject["awardType"];
+}
+
+const AwardBadge: React.FC<AwardBadgeProps> = ({ type }) => {
+  const getAwardDetails = () => {
+    switch (type) {
+      case "SOTM":
+        return {
+          text: "SOTM",
+          color: "bg-yellow-500",
+          title: "Site of the Month",
+        };
+      case "DEV":
+        return {
+          text: "DEV",
+          color: "bg-blue-500",
+          title: "Developer Award",
+        };
+      case "HM":
+        return {
+          text: "HM",
+          color: "bg-purple-500",
+          title: "Honorable Mention",
+        };
+      case "SOD":
+      default:
+        return {
+          text: "SOD",
+          color: "bg-yellow-400",
+          title: "Site of the Day",
+        };
+    }
+  };
+
+  const { text, color, title } = getAwardDetails();
+
+  return (
+    <div
+      className={`w-6 h-6 rounded-full ${color} flex items-center justify-center text-[10px] text-black font-bold`}
+      title={title}
+    >
+      {text}
+    </div>
+  );
+};
+
+interface ScoreCategoryProps {
+  label: string;
+  score: number;
+}
+
+const ScoreCategory: React.FC<ScoreCategoryProps> = ({ label, score }) => (
+  <div className="flex flex-col items-center mr-4">
+    <span className="text-xs text-gray-300">{label}</span>
+    <span className="text-yellow-400 font-bold">{score.toFixed(2)}</span>
+  </div>
+);
+
+export default AwwwardsPortfolios;

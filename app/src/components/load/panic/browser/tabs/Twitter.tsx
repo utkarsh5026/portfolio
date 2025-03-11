@@ -11,7 +11,6 @@ import {
   FiMail,
   FiHome,
   FiUser,
-  FiLink,
   FiImage,
   FiSmile,
   FiCalendar,
@@ -22,13 +21,12 @@ import { SiGithub, SiVercel } from "react-icons/si";
 import { FaHeart } from "react-icons/fa";
 import { Avatar } from "@/components/ui/avatar";
 import { twitterData } from "./data";
-import React, { useRef, useState, memo } from "react";
+import React, { useRef, useState } from "react";
 
 type TweetType = (typeof twitterData.tweets)[number];
 type TweetActionType = Record<number, boolean>;
 
-const Twitter = memo(() => {
-  // State for interactive elements
+const Twitter: React.FC = () => {
   const [activeTab, setActiveTab] = useState("for-you");
   const [likedTweets, setLikedTweets] = useState<TweetActionType>({});
   const [retweetedTweets, setRetweetedTweets] = useState<TweetActionType>({});
@@ -122,23 +120,6 @@ const Twitter = memo(() => {
                 <SiVercel size={24} />
               </div>
               <span>Deploy</span>
-            </div>
-          </div>
-        </div>
-      );
-    }
-
-    // Default case: link preview
-    if (tweet.link) {
-      return (
-        <div className="mt-3 border border-gray-800 rounded-lg overflow-hidden">
-          <div className="p-3">
-            <div className="text-gray-400 text-xs flex items-center mb-2">
-              <FiLink className="mr-2" /> {tweet.link.url}
-            </div>
-            <div className="text-white font-bold">{tweet.link.title}</div>
-            <div className="text-gray-400 text-sm mt-1">
-              {tweet.link.description}
             </div>
           </div>
         </div>
@@ -534,7 +515,7 @@ const Twitter = memo(() => {
       )}
     </div>
   );
-});
+};
 
 interface NavItemProps {
   icon: React.ReactNode;
@@ -590,9 +571,7 @@ const Tweet: React.FC<TweetProps> = ({
 
   return (
     <div className="p-4 border-b border-gray-800 hover:bg-gray-900 transition-colors cursor-pointer relative">
-      {/* Tweet container */}
       <div className="flex">
-        {/* Avatar */}
         <div className="mr-3">
           <Avatar className="w-12 h-12 rounded-full bg-gray-900 flex items-center justify-center">
             {tweet.icon}
@@ -619,12 +598,12 @@ const Tweet: React.FC<TweetProps> = ({
             <span className="text-gray-500 mr-1">{tweet.username}</span>
             <span className="text-gray-500 mx-1">·</span>
             <span className="text-gray-500 hover:underline">{tweet.time}</span>
-            <button
+            <span
               className="ml-auto text-gray-500 hover:text-blue-500 p-1 rounded-full hover:bg-blue-500 hover:bg-opacity-10 transition-colors"
               onClick={() => setShowActions(!showActions)}
             >
               <FiMoreHorizontal size={16} />
-            </button>
+            </span>
           </div>
 
           {/* Pinned tweet indicator */}
@@ -652,14 +631,12 @@ const Tweet: React.FC<TweetProps> = ({
             )}
           </div>
 
-          {/* Tweet media content */}
-          {renderMedia && renderMedia(tweet)}
+          {renderMedia?.(tweet)}
 
-          {/* Thread indicator */}
           {tweet.hasThread && (
             <div className="mt-2 text-blue-500 hover:underline text-sm">
               Show this thread ({tweet.threadCount} more{" "}
-              {tweet.threadCount === 1 ? "Tweet" : "Tweets"})
+              {tweet.threadCount === 2 ? "Tweet" : "Tweets"})
             </div>
           )}
 
@@ -748,11 +725,11 @@ const Tweet: React.FC<TweetProps> = ({
               </div>
             </button>
 
-            <button className="flex items-center space-x-1 group">
+            <span className="flex items-center space-x-1 group">
               <div className="p-2 rounded-full group-hover:bg-blue-500 group-hover:bg-opacity-10 group-hover:text-blue-500 transition-colors">
                 <FiShare2 size={18} />
               </div>
-            </button>
+            </span>
           </div>
         </div>
       </div>
