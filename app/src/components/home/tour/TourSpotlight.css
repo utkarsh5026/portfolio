@@ -1,0 +1,68 @@
+/* Add to TourStyles.css */
+.tour-spotlight-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9997;
+}
+
+.tour-spotlight-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(17, 17, 27, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+.tour-spotlight-hole {
+    position: absolute;
+    background-color: transparent;
+    border-radius: 8px;
+    box-shadow: 0 0 0 4px rgba(137, 180, 250, 0.6), 0 0 30px 15px rgba(137, 180, 250, 0.2);
+    backdrop-filter: none;
+    /* Cut out hole effect */
+    backdrop-filter: none;
+    -webkit-mask: radial-gradient(ellipse at center,
+            transparent 95%,
+            black 100%);
+    mask: radial-gradient(ellipse at center,
+            transparent 95%,
+            black 100%);
+}
+
+/* Modify tour highlight class to be more subtle */
+.tour-highlight {
+    position: relative;
+    z-index: 9998;
+    pointer-events: auto !important;
+}
+
+/* Add to TourStyles.css */
+.tour-highlight {
+    position: relative;
+    z-index: 9997;
+    box-shadow: 0 0 0 4px rgba(137, 180, 250, 0.6), 0 0 30px 15px rgba(137, 180, 250, 0.2);
+    border-radius: 4px;
+    animation: pulse 2s infinite;
+    /* Remove backdrop-filter from highlighted elements */
+    backdrop-filter: none !important;
+}
+
+/* Enhance element around the highlight */
+.tour-highlight::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: transparent;
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: -1;
+}
