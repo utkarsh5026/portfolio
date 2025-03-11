@@ -1,18 +1,17 @@
 import React from "react";
 import Section from "@/components/section/Section";
 import { motion } from "framer-motion";
-import { FaGraduationCap, FaCode, FaLaptopCode, FaBook } from "react-icons/fa";
+import { FaLaptopCode, FaBook } from "react-icons/fa";
+import Background from "./Background";
+import Education from "./Education";
 
 const AboutMe: React.FC = () => {
   return (
     <Section id="about" label="About Me" icon="class">
       <div className="max-w-4xl mx-auto">
-        {/* Enhanced modern container with gradient accents */}
         <div className="border border-[#313244] bg-[#181825] rounded-lg overflow-hidden shadow-lg relative">
-          {/* Subtle gradient accent in the background */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#cba6f7]/5 to-transparent pointer-events-none"></div>
 
-          {/* Modernized header with code-like aesthetic */}
           <div className="bg-[#1e1e2e] px-4 py-3 border-b border-[#313244] flex items-center">
             <div className="text-[#cdd6f4] font-medium flex items-center">
               <span className="text-[#cba6f7] mr-2">~/portfolio/</span>
@@ -37,74 +36,8 @@ const AboutMe: React.FC = () => {
 
             {/* Content with increased left padding to accommodate line numbers */}
             <div className="space-y-8 pl-8">
-              {/* Bio section with improved styling */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="flex items-center mb-3">
-                  <div className="bg-gradient-to-r from-[#cba6f7] to-[#89b4fa] w-2 h-6 mr-3 rounded-sm"></div>
-                  <h3 className="text-[#cba6f7] font-medium text-lg flex items-center">
-                    <FaCode className="mr-2" /> Background
-                  </h3>
-                </div>
-                <div className="text-[#cdd6f4] ml-5 leading-relaxed text-base bg-[#1e1e2e]/30 p-4 rounded-md border-l-2 border-[#cba6f7]/30">
-                  <p className="mb-2">
-                    I am Utkarsh Priyadarshi, a passionate Full-Stack Developer
-                    and DevOps Engineer with a knack for building scalable web
-                    applications. My journey in tech started with simple HTML
-                    pages during my early college days and has evolved to
-                    complex web applications using modern frameworks and cloud
-                    technologies.
-                  </p>
-                  <p>
-                    With expertise spanning front-end aesthetics to back-end
-                    architecture, I specialize in creating robust infrastructure
-                    systems that deliver exceptional user experiences while
-                    maintaining clean, efficient codebases.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Education section with improved styling */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <div className="flex items-center mb-3">
-                  <div className="bg-gradient-to-r from-[#89b4fa] to-[#89dceb] w-2 h-6 mr-3 rounded-sm"></div>
-                  <h3 className="text-[#89b4fa] font-medium text-lg flex items-center">
-                    <FaGraduationCap className="mr-2" /> Education
-                  </h3>
-                </div>
-                <div className="text-[#cdd6f4] ml-5 space-y-4 bg-[#1e1e2e]/30 p-4 rounded-md border-l-2 border-[#89b4fa]/30">
-                  <div>
-                    <div className="font-medium text-[#89b4fa]">
-                      B.Tech in Computer Science and Engineering
-                    </div>
-                    <div className="text-sm text-[#bac2de] flex justify-between mt-1 pb-2 border-b border-[#313244]/50">
-                      <span>
-                        Dr. Vishwanath Karad MIT World Peace University
-                      </span>
-                      <span className="bg-[#313244]/50 px-2 rounded">
-                        2019 - 2023
-                      </span>
-                    </div>
-                    <ul className="list-disc ml-5 mt-2 text-sm space-y-1">
-                      <li>Graduated with 9.52 CGPA</li>
-                      <li>
-                        Specialized in Web Technologies and Cloud Computing
-                      </li>
-                      <li>
-                        Final Year Project: Developed a scalable microservices
-                        architecture
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </motion.div>
+              <Background />
+              <Education />
 
               {/* Skills section with improved styling */}
               <motion.div
@@ -135,8 +68,8 @@ const AboutMe: React.FC = () => {
                         Backend
                       </div>
                       <ul className="list-disc ml-5 text-sm space-y-1">
-                        <li>Node.js, Express, Python</li>
-                        <li>MongoDB, PostgreSQL</li>
+                        <li>Node.js, Express, Python, Go</li>
+                        <li>MongoDB, PostgreSQL, Redis, MySQL</li>
                         <li>GraphQL, REST API Design</li>
                       </ul>
                     </div>
