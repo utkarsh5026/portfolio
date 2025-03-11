@@ -19,6 +19,12 @@ export const currentLearningTechnologies: TechnologyLearning[] = [
       "Implementing a code editor like cursor in the browser with RAG and vector database for context aware code search, autocomplete and chat with code.",
     repoLink: "https://github.com/utkarsh5026/gep",
     category: "AI/ML",
+    learningGoals: [
+      "Master vector embedding techniques for code representation and semantic search",
+      "Implement efficient retrieval-augmented generation pipelines for context-aware code completion",
+      "Develop optimized vector indexing strategies for real-time code search and retrieval",
+      "Build a responsive browser-based editor with LLM integration for intelligent code assistance",
+    ],
   },
   {
     name: "Database Internals",
@@ -27,6 +33,12 @@ export const currentLearningTechnologies: TechnologyLearning[] = [
       "Creating a database from scratch, implementing B-tree indexing, WAL (Write-Ahead Logging), and basic query engine to learn internals of databases",
     repoLink: "https://github.com/yourusername/custom-db-engine",
     category: "Database",
+    learningGoals: [
+      "Implement B-tree and B+tree data structures for efficient indexing and range queries",
+      "Design a robust WAL (Write-Ahead Logging) system for ACID transaction guarantees",
+      "Develop a query parser and execution engine with optimization capabilities",
+      "Create storage management systems with efficient page allocation and caching strategies",
+    ],
   },
 
   {
@@ -36,6 +48,12 @@ export const currentLearningTechnologies: TechnologyLearning[] = [
       "This year I definitely want to build a mobile app with React Native. I want to test working with local level llms and also at the api level to create some productivity app for developers.",
     repoLink: "https://github.com/yourusername/cross-platform-apps",
     category: "Frontend",
+    learningGoals: [
+      "Master React Native's bridge architecture and native module integration for LLM deployment",
+      "Implement efficient state management patterns for complex cross-platform applications",
+      "Develop optimized UI rendering techniques for smooth performance on resource-constrained devices",
+      "Create platform-specific adaptations while maintaining a unified codebase architecture",
+    ],
   },
   {
     name: "Programming Language Interpreter and Compiler",
@@ -44,6 +62,12 @@ export const currentLearningTechnologies: TechnologyLearning[] = [
       "Building a custom programming language interpreter with a visual frontend to demonstrate language internals.",
     repoLink: "https://github.com/utkarsh5026/enigma",
     category: "Backend",
+    learningGoals: [
+      "Implement lexical analysis and parsing techniques for a custom grammar specification",
+      "Design an efficient abstract syntax tree (AST) representation and traversal system",
+      "Develop bytecode generation and virtual machine execution environment",
+      "Create visualization tools for runtime execution and memory management",
+    ],
   },
   {
     name: "Container Orchestration Platform",
@@ -52,6 +76,12 @@ export const currentLearningTechnologies: TechnologyLearning[] = [
       "Building a lightweight container orchestration system to learn core Kubernetes concepts like scheduling, service discovery and cluster management.",
     repoLink: "https://github.com/utkarsh5026/Orchestra",
     category: "DevOps",
+    learningGoals: [
+      "Implement distributed scheduling algorithms for optimal container placement",
+      "Design a service discovery and load balancing system with health monitoring",
+      "Develop a declarative configuration system for infrastructure-as-code deployment",
+      "Create networking solutions for secure inter-container and cross-node communication",
+    ],
   },
   {
     name: "Media Streaming",
@@ -60,6 +90,12 @@ export const currentLearningTechnologies: TechnologyLearning[] = [
       "I want to build a projects using WebRTC and HLS protocols, implementing live broadcasting and video-on-demand features while learning streaming architectures.",
     repoLink: "https://github.com/utkarsh5026/stream-connect",
     category: "Backend",
+    learningGoals: [
+      "Master WebRTC signaling protocols and peer connection establishment for real-time communication",
+      "Implement adaptive bitrate streaming with HLS segment management and playlist generation",
+      "Develop media processing pipelines for transcoding, compression and format conversion",
+      "Design scalable streaming architectures with CDN integration and edge caching strategies",
+    ],
   },
 ];
 

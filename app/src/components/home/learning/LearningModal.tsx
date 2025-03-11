@@ -121,20 +121,12 @@ const LearningModal: React.FC<LearningModalProps> = ({
                 Learning Goals
               </h4>
               <ul className="text-[#c6d0f5] space-y-3">
-                <li className="flex items-start gap-3">
-                  <div className="mt-1 text-[#8caaee]">•</div>
-                  <div>Master fundamental concepts and best practices</div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="mt-1 text-[#8caaee]">•</div>
-                  <div>Build practical projects to solidify understanding</div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="mt-1 text-[#8caaee]">•</div>
-                  <div>
-                    Explore advanced techniques and optimization strategies
-                  </div>
-                </li>
+                {selectedTech.learningGoals.map((goal) => (
+                  <li key={goal} className="flex items-start gap-3">
+                    <div className="mt-1 text-[#8caaee]">•</div>
+                    <div>{goal}</div>
+                  </li>
+                ))}
               </ul>
             </div>
 

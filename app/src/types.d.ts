@@ -6,6 +6,7 @@ export type TechnologyLearning = {
   description: string;
   repoLink?: string;
   category: "Database" | "Backend" | "Frontend" | "DevOps" | "AI/ML";
+  learningGoals: string[];
 };
 
 export type Technology = {
