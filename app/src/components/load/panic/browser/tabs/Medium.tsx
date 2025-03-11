@@ -17,178 +17,22 @@ import {
   Star,
   Check,
   Layout,
-  Figma,
-  Github,
   Globe,
   Image,
   FileText,
   Link,
   Box,
-  Award,
   Users,
 } from "lucide-react";
+import { mediumData } from "./data";
+import { FaFigma, FaGithub } from "react-icons/fa";
 
-const MediumPortfolio = () => {
+const { relatedArticles } = mediumData;
+
+const MediumPortfolio: React.FC = () => {
   const [claps, setClaps] = useState(428);
   const [bookmarked, setBookmarked] = useState(false);
   const [expandedSection, setExpandedSection] = useState(null);
-
-  // Sample articles data
-  const relatedArticles = [
-    {
-      id: 1,
-      title: "The Developer's Guide to Personal Branding in 2023",
-      author: "John Miller",
-      time: "8 min read",
-      date: "Jan 28",
-      icon: <Briefcase size={16} />,
-    },
-    {
-      id: 2,
-      title: "From Junior to Senior: Career Progression Roadmap",
-      author: "Emily Watson",
-      time: "12 min read",
-      date: "Feb 3",
-      icon: <Award size={16} />,
-    },
-    {
-      id: 3,
-      title: "10 Portfolio Mistakes That Are Costing You Interviews",
-      author: "Michael Chen",
-      time: "7 min read",
-      date: "Jan 15",
-      icon: <AlertTriangle size={16} />,
-    },
-    {
-      id: 4,
-      title: "How I Got Hired at Google with My Creative Portfolio Approach",
-      author: "Jessica Liu",
-      time: "10 min read",
-      date: "Feb 7",
-      icon: <Star size={16} />,
-    },
-  ];
-
-  // Custom SVG abstract article header component
-  const AbstractArticleHeader = () => (
-    <div className="relative h-64 md:h-80 w-full mb-6 rounded-lg overflow-hidden bg-gradient-to-r from-slate-900 via-gray-800 to-slate-900 flex items-center justify-center">
-      <div className="absolute inset-0 opacity-10">
-        <svg
-          width="100%"
-          height="100%"
-          viewBox="0 0 800 400"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <pattern
-              id="smallGrid"
-              width="20"
-              height="20"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M 20 0 L 0 0 0 20"
-                fill="none"
-                stroke="white"
-                strokeWidth="0.5"
-                opacity="0.2"
-              />
-            </pattern>
-            <pattern
-              id="grid"
-              width="100"
-              height="100"
-              patternUnits="userSpaceOnUse"
-            >
-              <rect width="100" height="100" fill="url(#smallGrid)" />
-              <path
-                d="M 100 0 L 0 0 0 100"
-                fill="none"
-                stroke="white"
-                strokeWidth="1"
-                opacity="0.2"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-      </div>
-
-      {/* Abstract portfolio visualization */}
-      <div className="relative z-10 flex flex-col items-center">
-        <div className="w-80 h-40 border-2 border-green-400 rounded-lg flex items-center justify-center relative">
-          <div className="absolute -top-3 -left-3 w-6 h-6 rounded-full bg-green-400"></div>
-          <div className="absolute -bottom-3 -right-3 w-6 h-6 rounded-full bg-green-400"></div>
-
-          <div className="flex items-center space-x-6">
-            <div className="flex flex-col items-center">
-              <Layout size={28} className="text-green-400 mb-2" />
-              <div className="h-16 w-1 bg-green-400"></div>
-            </div>
-
-            <div className="flex flex-col items-center">
-              <Code size={28} className="text-white mb-2" />
-              <div className="h-24 w-1 bg-white"></div>
-            </div>
-
-            <div className="flex flex-col items-center">
-              <Monitor size={28} className="text-green-400 mb-2" />
-              <div className="h-20 w-1 bg-green-400"></div>
-            </div>
-
-            <div className="flex flex-col items-center">
-              <Briefcase size={28} className="text-white mb-2" />
-              <div className="h-12 w-1 bg-white"></div>
-            </div>
-          </div>
-        </div>
-
-        <div className="text-green-400 mt-8 flex items-center text-lg font-semibold">
-          <FileText size={20} className="mr-2" />
-          <span>PORTFOLIO JOURNEY</span>
-        </div>
-      </div>
-
-      {/* Floating elements */}
-      <div className="absolute top-10 left-10 opacity-40">
-        <Github size={24} className="text-white" />
-      </div>
-      <div className="absolute bottom-10 left-16 opacity-40">
-        <Figma size={24} className="text-white" />
-      </div>
-      <div className="absolute top-16 right-10 opacity-40">
-        <Globe size={24} className="text-white" />
-      </div>
-      <div className="absolute bottom-14 right-20 opacity-40">
-        <Box size={24} className="text-white" />
-      </div>
-    </div>
-  );
-
-  // Profile avatar with gradient
-  const ProfileAvatar = () => (
-    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center text-white font-bold text-lg">
-      SC
-    </div>
-  );
-
-  // Section Toggle component
-  const SectionToggle = ({ title, isExpanded, onToggle, children }) => (
-    <div className="mb-6">
-      <button
-        className="flex items-center justify-between w-full text-left bg-[#1a1a1a] hover:bg-[#252525] transition-colors p-3 rounded-t-lg"
-        onClick={onToggle}
-      >
-        <span className="text-white font-medium">{title}</span>
-        <span className="text-gray-400">{isExpanded ? "−" : "+"}</span>
-      </button>
-      {isExpanded && (
-        <div className="bg-[#1a1a1a] p-4 rounded-b-lg border-t border-[#333]">
-          {children}
-        </div>
-      )}
-    </div>
-  );
 
   return (
     <div className="w-full max-w-5xl mx-auto px-6 py-8 bg-[#121212] text-gray-200 font-sans">
@@ -779,8 +623,11 @@ const MediumPortfolio = () => {
   );
 };
 
-// Define icons needed for the file structure
-const Folder = ({ size, className }) => (
+interface IconProps {
+  size: number;
+  className: string;
+}
+const Folder: React.FC<IconProps> = ({ size, className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -797,7 +644,7 @@ const Folder = ({ size, className }) => (
   </svg>
 );
 
-const File = ({ size, className }) => (
+const File: React.FC<IconProps> = ({ size, className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -815,7 +662,7 @@ const File = ({ size, className }) => (
   </svg>
 );
 
-const Quote = ({ size, className }) => (
+const Quote: React.FC<IconProps> = ({ size, className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -833,7 +680,7 @@ const Quote = ({ size, className }) => (
   </svg>
 );
 
-const Mail = ({ size, className }) => (
+const Mail: React.FC<IconProps> = ({ size, className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -851,23 +698,133 @@ const Mail = ({ size, className }) => (
   </svg>
 );
 
-const AlertTriangle = ({ size, className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-    <line x1="12" y1="9" x2="12" y2="13"></line>
-    <line x1="12" y1="17" x2="12.01" y2="17"></line>
-  </svg>
+const ProfileAvatar = () => (
+  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center text-white font-bold text-lg">
+    SC
+  </div>
 );
 
-export default React.memo(MediumPortfolio);
+interface SectionToggleProps {
+  title: string;
+  isExpanded: boolean;
+  onToggle: () => void;
+  children: React.ReactNode;
+}
+
+const SectionToggle: React.FC<SectionToggleProps> = ({
+  title,
+  isExpanded,
+  onToggle,
+  children,
+}) => (
+  <div className="mb-6">
+    <button
+      className="flex items-center justify-between w-full text-left bg-[#1a1a1a] hover:bg-[#252525] transition-colors p-3 rounded-t-lg"
+      onClick={onToggle}
+    >
+      <span className="text-white font-medium">{title}</span>
+      <span className="text-gray-400">{isExpanded ? "−" : "+"}</span>
+    </button>
+    {isExpanded && (
+      <div className="bg-[#1a1a1a] p-4 rounded-b-lg border-t border-[#333]">
+        {children}
+      </div>
+    )}
+  </div>
+);
+
+const AbstractArticleHeader = () => (
+  <div className="relative h-64 md:h-80 w-full mb-6 rounded-lg overflow-hidden bg-gradient-to-r from-slate-900 via-gray-800 to-slate-900 flex items-center justify-center">
+    <div className="absolute inset-0 opacity-10">
+      <svg
+        width="100%"
+        height="100%"
+        viewBox="0 0 800 400"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <pattern
+            id="smallGrid"
+            width="20"
+            height="20"
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M 20 0 L 0 0 0 20"
+              fill="none"
+              stroke="white"
+              strokeWidth="0.5"
+              opacity="0.2"
+            />
+          </pattern>
+          <pattern
+            id="grid"
+            width="100"
+            height="100"
+            patternUnits="userSpaceOnUse"
+          >
+            <rect width="100" height="100" fill="url(#smallGrid)" />
+            <path
+              d="M 100 0 L 0 0 0 100"
+              fill="none"
+              stroke="white"
+              strokeWidth="1"
+              opacity="0.2"
+            />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+      </svg>
+    </div>
+
+    <div className="relative z-10 flex flex-col items-center">
+      <div className="w-80 h-40 border-2 border-green-400 rounded-lg flex items-center justify-center relative">
+        <div className="absolute -top-3 -left-3 w-6 h-6 rounded-full bg-green-400"></div>
+        <div className="absolute -bottom-3 -right-3 w-6 h-6 rounded-full bg-green-400"></div>
+
+        <div className="flex items-center space-x-6">
+          <div className="flex flex-col items-center">
+            <Layout size={28} className="text-green-400 mb-2" />
+            <div className="h-16 w-1 bg-green-400"></div>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <Code size={28} className="text-white mb-2" />
+            <div className="h-24 w-1 bg-white"></div>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <Monitor size={28} className="text-green-400 mb-2" />
+            <div className="h-20 w-1 bg-green-400"></div>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <Briefcase size={28} className="text-white mb-2" />
+            <div className="h-12 w-1 bg-white"></div>
+          </div>
+        </div>
+      </div>
+
+      <div className="text-green-400 mt-8 flex items-center text-lg font-semibold">
+        <FileText size={20} className="mr-2" />
+        <span>PORTFOLIO JOURNEY</span>
+      </div>
+    </div>
+
+    {/* Floating elements */}
+    <div className="absolute top-10 left-10 opacity-40">
+      <FaGithub size={24} className="text-white" />
+    </div>
+    <div className="absolute bottom-10 left-16 opacity-40">
+      <FaFigma size={24} className="text-white" />
+    </div>
+    <div className="absolute top-16 right-10 opacity-40">
+      <Globe size={24} className="text-white" />
+    </div>
+    <div className="absolute bottom-14 right-20 opacity-40">
+      <Box size={24} className="text-white" />
+    </div>
+  </div>
+);
+
+export default MediumPortfolio;

@@ -11,6 +11,10 @@ import {
   TrendingUp,
   Zap,
   ArrowRight,
+  Award,
+  Briefcase,
+  AlertTriangle,
+  Star,
 } from "lucide-react";
 import { FaJs, FaReact } from "react-icons/fa";
 import {
@@ -529,3 +533,42 @@ export const awaardssData = {
 
 export type AwwwardsPortfoliosProject =
   (typeof awaardssData.portfolioProjects)[number];
+
+export const mediumData = {
+  relatedArticles: [
+    {
+      id: 1,
+      title: "The Developer's Guide to Personal Branding in 2023",
+      author: "John Miller",
+      time: "8 min read",
+      date: "Jan 28",
+      icon: <Briefcase size={16} />,
+    },
+    {
+      id: 2,
+      title: "From Junior to Senior: Career Progression Roadmap",
+      author: "Emily Watson",
+      time: "12 min read",
+      date: "Feb 3",
+      icon: <Award size={16} />,
+    },
+    {
+      id: 3,
+      title: "10 Portfolio Mistakes That Are Costing You Interviews",
+      author: "Michael Chen",
+      time: "7 min read",
+      date: "Jan 15",
+      icon: <AlertTriangle size={16} />,
+    },
+    {
+      id: 4,
+      title: "How I Got Hired at Google with My Creative Portfolio Approach",
+      author: "Jessica Liu",
+      time: "10 min read",
+      date: "Feb 7",
+      icon: <Star size={16} />,
+    },
+  ],
+} as const;
+
+export type MediumRelatedArticle = (typeof mediumData.relatedArticles)[number];
