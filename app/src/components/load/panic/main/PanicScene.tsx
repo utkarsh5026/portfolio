@@ -130,7 +130,10 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
           const content = isFollowup
             ? {
                 title: narrative[phase].title,
-                content: narrative[phase]?.followup,
+                content:
+                  "followup" in narrative[phase]
+                    ? (narrative[phase].followup as string)
+                    : narrative[phase].content,
                 emoji: narrative[phase].emoji,
               }
             : {
