@@ -102,7 +102,9 @@ const BrowserWindow = ({
     switchTab();
   }, [simulateHumanScrolling]);
 
-  useEffect(() => goThroughAllTabs, [goThroughAllTabs]);
+  useEffect(() => {
+    goThroughAllTabs();
+  }, [goThroughAllTabs]);
 
   useEffect(() => {
     setIsLoading(true);
