@@ -9,6 +9,25 @@ interface ProjectSmallProps {
   handleProjectSelect: (project: Project) => void;
 }
 
+/**
+ * ProjectSmall Component
+ *
+ * This component represents a small card for a project in the project gallery.
+ * It displays the project's name, description, and technologies used.
+ *
+ * Props:
+ * - project: An object containing project details including name, description,
+ *   technologies, GitHub link, and live link.
+ * - handleProjectSelect: A function that is called when the project card is clicked,
+ *   allowing the parent component to handle the selection of the project.
+ *
+ * Features:
+ * - Hover effects that enhance the user experience by changing the border color,
+ *   adding shadows, and displaying additional information.
+ * - Displays up to three technologies used in the project, with a count of additional
+ *   technologies if more than three are present.
+ * - Buttons to view the project on GitHub and live, which open in a new tab.
+ */
 const ProjectSmall: React.FC<ProjectSmallProps> = ({
   project,
   handleProjectSelect,
@@ -92,7 +111,6 @@ const ProjectSmall: React.FC<ProjectSmallProps> = ({
         </div>
       </div>
 
-      {/* Subtle hover effect */}
       <div className="absolute inset-0 bg-gradient-to-tr from-ctp-blue/0 via-ctp-blue/0 to-ctp-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
     </div>
   );
