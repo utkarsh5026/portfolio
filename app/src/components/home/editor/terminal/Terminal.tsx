@@ -35,7 +35,6 @@ const Terminal: React.FC = () => {
 
   const {
     input,
-    output,
     suggestions,
     selectedSuggestionIndex,
     showSuggestions,
@@ -57,20 +56,6 @@ const Terminal: React.FC = () => {
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
-
-  // Ensure the input is always focused after commands are executed
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [output.length]);
-
-  // Always scroll to the bottom when output changes
-  useEffect(() => {
-    if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
-    }
-  }, [output, commandBlocks]);
 
   return (
     <AnimatePresence>
