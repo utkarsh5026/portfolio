@@ -1,0 +1,235 @@
+/* Terminal.css - Catppuccin-themed Warp terminal styling */
+
+/* Custom scrollbar with Catppuccin Mocha colors */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(49, 50, 68, 0.1);
+    /* ctp-surface0 with transparency */
+    border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(108, 112, 134, 0.4);
+    /* ctp-overlay0 with transparency */
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(137, 180, 250, 0.5);
+    /* ctp-blue with transparency */
+}
+
+/* Pulsing cursor animation */
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 15px rgba(203, 166, 247, 0.8);
+        /* ctp-mauve glow */
+    }
+
+    50% {
+        opacity: 0.3;
+        box-shadow: 0 0 5px rgba(203, 166, 247, 0.3);
+    }
+}
+
+.animate-pulse {
+    animation: pulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Subtle text glow for commands */
+.text-shadow-sm {
+    text-shadow: 0 0 1px rgba(205, 214, 244, 0.1);
+    /* ctp-text with low opacity */
+}
+
+/* Enhance the terminal input block with a subtle glow effect */
+.terminal-input-block {
+    position: relative;
+}
+
+.terminal-input-block::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(45deg,
+            rgba(203, 166, 247, 0.1),
+            /* ctp-mauve */
+            rgba(137, 180, 250, 0.1),
+            /* ctp-blue */
+            rgba(166, 227, 161, 0.1),
+            /* ctp-green */
+            rgba(203, 166, 247, 0.1)
+            /* ctp-mauve */
+        );
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* Subtle hover effects on terminal blocks */
+.hover-glow {
+    transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 12px rgba(137, 180, 250, 0.3);
+    /* ctp-blue glow */
+    transform: translateY(-1px);
+}
+
+/* Command block animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.3s ease forwards;
+}
+
+/* Animated background gradients for the terminal */
+@keyframes subtleFlow {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.bg-animate-flow {
+    background: linear-gradient(-45deg,
+            rgba(24, 24, 37, 0.7),
+            /* ctp-mantle */
+            rgba(30, 30, 46, 0.7),
+            /* ctp-base */
+            rgba(17, 17, 27, 0.7)
+            /* ctp-crust */
+        );
+    background-size: 200% 200%;
+    animation: subtleFlow 15s ease infinite;
+}
+
+/* Glowing text effects */
+.text-glow-blue {
+    text-shadow: 0 0 8px rgba(137, 180, 250, 0.5);
+    /* ctp-blue glow */
+}
+
+.text-glow-mauve {
+    text-shadow: 0 0 8px rgba(203, 166, 247, 0.5);
+    /* ctp-mauve glow */
+}
+
+.text-glow-green {
+    text-shadow: 0 0 8px rgba(166, 227, 161, 0.5);
+    /* ctp-green glow */
+}
+
+/* Create a cool terminal prompt effect */
+.terminal-prompt::before {
+    content: '$';
+    color: #89b4fa;
+    /* ctp-blue */
+    margin-right: 0.5rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(137, 180, 250, 0.5);
+    /* ctp-blue glow */
+}
+
+/* Enhanced blur effects for components */
+.catppuccin-blur-sm {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.catppuccin-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.catppuccin-blur-lg {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* Glass card effect with proper Catppuccin colors */
+.glass-card {
+    background: rgba(30, 30, 46, 0.5);
+    /* ctp-base with transparency */
+    border: 1px solid rgba(49, 50, 68, 0.3);
+    /* ctp-surface0 with transparency */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(203, 166, 247, 0.05) inset;
+    /* ctp-mauve inner highlight */
+}
+
+/* Enhanced focus styles for inputs */
+.focus-glow:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(203, 166, 247, 0.3);
+    /* ctp-mauve glow */
+}
+
+/* Add noise texture for depth - very subtle */
+.noise-texture {
+    position: relative;
+}
+
+.noise-texture::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.015;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    z-index: 1;
+}
+
+/* Pulse-fast animation for the cursor */
+@keyframes pulse-fast {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+.animate-pulse-fast {
+    animation: pulse-fast 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

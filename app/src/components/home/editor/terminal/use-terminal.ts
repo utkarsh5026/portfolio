@@ -6,18 +6,18 @@ import {
   type Command,
 } from "./use-command";
 
-type TerminalOutput = {
+export type TerminalOutput = {
   text: string;
   isCommand: boolean;
   id?: string;
 };
 
-type Suggestion = {
+export type Suggestion = {
   text: string;
   description?: string;
 };
 
-const useTerminal = () => {
+export const useTerminal = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState<TerminalOutput[]>([
     {
@@ -51,6 +51,7 @@ const useTerminal = () => {
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [isMaximized, setIsMaximized] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
@@ -109,6 +110,23 @@ Type "help [command]" for more information on a specific command.
       help: helpCommand,
     };
   }, [availableCommands, helpCommand]);
+
+  const commandBlocks = useMemo(() => {
+    const blocks = [];
+    let currentBlock: TerminalOutput[] = [];
+    for (const outputItem of output) {
+      if (outputItem.isCommand && currentBlock.length > 0) {
+        blocks.push(currentBlock);
+        currentBlock = [outputItem];
+      } else {
+        currentBlock.push(outputItem);
+      }
+    }
+    if (currentBlock.length > 0) {
+      blocks.push(currentBlock);
+    }
+    return blocks;
+  }, [output]);
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -383,11 +401,15 @@ Type "help [command]" for more information on a specific command.
     if (terminalRef.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
-  }, [output]);
+  }, [output, commandBlocks]);
 
   useEffect(() => {
     inputRef.current?.focus();
   }, [output.length]);
+
+  const toggleMaximize = () => {
+    setIsMaximized(!isMaximized);
+  };
 
   return {
     input,
@@ -413,6 +435,9 @@ Type "help [command]" for more information on a specific command.
     setSuggestions,
     setShowSuggestions,
     fontSize,
+    isMaximized,
+    toggleMaximize,
+    commandBlocks,
   };
 };
 
