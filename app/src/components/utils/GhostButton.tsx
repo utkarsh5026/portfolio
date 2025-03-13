@@ -35,7 +35,7 @@ const GhostButton: React.FC<GhostButtonProps> = ({
     <Button
       variant="ghost"
       className={cn(
-        "p-3 relative group transition-colors duration-200",
+        "p-3 relative transition-colors duration-200 group/button",
         isActive ? "text-ctp-red" : "text-ctp-text hover:text-ctp-red",
         "hover:bg-ctp-overlay2",
         className
@@ -45,7 +45,7 @@ const GhostButton: React.FC<GhostButtonProps> = ({
       {icon}
       <span
         className={cn(
-          "absolute px-2 py-1 bg-[#313244] rounded text-xs invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity whitespace-nowrap",
+          "absolute px-2 py-1 bg-[#313244] rounded text-xs invisible opacity-0 group-hover/button:visible group-hover/button:opacity-100 transition-opacity whitespace-nowrap",
           labelDirection === "left" && "left-14",
           labelDirection === "right" && "right-14",
           labelDirection === "top" && "top-14",
