@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import Section from "@/components/section/Section";
 import { experiences } from "./experienceDump";
+import { motion } from "framer-motion";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { FaFileAlt } from "react-icons/fa";
+import { FaFileAlt, FaExternalLinkAlt } from "react-icons/fa";
 import TechBadge from "@/components/base/TechBadge";
 import Achievements from "./Achievements";
 import OutlineNode from "../editor/outline/OutlineNode";
@@ -11,202 +12,118 @@ const EXPERIENCE_ID = "experience";
 
 const WorkExperience: React.FC = () => {
   const [selectedExp, setSelectedExp] = useState<number>(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-
-  useEffect(() => {
-    const updateDimensions = () => {
-      if (containerRef.current) {
-        setDimensions({
-          width: containerRef.current.clientWidth,
-          height: containerRef.current.clientHeight,
-        });
-      }
-    };
-
-    updateDimensions();
-    window.addEventListener("resize", updateDimensions);
-
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, []);
 
   const handleExperienceClick = (index: number) => {
     setSelectedExp(index);
   };
 
-  const cornerRadius = 8;
-  const offset = 4;
-  const width = dimensions.width - 2 * offset;
-  const height = dimensions.height - 2 * offset;
-
-  const pathD = `
-    M${offset + cornerRadius},${offset}
-    L${width - cornerRadius + offset},${offset}
-    Q${width + offset},${offset} ${width + offset},${offset + cornerRadius}
-    L${width + offset},${height - cornerRadius + offset}
-    Q${width + offset},${height + offset} ${width - cornerRadius + offset},${
-    height + offset
-  }
-    L${cornerRadius + offset},${height + offset}
-    Q${offset},${height + offset} ${offset},${height - cornerRadius + offset}
-    L${offset},${cornerRadius + offset}
-    Q${offset},${offset} ${cornerRadius + offset},${offset}
-  `;
-
   return (
     <Section id={EXPERIENCE_ID} label="Work Experience" icon="database">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="relative">
-          {/* Subtle header - more readable */}
-          <div className="mb-4 font-medium text-ctp-text dark:text-ctp-subtext0">
-            My Professional Experience
-          </div>
+        <div className="relative mb-8">
+          {/* Subtle section header */}
+          <h2 className="text-2xl font-bold text-ctp-text mb-6 flex items-center">
+            <span className="mr-3 bg-gradient-to-r from-ctp-blue to-ctp-lavender text-transparent bg-clip-text">
+              Professional Experience
+            </span>
+            <div className="h-px flex-grow bg-gradient-to-r from-ctp-blue/30 to-transparent"></div>
+          </h2>
 
           <div
             className={`grid ${
               experiences.length === 1
                 ? "grid-cols-1"
                 : "lg:grid-cols-[1fr,2fr] md:grid-cols-[1.2fr,2fr]"
-            } gap-4 sm:gap-6 lg:gap-8`}
+            } gap-6 lg:gap-8`}
           >
             {experiences.length > 1 && (
-              <div className="space-y-3 sm:space-y-4">
+              <div className="space-y-4">
                 {experiences.map((exp, index) => (
-                  <button
+                  <motion.button
                     key={`${exp.duration}-${index}`}
-                    className={`w-full text-left p-3 sm:p-4 rounded-lg transition-all
+                    className={`w-full text-left p-4 rounded-xl transition-all duration-300
                       ${
                         selectedExp === index
-                          ? "bg-ctp-lavender text-ctp-crust"
-                          : "bg-ctp-base dark:bg-ctp-mantle hover:bg-ctp-surface0"
+                          ? "bg-gradient-to-r from-ctp-lavender to-ctp-blue text-ctp-base shadow-lg shadow-ctp-lavender/20"
+                          : "bg-ctp-mantle hover:bg-ctp-surface0 border border-ctp-surface0 hover:border-ctp-lavender/30"
                       }`}
                     onClick={() => handleExperienceClick(index)}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     <div className="flex flex-col">
-                      <div className="flex items-center gap-2 mb-1 sm:mb-2">
-                        <Avatar className="w-5 h-5 sm:w-6 sm:h-6">
+                      <div className="flex items-center gap-3 mb-2">
+                        <Avatar className="w-10 h-10 ring-2 ring-offset-2 ring-offset-ctp-mantle ring-ctp-lavender/20">
                           <AvatarImage src={exp.imageSrc} alt={exp.company} />
                         </Avatar>
-                        <h3 className="font-bold text-sm sm:text-base">
-                          {exp.company}
-                        </h3>
+                        <h3 className="font-bold text-lg">{exp.company}</h3>
                       </div>
-                      <p className="text-xs sm:text-sm opacity-80 ml-7 sm:ml-8">
-                        {exp.duration}
-                      </p>
+                      <p className="text-sm opacity-80 mt-1">{exp.duration}</p>
+                      <div
+                        className={`h-0.5 w-0 bg-gradient-to-r from-ctp-lavender to-ctp-blue mt-3 transition-all duration-500 ${
+                          selectedExp === index ? "w-full" : ""
+                        }`}
+                      ></div>
                     </div>
-                  </button>
+                  </motion.button>
                 ))}
               </div>
             )}
 
-            <div
-              ref={containerRef}
-              className="bg-ctp-base dark:bg-ctp-crust p-4 sm:p-6 rounded-lg shadow-lg relative min-h-[300px]"
+            {/* Experience details card with smooth transitions */}
+            <motion.div
+              key={selectedExp}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-gradient-to-br from-ctp-mantle to-ctp-crust rounded-xl overflow-hidden"
             >
-              {/* Cleaner header with subtle code styling */}
-              <div className="flex items-center gap-2 mb-3 border-b border-ctp-surface0 pb-2">
-                <span className="font-medium text-ctp-yellow">
-                  {experiences[selectedExp].position}
-                </span>
-              </div>
+              <div className="h-2 bg-gradient-to-r from-ctp-blue via-ctp-lavender to-ctp-sapphire"></div>
 
-              {/* Border Container for SVG Animation */}
-              <div className="absolute inset-0 pointer-events-none">
-                <svg className="absolute inset-0 w-full h-full overflow-visible">
-                  <defs>
-                    <linearGradient
-                      id="gradient"
-                      x1="0%"
-                      y1="0%"
-                      x2="100%"
-                      y2="0%"
-                    >
-                      <stop offset="0%" stopColor="#89b4fa" stopOpacity="1" />
-                      <stop offset="50%" stopColor="#b4befe" stopOpacity="1" />
-                      <stop offset="100%" stopColor="#89b4fa" stopOpacity="1" />
-                    </linearGradient>
-                  </defs>
+              <div className="p-6">
+                {/* Experience header with position and company */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-ctp-surface0">
+                  <div>
+                    <h3 className="text-xl font-bold text-ctp-lavender mb-1">
+                      {experiences[selectedExp].position}
+                    </h3>
+                    <div className="flex items-center gap-2 text-ctp-subtext0">
+                      <span>at</span>
+                      <a
+                        href={experiences[selectedExp].companyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-ctp-blue hover:text-ctp-lavender transition-colors flex items-center gap-1"
+                      >
+                        {experiences[selectedExp].company}
+                        <FaExternalLinkAlt className="text-xs opacity-70" />
+                      </a>
+                    </div>
+                  </div>
 
-                  <path
-                    d={pathD}
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeOpacity="0.1"
-                    className="text-ctp-lavender"
-                  />
+                  <div className="flex items-center gap-3">
+                    <div className="px-3 py-1.5 rounded-full text-xs font-medium bg-ctp-surface0 text-ctp-blue">
+                      {experiences[selectedExp].duration}
+                    </div>
 
-                  <path
-                    d={pathD}
-                    fill="none"
-                    stroke="url(#gradient)"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    className="text-ctp-lavender"
-                    strokeDasharray="8 3"
-                  >
-                    <animate
-                      attributeName="stroke-dashoffset"
-                      from="0"
-                      to="-22"
-                      dur="1s"
-                      repeatCount="indefinite"
-                    />
-                  </path>
-                </svg>
-              </div>
-
-              <div className="ml-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="font-semibold text-ctp-mauve">
-                    Position:
-                  </span>
-                  <span className="text-base sm:text-lg font-bold text-ctp-text">
-                    {experiences[selectedExp].position}
-                  </span>
-                </div>
-
-                <OutlineNode
-                  id={`${experiences[selectedExp].company}-company`}
-                  label="Company"
-                  level={1}
-                  parentId={EXPERIENCE_ID}
-                >
-                  <div className="flex items-center gap-2 justify-start align-middle my-4">
-                    <span className="font-semibold text-ctp-mauve">
-                      Company:
-                    </span>
-                    <button
-                      className="text-ctp-blue hover:text-ctp-lavender hover:underline"
-                      onClick={() =>
-                        window.open(
-                          experiences[selectedExp].companyUrl,
-                          "_blank"
-                        )
-                      }
-                      aria-label={`Visit ${experiences[selectedExp].company} website`}
-                    >
-                      {experiences[selectedExp].company}
-                    </button>
                     {experiences[selectedExp].docsUrl && (
-                      <button
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-md bg-ctp-surface0 text-ctp-blue hover:bg-ctp-surface1 transition-colors dark:bg-ctp-surface0 dark:text-ctp-sky dark:hover:bg-ctp-surface1"
-                        onClick={() =>
-                          window.open(
-                            experiences[selectedExp].docsUrl,
-                            "_blank"
-                          )
-                        }
+                      <a
+                        className="flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-full 
+                                  bg-ctp-blue text-ctp-base hover:bg-ctp-lavender 
+                                  transition-colors shadow-md shadow-ctp-blue/20"
+                        href={experiences[selectedExp].docsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         aria-label="View detailed experience"
                       >
                         <FaFileAlt className="text-xs" />
-                        <span>View Details</span>
-                      </button>
+                        <span>Details</span>
+                      </a>
                     )}
                   </div>
-                </OutlineNode>
+                </div>
 
+                {/* Achievements section */}
                 <Achievements selectedExp={selectedExp} />
 
                 <OutlineNode
@@ -215,19 +132,30 @@ const WorkExperience: React.FC = () => {
                   level={1}
                   parentId={EXPERIENCE_ID}
                 >
-                  <div className="font-semibold text-ctp-mauve mb-2">
-                    Technologies:
-                  </div>
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2 ml-4 mb-4">
-                    {experiences[selectedExp].technologies.map(
-                      (tech, index) => (
-                        <TechBadge tech={tech} key={`${tech}-${index}`} />
-                      )
-                    )}
+                  <div className="mt-6 pt-4 border-t border-ctp-surface0">
+                    <div className="font-semibold text-ctp-mauve mb-3 flex items-center">
+                      <span className="w-2 h-2 rounded-full bg-ctp-mauve mr-2"></span>
+                      Technologies
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {experiences[selectedExp].technologies.map(
+                        (tech, index) => (
+                          <TechBadge tech={tech} key={`${tech}-${index}`} />
+                        )
+                      )}
+                    </div>
                   </div>
                 </OutlineNode>
               </div>
-            </div>
+
+              {/* Card footer with subtle gradient */}
+              <div className="px-6 py-4 bg-ctp-mantle/50 border-t border-ctp-surface0 text-sm text-ctp-subtext0">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-ctp-green"></div>
+                  <span>Experience details last updated: July 2024</span>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>

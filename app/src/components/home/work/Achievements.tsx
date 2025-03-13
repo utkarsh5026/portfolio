@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import {
   FaDatabase,
   FaSearch,
@@ -21,6 +22,26 @@ interface AchievementsProps {
   selectedExp: number;
 }
 
+// Animation variants for staggered animations
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4 },
+  },
+};
+
 const Achievements: React.FC<AchievementsProps> = ({ selectedExp }) => {
   return (
     <OutlineNode
@@ -28,10 +49,18 @@ const Achievements: React.FC<AchievementsProps> = ({ selectedExp }) => {
       label="Achievements"
       level={1}
       parentId="experience"
-      className="p-2"
     >
-      <div className="font-semibold text-ctp-mauve mb-2">Achievements:</div>
-      <div className="space-y-6 sm:space-y-8 mb-6 sm:mb-8 ml-4">
+      <div className="font-semibold text-ctp-mauve mb-6 flex items-center">
+        <span className="w-2 h-2 rounded-full bg-ctp-mauve mr-2"></span>
+        Achievements & Responsibilities
+      </div>
+
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 gap-4"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         {experiences[selectedExp].achievements.map((achievement, index) => (
           <OutlineNode
             key={`achievement-${achievement.title}`}
@@ -40,35 +69,51 @@ const Achievements: React.FC<AchievementsProps> = ({ selectedExp }) => {
             level={2}
             parentId="achievements"
           >
-            <div
+            <motion.div
               key={`project-${index}-${achievement.title}`}
-              className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg transition-all hover:bg-ctp-surface0 dark:hover:bg-ctp-surface0 border border-ctp-surface0 dark:border-ctp-surface1"
+              className="h-full bg-ctp-surface0/30 backdrop-blur-sm rounded-xl border border-ctp-surface0 
+                        hover:border-ctp-lavender/30 transition-all duration-300 overflow-hidden"
+              variants={itemVariants}
             >
-              {achievement.icon && iconMap[achievement.icon] && (
-                <div className="flex-shrink-0 p-1.5 sm:p-2 bg-ctp-surface0 dark:bg-ctp-surface0 rounded-lg text-ctp-sky">
-                  <div className="text-sm sm:text-base">
-                    {iconMap[achievement.icon]}
+              {/* Achievement header with gradient accent */}
+              <div className="h-1 bg-gradient-to-r from-ctp-mauve via-ctp-pink to-ctp-mauve"></div>
+
+              <div className="p-4">
+                <div className="flex items-start gap-3 mb-3">
+                  {achievement.icon && iconMap[achievement.icon] && (
+                    <div
+                      className="flex-shrink-0 p-2.5 rounded-lg bg-ctp-surface0/70 
+                                  text-ctp-lavender shadow-sm shadow-ctp-lavender/10"
+                    >
+                      <div className="text-lg">{iconMap[achievement.icon]}</div>
+                    </div>
+                  )}
+                  <div>
+                    <h4 className="font-semibold text-ctp-subtext1 mb-2">
+                      {achievement.title}
+                    </h4>
+                    <ul className="space-y-2">
+                      {achievement.description.map((desc, i) => (
+                        <li
+                          key={`${index}-${i}`}
+                          className="flex items-start gap-2 group"
+                        >
+                          <span className="text-ctp-green mt-1 text-xs group-hover:scale-110 transition-transform">
+                            ■
+                          </span>
+                          <span className="text-sm text-ctp-subtext0 group-hover:text-ctp-text transition-colors">
+                            {desc}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
-              )}
-              <div className="flex-1">
-                <h4 className="font-semibold text-sm sm:text-base mb-2 text-ctp-blue dark:text-ctp-sky">
-                  {achievement.title}
-                </h4>
-                <ul className="text-xs sm:text-sm text-ctp-subtext1 dark:text-ctp-subtext0 leading-relaxed list-disc pl-4">
-                  {achievement.description.map((desc, i) => (
-                    <li key={`${index}-${i}`} className="marker:text-ctp-green">
-                      <span className="text-ctp-subtext1 dark:text-ctp-subtext0">
-                        {desc}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </div>
+            </motion.div>
           </OutlineNode>
         ))}
-      </div>
+      </motion.div>
     </OutlineNode>
   );
 };
