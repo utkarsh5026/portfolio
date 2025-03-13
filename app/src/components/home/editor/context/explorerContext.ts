@@ -7,7 +7,7 @@ export type Notification = {
   message: string;
 };
 
-const sections = [
+export const sections = [
   "home",
   "about",
   "skills",
@@ -31,6 +31,8 @@ interface UseEditorReturnType {
   loadingSection: boolean;
   loadingText: string;
   notifications: Notification[];
+  terminalOpen: boolean;
+  setTerminalOpen: (open: boolean) => void;
 
   // Functions
   addNotification: (type: NotificationType, message: string) => void;

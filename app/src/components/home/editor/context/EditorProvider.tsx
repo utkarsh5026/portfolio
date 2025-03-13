@@ -48,6 +48,7 @@ export const EditorProvider: React.FC<ProviderProps> = ({ children }) => {
   const [loadingSection, setLoadingSection] = useState(false);
   const [loadingText, setLoadingText] = useState("");
   const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [terminalOpen, setTerminalOpen] = useState(false);
 
   const addNotification = useCallback(
     (type: NotificationType, message: string) => {
@@ -61,6 +62,34 @@ export const EditorProvider: React.FC<ProviderProps> = ({ children }) => {
     },
     []
   );
+
+  const handleKeyyDownEvents = useCallback(() => {
+    const toggleExplorer = () => {
+      setExplorerOpen((prev) => !prev);
+    };
+
+    const toggleTerminal = () => {
+      setTerminalOpen((prev) => !prev);
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (
+        e.key === "\\" ||
+        (e.key.toLowerCase() === "e" && (e.ctrlKey || e.metaKey))
+      ) {
+        e.preventDefault();
+        toggleExplorer();
+      } else if (e.key.toLowerCase() === "`" && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        toggleTerminal();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   // Simulates loading state when changing sections
   useEffect(() => {
@@ -90,21 +119,9 @@ export const EditorProvider: React.FC<ProviderProps> = ({ children }) => {
   }, [activeSection, addNotification]);
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (
-        (e.key === "\\" || e.key.toLowerCase() === "e") &&
-        (e.ctrlKey || e.metaKey)
-      ) {
-        e.preventDefault();
-        setExplorerOpen((prev) => !prev);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
+    const cleanup = handleKeyyDownEvents();
+    return () => cleanup();
+  }, [handleKeyyDownEvents]);
 
   const getNotificationIcon = useCallback((type: NotificationType) => {
     switch (type) {
@@ -143,7 +160,8 @@ export const EditorProvider: React.FC<ProviderProps> = ({ children }) => {
       notifications,
       files,
       loadingTexts,
-
+      terminalOpen,
+      setTerminalOpen,
       setActiveSection,
       setMobileMenuOpen,
       setExplorerOpen,
@@ -163,6 +181,8 @@ export const EditorProvider: React.FC<ProviderProps> = ({ children }) => {
       setExplorerOpen,
       addNotification,
       getNotificationIcon,
+      terminalOpen,
+      setTerminalOpen,
     ]
   );
 
