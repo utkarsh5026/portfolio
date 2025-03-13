@@ -110,31 +110,39 @@ const ContactMe: React.FC = () => {
                       animation: "shimmer 3s infinite linear",
                     }}
                   ></div>
-
                   <div className="relative z-10">
-                    <div className="flex items-center gap-4 mb-4 md:mb-6">
-                      <div className="p-2 rounded-full bg-ctp-lavender/10">
-                        <MdLocationPin className="w-5 h-5 text-ctp-lavender" />
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="p-3 rounded-full bg-gradient-to-br from-ctp-lavender/30 to-ctp-mauve/20 shadow-inner shadow-ctp-lavender/10">
+                        <div className="relative">
+                          {/* Animated ping effect */}
+                          <div className="absolute inset-0 rounded-full bg-ctp-lavender/30 animate-ping opacity-75"></div>
+                          <MdLocationPin className="w-6 h-6 text-ctp-lavender relative z-10" />
+                        </div>
                       </div>
-                      <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-ctp-lavender">
+                      <h4 className="text-xl sm:text-2xl md:text-2xl font-semibold bg-gradient-to-r from-ctp-lavender to-ctp-mauve text-transparent bg-clip-text bg-size-200 animate-gradient-x">
                         Available for Opportunities
                       </h4>
                     </div>
 
-                    <p className="text-sm sm:text-base md:text-lg text-ctp-text ml-12">
+                    <p className="text-sm sm:text-base md:text-lg text-ctp-text ml-0 md:ml-12 leading-relaxed">
                       Currently open to{" "}
-                      <span className="text-ctp-green font-medium">
-                        Web Development
+                      <span className="font-medium relative inline-block group/span">
+                        <span className="text-ctp-green">Web Development</span>
+                        <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-ctp-green group-hover/span:w-full transition-all duration-300"></span>
                       </span>{" "}
                       and{" "}
-                      <span className="text-ctp-peach font-medium">
-                        Automation
+                      <span className="font-medium relative inline-block group/span">
+                        <span className="text-ctp-peach">Automation</span>
+                        <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-ctp-peach group-hover/span:w-full transition-all duration-300"></span>
                       </span>{" "}
                       opportunities. Let's create something amazing together!
                     </p>
 
                     <div className="flex items-center justify-center mt-6 text-ctp-pink">
-                      <FaHeart className="w-5 h-5 mr-2" />
+                      <div className="relative">
+                        <div className="absolute inset-0 rounded-full bg-ctp-pink/20 animate-ping opacity-50"></div>
+                        <FaHeart className="w-5 h-5 mr-2 relative z-10 animate-pulse" />
+                      </div>
                       <span className="text-sm opacity-80">
                         Looking forward to collaborating with you
                       </span>
