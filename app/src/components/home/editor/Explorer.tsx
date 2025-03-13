@@ -7,19 +7,13 @@ import Logo from "@/components/home/appbar/Logo";
 import OutlinePanel from "./outline/OutlinePanel";
 
 const Explorer: React.FC = () => {
-  const {
-    activeSection,
-    setActiveSection,
-    files,
-    mobileMenuOpen,
-    explorerOpen,
-  } = useEditorContext();
+  const { activeSection, setActiveSection, files, mobileMenuOpen } =
+    useEditorContext();
   return (
     <div
       className={cn(
-        "editor-explorer w-52 bg-[#181825] border-r border-[#313244] py-4 overflow-y-auto fixed inset-y-0 left-14 transition-transform duration-200 z-40",
-        mobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
-        !explorerOpen && "lg:-translate-x-full"
+        "editor-explorer w-52 bg-[#181825] border-r border-[#313244] py-4 overflow-y-auto z-40 h-screen max-h-screen",
+        mobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
       )}
     >
       <div className="px-4 text-[#cdd6f4] text-sm mb-2">
