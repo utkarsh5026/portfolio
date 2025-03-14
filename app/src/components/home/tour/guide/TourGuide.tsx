@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useTour } from "../context/TourContext";
-import TypeWriter from "../writer/TypeWriter";
 import { Sparkles } from "lucide-react";
 import "./TourGuide.css";
 import type { TourStep } from "../context/TourType";
@@ -11,6 +10,8 @@ import {
   guideMessages,
   emotionTailwindClasses,
 } from "./config";
+import { createPortal } from "react-dom";
+import useTypewriting from "@/components/type-write/use-type-write";
 
 /**
  * TourGuideAnimated component - Provides an animated character guide
@@ -18,10 +19,8 @@ import {
  */
 const TourGuideAnimated: React.FC = () => {
   const { active, currentStepId } = useTour();
-  const [isTyping, setIsTyping] = useState<boolean>(true);
   const [imageLoaded, setImageLoaded] = useState<boolean>(true);
   const [expanded, setExpanded] = useState<boolean>(false);
-  const [isHovering, setIsHovering] = useState<boolean>(false);
 
   const currentStepKey = currentStepId as TourStep;
   const emotion: Emotion =
@@ -38,24 +37,24 @@ const TourGuideAnimated: React.FC = () => {
 
   const tailwindClasses: string = emotionTailwindClasses[emotion];
 
+  const { displayedText, isTyping } = useTypewriting({
+    text: message,
+    speed: 40,
+    humanize: true,
+  });
+
   useEffect(() => {
     if (!active || !currentStepId) return;
-
-    setIsTyping(true);
     setExpanded(true);
   }, [active, currentStepId, emotion]);
 
   if (!active || !currentStepId) return null;
 
-  return (
+  return createPortal(
     <>
       <div className="fixed bottom-10 right-8 z-[1000000] flex items-end max-w-sm tour-fade-in">
         {/* Guide character */}
-        <div
-          className="mr-3 z-10"
-          onMouseEnter={() => setIsHovering(true)}
-          onMouseLeave={() => setIsHovering(false)}
-        >
+        <div className="mr-3 z-10">
           <div
             className={`w-16 h-16 rounded-full flex items-center justify-center
                       shadow-lg border-2 overflow-hidden tour-float
@@ -63,8 +62,6 @@ const TourGuideAnimated: React.FC = () => {
             style={{
               borderColor: `var(--ctp-${color})`,
               boxShadow: `0 0 12px var(--ctp-${color})60`,
-              borderWidth: isHovering ? "3px" : "2px",
-              opacity: isHovering ? 1 : 0.9,
             }}
           >
             {imageLoaded ? (
@@ -116,12 +113,7 @@ const TourGuideAnimated: React.FC = () => {
               className="text-sm relative z-10"
               style={{ color: `var(--ctp-text)` }}
             >
-              <TypeWriter
-                text={message}
-                speed={30}
-                onComplete={() => setIsTyping(false)}
-                humanize={true}
-              />
+              {displayedText}
               {isTyping && (
                 <span
                   className="text-cursor-blink ml-1"
@@ -193,7 +185,8 @@ const TourGuideAnimated: React.FC = () => {
           ></div>
         </button>
       )}
-    </>
+    </>,
+    document.body
   );
 };
 
