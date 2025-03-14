@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, memo } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import ProfileAvatar from "./ProfileAvatar";
 import AnimatedText from "./AnimatedText";
-import anime from "animejs";
 import { FaTerminal } from "react-icons/fa";
 import TechSkills from "./TechSkills";
 import "./style.css";
@@ -26,74 +25,66 @@ const PersonalHeaderComponent: React.FC = () => {
   const macDotsRef = useRef<HTMLDivElement>(null);
   const { setActiveSection } = useEditorContext();
 
+  // Create animation controls for elements that were previously controlled with Anime.js
+  const macDotsControls = useAnimation();
+  const nameControls = useAnimation();
+  const bioControls = useAnimation();
+  const descriptionControls = useAnimation();
+  const avatarControls = useAnimation();
+  const terminalControls = useAnimation();
+
+  // Sequence the animations similar to the Anime.js timeline
   useEffect(() => {
-    const nameElement = nameRef.current;
-    const bioElement = bioRef.current;
-    const avatarElement = avatarRef.current;
-    const descriptionElement = descriptionRef.current;
-    const terminalElement = terminalRef.current;
-    const macDotsElement = macDotsRef.current;
+    const sequence = async () => {
+      // Start with mac dots
+      await macDotsControls.start({
+        opacity: 1,
+        transition: { duration: 0.6 },
+      });
 
-    const timeline = anime.timeline({
-      easing: "easeOutExpo",
-    });
+      // Name and bio animations (slightly overlapped)
+      await Promise.all([
+        nameControls.start({
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.8 },
+        }),
+        bioControls.start({
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.8, delay: 0.2 },
+        }),
+      ]);
 
-    timeline
-      .add({
-        targets: macDotsElement,
-        opacity: [0, 1],
-        duration: 600,
-      })
-      .add(
-        {
-          targets: nameElement,
-          opacity: [0, 1],
-          translateY: [20, 0],
-          duration: 800,
-        },
-        "-=400"
-      )
-      .add(
-        {
-          targets: bioElement,
-          opacity: [0, 1],
-          translateY: [20, 0],
-          duration: 800,
-        },
-        "-=400"
-      )
-      .add(
-        {
-          targets: descriptionElement,
-          opacity: [0, 1],
-          translateY: [20, 0],
-          duration: 800,
-        },
-        "-=600"
-      )
-      .add(
-        {
-          targets: avatarElement,
-          opacity: [0, 1],
-          translateY: [20, 0],
-          duration: 800,
-        },
-        "-=600"
-      )
-      .add(
-        {
-          targets: terminalElement,
-          opacity: [0, 1],
-          translateY: [20, 0],
-          duration: 800,
-        },
-        "-=600"
-      );
-
-    return () => {
-      timeline.pause();
+      // Description, avatar, and terminal animations (slightly overlapped)
+      await Promise.all([
+        descriptionControls.start({
+          opacity: 1,
+          x: 0,
+          transition: { duration: 0.8 },
+        }),
+        avatarControls.start({
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.8 },
+        }),
+        terminalControls.start({
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.8 },
+        }),
+      ]);
     };
-  }, []);
+
+    sequence();
+  }, [
+    macDotsControls,
+    nameControls,
+    bioControls,
+    descriptionControls,
+    avatarControls,
+    terminalControls,
+  ]);
 
   return (
     <div className="relative isolate pt-14 min-h-screen bg-gradient-to-br from-[#1e1e2e] via-[#181825] to-[#11111b]">
@@ -106,14 +97,16 @@ const PersonalHeaderComponent: React.FC = () => {
       </div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-2 md:py-2">
-        <div
+        <motion.div
           ref={macDotsRef}
-          className="absolute top-6 left-6 z-10 flex space-x-2 opacity-0"
+          className="absolute top-6 left-6 z-10 flex space-x-2"
+          initial={{ opacity: 0 }}
+          animate={macDotsControls}
         >
           <div className="w-3 h-3 rounded-full bg-[#ff5f56] shadow-glow-red"></div>
           <div className="w-3 h-3 rounded-full bg-[#ffbd2e] shadow-glow-yellow"></div>
           <div className="w-3 h-3 rounded-full bg-[#27c93f] shadow-glow-green"></div>
-        </div>
+        </motion.div>
 
         <div className="relative backdrop-blur-sm bg-[#1e1e2e]/60 border border-[#313244] rounded-xl p-6 shadow-2xl mb-10 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-[#1e1e2e]/10 to-transparent"></div>
@@ -130,12 +123,14 @@ const PersonalHeaderComponent: React.FC = () => {
               >
                 <span className="flex items-center whitespace-nowrap">
                   <span className="text-white">Hi, I'm </span>{" "}
-                  <span
+                  <motion.span
                     ref={nameRef}
                     className="ml-6 bg-gradient-to-r from-[#89b4fa] to-[#cba6f7] text-transparent bg-clip-text"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={nameControls}
                   >
                     Utkarsh Priyadarshi
-                  </span>
+                  </motion.span>
                 </span>
               </motion.h1>
 
@@ -143,8 +138,7 @@ const PersonalHeaderComponent: React.FC = () => {
                 ref={bioRef}
                 className="text-lg sm:text-xl text-[#cdd6f4] mb-4"
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
+                animate={bioControls}
               >
                 Full-Stack Developer & DevOps Engineer
               </motion.p>
@@ -154,8 +148,7 @@ const PersonalHeaderComponent: React.FC = () => {
                 ref={descriptionRef}
                 className="mb-6 text-[#bac2de] p-4 border-l-2 border-[#cba6f7] bg-[#1e1e2e]/40 rounded-r-md"
                 initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
+                animate={descriptionControls}
               >
                 <p className="mb-2">
                   Passionate developer with a knack for crafting elegant
@@ -174,9 +167,11 @@ const PersonalHeaderComponent: React.FC = () => {
               </motion.div>
 
               {/* Terminal-like animated text with enhanced styling */}
-              <div
+              <motion.div
                 ref={terminalRef}
-                className="opacity-0 bg-[#11111b]/70 rounded-md border border-[#313244] p-4 shadow-inner"
+                className="bg-[#11111b]/70 rounded-md border border-[#313244] p-4 shadow-inner"
+                initial={{ opacity: 0, y: 20 }}
+                animate={terminalControls}
               >
                 <div className="flex items-center mb-2 border-b border-[#313244]/80 pb-2">
                   <div className="w-2 h-2 rounded-full bg-[#f38ba8] mr-2"></div>
@@ -187,7 +182,7 @@ const PersonalHeaderComponent: React.FC = () => {
                   </span>
                 </div>
                 <AnimatedText statements={statements} />
-              </div>
+              </motion.div>
 
               {/* Call to action button with enhanced styling */}
               <motion.div
@@ -212,19 +207,31 @@ const PersonalHeaderComponent: React.FC = () => {
               </motion.div>
             </div>
 
-            <div
+            <motion.div
               ref={avatarRef}
               className="lg:col-span-2 order-1 lg:order-2 flex justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={avatarControls}
             >
               <div className="relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#89b4fa] via-[#cba6f7] to-[#f38ba8] rounded-full blur opacity-75 animate-pulse"></div>
+                <motion.div
+                  className="absolute -inset-1 bg-gradient-to-r from-[#89b4fa] via-[#cba6f7] to-[#f38ba8] rounded-full blur opacity-75"
+                  animate={{
+                    opacity: [0.5, 0.8, 0.5],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  }}
+                />
                 <div className="absolute inset-0 bg-[#1e1e2e] rounded-full blur-sm opacity-10"></div>
                 <ProfileAvatar />
                 <div className="absolute -bottom-2 -right-2 w-12 h-12 bg-[#1e1e2e] rounded-full border-2 border-[#a6e3a1] flex items-center justify-center">
                   <div className="w-4 h-4 rounded-full bg-[#a6e3a1]"></div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
 
