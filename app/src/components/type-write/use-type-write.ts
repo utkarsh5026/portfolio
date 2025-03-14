@@ -154,8 +154,9 @@ export const useTypewriting = (
     phase === TypewriterPhase.TYPED || phase === TypewriterPhase.PAUSING;
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-
   const textRef = useRef(text);
+
+  console.log(phase);
 
   /**
    * Clear all timeouts
@@ -270,6 +271,7 @@ export const useTypewriting = (
 
       if (repeat) {
         timerRef.current = setTimeout(() => {
+          console.log("deleting");
           setPhase(TypewriterPhase.DELETING);
         }, deleteDelay);
       }
@@ -323,21 +325,27 @@ export const useTypewriting = (
   useEffect(() => {
     if (phase === TypewriterPhase.TYPING) {
       handleTyping();
-      return clearTimers;
     }
-  }, [phase, handleTyping, clearTimers]);
+  }, [phase, handleTyping, clearTimers, currentIndex, displayedText]);
 
   useEffect(() => {
     if (phase === TypewriterPhase.DELETING) {
       handleDeletion();
-      return clearTimers;
     }
-  }, [phase, handleDeletion, clearTimers]);
+  }, [phase, handleDeletion, clearTimers, displayedText]);
 
   useEffect(() => {
     if (autoStart) start();
-    return clearTimers;
+    return () => {
+      clearTimers();
+    };
   }, [autoStart, start, clearTimers]);
+
+  useEffect(() => {
+    return () => {
+      clearTimers();
+    };
+  }, [clearTimers]);
 
   const progress =
     text.length > 0 ? Math.floor((currentIndex / text.length) * 100) : 0;
