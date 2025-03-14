@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useTour } from "../context/TourContext";
-import { Sparkles } from "lucide-react";
 import "./TourGuide.css";
 import type { TourStep } from "../context/TourType";
 import {
@@ -125,25 +124,6 @@ const TourGuideAnimated: React.FC = () => {
                   ▌
                 </span>
               )}
-            </div>
-
-            {/* Decorative particle animation */}
-            <div className="absolute top-0 right-0 w-20 h-20 opacity-20 pointer-events-none">
-              <Sparkles
-                size={16}
-                className="absolute top-2 right-6 tour-float-delayed"
-                style={{ color: `var(--ctp-yellow)` }}
-              />
-              <Sparkles
-                size={12}
-                className="absolute top-8 right-2 tour-float"
-                style={{ color: `var(--ctp-blue)` }}
-              />
-              <Sparkles
-                size={10}
-                className="absolute top-12 right-10 tour-float-slow"
-                style={{ color: `var(--ctp-mauve)` }}
-              />
             </div>
           </div>
         </div>
