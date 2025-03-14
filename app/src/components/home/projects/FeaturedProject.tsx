@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import {
   ArrowRight,
   Sparkles,
@@ -17,18 +17,16 @@ interface FeaturedProjectProps {
   featuredProject: Project;
   handleProjectSelect: (project: Project) => void;
 }
+type Tab = "overview" | "features";
 
 const FeaturedProject: React.FC<FeaturedProjectProps> = ({
   featuredProject,
   handleProjectSelect,
 }) => {
   const [isOpen, setIsOpen] = useState(true);
-  const [activeTab, setActiveTab] = useState<"overview" | "features">(
-    "overview"
-  );
+  const [activeTab, setActiveTab] = useState<Tab>("overview");
   const [isAnimated, setIsAnimated] = useState(false);
 
-  // Start animations after component mounts
   useEffect(() => {
     const timer = setTimeout(() => setIsAnimated(true), 200);
     return () => clearTimeout(timer);
@@ -36,7 +34,6 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
 
   return (
     <div className="mb-16 max-w-6xl mx-auto relative">
-      {/* Decorative elements */}
       <div className="absolute -left-10 -top-10 w-20 h-20 text-ctp-peach/10 animate-spin-slow pointer-events-none">
         <HiOutlineSparkles className="w-full h-full" />
       </div>
@@ -140,177 +137,19 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
                   </div>
 
                   {/* Tab navigation */}
-                  <div className="flex bg-ctp-crust border-b border-ctp-surface0">
-                    <button
-                      className={`px-6 py-2.5 text-sm font-medium transition-colors relative ${
-                        activeTab === "overview"
-                          ? "text-ctp-peach"
-                          : "text-ctp-subtext0 hover:text-ctp-text"
-                      }`}
-                      onClick={() => setActiveTab("overview")}
-                    >
-                      Overview
-                      {activeTab === "overview" && (
-                        <motion.div
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-ctp-peach"
-                          layoutId="activeTab"
-                        />
-                      )}
-                    </button>
-                    <button
-                      className={`px-6 py-2.5 text-sm font-medium transition-colors relative ${
-                        activeTab === "features"
-                          ? "text-ctp-peach"
-                          : "text-ctp-subtext0 hover:text-ctp-text"
-                      }`}
-                      onClick={() => setActiveTab("features")}
-                    >
-                      Key Features
-                      {activeTab === "features" && (
-                        <motion.div
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-ctp-peach"
-                          layoutId="activeTab"
-                        />
-                      )}
-                    </button>
-                  </div>
+                  <TabNavigation
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                  />
 
-                  {/* Content section */}
                   <div className="bg-gradient-to-br from-ctp-crust to-ctp-mantle p-8">
                     <div className="flex flex-col xl:flex-row gap-10 items-center">
-                      <div className="xl:w-1/2 space-y-6">
-                        {activeTab === "overview" ? (
-                          <motion.p
-                            className="text-ctp-text leading-relaxed"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.4 }}
-                          >
-                            {featuredProject.description}
-                          </motion.p>
-                        ) : (
-                          <motion.ul
-                            className="space-y-3"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.4 }}
-                          >
-                            {featuredProject.features.map((feature, index) => (
-                              <motion.li
-                                key={index}
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{
-                                  delay: index * 0.1,
-                                  duration: 0.3,
-                                }}
-                                className="flex items-start gap-2"
-                              >
-                                <span className="text-ctp-peach mt-1">•</span>
-                                <span className="text-ctp-text">{feature}</span>
-                              </motion.li>
-                            ))}
-                          </motion.ul>
-                        )}
-
-                        <div className="pt-2">
-                          <h4 className="text-sm text-ctp-subtext0 mb-3">
-                            TECHNOLOGIES
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {featuredProject.technologies.map((tech, index) => (
-                              <motion.div
-                                key={tech.name}
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.2 + index * 0.1 }}
-                              >
-                                <TechBadge tech={tech.name} />
-                              </motion.div>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="flex flex-wrap gap-4 pt-4">
-                          <Button
-                            onClick={() => handleProjectSelect(featuredProject)}
-                            className="relative overflow-hidden group bg-gradient-to-r from-ctp-peach to-ctp-maroon text-ctp-crust hover:from-ctp-maroon hover:to-ctp-peach transition-all duration-300"
-                          >
-                            <span className="relative z-10 flex items-center gap-2">
-                              Explore Project
-                              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                            </span>
-                            <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-                          </Button>
-
-                          {featuredProject.githubLink !==
-                            "private-repository" && (
-                            <Button
-                              variant="outline"
-                              className="border-ctp-surface0 hover:border-ctp-blue bg-transparent"
-                              onClick={() =>
-                                window.open(
-                                  featuredProject.githubLink,
-                                  "_blank"
-                                )
-                              }
-                            >
-                              <FaGithub className="mr-2" />
-                              Source Code
-                            </Button>
-                          )}
-
-                          {featuredProject.liveLink && (
-                            <Button
-                              variant="outline"
-                              className="border-ctp-surface0 hover:border-ctp-green bg-transparent"
-                              onClick={() =>
-                                window.open(featuredProject.liveLink, "_blank")
-                              }
-                            >
-                              <ExternalLink className="mr-2 w-4 h-4" />
-                              Live Demo
-                            </Button>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Certificate image with frame and effects */}
-                      <div className="xl:w-1/2">
-                        <motion.div
-                          className="relative mx-auto max-w-md"
-                          initial={{ scale: 0.9, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          transition={{ duration: 0.7, delay: 0.4 }}
-                        >
-                          {/* Frame and shadow effects */}
-                          <div className="absolute -inset-0.5 bg-gradient-to-r from-ctp-peach to-ctp-blue opacity-50 rounded-xl blur-sm" />
-                          <div className="absolute -inset-1 bg-ctp-crust rounded-xl" />
-
-                          {/* Image */}
-                          <div className="relative rounded-lg overflow-hidden border-2 border-ctp-surface0">
-                            <img
-                              src="skoda-certificate.jpg"
-                              alt={`${featuredProject.name} Certificate`}
-                              className="w-full h-auto object-cover z-10 relative"
-                            />
-
-                            {/* Overlay shine effect */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-ctp-peach/5 via-white/5 to-ctp-blue/5 z-20" />
-                            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--ctp-blue),_transparent_70%)]" />
-                          </div>
-
-                          {/* Certificate badge */}
-                          <div className="absolute -bottom-3 -right-3 z-30">
-                            <div className="relative">
-                              <div className="absolute inset-0 bg-gradient-to-r from-ctp-peach to-ctp-blue rounded-full blur-sm" />
-                              <div className="relative p-2 bg-ctp-crust rounded-full border border-ctp-surface0">
-                                <FaStar className="w-5 h-5 text-ctp-yellow" />
-                              </div>
-                            </div>
-                          </div>
-                        </motion.div>
-                      </div>
+                      <Content
+                        activeTab={activeTab}
+                        featuredProject={featuredProject}
+                        handleProjectSelect={handleProjectSelect}
+                      />
+                      <Certificate name={featuredProject.name} />
                     </div>
                   </div>
                 </div>
@@ -319,6 +158,194 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
           </motion.div>
         )}
       </AnimatePresence>
+    </div>
+  );
+};
+
+interface CertificateProps {
+  name: string;
+}
+
+const Certificate: React.FC<CertificateProps> = memo(({ name }) => {
+  return (
+    <div className="xl:w-1/2">
+      <motion.div
+        className="relative mx-auto max-w-md"
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.7, delay: 0.4 }}
+      >
+        <div className="absolute -inset-0.5 bg-gradient-to-r from-ctp-peach to-ctp-blue opacity-50 rounded-xl blur-sm" />
+        <div className="absolute -inset-1 bg-ctp-crust rounded-xl" />
+
+        <div className="relative rounded-lg overflow-hidden border-2 border-ctp-surface0">
+          <img
+            src="skoda-certificate.jpg"
+            alt={`${name} Certificate`}
+            className="w-full h-auto object-cover z-10 relative"
+          />
+
+          <div className="absolute inset-0 bg-gradient-to-tr from-ctp-peach/5 via-white/5 to-ctp-blue/5 z-20" />
+          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--ctp-blue),_transparent_70%)]" />
+        </div>
+
+        <div className="absolute -bottom-3 -right-3 z-30">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-ctp-peach to-ctp-blue rounded-full blur-sm" />
+            <div className="relative p-2 bg-ctp-crust rounded-full border border-ctp-surface0">
+              <FaStar className="w-5 h-5 text-ctp-yellow" />
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+});
+
+interface ContentProps {
+  activeTab: Tab;
+  featuredProject: Project;
+  handleProjectSelect: (project: Project) => void;
+}
+
+const Content: React.FC<ContentProps> = ({
+  activeTab,
+  featuredProject,
+  handleProjectSelect,
+}) => {
+  return (
+    <div className="xl:w-1/2 space-y-6">
+      {activeTab === "overview" ? (
+        <motion.p
+          className="text-ctp-text leading-relaxed"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+        >
+          {featuredProject.description}
+        </motion.p>
+      ) : (
+        <motion.ul
+          className="space-y-3"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+        >
+          {featuredProject.features.map((feature, index) => (
+            <motion.li
+              key={feature}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{
+                delay: index * 0.1,
+                duration: 0.3,
+              }}
+              className="flex items-start gap-2"
+            >
+              <span className="text-ctp-peach mt-1">•</span>
+              <span className="text-ctp-text">{feature}</span>
+            </motion.li>
+          ))}
+        </motion.ul>
+      )}
+
+      <div className="pt-2">
+        <h4 className="text-sm text-ctp-subtext0 mb-3">TECHNOLOGIES</h4>
+        <div className="flex flex-wrap gap-2">
+          {featuredProject.technologies.map((tech, index) => (
+            <motion.div
+              key={tech.name}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 + index * 0.1 }}
+            >
+              <TechBadge tech={tech.name} />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-wrap gap-4 pt-4">
+        <Button
+          onClick={() => handleProjectSelect(featuredProject)}
+          className="relative overflow-hidden group bg-gradient-to-r from-ctp-peach to-ctp-maroon text-ctp-crust hover:from-ctp-maroon hover:to-ctp-peach transition-all duration-300"
+        >
+          <span className="relative z-10 flex items-center gap-2">
+            Explore Project
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </span>
+          <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+        </Button>
+
+        {featuredProject.githubLink !== "private-repository" && (
+          <Button
+            variant="outline"
+            className="border-ctp-surface0 hover:border-ctp-blue bg-transparent"
+            onClick={() => window.open(featuredProject.githubLink, "_blank")}
+          >
+            <FaGithub className="mr-2" />
+            Source Code
+          </Button>
+        )}
+
+        {featuredProject.liveLink && (
+          <Button
+            variant="outline"
+            className="border-ctp-surface0 hover:border-ctp-green bg-transparent"
+            onClick={() => window.open(featuredProject.liveLink, "_blank")}
+          >
+            <ExternalLink className="mr-2 w-4 h-4" />
+            Live Demo
+          </Button>
+        )}
+      </div>
+    </div>
+  );
+};
+
+interface TabNavigationProps {
+  activeTab: Tab;
+  setActiveTab: (tab: Tab) => void;
+}
+
+const TabNavigation: React.FC<TabNavigationProps> = ({
+  activeTab,
+  setActiveTab,
+}) => {
+  return (
+    <div className="flex bg-ctp-crust border-b border-ctp-surface0">
+      <button
+        className={`px-6 py-2.5 text-sm font-medium transition-colors relative ${
+          activeTab === "overview"
+            ? "text-ctp-peach"
+            : "text-ctp-subtext0 hover:text-ctp-text"
+        }`}
+        onClick={() => setActiveTab("overview")}
+      >
+        Overview
+        {activeTab === "overview" && (
+          <motion.div
+            className="absolute bottom-0 left-0 right-0 h-0.5 bg-ctp-peach"
+            layoutId="activeTab"
+          />
+        )}
+      </button>
+      <button
+        className={`px-6 py-2.5 text-sm font-medium transition-colors relative ${
+          activeTab === "features"
+            ? "text-ctp-peach"
+            : "text-ctp-subtext0 hover:text-ctp-text"
+        }`}
+        onClick={() => setActiveTab("features")}
+      >
+        Key Features
+        {activeTab === "features" && (
+          <motion.div
+            className="absolute bottom-0 left-0 right-0 h-0.5 bg-ctp-peach"
+            layoutId="activeTab"
+          />
+        )}
+      </button>
     </div>
   );
 };
