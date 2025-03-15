@@ -5,6 +5,7 @@ import { ExternalLink, ArrowUpRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { motion } from "framer-motion";
 import LayeredCard3D from "./LayeredGuide";
+import { useProjectTheme } from "./context/ThemeContext";
 
 interface ProjectSmallProps {
   project: Project;
@@ -37,7 +38,8 @@ const ProjectSmall: React.FC<ProjectSmallProps> = ({
   index,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [fromColor, toColor, accentColor] = generateGradient(index);
+  const { getProjectTheme } = useProjectTheme();
+  const { accentColor, fromColor, toColor } = getProjectTheme(project);
 
   return (
     <LayeredCard3D
@@ -235,16 +237,4 @@ const ProjectSmall: React.FC<ProjectSmallProps> = ({
   );
 };
 
-const generateGradient = (index: number) => {
-  const colors = [
-    ["from-ctp-blue/20", "to-ctp-lavender/20", "blue"],
-    ["from-ctp-mauve/20", "to-ctp-pink/20", "mauve"],
-    ["from-ctp-red/20", "to-ctp-maroon/20", "red"],
-    ["from-ctp-peach/20", "to-ctp-yellow/20", "peach"],
-    ["from-ctp-green/20", "to-ctp-teal/20", "green"],
-    ["from-ctp-blue/20", "to-ctp-sky/20", "blue"],
-  ];
-  const colorIndex = index % colors.length;
-  return colors[colorIndex];
-};
 export default ProjectSmall;
