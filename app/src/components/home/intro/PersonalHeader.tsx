@@ -231,8 +231,8 @@ const ProfilePicture: React.FC<ProfilePictureProps> = ({ avatarControls }) => {
         >
           <motion.div
             className="w-4 h-4 rounded-full bg-[#a6e3a1]"
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            animate={{ scale: [0.1, 1.2, 0.1] }}
+            transition={{ duration: 6, repeat: Infinity }}
           ></motion.div>
         </motion.div>
       </motion.div>
