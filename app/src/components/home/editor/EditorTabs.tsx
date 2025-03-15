@@ -25,9 +25,6 @@ const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
   const [recentlyMovedTab, setRecentlyMovedTab] = useState<SectionType | null>(
     null
   );
-  const [movedDirection, setMovedDirection] = useState<"left" | "right" | null>(
-    null
-  );
 
   // Refs for tracking drag position and elements
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
@@ -68,7 +65,6 @@ const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
     if (recentlyMovedTab) {
       const timer = setTimeout(() => {
         setRecentlyMovedTab(null);
-        setMovedDirection(null);
       }, 500); // Match with animation duration
 
       return () => clearTimeout(timer);
@@ -188,7 +184,6 @@ const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
 
       // Set the recently moved tab for animation
       setRecentlyMovedTab(draggedTab);
-      setMovedDirection(sourceIndex < insertionIndex ? "right" : "left");
 
       // Add dropping animation to the tab
       if (tabRefs.current[draggedTab]) {
