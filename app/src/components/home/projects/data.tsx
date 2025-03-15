@@ -249,7 +249,7 @@ const current = {
       "Custom Bencode Parser - Implemented from scratch for .torrent file decoding",
       "Peer Wire Protocol - Implementation of the BitTorrent peer communication protocol",
       "Tracker Communication - HTTP and UDP tracker protocol support",
-      "Distributed Hash Table (DHT) - For trackerless operation"
+      "Distributed Hash Table (DHT) - For tracker-less operation"
     ],
     "Networking": [
       "TCP Connection Pool - Managing multiple peer connections efficiently",
