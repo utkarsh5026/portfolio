@@ -5,12 +5,12 @@ import { TourProvider } from "../home/tour/context/TourProvider";
 
 const MainPortfolio = () => {
   return (
-    <TourProvider>
-      <EditorProvider>
+    <EditorProvider>
+      <TourProvider>
         <CodeEditor />
         <TourPortal />
-      </EditorProvider>
-    </TourProvider>
+      </TourProvider>
+    </EditorProvider>
   );
 };
 
