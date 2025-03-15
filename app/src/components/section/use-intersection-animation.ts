@@ -15,7 +15,6 @@ export const useIntersectionAnimation = (
     const section = sectionRef.current;
     if (!section) return;
 
-    // Intersection Observer for animations
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -28,7 +27,7 @@ export const useIntersectionAnimation = (
           }
         });
       },
-      { threshold: 0.1 } // Reduced threshold to trigger earlier
+      { threshold: 0.01 } // Reduced threshold to trigger earlier
     );
 
     observer.observe(section);
