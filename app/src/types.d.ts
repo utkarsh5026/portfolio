@@ -26,7 +26,7 @@ export type Project = {
   highlights?: string[];
   tags?: string[];
   techStack?: Record<Technology["name"], string[]>;
-  explain?: string[];
+  explain: string[];
 };
 
 export type Article = {

@@ -124,6 +124,38 @@ const mayonation = {
     "The main feature I'm happy with is the timeline system for coordinating sequences of animations. It lets you precisely control when different animations start and end relative to each other. The API is designed to be readable and chainable, so you can understand what's happening just by looking at the code - which is important when you come back to it months later.",
     "I built it without any dependencies, focusing on using the browser's native animation capabilities for the best performance. It started as something for my own projects, but I've shared it with other developers who've found it useful too. It's satisfying to see animations that would have taken hundreds of lines of CSS or JavaScript done in just a few lines.",
   ],
+  techStack: {
+    "Core Technology": [
+      "TypeScript - For type-safe development and improved developer experience",
+      "ESNext - Leveraging modern JavaScript features for cleaner code",
+      "Zero dependencies - Built without external libraries for minimal bundle size",
+    ],
+    "Animation Engine": [
+      "requestAnimationFrame - For optimized animation loop and 60fps performance",
+      "CSS Transitions - Integration with native browser transitions",
+      "SVG Manipulation - Direct control of SVG paths and attributes",
+      "CSS Custom Properties - Dynamic property updates without DOM thrashing",
+    ],
+    "Development Tools": [
+      "Vite - For lightning-fast development and optimized builds",
+      "TypeScript Compiler - For type checking and transpilation",
+      "Jest - For unit testing animation behaviors",
+      "ESLint - For code quality enforcement",
+      "TSDoc - For comprehensive API documentation",
+    ],
+    "Design Patterns": [
+      "Fluent Interface - Chainable methods for intuitive animation definition",
+      "Factory Pattern - For creating animation instances",
+      "Observer Pattern - For event handling and callbacks",
+      "Composition - For building complex animations from simple ones",
+    ],
+    "Performance Optimization": [
+      "Batched DOM Updates - Minimizing browser reflows and repaints",
+      "GPU Acceleration - Utilizing transform and opacity for hardware-accelerated animations",
+      "Optimized Easing Functions - Pre-calculated easing curves for smooth animations",
+      "Memory Management - Proper cleanup of animation instances to prevent memory leaks",
+    ],
+  },
 };
 
 const cope = {
@@ -181,6 +213,41 @@ const current = {
     "The most interesting part was figuring out the peer wire protocol - how torrent clients talk to each other. I built a system that requests different pieces of a file from multiple peers at the same time, verifies each piece with SHA1 hashing to make sure it's correct, and puts them all together. Seeing that first complete download finish correctly was pretty exciting.",
     "I wrote it in Go, which was perfect for this because of how it handles concurrent operations with goroutines. What started as a learning project actually ended up being quite fast - it can download files more quickly than some popular clients because of how it prioritizes which pieces to download first and which peers to connect to. I learned more about networking from this one project than from any course or book.",
   ],
+  techStack: {
+    "Language & Runtime": [
+      "Go 1.20+ - Leveraging concurrency features with goroutines and channels",
+      "Standard Library - Using net, io, and crypto packages for core functionality"
+    ],
+    "BitTorrent Protocol": [
+      "Custom Bencode Parser - Implemented from scratch for .torrent file decoding",
+      "Peer Wire Protocol - Implementation of the BitTorrent peer communication protocol",
+      "Tracker Communication - HTTP and UDP tracker protocol support",
+      "Distributed Hash Table (DHT) - For trackerless operation"
+    ],
+    "Networking": [
+      "TCP Connection Pool - Managing multiple peer connections efficiently",
+      "Handshake Protocol - Implementing BitTorrent peer handshake",
+      "Message Framing - Handling BitTorrent protocol message boundaries",
+      "Rate Limiting - Controlling upload and download bandwidth"
+    ],
+    "Concurrency": [
+      "Goroutines - For handling multiple simultaneous downloads",
+      "Channels - For safe communication between concurrent processes",
+      "Mutexes - For protecting shared state",
+      "Context - For managing lifetime of operations"
+    ],
+    "Data Management": [
+      "Piece Selection Algorithm - For optimizing download speed and availability",
+      "SHA-1 Hashing - For verifying integrity of downloaded pieces",
+      "File Management - Handling disk I/O and file assembly",
+      "Buffer Pool - Reusing memory buffers for improved performance"
+    ],
+    "CLI Interface": [
+      "Progress Display - Real-time download statistics and progress bars",
+      "Configuration - Command-line options and configuration files",
+      "Logging - Different verbosity levels for debugging"
+    ]
+  }
 };
 
 const pauth = {
@@ -210,6 +277,46 @@ const pauth = {
     "The library supports all the standard OAuth providers like Google and GitHub, but what I'm most happy with is the security features. It automatically implements PKCE (that's Proof Key for Code Exchange) which prevents certain types of attacks. Usually, you'd have to configure that manually, but I made it the default because good security shouldn't be optional.",
     "It has a really simple API - just a few lines of code to set up authentication, and the library handles all the complicated stuff in the background. It works with any Python web framework, so whether you're using Flask, Django, or something else, the integration is pretty much the same. It's saved me a ton of time in my own projects since I built it.",
   ],
+  techStack: {
+    "Language & Features": [
+      "Python 3.10+ - Leveraging modern Python features",
+      "Type Hints - For better developer experience and static analysis",
+      "Async support - For non-blocking OAuth operations"
+    ],
+    "OAuth Implementation": [
+      "OAuth 2.0 - Full implementation of the OAuth 2.0 specification",
+      "PKCE Extension - Proof Key for Code Exchange for enhanced security",
+      "JWT Handling - For token validation and parsing",
+      "Auto Token Refresh - Background token refresh before expiration"
+    ],
+    "Framework Integration": [
+      "Flask Integration - Middleware and extensions for Flask applications",
+      "Django Integration - App and middleware for Django applications",
+      "Framework-agnostic Core - Can be used with any Python web framework",
+      "Starlette/FastAPI Support - Async-compatible middleware"
+    ],
+    "Provider Support": [
+      "Multiple OAuth Providers - Google, GitHub, Facebook, Twitter, Microsoft",
+      "Provider Abstraction - Consistent API across different providers",
+      "Custom Provider Support - Extensible for any OAuth 2.0 compliant service"
+    ],
+    "Security Features": [
+      "State Parameter Validation - Protection against CSRF attacks",
+      "Token Encryption - Secure storage of sensitive tokens",
+      "Scope Management - Fine-grained control over authorization scopes",
+      "HTTPS Enforcement - Ensuring secure communication"
+    ],
+    "Storage & Persistence": [
+      "Multiple Storage Backends - Redis, SQL, Memory, or custom implementations",
+      "Session Integration - Works with various session backends",
+      "Cookie Security - HTTP-only, SameSite, and Secure flags"
+    ],
+    "Development Tools": [
+      "Comprehensive Testing - Unit and integration tests",
+      "Documentation - Extensive usage examples and API reference",
+      "Type Stubs - For IDE autocompletion and type checking"
+    ]
+  }
 };
 
 const reducer = {
@@ -234,6 +341,48 @@ const reducer = {
     "The main idea was to create a more TypeScript-friendly state management library. I used TypeScript's type system to make everything type-safe without requiring tons of manual type declarations. I also integrated Immer which lets you write code that looks like you're directly modifying state (which is more intuitive) while still keeping the immutability benefits behind the scenes.",
     "What I like most about how it turned out is the way you can organize state by feature into slices that automatically get composed together. It makes the codebase a lot cleaner. I use this in my own projects now, and a few of my colleagues have started using it too after I showed it to them. It's nice to solve a problem that other people were having as well.",
   ],
+  techStack: {
+    "Language & Core": [
+      "TypeScript - For type-safe state management",
+      "Immer - For immutable state updates with mutable syntax",
+      "ES6+ Features - Leveraging modern JavaScript capabilities"
+    ],
+    "State Management": [
+      "Flux Architecture - One-way data flow pattern",
+      "Immutable State - Ensuring predictable state transitions",
+      "Action Creators - Type-safe functions for creating actions",
+      "Reducers - Pure functions for state transitions",
+      "Combined Reducers - For modular state composition"
+    ],
+    "Type System": [
+      "Generic Types - For flexible and reusable components",
+      "Discriminated Unions - For type-safe action handling",
+      "Utility Types - For advanced type manipulations",
+      "Type Inference - Minimizing explicit type annotations"
+    ],
+    "Middleware System": [
+      "Redux-like Middleware - For extending functionality",
+      "Thunk Implementation - For handling async actions",
+      "Logger Middleware - For debugging state changes",
+      "Middleware Composition - For combining multiple middlewares"
+    ],
+    "Performance Optimization": [
+      "Selector Memoization - For efficient derived state",
+      "Batched Updates - For minimizing re-renders",
+      "State Normalization - For efficient updates and lookups"
+    ],
+    "Developer Experience": [
+      "DevTools Integration - For time-travel debugging",
+      "Hot Module Replacement - For development workflow",
+      "Error Boundaries - For robust error handling"
+    ],
+    "Testing": [
+      "Jest - For unit testing",
+      "Action Testing - Simplified action creator testing",
+      "Reducer Testing - Pure function testing",
+      "Integration Testing - Full store testing"
+    ]
+  }
 };
 
 const dss = {
@@ -278,6 +427,53 @@ const dss = {
     "Pandas",
     "Plotly",
   ],
+  techStack: {
+    "Backend & Data Processing": [
+      "Python 3.9 - Core language for backend development",
+      "Django 4.0 - Web framework for application structure and ORM",
+      "Pandas - For data manipulation and analysis",
+      "NumPy - For numerical operations and calculations",
+      "SQLite - For database storage in testing and development",
+      "PostgreSQL - For production database deployment"
+    ],
+    "Data Visualization": [
+      "Plotly - For interactive charts and dashboards",
+      "D3.js - For custom visualizations",
+      "Chart.js - For responsive chart rendering",
+      "React-Plotly - For React integration of Plotly charts"
+    ],
+    "Frontend": [
+      "React - For building the user interface components",
+      "Redux - For state management",
+      "Material-UI - For UI component library",
+      "Styled Components - For component styling",
+      "Axios - For API communication"
+    ],
+    "API & Integration": [
+      "Django REST Framework - For API endpoints",
+      "Celery - For background task processing",
+      "Redis - For caching and message broker",
+      "JWT Authentication - For secure API access"
+    ],
+    "Analytics & Reporting": [
+      "Custom Analytics Engine - For training effectiveness metrics",
+      "Automated Report Generation - For periodic reports",
+      "Excel Export - For data portability",
+      "PDF Generation - For formal reporting"
+    ],
+    "Deployment & Infrastructure": [
+      "Docker - For containerization",
+      "Nginx - For web server and reverse proxy",
+      "Gunicorn - For WSGI HTTP Server",
+      "CI/CD Pipeline - For automated testing and deployment"
+    ],
+    "Security & Access Control": [
+      "Role-based Access Control - For multi-level permissions",
+      "Data Encryption - For sensitive information",
+      "Audit Logging - For tracking system usage",
+      "Cross-Origin Resource Sharing - For secure API access"
+    ]
+  }
 };
 
 const orchestra = {
@@ -302,6 +498,56 @@ const orchestra = {
     "The most challenging part was building the scheduler that decides where to place containers based on resource availability. I also had to figure out service discovery so containers could find each other, and implement self-healing so if something crashed, the system would automatically restart it. It was complex but so satisfying when it all started working together.",
     "I wrote it in Go which was perfect for this kind of systems programming. What started as a learning project actually ended up being useful - it's much simpler than full Kubernetes, so it works well for small-scale deployments where Kubernetes would be overkill. A couple of IoT projects are using it now because it's lightweight enough to run on edge devices with limited resources.",
   ],
+  techStack: {
+    "Core Platform": [
+      "Go 1.19+ - For performance and concurrency features",
+      "gRPC - For inter-service communication",
+      "Protocol Buffers - For service definitions and data serialization",
+      "etcd - For distributed configuration and service discovery"
+    ],
+    "Container Management": [
+      "containerd - For container runtime operations",
+      "OCI Runtime Spec - For container standardization",
+      "CNI (Container Network Interface) - For network management",
+      "Container Storage Interface - For volume management"
+    ],
+    "Scheduling & Orchestration": [
+      "Custom Scheduler - Algorithm for optimal container placement",
+      "Node Agent - For managing container lifecycle on nodes",
+      "Controller Pattern - For reconciling desired and actual state",
+      "Operator Pattern - For managing complex applications"
+    ],
+    "Service Discovery & Networking": [
+      "DNS-based Service Discovery - For service lookup",
+      "Dynamic Proxy - For load balancing and routing",
+      "Network Policy Implementation - For traffic control",
+      "Health Checking - For service availability monitoring"
+    ],
+    "Observability": [
+      "Distributed Tracing - Using OpenTelemetry",
+      "Metrics Collection - For system performance monitoring",
+      "Structured Logging - For debugging and audit",
+      "Health Monitoring - For cluster and service health"
+    ],
+    "Security": [
+      "Role-Based Access Control - For authorization",
+      "mTLS - For secure service-to-service communication",
+      "Secret Management - For sensitive configuration",
+      "Network Policies - For traffic isolation"
+    ],
+    "High Availability": [
+      "Leader Election - For control plane redundancy",
+      "State Replication - For resilience against failures",
+      "Automated Recovery - For self-healing capability",
+      "Graceful Degradation - For handling partial failures"
+    ],
+    "Developer Tools": [
+      "CLI Tool - For interacting with the platform",
+      "API Client Libraries - For programmatic access",
+      "Manifest Format - For declarative configuration",
+      "Local Development Environment - For testing"
+    ]
+  }
 };
 
 const codeReview = {
@@ -325,6 +571,58 @@ const codeReview = {
     "What I ended up building was an AI assistant that analyzes code, finds potential bugs, security vulnerabilities, and performance issues. The interesting part is that it gets better over time as it sees more code patterns. It doesn't just look for simple syntax problems - it can identify architectural issues too, which is much harder to automate.",
     "I built it using Python with FastAPI for the backend and MongoDB for storing analysis results. There's a machine learning pipeline that processes the code through different specialized models depending on what kind of analysis we're doing. It's been really useful for my own projects, and a few of my friends have started using it too for their code reviews.",
   ],
+  techStack: {
+    "Core Backend": [
+      "Python 3.10+ - For language features and ecosystem",
+      "FastAPI - For high-performance API endpoints",
+      "Uvicorn - ASGI server for API hosting",
+      "MongoDB - For storing analysis results and code patterns",
+      "Redis - For caching and rate limiting"
+    ],
+    "Machine Learning & AI": [
+      "Transformers - For code understanding models",
+      "Langchain - For LLM orchestration and prompting",
+      "TensorFlow/Keras - For custom model training",
+      "SciKit-Learn - For feature extraction and preprocessing",
+      "Hugging Face Models - For code understanding"
+    ],
+    "Code Analysis": [
+      "Abstract Syntax Tree (AST) parsing - For code structure analysis",
+      "Static Analysis Tools - For security vulnerability detection",
+      "Language-specific parsers - For multiple programming languages",
+      "Code Metrics Library - For complexity and maintainability analysis"
+    ],
+    "DevOps Integration": [
+      "GitHub Actions Integration - For CI/CD workflows",
+      "GitLab Integration - For merge request analysis",
+      "Bitbucket Integration - For code review automation",
+      "Pre-commit Hooks - For local analysis before commits"
+    ],
+    "Security Analysis": [
+      "OWASP Rule Engine - For security vulnerability detection",
+      "Dependency Scanning - For identifying vulnerable dependencies",
+      "Code Injection Detection - For finding potential security issues",
+      "Secret Detection - For identifying accidentally committed secrets"
+    ],
+    "Performance Analysis": [
+      "Complexity Analysis - For identifying inefficient algorithms",
+      "Memory Usage Prediction - For detecting potential memory issues",
+      "Runtime Profiling Integration - For real-world performance data",
+      "Database Query Analysis - For SQL optimization"
+    ],
+    "User Interface": [
+      "React - For web dashboard",
+      "D3.js - For visualization of analysis results",
+      "Socket.IO - For real-time updates",
+      "Code Highlighting - For presenting analysis in context"
+    ],
+    "Deployment": [
+      "Docker - For containerization",
+      "Kubernetes - For orchestration",
+      "Cloud Provider SDKs - For AWS/GCP/Azure integration",
+      "Terraform - For infrastructure as code"
+    ]
+  }
 };
 
 export const projects: Project[] = [
