@@ -2,6 +2,8 @@ import path from "path";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import { visualizer } from "rollup-plugin-visualizer";
+import { imagetools } from "vite-imagetools";
+import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
   plugins: [
@@ -20,6 +22,13 @@ export default defineConfig({
       gzipSize: true,
       brotliSize: true,
     }),
+    imagetools(),
+    VitePWA({
+      registerType: "autoUpdate",
+      workbox: {
+        globPatterns: ["**/*.{js,css,html}"],
+      },
+    }),
   ],
   resolve: {
     alias: {
@@ -30,6 +39,14 @@ export default defineConfig({
   build: {
     sourcemap: process.env.NODE_ENV === "development",
     chunkSizeWarningLimit: 500,
+    minify: "terser",
+    cssMinify: true,
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
     rollupOptions: {
       output: {
         manualChunks: {
