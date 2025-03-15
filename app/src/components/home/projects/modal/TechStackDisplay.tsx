@@ -11,7 +11,6 @@ const TechStackDisplay: React.FC<TechStackDisplayProps> = ({
   techStack,
   theme,
 }) => {
-  // Extract technology name from description
   const extractTechName = (description: string) => {
     const endIndex = description.indexOf(" -");
     return endIndex > 0 ? description.substring(0, endIndex) : description;
