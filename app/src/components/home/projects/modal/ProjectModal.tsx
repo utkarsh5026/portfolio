@@ -156,7 +156,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                         transition={{ duration: 0.5 }}
                       >
                         <div
-                          className={`py-3 px-5 border-b border-ctp-surface0 flex items-center gap-2 bg-ctp-${theme.main}/10`}
+                          className={`p-5 border-b border-ctp-surface0 flex items-center gap-2 bg-ctp-${theme.main}/10`}
                         >
                           <FileCode
                             className={`w-4 h-4 text-ctp-${theme.main}`}
@@ -171,35 +171,6 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                             theme={theme}
                           />
                         )}
-
-                        <div className="p-6">
-                          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                            {selectedProject.technologies.map((tech, index) => (
-                              <motion.div
-                                key={tech.name}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{
-                                  delay: 0.1 + index * 0.05,
-                                  duration: 0.4,
-                                }}
-                                className="flex flex-col items-center"
-                              >
-                                <div
-                                  className={`relative group p-4 w-full rounded-lg bg-ctp-surface0/70 hover:bg-ctp-surface0 border border-ctp-surface1 transition-all duration-300 flex flex-col items-center gap-3 hover:shadow-md hover:-translate-y-1`}
-                                >
-                                  <div className="text-3xl">{tech.icon}</div>
-                                  <span className="text-sm font-medium text-ctp-text">
-                                    {tech.name}
-                                  </span>
-
-                                  {/* Decorative corner */}
-                                  <div className="absolute top-0 right-0 w-0 h-0 border-t-[16px] border-r-[16px] border-t-transparent border-r-ctp-surface1/50 rounded-bl-lg transition-colors group-hover:border-r-ctp-surface1" />
-                                </div>
-                              </motion.div>
-                            ))}
-                          </div>
-                        </div>
                       </motion.div>
                     </TabContent>
                   )}

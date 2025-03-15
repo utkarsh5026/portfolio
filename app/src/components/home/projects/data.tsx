@@ -183,6 +183,33 @@ const cope = {
     "I focused on making it handle regular expressions efficiently even with really large files. Writing the pattern matching engine was trickier than I expected - there are a lot of edge cases to consider. I took a test-driven approach, writing tests for each feature before implementing it, which helped make sure everything worked correctly.",
     "I built it in Go, using its standard library and concurrency features. It was mainly an exercise to learn more about Go and text processing, but it turned out to be pretty useful. I actually use it quite often now when searching through code because it's fast even on large projects with millions of lines of code. It's nice when a learning project turns into something practical.",
   ],
+  techStack: {
+    "Language & Runtime": [
+      "Go 1.22+ - For performance and strong standard library support",
+      "Zero external dependencies - Using only standard library for stability and security"
+    ],
+    "Text Processing": [
+      "Go regexp package - For pattern matching and regular expressions",
+      "Bufio Scanner - For efficient line-by-line file processing",
+      "UTF-8 Support - For handling international character sets"
+    ],
+    "Command-Line Interface": [
+      "Flag package - For parsing command-line arguments and options",
+      "Standard input/output streams - For Unix-style piping capability",
+      "Error handling with exit codes - For proper CLI application behavior"
+    ],
+    "Development Methodology": [
+      "Test-Driven Development - Writing tests before implementation",
+      "Benchmarking - Performance testing and optimization",
+      "Go tooling - Using go fmt, go vet, and go test",
+      "Continuous Integration - Using GitHub Actions for automated testing"
+    ],
+    "Design Patterns": [
+      "Strategy Pattern - For different search algorithms",
+      "Factory Pattern - For creating appropriate searchers based on input",
+      "Command Pattern - For encapsulating search operations"
+    ]
+  }
 };
 
 const current = {

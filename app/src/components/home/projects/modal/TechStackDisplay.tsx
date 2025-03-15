@@ -17,7 +17,7 @@ const TechStackDisplay: React.FC<TechStackDisplayProps> = ({
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 p-6">
       {Object.entries(techStack).map(([category, technologies], index) => (
         <motion.div
           key={category}
