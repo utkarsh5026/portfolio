@@ -10,7 +10,7 @@ import {
   emotionTailwindClasses,
 } from "./config";
 import { createPortal } from "react-dom";
-import useTypewriting from "@/components/type-write/use-type-write";
+import useTypewriting from "@/components/type-write/hooks/use-type-write";
 
 /**
  * TourGuideAnimated component - Provides an animated character guide

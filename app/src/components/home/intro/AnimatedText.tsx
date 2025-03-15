@@ -1,6 +1,6 @@
 import React, { useState, memo } from "react";
 import Cursor from "./Cursor";
-import { useTypewriting } from "@/components/type-write/use-type-write";
+import { useTypewriting } from "@/components/type-write/hooks/use-type-write";
 
 const TYPING_SPEED = 50;
 const ERASING_SPEED = 30;
