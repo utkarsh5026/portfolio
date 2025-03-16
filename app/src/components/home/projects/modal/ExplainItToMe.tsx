@@ -182,7 +182,7 @@ const ProgressBar = ({ theme, progress }: ProgressBarProps) => {
         <motion.div
           className={cn(
             "h-2 rounded-full absolute top-0 left-0",
-            `bg-ctp-${theme.main}`
+            `bg-ctp-${theme.main}/20`
           )}
           initial={{ width: "0%" }}
           animate={{
@@ -327,13 +327,6 @@ const ExplanationContent: React.FC<ExplanationContentProps> = ({
                         transition-all duration-300
                       `}
         >
-          {/* Colorful accent for active paragraph */}
-          {/* {index === activeParagraph && (
-            <div
-              className={`absolute top-0 left-0 right-0 h-1 bg-ctp-${theme.main}/80`}
-            />
-          )} */}
-
           <p
             className={cn(
               "relative z-10 text-ctp-text leading-relaxed",
