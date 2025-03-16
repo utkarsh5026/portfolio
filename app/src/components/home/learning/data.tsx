@@ -9,6 +9,8 @@ import {
   Video,
   Smartphone,
   Server,
+  Lightbulb,
+  Code2,
 } from "lucide-react";
 
 export const currentLearningTechnologies: TechnologyLearning[] = [
@@ -147,3 +149,42 @@ export const categoryInfo: Record<
     position: "top-1/2 right-8 -translate-y-1/2",
   },
 };
+
+export const learningJourneyItems = [
+  {
+    title: "Vector Databases & RAG",
+    description:
+      "I'm exploring vector databases and retrieval-augmented generation to create more context-aware AI applications. This helps me build tools that better understand and generate code by leveraging semantic search capabilities.",
+    icon: <Lightbulb className="w-5 h-5" />,
+    color: "mauve",
+    gradient: "from-ctp-mauve/20 to-ctp-lavender/20",
+    accent: "border-ctp-mauve",
+  },
+  {
+    title: "Database Internals",
+    description:
+      "I'm implementing core database concepts from scratch, including B-trees, LSM trees, and WAL. Building these components helps me understand the performance characteristics that affect real-world applications.",
+    icon: <Code2 className="w-5 h-5" />,
+    color: "blue",
+    gradient: "from-ctp-blue/20 to-ctp-sapphire/20",
+    accent: "border-ctp-blue",
+  },
+  {
+    title: "Mobile Development",
+    description:
+      "I'm learning React Native to extend my full-stack skills to mobile platforms. This allows me to build cross-platform applications while leveraging my existing JavaScript and React knowledge.",
+    icon: <Terminal className="w-5 h-5" />,
+    color: "green",
+    gradient: "from-ctp-green/20 to-ctp-teal/20",
+    accent: "border-ctp-green",
+  },
+  {
+    title: "Compiler Design",
+    description:
+      "I'm building a simple programming language interpreter to understand how languages work under the hood. This project teaches me about lexical analysis, parsing, and code generation.",
+    icon: <Brain className="w-5 h-5" />,
+    color: "peach",
+    gradient: "from-ctp-peach/20 to-ctp-yellow/20",
+    accent: "border-ctp-peach",
+  },
+];
