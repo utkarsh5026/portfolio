@@ -210,7 +210,7 @@ const Header: React.FC<HeaderProps> = memo(({ project, theme }) => {
         "rounded-xl border-none",
         "py-5 px-6",
         "shadow-lg transition-all duration-300",
-        `bg-gradient-to-r from-ctp-${theme.main}/90 to-ctp-${theme.secondary}/90`
+        `bg-gradient-to-r from-ctp-${theme.main}/20 to-ctp-${theme.secondary}/20`
       )}
     >
       {/* Decorative elements with reduced opacity */}
@@ -328,17 +328,17 @@ const ExplanationContent: React.FC<ExplanationContentProps> = ({
                       `}
         >
           {/* Colorful accent for active paragraph */}
-          {index === activeParagraph && (
+          {/* {index === activeParagraph && (
             <div
-              className={`absolute top-0 left-0 right-0 h-1 bg-ctp-${theme.main}/80 rounded-t-xl`}
+              className={`absolute top-0 left-0 right-0 h-1 bg-ctp-${theme.main}/80`}
             />
-          )}
+          )} */}
 
           <p
-            className={`
-                          relative z-10 text-ctp-text leading-relaxed
-                          ${index < activeParagraph ? "text-ctp-text" : ""}
-                        `}
+            className={cn(
+              "relative z-10 text-ctp-text leading-relaxed",
+              index < activeParagraph ? "text-ctp-text" : ""
+            )}
           >
             {index < activeParagraph && processText(explanations[index])}
             {index === activeParagraph && (

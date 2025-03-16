@@ -303,30 +303,24 @@ const ModalHeader: React.FC<ModalHeaderProps> = ({
         <motion.button
           onClick={() => setExplainOpen(!explainOpen)}
           className={cn(
-            "relative py-2.5 px-5 rounded-full text-white font-medium",
-            `bg-ctp-${theme.main}/50`
+            "relative py-2.5 px-5 rounded-lg text-white font-medium",
+            `border-2 border-ctp-${theme.main}`,
+            `shadow-md shadow-ctp-${theme.main}/20`
           )}
-          style={{
-            boxShadow: `0 4px 0 var(--ctp-${theme.secondary})`,
-          }}
           whileHover={{
             y: -2,
-            boxShadow: `0 6px 0 var(--ctp-${theme.secondary})`,
+            className: `shadow-2xl shadow-ctp-${theme.main}/20`,
           }}
-          whileTap={{ y: 2, boxShadow: `0 0 0 var(--ctp-${theme.secondary})` }}
+          whileTap={{
+            y: 2,
+            className: cn(`shadow-md shadow-ctp-${theme.main}/20`),
+          }}
         >
           <div className="flex items-center gap-2">
             <Brain className="w-5 h-5" />
             <span>Explain It To Me</span>
           </div>
         </motion.button>
-
-        {/* <GhostButton
-          onClick={closeModal}
-          className="absolute top-5 right-5"
-          icon={<X className="w-5 h-5" />}
-          label="Close"
-        /> */}
       </div>
 
       {/* Tab navigation */}
