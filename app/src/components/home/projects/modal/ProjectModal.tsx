@@ -300,27 +300,39 @@ const ModalHeader: React.FC<ModalHeaderProps> = ({
           </div>
         </div>
 
-        <motion.button
+        <button
           onClick={() => setExplainOpen(!explainOpen)}
           className={cn(
-            "relative py-2.5 px-5 rounded-lg text-white font-medium",
-            `border-2 border-ctp-${theme.main}`,
-            `shadow-md shadow-ctp-${theme.main}/20`
+            "relative py-2.5 px-2.5 rounded-lg font-medium text-sm",
+            "overflow-hidden transition-all duration-300",
+            `bg-gradient-to-r from-ctp-${theme.main}/10 to-ctp-${theme.secondary}/10`,
+            "border border-white/10",
+            `shadow-md shadow-ctp-${theme.main}/10`
           )}
-          whileHover={{
-            y: -2,
-            className: `shadow-2xl shadow-ctp-${theme.main}/20`,
-          }}
-          whileTap={{
-            y: 2,
-            className: cn(`shadow-md shadow-ctp-${theme.main}/20`),
-          }}
         >
-          <div className="flex items-center gap-2">
-            <Brain className="w-5 h-5" />
-            <span>Explain It To Me</span>
+          {/* Add subtle shine effect overlay */}
+
+          {/* Button content */}
+          <div className="flex items-center gap-2 relative z-10">
+            <motion.div
+              animate={{
+                rotate: [0, 5, -5, 0],
+                scale: [1, 1.1, 1.05, 1],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                repeatType: "loop",
+                repeatDelay: 3,
+              }}
+            >
+              <Brain className="w-5 h-5 text-white/90" />
+            </motion.div>
+            <span className="font-semibold text-white tracking-wide">
+              Explain It To Me
+            </span>
           </div>
-        </motion.button>
+        </button>
       </div>
 
       {/* Tab navigation */}
