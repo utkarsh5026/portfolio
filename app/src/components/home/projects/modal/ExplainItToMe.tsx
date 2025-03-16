@@ -6,6 +6,7 @@ import useTypewriting from "@/components/type-write/hooks/use-type-write";
 import { useProjectTheme } from "../context/ThemeContext";
 import type { Project } from "@/types";
 import type { ProjectTheme } from "../context/ThemeContext";
+import ProgressBar from "@/components/utils/ProgressBar";
 
 /**
  * Highlight technical terms in the explanation text with appropriate colors
@@ -170,31 +171,6 @@ const ExplainItToMe: React.FC<ExplainItToMeProps> = ({ project }) => {
   );
 };
 
-interface ProgressBarProps {
-  theme: ProjectTheme;
-  progress: number;
-}
-
-const ProgressBar = ({ theme, progress }: ProgressBarProps) => {
-  return (
-    <div className="relative mt-3 mx-6">
-      <div className="h-2 bg-ctp-surface0/30 rounded-full">
-        <motion.div
-          className={cn(
-            "h-2 rounded-full absolute top-0 left-0",
-            `bg-ctp-${theme.main}/20`
-          )}
-          initial={{ width: "0%" }}
-          animate={{
-            width: `${progress}%`,
-          }}
-          transition={{ ease: "linear" }}
-        />
-      </div>
-    </div>
-  );
-};
-
 interface HeaderProps {
   project: Project;
   theme: ProjectTheme;
@@ -347,7 +323,7 @@ const ExplanationContent: React.FC<ExplanationContentProps> = ({
           </p>
 
           {index === activeParagraph && (
-            <ProgressBar theme={theme} progress={progress} />
+            <ProgressBar color={theme.main} progress={progress} />
           )}
         </div>
       </div>
