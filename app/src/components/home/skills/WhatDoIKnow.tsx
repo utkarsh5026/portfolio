@@ -154,7 +154,6 @@ const WhatDoIKnow: React.FC<WhatDoIKnowProps> = ({ isOpen, onClose }) => {
               />
             </div>
 
-            {/* Skills container - add max height and overflow-y-auto for scrolling */}
             <div
               ref={scrollContainerRef}
               className="space-y-6 max-h-[400px] overflow-y-auto pr-2 pb-4"
@@ -278,7 +277,6 @@ const WhatDoIKnow: React.FC<WhatDoIKnowProps> = ({ isOpen, onClose }) => {
   );
 };
 
-// Skill icon with animation
 interface SkillIconProps {
   icon: React.ReactNode;
   color: string;
