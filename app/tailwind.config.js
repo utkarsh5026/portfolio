@@ -149,7 +149,20 @@ export default {
     {
       pattern:
         /bg-ctp-(blue|lavender|mauve|pink|red|maroon|peach|yellow|green|teal|sapphire|sky)/,
-      variants: ["hover", "focus", "/10", "/20", "/30", "/40", "/50"],
+      variants: [
+        "hover",
+        "focus",
+        "/10",
+        "/20",
+        "/30",
+        "/40",
+        "/50",
+        "/60",
+        "/70",
+        "/80",
+        "/90",
+        "/100",
+      ],
     },
     {
       pattern:
