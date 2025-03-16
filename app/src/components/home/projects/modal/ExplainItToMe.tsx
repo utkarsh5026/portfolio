@@ -7,6 +7,7 @@ import { useProjectTheme } from "../context/ThemeContext";
 import type { Project } from "@/types";
 import type { ProjectTheme } from "../context/ThemeContext";
 import ProgressBar from "@/components/utils/ProgressBar";
+import Cursor from "@/components/utils/Cursor";
 
 /**
  * Highlight technical terms in the explanation text with appropriate colors
@@ -314,9 +315,7 @@ const ExplanationContent: React.FC<ExplanationContentProps> = ({
               <>
                 {processText(displayedText)}
                 {!isComplete && activeParagraph === index && (
-                  <span
-                    className={`inline-block w-1 h-5 bg-ctp-${theme.main} ml-0.5 animate-pulse`}
-                  />
+                  <Cursor color={theme.main} />
                 )}
               </>
             )}
