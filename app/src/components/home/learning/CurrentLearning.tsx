@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Sparkles, BookOpen } from "lucide-react";
 import Section from "@/components/section/Section";
 import { currentLearningTechnologies } from "./data";
 import LearningModal from "./LearningModal";
 import FeaturedLearnings from "./FeaturedLearnings";
+import LearningJourney from "./LearningJourney";
 import type { TechnologyLearning } from "@/types";
 import ParticlesAnimation from "./ParticlesAnimation";
 import "./LearningAnimations.css";
@@ -16,6 +17,7 @@ const CurrentLearning: React.FC = () => {
     null
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isJourneyOpen, setIsJourneyOpen] = useState(false);
 
   const categorizedTech = currentLearningTechnologies.reduce((acc, tech) => {
     if (!acc[tech.category]) {
@@ -73,6 +75,25 @@ const CurrentLearning: React.FC = () => {
             An interactive exploration of technologies I'm currently learning,
             organized by domain and interconnected through shared concepts.
           </motion.p>
+
+          {/* Learning Journey Button */}
+          <motion.button
+            onClick={() => setIsJourneyOpen(true)}
+            className="mt-4 group flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-ctp-lavender/20 to-ctp-blue/20 text-white border border-ctp-lavender/30 hover:border-ctp-lavender/50 shadow-md hover:shadow-lg transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.3 }}
+          >
+            <span className="font-medium">What am I currently learning?</span>
+            <motion.div
+              animate={{ x: [0, 3, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+            >
+              <BookOpen className="w-4 h-4" />
+            </motion.div>
+          </motion.button>
         </div>
 
         <FeaturedLearnings
@@ -84,6 +105,11 @@ const CurrentLearning: React.FC = () => {
           isModalOpen={isModalOpen}
           selectedTech={selectedTech}
           closeModal={closeModal}
+        />
+
+        <LearningJourney
+          isOpen={isJourneyOpen}
+          onClose={() => setIsJourneyOpen(false)}
         />
       </div>
     </Section>
