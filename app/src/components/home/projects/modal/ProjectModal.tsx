@@ -17,6 +17,29 @@ interface ProjectModalProps {
   closeModal: () => void;
 }
 
+/**
+ * ProjectModal Component
+ *
+ * This component displays a modal for a selected project, allowing users to view
+ * detailed information about the project, including its overview, key features,
+ * and technology stack. The modal can be opened or closed based on user interaction.
+ *
+ * Props:
+ * - isModalOpen: boolean - Indicates if the modal is currently open.
+ * - selectedProject: Project | null - The project object containing details to display.
+ * - closeModal: () => void - Function to close the modal.
+ *
+ * State:
+ * - activeTab: Tab - Tracks the currently active tab (overview, features, tech).
+ * - explainOpen: boolean - Controls the visibility of the explanation modal.
+ *
+ * Usage:
+ * <ProjectModal
+ *   isModalOpen={isOpen}
+ *   selectedProject={project}
+ *   closeModal={handleClose}
+ * />
+ */
 const ProjectModal: React.FC<ProjectModalProps> = ({
   isModalOpen,
   selectedProject,
