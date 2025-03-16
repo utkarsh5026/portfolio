@@ -132,9 +132,8 @@ const ExplainItToMe: React.FC<ExplainItToMeProps> = ({ project }) => {
         >
           {/* Vibrant background elements with reduced opacity */}
           <div
-            className={`absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-ctp-${theme.main}/10 to-transparent`}
+            className={`absolute top-0 left-0 w-full h-40 bg-gradient-to-b ${theme.fromColor} to-transparent`}
           />
-
           <div className="relative z-10 p-6 space-y-8">
             {explain.map((paragraph, index) => (
               <motion.div
