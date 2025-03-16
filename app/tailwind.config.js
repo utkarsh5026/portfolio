@@ -145,4 +145,36 @@ export default {
       });
     },
   ],
+  safelist: [
+    {
+      pattern:
+        /bg-ctp-(blue|lavender|mauve|pink|red|maroon|peach|yellow|green|teal|sapphire|sky)/,
+      variants: ["hover", "focus", "/10", "/20", "/30", "/40", "/50"],
+    },
+    {
+      pattern:
+        /border-ctp-(blue|lavender|mauve|pink|red|maroon|peach|yellow|green|teal|sapphire|sky)/,
+      variants: ["hover", "focus", "/10", "/20", "/30", "/40", "/50"],
+    },
+    {
+      pattern:
+        /from-ctp-(blue|lavender|mauve|pink|red|maroon|peach|yellow|green|teal|sapphire|sky)/,
+      variants: ["/10", "/20", "/30", "/40", "/50"],
+    },
+    {
+      pattern:
+        /to-ctp-(blue|lavender|mauve|pink|red|maroon|peach|yellow|green|teal|sapphire|sky)/,
+      variants: ["/10", "/20", "/30", "/40", "/50"],
+    },
+    {
+      pattern:
+        /text-ctp-(blue|lavender|mauve|pink|red|maroon|peach|yellow|green|teal|sapphire|sky)/,
+      variants: ["hover", "focus"],
+    },
+    {
+      pattern:
+        /shadow-ctp-(blue|lavender|mauve|pink|red|maroon|peach|yellow|green|teal|sapphire|sky)/,
+      variants: ["hover", "focus", "/10", "/20", "/30", "/40", "/50"],
+    },
+  ],
 };
