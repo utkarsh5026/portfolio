@@ -3,6 +3,8 @@ import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
 
+type ModalSize = "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "full";
+
 export interface ModalProps {
   /**
    * Controls whether the modal is displayed
@@ -72,7 +74,7 @@ export interface ModalProps {
   /**
    * Optional maximum width for the modal (e.g. 'sm', 'md', 'lg', 'xl', '2xl', 'full')
    */
-  size?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "full";
+  size?: ModalSize;
 
   /**
    * Whether to show the backdrop (default: true)
@@ -90,7 +92,7 @@ export interface ModalProps {
   ariaDescription?: string;
 }
 
-const sizeClasses = {
+const sizeClasses: Record<ModalSize, string> = {
   sm: "max-w-sm",
   md: "max-w-md",
   lg: "max-w-lg",
@@ -99,6 +101,17 @@ const sizeClasses = {
   "3xl": "max-w-3xl",
   "4xl": "max-w-4xl",
   full: "max-w-full",
+};
+
+const sizeWidths: Record<ModalSize, string> = {
+  sm: "384px",
+  md: "448px",
+  lg: "512px",
+  xl: "576px",
+  "2xl": "672px",
+  "3xl": "768px",
+  "4xl": "896px",
+  full: "100%",
 };
 
 const animationClasses = {
@@ -210,6 +223,9 @@ export const Modal: React.FC<ModalProps> = ({
   const modalIDForARIA =
     id ?? `modal-${Math.random().toString(36).slice(2, 9)}`;
 
+  const sizeWidth = sizeWidths[size] || "448px";
+  const sizeClass = sizeClasses[size] || "max-w-md";
+
   const modalContent = (
     <div
       className={cn(
@@ -245,14 +261,19 @@ export const Modal: React.FC<ModalProps> = ({
         className={cn(
           "relative bg-ctp-mantle border border-ctp-surface0 rounded-lg shadow-lg",
           "max-h-[90vh] flex flex-col",
-          sizeClasses[size],
+          sizeClass,
           "m-4",
           animationClasses[animation],
           isAnimating
-            ? "opacity-100 transform-none transition-all duration-600"
-            : "opacity-0 scale-95 transition-all duration-300",
+            ? "opacity-100 transition-all duration-600"
+            : "opacity-0 transition-all duration-300",
           contentClassName
         )}
+        style={{
+          width: sizeWidth,
+          transform: isAnimating ? "scale(1)" : "scale(0.95)",
+          transformOrigin: "center",
+        }}
       >
         {(title || showCloseButton) && (
           <div className="px-6 py-4 border-b border-ctp-surface0 flex items-center justify-between flex-shrink-0">
