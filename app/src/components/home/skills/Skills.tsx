@@ -11,6 +11,7 @@ import SkillCard from "./SkillCard";
 import Framework from "./Framework";
 import SKillCardMoving from "./SkillCardMoving";
 import WhatDoIKnow from "./WhatDoIKnow";
+import { cn } from "@/lib/utils";
 
 const SKILL_ID = "skills";
 
@@ -29,9 +30,6 @@ const Skills: React.FC = () => {
   return (
     <Section id={SKILL_ID} label="Skills" icon="magic">
       <div className="max-w-6xl mx-auto relative flex flex-col gap-8">
-        <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-ctp-mauve/5 blur-3xl animate-pulse-slow"></div>
-        <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-ctp-blue/5 blur-3xl animate-pulse-slow"></div>
-
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -49,11 +47,11 @@ const Skills: React.FC = () => {
 
           <motion.button
             onClick={() => setIsOpen(true)}
-            className="group flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-ctp-mauve/20 to-ctp-blue/20 text-white shadow-md hover:shadow-lg transition-all duration-300 border border-white/10"
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
-            }}
+            className={cn(
+              "group flex items-center gap-2 px-4 py-2 rounded-lg relative z-50",
+              "bg-gradient-to-r from-ctp-mauve/20 to-ctp-blue/20",
+              "text-white shadow-md hover:shadow-lg transition-all duration-300 border border-white/10"
+            )}
             whileTap={{ scale: 0.98 }}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
