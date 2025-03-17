@@ -1,6 +1,7 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChevronRight } from "lucide-react";
 import React from "react";
+import { motion } from "framer-motion";
+import { Card } from "@/components/ui/card";
+import { ChevronRight } from "lucide-react";
 import SkillItem from "./SkillItem";
 
 interface SkillCardProps {
@@ -16,71 +17,97 @@ interface SkillCardProps {
     | "green"
     | "red"
     | "peach";
+  description?: string;
 }
 
-const SkillCardComponent: React.FC<SkillCardProps> = ({
+const colorPairs = {
+  mauve: "blue",
+  blue: "lavender",
+  lavender: "sapphire",
+  sapphire: "sky",
+  teal: "green",
+  green: "teal",
+  red: "peach",
+  peach: "yellow",
+};
+
+const SkillCard: React.FC<SkillCardProps> = ({
   skill,
   icon,
   items,
   accentColor = "lavender",
+  description,
 }) => {
-  // Define complementary colors for gradients
-  const colorPairs = {
-    mauve: "blue",
-    blue: "lavender",
-    lavender: "sapphire",
-    sapphire: "sky",
-    teal: "green",
-    green: "teal",
-    red: "peach",
-    peach: "yellow",
-  };
-
   const secondaryColor = colorPairs[accentColor] || "blue";
 
   return (
-    <div className="skill-card group relative w-full transition-all duration-300 hover:transform hover:-translate-y-1">
-      {/* Background gradient effect */}
-      <div className="absolute inset-0 overflow-hidden rounded-lg">
-        <div
-          className={`absolute inset-0 bg-gradient-to-r from-ctp-${accentColor}/20 to-ctp-${secondaryColor}/20 opacity-50 transform transition-transform duration-300 group-hover:scale-110`}
-        />
-      </div>
+    <motion.div
+      className="skill-card group relative w-full transition-all duration-500 hover:-translate-y-2"
+      whileHover={{
+        boxShadow: `0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)`,
+      }}
+    >
+      <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-ctp-blue/30 to-ctp-lavender/30 opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500"></div>
 
-      {/* Main card */}
-      <Card className="relative bg-ctp-mantle border border-ctp-surface0 hover:border-ctp-surface2 transition-all duration-300 shadow hover:shadow-lg">
-        <CardHeader className="pb-2 sm:pb-4">
-          <CardTitle className="flex items-center gap-3">
-            {/* Icon with accent color */}
-            <div
-              className={`p-2 rounded-lg bg-ctp-${accentColor}/10 flex items-center justify-center`}
+      <Card className="relative bg-ctp-mantle border border-ctp-surface0 hover:border-ctp-surface2 transition-all duration-300 overflow-hidden">
+        <div
+          className={`h-1 w-full bg-gradient-to-r from-ctp-${accentColor} to-ctp-${secondaryColor}`}
+        ></div>
+
+        <div className="p-6">
+          <div className="flex items-start gap-4 mb-4">
+            <motion.div
+              className={`relative p-3 rounded-lg bg-ctp-${accentColor}/10 flex items-center justify-center`}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               {icon || (
-                <ChevronRight
-                  className={`w-4 h-4 sm:w-5 sm:h-5 text-ctp-${accentColor}`}
-                />
+                <ChevronRight className={`w-5 h-5 text-ctp-${accentColor}`} />
+              )}
+            </motion.div>
+
+            {/* Title and description */}
+            <div>
+              <h3 className={`text-xl font-bold text-ctp-${accentColor} mb-1`}>
+                {skill}
+              </h3>
+              {description && (
+                <p className="text-sm text-ctp-subtext0">{description}</p>
               )}
             </div>
+          </div>
 
-            {/* Skill title with gradient */}
-            <span className={`text-lg sm:text-xl font-semibold text-ctp-peach`}>
-              {skill}
-            </span>
-          </CardTitle>
-        </CardHeader>
-
-        <CardContent>
-          <ul className="flex flex-wrap gap-2 sm:gap-3">
+          <motion.ul
+            className="grid grid-cols-2 gap-x-4 gap-y-3 mt-6"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.05,
+                },
+              },
+            }}
+            initial="hidden"
+            animate="visible"
+          >
             {items.map((item) => (
-              <SkillItem key={item} item={item} accentColor={accentColor} />
+              <motion.div
+                key={item}
+                variants={{
+                  hidden: { opacity: 0, y: 10 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                <SkillItem item={item} accentColor={accentColor} />
+              </motion.div>
             ))}
-          </ul>
-        </CardContent>
+          </motion.ul>
+        </div>
       </Card>
-    </div>
+    </motion.div>
   );
 };
-
-const SkillCard = React.memo(SkillCardComponent);
 
 export default SkillCard;
