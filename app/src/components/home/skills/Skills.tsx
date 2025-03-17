@@ -32,7 +32,6 @@ const Skills: React.FC = () => {
         <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-ctp-mauve/5 blur-3xl animate-pulse-slow"></div>
         <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-ctp-blue/5 blur-3xl animate-pulse-slow"></div>
 
-        {/* Header with title and action button */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -61,14 +60,6 @@ const Skills: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <span className="font-medium">What do you know 🤔</span>
-            <motion.div
-              className="relative"
-              animate={{ rotate: [0, 10, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 3 }}
-            >
-              <Sparkles className="w-4 h-4" />
-              <div className="absolute inset-0 rounded-full bg-white opacity-30 animate-ping-slow"></div>
-            </motion.div>
           </motion.button>
         </div>
 

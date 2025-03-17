@@ -48,6 +48,7 @@ const WhatDoIKnow: React.FC<WhatDoIKnowProps> = ({ isOpen, onClose }) => {
     delay: 100,
     humanize: true,
     humanizeFactor: 0.5,
+    autoStart: false,
     onComplete: () => {
       setIsTransitioning(true);
       setTimeout(() => {
@@ -69,18 +70,23 @@ const WhatDoIKnow: React.FC<WhatDoIKnowProps> = ({ isOpen, onClose }) => {
   }, [currentIndex, displayedText]);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) {
+      reset();
+      setCurrentIndex(0);
+      return;
+    }
 
     const startTyping = () => {
       setCurrentIndex(0);
       return setTimeout(() => {
+        console.log("starting");
         start();
       }, 500);
     };
 
     const timeout = startTyping();
     return () => clearTimeout(timeout);
-  }, [start, isOpen]);
+  }, [start, isOpen, reset]);
 
   useEffect(() => {
     return () => {
