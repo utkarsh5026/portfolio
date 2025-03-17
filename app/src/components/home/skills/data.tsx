@@ -16,14 +16,7 @@
  * - tools: DevOps and development tools expertise
  */
 
-export const databases = [
-  "PostgreSQL",
-  "SQLite",
-  "MongoDB",
-  "Redis",
-  "Firebase",
-  "Supabase",
-] as const;
+export const databases = ["PostgreSQL", "SQLite", "MongoDB", "Redis"] as const;
 
 export const languages = [
   "JavaScript",
