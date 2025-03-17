@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import SkillCard from "./SkillCard";
-import Framework from "./Framework";
 import Section from "@/components/section/Section";
 import { databases, languages, frameworks, tools } from "./data";
 import { Languages, Database, Server, Code2, Sparkles } from "lucide-react";
-import SkillCardMovingComponent from "./SkillCardMoving";
 import OutlineNode from "../editor/outline/OutlineNode";
 import "./index.css";
+
+import SkillCard from "./SkillCard";
+import Framework from "./Framework";
+import SKillCardMoving from "./SkillCardMoving";
 import WhatDoIKnow from "./WhatDoIKnow";
 
 const SKILL_ID = "skills";
 
 const Skills: React.FC = () => {
-  // Animation controls
   const controls = useAnimation();
   const [ref, inView] = useInView({
     threshold: 0.1,
@@ -27,43 +27,72 @@ const Skills: React.FC = () => {
   }, [controls, inView]);
 
   return (
-    <Section id={SKILL_ID} label="Skills" icon="magic" matrix={true}>
-      <div className="max-w-6xl mx-auto relative flex flex-col gap-6">
-        {/* Container for the SkillCardMovingComponent with positioned button */}
-        <div className="relative mb-12">
-          {/* Positioned button on the right side above the moving component */}
-          <div className="flex justify-end">
-            <motion.button
-              onClick={() => setIsOpen(true)}
-              className="group flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-ctp-crust to-ctp-mantle text-white shadow-md hover:shadow-lg transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="font-medium">What do you know 🤔</span>
-              <motion.div
-                animate={{ x: [0, 3, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-              >
-                <Sparkles className="w-4 h-4" />
-              </motion.div>
-            </motion.button>
-          </div>
+    <Section id={SKILL_ID} label="Skills" icon="magic">
+      <div className="max-w-6xl mx-auto relative flex flex-col gap-8">
+        <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-ctp-mauve/5 blur-3xl animate-pulse-slow"></div>
+        <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-ctp-blue/5 blur-3xl animate-pulse-slow"></div>
 
-          <div className="mt-6 text-center">
-            <SkillCardMovingComponent />
-          </div>
+        {/* Header with title and action button */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex items-center gap-3"
+          >
+            <div className="bg-gradient-to-r from-ctp-blue to-ctp-lavender p-2 rounded-lg shadow-lg shadow-ctp-blue/10">
+              <Sparkles className="w-5 h-5 text-ctp-base" />
+            </div>
+            <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-ctp-blue via-ctp-lavender to-ctp-mauve">
+              Technical Expertise
+            </h2>
+          </motion.div>
+
+          <motion.button
+            onClick={() => setIsOpen(true)}
+            className="group flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-ctp-mauve/20 to-ctp-blue/20 text-white shadow-md hover:shadow-lg transition-all duration-300 border border-white/10"
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
+            }}
+            whileTap={{ scale: 0.98 }}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <span className="font-medium">What do you know 🤔</span>
+            <motion.div
+              className="relative"
+              animate={{ rotate: [0, 10, -10, 0] }}
+              transition={{ repeat: Infinity, duration: 3 }}
+            >
+              <Sparkles className="w-4 h-4" />
+              <div className="absolute inset-0 rounded-full bg-white opacity-30 animate-ping-slow"></div>
+            </motion.div>
+          </motion.button>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="relative z-10 overflow-hidden rounded-xl shadow-lg"
+        >
+          <SKillCardMoving />
+        </motion.div>
 
         <motion.div
           ref={ref}
           variants={containerVariant}
           initial="hidden"
           animate={controls}
-          className="flex flex-col gap-6"
+          className="flex flex-col gap-8"
         >
-          {/* Skill categories section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <motion.div variants={itemVariant} className="flex flex-col gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              variants={itemVariant}
+              className="flex flex-col gap-8 z-10"
+            >
               <OutlineNode
                 id="skills-programming-languages"
                 label="Programming Languages"
@@ -76,6 +105,7 @@ const Skills: React.FC = () => {
                   icon={<Languages className="w-5 h-5 text-ctp-pink" />}
                   items={[...languages]}
                   accentColor="lavender"
+                  description="Core languages I use to bring ideas to life"
                 />
               </OutlineNode>
 
@@ -90,7 +120,8 @@ const Skills: React.FC = () => {
                   skill="Databases"
                   icon={<Database className="w-5 h-5 text-ctp-lavender" />}
                   items={[...databases]}
-                  accentColor="lavender"
+                  accentColor="blue"
+                  description="Data storage solutions I'm experienced with"
                 />
               </OutlineNode>
 
@@ -106,10 +137,12 @@ const Skills: React.FC = () => {
                   icon={<Server className="w-5 h-5 text-ctp-sky" />}
                   items={[...tools]}
                   accentColor="teal"
+                  description="Tools that power my development workflow"
                 />
               </OutlineNode>
             </motion.div>
-            <motion.div variants={itemVariant} className="mt-4">
+
+            <motion.div variants={itemVariant} className="z-10">
               <OutlineNode
                 id="skills-frameworks"
                 label="Frameworks"
@@ -123,6 +156,7 @@ const Skills: React.FC = () => {
           </div>
         </motion.div>
       </div>
+
       <WhatDoIKnow isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </Section>
   );
@@ -134,6 +168,7 @@ const containerVariant = {
     opacity: 1,
     transition: {
       staggerChildren: 0.2,
+      delayChildren: 0.3,
     },
   },
 };
@@ -144,8 +179,8 @@ const itemVariant = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      ease: "easeOut",
+      duration: 0.8,
+      ease: [0.21, 0.45, 0.27, 0.9],
     },
   },
 };
