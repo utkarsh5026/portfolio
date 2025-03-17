@@ -1,9 +1,20 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 /**
- * Configuration options for the typewriting effect
+ * TypewriterState represents the possible states of the typewriter animation
+ *
+ * - idle: Initial state, not yet started
+ * - typing: Currently adding characters
+ * - pausing: Temporarily paused (user-initiated or auto-pause after completion)
+ * - deleting: Removing characters
+ * - complete: Finished the current cycle
  */
-export interface TypewritingOptions {
+type TypewriterState = "idle" | "typing" | "pausing" | "deleting" | "complete";
+
+/**
+ * Configuration options for the typewriter effect
+ */
+export interface TypewriterOptions {
   /** Text content to type */
   text: string;
 
@@ -35,7 +46,7 @@ export interface TypewritingOptions {
   showCursor?: boolean;
 
   /** Custom cursor element or string */
-  cursor?: string | JSX.Element;
+  cursor?: string | React.ReactNode;
 
   /** Whether to delete the text after typing and repeat */
   repeat?: boolean;
@@ -51,9 +62,9 @@ export interface TypewritingOptions {
 }
 
 /**
- * Return type for the useTypewriting hook
+ * Return type for the useTypewriter hook
  */
-export interface TypewritingResult {
+export interface TypewriterResult {
   /** The current displayed text */
   displayedText: string;
 
@@ -85,36 +96,27 @@ export interface TypewritingResult {
   reset: () => void;
 
   /** Cursor element or string based on configuration */
-  cursor: string | JSX.Element | null;
+  cursor: string | React.ReactNode | null;
 }
 
 /**
- * Animation phases for the typewriter effect
- */
-enum TypewriterPhase {
-  IDLE = "idle",
-  TYPING = "typing",
-  TYPED = "typed",
-  PAUSING = "pausing",
-  DELETING = "deleting",
-  DELETED = "deleted",
-}
-
-/**
- * A flexible hook for creating typewriter effects in React components
+ * A robust hook for creating typewriter effects in React components
+ *
+ * This hook provides a stable and predictable typewriter animation with
+ * features like humanized typing, pausing, and repeating.
  *
  * @param options Configuration options for the typewriting effect
  * @returns Object containing the current state and control functions
  *
  * @example
  * // Basic usage
- * const { displayedText, isComplete } = useTypewriting({
+ * const { displayedText, isComplete } = useTypewriter({
  *   text: "Hello, world!"
  * });
  *
  * @example
  * // Advanced usage with control functions
- * const { displayedText, isTyping, isDeleting, start, startDeleting, pause, reset } = useTypewriting({
+ * const { displayedText, isTyping, isDeleting, start, startDeleting, pause, reset } = useTypewriter({
  *   text: "This text will be typed...",
  *   speed: 50,
  *   delay: 1000,
@@ -123,8 +125,8 @@ enum TypewriterPhase {
  * });
  */
 export const useTypewriting = (
-  options: TypewritingOptions
-): TypewritingResult => {
+  options: TypewriterOptions
+): TypewriterResult => {
   const {
     text,
     speed = 40,
@@ -136,97 +138,193 @@ export const useTypewriting = (
     humanize = false,
     humanizeFactor = 0.5,
     showCursor = true,
-    cursor = "▌",
+    cursor = "|",
     repeat = false,
     deleteDelay = 2000,
     deleteSpeed = 30,
     processText = (text: string) => text,
   } = options;
-
   const [displayedText, setDisplayedText] = useState<string>("");
+  const [state, setState] = useState<TypewriterState>("idle");
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [phase, setPhase] = useState<TypewriterPhase>(TypewriterPhase.IDLE);
   const [shouldStart, setShouldStart] = useState<boolean>(autoStart);
 
-  const isTyping = phase === TypewriterPhase.TYPING;
-  const isDeleting = phase === TypewriterPhase.DELETING;
-  const isComplete =
-    phase === TypewriterPhase.TYPED || phase === TypewriterPhase.PAUSING;
+  const textRef = useRef<string>(text);
 
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
-  const textRef = useRef(text);
+  const timerRefs = useRef<Set<NodeJS.Timeout>>(new Set());
 
-  console.log(phase);
+  console.dir(timerRefs.current);
+  console.log(displayedText, state, currentIndex);
 
   /**
-   * Clear all timeouts
+   * Clear all active timers to avoid memory leaks and race conditions
+   * This ensures that when state changes or component unmounts,
+   * we don't have lingering timeouts
    */
   const clearTimers = useCallback(() => {
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-      timerRef.current = null;
-    }
+    timerRefs.current.forEach((timerId) => clearTimeout(timerId));
+    timerRefs.current.clear();
   }, []);
 
   /**
+   * Helper to safely create timeouts that get tracked for cleanup
+   * @param callback Function to call when timeout expires
+   * @param ms Milliseconds to wait
+   * @returns Timeout ID (also stored internally)
+   */
+  const safeTimeout = useCallback(
+    (callback: () => void, ms: number): NodeJS.Timeout => {
+      const id = setTimeout(() => {
+        // Remove this timer from the set when it runs
+        timerRefs.current.delete(id);
+        callback();
+      }, ms);
+
+      // Track this timer for potential cleanup
+      timerRefs.current.add(id);
+      return id;
+    },
+    []
+  );
+
+  /**
+   * Calculate a realistic typing speed with slight variations
+   * This makes the typing feel more human and less mechanical
+   */
+  const getHumanizedSpeed = useCallback(() => {
+    if (!humanize) return speed;
+
+    // Add randomness to timing, influenced by humanizeFactor
+    const variation = Math.random() * humanizeFactor;
+    const factor = 0.7 + variation;
+    let typingSpeed = Math.round(speed * factor);
+
+    // Add even more delay for certain punctuation marks
+    const nextChar = text[currentIndex];
+    if ([".", ",", "!", "?", ";", ":"].includes(nextChar)) {
+      typingSpeed *= 1.5;
+    }
+
+    return typingSpeed;
+  }, [humanize, humanizeFactor, speed, text, currentIndex]);
+
+  /**
    * Start the typing animation
+   * This can be called manually or automatically based on options
    */
   const start = useCallback(() => {
     clearTimers();
-    setPhase(TypewriterPhase.IDLE);
+    setState("idle");
     setShouldStart(true);
 
     // Start typing after the specified delay
-    timerRef.current = setTimeout(() => {
-      setPhase(TypewriterPhase.TYPING);
+    safeTimeout(() => {
+      setState("typing");
     }, delay);
-  }, [delay, clearTimers]);
+  }, [delay, clearTimers, safeTimeout]);
 
   /**
-   * Start deleting the text
+   * Start the deletion animation
+   * This removes characters one by one
    */
   const startDeleting = useCallback(() => {
     clearTimers();
-    setPhase(TypewriterPhase.DELETING);
+    setState("deleting");
   }, [clearTimers]);
 
   /**
-   * Pause the typing animation
+   * Pause the current animation
+   * Can be resumed later with start() or startDeleting()
    */
   const pause = useCallback(() => {
     clearTimers();
-    setPhase((prevPhase) =>
-      prevPhase === TypewriterPhase.TYPING ||
-      prevPhase === TypewriterPhase.DELETING
-        ? TypewriterPhase.PAUSING
-        : prevPhase
-    );
+    setState("pausing");
   }, [clearTimers]);
 
   /**
-   * Reset and restart the typing animation
+   * Reset the animation to the beginning
+   * Optionally restarts if shouldStart is true
    */
   const reset = useCallback(() => {
     clearTimers();
     setDisplayedText("");
     setCurrentIndex(0);
-    setPhase(TypewriterPhase.IDLE);
+    setState("idle");
 
-    // Restart
-    if (shouldStart) {
-      start();
-    }
-  }, [start, clearTimers, shouldStart]);
+    // Wait for state to settle before potentially restarting
+    // This avoids race conditions with React's state batching
+    safeTimeout(() => {
+      if (shouldStart) {
+        start();
+      }
+    }, 10);
+  }, [clearTimers, shouldStart, start, safeTimeout]);
 
   /**
-   * Handle the deletion of the text
+   * Handle text changes by resetting and restarting
+   * This ensures the animation works properly when text prop changes
    */
-  const handleDeletion = useCallback(() => {
-    if (phase !== TypewriterPhase.DELETING) return;
+  useEffect(() => {
+    if (text !== textRef.current) {
+      textRef.current = text;
+      reset();
+    }
+  }, [text, reset]);
 
-    const handleDeletionComplete = () => {
-      setPhase(TypewriterPhase.DELETED);
-      setCurrentIndex(0);
+  /**
+   * Core typing animation logic
+   * This effect runs whenever the typing state changes
+   */
+  useEffect(() => {
+    if (state !== "typing") return;
+
+    // If we're at the end of the text
+    if (currentIndex >= text.length) {
+      setState("complete");
+
+      if (onComplete) {
+        onComplete();
+      }
+
+      // Set up deletion if repeat mode is enabled
+      if (repeat) {
+        safeTimeout(() => {
+          setState("deleting");
+        }, deleteDelay);
+      }
+
+      return;
+    }
+
+    // Calculate timing for next character
+    const typingSpeed = getHumanizedSpeed();
+
+    // Schedule addition of next character
+    safeTimeout(() => {
+      setDisplayedText((prev) => prev + text[currentIndex]);
+      setCurrentIndex((prev) => prev + 1);
+    }, typingSpeed);
+  }, [
+    state,
+    currentIndex,
+    text,
+    repeat,
+    deleteDelay,
+    getHumanizedSpeed,
+    onComplete,
+    safeTimeout,
+  ]);
+
+  /**
+   * Core deletion animation logic
+   * This effect runs whenever the deleting state changes
+   */
+  useEffect(() => {
+    if (state !== "deleting") return;
+
+    // If all text is deleted
+    if (displayedText.length === 0) {
+      setState("complete");
 
       if (onDelete) {
         onDelete();
@@ -236,130 +334,64 @@ export const useTypewriting = (
         onCycle();
       }
 
+      // Restart if in repeat mode
       if (repeat) {
-        timerRef.current = setTimeout(() => {
-          setPhase(TypewriterPhase.TYPING);
+        safeTimeout(() => {
+          reset();
         }, delay);
       }
-    };
 
-    const continueDeletion = () =>
+      return;
+    }
+
+    // Schedule removal of last character
+    safeTimeout(() => {
       setDisplayedText((prev) => prev.slice(0, -1));
-
-    if (displayedText.length === 0) {
-      handleDeletionComplete();
-      return;
-    }
-
-    timerRef.current = setTimeout(() => {
-      continueDeletion();
     }, deleteSpeed);
-  }, [displayedText, deleteSpeed, delay, onDelete, onCycle, repeat, phase]);
-
-  /**
-   * Handle the typing of the text
-   */
-  const handleTyping = useCallback(() => {
-    if (phase !== TypewriterPhase.TYPING) return;
-
-    const handleTypingComplete = () => {
-      setPhase(TypewriterPhase.TYPED);
-
-      if (onComplete) {
-        onComplete();
-      }
-
-      if (repeat) {
-        timerRef.current = setTimeout(() => {
-          console.log("deleting");
-          setPhase(TypewriterPhase.DELETING);
-        }, deleteDelay);
-      }
-    };
-
-    const humaizeTyping = () => {
-      const randomFactor = 0.7 + Math.random() * 0.6 * humanizeFactor;
-      let typingSpeed = Math.round(speed * randomFactor);
-
-      // Add additional randomness for certain characters
-      const nextChar = text[currentIndex];
-      if ([".", ",", "!", "?"].includes(nextChar)) {
-        typingSpeed *= 1.5;
-      }
-      return typingSpeed;
-    };
-
-    if (currentIndex >= text.length) {
-      handleTypingComplete();
-      return;
-    }
-
-    let typingSpeed = speed;
-    if (humanize) {
-      typingSpeed = humaizeTyping();
-    }
-
-    timerRef.current = setTimeout(() => {
-      setDisplayedText((prev) => prev + text[currentIndex]);
-      setCurrentIndex((prev) => prev + 1);
-    }, typingSpeed);
   }, [
-    currentIndex,
-    deleteDelay,
-    humanize,
-    humanizeFactor,
-    onComplete,
+    state,
+    displayedText,
+    deleteSpeed,
+    delay,
     repeat,
-    speed,
-    phase,
-    text,
+    onDelete,
+    onCycle,
+    reset,
+    safeTimeout,
   ]);
 
-  useEffect(() => {
-    if (text !== textRef.current) {
-      textRef.current = text;
-      reset();
-    }
-  }, [text, reset]);
-
-  useEffect(() => {
-    if (phase === TypewriterPhase.TYPING) {
-      handleTyping();
-    }
-  }, [phase, handleTyping, clearTimers, currentIndex, displayedText]);
-
-  useEffect(() => {
-    if (phase === TypewriterPhase.DELETING) {
-      handleDeletion();
-    }
-  }, [phase, handleDeletion, clearTimers, displayedText]);
-
+  /**
+   * Auto-start effect
+   * This runs on mount and when autoStart changes
+   */
   useEffect(() => {
     if (autoStart) start();
+
+    // Cleanup timers when component unmounts
     return () => {
       clearTimers();
     };
   }, [autoStart, start, clearTimers]);
 
-  useEffect(() => {
-    return () => {
-      clearTimers();
-    };
-  }, [clearTimers]);
-
+  // Calculate progress percentage
   const progress =
     text.length > 0 ? Math.floor((currentIndex / text.length) * 100) : 0;
 
+  // Process text for special formatting if needed
   const processedText = processText(displayedText);
 
-  const shouldShowCursor =
-    showCursor &&
-    (phase === TypewriterPhase.TYPING ||
-      phase === TypewriterPhase.PAUSING ||
-      phase === TypewriterPhase.DELETING);
+  // Determine if cursor should be shown
+  const isTypingOrPausing =
+    state === "typing" || state === "pausing" || state === "deleting";
+  const cursorElement = showCursor && isTypingOrPausing ? cursor : null;
 
-  const cursorElement = shouldShowCursor ? cursor : null;
+  // Determine states for return object
+  const isTyping = state === "typing";
+  const isDeleting = state === "deleting";
+  const isComplete =
+    state === "complete" || (!repeat && displayedText === text);
 
+  // Return the complete result object
   return {
     displayedText,
     processedText,
