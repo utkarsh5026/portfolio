@@ -1,5 +1,5 @@
 import React, { useState, memo } from "react";
-import Cursor from "./Cursor";
+import Cursor from "@/components/utils/Cursor";
 import { useTypewriting } from "@/components/type-write/hooks/use-type-write";
 
 const TYPING_SPEED = 50;
@@ -13,7 +13,7 @@ interface AnimatedTextProps {
 const AnimatedText: React.FC<AnimatedTextProps> = memo(({ statements }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const { displayedText, isTyping, isDeleting } = useTypewriting({
+  const { displayedText } = useTypewriting({
     text: statements[currentIndex],
     speed: TYPING_SPEED,
     deleteSpeed: ERASING_SPEED,
@@ -31,10 +31,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = memo(({ statements }) => {
       <div className="flex items-center gap-2 text-lg sm:text-xl md:text-xl lg:text-2xl">
         <span className="text-[#f38ba8] font-medium text-sm">$</span>
         <span className={`${syntaxClass} text-sm`}>{displayedText}</span>
-        <Cursor
-          isTyping={isTyping || isDeleting}
-          isEmpty={displayedText.length === 0}
-        />
+        <Cursor color={syntaxClass.split("-")[2]} />
       </div>
     </div>
   );
