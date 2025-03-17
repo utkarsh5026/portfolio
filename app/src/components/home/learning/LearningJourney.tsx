@@ -23,8 +23,6 @@ const LearningJourney: React.FC<LearningJourneyProps> = ({
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  console.log(currentIndex, isOpen);
-
   const { displayedText, isTyping, isComplete, progress, start, reset } =
     useTypewriting({
       text:
@@ -99,7 +97,12 @@ const LearningJourney: React.FC<LearningJourneyProps> = ({
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={handleClose} size="4xl">
+    <Modal
+      isOpen={isOpen}
+      onClose={handleClose}
+      size="4xl"
+      contentClassName="p-6"
+    >
       <div className="relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-ctp-blue/10 to-ctp-mauve/5 rounded-full blur-3xl opacity-40 -z-10"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-ctp-green/10 to-ctp-teal/5 rounded-full blur-3xl opacity-40 -z-10"></div>
@@ -150,10 +153,15 @@ const LearningJourney: React.FC<LearningJourneyProps> = ({
           </div>
         </motion.div>
 
-        {/* Learning journey items in a styled scrollable container */}
-        <div
+        {/* Learning journey items in a styled container with dynamic height */}
+        <motion.div
           ref={containerRef}
-          className="space-y-8 max-h-[400px] overflow-y-auto p-6"
+          className="space-y-8 p-6 overflow-hidden"
+          animate={{
+            height: "auto",
+            maxHeight: 500,
+          }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
           style={{ scrollBehavior: "smooth" }}
         >
           {learningJourneyItems.map((item, index) => (
@@ -296,7 +304,7 @@ const LearningJourney: React.FC<LearningJourneyProps> = ({
               )}
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </Modal>
   );
