@@ -17,6 +17,22 @@ type PortfolioStage =
   | "compilation-loading"
   | "portfolio";
 
+/**
+ * PortfolioStory component that manages the different stages of the portfolio experience.
+ *
+ * This component handles the transitions between various stages of the portfolio, including:
+ * - Realization
+ * - Panic
+ * - Chaos Loading
+ * - Compilation
+ * - Chaos
+ * - Compilation Loading
+ * - Final Portfolio
+ *
+ * It also manages the visibility of a "Skip Intro" button based on whether the user has seen the intro before.
+ *
+ * @returns {JSX.Element} The rendered PortfolioStory component.
+ */
 const PortfolioStory: React.FC = () => {
   const [currentStage, setCurrentStage] =
     useState<PortfolioStage>("realization");
@@ -29,25 +45,49 @@ const PortfolioStory: React.FC = () => {
     }
   }, []);
 
+  /**
+   * Handler for when the realization stage is complete.
+   * Transitions to the panic stage.
+   */
   const handleRealizationComplete = () => setCurrentStage("panic");
 
+  /**
+   * Handler for when the panic stage is complete.
+   * Transitions to the chaos loading stage.
+   */
   const handlePanicComplete = () => {
     setCurrentStage("chaos-loading");
   };
 
+  /**
+   * Handler for when the compilation loading stage is complete.
+   * Transitions to the compilation stage.
+   */
   const handleCompilationLoadingComplete = () => {
     setCurrentStage("compilation");
   };
 
+  /**
+   * Handler for when the compilation stage is complete.
+   * Transitions to the final portfolio stage and updates local storage.
+   */
   const handleCompilationComplete = () => {
     setCurrentStage("portfolio");
     localStorage.setItem("hasSeenPortfolioIntro", "true");
   };
 
+  /**
+   * Handler for when the chaos loading stage is complete.
+   * Transitions to the chaos stage.
+   */
   const handleChaosLoadingComplete = () => {
     setCurrentStage("chaos");
   };
 
+  /**
+   * Handler for when the chaos stage is complete.
+   * Transitions to the compilation loading stage.
+   */
   const handleChaosComplete = () => {
     setCurrentStage("compilation-loading");
   };
