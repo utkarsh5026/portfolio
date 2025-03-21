@@ -6,6 +6,18 @@ interface TerminalCommandOutputProps {
   outputBlocks: TerminalOutput[][];
 }
 
+/**
+ * TerminalCommandOutput component renders the output of terminal commands.
+ * It displays a series of output blocks, each containing multiple lines of text.
+ * The output can include both command lines and their respective results.
+ *
+ * @component
+ * @param {Object} props - The properties for the TerminalCommandOutput component.
+ * @param {TerminalOutput[][]} props.outputBlocks - A 2D array of terminal output blocks,
+ * where each block contains an array of lines of output.
+ *
+ * @returns {JSX.Element} The rendered TerminalCommandOutput component.
+ */
 const TerminalCommandOutput: React.FC<TerminalCommandOutputProps> = ({
   outputBlocks,
 }) => {
