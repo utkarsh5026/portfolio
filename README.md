@@ -4,6 +4,10 @@ Hi there! Welcome to my portfolio website repository. This is where I showcase m
 
 🔗 **Check it out live:** [utkarsh5026.github.io/Portfolio](https://utkarsh5026.github.io/)
 
+[Profile Header](./images/profile_header.png)
+[Skills](./images/skills.png)
+[Tech Journey](./images/tech_joourney.png)
+
 ## ✨ Features
 
 - **VS Code-inspired UI**: I've designed the interface to resemble a code editor, complete with syntax highlighting, tabs, and a file explorer
