@@ -4,6 +4,15 @@ interface SideBarProps {
   file: string;
 }
 
+/**
+ * SideBar is a React component that displays a sidebar for a VSCode-like interface.
+ * It renders a navigation menu for file management and displays the currently open file.
+ *
+ * @param {SideBarProps} props - The component props.
+ * @param {string} props.file - The name of the currently open file.
+ *
+ * @returns {React.ReactElement} The SideBar component.
+ */
 const SideBar: React.FC<SideBarProps> = ({ file }) => {
   return (
     <div className="w-60 bg-[#252526] flex-shrink-0 flex flex-col border-r border-[#1a1a1a]">
@@ -12,7 +21,6 @@ const SideBar: React.FC<SideBarProps> = ({ file }) => {
         <span className="text-lg">...</span>
       </div>
 
-      {/* Open editors section */}
       <div className="px-2 py-1">
         <div className="flex items-center justify-between px-2 py-1 text-[#cccccc] text-xs">
           <span>OPEN EDITORS</span>
@@ -44,7 +52,6 @@ const SideBar: React.FC<SideBarProps> = ({ file }) => {
         </div>
       </div>
 
-      {/* Project files */}
       <div className="px-2 py-1">
         <div className="flex items-center justify-between px-2 py-1 text-[#cccccc] text-xs">
           <span>PORTFOLIO</span>
