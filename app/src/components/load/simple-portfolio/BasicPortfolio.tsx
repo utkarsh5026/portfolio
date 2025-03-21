@@ -4,6 +4,24 @@ interface BasicPortfolioProps {
   layoutBroken: boolean;
 }
 
+/**
+ * BasicPortfolio Component
+ *
+ * This component displays a basic portfolio layout with information about the developer, their skills, projects, and contact details.
+ * It includes a conditional class for layout breaking, which can be used to dynamically change the layout based on certain conditions.
+ *
+ * Props:
+ * - layoutBroken: A boolean indicating whether the layout should be broken or not.
+ *
+ * The component includes the following sections:
+ * - A personal section with a photo, name, and profession.
+ * - An about section with a brief description.
+ * - A skills section listing the developer's skills.
+ * - A projects section with brief descriptions of three projects.
+ * - A contact section with email and phone number.
+ *
+ * This component is designed to provide a simple and easy-to-use interface for displaying a developer's portfolio.
+ */
 const BasicPortfolio: React.FC<BasicPortfolioProps> = ({ layoutBroken }) => {
   return (
     <div
