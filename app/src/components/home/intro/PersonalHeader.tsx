@@ -7,20 +7,12 @@ import {
   AnimationControls,
 } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import AnimatedText from "./AnimatedText";
 import TechSkills from "./TechSkills";
 import "./style.css";
 import PersonalTitle from "./PersonalTitle";
 import ProfileButtons from "./ProfileButtons";
 import ProfilePicture from "./ProfilePicture";
-
-const statements = [
-  "I build things for the web",
-  "I love creating user interfaces",
-  "I speak JavaScript, Python & Go",
-  "I want to write code that humans can read",
-  "I am currently exploring databases and LLMs",
-];
+import Terminal from "./Terminal";
 
 const PersonalHeaderComponent: React.FC = () => {
   const [containerRef, inView] = useInView({
@@ -191,50 +183,6 @@ const PersonalHeaderComponent: React.FC = () => {
           <TechSkills />
         </motion.div>
       </div>
-    </motion.div>
-  );
-};
-
-interface TerminalProps {
-  terminalControls: AnimationControls;
-}
-
-const Terminal: React.FC<TerminalProps> = ({ terminalControls }) => {
-  return (
-    <motion.div
-      className="bg-[#11111b]/80 backdrop-blur-md rounded-md border border-[#313244] p-5 shadow-lg hover:shadow-xl transition-all"
-      initial={{ opacity: 0, y: 30 }}
-      animate={terminalControls}
-      whileHover={{
-        borderColor: "#89b4fa",
-        boxShadow: "0 0 20px 0 rgba(137, 180, 250, 0.2)",
-        transition: { duration: 0.3 },
-      }}
-    >
-      <div className="flex items-center mb-3 border-b border-[#313244]/80 pb-2">
-        <motion.div
-          className="w-2 h-2 rounded-full bg-[#f38ba8] mr-2"
-          whileHover={{ scale: 1.5 }}
-        ></motion.div>
-        <motion.div
-          className="w-2 h-2 rounded-full bg-[#f9e2af] mr-2"
-          whileHover={{ scale: 1.5 }}
-        ></motion.div>
-        <motion.div
-          className="w-2 h-2 rounded-full bg-[#a6e3a1] mr-2"
-          whileHover={{ scale: 1.5 }}
-        ></motion.div>
-        <motion.span
-          className="text-xs text-[#6c7086]"
-          animate={{
-            color: ["#6c7086", "#cdd6f4", "#6c7086"],
-          }}
-          transition={{ duration: 4, repeat: Infinity }}
-        >
-          terminal@utkarsh:~$
-        </motion.span>
-      </div>
-      <AnimatedText statements={statements} />
     </motion.div>
   );
 };
