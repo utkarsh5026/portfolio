@@ -1,6 +1,6 @@
 import { Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
 import ProgressBar from "@/components/utils/ProgressBar";
+import "./css/Header.css";
 
 interface HeaderProps {
   currentIndex: number;
@@ -37,21 +37,11 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <>
       <div className="mb-8 flex items-center gap-3">
-        <motion.div
-          animate={{
-            rotate: [0, 5, -5, 5, 0],
-            scale: [1, 1.1, 1, 1.1, 1],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-          }}
-          className="relative"
-        >
-          <div className="rounded-full bg-gradient-to-r from-ctp-blue to-ctp-mauve p-3 text-ctp-base shadow-lg shadow-ctp-mantle">
+        <div className="relative">
+          <div className="sparkle-icon rounded-full bg-gradient-to-r from-ctp-blue to-ctp-mauve p-3 text-ctp-base shadow-lg shadow-ctp-mantle">
             <Sparkles className="h-5 w-5" />
           </div>
-        </motion.div>
+        </div>
 
         <div>
           <h3 className="text-xl font-bold bg-gradient-to-r from-ctp-blue via-ctp-lavender to-ctp-mauve bg-clip-text text-transparent">
