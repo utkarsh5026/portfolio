@@ -3,16 +3,30 @@ import Section from "@/components/section/Section";
 import { experiences } from "./experienceDump";
 import { motion } from "framer-motion";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { FaFileAlt, FaExternalLinkAlt } from "react-icons/fa";
 import TechBadge from "@/components/base/TechBadge";
 import Achievements from "./Achievements";
 import OutlineNode from "../editor/outline/OutlineNode";
+import ExperienceHeader from "./ExperienceHeader";
 
 const EXPERIENCE_ID = "experience";
 
+/**
+ * WorkExperience component displays a list of work experiences for the user.
+ * It allows users to select a specific experience to view detailed information,
+ * including the position held, company name, duration, achievements, and technologies used.
+ *
+ * @returns {JSX.Element} The rendered WorkExperience component.
+ */
 const WorkExperience: React.FC = () => {
+  // State to track the currently selected experience index
   const [selectedExp, setSelectedExp] = useState<number>(0);
 
+  /**
+   * Handles the click event on an experience button.
+   * Updates the selected experience index to display the corresponding details.
+   *
+   * @param {number} index - The index of the experience that was clicked.
+   */
   const handleExperienceClick = (index: number) => {
     setSelectedExp(index);
   };
@@ -82,46 +96,7 @@ const WorkExperience: React.FC = () => {
 
               <div className="p-6">
                 {/* Experience header with position and company */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-ctp-surface0">
-                  <div>
-                    <h3 className="text-xl font-bold text-ctp-lavender mb-1">
-                      {experiences[selectedExp].position}
-                    </h3>
-                    <div className="flex items-center gap-2 text-ctp-subtext0">
-                      <span>at</span>
-                      <a
-                        href={experiences[selectedExp].companyUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-ctp-blue hover:text-ctp-lavender transition-colors flex items-center gap-1"
-                      >
-                        {experiences[selectedExp].company}
-                        <FaExternalLinkAlt className="text-xs opacity-70" />
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="px-3 py-1.5 rounded-full text-xs font-medium bg-ctp-surface0 text-ctp-blue">
-                      {experiences[selectedExp].duration}
-                    </div>
-
-                    {experiences[selectedExp].docsUrl && (
-                      <a
-                        className="flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-full 
-                                  bg-ctp-blue text-ctp-base hover:bg-ctp-lavender 
-                                  transition-colors shadow-md shadow-ctp-blue/20"
-                        href={experiences[selectedExp].docsUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="View detailed experience"
-                      >
-                        <FaFileAlt className="text-xs" />
-                        <span>Details</span>
-                      </a>
-                    )}
-                  </div>
-                </div>
+                <ExperienceHeader selectedExp={selectedExp} />
 
                 {/* Achievements section */}
                 <Achievements selectedExp={selectedExp} />
@@ -134,7 +109,7 @@ const WorkExperience: React.FC = () => {
                 >
                   <div className="mt-6 pt-4 border-t border-ctp-surface0">
                     <div className="font-semibold text-ctp-mauve mb-3 flex items-center">
-                      <span className="w-2 h-2 rounded-full bg-ctp-mauve mr-2"></span>
+                      <span className="w-2 h-2 rounded-full bg-ctp-mauve mr-2"></span>{" "}
                       Technologies
                     </div>
                     <div className="flex flex-wrap gap-2">
