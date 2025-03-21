@@ -18,9 +18,9 @@ interface AnimatedTextProps {
  * @component
  * @param {AnimatedTextProps} props - The properties for the component.
  * @param {string[]} props.statements - An array of strings to be displayed with typewriting effect.
- * 
+ *
  * @returns {JSX.Element} The rendered AnimatedText component.
- * 
+ *
  * @example
  * <AnimatedText statements={['Hello, World!', 'I love coding!', 'Exploring new technologies.']} />
  */
@@ -48,6 +48,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = memo(({ statements }) => {
         <Cursor color={syntaxClass.split("-")[2]} />
       </div>
     </div>
+  );
 });
 
 /**
