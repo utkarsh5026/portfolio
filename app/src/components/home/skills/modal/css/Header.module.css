@@ -1,7 +1,5 @@
 @keyframes sparkle {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: rotate(0deg) scale(1);
     }
 
@@ -18,6 +16,6 @@
     }
 }
 
-.sparkle-icon {
+.sparkleIcon {
     animation: sparkle 5s infinite;
-}
+} 

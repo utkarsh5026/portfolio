@@ -1,6 +1,6 @@
 import { Sparkles } from "lucide-react";
 import ProgressBar from "@/components/utils/ProgressBar";
-import "./css/Header.css";
+import styles from "./css/Header.module.css";
 
 interface HeaderProps {
   currentIndex: number;
@@ -38,7 +38,9 @@ const Header: React.FC<HeaderProps> = ({
     <>
       <div className="mb-8 flex items-center gap-3">
         <div className="relative">
-          <div className="sparkle-icon rounded-full bg-gradient-to-r from-ctp-blue to-ctp-mauve p-3 text-ctp-base shadow-lg shadow-ctp-mantle">
+          <div
+            className={`${styles.sparkleIcon} rounded-full bg-gradient-to-r from-ctp-blue to-ctp-mauve p-3 text-ctp-base shadow-lg shadow-ctp-mantle`}
+          >
             <Sparkles className="h-5 w-5" />
           </div>
         </div>
