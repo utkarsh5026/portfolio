@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Terminal, Database, Code } from "lucide-react";
+import { Terminal, Database, Code } from "lucide-react";
 import { FaDocker, FaReact, FaBrain } from "react-icons/fa";
 import useTypewriting from "@/components/type-write/hooks/use-type-write";
 import Modal from "@/components/utils/Modal";
@@ -8,6 +8,7 @@ import ProgressBar from "@/components/utils/ProgressBar";
 import Cursor from "@/components/utils/Cursor";
 import { skillPoints } from "../data";
 import SkillIcon from "./SkillIcon";
+import Header from "./Header";
 
 const pointIcons = [
   <FaReact className="w-5 h-5" key="code" />,
@@ -36,6 +37,17 @@ interface WhatDoIKnowProps {
   onClose: () => void;
 }
 
+/**
+ * WhatDoIKnow Component
+ *
+ * This component renders a modal that displays a series of skill points with animated typing effect.
+ * It includes a header with progress bar, a scrollable container for skill points, and a cursor animation.
+ * The component manages the state of the current index, typing animation, and transition between skill points.
+ *
+ * Props:
+ * - isOpen: boolean - Indicates if the modal is open.
+ * - onClose: () => void - Function to close the modal.
+ */
 const WhatDoIKnow: React.FC<WhatDoIKnowProps> = ({ isOpen, onClose }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -61,6 +73,13 @@ const WhatDoIKnow: React.FC<WhatDoIKnowProps> = ({ isOpen, onClose }) => {
     },
   });
 
+  /**
+   * Effect to scroll to the current skill point when it becomes visible.
+   *
+   * This effect checks if the current skill point is visible in the scroll container
+   * and scrolls it into view if it is.
+   *
+   */
   useEffect(() => {
     if (paragraphRefs.current[currentIndex]) {
       paragraphRefs.current[currentIndex]?.scrollIntoView({
@@ -70,6 +89,13 @@ const WhatDoIKnow: React.FC<WhatDoIKnowProps> = ({ isOpen, onClose }) => {
     }
   }, [currentIndex, displayedText]);
 
+  /**
+   * Effect to reset the skill points when the modal is closed.
+   *
+   * This effect is triggered when the modal is closed, and it resets the skill points
+   * to their initial state.
+   *
+   */
   useEffect(() => {
     if (!isOpen) {
       reset();
@@ -89,6 +115,13 @@ const WhatDoIKnow: React.FC<WhatDoIKnowProps> = ({ isOpen, onClose }) => {
     return () => clearTimeout(timeout);
   }, [start, isOpen, reset]);
 
+  /**
+   * Effect to reset the skill points when the modal is closed.
+   *
+   * This effect is triggered when the modal is closed, and it resets the skill points
+   * to their initial state.
+   *
+   */
   useEffect(() => {
     return () => {
       reset();
@@ -96,12 +129,18 @@ const WhatDoIKnow: React.FC<WhatDoIKnowProps> = ({ isOpen, onClose }) => {
     };
   }, [reset]);
 
+  /**
+   * Calculates the total length of all skill points up to the current index.
+   */
   const prevPointsLength = useMemo(() => {
-    return skillPoints.slice(0, currentIndex).reduce((acc, point) => {
-      return acc + point.length;
-    }, 0);
+    return skillPoints
+      .slice(0, currentIndex)
+      .reduce((acc, point) => acc + point.length, 0);
   }, [currentIndex]);
 
+  /**
+   * Calculates the progress as a percentage based on the total typed characters.
+   */
   const calculateProgress = () => {
     const totalTypedCharacters = prevPointsLength + displayedText.length;
     return (totalTypedCharacters / totalSkillPointsLength) * 100;
@@ -126,40 +165,11 @@ const WhatDoIKnow: React.FC<WhatDoIKnowProps> = ({ isOpen, onClose }) => {
           {/* Inner content */}
           <div className="relative z-10 p-8">
             {/* Header */}
-            <div className="mb-8 flex items-center gap-3">
-              <motion.div
-                animate={{
-                  rotate: [0, 5, -5, 5, 0],
-                  scale: [1, 1.1, 1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                }}
-                className="relative"
-              >
-                <div className="rounded-full bg-gradient-to-r from-ctp-blue to-ctp-mauve p-3 text-ctp-base shadow-lg shadow-ctp-mantle">
-                  <Sparkles className="h-5 w-5" />
-                </div>
-              </motion.div>
-
-              <div>
-                <h3 className="text-xl font-bold bg-gradient-to-r from-ctp-blue via-ctp-lavender to-ctp-mauve bg-clip-text text-transparent">
-                  My Tech Journey
-                </h3>
-                <p className="text-sm text-ctp-subtext0 mt-1">
-                  Skills & experiences I've gathered along the way
-                </p>
-              </div>
-            </div>
-
-            {/* Skills progress bar */}
-            <div className="mb-8">
-              <ProgressBar
-                color={accentColors[currentIndex]}
-                progress={calculateProgress()}
-              />
-            </div>
+            <Header
+              currentIndex={currentIndex}
+              calculateProgress={calculateProgress}
+              accentColors={accentColors}
+            />
 
             <div
               ref={scrollContainerRef}
