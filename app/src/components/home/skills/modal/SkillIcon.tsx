@@ -1,5 +1,5 @@
 import React from "react";
-import "./css/SkillIcon.css";
+import styles from "./css/SkillIcon.module.css";
 
 interface SkillIconProps {
   icon: React.ReactNode;
@@ -32,30 +32,28 @@ const SkillIcon: React.FC<SkillIconProps> = ({
   isCompleted,
   isTransitioning,
 }) => {
-  const containerClass = `icon-container ${isActive ? "active" : ""} ${
-    isTransitioning ? "transitioning" : ""
+  const containerClass = `${styles.iconContainer} ${
+    isActive ? styles.active : ""
+  } ${isTransitioning ? styles.transitioning : ""}`;
+
+  const iconClass = `${styles.iconInner} ${isActive ? styles.active : ""} ${
+    isTransitioning ? styles.transitioning : ""
   }`;
 
-  const iconClass = `icon-inner ${isActive ? "active" : ""} ${
-    isTransitioning ? "transitioning" : ""
-  }`;
-
-  const bgTextClass = () => {
+  const getBgTextClass = () => {
     if (isActive)
       return `bg-gradient-to-br from-ctp-${color} to-ctp-${color}/80 text-ctp-base shadow-md shadow-ctp-${color}/10`;
-
     if (isCompleted) return `bg-ctp-surface0 text-ctp-${color}`;
     return "bg-ctp-surface0 text-ctp-overlay0";
   };
 
   return (
-    <div className="skill-icon-wrapper relative flex-shrink-0 mt-1">
+    <div className={`${styles.skillIconWrapper} relative flex-shrink-0 mt-1`}>
       {/* Icon container */}
       <div
         className={`
           relative flex h-10 w-10 items-center justify-center 
-          rounded-md ${containerClass}
-          ${bgTextClass()}
+          rounded-md ${containerClass} ${getBgTextClass()}
         `}
       >
         {/* The icon */}
@@ -63,7 +61,9 @@ const SkillIcon: React.FC<SkillIconProps> = ({
 
         {/* Status indicator */}
         {isCompleted && (
-          <div className="status-indicator absolute -bottom-1 -right-1 w-4 h-4 bg-ctp-crust rounded-full flex items-center justify-center border border-ctp-surface0">
+          <div
+            className={`${styles.statusIndicator} absolute -bottom-1 -right-1 w-4 h-4 bg-ctp-crust rounded-full flex items-center justify-center border border-ctp-surface0`}
+          >
             <div className={`w-2.5 h-2.5 rounded-full bg-ctp-${color}/80`}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
