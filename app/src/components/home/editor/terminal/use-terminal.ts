@@ -17,6 +17,19 @@ export type Suggestion = {
   description?: string;
 };
 
+/**
+ * Custom hook for managing terminal functionality in a portfolio website.
+ *
+ * This hook provides a complete terminal experience with features including:
+ * - Command input and execution
+ * - Command history navigation
+ * - Tab completion and suggestions
+ * - Terminal output management
+ * - Font size adjustment
+ * - Terminal maximization/minimization
+ *
+ * @returns {Object} An object containing terminal state and functions
+ */
 export const useTerminal = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState<TerminalOutput[]>([
@@ -61,6 +74,9 @@ export const useTerminal = () => {
   const sectionCommands = useSectionCommands();
   const utilityCommands = useUtilityCommands();
 
+  /**
+   * Combines all available commands into a single object for easy access
+   */
   const availableCommands = useMemo(() => {
     return {
       ...linuxCommands,
@@ -69,6 +85,9 @@ export const useTerminal = () => {
     };
   }, [linuxCommands, sectionCommands, utilityCommands]);
 
+  /**
+   * Creates a help command that displays information about available commands
+   */
   const helpCommand = useMemo(() => {
     return {
       name: "help",
@@ -104,6 +123,9 @@ Type "help [command]" for more information on a specific command.
     } as Command;
   }, [availableCommands]);
 
+  /**
+   * Combines all commands including the help command
+   */
   const allCommands = useMemo(() => {
     return {
       ...availableCommands,
@@ -111,6 +133,10 @@ Type "help [command]" for more information on a specific command.
     };
   }, [availableCommands, helpCommand]);
 
+  /**
+   * Organizes terminal output into logical blocks for display
+   * Each command and its output are grouped together
+   */
   const commandBlocks = useMemo(() => {
     const blocks = [];
     let currentBlock: TerminalOutput[] = [];
@@ -128,14 +154,24 @@ Type "help [command]" for more information on a specific command.
     return blocks;
   }, [output]);
 
+  /**
+   * Focuses the input field when the terminal is mounted
+   */
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
 
+  /**
+   * Handles tab completion for commands and arguments
+   * Provides intelligent suggestions based on current input
+   */
   const handleTabCompletion = useCallback(() => {
     const inputParts = input.trim().split(" ");
     const commandPart = inputParts[0];
 
+    /**
+     * Shows all available commands when input is empty
+     */
     const handleEmptyInput = () => {
       const allCommandSuggestions = Object.entries(allCommands).map(
         ([name, cmd]) => ({
@@ -148,6 +184,9 @@ Type "help [command]" for more information on a specific command.
       setShowSuggestions(true);
     };
 
+    /**
+     * Handles partial command names by showing matching commands
+     */
     const handleUncompletedCommand = () => {
       const matchingCommands = Object.entries(allCommands)
         .filter(([name]) => name.startsWith(commandPart))
@@ -167,6 +206,9 @@ Type "help [command]" for more information on a specific command.
       }
     };
 
+    /**
+     * Provides argument suggestions for commands that support them
+     */
     const findCommandAppropriateCommandArgs = () => {
       // Tab completing an argument
       const command = allCommands[commandPart as keyof typeof allCommands];
@@ -209,6 +251,11 @@ Type "help [command]" for more information on a specific command.
     } else findCommandAppropriateCommandArgs();
   }, [input, allCommands]);
 
+  /**
+   * Sets up keyboard shortcuts for adjusting terminal font size
+   * Ctrl/Cmd + Plus: Increase font size
+   * Ctrl/Cmd + Minus: Decrease font size
+   */
   const listenForFontSizeChange = useCallback(() => {
     const handleKeyboardShortcut = (e: KeyboardEvent) => {
       const isCtrlKey = e.ctrlKey || e.metaKey;
@@ -229,11 +276,20 @@ Type "help [command]" for more information on a specific command.
     return () => window.removeEventListener("keydown", handleKeyboardShortcut);
   }, []);
 
+  /**
+   * Sets up the font size change listener
+   */
   useEffect(() => {
     const clearEvent = listenForFontSizeChange();
     return () => clearEvent();
   }, [listenForFontSizeChange]);
 
+  /**
+   * Handles selection of a suggestion from the suggestion list
+   * Updates the input field with the selected suggestion
+   *
+   * @param {string} suggestion - The selected suggestion text
+   */
   const handleSuggestionSelect = useCallback(
     (suggestion: string) => {
       const inputParts = input.trim().split(" ");
@@ -251,6 +307,12 @@ Type "help [command]" for more information on a specific command.
     [input]
   );
 
+  /**
+   * Handles keyboard navigation in the terminal
+   * Supports tab completion, history navigation, and suggestion selection
+   *
+   * @param {React.KeyboardEvent} e - The keyboard event
+   */
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
       // Handle Tab key for command completion
@@ -326,10 +388,16 @@ Type "help [command]" for more information on a specific command.
     ]
   );
 
+  /**
+   * Focuses the input field when the terminal is clicked
+   */
   const handleTerminalClick = () => {
     inputRef.current?.focus();
   };
 
+  /**
+   * Clears the terminal output and resets to welcome message
+   */
   const clearOutput = useCallback(() => {
     setOutput([
       {
@@ -340,12 +408,25 @@ Type "help [command]" for more information on a specific command.
     ]);
   }, []);
 
+  /**
+   * Handles command submission and execution
+   * Processes the input, executes the command, and updates the terminal output
+   *
+   * @param {React.FormEvent} e - The form submission event
+   */
   const handleSubmit = useCallback(
     (e: React.FormEvent) => {
       e.preventDefault();
       if (!input.trim()) return;
       const commandId = `cmd-${Date.now()}`;
 
+      /**
+       * Adds a new line to the terminal output
+       *
+       * @param {string} text - The text to add
+       * @param {boolean} isCommand - Whether this is a command or output
+       * @param {string} id - Optional unique identifier
+       */
       const addToOutput = (text: string, isCommand: boolean, id?: string) => {
         setOutput((prev) => [
           ...prev,
@@ -353,6 +434,9 @@ Type "help [command]" for more information on a specific command.
         ]);
       };
 
+      /**
+       * Updates the UI state after command submission
+       */
       const updateUi = () => {
         setShowSuggestions(false);
         setHistory((prev) => [...prev, input]);
@@ -360,6 +444,9 @@ Type "help [command]" for more information on a specific command.
         addToOutput(input, true);
       };
 
+      /**
+       * Processes and executes the submitted command
+       */
       const processCommand = () => {
         const [command, ...args] = input.trim().split(" ");
 
@@ -397,16 +484,25 @@ Type "help [command]" for more information on a specific command.
     [input, allCommands, clearOutput]
   );
 
+  /**
+   * Scrolls to the bottom of the terminal when output changes
+   */
   useEffect(() => {
     if (terminalRef.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
   }, [output, commandBlocks]);
 
+  /**
+   * Focuses the input field when output changes
+   */
   useEffect(() => {
     inputRef.current?.focus();
   }, [output.length]);
 
+  /**
+   * Toggles between maximized and normal terminal view
+   */
   const toggleMaximize = () => {
     setIsMaximized(!isMaximized);
   };

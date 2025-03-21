@@ -28,7 +28,6 @@ import TerminalCommandOutput from "./TerminalCommandOutput";
  * 4. Click on suggestions to auto-complete commands.
  * 5. Click the terminal header to maximize or minimize the terminal.
  */
-
 const Terminal: React.FC = () => {
   const { setTerminalOpen } = useEditorContext();
   const [isVisible, setIsVisible] = useState(false);
