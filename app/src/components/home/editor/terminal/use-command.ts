@@ -16,13 +16,35 @@ import {
 } from "@/components/home/skills/data";
 
 export type Command = {
+  /** The name of the command */
   name: string;
+
+  /** A brief description of what the command does */
   description: string;
+
+  /** The usage syntax for the command */
   usage: string;
+
+  /** A function that returns an array of argument options for the command */
   args: (existingArgs?: string[]) => string[];
+
+  /** A function that executes the command with the provided arguments and returns a string result */
   execute: (args: string[]) => string;
 };
 
+/**
+ * Custom hook that provides Linux-like terminal commands for navigation and information display.
+ *
+ * This hook offers familiar commands such as:
+ * - cd: Navigate between different sections of the portfolio
+ * - ls: List available sections or content within sections
+ * - cat: Display details about specific projects, articles, or skills
+ * - clear: Clear the terminal screen
+ * - whoami: Display basic information about the portfolio owner
+ * - pwd: Show the current active section
+ *
+ * @returns {Record<string, Command>} A collection of command objects that can be executed in the terminal
+ */
 export const useLinuxCommands = () => {
   const { setActiveSection, activeSection } = useEditorContext();
   return useMemo(() => {
@@ -184,6 +206,18 @@ Type 'about' for more information or 'contact' to get in touch.
   }, [setActiveSection, activeSection]);
 };
 
+/**
+ * Custom hook that provides content-related commands for exploring portfolio sections.
+ *
+ * This hook offers commands to explore different aspects of the portfolio:
+ * - skills: Browse technical skills by category (languages, frameworks, databases, tools)
+ * - projects: View projects and their details
+ * - articles: Read articles written by the portfolio owner
+ * - contact: Get contact information
+ * - about: Learn more about the portfolio owner's background and experience
+ *
+ * @returns {Record<string, Command>} A collection of command objects for exploring portfolio content
+ */
 export const useSectionCommands = () => {
   return useMemo(() => {
     const skillsCMD = {
@@ -350,6 +384,17 @@ Type 'projects' to see what I've built, or 'skills' to see my technical expertis
   }, []);
 };
 
+/**
+ * Custom hook that provides utility commands for searching and external navigation.
+ *
+ * This hook offers helpful utility commands:
+ * - find: Search across all portfolio content (projects, articles, skills)
+ * - open: Open external links in a new browser tab (GitHub, LinkedIn, Twitter, projects, articles)
+ *
+ * These commands help users discover content and access external resources related to the portfolio.
+ *
+ * @returns {Record<string, Command>} A collection of utility command objects
+ */
 export const useUtilityCommands = () => {
   return useMemo(() => {
     const findCMD = {
@@ -472,6 +517,13 @@ export const useUtilityCommands = () => {
   }, []);
 };
 
+/**
+ * Helper function to join array elements with a delimiter.
+ *
+ * @param {string[]} arr - The array of strings to join
+ * @param {string} delimiter - The delimiter to use between elements (default: ", ")
+ * @returns {string} The joined string
+ */
 const _arrayJoin = (arr: string[], delimiter: string = ", ") => {
   return arr.join(delimiter);
 };
