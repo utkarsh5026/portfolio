@@ -11,6 +11,21 @@ interface ProjectOverviewProps {
   project: Project;
 }
 
+/**
+ * ProjectOverview Component
+ *
+ * This component displays an overview of a project, including its description, technologies used, links, and tags.
+ * It utilizes Framer Motion for animations and is styled with Tailwind CSS.
+ *
+ * Props:
+ * - project (Project): The project object containing details to display.
+ *
+ * State:
+ * - theme (Object): The theme object for the project, obtained from the useProjectTheme hook.
+ *
+ * Usage:
+ * <ProjectOverview project={project} />
+ */
 const ProjectOverview: React.FC<ProjectOverviewProps> = ({ project }) => {
   const { getProjectTheme } = useProjectTheme();
   const theme = getProjectTheme(project);
