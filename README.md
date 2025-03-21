@@ -5,8 +5,14 @@ Hi there! Welcome to my portfolio website repository. This is where I showcase m
 🔗 **Check it out live:** [utkarsh5026.github.io/Portfolio](https://utkarsh5026.github.io/)
 
 ![Profile Header](./images/profile_header.png)
+
 ![Skills](./images/skills.png)
+
 ![Tech Journey](./images/tech_joourney.png)
+
+![Featured Project](./images/featured.png)
+
+![Projects](./images/projects.png)
 
 ## ✨ Features
 
