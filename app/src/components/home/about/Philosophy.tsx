@@ -1,12 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { FaBrain } from "react-icons/fa";
-
-const philosophy = [
-  "I firmly believe in writing clean, maintainable code that follows best practices and industry standards. My approach to development is holistic — focusing not just on functionality but also on performance, security, and accessibility. We first make it work, then make it right, and then make it fast 🚀.",
-  "I value continuous learning and embrace challenges that push me outside my comfort zone.",
-  "I want to write code that feels like writing story where every next line has a meaning and a purpose.",
-];
+import { philosophy } from "./data";
 
 const Philosophy: React.FC = () => {
   return (
