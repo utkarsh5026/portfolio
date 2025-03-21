@@ -68,6 +68,7 @@ const OutlinePanel: React.FC = () => {
 
   /**
    * Handles the click event on an outline item.
+   * When the item is clicked, the item is highlighted and the element is scrolled into view.
    *
    * @param item The outline item that was clicked.
    */
