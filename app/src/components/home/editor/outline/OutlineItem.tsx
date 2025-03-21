@@ -27,6 +27,20 @@ const handleLevelIcon = (level: number) => {
   return <span className="w-2 h-2 rounded-full bg-ctp-teal/70"></span>;
 };
 
+/**
+ * OutlineItemComponent is a React component that represents a single item in the outline structure.
+ * It is designed to be used within the OutlinePanel component and is responsible for rendering the item's details,
+ * including its label, icon, and any child items it may have.
+ *
+ * @param {OutlineItemComponentProps} props - The properties passed to the component.
+ * @param {OutlineItem} props.item - The outline item to be rendered.
+ * @param {Set<string>} props.openItems - A set of IDs of items that are currently open.
+ * @param {(itemId: string) => void} props.toggleItem - A function to toggle the open state of an item.
+ * @param {(itemId: string) => OutlineItem[]} props.getChildren - A function to retrieve the children of an item.
+ * @param {(item: OutlineItem) => void} props.handleItemClick - A function to handle the click event on an item.
+ *
+ * @returns A React component that represents the outline item.
+ */
 const OutlineItemComponent: React.FC<OutlineItemComponentProps> = ({
   item,
   openItems,
@@ -34,6 +48,10 @@ const OutlineItemComponent: React.FC<OutlineItemComponentProps> = ({
   getChildren,
   handleItemClick,
 }: OutlineItemComponentProps) => {
+  /**
+   * Retrieves the children of the current item and checks if there are any.
+   * This is used to determine if the item should be rendered as a collapsible section.
+   */
   const children = getChildren(item.id);
   const hasChildItems = children.length > 0;
 
