@@ -11,9 +11,18 @@ import { IoMdPerson } from "react-icons/io";
 import { cn } from "@/lib/utils";
 import { conversationHistory } from "./content";
 
+/**
+ * SideBar is a React component that displays a collapsible sidebar with various features.
+ * It includes a new chat button, conversation history, user profile, and a toggle button to collapse or expand the sidebar.
+ *
+ * @returns {React.ReactElement} The SideBar component.
+ */
 const SideBar: React.FC = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
+  /**
+   * Toggles the sidebar's collapsed state.
+   */
   const toggleSidebar = () => {
     setSidebarCollapsed(!sidebarCollapsed);
   };
