@@ -10,6 +10,21 @@ interface BrowserActionsProps {
   loadProgress: number;
 }
 
+/**
+ * BrowserActions Component
+ *
+ * This component renders the browser actions bar, including navigation buttons, a URL input field,
+ * and a loading progress bar. It also displays the current URL in a user-friendly format.
+ *
+ * Props:
+ * - isPageLoading: boolean - Indicates if a page is currently loading.
+ * - activeWindow: string | null - The currently active window in the application.
+ * - currentUrl: string - The URL of the currently loaded page.
+ * - loadProgress: number - The progress of the page load (0-100).
+ *
+ * @param {BrowserActionsProps} props - The component props
+ * @returns {React.ReactElement} The rendered browser actions component
+ */
 const BrowserActions: React.FC<BrowserActionsProps> = ({
   isPageLoading,
   activeWindow,
@@ -120,6 +135,15 @@ const BrowserActions: React.FC<BrowserActionsProps> = ({
   );
 };
 
+/**
+ * formatUrl Function
+ *
+ * This function formats a given URL into a more user-friendly format, extracting the domain and
+ * displaying it in a darker text color, while the rest of the URL is displayed in a lighter text color.
+ *
+ * @param {string} url - The URL to be formatted.
+ * @returns {React.ReactElement} The formatted URL component.
+ */
 const formatUrl = (url: string) => {
   // Extract domain from URL
   const domainMatch = /^(?:https?:\/\/)?([^/]+)/i.exec(url);
