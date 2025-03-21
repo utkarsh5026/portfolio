@@ -42,6 +42,17 @@ const itemVariants = {
   },
 };
 
+/**
+ * Achievements component displays a list of achievements and responsibilities
+ * for a selected experience. Each achievement is presented with an icon, title,
+ * and description, organized in a visually appealing manner.
+ *
+ * @param {AchievementsProps} props - The properties for the Achievements component.
+ * @param {number} props.selectedExp - The index of the selected experience from
+ * the experiences array, which determines which achievements to display.
+ *
+ * @returns {JSX.Element} The rendered Achievements component.
+ */
 const Achievements: React.FC<AchievementsProps> = ({ selectedExp }) => {
   return (
     <OutlineNode
@@ -51,7 +62,7 @@ const Achievements: React.FC<AchievementsProps> = ({ selectedExp }) => {
       parentId="experience"
     >
       <div className="font-semibold text-ctp-mauve mb-6 flex items-center">
-        <span className="w-2 h-2 rounded-full bg-ctp-mauve mr-2"></span>
+        <span className="w-2 h-2 rounded-full bg-ctp-mauve mr-2"></span>{" "}
         Achievements & Responsibilities
       </div>
 
