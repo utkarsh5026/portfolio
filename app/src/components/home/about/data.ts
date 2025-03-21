@@ -32,3 +32,11 @@ export const background = [
   "I enjoy working on both front-end interfaces and back-end systems, and I'm always looking to improve my skills while creating useful applications that help people accomplish their goals.",
   "I'm a quick learner and always eager to take on new challenges. Let's connect and see how we can work together to create something amazing ❤️!",
 ];
+
+export const focusAreas = [
+  "Advanced microservices architectures with Kubernetes",
+  "Exploring LLM applications in web development",
+  "Performance optimization techniques for modern web apps",
+  "Mastering database design and optimization strategies",
+  "Exploring Web RTC and streaming technologies",
+] as const;

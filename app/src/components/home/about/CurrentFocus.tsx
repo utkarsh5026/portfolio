@@ -1,14 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { GiBullseye } from "react-icons/gi";
-
-const focusAreas = [
-  "Advanced microservices architectures with Kubernetes",
-  "Exploring LLM applications in web development",
-  "Performance optimization techniques for modern web apps",
-  "Mastering database design and optimization strategies",
-  "Exploring Web RTC and streaming technologies",
-] as const;
+import { focusAreas } from "./data";
 
 const CurrentFocus: React.FC = () => {
   return (
