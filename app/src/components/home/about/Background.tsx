@@ -1,13 +1,7 @@
 import { motion } from "framer-motion";
 import { FaCode } from "react-icons/fa";
 import React from "react";
-
-const background = [
-  "Hi there! I'm Utkarsh Priyadarshi, a Full-Stack Developer and DevOps Engineer who loves solving problems through code.",
-  "My journey began with simple HTML pages during college, and over time I've been fortunate to learn and work with various web technologies and cloud platforms.",
-  "I enjoy working on both front-end interfaces and back-end systems, and I'm always looking to improve my skills while creating useful applications that help people accomplish their goals.",
-  "I'm a quick learner and always eager to take on new challenges. Let's connect and see how we can work together to create something amazing ❤️!",
-];
+import { background } from "./data";
 
 const Background: React.FC = () => {
   return (
