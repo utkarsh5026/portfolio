@@ -8,12 +8,12 @@ const TourFloatingButton: React.FC = () => {
 
   return (
     <button
-      className="fixed bottom-6 right-6 z-[9990] flex items-center gap-2 p-2.5 bg-ctp-lavender text-ctp-surface0 border-none rounded-full font-mono text-sm font-medium shadow-lg cursor-pointer  ease-in-out tour-floating-button"
+      className="fixed bottom-6 right-6 z-[9990] flex items-center gap-2 p-2 bg-ctp-yellow text-ctp-base border-2 border-ctp-lavender rounded-full font-mono text-sm font-bold shadow-xl hover:scale-105 transition-all duration-300 ease-in-out animate-pulse tour-floating-button"
       onClick={startTour}
       disabled={active}
       aria-label="Take a guided tour"
     >
-      <FaLightbulb className="text-xl" />
+      <FaLightbulb className="text-2xl" />
       <span className="tour-button-text">Take a Tour</span>
     </button>
   );
