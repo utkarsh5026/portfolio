@@ -107,8 +107,6 @@
     }
 }
 
-
-
 @keyframes sparkle {
     0% {
         opacity: 0.2;
@@ -193,23 +191,23 @@
 }
 
 /* Animation class styles */
-.rocket-vibrate {
+.rocketVibrate {
     animation: rocketVibrate 0.15s infinite alternate;
 }
 
-.woosh-left {
+.wooshLeft {
     animation: wooshLeft 0.7s forwards;
 }
 
-.woosh-right {
+.wooshRight {
     animation: wooshRight 0.7s forwards;
 }
 
-.flame-expand {
+.flameExpand {
     animation: flameExpand 0.5s infinite alternate;
 }
 
-.flame-pulse {
+.flamePulse {
     animation: flamePulse 0.3s infinite alternate;
 }
 
@@ -229,6 +227,18 @@
     animation: sparkle 1s infinite;
 }
 
-.particle-woosh {
+.particleWoosh {
     animation: particleWoosh 1s infinite;
+}
+
+.fadeInOut {
+    animation: fadeInOut 3s infinite;
+}
+
+.floatUpDown {
+    animation: floatUpDown 2s infinite alternate ease-in-out;
+}
+
+.glowPulse {
+    animation: glowPulse 2s infinite alternate;
 }

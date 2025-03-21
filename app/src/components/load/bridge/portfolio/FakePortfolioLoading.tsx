@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { cn } from "@/lib/utils";
-import "./TransitionEffects.css";
+import styles from "./FakePortfolio.module.css";
 
 const loadingMessages = [
   "Preparing portfolio...",
@@ -11,7 +11,7 @@ const loadingMessages = [
   "Almost ready...",
 ];
 
-interface DarkPortfolioLoadingProps {
+interface FakePortfolioLoadingProps {
   onComplete: () => void;
   duration: number;
 }
@@ -20,7 +20,7 @@ interface DarkPortfolioLoadingProps {
  * An enhanced dark-themed loading component that displays a professional portfolio
  * loading screen with improved animations and a rocket launch effect
  */
-const DarkPortfolioLoading: React.FC<DarkPortfolioLoadingProps> = React.memo(
+const FakePortfolioLoading: React.FC<FakePortfolioLoadingProps> = React.memo(
   ({ onComplete, duration }) => {
     const [progress, setProgress] = useState(0);
     const [loadingText, setLoadingText] = useState("Preparing portfolio...");
@@ -82,9 +82,15 @@ const DarkPortfolioLoading: React.FC<DarkPortfolioLoadingProps> = React.memo(
         {/* Woosh effect elements that move across the screen */}
         {progress > 50 && (
           <>
-            <div className="absolute w-20 h-3 bg-cyan-500 opacity-30 rounded-full blur-md woosh-left top-[30%] left-[60%]"></div>
-            <div className="absolute w-32 h-2 bg-purple-500 opacity-20 rounded-full blur-md woosh-right top-[40%] right-[55%]"></div>
-            <div className="absolute w-16 h-4 bg-blue-500 opacity-25 rounded-full blur-md woosh-left top-[65%] left-[40%]"></div>
+            <div
+              className={`absolute w-20 h-3 bg-cyan-500 opacity-30 rounded-full blur-md ${styles.wooshLeft} top-[30%] left-[60%]`}
+            ></div>
+            <div
+              className={`absolute w-32 h-2 bg-purple-500 opacity-20 rounded-full blur-md ${styles.wooshRight} top-[40%] right-[55%]`}
+            ></div>
+            <div
+              className={`absolute w-16 h-4 bg-blue-500 opacity-25 rounded-full blur-md ${styles.wooshLeft} top-[65%] left-[40%]`}
+            ></div>
           </>
         )}
 
@@ -137,7 +143,7 @@ const DarkPortfolioLoading: React.FC<DarkPortfolioLoadingProps> = React.memo(
         <div className="relative h-32 w-32 mb-4">
           <div
             className={`absolute left-1/2 transform -translate-x-1/2 transition-all duration-1000 ease-out 
-             ${!rocketLaunched ? "rocket-vibrate" : ""}`}
+             ${!rocketLaunched ? styles.rocketVibrate : ""}`}
             style={{
               transitionTimingFunction: rocketLaunched
                 ? "cubic-bezier(0.5, 0, 0.75, 0)"
@@ -159,18 +165,16 @@ const DarkPortfolioLoading: React.FC<DarkPortfolioLoadingProps> = React.memo(
               >
                 {/* Animated background */}
                 <div
-                  className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 opacity-0"
+                  className={`absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 opacity-0 ${styles.fadeInOut}`}
                   style={{
-                    animation: "fadeInOut 3s infinite",
                     animationDelay: `${i * 0.7}s`,
                   }}
                 ></div>
 
                 {/* Inner content with floating effect */}
                 <div
-                  className="w-full h-full flex items-center justify-center relative"
+                  className={`w-full h-full flex items-center justify-center relative ${styles.floatUpDown}`}
                   style={{
-                    animation: "floatUpDown 2s infinite alternate ease-in-out",
                     animationDelay: `${i * 0.3}s`,
                   }}
                 >
@@ -204,9 +208,8 @@ const DarkPortfolioLoading: React.FC<DarkPortfolioLoadingProps> = React.memo(
                   )}
                 </div>
                 <div
-                  className="absolute inset-0 border border-cyan-500 rounded-md opacity-0"
+                  className={`absolute inset-0 border border-cyan-500 rounded-md opacity-0 ${styles.glowPulse}`}
                   style={{
-                    animation: "glowPulse 2s infinite alternate",
                     animationDelay: `${i * 0.5}s`,
                   }}
                 ></div>
@@ -236,4 +239,4 @@ const DarkPortfolioLoading: React.FC<DarkPortfolioLoadingProps> = React.memo(
   }
 );
 
-export default DarkPortfolioLoading;
+export default FakePortfolioLoading;
