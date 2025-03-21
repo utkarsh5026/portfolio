@@ -10,7 +10,7 @@ import "./index.css";
 import SkillCard from "./SkillCard";
 import Framework from "./framework/Framework";
 import SKillCardMoving from "./SkillCardMoving";
-import WhatDoIKnow from "./WhatDoIKnow";
+import WhatDoIKnow from "./modal/WhatDoIKnow";
 import { cn } from "@/lib/utils";
 
 const SKILL_ID = "skills";
