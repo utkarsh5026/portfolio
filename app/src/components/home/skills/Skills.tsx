@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Section from "@/components/section/Section";
-import { databases, languages, frameworks, tools } from "./data";
+import { databases, languages, tools } from "./data";
 import { Languages, Database, Server, Code2, Sparkles } from "lucide-react";
 import OutlineNode from "../editor/outline/OutlineNode";
 import "./index.css";
 
 import SkillCard from "./SkillCard";
-import Framework from "./Framework";
+import Framework from "./framework/Framework";
 import SKillCardMoving from "./SkillCardMoving";
 import WhatDoIKnow from "./WhatDoIKnow";
 import { cn } from "@/lib/utils";
@@ -139,7 +139,7 @@ const Skills: React.FC = () => {
                 parentId={SKILL_ID}
                 icon={<Code2 className="w-3 h-3 text-ctp-peach" />}
               >
-                <Framework frameworks={frameworks} />
+                <Framework />
               </OutlineNode>
             </motion.div>
           </div>
