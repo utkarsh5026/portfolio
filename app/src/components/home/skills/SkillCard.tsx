@@ -31,6 +31,22 @@ const colorPairs = {
   peach: "yellow",
 };
 
+/**
+ * SkillCard Component
+ *
+ * This component renders a card for a specific skill, including the skill title, icon, description, and a list of items.
+ * It utilizes Framer Motion for animations, providing a smooth entrance effect.
+ *
+ * Props:
+ * - skill: string - The title of the skill.
+ * - icon: React.ReactNode - The icon of the skill.
+ * - items: string[] - The list of items related to the skill.
+ * - accentColor: string - The accent color of the skill card. Defaults to "lavender".
+ * - description: string - The description of the skill.
+ *
+ * @param {SkillCardProps} props - The component props
+ * @returns {React.ReactElement} The rendered skill card component
+ */
 const SkillCard: React.FC<SkillCardProps> = ({
   skill,
   icon,
