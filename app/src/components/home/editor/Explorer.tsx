@@ -6,6 +6,27 @@ import { useEditorContext } from "./context/explorerContext";
 import Logo from "@/components/home/appbar/Logo";
 import OutlinePanel from "./outline/OutlinePanel";
 
+/**
+ * Explorer Component
+ *
+ * The Explorer component serves as a navigation panel within the editor interface.
+ * It allows users to browse through their project files and manage their workspace effectively.
+ *
+ * Key Features:
+ * - Displays a list of files in the current project, allowing users to select and view different sections.
+ * - Highlights the active section to provide visual feedback on the current selection.
+ * - Includes a logo at the top for branding purposes.
+ * - Provides an outline panel for additional navigation or organizational features.
+ * - Contains a section for extensions, where users can access settings related to themes and preferences.
+ *
+ * Usage:
+ * - The component utilizes the `useEditorContext` hook to access the current state of the editor, including the active section,
+ *   the list of files, and whether the mobile menu is open.
+ * - Users can click on a file button to set the active section, which updates the main content area of the editor.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered Explorer component.
+ */
 const Explorer: React.FC = () => {
   const { activeSection, setActiveSection, files, mobileMenuOpen } =
     useEditorContext();
