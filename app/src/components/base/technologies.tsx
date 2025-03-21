@@ -34,6 +34,10 @@ import {
   SiPandas,
   SiCss3,
   SiSvg,
+  SiLangchain,
+  SiSqlalchemy,
+  SiPoetry,
+  SiRich,
 } from "react-icons/si";
 import { FaAws, FaLinux, FaNode } from "react-icons/fa";
 import { VscTerminalPowershell } from "react-icons/vsc";
@@ -175,5 +179,25 @@ export const technologies: Record<string, Technology> = {
     name: "SVG",
     aboutLink: "https://www.w3.org/Graphics/SVG/",
     icon: <SiSvg />,
+  },
+  langchain: {
+    name: "LangChain",
+    aboutLink: "https://www.langchain.com/",
+    icon: <SiLangchain />,
+  },
+  sqlalchemy: {
+    name: "SQLAlchemy",
+    aboutLink: "https://www.sqlalchemy.org/",
+    icon: <SiSqlalchemy />,
+  },
+  poetry: {
+    name: "Poetry",
+    aboutLink: "https://python-poetry.org/",
+    icon: <SiPoetry className="text-[#3776AB]" />,
+  },
+  rich: {
+    name: "Rich",
+    aboutLink: "https://rich.readthedocs.io/en/stable/",
+    icon: <SiRich className="text-ctp-mauve" />,
   },
 };

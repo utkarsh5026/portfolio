@@ -158,6 +158,103 @@ const mayonation = {
   },
 };
 
+const gep = {
+  name: "GEP: AI-Powered Code Search",
+  description:
+    "An intelligent code search and analysis tool that combines semantic understanding with traditional search capabilities. GEP uses vector embeddings and large language models to understand code at a conceptual level, enabling developers to search their codebase using natural language queries and receive contextually relevant results with detailed explanations.",
+  githubLink: "https://github.com/utkarsh5026/gep",
+  technologies: [
+    { name: "Python", aboutLink: "https://www.python.org/" },
+    { name: "FastAPI", aboutLink: "https://fastapi.tiangolo.com/" },
+    { name: "LangChain", aboutLink: "https://langchain.com/" },
+    { name: "SQLAlchemy", aboutLink: "https://www.sqlalchemy.org/" },
+    { name: "Rich", aboutLink: "https://github.com/Textualize/rich" },
+    { name: "Poetry", aboutLink: "https://python-poetry.org/" },
+    { name: "Docker", aboutLink: "https://www.docker.com/" },
+  ],
+  features: [
+    "Natural language code search using semantic understanding",
+    "Vector embeddings for efficient similarity search across the codebase",
+    "LLM-powered code analysis and explanation",
+    "File change monitoring with automatic indexing",
+    "Integration with multiple vector stores (FAISS, Chroma)",
+    "Support for multiple embedding and LLM providers",
+    "Git repository integration for commit history analysis",
+    "CLI interface with rich formatting and interactive components",
+    "Incremental indexing to efficiently handle large codebases",
+    "Docker support for easy deployment and containerization",
+  ],
+  techStack: {
+    "Core Framework": [
+      "Python 3.12 - For robust backend processing and language features",
+      "LangChain - For orchestrating LLMs and embeddings in the workflow",
+      "FAISS - For high-performance vector similarity search",
+      "FastAPI - For the API server with automatic OpenAPI documentation",
+      "SQLAlchemy - For database interactions and ORM functionality",
+    ],
+    "AI & Machine Learning": [
+      "OpenAI API - For embedding generation and code analysis",
+      "Vector embeddings - For semantic code representation",
+      "Multiple LLM support - Including GPT-4o, Claude, Gemini models",
+      "Custom prompt engineering - For specialized code analysis tasks",
+      "Batched processing - For efficient handling of large codebases",
+    ],
+    "Search & Indexing": [
+      "Incremental indexing - For efficiently updating the vector database",
+      "File change detection - Using watchdog for real-time updates",
+      "Multiple vector store support - Including FAISS, Chroma, and extensible design",
+      "Gitignore integration - For respecting project ignore patterns",
+      "Chunking strategies - For appropriate code segmentation by language",
+    ],
+    "Git Integration": [
+      "GitPython - For repository analysis and interaction",
+      "Commit history analysis - For understanding code evolution",
+      "Diff processing - For tracking and analyzing code changes",
+      "Branch management - For working with different code versions",
+    ],
+    "CLI & Interface": [
+      "Rich - For beautiful terminal output with colors and formatting",
+      "Rich Click - For enhanced command-line interfaces",
+      "Async streaming - For real-time search results and analysis",
+      "Progress indicators - For long-running operations feedback",
+      "Interactive components - For improved user experience",
+    ],
+    "Project Structure": [
+      "Modular architecture - For maintainability and extensibility",
+      "Command pattern - For CLI command organization",
+      "Strategy pattern - For interchangeable embedding and LLM providers",
+      "Dependency injection - For flexible component configuration",
+      "Async/await throughout - For non-blocking operations",
+    ],
+    DevOps: [
+      "Poetry - For dependency management and packaging",
+      "Docker - For containerization and deployment",
+      "Configuration management - For flexible environment setup",
+      "Cross-platform support - For Windows, macOS, and Linux",
+      "Executable builds - Using PyInstaller for standalone distribution",
+    ],
+  },
+  explain: [
+    "I built GEP to solve a frustrating problem I encountered regularly: searching through large codebases. Traditional tools like grep are great for exact pattern matching, but they fall short when you're trying to find code by concept or functionality, especially in unfamiliar codebases.",
+
+    "What makes GEP different is its ability to understand code semantically. Instead of just matching text patterns, it uses vector embeddings to understand the meaning and purpose of code. This means you can search with natural language like 'how does the authentication system work?' and get relevant results even if those exact words don't appear in the code.",
+
+    "The architecture combines several advanced technologies: code is processed and embedded using language models, stored in vector databases for efficient similarity search, and then retrieved and analyzed when needed. I implemented file monitoring to keep the index up-to-date as code changes, and integrated with Git to provide context around when and why code evolved.",
+
+    "One of the most satisfying aspects was building the semantic search capability. By generating embeddings for code chunks and queries, the tool can find conceptually similar code regardless of specific syntax or naming conventions. The challenge was balancing embedding granularity - too small and you lose context, too large and you lose precision.",
+
+    "The project taught me a lot about working with vector databases, prompt engineering for code analysis, and building maintainable CLI applications. I'm particularly proud of the modular architecture that allows for different embedding models, LLMs, and vector stores to be swapped out as technology evolves.",
+  ],
+  highlights: [
+    "Reduces time to understand unfamiliar codebases by enabling semantic search",
+    "Processes and indexes code incrementally to handle repositories of any size",
+    "Supports multiple AI providers to adapt to different needs and cost considerations",
+    "Maintains context of code changes through Git integration",
+    "Implements an extensible architecture that can evolve with AI technology",
+  ],
+  tags: ["Python", "AI", "Vector Search", "Code Analysis", "LLM", "CLI"],
+};
+
 const cope = {
   name: "Cope",
   description:
@@ -186,30 +283,30 @@ const cope = {
   techStack: {
     "Language & Runtime": [
       "Go 1.22+ - For performance and strong standard library support",
-      "Zero external dependencies - Using only standard library for stability and security"
+      "Zero external dependencies - Using only standard library for stability and security",
     ],
     "Text Processing": [
       "Go regexp package - For pattern matching and regular expressions",
       "Bufio Scanner - For efficient line-by-line file processing",
-      "UTF-8 Support - For handling international character sets"
+      "UTF-8 Support - For handling international character sets",
     ],
     "Command-Line Interface": [
       "Flag package - For parsing command-line arguments and options",
       "Standard input/output streams - For Unix-style piping capability",
-      "Error handling with exit codes - For proper CLI application behavior"
+      "Error handling with exit codes - For proper CLI application behavior",
     ],
     "Development Methodology": [
       "Test-Driven Development - Writing tests before implementation",
       "Benchmarking - Performance testing and optimization",
       "Go tooling - Using go fmt, go vet, and go test",
-      "Continuous Integration - Using GitHub Actions for automated testing"
+      "Continuous Integration - Using GitHub Actions for automated testing",
     ],
     "Design Patterns": [
       "Strategy Pattern - For different search algorithms",
       "Factory Pattern - For creating appropriate searchers based on input",
-      "Command Pattern - For encapsulating search operations"
-    ]
-  }
+      "Command Pattern - For encapsulating search operations",
+    ],
+  },
 };
 
 const current = {
@@ -243,38 +340,38 @@ const current = {
   techStack: {
     "Language & Runtime": [
       "Go 1.20+ - Leveraging concurrency features with goroutines and channels",
-      "Standard Library - Using net, io, and crypto packages for core functionality"
+      "Standard Library - Using net, io, and crypto packages for core functionality",
     ],
     "BitTorrent Protocol": [
       "Custom Bencode Parser - Implemented from scratch for .torrent file decoding",
       "Peer Wire Protocol - Implementation of the BitTorrent peer communication protocol",
       "Tracker Communication - HTTP and UDP tracker protocol support",
-      "Distributed Hash Table (DHT) - For tracker-less operation"
+      "Distributed Hash Table (DHT) - For tracker-less operation",
     ],
-    "Networking": [
+    Networking: [
       "TCP Connection Pool - Managing multiple peer connections efficiently",
       "Handshake Protocol - Implementing BitTorrent peer handshake",
       "Message Framing - Handling BitTorrent protocol message boundaries",
-      "Rate Limiting - Controlling upload and download bandwidth"
+      "Rate Limiting - Controlling upload and download bandwidth",
     ],
-    "Concurrency": [
+    Concurrency: [
       "Goroutines - For handling multiple simultaneous downloads",
       "Channels - For safe communication between concurrent processes",
       "Mutexes - For protecting shared state",
-      "Context - For managing lifetime of operations"
+      "Context - For managing lifetime of operations",
     ],
     "Data Management": [
       "Piece Selection Algorithm - For optimizing download speed and availability",
       "SHA-1 Hashing - For verifying integrity of downloaded pieces",
       "File Management - Handling disk I/O and file assembly",
-      "Buffer Pool - Reusing memory buffers for improved performance"
+      "Buffer Pool - Reusing memory buffers for improved performance",
     ],
     "CLI Interface": [
       "Progress Display - Real-time download statistics and progress bars",
       "Configuration - Command-line options and configuration files",
-      "Logging - Different verbosity levels for debugging"
-    ]
-  }
+      "Logging - Different verbosity levels for debugging",
+    ],
+  },
 };
 
 const pauth = {
@@ -308,42 +405,42 @@ const pauth = {
     "Language & Features": [
       "Python 3.10+ - Leveraging modern Python features",
       "Type Hints - For better developer experience and static analysis",
-      "Async support - For non-blocking OAuth operations"
+      "Async support - For non-blocking OAuth operations",
     ],
     "OAuth Implementation": [
       "OAuth 2.0 - Full implementation of the OAuth 2.0 specification",
       "PKCE Extension - Proof Key for Code Exchange for enhanced security",
       "JWT Handling - For token validation and parsing",
-      "Auto Token Refresh - Background token refresh before expiration"
+      "Auto Token Refresh - Background token refresh before expiration",
     ],
     "Framework Integration": [
       "Flask Integration - Middleware and extensions for Flask applications",
       "Django Integration - App and middleware for Django applications",
       "Framework-agnostic Core - Can be used with any Python web framework",
-      "Starlette/FastAPI Support - Async-compatible middleware"
+      "Starlette/FastAPI Support - Async-compatible middleware",
     ],
     "Provider Support": [
       "Multiple OAuth Providers - Google, GitHub, Facebook, Twitter, Microsoft",
       "Provider Abstraction - Consistent API across different providers",
-      "Custom Provider Support - Extensible for any OAuth 2.0 compliant service"
+      "Custom Provider Support - Extensible for any OAuth 2.0 compliant service",
     ],
     "Security Features": [
       "State Parameter Validation - Protection against CSRF attacks",
       "Token Encryption - Secure storage of sensitive tokens",
       "Scope Management - Fine-grained control over authorization scopes",
-      "HTTPS Enforcement - Ensuring secure communication"
+      "HTTPS Enforcement - Ensuring secure communication",
     ],
     "Storage & Persistence": [
       "Multiple Storage Backends - Redis, SQL, Memory, or custom implementations",
       "Session Integration - Works with various session backends",
-      "Cookie Security - HTTP-only, SameSite, and Secure flags"
+      "Cookie Security - HTTP-only, SameSite, and Secure flags",
     ],
     "Development Tools": [
       "Comprehensive Testing - Unit and integration tests",
       "Documentation - Extensive usage examples and API reference",
-      "Type Stubs - For IDE autocompletion and type checking"
-    ]
-  }
+      "Type Stubs - For IDE autocompletion and type checking",
+    ],
+  },
 };
 
 const reducer = {
@@ -372,44 +469,44 @@ const reducer = {
     "Language & Core": [
       "TypeScript - For type-safe state management",
       "Immer - For immutable state updates with mutable syntax",
-      "ES6+ Features - Leveraging modern JavaScript capabilities"
+      "ES6+ Features - Leveraging modern JavaScript capabilities",
     ],
     "State Management": [
       "Flux Architecture - One-way data flow pattern",
       "Immutable State - Ensuring predictable state transitions",
       "Action Creators - Type-safe functions for creating actions",
       "Reducers - Pure functions for state transitions",
-      "Combined Reducers - For modular state composition"
+      "Combined Reducers - For modular state composition",
     ],
     "Type System": [
       "Generic Types - For flexible and reusable components",
       "Discriminated Unions - For type-safe action handling",
       "Utility Types - For advanced type manipulations",
-      "Type Inference - Minimizing explicit type annotations"
+      "Type Inference - Minimizing explicit type annotations",
     ],
     "Middleware System": [
       "Redux-like Middleware - For extending functionality",
       "Thunk Implementation - For handling async actions",
       "Logger Middleware - For debugging state changes",
-      "Middleware Composition - For combining multiple middlewares"
+      "Middleware Composition - For combining multiple middlewares",
     ],
     "Performance Optimization": [
       "Selector Memoization - For efficient derived state",
       "Batched Updates - For minimizing re-renders",
-      "State Normalization - For efficient updates and lookups"
+      "State Normalization - For efficient updates and lookups",
     ],
     "Developer Experience": [
       "DevTools Integration - For time-travel debugging",
       "Hot Module Replacement - For development workflow",
-      "Error Boundaries - For robust error handling"
+      "Error Boundaries - For robust error handling",
     ],
-    "Testing": [
+    Testing: [
       "Jest - For unit testing",
       "Action Testing - Simplified action creator testing",
       "Reducer Testing - Pure function testing",
-      "Integration Testing - Full store testing"
-    ]
-  }
+      "Integration Testing - Full store testing",
+    ],
+  },
 };
 
 const dss = {
@@ -461,46 +558,46 @@ const dss = {
       "Pandas - For data manipulation and analysis",
       "NumPy - For numerical operations and calculations",
       "SQLite - For database storage in testing and development",
-      "PostgreSQL - For production database deployment"
+      "PostgreSQL - For production database deployment",
     ],
     "Data Visualization": [
       "Plotly - For interactive charts and dashboards",
       "D3.js - For custom visualizations",
       "Chart.js - For responsive chart rendering",
-      "React-Plotly - For React integration of Plotly charts"
+      "React-Plotly - For React integration of Plotly charts",
     ],
-    "Frontend": [
+    Frontend: [
       "React - For building the user interface components",
       "Redux - For state management",
       "Material-UI - For UI component library",
       "Styled Components - For component styling",
-      "Axios - For API communication"
+      "Axios - For API communication",
     ],
     "API & Integration": [
       "Django REST Framework - For API endpoints",
       "Celery - For background task processing",
       "Redis - For caching and message broker",
-      "JWT Authentication - For secure API access"
+      "JWT Authentication - For secure API access",
     ],
     "Analytics & Reporting": [
       "Custom Analytics Engine - For training effectiveness metrics",
       "Automated Report Generation - For periodic reports",
       "Excel Export - For data portability",
-      "PDF Generation - For formal reporting"
+      "PDF Generation - For formal reporting",
     ],
     "Deployment & Infrastructure": [
       "Docker - For containerization",
       "Nginx - For web server and reverse proxy",
       "Gunicorn - For WSGI HTTP Server",
-      "CI/CD Pipeline - For automated testing and deployment"
+      "CI/CD Pipeline - For automated testing and deployment",
     ],
     "Security & Access Control": [
       "Role-based Access Control - For multi-level permissions",
       "Data Encryption - For sensitive information",
       "Audit Logging - For tracking system usage",
-      "Cross-Origin Resource Sharing - For secure API access"
-    ]
-  }
+      "Cross-Origin Resource Sharing - For secure API access",
+    ],
+  },
 };
 
 const orchestra = {
@@ -530,132 +627,57 @@ const orchestra = {
       "Go 1.19+ - For performance and concurrency features",
       "gRPC - For inter-service communication",
       "Protocol Buffers - For service definitions and data serialization",
-      "etcd - For distributed configuration and service discovery"
+      "etcd - For distributed configuration and service discovery",
     ],
     "Container Management": [
       "containerd - For container runtime operations",
       "OCI Runtime Spec - For container standardization",
       "CNI (Container Network Interface) - For network management",
-      "Container Storage Interface - For volume management"
+      "Container Storage Interface - For volume management",
     ],
     "Scheduling & Orchestration": [
       "Custom Scheduler - Algorithm for optimal container placement",
       "Node Agent - For managing container lifecycle on nodes",
       "Controller Pattern - For reconciling desired and actual state",
-      "Operator Pattern - For managing complex applications"
+      "Operator Pattern - For managing complex applications",
     ],
     "Service Discovery & Networking": [
       "DNS-based Service Discovery - For service lookup",
       "Dynamic Proxy - For load balancing and routing",
       "Network Policy Implementation - For traffic control",
-      "Health Checking - For service availability monitoring"
+      "Health Checking - For service availability monitoring",
     ],
-    "Observability": [
+    Observability: [
       "Distributed Tracing - Using OpenTelemetry",
       "Metrics Collection - For system performance monitoring",
       "Structured Logging - For debugging and audit",
-      "Health Monitoring - For cluster and service health"
+      "Health Monitoring - For cluster and service health",
     ],
-    "Security": [
+    Security: [
       "Role-Based Access Control - For authorization",
       "mTLS - For secure service-to-service communication",
       "Secret Management - For sensitive configuration",
-      "Network Policies - For traffic isolation"
+      "Network Policies - For traffic isolation",
     ],
     "High Availability": [
       "Leader Election - For control plane redundancy",
       "State Replication - For resilience against failures",
       "Automated Recovery - For self-healing capability",
-      "Graceful Degradation - For handling partial failures"
+      "Graceful Degradation - For handling partial failures",
     ],
     "Developer Tools": [
       "CLI Tool - For interacting with the platform",
       "API Client Libraries - For programmatic access",
       "Manifest Format - For declarative configuration",
-      "Local Development Environment - For testing"
-    ]
-  }
-};
-
-const codeReview = {
-  name: "AI-Powered Code Review Assistant",
-  description:
-    "An intelligent code analysis tool that provides continuous code quality assurance through machine learning. This system performs automated code reviews, detecting potential issues and suggesting optimizations while learning from complex code patterns to offer architectural insights and maintain consistent code quality standards.",
-  githubLink: "https://github.com/utkarsh5026/gep",
-  technologies: [
-    technologies.python,
-    technologies.fastapi,
-    technologies.mongodb,
-  ],
-  features: [
-    "Automated code quality analysis",
-    "Security vulnerability detection",
-    "Performance optimization suggestions",
-  ],
-  tags: ["AI", "ML", "Python", "FastAPI", "Langchain"],
-  explain: [
-    "This project started because I found myself making the same kinds of mistakes in my code over and over. I thought it would be helpful to have something that could automatically review code and point out potential issues or suggest improvements - kind of like having someone looking over your shoulder but without the awkwardness.",
-    "What I ended up building was an AI assistant that analyzes code, finds potential bugs, security vulnerabilities, and performance issues. The interesting part is that it gets better over time as it sees more code patterns. It doesn't just look for simple syntax problems - it can identify architectural issues too, which is much harder to automate.",
-    "I built it using Python with FastAPI for the backend and MongoDB for storing analysis results. There's a machine learning pipeline that processes the code through different specialized models depending on what kind of analysis we're doing. It's been really useful for my own projects, and a few of my friends have started using it too for their code reviews.",
-  ],
-  techStack: {
-    "Core Backend": [
-      "Python 3.10+ - For language features and ecosystem",
-      "FastAPI - For high-performance API endpoints",
-      "Uvicorn - ASGI server for API hosting",
-      "MongoDB - For storing analysis results and code patterns",
-      "Redis - For caching and rate limiting"
+      "Local Development Environment - For testing",
     ],
-    "Machine Learning & AI": [
-      "Transformers - For code understanding models",
-      "Langchain - For LLM orchestration and prompting",
-      "TensorFlow/Keras - For custom model training",
-      "SciKit-Learn - For feature extraction and preprocessing",
-      "Hugging Face Models - For code understanding"
-    ],
-    "Code Analysis": [
-      "Abstract Syntax Tree (AST) parsing - For code structure analysis",
-      "Static Analysis Tools - For security vulnerability detection",
-      "Language-specific parsers - For multiple programming languages",
-      "Code Metrics Library - For complexity and maintainability analysis"
-    ],
-    "DevOps Integration": [
-      "GitHub Actions Integration - For CI/CD workflows",
-      "GitLab Integration - For merge request analysis",
-      "Bitbucket Integration - For code review automation",
-      "Pre-commit Hooks - For local analysis before commits"
-    ],
-    "Security Analysis": [
-      "OWASP Rule Engine - For security vulnerability detection",
-      "Dependency Scanning - For identifying vulnerable dependencies",
-      "Code Injection Detection - For finding potential security issues",
-      "Secret Detection - For identifying accidentally committed secrets"
-    ],
-    "Performance Analysis": [
-      "Complexity Analysis - For identifying inefficient algorithms",
-      "Memory Usage Prediction - For detecting potential memory issues",
-      "Runtime Profiling Integration - For real-world performance data",
-      "Database Query Analysis - For SQL optimization"
-    ],
-    "User Interface": [
-      "React - For web dashboard",
-      "D3.js - For visualization of analysis results",
-      "Socket.IO - For real-time updates",
-      "Code Highlighting - For presenting analysis in context"
-    ],
-    "Deployment": [
-      "Docker - For containerization",
-      "Kubernetes - For orchestration",
-      "Cloud Provider SDKs - For AWS/GCP/Azure integration",
-      "Terraform - For infrastructure as code"
-    ]
-  }
+  },
 };
 
 export const projects: Project[] = [
   dss,
   orchestra,
-  codeReview,
+  gep,
   reducer,
   pauth,
   current,
