@@ -9,6 +9,19 @@ interface TerminalAnimationOptions {
   onComplete: () => void;
 }
 
+/**
+ * A custom hook that creates an animated terminal-like code compilation effect.
+ * This hook manages the state and animations for a terminal that displays code typing,
+ * compilation progress, and visual effects like glitching and screen shaking.
+ *
+ * @param {TerminalAnimationOptions} options - Configuration options for the animation
+ * @param {string[]} options.codeSnippets - Array of code lines to be displayed
+ * @param {string[]} options.compileStages - Array of compilation stage messages
+ * @param {number} [options.totalDuration=3000] - Total duration of the animation in milliseconds
+ * @param {number} [options.batchSize=4] - Number of code lines to process in each batch
+ * @param {Function} options.onComplete - Callback function to execute when animation completes
+ * @returns {Object} Animation state and refs for controlling the terminal
+ */
 export function useTerminalAnimation({
   codeSnippets,
   compileStages,
@@ -43,11 +56,14 @@ export function useTerminalAnimation({
   const currentStageRef = useRef(currentStage);
   currentStageRef.current = currentStage;
 
-  // Function to trigger screen shake effect
+  /**
+   * Triggers a screen shake effect with configurable intensity.
+   * The effect automatically clears after a short duration.
+   *
+   * @param {string} intensity - The intensity of the shake effect ('light', 'medium', or 'strong')
+   */
   const triggerShakeEffect = useCallback((intensity = "medium") => {
-    if (shakeTimeoutRef.current) {
-      clearTimeout(shakeTimeoutRef.current);
-    }
+    if (shakeTimeoutRef.current) clearTimeout(shakeTimeoutRef.current);
 
     setShakeEffect(true);
 
@@ -60,7 +76,11 @@ export function useTerminalAnimation({
     }, 500);
   }, []);
 
-  // Finish typing animation
+  /**
+   * Completes the typing animation with final effects and transitions.
+   * Triggers a strong shake effect, glitch effect, and fades out the terminal
+   * before calling the onComplete callback.
+   */
   const finishTypingAnimation = useCallback(() => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
@@ -94,6 +114,11 @@ export function useTerminalAnimation({
     }, 200);
   }, [onComplete, triggerShakeEffect, compileStages.length]);
 
+  /**
+   * Processes a batch of code lines to display in the terminal.
+   * Updates the cursor position, compilation progress, and triggers
+   * appropriate visual effects based on progress.
+   */
   const processBatch = useCallback(() => {
     const position = cursorPositionRef.current;
     const startLine = position.lineIndex;
@@ -150,7 +175,10 @@ export function useTerminalAnimation({
     codeSnippets,
   ]);
 
-  // Initialize the animation
+  /**
+   * Initializes the animation sequence when the component mounts.
+   * Sets up timers and cleans them up on unmount.
+   */
   useEffect(() => {
     if (!showCompilation) return;
 
@@ -168,6 +196,10 @@ export function useTerminalAnimation({
     };
   }, [processBatch, showCompilation]);
 
+  /**
+   * Sets up visual effects for the terminal including scanlines,
+   * glowing lines, and pulsing box shadow effects.
+   */
   useEffect(() => {
     if (!containerRef.current) return;
 
