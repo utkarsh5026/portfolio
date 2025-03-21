@@ -67,9 +67,8 @@ export function useTerminalAnimation({
 
     setShakeEffect(true);
 
-    if (containerRef.current) {
+    if (containerRef.current)
       containerRef.current.setAttribute("data-shake-intensity", intensity);
-    }
 
     shakeTimeoutRef.current = setTimeout(() => {
       setShakeEffect(false);
@@ -126,11 +125,8 @@ export function useTerminalAnimation({
     let shakeIntensity = "light";
 
     const progress = (endLine / codeSnippets.length) * 100;
-    if (progress > 75) {
-      shakeIntensity = "medium";
-    } else if (progress > 90) {
-      shakeIntensity = "strong";
-    }
+    if (progress > 75) shakeIntensity = "medium";
+    else if (progress > 90) shakeIntensity = "strong";
 
     if (endLine > startLine) triggerShakeEffect(shakeIntensity);
 
