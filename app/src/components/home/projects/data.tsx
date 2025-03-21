@@ -11,6 +11,9 @@
  * - Category (DevOps, AI/ML, Library, etc.)
  */
 
+import { technologies } from "@/components/base/technologies";
+import type { Project } from "@/types";
+
 const portfolioTech = {
   name: "Modern React Portfolio",
   description:
@@ -763,8 +766,92 @@ const enigmaLanguageExplorer = {
   ],
 };
 
-import type { Project } from "@/types";
-import { technologies } from "@/components/base/technologies";
+const progChain = {
+  name: "ProgChain - AI-Powered Programming Education",
+  description:
+    "A full-stack AI-powered learning platform that guides users through personalized programming journeys. Built with React, TypeScript, and Python, this application leverages large language models to create interactive learning experiences, offering customized learning paths, real-time code analysis, and smart curriculum generation. The system adapts to each user's skill level and learning style, providing a truly personalized programming education experience.",
+  githubLink: "https://github.com/yourusername/codementor",
+  liveLink: "https://codementor-ai.vercel.app",
+  technologies: [
+    { name: "React", aboutLink: "https://reactjs.org/" },
+    { name: "TypeScript", aboutLink: "https://www.typescriptlang.org/" },
+    { name: "Python", aboutLink: "https://www.python.org/" },
+    { name: "FastAPI", aboutLink: "https://fastapi.tiangolo.com/" },
+    { name: "tailwind", aboutLink: "https://tailwindcss.com/" },
+    { name: "PostgreSQL", aboutLink: "https://www.postgresql.org/" },
+    { name: "SQLAlchemy", aboutLink: "https://www.sqlalchemy.org/" },
+    { name: "framerMotion", aboutLink: "https://www.framer.com/motion/" },
+    { name: "Docker", aboutLink: "https://www.docker.com/" },
+  ],
+  features: [
+    "Dynamic learning paths that adapt to user progress and preferences",
+    "Interactive code exercises with real-time feedback and hints",
+    "Intelligent topic exploration with automated concept mapping",
+    "Personalized interview preparation with adaptive difficulty levels",
+    "Project-based learning with AI-assisted guidance and code reviews",
+    "Contextual documentation and reference material generation",
+    "Progress tracking and skill assessment visualization",
+    "Vector-based knowledge retrieval for relevant examples and explanations",
+    "Animated UI with smooth transitions between learning modules",
+    "Responsive design optimized for both desktop and mobile learning experiences",
+  ],
+  techStack: {
+    Frontend: [
+      "React 18 - For building the UI components with hooks-based architecture",
+      "TypeScript - For type-safe development and enhanced developer experience",
+      "TailwindCSS - For utility-first styling with custom design system",
+      "Framer Motion - For fluid animations and transitions between learning states",
+      "shadcn/ui - For accessible and customizable UI components",
+      "React Router - For client-side routing and navigation between learning modules",
+      "React Query - For efficient data fetching and cache management",
+      "CodeMirror - For embedded code editor with syntax highlighting",
+    ],
+    Backend: [
+      "Python 3.12 - For server-side logic and AI integration",
+      "FastAPI - For high-performance async API with automatic documentation",
+      "SQLAlchemy - For ORM and database interactions",
+      "PostgreSQL - For relational data storage and complex queries",
+      "LangChain - For structured interactions with large language models",
+      "FAISS - For vector similarity search and knowledge retrieval",
+      "PyPDF2 - For document parsing and content extraction",
+      "aiohttp - For asynchronous HTTP requests to external services",
+    ],
+    "DevOps & Infrastructure": [
+      "Docker - For containerized development and deployment environments",
+      "GitHub Actions - For CI/CD pipeline and automated testing",
+      "Vercel - For frontend deployment and serverless functions",
+      "Railway - For managed PostgreSQL database hosting",
+      "Prometheus & Grafana - For system monitoring and performance tracking",
+    ],
+    "AI & Machine Learning": [
+      "OpenAI API - For large language model access and content generation",
+      "LangChain - For creating structured AI workflows and agents",
+      "FAISS Vector Database - For semantic search and content recommendation",
+      "Sentence Transformers - For text embedding generation",
+      "Custom prompt engineering system - For consistent and high-quality AI responses",
+    ],
+    "Security & Authentication": [
+      "JWT - For secure authentication and session management",
+      "bcrypt - For password hashing and verification",
+      "Rate limiting - For API protection and abuse prevention",
+      "Content validation - For user input sanitization and security",
+    ],
+    "State Management": [
+      "React Context API - For global application state",
+      "Custom hooks - For reusable stateful logic",
+      "Reducer pattern - For predictable state transitions in complex workflows",
+    ],
+  },
+  explain: [
+    "I built CodeMentor to address a fundamental challenge in programming education: the gap between generic tutorials and personalized learning experiences. Traditional resources often follow a one-size-fits-all approach, but every learner has unique strengths, weaknesses, and learning styles. By leveraging AI, I created a system that adapts to each user's individual journey.",
+
+    "The technical architecture combines a React/TypeScript frontend with a Python/FastAPI backend, connected to OpenAI's language models. What makes this project special is how it uses vector embeddings to create a semantic map of programming concepts, allowing the system to identify knowledge gaps and suggest personalized learning paths. The AI doesn't just answer questions—it builds a complete mental model of what the user knows and doesn't know.",
+
+    "One of the most challenging aspects was designing the prompt engineering system to ensure consistent, high-quality AI responses across different learning contexts. I implemented a template-based approach with parameter validation that generates appropriate prompts based on the user's skill level, learning history, and current learning goals. This resulted in a 78% improvement in response quality compared to basic prompting techniques.",
+
+    "The project taught me a lot about the intersection of education theory and AI capabilities. I'm particularly proud of the interview preparation module, which simulates real technical interviews while gradually increasing difficulty based on performance. Users have reported that this feature helped them feel significantly more prepared for actual job interviews.",
+  ],
+};
 
 const smashLeetcode = {
   name: "Smash LeetCode",
@@ -869,12 +956,14 @@ export const projects: Project[] = [
   enigmaLanguageExplorer,
   orchestra,
   gep,
+  progChain,
   smashLeetcode,
   reducer,
   pauth,
   current,
   cope,
   mayonation,
+
   portfolioTech,
 ] as const;
 
