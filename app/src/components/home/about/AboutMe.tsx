@@ -24,6 +24,19 @@ interface AboutMeSection {
   content: React.ReactNode;
 }
 
+/**
+ * AboutMeSection Component
+ *
+ * This component renders a section in the About Me page, including a label, icon, and content.
+ *
+ * Props:
+ * - label: string - The label of the section.
+ * - icon: React.ReactNode - The icon of the section.
+ * - content: React.ReactNode - The content of the section.
+ *
+ * @param {AboutMeSection} props - The component props
+ * @returns {React.ReactElement} The rendered section component
+ */
 const AboutMeSection: React.FC<AboutMeSection> = ({ label, icon, content }) => {
   return (
     <OutlineNode
@@ -38,6 +51,13 @@ const AboutMeSection: React.FC<AboutMeSection> = ({ label, icon, content }) => {
   );
 };
 
+/**
+ * AboutMe Component
+ *
+ * This component renders the entire About Me page, including various sections.
+ *
+ * @returns {React.ReactElement} The rendered About Me page
+ */
 const AboutMe: React.FC = () => {
   return (
     <Section id={ABOUT_SECTION} label="About Me" icon="class">
