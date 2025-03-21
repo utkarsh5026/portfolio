@@ -13,8 +13,8 @@ import { FiSend } from "react-icons/fi";
 
 import MacosTrafficController from "../../macos/MacosTrafficController";
 import { humanMessage, aiNormalResponse, aiCodeResponse } from "./content";
-import UserMessage from "./UserMessage";
-import AiMessage from "./AiMessage";
+import UserMessage from "./message/UserMessage";
+import AiMessage from "./message/AiMessage";
 import SideBar from "./SideBar";
 
 import "./ChatWindowAnimations.css";
