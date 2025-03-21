@@ -13,29 +13,67 @@ import RedditWebDev from "./tabs/Reddit";
 import { AwwwardsPortfolios } from "./tabs/AwwardsPortfolios";
 import { GitHubPortfolios } from "./tabs/Github";
 
-type BrowserWindowProps = {
+interface BrowserWindowProps {
   activeWindow: string | null;
   totalTabSwitchDuration: number;
-};
+}
 
-const BrowserWindow = ({
+/**
+ * BrowserWindow Component
+ *
+ * This component simulates a web browser interface with tab switching, loading animations,
+ * and human-like scrolling behavior.
+ *
+ * @param {BrowserWindowProps} props - The component props
+ * @param {string | null} props.activeWindow - The currently active window in the application
+ * @param {number} props.totalTabSwitchDuration - Total time in milliseconds to cycle through all tabs
+ * @returns {React.ReactElement} The rendered browser window component
+ */
+const BrowserWindow: React.FC<BrowserWindowProps> = ({
   activeWindow,
   totalTabSwitchDuration,
-}: BrowserWindowProps) => {
+}) => {
+  /**
+   * State to track if a page is currently loading
+   */
   const [isLoading, setIsLoading] = useState(false);
+
+  /**
+   * State to track the loading progress (0-100)
+   */
   const [progress, setProgress] = useState(0);
+
+  /**
+   * State to track the index of the currently active browser tab
+   */
   const [activeTab, setActiveTab] = useState(0);
 
+  /**
+   * Reference to the main browser window element
+   */
   const browserRef = useRef<HTMLDivElement>(null);
+
+  /**
+   * Reference to the content area for scrolling operations
+   */
   const contentRef = useRef<HTMLDivElement>(null);
 
+  /**
+   * Memoized value of the current tab ID based on the active tab index
+   */
   const currentTab = useMemo(
     () => (activeTab >= 0 ? browserTabs[activeTab].id : null),
     [activeTab]
   );
 
+  /**
+   * Reference to store the time to spend on each tab during auto-cycling
+   */
   const tabSwitchTime = useRef(totalTabSwitchDuration / browserTabs.length);
 
+  /**
+   * Simulates realistic human-like scrolling behavior with random pauses and scroll amounts
+   */
   const simulateHumanScrolling = useCallback(() => {
     const scrollPauseDuration = tabSwitchTime.current * 0.5;
     const initPause = Math.floor(Math.random() * scrollPauseDuration);
@@ -74,6 +112,9 @@ const BrowserWindow = ({
     setTimeout(performScroll, initPause);
   }, []);
 
+  /**
+   * Automatically cycles through all browser tabs with visual feedback
+   */
   const goThroughAllTabs = useCallback(() => {
     let tabIndex = -1;
     const switchTab = () => {
@@ -102,10 +143,16 @@ const BrowserWindow = ({
     switchTab();
   }, [simulateHumanScrolling]);
 
+  /**
+   * Start the tab cycling animation when component mounts
+   */
   useEffect(() => {
     goThroughAllTabs();
   }, [goThroughAllTabs]);
 
+  /**
+   * Simulate page loading progress whenever the active tab changes
+   */
   useEffect(() => {
     setIsLoading(true);
     setProgress(0);

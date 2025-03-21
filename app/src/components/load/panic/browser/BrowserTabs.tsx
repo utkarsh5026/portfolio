@@ -8,6 +8,17 @@ interface BrowserTabsProps {
   isLoading: boolean;
 }
 
+/**
+ * BrowserTabs Component
+ *
+ * This component renders a set of browser tabs similar to Chrome/Edge browser UI.
+ * It displays tab titles, icons, loading indicators, and close buttons.
+ *
+ * @param {BrowserTabsProps} props - The component props
+ * @param {number} props.activeTab - Index of the currently active tab
+ * @param {boolean} props.isLoading - Whether the active tab is currently loading
+ * @returns {React.ReactElement} The rendered browser tabs
+ */
 const BrowserTabs: React.FC<BrowserTabsProps> = ({ activeTab, isLoading }) => {
   return (
     <div className="h-10 bg-[#292a2d] px-2 flex items-center gap-1 overflow-x-auto scrollbar-hide">
