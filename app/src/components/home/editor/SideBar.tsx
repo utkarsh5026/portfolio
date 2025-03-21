@@ -13,6 +13,14 @@ import { cn } from "@/lib/utils";
 import { useEditorContext } from "./context/explorerContext";
 import GhostButton from "@/components/utils/GhostButton";
 
+/**
+ * SideBar component renders a vertical sidebar for navigation in the editor.
+ * It provides buttons for various sections such as Home, Projects, GitHub, LinkedIn, and Terminal.
+ * The sidebar can be toggled for mobile view and includes visual indicators for active states.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered SideBar component.
+ */
 const SideBar: React.FC = () => {
   const {
     mobileMenuOpen,
