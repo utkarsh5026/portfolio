@@ -8,6 +8,19 @@ interface TerminalInputProps {
   handleKeyDown: (e: React.KeyboardEvent) => void;
 }
 
+/**
+ * TerminalInput component renders an input field for the terminal interface.
+ * It allows users to type commands and submit them.
+ *
+ * @component
+ * @param {string} input - The current value of the input field.
+ * @param {Function} setInput - Function to update the input value.
+ * @param {Function} handleSubmit - Function to handle form submission.
+ * @param {Function} handleKeyDown - Function to handle key down events.
+ * @param {React.Ref} ref - Ref to the input element for focus management.
+ *
+ * @returns {JSX.Element} The rendered TerminalInput component.
+ */
 const TerminalInput = React.forwardRef<HTMLInputElement, TerminalInputProps>(
   ({ input, setInput, handleSubmit, handleKeyDown }, ref) => {
     return (
