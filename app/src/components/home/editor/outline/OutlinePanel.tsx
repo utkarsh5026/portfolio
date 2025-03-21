@@ -1,17 +1,36 @@
 import React, { useCallback, useMemo, useEffect } from "react";
 import { useOutline, type OutlineItem } from "./context/outlineContext";
 import OutlineItemComponent from "./OutlineItem";
-
+/**
+ * OutlinePanel Component
+ *
+ * This component displays the outline of a section in the editor. It includes the section header,
+ * a list of outline items, and a status indicator. The outline items are collapsible, allowing
+ * users to expand or collapse sections to view or hide their children.
+ *
+ * @returns The OutlinePanel component.
+ */
 const OutlinePanel: React.FC = () => {
   const { outlineItems, currentSection, highlightNode } = useOutline();
   const [openItems, setOpenItems] = React.useState<Set<string>>(new Set());
 
+  /**
+   * Updates the openItems state based on the current section and outline items.
+   *
+   * This effect runs whenever the outlineItems or currentSection changes. It ensures that the
+   * current section and all outline items are initially open.
+   */
   useEffect(() => {
     setOpenItems(
       new Set([currentSection, ...outlineItems.map((item) => item.id)])
     );
   }, [outlineItems, currentSection]);
 
+  /**
+   * Toggles the open state of an outline item.
+   *
+   * @param itemId The ID of the outline item to toggle.
+   */
   const toggleItem = (itemId: string) => {
     setOpenItems((prev) => {
       const newOpenItems = new Set(prev);
@@ -21,6 +40,12 @@ const OutlinePanel: React.FC = () => {
     });
   };
 
+  /**
+   * Retrieves the children of an outline item.
+   *
+   * @param itemId The ID of the outline item whose children are to be retrieved.
+   * @returns An array of child outline items.
+   */
   const getChildren = useCallback(
     (itemId: string) => {
       return outlineItems
@@ -30,12 +55,22 @@ const OutlinePanel: React.FC = () => {
     [outlineItems]
   );
 
+  /**
+   * Retrieves the root outline items for the current section.
+   *
+   * @returns An array of root outline items for the current section.
+   */
   const rootItems = useMemo(() => {
     return outlineItems
       .filter((item) => item.id.startsWith(currentSection) && item.level === 0)
       .sort((a, b) => outlineItems.indexOf(a) - outlineItems.indexOf(b));
   }, [outlineItems, currentSection]);
 
+  /**
+   * Handles the click event on an outline item.
+   *
+   * @param item The outline item that was clicked.
+   */
   const handleItemClick = useCallback(
     (item: OutlineItem) => {
       const element = document.getElementById(item.id);
