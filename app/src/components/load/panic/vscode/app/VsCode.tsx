@@ -23,6 +23,28 @@ interface VsCodeProps {
   isActive?: boolean;
 }
 
+const menuItems = [
+  "File",
+  "Edit",
+  "Selection",
+  "View",
+  "Go",
+  "Run",
+  "Terminal",
+  "Help",
+] as const;
+
+/**
+ * VsCode is a React component that simulates a Visual Studio Code editor interface.
+ * It displays code with syntax highlighting and simulates typing progress.
+ *
+ * @param {VsCodeProps} props - The component props.
+ * @param {CodeType} props.filename - The type of file being displayed.
+ * @param {Record<CodeType, number>} props.typingProgress - Object tracking typing progress for each file.
+ * @param {boolean} [props.isActive=false] - Whether this editor is currently active.
+ *
+ * @returns {React.ReactElement} The VsCode component.
+ */
 const VsCode: React.FC<VsCodeProps> = ({
   filename,
   typingProgress,
@@ -31,6 +53,10 @@ const VsCode: React.FC<VsCodeProps> = ({
   const { language, filename: fileType, problems } = getFileInfo(filename);
   const codeEditorRef = useRef<HTMLDivElement>(null);
 
+  /**
+   * Effect hook to handle auto-scrolling of the editor as typing progresses.
+   * Scrolls to keep the current line in view when the component is active.
+   */
   useEffect(() => {
     if (codeEditorRef.current && isActive && typingProgress[filename] > 0) {
       const lineHeight = 24;
@@ -46,23 +72,16 @@ const VsCode: React.FC<VsCodeProps> = ({
 
   return (
     <div className="flex flex-col h-full w-full overflow-hidden bg-[#1e1e1e]">
-      {/* Title bar */}
       <MacosTrafficController
         appIcon={<BiLogoVisualStudio className="text-[#0066b8]" />}
         appName={fileType}
       />
 
-      {/* VS Code top menu */}
       <div className="h-6 bg-[#252526] px-4 flex items-center text-[#cccccc] text-xs border-b border-[#1a1a1a] vscode-menu-appear">
         <div className="flex items-center space-x-4">
-          <span>File</span>
-          <span>Edit</span>
-          <span>Selection</span>
-          <span>View</span>
-          <span>Go</span>
-          <span>Run</span>
-          <span>Terminal</span>
-          <span>Help</span>
+          {menuItems.map((item) => (
+            <span key={item}>{item}</span>
+          ))}
         </div>
       </div>
 
