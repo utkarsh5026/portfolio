@@ -4,7 +4,6 @@ import {
   useAnimation,
   useMotionValue,
   useTransform,
-  AnimationControls,
 } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import TechSkills from "./TechSkills";
@@ -13,11 +12,31 @@ import PersonalTitle from "./PersonalTitle";
 import ProfileButtons from "./ProfileButtons";
 import ProfilePicture from "./ProfilePicture";
 import Terminal from "./Terminal";
+import PersonalDescription from "./PersonalDescription";
 
+/**
+ * PersonalHeaderComponent is a functional React component that serves as the header section
+ * of a personal portfolio or profile page. It utilizes Framer Motion for animations and
+ * the Intersection Observer API to trigger animations when the component comes into view.
+ *
+ * The component includes various animated elements such as the user's name, bio, description,
+ * avatar, terminal interface, and profile buttons. It also features a dynamic background
+ * that responds to mouse movements.
+ *
+ * Key Features:
+ * - Animations triggered when the component comes into view using the `useInView` hook.
+ * - Multiple animation controls for different sections of the header, allowing for
+ *   coordinated animations.
+ * - Mouse movement tracking to create a glowing effect in the background.
+ * - Responsive design with a grid layout for different screen sizes.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered PersonalHeaderComponent.
+ */
 const PersonalHeaderComponent: React.FC = () => {
   const [containerRef, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: false,
+    threshold: 0.1, // Trigger when 10% of the component is visible
+    triggerOnce: false, // Allow multiple triggers
   });
 
   const containerControls = useAnimation();
@@ -34,6 +53,14 @@ const PersonalHeaderComponent: React.FC = () => {
   const glowX = useTransform(mouseX, [0, 300], [0, 300]);
   const glowY = useTransform(mouseY, [0, 300], [0, 300]);
 
+  /**
+   * It manages animations based on component visibility.
+   *
+   * When the component is in view, it triggers a sequence of animations
+   * for various elements (container, name, bio, description, avatar, terminal, buttons).
+   *
+   * If the component is out of view, it resets the animations to their initial states.
+   */
   useEffect(() => {
     if (inView) {
       const sequence = async () => {
@@ -183,35 +210,6 @@ const PersonalHeaderComponent: React.FC = () => {
           <TechSkills />
         </motion.div>
       </div>
-    </motion.div>
-  );
-};
-
-interface PersonalDescriptionProps {
-  descriptionControls: AnimationControls;
-}
-
-const PersonalDescription: React.FC<PersonalDescriptionProps> = ({
-  descriptionControls,
-}) => {
-  return (
-    <motion.div
-      className="mb-6 text-[#bac2de] p-4 border-l-2 border-ctp-peach bg-[#1e1e2e]/60 rounded-md shadow-lg hover:shadow-xl transition-all"
-      initial={{ opacity: 0, x: -30 }}
-      animate={descriptionControls}
-    >
-      <p className="mb-2">
-        Passionate developer with a knack for crafting elegant solutions to
-        complex problems.
-      </p>
-      <p className="mb-2">
-        I specialize in building scalable web applications and robust
-        infrastructure systems that deliver exceptional user experiences.
-      </p>
-      <p>
-        With expertise spanning front-end aesthetics to back-end architecture, I
-        bridge the gap between user needs and technical implementation.
-      </p>
     </motion.div>
   );
 };
