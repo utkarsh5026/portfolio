@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Section from "@/components/section/Section";
 import { experiences } from "./experienceDump";
 import { motion } from "framer-motion";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import TechBadge from "@/components/base/TechBadge";
 import Achievements from "./Achievements";
 import OutlineNode from "../editor/outline/OutlineNode";
 import ExperienceHeader from "./ExperienceHeader";
+import ExperienceTabs from "./ExperienceTabs";
 
 const EXPERIENCE_ID = "experience";
 
@@ -51,37 +51,10 @@ const WorkExperience: React.FC = () => {
             } gap-6 lg:gap-8`}
           >
             {experiences.length > 1 && (
-              <div className="space-y-4">
-                {experiences.map((exp, index) => (
-                  <motion.button
-                    key={`${exp.duration}-${index}`}
-                    className={`w-full text-left p-4 rounded-xl transition-all duration-300
-                      ${
-                        selectedExp === index
-                          ? "bg-gradient-to-r from-ctp-lavender to-ctp-blue text-ctp-base shadow-lg shadow-ctp-lavender/20"
-                          : "bg-ctp-mantle hover:bg-ctp-surface0 border border-ctp-surface0 hover:border-ctp-lavender/30"
-                      }`}
-                    onClick={() => handleExperienceClick(index)}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <div className="flex flex-col">
-                      <div className="flex items-center gap-3 mb-2">
-                        <Avatar className="w-10 h-10 ring-2 ring-offset-2 ring-offset-ctp-mantle ring-ctp-lavender/20">
-                          <AvatarImage src={exp.imageSrc} alt={exp.company} />
-                        </Avatar>
-                        <h3 className="font-bold text-lg">{exp.company}</h3>
-                      </div>
-                      <p className="text-sm opacity-80 mt-1">{exp.duration}</p>
-                      <div
-                        className={`h-0.5 w-0 bg-gradient-to-r from-ctp-lavender to-ctp-blue mt-3 transition-all duration-500 ${
-                          selectedExp === index ? "w-full" : ""
-                        }`}
-                      ></div>
-                    </div>
-                  </motion.button>
-                ))}
-              </div>
+              <ExperienceTabs
+                selectedExp={selectedExp}
+                handleExperienceClick={handleExperienceClick}
+              />
             )}
 
             {/* Experience details card with smooth transitions */}
