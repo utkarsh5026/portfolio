@@ -674,8 +674,101 @@ const orchestra = {
   },
 };
 
+const enigmaLanguageExplorer = {
+  name: "Enigma Language Explorer",
+  description:
+    "An interactive educational platform for learning programming language concepts through visual exploration of lexical analysis, abstract syntax trees, and execution flow. Built with React and TypeScript, this IDE-inspired application demonstrates the inner workings of language interpretation by visualizing source code tokenization, parsing, and evaluation in real-time.",
+  githubLink: "https://github.com/utkarsh5026/enigma",
+  liveLink: "https://enigma-explorer.vercel.app/",
+  technologies: [
+    { name: "React", aboutLink: "https://reactjs.org/" },
+    { name: "TypeScript", aboutLink: "https://www.typescriptlang.org/" },
+    { name: "tailwind", aboutLink: "https://tailwindcss.com/" },
+    {
+      name: "Monaco",
+      aboutLink: "https://microsoft.github.io/monaco-editor/",
+    },
+    { name: "shadcn", aboutLink: "https://ui.shadcn.com/" },
+    { name: "framerMotion", aboutLink: "https://www.framer.com/motion/" },
+    { name: "lucideIcons", aboutLink: "https://lucide.dev/" },
+    { name: "vite", aboutLink: "https://vitejs.dev/" },
+  ],
+  features: [
+    "IDE-like code editor with syntax highlighting and code completion",
+    "Real-time lexical analysis with token visualization and categorization",
+    "Interactive Abstract Syntax Tree (AST) visualization of parsed code",
+    "Step-by-step execution visualizer with environment and call stack tracking",
+    "Educational reference guide explaining language concepts and syntax",
+    "Tokyo Night-inspired dark theme with semantic color coding",
+    "Responsive design with intuitive layout for learning progression",
+    "Built-in code examples and language reference documentation",
+    "Zero-dependency language interpreter implemented in TypeScript",
+    "Modular architecture separating lexical, syntactic, and semantic concerns",
+  ],
+  techStack: {
+    "Core Framework": [
+      "React 19 - For building the UI components with the latest React features",
+      "TypeScript - For type safety throughout the application and language implementation",
+      "Vite - For fast development experience and optimized production builds",
+    ],
+    "UI & Styling": [
+      "Tailwind CSS - For utility-first styling approach with custom theming",
+      "shadcn/ui - For accessible and customizable UI components",
+      "Monaco Editor - For professional code editing with syntax highlighting",
+      "Tokyo Night theme - Custom-adapted dark theme for consistent visual language",
+      "CSS Variables - For theme consistency across components",
+    ],
+    "Language Implementation": [
+      "Custom Lexer - For tokenizing source code with position tracking",
+      "Recursive Descent Parser - For generating abstract syntax trees",
+      "Evaluator - For interpreting the AST and executing code",
+      "Environment system - For scope management and variable resolution",
+      "Type system - For dynamic typing with type checking",
+    ],
+    "Visualization Components": [
+      "Token Visualizer - For displaying lexical analysis results",
+      "AST Tree View - For interactive syntax tree exploration",
+      "Step-by-step Debugger - For execution flow visualization",
+      "Environment Inspector - For tracking variable changes during execution",
+      "Call Stack Visualizer - For function call tracking",
+    ],
+    "State Management": [
+      "React Context API - For global state management",
+      "Custom hooks - For encapsulating language processing logic",
+      "Reducer pattern - For complex state transitions in the execution visualizer",
+      "Local component state - For UI interactions",
+    ],
+    "Animations & Interactions": [
+      "Framer Motion - For fluid animations and transitions",
+      "CSS transitions - For subtle state changes and hover effects",
+      "Collapsible panels - For information density management",
+      "Tooltips - For explaining complex concepts inline",
+    ],
+    "Performance Optimization": [
+      "Memoization - For expensive parsing and evaluation operations",
+      "Lazy loading - For code splitting and component rendering",
+      "Virtualized lists - For handling large token and AST displays",
+      "Throttled updates - For smooth visualization during execution",
+    ],
+    "Developer Experience": [
+      "Component architecture - For maintainable and reusable code",
+      "Custom type definitions - For language implementation",
+      "Documentation - For both user-facing guides and code comments",
+      "Example programs - For demonstrating language features",
+    ],
+  },
+  explain: [
+    "I built Enigma Language Explorer to make programming language internals more accessible and visual. Most developers use languages every day but rarely understand how they work under the hood. By creating an interactive tool that shows each step from source code to execution, I wanted to demystify interpreter design and language theory.",
+    "The core of the project is a complete implementation of a programming language interpreter with clear separation between lexical analysis (tokenization), syntactic analysis (parsing), and semantic analysis (evaluation). Each stage is visualized in real-time as users type or modify code, making abstract concepts concrete and interactive. The language itself is dynamically typed with first-class functions, closures, and other modern features.",
+    "The most technically challenging aspect was building the step-by-step execution visualizer. It required redesigning the interpreter to support pausing and resuming execution at any point, capturing environment states, and visualizing the call stack without compromising the integrity of the execution model. I'm particularly proud of how it highlights the current AST node during execution, showing the direct connection between syntax and runtime behavior.",
+    "I used React with TypeScript for the frontend, focusing on creating a responsive, IDE-like experience with Monaco Editor integration. The Tokyo Night-inspired theme enhances readability with semantic color coding for different language elements. The shadcn/ui component library provided a foundation for UI elements, which I extended with custom animations and visualizations using Framer Motion.",
+    "This project combines my interests in programming languages, visual learning, and interactive educational tools. Beyond being a showcase of my technical skills, it's a genuine attempt to create something useful for developers who want to understand language implementation better. I've already used it myself to explain concepts like scoping, closures, and evaluation order to other developers.",
+  ],
+};
+
 export const projects: Project[] = [
   dss,
+  enigmaLanguageExplorer,
   orchestra,
   gep,
   reducer,

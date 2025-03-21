@@ -38,9 +38,14 @@ import {
   SiSqlalchemy,
   SiPoetry,
   SiRich,
+  SiShadcnui,
+  SiLucide,
+  SiFramer,
+  SiVite,
+  SiTailwindcss,
 } from "react-icons/si";
 import { FaAws, FaLinux, FaNode } from "react-icons/fa";
-import { VscTerminalPowershell } from "react-icons/vsc";
+import { VscTerminalPowershell, VscEditorLayout } from "react-icons/vsc";
 import { TbApi } from "react-icons/tb";
 import { GoCommandPalette } from "react-icons/go";
 
@@ -199,5 +204,35 @@ export const technologies: Record<string, Technology> = {
     name: "Rich",
     aboutLink: "https://rich.readthedocs.io/en/stable/",
     icon: <SiRich className="text-ctp-mauve" />,
+  },
+  monaco: {
+    name: "Monaco Editor",
+    aboutLink: "https://microsoft.github.io/monaco-editor/",
+    icon: <VscEditorLayout className="text-ctp-pink" />,
+  },
+  shadcn: {
+    name: "shadcn/ui",
+    aboutLink: "https://ui.shadcn.com/",
+    icon: <SiShadcnui className="text-ctp-pink" />,
+  },
+  framermotion: {
+    name: "Framer Motion",
+    aboutLink: "https://www.framer.com/motion/",
+    icon: <SiFramer className="text-ctp-pink" />,
+  },
+  lucideicons: {
+    name: "Lucide Icons",
+    aboutLink: "https://lucide.dev/",
+    icon: <SiLucide className="text-ctp-pink" />,
+  },
+  vite: {
+    name: "Vite",
+    aboutLink: "https://vitejs.dev/",
+    icon: <SiVite className="text-ctp-yellow" />,
+  },
+  tailwind: {
+    name: "Tailwind CSS",
+    aboutLink: "https://tailwindcss.com/",
+    icon: <SiTailwindcss className="text-ctp-pink" />,
   },
 };
