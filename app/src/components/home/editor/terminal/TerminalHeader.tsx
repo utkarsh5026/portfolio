@@ -9,6 +9,20 @@ interface TerminalHeaderProps {
   setTerminalOpen: (open: boolean) => void;
 }
 
+/**
+ * TerminalHeader component renders the header of the terminal interface.
+ * It includes controls for clearing output, maximizing/restoring the terminal,
+ * and minimizing the terminal window.
+ *
+ * @component
+ * @param {Object} props - The properties for the TerminalHeader component.
+ * @param {Function} props.clearOutput - Function to clear the terminal output.
+ * @param {Function} props.toggleMaximize - Function to toggle the terminal's maximized state.
+ * @param {boolean} props.isMaximized - Indicates whether the terminal is currently maximized.
+ * @param {Function} props.setTerminalOpen - Function to set the terminal's open state.
+ *
+ * @returns {JSX.Element} The rendered TerminalHeader component.
+ */
 const TerminalHeader: React.FC<TerminalHeaderProps> = ({
   clearOutput,
   toggleMaximize,
