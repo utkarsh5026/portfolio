@@ -43,6 +43,7 @@ import {
   SiFramer,
   SiVite,
   SiTailwindcss,
+  SiRedux,
 } from "react-icons/si";
 import { FaAws, FaLinux, FaNode } from "react-icons/fa";
 import { VscTerminalPowershell, VscEditorLayout } from "react-icons/vsc";
@@ -234,5 +235,10 @@ export const technologies: Record<string, Technology> = {
     name: "Tailwind CSS",
     aboutLink: "https://tailwindcss.com/",
     icon: <SiTailwindcss className="text-ctp-pink" />,
+  },
+  redux: {
+    name: "Redux Toolkit",
+    aboutLink: "https://redux-toolkit.js.org/",
+    icon: <SiRedux className="text-ctp-pink" />,
   },
 };

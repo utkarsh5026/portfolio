@@ -11,9 +11,6 @@
  * - Category (DevOps, AI/ML, Library, etc.)
  */
 
-import type { Project } from "@/types";
-import { technologies } from "@/components/base/technologies";
-
 const portfolioTech = {
   name: "Modern React Portfolio",
   description:
@@ -766,11 +763,113 @@ const enigmaLanguageExplorer = {
   ],
 };
 
+import type { Project } from "@/types";
+import { technologies } from "@/components/base/technologies";
+
+const smashLeetcode = {
+  name: "Smash LeetCode",
+  description:
+    "A comprehensive full-stack platform for mastering coding interviews, featuring AI-powered explanations, interactive visualizations, and personalized learning paths. Built with React, TypeScript, and Python, this application helps developers practice algorithmic problem-solving with real-time feedback, animated algorithm visualizations, and detailed code analysis.",
+  githubLink: "https://github.com/utkarsh5026/Smash-LeetCode",
+  liveLink: "https://smash-leetcode.vercel.app/",
+  technologies: [
+    { name: "React", aboutLink: "https://reactjs.org/" },
+    { name: "TypeScript", aboutLink: "https://www.typescriptlang.org/" },
+    { name: "Python", aboutLink: "https://www.python.org/" },
+    { name: "FastAPI", aboutLink: "https://fastapi.tiangolo.com/" },
+    { name: "tailwind", aboutLink: "https://tailwindcss.com/" },
+    { name: "redux", aboutLink: "https://redux-toolkit.js.org/" },
+    { name: "framerMotion", aboutLink: "https://www.framer.com/motion/" },
+    { name: "shadcn", aboutLink: "https://ui.shadcn.com/" },
+    { name: "SQLAlchemy", aboutLink: "https://www.sqlalchemy.org/" },
+    { name: "LangChain", aboutLink: "https://langchain.com/" },
+    { name: "OpenAI", aboutLink: "https://openai.com/" },
+  ],
+  features: [
+    "Interactive algorithm visualizations with step-by-step playback controls",
+    "AI-powered code analysis and optimization suggestions",
+    "Personalized learning paths based on skill level and progress",
+    "Virtual coding coach with contextual hints and guidance",
+    "Real-time code execution and testing",
+    "Comprehensive problem library with difficulty filtering",
+    "Time and space complexity analysis of solutions",
+    "Alternative solution approaches with pros and cons",
+    "Side-by-side comparison of user solutions with optimal approaches",
+    "Responsive design for desktop and mobile learning",
+    "Dark mode with Catppuccin-inspired color palette",
+    "Performance metrics and progress tracking",
+  ],
+  techStack: {
+    "Frontend Framework": [
+      "React 19 - For building the modern, component-based UI",
+      "TypeScript - For type safety and improved developer experience",
+      "Vite - For rapid development and optimized production builds",
+      "Redux Toolkit - For centralized application state management",
+    ],
+    "Styling & UI": [
+      "Tailwind CSS 4 - For utility-first styling with modern features",
+      "shadcn/ui - For accessible, customizable UI components",
+      "Framer Motion - For fluid animations and transitions",
+      "Lucide Icons - For consistent visual iconography",
+      "Catppuccin-inspired color scheme - For eye-friendly aesthetics",
+    ],
+    "Backend & API": [
+      "Python 3.12 - For efficient server-side operations",
+      "FastAPI - For high-performance, type-safe API endpoints",
+      "SQLAlchemy - For ORM-based database interactions",
+      "Pydantic - For data validation and settings management",
+      "LangChain - For integrating and orchestrating AI capabilities",
+    ],
+    "AI & Code Analysis": [
+      "OpenAI GPT models - For code explanation and optimization",
+      "LangChain - For prompt engineering and AI response processing",
+      "Custom code parsers - For syntax highlighting and static analysis",
+      "Algorithm visualization engine - For animated execution steps",
+    ],
+    "Database & Persistence": [
+      "SQLite - For lightweight, portable database storage",
+      "Async SQLAlchemy - For non-blocking database operations",
+      "Redis - For caching frequently accessed data",
+      "Session management - For user progress tracking",
+    ],
+    "Authentication & Security": [
+      "JWT authentication - For secure user sessions",
+      "Role-based access control - For feature permission management",
+      "Rate limiting - For API protection",
+      "Environment variable configuration - For sensitive credential management",
+    ],
+    "DevOps & Deployment": [
+      "GitHub Actions - For CI/CD automation",
+      "Docker - For containerized deployment",
+      "Vercel - For frontend hosting",
+      "Fly.io - For backend API hosting",
+    ],
+    "Testing & Quality": [
+      "Jest - For frontend unit and component testing",
+      "Pytest - For backend unit and integration testing",
+      "ESLint - For code quality and consistency",
+      "TypeScript static analysis - For type-safety enforcement",
+    ],
+  },
+  explain: [
+    "I built Smash LeetCode to address the challenges I personally faced when preparing for technical interviews. While practicing algorithmic problems, I found that existing platforms often lacked the depth of explanation and visualization tools needed to truly understand complex algorithms. I wanted to create a learning environment that not only tests your coding ability but actually teaches you the underlying concepts through interactive visuals and AI-powered guidance.",
+
+    "The feature I'm most proud of is the algorithm visualization system, which transforms abstract code into animated, step-by-step visual representations. This makes it much easier to understand how algorithms like graph traversals or dynamic programming actually work. I put considerable effort into designing the visualization engine to handle different data structures elegantly - from arrays and linked lists to trees and graphs.",
+
+    "The AI coaching component was another significant challenge. I integrated large language models with custom prompts to create contextual hints that guide without spoiling solutions. The system analyzes your code in real-time, identifying potential optimizations and explaining complex concepts in an approachable way. It's designed to simulate having a patient mentor who helps you think through problems rather than just giving you answers.",
+
+    "From a technical perspective, I learned a tremendous amount about full-stack development with modern technologies. The frontend uses React 19 with TypeScript for a responsive, type-safe user experience, while the backend leverages FastAPI and SQLAlchemy for high-performance API endpoints. The project also gave me valuable experience integrating AI capabilities through LangChain and handling complex state management across a feature-rich application.",
+
+    "This project ultimately became much more than just a portfolio piece - it's a tool I personally use every day to continue improving my algorithmic thinking skills. The feedback from other developers has been incredibly rewarding, particularly from those who previously struggled with visualizing how algorithms transform data structures.",
+  ],
+};
+
 export const projects: Project[] = [
   dss,
   enigmaLanguageExplorer,
   orchestra,
   gep,
+  smashLeetcode,
   reducer,
   pauth,
   current,
