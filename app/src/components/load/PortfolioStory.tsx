@@ -5,8 +5,8 @@ import Panic from "./panic/main/Panic";
 import CodeCompilation from "./compilation/CodeCompilation";
 import MainPortfolio from "./MainPortfolio";
 import PrankPortfolio from "./simple-portfolio/PrankPortfolio";
-import FakePortfolioLoading from "./bridge/FakePortfolioLoading";
-import CompilationLoading from "./bridge/CompilationLoading";
+import FakePortfolioLoading from "./bridge/portfolio/FakePortfolioLoading";
+import CompilationLoading from "./bridge/compile/CompilationLoading";
 
 type PortfolioStage =
   | "realization"
