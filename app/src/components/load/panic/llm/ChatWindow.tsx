@@ -10,13 +10,11 @@ import { AiFillOpenAI } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { FiSend } from "react-icons/fi";
-
 import MacosTrafficController from "../../macos/MacosTrafficController";
 import { humanMessage, aiNormalResponse, aiCodeResponse } from "./content";
 import UserMessage from "./message/UserMessage";
 import AiMessage from "./message/AiMessage";
 import SideBar from "./SideBar";
-
 import "./ChatWindowAnimations.css";
 import ChatHeader from "./ChatHeader";
 
@@ -27,29 +25,83 @@ interface ChatWindowProps {
   totalAnimationTimeMS: number;
 }
 
+/**
+ * ChatWindow is a React component that simulates a chat interface with an AI assistant.
+ * It animates the appearance of user messages, AI responses, and code snippets.
+ *
+ * @param {ChatWindowProps} props - The component props
+ * @param {number} props.totalAnimationTimeMS - The total time in milliseconds for all animations to complete
+ * @returns {React.ReactElement} The ChatWindow component
+ */
 const ChatWindow: React.FC<ChatWindowProps> = ({ totalAnimationTimeMS }) => {
+  /**
+   * Reference to the main chat window element
+   */
   const chatWindowRef = useRef<HTMLDivElement>(null);
+
+  /**
+   * Reference to the end of messages for auto-scrolling
+   */
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  /**
+   * Reference to the chat messages container for scrolling
+   */
   const chatMessagesRef = useRef<HTMLDivElement>(null);
 
+  /**
+   * State to track the current stage of user input (waiting, typing, or sent)
+   */
   const [userInputStage, setUserInputStage] =
     useState<UserInputStage>("waiting");
+
+  /**
+   * State to store the current user input text
+   */
   const [userInput, setUserInput] = useState("");
 
+  /**
+   * State to track the current stage of AI response (waiting, thinking, typing, or complete)
+   */
   const [aiResponseStage, setAiResponseStage] =
     useState<AiResponseStage>("waiting");
+
+  /**
+   * State to store the current AI response text
+   */
   const [aiResponse, setAiResponse] = useState("");
 
+  /**
+   * State to control whether to show code snippet
+   */
   const [showCode, setShowCode] = useState(false);
+
+  /**
+   * State to track if code is currently being typed
+   */
   const [codeTyping, setCodeTyping] = useState(false);
+
+  /**
+   * State to store all lines of code to be displayed
+   */
   const [codeLines, setCodeLines] = useState<string[]>([]);
+
+  /**
+   * State to control how many lines of code are currently visible
+   */
   const [visibleCodeLines, setVisibleCodeLines] = useState<number>(0);
 
+  /**
+   * Memoized timing calculations based on total animation time
+   */
   const timings = useMemo(
     () => calculateTimings(totalAnimationTimeMS),
     [totalAnimationTimeMS]
   );
 
+  /**
+   * Starts the animation for typing out code line by line
+   */
   const startCodeTypingAnimation = useCallback(() => {
     const lines = aiCodeResponse.split("\n");
     setCodeLines(lines);
@@ -67,6 +119,10 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ totalAnimationTimeMS }) => {
     }, timings.codeTypingSpeed);
   }, [timings.codeTypingSpeed]);
 
+  /**
+   * Starts the animation sequence for the AI response,
+   * including thinking, typing text, and showing code
+   */
   const startAiResponseAnimation = useCallback(() => {
     setAiResponseStage("thinking");
 
@@ -91,6 +147,10 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ totalAnimationTimeMS }) => {
     setTimeout(startTyping, timings.aiThinkingTime);
   }, [timings.aiThinkingTime, timings.aiTypingSpeed, startCodeTypingAnimation]);
 
+  /**
+   * Starts the animation for typing out the user's message
+   * and triggers the AI response animation when complete
+   */
   const startUserTypingAnimation = useCallback(() => {
     setUserInputStage("typing");
     let currentIndex = 0;
@@ -107,6 +167,9 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ totalAnimationTimeMS }) => {
     }, timings.userTypingSpeed);
   }, [timings.userTypingSpeed, startAiResponseAnimation]);
 
+  /**
+   * Effect to start the animation sequence when the component mounts
+   */
   useEffect(() => {
     chatWindowRef.current?.classList.add("llm-animate-card-appear");
     setTimeout(() => {
@@ -114,6 +177,9 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ totalAnimationTimeMS }) => {
     }, timings.windowAppearanceTime);
   }, [timings.windowAppearanceTime, startUserTypingAnimation]);
 
+  /**
+   * Effect to auto-scroll to the bottom of the chat when new content appears
+   */
   useEffect(() => {
     if (chatMessagesRef.current && messagesEndRef.current) {
       chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight;
@@ -211,6 +277,12 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ totalAnimationTimeMS }) => {
   );
 };
 
+/**
+ * Calculates timing values for various animations based on the total animation duration
+ *
+ * @param {number} totalAnimationTimeMS - The total time in milliseconds for all animations
+ * @returns {Object} An object containing calculated timing values for different animation stages
+ */
 const calculateTimings = (totalAnimationTimeMS: number) => {
   const userMessageLength = humanMessage.length;
   const aiResponseLength = aiNormalResponse.length;
