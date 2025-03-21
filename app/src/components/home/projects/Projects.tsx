@@ -7,7 +7,7 @@ import OutlineNode from "../editor/outline/OutlineNode";
 import { Sparkles, Code, Globe, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProjectModal from "./modal/ProjectModal";
-import FeaturedProject from "./FeaturedProject";
+import FeaturedProject from "./featured/FeaturedProject";
 import ProjectSmall from "./ProjectSmall";
 import { ProjectThemeProvider } from "./context/ProjectThemeProvider";
 
