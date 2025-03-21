@@ -3,6 +3,22 @@ import React from "react";
 import { FaBrain } from "react-icons/fa";
 import { philosophy } from "./data";
 
+/**
+ * Philosophy Component
+ *
+ * This component displays the user's personal philosophy in a visually appealing manner.
+ * It utilizes Framer Motion for animations, providing a smooth entrance effect.
+ *
+ * The component includes:
+ * - A title with an icon indicating the section is about philosophy.
+ * - A list of philosophical statements that reflect the user's beliefs and approach to development.
+ * - Decorative quotation marks to enhance the visual presentation of the philosophy statements.
+ *
+ * Usage:
+ * <Philosophy />
+ *
+ * Note: Ensure that the 'philosophy' array is defined and contains the relevant data.
+ */
 const Philosophy: React.FC = () => {
   return (
     <motion.div

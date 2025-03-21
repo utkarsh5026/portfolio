@@ -3,6 +3,22 @@ import React from "react";
 import { GiBullseye } from "react-icons/gi";
 import { focusAreas } from "./data";
 
+/**
+ * CurrentFocus Component
+ *
+ * This component displays the user's current focus areas in web development.
+ * It utilizes Framer Motion for animations to enhance the user experience.
+ *
+ * The component includes:
+ * - A title with an icon indicating the section is about current focus.
+ * - A brief description of the user's focus areas.
+ * - A list of focus areas that the user is currently deepening their expertise in.
+ * - A styled container that enhances the visual appeal of the component.
+ *
+ * Usage:
+ * <CurrentFocus />
+ *
+ */
 const CurrentFocus: React.FC = () => {
   return (
     <motion.div
