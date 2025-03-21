@@ -7,10 +7,27 @@ interface TechStackDisplayProps {
   theme: { main: string; secondary: string };
 }
 
+/**
+ * TechStackDisplay Component
+ *
+ * This component displays a list of technologies grouped by category.
+ * It utilizes Framer Motion for animations and is styled with Tailwind CSS.
+ *
+ * Props:
+ * - techStack (Record<string, string[]>): An object containing categories as keys and an array of technologies as values.
+ * - theme (Object): The theme object for the tech stack, obtained from the useProjectTheme hook.
+ *
+ * Usage:
+ * <TechStackDisplay techStack={techStack} theme={theme} />
+ */
 const TechStackDisplay: React.FC<TechStackDisplayProps> = ({
   techStack,
   theme,
 }) => {
+  /**
+   * Function to extract the name of a technology from its description.
+   * The description is assumed to be in the format "Technology Name - Technology Description".
+   */
   const extractTechName = (description: string) => {
     const endIndex = description.indexOf(" -");
     return endIndex > 0 ? description.substring(0, endIndex) : description;
