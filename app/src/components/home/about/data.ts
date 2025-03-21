@@ -62,3 +62,57 @@ export const philosophy = [
   "I value continuous learning and embrace challenges that push me outside my comfort zone.",
   "I want to write code that feels like writing story where every next line has a meaning and a purpose.",
 ];
+
+export const skills = [
+  {
+    category: "Frontend",
+    skills: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Styled Components",
+      "Redux",
+      "React Query",
+    ],
+  },
+
+  {
+    category: "Backend",
+    skills: [
+      "Node.js",
+      "Express",
+      "Python",
+      "Go",
+      "MongoDB",
+      "PostgreSQL",
+      "Redis",
+      "MySQL",
+      "GraphQL",
+      "REST API Design",
+    ],
+  },
+
+  {
+    category: "DevOps & Cloud",
+    skills: [
+      "AWS",
+      "Google Cloud Platform",
+      "Docker",
+      "Kubernetes",
+      "CI/CD",
+      "GitHub Actions",
+    ],
+  },
+
+  {
+    category: "Tools & Others",
+    skills: [
+      "Git",
+      "GitHub",
+      "Agile Methodologies",
+      "Unit Testing",
+      "E2E Testing",
+    ],
+  },
+] as const;
