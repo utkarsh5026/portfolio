@@ -3,6 +3,22 @@ import { FaCode } from "react-icons/fa";
 import React from "react";
 import { background } from "./data";
 
+/**
+ * Background Component
+ *
+ * This component displays the background information of the user in a visually appealing manner.
+ * It utilizes Framer Motion for animations, providing a smooth entrance effect.
+ *
+ * The component includes:
+ * - A title with an icon indicating the section is about background.
+ * - A list of paragraphs that describe the user's background.
+ * - Decorative elements to enhance the visual presentation of the background information.
+ *
+ * Usage:
+ * <Background />
+ *
+ * Note: Ensure that the 'background' array is defined and contains the relevant data.
+ */
 const Background: React.FC = () => {
   return (
     <motion.div
