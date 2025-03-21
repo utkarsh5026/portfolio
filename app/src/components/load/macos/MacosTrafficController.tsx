@@ -10,6 +10,16 @@ interface MacosTrafficControllerProps {
   appName: string;
 }
 
+/**
+ * MacosTrafficController is a React component that mimics the macOS traffic light buttons
+ * and displays an app icon and name. It is designed to be user-friendly and visually appealing.
+ *
+ * @param {MacosTrafficControllerProps} props - The component props.
+ * @param {React.ReactNode} props.appIcon - The icon of the app.
+ * @param {string} props.appName - The name of the app.
+ *
+ * @returns {React.ReactElement} The MacosTrafficController component.
+ */
 const MacosTrafficController: React.FC<MacosTrafficControllerProps> = ({
   appIcon,
   appName,
