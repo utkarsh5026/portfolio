@@ -15,6 +15,23 @@ import { cn } from "@/lib/utils";
 
 const SKILL_ID = "skills";
 
+/**
+ * Skills Component
+ *
+ * This component renders the Skills section of the website, showcasing the user's technical expertise.
+ * It includes animations for a visually appealing entrance effect and a modal for additional information.
+ *
+ * Props:
+ * - None
+ *
+ * State:
+ * - controls: The animation controls for the section.
+ * - ref: The reference to the section for intersection observation.
+ * - inView: A boolean indicating if the section is in view.
+ * - isOpen: A boolean indicating if the "What do you know" modal is open.
+ *
+ * @returns {React.ReactElement} The rendered Skills component
+ */
 const Skills: React.FC = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
