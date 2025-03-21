@@ -2,6 +2,12 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { SiOpenai } from "react-icons/si";
 
+/**
+ * ChatHeader is a React component that displays the header section of a chat interface.
+ * It includes the AI assistant's avatar, status, and a settings button.
+ *
+ * @returns {React.ReactElement} The ChatHeader component.
+ */
 const ChatHeader = React.memo(() => {
   return (
     <div className="h-14 bg-[#202123] px-4 flex items-center justify-between border-b border-[#343541]">
@@ -14,7 +20,7 @@ const ChatHeader = React.memo(() => {
             AI Assistant
           </div>
           <div className="text-xs text-green-400 flex items-center">
-            <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5"></span>
+            <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5"></span>{" "}
             Online
           </div>
         </div>

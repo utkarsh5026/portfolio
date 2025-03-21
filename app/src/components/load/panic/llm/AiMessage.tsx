@@ -12,6 +12,20 @@ interface AiMessageProps {
   codeTyping: boolean;
 }
 
+/**
+ * AiMessage is a React component that displays a message from an AI system.
+ * It includes features such as a typing indicator, code display, and user feedback options.
+ *
+ * @param {AiMessageProps} props - The component props.
+ * @param {string} props.aiResponse - The message from the AI system.
+ * @param {"thinking" | "typing" | "complete"} props.aiResponseStage - The current stage of the AI response.
+ * @param {boolean} props.showCode - Indicates if code should be displayed.
+ * @param {string[]} props.codeLines - The lines of code to display.
+ * @param {number} props.visibleCodeLines - The number of code lines to display.
+ * @param {boolean} props.codeTyping - Indicates if the code is being typed.
+ *
+ * @returns {React.ReactElement} The AiMessage component.
+ */
 const AiMessage: React.FC<AiMessageProps> = ({
   aiResponse,
   aiResponseStage,
