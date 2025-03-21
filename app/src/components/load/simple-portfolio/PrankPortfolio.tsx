@@ -39,6 +39,24 @@ const CHAOS_INTERVAL = 400;
 const VIOLENT_SCREEN_SHAKE_INTERVAL = 500;
 const TERMINAL_MESSAGE_INTERVAL = 200;
 
+/**
+ * PrankPortfolio Component
+ *
+ * A chaotic portfolio component that simulates a website breaking down with visual glitches,
+ * error messages, and panic thoughts. This creates a humorous "prank" experience before
+ * transitioning to the actual portfolio.
+ *
+ * The component progresses through several stages:
+ * 1. Initial entrance animation
+ * 2. Displaying panic thoughts
+ * 3. Breaking the layout
+ * 4. Showing a terminal with errors
+ * 5. Displaying a fatal error
+ * 6. Final blackout transition to the real portfolio
+ *
+ * @param {Object} props - Component props
+ * @param {Function} props.onComplete - Callback function to execute when animation completes
+ */
 const PrankPortfolio: React.FC<ChaoticPortfolioProps> = ({ onComplete }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [panicThoughts, setPanicThoughts] = useState<ActualThought[]>([]);
@@ -49,11 +67,24 @@ const PrankPortfolio: React.FC<ChaoticPortfolioProps> = ({ onComplete }) => {
   const [enableBlackout, setEnableBlackout] = useState(false);
   const [entrance, setEntrance] = useState(false);
 
+  /**
+   * Triggers the final blackout effect and completes the animation sequence
+   * by calling the onComplete callback after a delay.
+   */
   const blackout = useCallback(() => {
     setEnableBlackout(true);
     setTimeout(onComplete, 1500);
   }, [onComplete]);
 
+  /**
+   * Adds a new panic thought bubble to the screen with specified properties.
+   * The thought will appear as new, then transition to old, and finally be removed.
+   *
+   * @param {string} text - The text content of the thought
+   * @param {Priority} priority - Priority level affecting the visual style (high, medium, low)
+   * @param {Position} position - Screen position for the thought (left, right, center)
+   * @param {number} makeOldTime - Time in ms before the thought transitions from new to old
+   */
   const addPanicThought = useCallback(
     (
       text: string,
@@ -92,6 +123,12 @@ const PrankPortfolio: React.FC<ChaoticPortfolioProps> = ({ onComplete }) => {
     []
   );
 
+  /**
+   * Displays a sequence of error messages in the console terminal.
+   * Adds errors at timed intervals to simulate a system breakdown.
+   *
+   * @returns {Function} Cleanup function to clear all timeouts
+   */
   const showConsoleErrors = useCallback(() => {
     const addConsoleError = (message: string) => {
       const newError = {
@@ -124,6 +161,10 @@ const PrankPortfolio: React.FC<ChaoticPortfolioProps> = ({ onComplete }) => {
     };
   }, []);
 
+  /**
+   * Creates random error message elements that appear at random positions
+   * on the screen to enhance the chaotic effect.
+   */
   const createRandomErrors = useCallback(() => {
     // Create and append error messages at random positions more frequently
     for (let i = 0; i < 15; i++) {
@@ -164,6 +205,12 @@ const PrankPortfolio: React.FC<ChaoticPortfolioProps> = ({ onComplete }) => {
     }
   }, []);
 
+  /**
+   * Initiates the chaotic visual effects by applying random transformations
+   * to the container at regular intervals, creating a glitchy appearance.
+   *
+   * @returns {Function} Cleanup function to clear the interval
+   */
   const startChaos = useCallback(() => {
     let start = 0;
     const chaosInterval = setInterval(() => {
@@ -193,12 +240,22 @@ const PrankPortfolio: React.FC<ChaoticPortfolioProps> = ({ onComplete }) => {
     return () => clearInterval(chaosInterval);
   }, [layoutBroken]);
 
+  /**
+   * Enhances the chaos effect by adding mega-glitching class and
+   * creating random error messages on the screen.
+   */
   const startChaosEffects = useCallback(() => {
     if (!containerRef.current) return;
     containerRef.current.classList.add("mega-glitching");
     createRandomErrors();
   }, [createRandomErrors]);
 
+  /**
+   * Displays the sequence of panic thoughts based on the predefined
+   * thought sequence, triggering additional effects at specific points.
+   *
+   * @returns {Function} Cleanup function to clear all timeouts
+   */
   const showThoughts = useCallback(() => {
     const thoughtTimeouts = thoughtSequence.map((thought) => {
       return setTimeout(() => {
@@ -213,6 +270,11 @@ const PrankPortfolio: React.FC<ChaoticPortfolioProps> = ({ onComplete }) => {
     };
   }, [startChaosEffects, addPanicThought]);
 
+  /**
+   * Displays the fatal error screen after a specified delay.
+   *
+   * @returns {Function} Cleanup function to clear the timeout
+   */
   const fatalError = useCallback(() => {
     const fatalErrorTimeout = setTimeout(
       () => setShowFatalError(true),
@@ -221,6 +283,11 @@ const PrankPortfolio: React.FC<ChaoticPortfolioProps> = ({ onComplete }) => {
     return () => clearTimeout(fatalErrorTimeout);
   }, []);
 
+  /**
+   * Shows the terminal console after a specified delay.
+   *
+   * @returns {Function} Cleanup function to clear the timeout
+   */
   const bringTerminal = useCallback(() => {
     const terminalTimeout = setTimeout(
       () => setShowTerminal(true),
@@ -229,6 +296,10 @@ const PrankPortfolio: React.FC<ChaoticPortfolioProps> = ({ onComplete }) => {
     return () => clearTimeout(terminalTimeout);
   }, []);
 
+  /**
+   * Main effect that orchestrates the entire animation sequence.
+   * Sets up all the timeouts and intervals for the various stages of the prank.
+   */
   useEffect(() => {
     if (!entrance) return;
 
@@ -268,6 +339,9 @@ const PrankPortfolio: React.FC<ChaoticPortfolioProps> = ({ onComplete }) => {
     entrance,
   ]);
 
+  /**
+   * Handles the initial entrance animation before starting the main sequence.
+   */
   useEffect(() => {
     if (!entrance) {
       containerRef.current?.classList.add("entrance-chaotic");
