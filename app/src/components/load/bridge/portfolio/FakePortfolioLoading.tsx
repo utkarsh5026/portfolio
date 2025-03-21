@@ -17,15 +17,43 @@ interface FakePortfolioLoadingProps {
 }
 
 /**
+ * FakePortfolioLoading Component
+ *
  * An enhanced dark-themed loading component that displays a professional portfolio
- * loading screen with improved animations and a rocket launch effect
+ * loading screen with improved animations and a rocket launch effect.
+ *
+ * Features:
+ * - Animated progress bar with gradient effects
+ * - Dynamic loading messages that change over time
+ * - Rocket animation that launches when loading is nearly complete
+ * - Particle and glow effects that increase in intensity as loading progresses
+ * - Portfolio preview elements with animations
+ *
+ * @param {Function} onComplete - Callback function to execute when loading completes
+ * @param {number} duration - Total duration of the loading animation in milliseconds
  */
 const FakePortfolioLoading: React.FC<FakePortfolioLoadingProps> = React.memo(
   ({ onComplete, duration }) => {
+    /**
+     * State to track the current progress percentage (0-100)
+     */
     const [progress, setProgress] = useState(0);
+
+    /**
+     * State to track the current loading message displayed to the user
+     */
     const [loadingText, setLoadingText] = useState("Preparing portfolio...");
+
+    /**
+     * State to track whether the rocket has been launched
+     * Controls the rocket animation transition
+     */
     const [rocketLaunched, setRocketLaunched] = useState(false);
 
+    /**
+     * Memoized value that determines the color of the progress text
+     * Changes color based on the current progress percentage
+     */
     const progressText = useMemo(() => {
       if (progress < 20) return "text-gray-500";
       else if (progress < 50) return "text-blue-400";
@@ -33,6 +61,14 @@ const FakePortfolioLoading: React.FC<FakePortfolioLoadingProps> = React.memo(
       else return "text-cyan-300";
     }, [progress]);
 
+    /**
+     * Effect to handle the loading animation sequence
+     *
+     * - Increments the progress bar at varying speeds
+     * - Cycles through loading messages at timed intervals
+     * - Triggers the rocket launch animation
+     * - Calls onComplete callback when loading finishes
+     */
     useEffect(() => {
       const messageTimeouts: NodeJS.Timeout[] = [];
       const progressInterval = setInterval(() => {
@@ -63,14 +99,12 @@ const FakePortfolioLoading: React.FC<FakePortfolioLoadingProps> = React.memo(
         messageTimeouts.push(timeout);
       });
 
-      // Complete after duration
       const completionTimeout = setTimeout(() => {
         if (onComplete) onComplete();
       }, duration);
 
       messageTimeouts.push(completionTimeout);
 
-      // Cleanup
       return () => {
         clearInterval(progressInterval);
         messageTimeouts.forEach((timeout) => clearTimeout(timeout));
