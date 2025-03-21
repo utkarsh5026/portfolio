@@ -40,3 +40,19 @@ export const focusAreas = [
   "Mastering database design and optimization strategies",
   "Exploring Web RTC and streaming technologies",
 ] as const;
+
+export const interests = {
+  technical: [
+    "Reading code of open-source projects",
+    "Experimenting with new programming languages",
+    "Exploring AI/ML applications in web development",
+    "Reading technical blogs and papers",
+    "Dissecting Chrome's DevTools of some popular websites",
+  ],
+  nonTechnical: [
+    "Watching Virat Kohli's batting",
+    "Exploring new Music",
+    "Going to Gym",
+    "Playing PES (Pro Evolution Soccer) ⚽",
+  ],
+} as const;
