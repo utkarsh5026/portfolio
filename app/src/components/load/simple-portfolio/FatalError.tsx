@@ -7,6 +7,15 @@ interface FatalErrorProps {
   onComplete: () => void;
 }
 
+/**
+ * FatalError Component
+ *
+ * This component displays a fatal error message to the user, indicating that the system has encountered a critical error and cannot recover.
+ * It includes a large skull icon, a title, a description of the error, an error code, a stack trace, and an emergency recovery button.
+ *
+ * @param {boolean} makeSkullLarge - Determines if the skull icon should be displayed in a larger size.
+ * @param {Function} onComplete - A callback function to execute when the emergency recovery button is clicked.
+ */
 const FatalError: React.FC<FatalErrorProps> = ({
   makeSkullLarge,
   onComplete,

@@ -10,6 +10,22 @@ interface ConsoleProps {
   errors: ConsoleError[];
 }
 
+/**
+ * Console Component
+ *
+ * This component displays a console-like interface for error messages. It is designed to mimic a developer console, providing a user-friendly interface for displaying errors in a React application.
+ *
+ * Props:
+ * - errors: An array of ConsoleError objects, each containing an id, message, and isNew property.
+ *
+ * The component is memoized to optimize performance by only re-rendering when the errors prop changes.
+ *
+ * The console interface includes:
+ * - A header with a title and status indicators (red, yellow, green).
+ * - A scrollable area displaying each error message, including the time of occurrence and the error message itself. New errors are highlighted.
+ *
+ * This component is intended for use in a development environment to aid in debugging and error tracking.
+ */
 const Console: React.FC<ConsoleProps> = React.memo(({ errors }) => {
   return (
     <div className="fixed bottom-5 left-5 w-1/2 h-52 bg-black bg-opacity-90 rounded-md overflow-hidden font-mono text-gray-100 shadow-lg z-50">
