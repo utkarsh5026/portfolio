@@ -9,6 +9,19 @@ interface StatusBarProps {
   timeRemaining?: boolean;
 }
 
+/**
+ * StatusBar is a React component that displays the status of a file being edited.
+ * It shows the number of problems, typing progress, language, and encoding information.
+ *
+ * @param {StatusBarProps} props - The component props.
+ * @param {number} props.problems - The number of problems in the file.
+ * @param {string} props.language - The programming language of the file.
+ * @param {number} [props.typingProgress=0] - The number of lines typed so far.
+ * @param {number} [props.totalLines=0] - The total number of lines in the file.
+ * @param {boolean} [props.timeRemaining=false] - Indicates if time is running out.
+ *
+ * @returns {React.ReactElement} The StatusBar component.
+ */
 const StatusBar: React.FC<StatusBarProps> = ({
   problems,
   language,
@@ -35,7 +48,6 @@ const StatusBar: React.FC<StatusBarProps> = ({
           </span>
         )}
 
-        {/* Typing progress information */}
         <span className="flex items-center">
           {isComplete ? (
             <span className="text-green-200">File Complete</span>
