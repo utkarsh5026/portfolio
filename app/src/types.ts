@@ -1,4 +1,5 @@
 import React from "react";
+import type { TechName } from "./components/base/technologies";
 
 export type TechnologyLearning = {
   name: string;
@@ -20,12 +21,12 @@ export type Project = {
   description: string;
   githubLink: string;
   liveLink?: string;
-  technologies: Technology[];
+  technologies: TechName[];
   features: string[];
   thumbnail?: string;
   highlights?: string[];
   tags?: string[];
-  techStack?: Record<Technology["name"], string[]>;
+  techStack?: Record<string, string[]>;
   explain: string[];
 };
 

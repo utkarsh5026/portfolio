@@ -11,7 +11,6 @@
  * just import the technologies object and grab what you need!
  */
 
-import type { Technology } from "@/types";
 import {
   SiGo,
   SiReact,
@@ -44,97 +43,101 @@ import {
   SiVite,
   SiTailwindcss,
   SiRedux,
+  SiGin,
+  SiFirebase,
+  SiGit,
 } from "react-icons/si";
 import { FaAws, FaLinux, FaNode } from "react-icons/fa";
 import { VscTerminalPowershell, VscEditorLayout } from "react-icons/vsc";
 import { TbApi } from "react-icons/tb";
 import { GoCommandPalette } from "react-icons/go";
+import { GiCobra } from "react-icons/gi";
 
-export const technologies: Record<string, Technology> = {
+export const technologies = {
   golang: {
     name: "Golang",
     aboutLink: "https://go.dev/",
-    icon: <SiGo className="text-[#00ADD8]" />,
+    icon: <SiGo className="text-ctp-sky" />,
   },
   react: {
     name: "React",
     aboutLink: "https://reactjs.org/",
-    icon: <SiReact className="text-[#61DAFB]" />,
+    icon: <SiReact className="text-ctp-blue" />,
   },
   fastapi: {
     name: "FastAPI",
     aboutLink: "https://fastapi.tiangolo.com/",
-    icon: <SiFastapi className="text-[#009688]" />,
+    icon: <SiFastapi className="text-ctp-teal" />,
   },
   python: {
     name: "Python",
     aboutLink: "https://www.python.org/",
-    icon: <SiPython className="text-[#3776AB]" />,
+    icon: <SiPython className="text-ctp-blue" />,
   },
   docker: {
     name: "Docker",
     aboutLink: "https://www.docker.com/",
-    icon: <SiDocker className="text-[#2496ED]" />,
+    icon: <SiDocker className="text-ctp-blue" />,
   },
   mongodb: {
     name: "MongoDB",
     aboutLink: "https://www.mongodb.com/",
-    icon: <SiMongodb className="text-[#47A248]" />,
+    icon: <SiMongodb className="text-ctp-green" />,
   },
   kubernetes: {
     name: "Kubernetes",
     aboutLink: "https://kubernetes.io/",
-    icon: <SiKubernetes className="text-[#326CE5]" />,
+    icon: <SiKubernetes className="text-ctp-blue" />,
   },
   typescript: {
     name: "TypeScript",
     aboutLink: "https://www.typescriptlang.org/",
-    icon: <SiTypescript className="text-[#3178C6]" />,
+    icon: <SiTypescript className="text-ctp-blue" />,
   },
   postgresql: {
     name: "PostgreSQL",
     aboutLink: "https://www.postgresql.org/",
-    icon: <SiPostgresql className="text-yellow-500" />,
+    icon: <SiPostgresql className="text-ctp-blue" />,
   },
   aws: {
     name: "AWS",
     aboutLink: "https://aws.amazon.com/",
-    icon: <FaAws className="text-[#FF9900]" />,
+    icon: <FaAws className="text-ctp-peach" />,
   },
   sqlite: {
     name: "SQLite",
     aboutLink: "https://www.sqlite.org/",
-    icon: <SiSqlite className="text-yellow-500" />,
+    icon: <SiSqlite className="text-ctp-blue" />,
   },
   linux: {
     name: "Linux",
     aboutLink: "https://www.linux.org/",
-    icon: <FaLinux className="text-[#FCC624]" />,
+    icon: <FaLinux className="text-ctp-yellow" />,
   },
   powershell: {
     name: "PowerShell",
     aboutLink: "https://docs.microsoft.com/en-us/powershell/",
-    icon: <VscTerminalPowershell className="text-[#2D7DD2]" />,
+    icon: <VscTerminalPowershell className="text-ctp-blue" />,
   },
   node: {
     name: "Node",
     aboutLink: "https://nodejs.org/",
-    icon: <FaNode className="text-[#339933]" />,
+    icon: <FaNode className="text-ctp-green" />,
   },
   javascript: {
     name: "JavaScript",
     aboutLink: "https://www.javascript.com/",
-    icon: <SiJavascript className="text-[#F7DF1E]" />,
+    icon: <SiJavascript className="text-ctp-yellow" />,
   },
   rest: {
     name: "REST",
     aboutLink: "https://restfulapi.net/",
-    icon: <TbApi className="text-[#F7DF1E]" />,
+    icon: <TbApi className="text-ctp-yellow" />,
   },
   django: {
     name: "Django",
     aboutLink: "https://www.djangoproject.com/",
-    icon: <SiDjango className="text-[#0F4D32]" />,
+    icon: <SiDjango className="text-ctp-green" />,
   },
   flask: {
     name: "Flask",
@@ -199,7 +202,7 @@ export const technologies: Record<string, Technology> = {
   poetry: {
     name: "Poetry",
     aboutLink: "https://python-poetry.org/",
-    icon: <SiPoetry className="text-[#3776AB]" />,
+    icon: <SiPoetry className="text-ctp-blue" />,
   },
   rich: {
     name: "Rich",
@@ -241,4 +244,26 @@ export const technologies: Record<string, Technology> = {
     aboutLink: "https://redux-toolkit.js.org/",
     icon: <SiRedux className="text-ctp-pink" />,
   },
-};
+  gin: {
+    name: "Gin",
+    aboutLink: "https://gin-gonic.com/",
+    icon: <SiGin className="text-ctp-pink" />,
+  },
+  firebase: {
+    name: "Firebase",
+    aboutLink: "https://firebase.google.com/",
+    icon: <SiFirebase className="text-ctp-peach" />,
+  },
+  cobra: {
+    name: "Cobra",
+    aboutLink: "https://github.com/spf13/cobra",
+    icon: <GiCobra className="text-ctp-green" />,
+  },
+  git: {
+    name: "Git",
+    aboutLink: "https://git-scm.com/",
+    icon: <SiGit className="text-ctp-red" />,
+  },
+} as const;
+
+export type TechName = keyof typeof technologies;
