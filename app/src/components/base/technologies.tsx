@@ -46,6 +46,8 @@ import {
   SiGin,
   SiFirebase,
   SiGit,
+  SiGraphql,
+  SiApollographql,
 } from "react-icons/si";
 import { FaAws, FaLinux, FaNode } from "react-icons/fa";
 import { VscTerminalPowershell, VscEditorLayout } from "react-icons/vsc";
@@ -263,6 +265,16 @@ export const technologies = {
     name: "Git",
     aboutLink: "https://git-scm.com/",
     icon: <SiGit className="text-ctp-red" />,
+  },
+  graphql: {
+    name: "GraphQL",
+    aboutLink: "https://graphql.org/",
+    icon: <SiGraphql className="text-ctp-pink" />,
+  },
+  apollo: {
+    name: "Apollo",
+    aboutLink: "https://www.apollographql.com/",
+    icon: <SiApollographql className="text-ctp-pink" />,
   },
 } as const;
 

@@ -1106,6 +1106,110 @@ const justdoit: Project = {
   tags: ["Go", "Git", "Version Control", "CLI", "Systems Programming"],
 };
 
+const genshinCompanion: Project = {
+  name: "Genshin Companion",
+  description:
+    "A comprehensive full-stack web application for Genshin Impact players, offering character information, talent book scheduling, weapon material tracking, tier list creation, and an interactive guessing game. Built with React, TypeScript, and a Node.js/GraphQL backend, this platform helps players optimize their farming routines, explore character details, and engage with the game's content through an intuitive and responsive interface.",
+  githubLink: "https://github.com/yourusername/genshin-companion",
+  liveLink: "https://genshin-companion.vercel.app",
+  technologies: [
+    "react",
+    "typescript",
+    "apollo",
+    "graphql",
+    "tailwind",
+    "framermotion",
+    "redux",
+    "node",
+    "postgresql",
+    "shadcn",
+  ],
+  features: [
+    "Character information dashboard with detailed stats, talents, constellations, and animations",
+    "Interactive talent book calendar with daily farming recommendations",
+    "Weapon material tracker organized by region and day of availability",
+    "Animated character profiles with idle and combat animations",
+    "Character and weapon tier list builder with drag-and-drop interface",
+    "Genshin character guessing game with visual feedback and contextual hints",
+    "Material farming planner with personal routine optimization",
+    "Dark/light theme support with Genshin-inspired color palette",
+    "Responsive design optimized for both desktop and mobile",
+    "Performance-optimized animations and smooth transitions between views",
+    "Comprehensive database of all in-game characters and weapons",
+    "User-friendly search functionality with visual character selection",
+  ],
+  techStack: {
+    "Frontend Framework": [
+      "React 18 - For building a dynamic, component-based UI with hooks architecture",
+      "TypeScript - For type safety and improved developer experience",
+      "Redux Toolkit - For centralized state management with slice-based organization",
+      "Apollo Client - For GraphQL data fetching with efficient caching",
+    ],
+    "Styling & UI": [
+      "Tailwind CSS - For utility-first styling with custom design tokens",
+      "shadcn/ui - For accessible, reusable component primitives",
+      "Framer Motion - For smooth animations and interactive transitions",
+      "Lucide Icons - For consistent visual iconography across the application",
+      "CSS Grid & Flexbox - For responsive, adaptive layouts",
+      "Custom element-themed styling based on Genshin's visual language",
+    ],
+    "Backend & API": [
+      "Node.js - For JavaScript runtime environment",
+      "TypeORM - For object-relational mapping and database interactions",
+      "PostgreSQL - For relational data storage with complex relationships",
+      "GraphQL - For flexible data querying with Apollo Server",
+      "TypeGraphQL - For type-safe GraphQL schema definition",
+      "DataLoader - For efficient batched data fetching and caching",
+    ],
+    "State Management": [
+      "Redux Toolkit - For global application state with typed slices",
+      "React Context API - For theme management and UI state",
+      "Apollo Cache - For GraphQL query results management",
+      "Custom hooks - For reusable stateful logic across components",
+    ],
+    "Database & Data Management": [
+      "PostgreSQL - For relational data with character and weapon relationships",
+      "TypeORM Entities - For modeling game data with proper relationships",
+      "Database migrations - For versioned schema updates",
+      "Entity graph optimization - For efficient data loading patterns",
+      "Seed scripts - For populating the database with game content",
+    ],
+    "UI Components & Interactions": [
+      "Tabs, Cards, and Tables - For organized content presentation",
+      "Command palette - For quick navigation and character search",
+      "Drag and drop - For tier list organization with dnd-kit",
+      "Interactive calendars - For visualizing daily farming opportunities",
+      "Tooltips and popovers - For contextual information display",
+      "Modals and dialogs - For focused task completion",
+    ],
+    "DevOps & Deployment": [
+      "GitHub Actions - For CI/CD pipeline automation",
+      "Docker - For containerized development and deployment",
+      "Vercel - For frontend hosting and serverless functions",
+      "Railway - For managed PostgreSQL database hosting",
+      "Environment configuration - For deployment-specific settings",
+    ],
+    "Performance Optimization": [
+      "Code splitting - For reduced initial load times",
+      "Lazy loading - For component and route-based chunking",
+      "Image optimization - For fast loading of character and weapon assets",
+      "Memoization - For preventing unnecessary re-renders",
+      "GraphQL fragment optimization - For precise data requirements",
+    ],
+  },
+  explain: [
+    "I built Genshin Companion to solve a common pain point for Genshin Impact players: the challenge of optimizing character progression and resource farming. While playing the game, I found myself constantly switching between wikis, spreadsheets, and planning tools to track what materials I needed on which days. I wanted to create a unified solution that would make this process more intuitive and visually appealing.",
+
+    "The feature I'm most proud of is the character routine planner, which helps players optimize their daily farming based on the characters they want to build. The system analyzes talent book and weapon material requirements, then generates a personalized schedule that minimizes resin usage and maximizes efficiency. I implemented this using a combination of TypeScript for type safety and Redux for state management, ensuring that the complex data relationships between characters, weapons, and materials remained consistent and easy to manipulate.",
+
+    "From a technical perspective, implementing the animated character profiles presented a significant challenge. I had to design a system that could efficiently load and display both static images and video animations while maintaining performance. This led me to develop a custom lazy-loading animation component that intelligently switches between image and video formats based on user interaction and device capabilities. The implementation leverages React's useRef and useState hooks along with the browser's IntersectionObserver API to minimize unnecessary resource loading.",
+
+    "The GraphQL backend was another challenging aspect of the project. I designed a schema that accurately represents the complex relationships between game entities while remaining flexible enough to support efficient queries. Using TypeGraphQL with TypeORM provided excellent type safety across the entire stack, from database to client. I implemented DataLoader patterns to prevent the N+1 query problem when fetching related entities, resulting in significantly improved API performance.",
+
+    "What started as a personal project to enhance my own gaming experience evolved into a comprehensive tool that addresses real player needs. The feedback from the Genshin Impact community has been incredibly rewarding, particularly regarding how the application integrates disparate information into a cohesive, visually appealing interface. This project taught me valuable lessons about full-stack development, particularly around state management in complex applications and optimizing performance with large datasets and media assets.",
+  ],
+};
+
 export const projects: Project[] = [
   dss,
   enigmaLanguageExplorer,
@@ -1120,6 +1224,7 @@ export const projects: Project[] = [
   cope,
   mayonation,
   justdoit,
+  genshinCompanion,
   portfolio,
 ] as const;
 
