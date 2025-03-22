@@ -45,7 +45,7 @@ export type WorkExperience = {
     description: string[];
     icon?: string;
   }[];
-  technologies: string[];
+  technologies: TechName[];
   imageSrc: string;
   companyUrl: string;
   docsUrl?: string;
