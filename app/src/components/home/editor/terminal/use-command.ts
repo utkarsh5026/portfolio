@@ -137,7 +137,7 @@ export const useLinuxCommands = () => {
               return `
 Name: ${project.name}
 Description: ${project.description}
-Tech: ${project.technologies.map((t) => t.name).join(", ")}
+Tech: ${project.technologies.map((t) => technologies[t].name).join(", ")}
 GitHub: ${project.githubLink}
 ${project.liveLink ? `Live: ${project.liveLink}` : ""}
               `;
@@ -277,7 +277,9 @@ Project: ${project.name}
 ----------------------------
 ${project.description}
 
-Technologies: ${project.technologies.map((t) => t.name).join(", ")}
+Technologies: ${project.technologies
+              .map((t) => technologies[t].name)
+              .join(", ")}
 
 Features:
 ${project.features.map((f) => `- ${f}`).join("\n")}
@@ -413,7 +415,9 @@ export const useUtilityCommands = () => {
           (p) =>
             p.name.toLowerCase().includes(query) ||
             p.description.toLowerCase().includes(query) ||
-            p.technologies.some((t) => t.name.toLowerCase().includes(query))
+            p.technologies.some((t) =>
+              technologies[t].name.toLowerCase().includes(query)
+            )
         );
 
         if (matchedProjects.length) {

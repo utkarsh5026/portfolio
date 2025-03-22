@@ -71,12 +71,12 @@ const ProjectContent: React.FC<ProjectContentProps> = ({
         <div className="flex flex-wrap gap-2">
           {featuredProject.technologies.map((tech, index) => (
             <motion.div
-              key={tech.name}
+              key={tech}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + index * 0.1 }}
             >
-              <TechBadge tech={tech.name} />
+              <TechBadge tech={tech} />
             </motion.div>
           ))}
         </div>
