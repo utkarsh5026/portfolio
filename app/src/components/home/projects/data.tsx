@@ -668,6 +668,14 @@ const enigmaLanguageExplorer: Project = {
     "lucideicons",
     "vite",
   ],
+  tags: [
+    "interpreter",
+    "react",
+    "language",
+    "visualization",
+    "typescript",
+    "educative",
+  ],
   features: [
     "IDE-like code editor with syntax highlighting and code completion",
     "Real-time lexical analysis with token visualization and categorization",
