@@ -6,6 +6,7 @@ import { FaGithub } from "react-icons/fa";
 import { motion } from "framer-motion";
 import LayeredCard3D from "./LayeredGuide";
 import { useProjectTheme } from "./context/ThemeContext";
+import { technologies } from "@/components/base/technologies";
 
 interface ProjectSmallProps {
   project: Project;
@@ -149,7 +150,7 @@ const ProjectSmall: React.FC<ProjectSmallProps> = ({
               <div className="flex flex-wrap gap-1.5">
                 {project.technologies.slice(0, 3).map((tech, i) => (
                   <motion.span
-                    key={tech.name}
+                    key={technologies[tech].name}
                     initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 + i * 0.1, duration: 0.3 }}
@@ -160,7 +161,7 @@ const ProjectSmall: React.FC<ProjectSmallProps> = ({
                         : "bg-ctp-surface0/50 text-ctp-subtext0 border-transparent"
                     )}
                   >
-                    {tech.name}
+                    {technologies[tech].name}
                   </motion.span>
                 ))}
                 {project.technologies.length > 3 && (

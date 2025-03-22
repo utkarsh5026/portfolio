@@ -13,17 +13,15 @@
  */
 
 import React from "react";
-import { technologies } from "./technologies";
+import { technologies, type TechName } from "./technologies";
 
 type TechBadgeProps = {
-  tech: string;
+  tech: TechName;
 };
 
 const TechBadge: React.FC<TechBadgeProps> = ({ tech }) => {
-  const techName = tech.toLowerCase();
-
   const handleTechClick = () => {
-    window.open(technologies[techName]?.aboutLink, "_blank");
+    window.open(technologies[tech]?.aboutLink, "_blank");
   };
 
   return (
@@ -36,10 +34,10 @@ const TechBadge: React.FC<TechBadgeProps> = ({ tech }) => {
       active:scale-95 text-white dark:text-gray-200"
       onClick={handleTechClick}
     >
-      {technologies[techName]?.icon && (
-        <span className="text-base">{technologies[techName].icon}</span>
+      {technologies[tech]?.icon && (
+        <span className="text-base">{technologies[tech].icon}</span>
       )}
-      <span className="font-medium">{technologies[techName]?.name}</span>
+      <span className="font-medium">{technologies[tech]?.name}</span>
     </button>
   );
 };

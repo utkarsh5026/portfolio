@@ -11,28 +11,22 @@
  * - Category (DevOps, AI/ML, Library, etc.)
  */
 
-import { technologies } from "@/components/base/technologies";
 import type { Project } from "@/types";
 
-const portfolioTech = {
+const portfolio: Project = {
   name: "Modern React Portfolio",
   description:
     "A sophisticated, VS Code-themed portfolio website built with React, TypeScript, and Tailwind CSS, featuring interactive components, smooth animations, and a guided tour experience.",
   githubLink: "https://github.com/utkarsh5026/Portfolio",
   liveLink: "https://utkarsh5026.github.io/",
   technologies: [
-    { name: "React", aboutLink: "https://reactjs.org/" },
-    { name: "TypeScript", aboutLink: "https://www.typescriptlang.org/" },
-    { name: "Tailwind CSS", aboutLink: "https://tailwindcss.com/" },
-    { name: "Vite", aboutLink: "https://vitejs.dev/" },
-    { name: "Framer Motion", aboutLink: "https://www.framer.com/motion/" },
-    { name: "AnimeJS", aboutLink: "https://animejs.com/" },
-    { name: "shadcn/ui", aboutLink: "https://ui.shadcn.com/" },
-    { name: "Lucide Icons", aboutLink: "https://lucide.dev/" },
-    {
-      name: "React Icons",
-      aboutLink: "https://react-icons.github.io/react-icons/",
-    },
+    "react",
+    "typescript",
+    "tailwind",
+    "vite",
+    "framermotion",
+    "shadcn",
+    "lucideicons",
   ],
   features: [
     "VS Code-inspired UI with syntax highlighting and editor-like interface",
@@ -98,13 +92,13 @@ const portfolioTech = {
   ],
 };
 
-const mayonation = {
+const mayonation: Project = {
   name: "Mayonation",
   description:
     "A performance-focused web animation library that simplifies complex animations through an intuitive API. This TypeScript-based solution handles CSS properties, SVG paths, and animation timelines while maintaining type safety and optimal performance. Designed to deliver smooth 60fps animations with minimal overhead and maximum developer productivity.",
   githubLink: "https://github.com/utkarsh5026/mayonation",
   liveLink: "https://utkarsh5026.github.io/mayosite/",
-  technologies: [technologies.typescript, technologies.css, technologies.svg],
+  technologies: ["typescript", "css", "svg"],
   features: [
     "Fluent chainable API for simple animations",
     "Complex timeline-based animations",
@@ -158,19 +152,19 @@ const mayonation = {
   },
 };
 
-const gep = {
+const gep: Project = {
   name: "GEP: AI-Powered Code Search",
   description:
     "An intelligent code search and analysis tool that combines semantic understanding with traditional search capabilities. GEP uses vector embeddings and large language models to understand code at a conceptual level, enabling developers to search their codebase using natural language queries and receive contextually relevant results with detailed explanations.",
   githubLink: "https://github.com/utkarsh5026/gep",
   technologies: [
-    { name: "Python", aboutLink: "https://www.python.org/" },
-    { name: "FastAPI", aboutLink: "https://fastapi.tiangolo.com/" },
-    { name: "LangChain", aboutLink: "https://langchain.com/" },
-    { name: "SQLAlchemy", aboutLink: "https://www.sqlalchemy.org/" },
-    { name: "Rich", aboutLink: "https://github.com/Textualize/rich" },
-    { name: "Poetry", aboutLink: "https://python-poetry.org/" },
-    { name: "Docker", aboutLink: "https://www.docker.com/" },
+    "python",
+    "fastapi",
+    "langchain",
+    "sqlalchemy",
+    "rich",
+    "poetry",
+    "docker",
   ],
   features: [
     "Natural language code search using semantic understanding",
@@ -255,12 +249,12 @@ const gep = {
   tags: ["Python", "AI", "Vector Search", "Code Analysis", "LLM", "CLI"],
 };
 
-const cope = {
+const cope: Project = {
   name: "Cope",
   description:
     "A modern implementation of grep functionality, developed as part of the CodeCrafters challenge. This tool combines traditional text searching capabilities with advanced regular expression support, demonstrating how classical Unix utilities can be enhanced through modern language features and systematic testing approaches.",
   githubLink: "https://github.com/utkarsh5026/cope",
-  technologies: [technologies.golang, technologies.cli],
+  technologies: ["golang", "cli"],
   features: [
     "Pattern matching using regular expressions",
     "Command-line interface",
@@ -309,12 +303,12 @@ const cope = {
   },
 };
 
-const current = {
+const current: Project = {
   name: "Current",
   description:
     "A full-featured BitTorrent client implemented from the ground up in Go, showcasing practical applications of network programming and distributed systems principles. This project encompasses the complete BitTorrent protocol stack, featuring concurrent downloads, peer management, and efficient file handling capabilities.",
   githubLink: "https://github.com/utkarsh5026/current",
-  technologies: [technologies.golang, technologies.bittorrent],
+  technologies: ["golang", "bittorrent"],
   features: [
     "Parse and decode .torrent files using custom bencode parser",
     "Connect and communicate with BitTorrent trackers",
@@ -374,17 +368,12 @@ const current = {
   },
 };
 
-const pauth = {
+const pauth: Project = {
   name: "PAuth",
   description:
     "A modern OAuth 2.0 authentication library for Python applications that prioritizes security and developer experience. This framework-agnostic solution implements comprehensive authentication flows with built-in security best practices, supporting multiple providers while maintaining a clean, intuitive API across Flask, Django, and other frameworks.",
   githubLink: "https://github.com/utkarsh5026/pauth",
-  technologies: [
-    technologies.python,
-    technologies.flask,
-    technologies.django,
-    technologies.rest,
-  ],
+  technologies: ["python", "flask", "django", "rest"],
   features: [
     "Complete OAuth 2.0 implementation with modern security features",
     "Multiple provider support (Google, GitHub, Facebook, Twitter)",
@@ -443,12 +432,12 @@ const pauth = {
   },
 };
 
-const reducer = {
+const reducer: Project = {
   name: "Reducer",
   description:
     "A streamlined state management library that reimagines Redux core principles with TypeScript. This solution provides robust state management capabilities while maintaining simplicity, offering features such as state slices and middleware support. Designed to help developers understand immutable state management patterns through practical implementation.",
   githubLink: "https://github.com/utkarsh5026/ReduceMe",
-  technologies: [technologies.typescript, technologies.node],
+  technologies: ["typescript", "node"],
   features: [
     "Redux-like state management with TypeScript support",
     "Immutable state updates using Immer",
@@ -509,7 +498,7 @@ const reducer = {
   },
 };
 
-const dss = {
+const dss: Project = {
   name: "Automotive Training & Workforce Analytics DSS",
   description:
     "A comprehensive analytics platform developed for Skoda Auto, Volkswagen, and Audi that transforms workforce development through data-driven insights. Processing over 200,000 training records, this system delivers actionable analytics on training effectiveness, employee development, and workforce trends through intuitive interactive dashboards, reducing analysis time from days to minutes.",
@@ -520,14 +509,7 @@ const dss = {
     "The cool thing was how it changed their workflow. Before, their managers would spend days trying to piece together Excel files to figure out if training was working. With this system, they could just open a dashboard and immediately see which trainers were effective, where employee retention was dropping, and compare performance across different brands. It cut analysis time from days to just minutes.",
     "Technically, I built it with Python and Django on the backend to handle all the data processing, with a React frontend for the visualizations. I added different access levels so executives see the big picture while team managers get more detailed views of their specific areas. It's one of those projects where you can clearly see the before and after difference it made in how they work.",
   ],
-  technologies: [
-    technologies.react,
-    technologies.python,
-    technologies.django,
-    technologies.pandas,
-    technologies.plotly,
-    technologies.sqlite,
-  ],
+  technologies: ["react", "python", "django", "pandas", "plotly", "sqlite"],
 
   features: [
     "Multi-brand workforce analytics (Skoda, VW, Audi)",
@@ -600,16 +582,12 @@ const dss = {
   },
 };
 
-const orchestra = {
+const orchestra: Project = {
   name: "Microservices Orchestration Platform",
   description:
     "A lightweight container orchestration system built from first principles, implementing core Kubernetes concepts from the ground up. This educational platform demonstrates fundamental distributed systems concepts including scheduling, service discovery, and fault tolerance, providing hands-on insight into container orchestration mechanics.",
   githubLink: "https://github.com/yourusername/micro-orchestrator",
-  technologies: [
-    technologies.golang,
-    technologies.kubernetes,
-    technologies.docker,
-  ],
+  technologies: ["golang", "kubernetes", "docker"],
   features: [
     "Custom scheduler implementation",
     "Service discovery and load balancing",
@@ -674,24 +652,21 @@ const orchestra = {
   },
 };
 
-const enigmaLanguageExplorer = {
+const enigmaLanguageExplorer: Project = {
   name: "Enigma Language Explorer",
   description:
     "An interactive educational platform for learning programming language concepts through visual exploration of lexical analysis, abstract syntax trees, and execution flow. Built with React and TypeScript, this IDE-inspired application demonstrates the inner workings of language interpretation by visualizing source code tokenization, parsing, and evaluation in real-time.",
   githubLink: "https://github.com/utkarsh5026/enigma",
   liveLink: "https://enigma-explorer.vercel.app/",
   technologies: [
-    { name: "React", aboutLink: "https://reactjs.org/" },
-    { name: "TypeScript", aboutLink: "https://www.typescriptlang.org/" },
-    { name: "tailwind", aboutLink: "https://tailwindcss.com/" },
-    {
-      name: "Monaco",
-      aboutLink: "https://microsoft.github.io/monaco-editor/",
-    },
-    { name: "shadcn", aboutLink: "https://ui.shadcn.com/" },
-    { name: "framerMotion", aboutLink: "https://www.framer.com/motion/" },
-    { name: "lucideIcons", aboutLink: "https://lucide.dev/" },
-    { name: "vite", aboutLink: "https://vitejs.dev/" },
+    "react",
+    "typescript",
+    "tailwind",
+    "monaco",
+    "shadcn",
+    "framermotion",
+    "lucideicons",
+    "vite",
   ],
   features: [
     "IDE-like code editor with syntax highlighting and code completion",
@@ -766,22 +741,22 @@ const enigmaLanguageExplorer = {
   ],
 };
 
-const progChain = {
+const progChain: Project = {
   name: "ProgChain - AI-Powered Programming Education",
   description:
     "A full-stack AI-powered learning platform that guides users through personalized programming journeys. Built with React, TypeScript, and Python, this application leverages large language models to create interactive learning experiences, offering customized learning paths, real-time code analysis, and smart curriculum generation. The system adapts to each user's skill level and learning style, providing a truly personalized programming education experience.",
   githubLink: "https://github.com/yourusername/codementor",
   liveLink: "https://codementor-ai.vercel.app",
   technologies: [
-    { name: "React", aboutLink: "https://reactjs.org/" },
-    { name: "TypeScript", aboutLink: "https://www.typescriptlang.org/" },
-    { name: "Python", aboutLink: "https://www.python.org/" },
-    { name: "FastAPI", aboutLink: "https://fastapi.tiangolo.com/" },
-    { name: "tailwind", aboutLink: "https://tailwindcss.com/" },
-    { name: "PostgreSQL", aboutLink: "https://www.postgresql.org/" },
-    { name: "SQLAlchemy", aboutLink: "https://www.sqlalchemy.org/" },
-    { name: "framerMotion", aboutLink: "https://www.framer.com/motion/" },
-    { name: "Docker", aboutLink: "https://www.docker.com/" },
+    "react",
+    "typescript",
+    "python",
+    "fastapi",
+    "tailwind",
+    "postgresql",
+    "sqlalchemy",
+    "framermotion",
+    "docker",
   ],
   features: [
     "Dynamic learning paths that adapt to user progress and preferences",
@@ -853,24 +828,23 @@ const progChain = {
   ],
 };
 
-const smashLeetcode = {
+const smashLeetcode: Project = {
   name: "Smash LeetCode",
   description:
     "A comprehensive full-stack platform for mastering coding interviews, featuring AI-powered explanations, interactive visualizations, and personalized learning paths. Built with React, TypeScript, and Python, this application helps developers practice algorithmic problem-solving with real-time feedback, animated algorithm visualizations, and detailed code analysis.",
   githubLink: "https://github.com/utkarsh5026/Smash-LeetCode",
   liveLink: "https://smash-leetcode.vercel.app/",
   technologies: [
-    { name: "React", aboutLink: "https://reactjs.org/" },
-    { name: "TypeScript", aboutLink: "https://www.typescriptlang.org/" },
-    { name: "Python", aboutLink: "https://www.python.org/" },
-    { name: "FastAPI", aboutLink: "https://fastapi.tiangolo.com/" },
-    { name: "tailwind", aboutLink: "https://tailwindcss.com/" },
-    { name: "redux", aboutLink: "https://redux-toolkit.js.org/" },
-    { name: "framerMotion", aboutLink: "https://www.framer.com/motion/" },
-    { name: "shadcn", aboutLink: "https://ui.shadcn.com/" },
-    { name: "SQLAlchemy", aboutLink: "https://www.sqlalchemy.org/" },
-    { name: "LangChain", aboutLink: "https://langchain.com/" },
-    { name: "OpenAI", aboutLink: "https://openai.com/" },
+    "react",
+    "typescript",
+    "python",
+    "fastapi",
+    "tailwind",
+    "redux",
+    "framermotion",
+    "shadcn",
+    "sqlalchemy",
+    "langchain",
   ],
   features: [
     "Interactive algorithm visualizations with step-by-step playback controls",
@@ -951,6 +925,170 @@ const smashLeetcode = {
   ],
 };
 
+const classConnect: Project = {
+  name: "Class Connect",
+  description:
+    "A comprehensive e-learning platform built with React, TypeScript, and Go, enabling seamless course management, interactive learning experiences, and robust educational content delivery. This full-stack application helps educators create engaging courses with features like assignment management, content organization, real-time discussions, and performance analytics, all within an intuitive and responsive interface.",
+  githubLink: "https://github.com/yourUsername/class-connect",
+  liveLink: "https://class-connect.vercel.app/",
+  technologies: [
+    "react",
+    "typescript",
+    "golang",
+    "postgresql",
+    "tailwind",
+    "redux",
+    "shadcn",
+    "vite",
+    "gin",
+    "firebase",
+  ],
+  features: [
+    "Comprehensive course management with materials, quizzes, and assignments",
+    "Interactive dashboard with personalized learning paths and progress tracking",
+    "Real-time communication between students and instructors",
+    "Secure file storage and sharing for educational materials",
+    "Assignment submission system with plagiarism detection",
+    "Automated grading for quizzes and certain assignment types",
+    "Role-based access control for students, teachers, and administrators",
+    "Calendar integration for deadlines and scheduled activities",
+    "Responsive design supporting desktop and mobile learning experiences",
+    "Performance analytics and learning insights for instructors",
+    "Dark/light theme support with customizable interface options",
+    "Notifications system for important course updates and deadlines",
+  ],
+  techStack: {
+    "Frontend Framework": [
+      "React 18 - For building a dynamic, component-based UI",
+      "TypeScript - For static typing and enhanced code reliability",
+      "Vite - For fast development and optimized build pipeline",
+      "Redux Toolkit - For centralized state management across the application",
+    ],
+    "Styling & UI": [
+      "Ant Design - For comprehensive UI component library",
+      "Tailwind CSS - For utility-based styling approach",
+      "Styled Components - For component-scoped CSS",
+      "Framer Motion - For smooth animations and transitions",
+      "Responsive layouts - For cross-device compatibility",
+    ],
+    "Backend & API": [
+      "Go (Golang) - For high-performance server-side operations",
+      "Gin - For robust HTTP routing and middleware support",
+      "GORM - For simplified database operations and ORM functionality",
+      "JWT - For secure authentication and authorization",
+      "RESTful API design - For predictable client-server communication",
+    ],
+    "Database & Storage": [
+      "PostgreSQL - For relational data management",
+      "Firebase Storage - For file management and delivery",
+      "Redis - For caching and performance optimization",
+      "Transaction management - For data integrity across operations",
+    ],
+    "Authentication & Security": [
+      "JWT-based authentication - For secure session management",
+      "Role-based access control - For permission management",
+      "Input validation - For preventing injection attacks",
+      "Rate limiting - For API protection against abuse",
+      "HTTPS enforcement - For encrypted data transmission",
+    ],
+    "DevOps & Deployment": [
+      "Docker - For containerized application packaging",
+      "GitHub Actions - For CI/CD workflow automation",
+      "Vercel - For frontend hosting and deployment",
+      "Digital Ocean - For backend server hosting",
+      "Environment configuration - For deployment-specific settings",
+    ],
+    "Testing & Quality": [
+      "Jest - For frontend unit and component testing",
+      "Go testing package - For backend unit and integration tests",
+      "ESLint - For code quality and consistency enforcement",
+      "TypeScript validation - For compile-time error checking",
+      "End-to-end testing - For validating complete user flows",
+    ],
+  },
+  explain: [
+    "I developed Class Connect to address the growing need for comprehensive, user-friendly e-learning platforms that bridge the gap between educational content management and engaging learning experiences. Traditional learning management systems often feel clunky and unintuitive, so I set out to create a solution that combines robust functionality with modern UX principles.",
+
+    "The feature I'm most proud of is the unified content management system, which allows instructors to seamlessly organize course materials, assignments, and assessments while providing students with a coherent learning journey. I put significant effort into designing an intuitive interface that simplifies complex educational workflows without sacrificing functionality.",
+
+    "Implementing the real-time collaboration features was particularly challenging. I wanted to ensure that discussions, feedback, and notifications felt immediate and contextual. This required careful architecture of both the frontend state management and the backend event system to maintain performance while scaling to handle multiple concurrent users within a course.",
+
+    "From a technical perspective, this project taught me valuable lessons about full-stack development with Go and React. The frontend utilizes React with TypeScript for type safety and component reusability, while the backend leverages Go's concurrency model and strong typing for reliable API services. I gained deep experience with relational database design for educational contexts and implementing complex access control patterns.",
+
+    "Beyond being a portfolio piece, Class Connect has evolved into a practical tool that addresses real educational needs. The feedback from both educators and students has been incredibly rewarding, particularly regarding how the platform makes online learning feel more connected and organized compared to traditional alternatives.",
+  ],
+};
+
+const justdoit: Project = {
+  name: "JustDoIt",
+  description:
+    "A ground-up implementation of Git version control system in Go, focusing on the core internals of how Git stores and manages data. This project rebuilds Git's object model, repository management, and command structure to provide insights into distributed version control systems while leveraging Go's performance characteristics and standard library.",
+  githubLink: "https://github.com/utkarsh5026/justdoit",
+  technologies: ["golang", "cobra", "git"],
+  features: [
+    "Complete Git object model implementation (blobs, trees, commits, tags)",
+    "Content-addressable storage system with SHA-1 hashing",
+    "Key-value list message (KVLM) parsing for commit and tag objects",
+    "Repository initialization and management",
+    "Git index implementation for staging changes",
+    "Command-line interface with Cobra framework",
+    "Support for core Git commands (init, cat-file, hash-object, checkout, etc.)",
+    "Ordered dictionary implementation for metadata storage",
+    ".gitignore pattern matching and path filtering",
+    "Tree traversal and manipulation",
+    "Git references management (branches, tags)",
+  ],
+  techStack: {
+    "Core Language & Libraries": [
+      "Go 1.22+ - For performance, strong typing, and efficient concurrency",
+      "Standard library - Leveraging built-in packages for file operations, cryptography, and more",
+      "Cobra - For structured command-line interface implementation",
+      "Viper - For configuration management and reading .git config files",
+    ],
+    "Git Internals": [
+      "Content-addressable storage - Implementation of Git's object storage model",
+      "Object serialization/deserialization - For handling Git's internal formats",
+      "Zlib compression - For efficient storage of Git objects",
+      "SHA-1 hashing - For generating consistent object identifiers",
+      "Tree structure modeling - For representing directory hierarchies",
+    ],
+    "Repository Management": [
+      "Repository discovery - Finding .git directories in parent folders",
+      "Reference management - For branches and tags",
+      "Working directory interaction - Reading and writing files",
+      "Index management - For staged changes tracking",
+    ],
+    "Data Structures & Algorithms": [
+      "Custom ordered dictionary - For preserving key order in metadata",
+      "Tree traversal algorithms - For working with directory structures",
+      "Regular expression pattern matching - For .gitignore support",
+      "Recursive descent parsing - For handling complex data formats",
+    ],
+    "Code Organization": [
+      "Command pattern - For implementing Git subcommands",
+      "Interface-based design - For abstraction of Git objects",
+      "Repository pattern - For encapsulating Git repository interactions",
+      "Factory methods - For object creation based on type",
+    ],
+    Testing: [
+      "Unit tests - For core functionality validation",
+      "Test-driven development - Writing tests before implementation",
+      "Table-driven tests - For comprehensive test coverage with multiple scenarios",
+      "Edge case testing - Ensuring robustness in unexpected situations",
+    ],
+  },
+  explain: [
+    "I built JustDoIt to deeply understand how Git actually works under the hood. While most developers use Git daily, few understand the elegant data structures and algorithms that make it so powerful. I wanted to explore these internals by reimplementing them from scratch in Go.",
+
+    "The most challenging and educational part was implementing Git's content-addressable storage system. I had to understand how Git uses SHA-1 hashes to uniquely identify content and build the object model (blobs, trees, commits, tags) that allows Git to efficiently store and retrieve versions of files. The KVLM (Key-Value List Message) parsing for commit metadata was particularly intricate, requiring careful handling of multi-line values and nested structures.",
+
+    "I chose Go for this project because its strong typing, excellent standard library, and performance characteristics make it ideal for systems programming. The built-in cryptography and compression libraries were invaluable for implementing Git's core functionality. I also leveraged the Cobra and Viper libraries to build a clean, structured command-line interface similar to Git's own.",
+
+    "Beyond being a learning exercise, this project gave me deep insights into distributed version control systems, content-addressable storage, and efficient algorithms for tracking changes across time. I now have a much better understanding of Git's strengths and limitations, which has made me more effective when using Git in my daily development work.",
+  ],
+  tags: ["Go", "Git", "Version Control", "CLI", "Systems Programming"],
+};
+
 export const projects: Project[] = [
   dss,
   enigmaLanguageExplorer,
@@ -960,11 +1098,12 @@ export const projects: Project[] = [
   smashLeetcode,
   reducer,
   pauth,
+  classConnect,
   current,
   cope,
   mayonation,
-
-  portfolioTech,
+  justdoit,
+  portfolio,
 ] as const;
 
 export default projects;
