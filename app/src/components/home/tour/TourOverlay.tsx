@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTour } from "./context/TourContext";
-import TourTooltip from "./TourTooltip";
+import TourTooltip from "./tooltip/TourTooltip";
 import TourGuide from "./guide/TourGuide";
 import TourLoading from "./utils/TourLoading";
 import TourSpotlight from "./TourSpotlight";
