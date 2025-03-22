@@ -48,8 +48,10 @@ import {
   SiGit,
   SiGraphql,
   SiApollographql,
+  SiRust,
+  SiWebassembly,
 } from "react-icons/si";
-import { FaAws, FaLinux, FaNode } from "react-icons/fa";
+import { FaAws, FaLinux, FaNode, FaChartBar } from "react-icons/fa";
 import { VscTerminalPowershell, VscEditorLayout } from "react-icons/vsc";
 import { TbApi } from "react-icons/tb";
 import { GoCommandPalette } from "react-icons/go";
@@ -275,6 +277,21 @@ export const technologies = {
     name: "Apollo",
     aboutLink: "https://www.apollographql.com/",
     icon: <SiApollographql className="text-ctp-pink" />,
+  },
+  rust: {
+    name: "Rust",
+    aboutLink: "https://www.rust-lang.org/",
+    icon: <SiRust className="text-ctp-pink" />,
+  },
+  recharts: {
+    name: "Recharts",
+    aboutLink: "https://recharts.org/",
+    icon: <FaChartBar className="text-ctp-pink" />,
+  },
+  webassembly: {
+    name: "WebAssembly",
+    aboutLink: "https://webassembly.org/",
+    icon: <SiWebassembly className="text-ctp-pink" />,
   },
 } as const;
 

@@ -1210,6 +1210,89 @@ const genshinCompanion: Project = {
   ],
 };
 
+const studio: Project = {
+  name: "Studio",
+  description:
+    "An advanced image analysis toolkit that combines React and Rust (via WebAssembly) to provide comprehensive visual diagnostics for images. This application features multiple analysis modules including color distribution, luminance analysis, compression optimization, and performance metrics - all running directly in the browser without server processing. The hybrid architecture delivers near-native performance for complex image processing tasks while maintaining the responsive UI experience of a modern web application.",
+  githubLink: "https://github.com/utkarsh5026/studio",
+  liveLink: "https://utkarsh5026.github.io/studio/",
+  technologies: [
+    "react",
+    "typescript",
+    "tailwind",
+    "rust",
+    "webassembly",
+    "vite",
+    "redux",
+    "recharts",
+    "shadcn",
+    "docker",
+  ],
+  features: [
+    "Color analysis with dominant color extraction and RGB histograms",
+    "Luminance analysis with brightness distribution and dynamic range visualization",
+    "Compression optimization with format comparison and artifact detection",
+    "Performance metrics for loading time, memory usage, and browser compatibility",
+    "Real-time image processing using Rust compiled to WebAssembly",
+    "Responsive design with dark mode support",
+    "Drag-and-drop interface for quick image uploads",
+    "Interactive data visualizations with Recharts",
+    "Multi-format image support (JPEG, PNG, WebP, AVIF)",
+  ],
+  techStack: {
+    "Core Architecture": [
+      "React 18.3.1 - For building the UI components and managing state",
+      "TypeScript - For type safety and improved developer experience",
+      "Redux Toolkit - For centralized state management",
+      "Rust - For high-performance image processing algorithms",
+      "WebAssembly - For running Rust code in the browser at near-native speed",
+      "Web Workers - For non-blocking UI during intensive calculations",
+    ],
+    "UI & Styling": [
+      "Tailwind CSS - For utility-first styling approach",
+      "shadcn/ui - For accessible and customizable UI components",
+      "Recharts - For interactive data visualizations",
+      "Lucide React - For consistent and scalable line icons",
+      "CSS Variables - For theme customization and dark/light mode",
+    ],
+    "Development & Build Tools": [
+      "Vite - For fast development and optimized builds",
+      "Docker - For consistent development environment",
+      "wasm-pack - For building and bundling Rust WebAssembly modules",
+      "ESLint - For code quality and consistency",
+      "TypeScript Compiler - For type checking and transpilation",
+    ],
+    "Image Processing": [
+      "Custom Rust algorithms - For efficient color and luminance analysis",
+      "Web Canvas API - For image data extraction and manipulation",
+      "ArrayBuffer manipulation - For direct pixel-level operations",
+      "Dynamic memory management - For handling large images efficiently",
+    ],
+    "Performance Optimization": [
+      "WebAssembly parallelization - For CPU-intensive tasks",
+      "Memoization - For preventing unnecessary calculations",
+      "Lazy loading - For components and analysis modules",
+      "Canvas optimization - For efficient image rendering",
+      "Typed arrays - For memory-efficient data structures",
+    ],
+  },
+  explain: [
+    "I created Studio as an advanced image analysis toolkit that combines web technologies with high-performance computing. The project was born from my interest in both web development and image processing, and I wanted to build something that would push the boundaries of what's possible in the browser.",
+    "The core challenge was processing complex image analysis in real-time within the browser environment. Traditional JavaScript approaches would be too slow for the kind of pixel-level operations needed for comprehensive analysis. To solve this, I implemented a hybrid architecture using Rust compiled to WebAssembly for the performance-critical parts while keeping React for the UI.",
+    "One of the most interesting aspects was designing the communication layer between the JavaScript/React frontend and the Rust WebAssembly modules. I implemented a worker-based approach that prevents UI blocking even during intensive calculations. The redux store manages the application state while the WebAssembly modules handle the heavy computational work, communicating via a message-passing interface.",
+    "For the analysis modules, I built several visualization components that translate complex image data into intuitive visual representations. The luminance histogram shows brightness distribution, while the color analysis extracts dominant colors and generates RGB histograms. The compression analysis helps users understand how different formats might affect their image quality and file size.",
+    "The project taught me a lot about cross-language development, memory management in WebAssembly, and efficient approaches to image processing algorithms. It was particularly rewarding to see how the combination of React for UI and Rust for computation created an application that delivers desktop-application performance within a web browser.",
+  ],
+  tags: [
+    "React",
+    "TypeScript",
+    "Rust",
+    "WebAssembly",
+    "Image Processing",
+    "Data Visualization",
+  ],
+};
+
 export const projects: Project[] = [
   dss,
   enigmaLanguageExplorer,
@@ -1217,6 +1300,7 @@ export const projects: Project[] = [
   gep,
   progChain,
   smashLeetcode,
+  studio,
   reducer,
   pauth,
   classConnect,
