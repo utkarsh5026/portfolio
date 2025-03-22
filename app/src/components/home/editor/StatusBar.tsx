@@ -1,5 +1,12 @@
 import React from "react";
 
+/**
+ * StatusBarComponent component renders the status bar at the bottom of the editor.
+ * It displays information about the current file, encoding, and language.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered StatusBarComponent component.
+ */
 const StatusBarComponent: React.FC = () => {
   return (
     <div className="bg-[#181825] border-t border-[#313244] text-[#6c7086] text-xs px-4 py-1 flex items-center justify-between">
