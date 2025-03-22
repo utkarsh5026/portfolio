@@ -147,7 +147,7 @@ const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
         <div
           ref={ref}
           className={cn(
-            "tour-tooltip-handle relative h-[4px] cursor-grab flex justify-center items-center text-[#6c7086] transition-opacity hover:opacity-100 hover:bg-[rgba(137,180,250,0.05)] active:cursor-grabbing",
+            "tour-tooltip-handle relative h-[4px] cursor-grab flex justify-center items-center text-ctp-text transition-opacity hover:opacity-100 hover:bg-[rgba(137,180,250,0.05)] active:cursor-grabbing",
             headerHovered ? "opacity-30" : "opacity-0"
           )}
         >
