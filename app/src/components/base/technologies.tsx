@@ -50,12 +50,14 @@ import {
   SiApollographql,
   SiRust,
   SiWebassembly,
+  SiJest,
 } from "react-icons/si";
 import { FaAws, FaLinux, FaNode, FaChartBar } from "react-icons/fa";
 import { VscTerminalPowershell, VscEditorLayout } from "react-icons/vsc";
 import { TbApi } from "react-icons/tb";
 import { GoCommandPalette } from "react-icons/go";
 import { GiCobra } from "react-icons/gi";
+import { MdHttp } from "react-icons/md";
 
 export const technologies = {
   golang: {
@@ -292,6 +294,16 @@ export const technologies = {
     name: "WebAssembly",
     aboutLink: "https://webassembly.org/",
     icon: <SiWebassembly className="text-ctp-pink" />,
+  },
+  jest: {
+    name: "Jest",
+    aboutLink: "https://jestjs.io/",
+    icon: <SiJest className="text-ctp-pink" />,
+  },
+  http: {
+    name: "HTTP",
+    aboutLink: "https://developer.mozilla.org/en-US/docs/Web/HTTP",
+    icon: <MdHttp className="text-ctp-yellow" />,
   },
 } as const;
 

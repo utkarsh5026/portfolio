@@ -1293,6 +1293,91 @@ const studio: Project = {
   ],
 };
 
+const httpServer: Project = {
+  name: "TypeScript HTTP Server",
+  description:
+    "A lightweight, modular HTTP server implementation built from scratch using TypeScript and Node.js. This test-driven project features a robust, type-safe foundation for handling HTTP requests and responses with an Express-inspired API, including advanced features like cookie management, caching, content encoding, and a flexible middleware-based routing system.",
+  githubLink: "https://github.com/utkarsh5026/tstp",
+  technologies: ["typescript", "node", "jest", "http"],
+  features: [
+    "Complete HTTP request and response handling with type safety",
+    "Cookie management with extensive security options",
+    "Response caching and cache control directives",
+    "Content compression with gzip encoding",
+    "Flexible routing with path parameters and middleware support",
+    "Chainable API for expressive and readable code",
+    "Content type negotiation and MIME type support",
+    "Header parsing and manipulation with type-safe enums",
+    "Query parameter parsing and body content processing",
+    "Comprehensive error handling and status code management",
+    "Test-driven architecture with high test coverage",
+  ],
+  tags: [
+    "Backend",
+    "TypeScript",
+    "Node.js",
+    "HTTP",
+    "Web Server",
+    "CodeCrafters",
+  ],
+  explain: [
+    "I built this HTTP server as part of the CodeCrafters challenge to understand how web servers actually function under the hood. Instead of just using Express or other frameworks, I wanted to implement the HTTP protocol from scratch to really grasp the intricacies of request/response handling.",
+    "The most satisfying aspect was implementing the chainable API that allows for clean, expressive code when building responses. I spent a lot of time designing the interfaces to be both type-safe and developer-friendly, which taught me a lot about balancing API flexibility with type constraints in TypeScript.",
+    "I took a test-driven approach, writing comprehensive tests for each component before implementation. This was crucial for handling edge cases correctly, especially with HTTP headers, cookies, and content negotiation. The project taught me a deep appreciation for how web frameworks abstract away complex protocol details while maintaining performance and security.",
+  ],
+  techStack: {
+    "Core Framework": [
+      "TypeScript - For type safety and improved developer experience",
+      "Node.js Core HTTP Module - Building on native capabilities without external dependencies",
+      "Custom HTTP Protocol Implementation - Handling HTTP/1.1 specification details",
+      "Jest - For comprehensive test coverage and TDD approach",
+    ],
+    "Request Processing": [
+      "Middleware Pipeline - For flexible request processing with next() flow control",
+      "Query Parameter Extraction - Automated URL query parsing",
+      "Cookie Parsing - Type-safe cookie management with security options",
+      "Content Type Detection - Dynamic content type negotiation",
+      "Body Parsing - Support for various content types",
+    ],
+    "Response Generation": [
+      "Chainable API - Fluent interface for response construction",
+      "MIME Type Support - Proper content type handling",
+      "Compression - gzip encoding based on client capabilities",
+      "Status Code Management - Enum-based status codes for type safety",
+      "Cookie Management - Extensive options for secure cookie handling",
+      "Cache Control - HTTP caching directives and helpers",
+    ],
+    "Routing System": [
+      "Path Parameter Support - Dynamic route segments with type safety",
+      "Method-Based Routing - Support for GET, POST, PUT, DELETE, etc.",
+      "Router Prefixing - Modular route organization",
+      "Middleware Chains - Multiple handlers per route",
+      "Route Matching Algorithm - Efficient pattern matching",
+    ],
+    "Design Patterns": [
+      "Builder Pattern - Chainable API design for response objects",
+      "Middleware Pattern - Composable request handlers",
+      "Factory Pattern - For component creation",
+      "Separation of Concerns - Modular, focused components",
+      "Fluent Interface - Intuitive, readable API design",
+    ],
+    "Testing Methodology": [
+      "Test-Driven Development - Tests written before implementation",
+      "Unit Testing - Focused component testing",
+      "Integration Testing - Verifying components work together",
+      "Mocking - Isolating components with dependency injection",
+      "Edge Case Coverage - Handling protocol complexities correctly",
+    ],
+  },
+  highlights: [
+    "Built as part of the CodeCrafters platform challenge",
+    "Implements HTTP/1.1 protocol details from scratch",
+    "Extensive test coverage with Jest",
+    "Zero external dependencies - pure Node.js and TypeScript",
+    "Express-inspired API with modern TypeScript features",
+  ],
+};
+
 export const projects: Project[] = [
   dss,
   enigmaLanguageExplorer,
@@ -1308,6 +1393,7 @@ export const projects: Project[] = [
   cope,
   mayonation,
   justdoit,
+  httpServer,
   genshinCompanion,
   portfolio,
 ] as const;
