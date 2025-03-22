@@ -90,6 +90,15 @@ const portfolio: Project = {
     "I used React, TypeScript, and Tailwind CSS to build the portfolio. I also used Framer Motion for the animations and shadcn/ui for the UI components. I also used Lucide Icons for the icons and AnimeJS for the animations.",
     "I used Vite to build the project and GitHub Pages to host it. I also used Vercel for preview deployments.",
   ],
+  tags: [
+    "Portfolio",
+    "React",
+    "TypeScript",
+    "Tailwind",
+    "Framer Motion",
+    "Web Development",
+    "UI/UX",
+  ],
 };
 
 const mayonation: Project = {
