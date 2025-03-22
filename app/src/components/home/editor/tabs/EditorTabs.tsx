@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, type ReactNode } from "react";
+import React, { useEffect, useMemo, useRef, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { FaCode } from "react-icons/fa";
 import { useOutline } from "../outline/context/outlineContext";
@@ -14,6 +14,11 @@ const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
   const { setCurrentSection } = useOutline();
   const { activeSection, setActiveSection } = useEditorContext();
 
+  const sectionKeys = useMemo(
+    () => Object.keys(sections) as SectionType[],
+    [sections]
+  );
+
   const {
     draggedTab,
     dragOverTab,
@@ -25,7 +30,7 @@ const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
     handleDrop,
     tabOrder,
     tabRefs,
-  } = useTabDrag(Object.keys(sections) as SectionType[]);
+  } = useTabDrag(sectionKeys);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
