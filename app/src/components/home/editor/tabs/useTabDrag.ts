@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { SectionType } from "@/components/home/editor/context/explorerContext";
+import styles from "./TabAnimations.module.css";
 
 export type TabState = {
   id: SectionType;
@@ -84,7 +85,7 @@ export const useTabDrag = (initialSections: SectionType[]) => {
      */
     const createGhostElement = () => {
       const ghost = document.createElement("div");
-      ghost.className = "tab-ghost";
+      ghost.className = styles.tabGhost;
       ghost.style.display = "none";
       document.body.appendChild(ghost);
       dragImageRef.current = ghost;
@@ -231,11 +232,11 @@ export const useTabDrag = (initialSections: SectionType[]) => {
      */
     const applyContainerEffects = (container: HTMLElement | null): void => {
       if (!container) return;
-      container.classList.add("tabs-container-shake");
-      container.style.animation = "tab-container-flash 0.6s ease-out";
+      container.classList.add(styles.tabsContainerShake);
+      container.style.animation = "tabContainerFlash 0.6s ease-out";
 
       const removeContainerEffects = () => {
-        container.classList.remove("tabs-container-shake");
+        container.classList.remove(styles.tabsContainerShake);
         container.style.animation = "";
       };
 
@@ -255,10 +256,12 @@ export const useTabDrag = (initialSections: SectionType[]) => {
      * Apply effects after animations are complete
      */
     const applyAfterAnimations = () => {
-      const container = tabRefs.current[draggedTab]?.closest(".tabs-container");
+      const container = tabRefs.current[draggedTab]?.closest(
+        `.${styles.tabsContainer}`
+      );
       applyContainerEffects(container as HTMLElement);
       setRecentlyMovedTab(draggedTab);
-      applyTabEffects(tabRefs.current[draggedTab], "tab-dropping");
+      applyTabEffects(tabRefs.current[draggedTab], styles.tabDropping);
     };
 
     if (sourceIndex !== -1 && targetIndex !== -1) {

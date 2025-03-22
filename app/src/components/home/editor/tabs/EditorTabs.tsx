@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { FaCode } from "react-icons/fa";
 import { useOutline } from "../outline/context/outlineContext";
 import { useEditorContext, type SectionType } from "../context/explorerContext";
-import "./TabAnimations.css";
+import styles from "./TabAnimations.module.css";
 import { useTabDrag } from "./useTabDrag";
 
 interface EditorTabsProps {
@@ -40,26 +40,29 @@ const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
   );
 
   const getTabClasses = (tab: SectionType) => {
-    const baseClasses =
-      "editor-tab h-full px-4 whitespace-nowrap border-r border-ctp-surface2 hover:bg-ctp-surface1 text-sm flex items-center gap-2 relative";
+    const baseClasses = cn(
+      styles.editorTab,
+      "h-full px-4 whitespace-nowrap border-r border-ctp-surface2 hover:bg-ctp-surface1 text-sm flex items-center gap-2 relative"
+    );
 
-    const stateClasses = [
-      activeSection === tab ? "active" : "",
-      draggedTab === tab ? "tab-dragging" : "",
-      dragOverTab === tab ? "tab-drag-over" : "",
-      recentlyMovedTab === tab ? "tab-moved" : "",
-      dragOverTab === tab && dragDirection === "left" ? "tab-insert-left" : "",
-      dragOverTab === tab && dragDirection === "right"
-        ? "tab-insert-right"
-        : "",
-    ];
+    const stateClasses = cn({
+      [styles.active]: activeSection === tab,
+      [styles.tabDragging]: draggedTab === tab,
+      [styles.tabDragOver]: dragOverTab === tab,
+      [styles.tabMoved]: recentlyMovedTab === tab,
+      [styles.tabInsertLeft]: dragOverTab === tab && dragDirection === "left",
+      [styles.tabInsertRight]: dragOverTab === tab && dragDirection === "right",
+    });
 
-    return cn(baseClasses, ...stateClasses);
+    return cn(baseClasses, stateClasses);
   };
 
   return (
     <div
-      className="tabs-container bg-ctp-surface0 border-b border-ctp-surface2 font-roboto-mono sticky top-0 z-30 overflow-x-auto scrollbar-hide md:h-9"
+      className={cn(
+        styles.tabsContainer,
+        "bg-ctp-surface0 border-b border-ctp-surface2 font-roboto-mono sticky top-0 z-30 overflow-x-auto scrollbar-hide md:h-9"
+      )}
       ref={containerRef}
     >
       <div className="flex items-center h-full">
