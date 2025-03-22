@@ -56,12 +56,7 @@ const TerminalCommandOutput: React.FC<TerminalCommandOutputProps> = ({
               {line.isCommand ? (
                 <div className="flex items-center">
                   <span className="mr-2 text-ctp-blue font-bold">$</span>
-                  <span
-                    className="text-ctp-green"
-                    style={{
-                      textShadow: "0 0 10px rgba(166, 227, 161, 0.3)",
-                    }}
-                  >
+                  <span className="text-ctp-green shadow-sm shadow-ctp-green/30">
                     {line.text}
                   </span>
                 </div>
