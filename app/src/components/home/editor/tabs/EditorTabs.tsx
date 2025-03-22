@@ -10,15 +10,32 @@ interface EditorTabsProps {
   sections: Record<SectionType, ReactNode>;
 }
 
+/**
+ * EditorTabs component renders a set of tabs for the editor section.
+ * It handles tab dragging, reordering, and selection.
+ *
+ * @param {Object} props - The component props.
+ * @param {Record<SectionType, ReactNode>} props.sections - A record of section types to their corresponding React nodes.
+ */
 const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
   const { setCurrentSection } = useOutline();
   const { activeSection, setActiveSection } = useEditorContext();
 
+  /**
+   * Extracts section keys from the sections object.
+   *
+   * @returns {SectionType[]} - An array of section types.
+   */
   const sectionKeys = useMemo(
     () => Object.keys(sections) as SectionType[],
     [sections]
   );
 
+  /**
+   * Initializes the useTabDrag hook with section keys.
+   *
+   * @returns {Object} - An object containing state and handlers for tab drag functionality.
+   */
   const {
     draggedTab,
     dragOverTab,
@@ -34,11 +51,20 @@ const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
 
   const containerRef = useRef<HTMLDivElement>(null);
 
+  /**
+   * Updates the current section in the outline context when the active section changes.
+   */
   useEffect(
     () => setCurrentSection(activeSection),
     [activeSection, setCurrentSection]
   );
 
+  /**
+   * Generates classes for a tab based on its state.
+   *
+   * @param {SectionType} tab - The section type of the tab.
+   * @returns {string} - A string of classes for the tab.
+   */
   const getTabClasses = (tab: SectionType) => {
     const baseClasses = cn(
       styles.editorTab,
