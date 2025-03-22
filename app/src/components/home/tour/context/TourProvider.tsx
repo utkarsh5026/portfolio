@@ -9,6 +9,24 @@ import { TourContext } from "./TourContext";
 import type { TourStep } from "./TourType";
 import { tourSteps } from "../steps/registry";
 
+/**
+ * TourProvider component - Manages the guided tour experience for the application
+ *
+ * This component provides the tour state and functionality to all child components
+ * through React Context. It handles:
+ * - Starting and ending the tour
+ * - Navigating between tour steps
+ * - Tracking the current step
+ * - Keyboard navigation (Escape to exit)
+ * - Preserving scroll position between tour sessions
+ *
+ * @example
+ * ```tsx
+ * <TourProvider>
+ *   <YourApp />
+ * </TourProvider>
+ * ```
+ */
 export const TourProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
@@ -16,6 +34,12 @@ export const TourProvider: React.FC<{ children: React.ReactNode }> = ({
   const [currentStepId, setCurrentStepId] = useState<TourStep | null>(null);
   const steps = useRef(tourSteps);
 
+  /**
+   * Starts the guided tour
+   *
+   * Sets the tour to active and displays the first step.
+   * Saves the current scroll position to restore it when the tour ends.
+   */
   const startTour = useCallback(() => {
     if (steps.current.length <= 0) return;
 
@@ -27,6 +51,12 @@ export const TourProvider: React.FC<{ children: React.ReactNode }> = ({
     setActive(true);
   }, [steps]);
 
+  /**
+   * Ends the guided tour
+   *
+   * Deactivates the tour, clears the current step,
+   * and restores the original scroll position.
+   */
   const endTour = useCallback(() => {
     setActive(false);
     setCurrentStepId(null);
@@ -37,6 +67,11 @@ export const TourProvider: React.FC<{ children: React.ReactNode }> = ({
     window.scrollTo(0, scrollY);
   }, []);
 
+  /**
+   * Navigates to the next step in the tour
+   *
+   * If at the last step, ends the tour.
+   */
   const nextStep = useCallback(() => {
     if (!currentStepId || !active) return;
     const currentIndex = steps.current.findIndex(
@@ -47,6 +82,11 @@ export const TourProvider: React.FC<{ children: React.ReactNode }> = ({
     else endTour();
   }, [currentStepId, active, steps, endTour]);
 
+  /**
+   * Navigates to the previous step in the tour
+   *
+   * Does nothing if already at the first step.
+   */
   const prevStep = useCallback(() => {
     if (!currentStepId || !active) return;
     const currentIndex = steps.current.findIndex(
@@ -57,6 +97,11 @@ export const TourProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   }, [currentStepId, active, steps]);
 
+  /**
+   * Navigates to a specific step in the tour
+   *
+   * @param stepId - The ID of the step to navigate to
+   */
   const goToStep = useCallback(
     (stepId: TourStep) => {
       if (!active) return;
@@ -69,16 +114,31 @@ export const TourProvider: React.FC<{ children: React.ReactNode }> = ({
     [active, steps]
   );
 
+  /**
+   * Gets the current step's details
+   *
+   * @returns The current step object or null if no step is active
+   */
   const getCurrentStep = useCallback(() => {
     if (!currentStepId) return null;
     return steps.current.find((step) => step.id === currentStepId) || null;
   }, [steps, currentStepId]);
 
+  /**
+   * Checks if the current step is the first step in the tour
+   *
+   * @returns True if on the first step, false otherwise
+   */
   const isFirstStep = useCallback(() => {
     if (!currentStepId || !active) return false;
     return steps.current.findIndex((step) => step.id === currentStepId) === 0;
   }, [currentStepId, active, steps]);
 
+  /**
+   * Checks if the current step is the last step in the tour
+   *
+   * @returns True if on the last step, false otherwise
+   */
   const isLastStep = useCallback(() => {
     if (!currentStepId || !active) return false;
     return (
@@ -87,6 +147,7 @@ export const TourProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   }, [currentStepId, active, steps]);
 
+  // Handle keyboard events (Escape to exit tour)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && active) {
