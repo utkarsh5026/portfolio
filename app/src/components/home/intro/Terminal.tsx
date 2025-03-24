@@ -23,11 +23,11 @@ const Terminal: React.FC = () => {
   return (
     <div
       className={cn(
-        "bg-[#11111b]/80 backdrop-blur-md rounded-md border border-[#313244] p-5 shadow-lg",
+        "bg-[#11111b]/80 backdrop-blur-md rounded-md border border-[#313244] p-5 shadow-lg shadow-black perspective-dramatic",
         "hover:shadow-xl transition-all hover:cursor-pointer hover:border-2 hover:border-ctp-green hover:shadow-ctp-green/10 hover:scale-110 hover:translate-y-[-5px] duration-300"
       )}
     >
-      <div className="flex items-center mb-3 border-b border-[#313244]/80 pb-2">
+      <div className="flex items-center mb-3 border-b border-ctp-overlay1/20 pb-2">
         {[
           { color: "bg-ctp-red" },
           { color: "bg-ctp-yellow" },
@@ -44,7 +44,7 @@ const Terminal: React.FC = () => {
         ))}
 
         <motion.span
-          className="text-xs text-[#6c7086]"
+          className="text-xs text-ctp-overlay1"
           animate={{
             color: ["#6c7086", "#cdd6f4", "#6c7086"],
           }}
