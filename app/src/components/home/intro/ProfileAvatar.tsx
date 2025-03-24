@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
+/**
+ * ProfileAvatar component displays the user's profile picture.
+ * It utilizes a high-quality image for better user experience.
+ *
+ * @returns {JSX.Element} The rendered ProfileAvatar component.
+ */
 const ProfileAvatar: React.FC = () => {
   const [imageSrc, setImageSrc] = useState("./personal-min.jpg");
   const [isLoading, setIsLoading] = useState(true);
