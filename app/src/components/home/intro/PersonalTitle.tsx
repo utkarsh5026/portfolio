@@ -38,12 +38,14 @@ const PersonalTitle: React.FC = () => {
         </span>
       </motion.h1>
 
-      <p className="text-lg sm:text-xl text-[#cdd6f4] mb-4">
-        <span className="border-r-2 border-[#89b4fa] pr-2 mr-2">
-          Full-Stack Developer
-        </span>
-        <span>& DevOps Engineer</span>
-      </p>
+      <Reveal effect="typewriter" direction="left" delay={1} duration={1.5}>
+        <p className="text-lg sm:text-xl text-[#cdd6f4] mb-4">
+          <span className="border-r-2 border-ctp-yellow pr-2 mr-2">
+            Full-Stack Developer
+          </span>
+          <span>& DevOps Engineer</span>
+        </p>
+      </Reveal>
     </>
   );
 };
