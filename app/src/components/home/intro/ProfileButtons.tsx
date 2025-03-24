@@ -1,30 +1,21 @@
-import { motion, AnimationControls } from "framer-motion";
+import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTerminal } from "react-icons/fa";
 import { HiOutlineDocumentDownload } from "react-icons/hi";
 import { useEditorContext } from "../editor/context/explorerContext";
 import React from "react";
-
-interface ProfileButtonsProps {
-  buttonControls: AnimationControls;
-}
+import { cn } from "@/lib/utils";
 
 /**
  * ProfileButtons component renders a set of buttons for user interaction.
  * It includes buttons to connect, view projects, and links to social media profiles.
  *
  * @component
- * @param {ProfileButtonsProps} props - The props for the component.
- * @param {AnimationControls} props.buttonControls - Animation controls for the button animations.
  * @returns {JSX.Element} The rendered ProfileButtons component.
  */
-const ProfileButtons: React.FC<ProfileButtonsProps> = ({ buttonControls }) => {
+const ProfileButtons: React.FC = () => {
   const { setActiveSection } = useEditorContext();
   return (
-    <motion.div
-      className="mt-8 flex flex-wrap gap-4"
-      initial={{ opacity: 0, y: 30 }}
-      animate={buttonControls}
-    >
+    <div className="mt-8 flex flex-wrap gap-4">
       <motion.button
         onClick={() => setActiveSection("contact")}
         className="group relative inline-flex items-center gap-x-2 rounded-lg bg-gradient-to-r from-[#89b4fa] to-[#cba6f7] px-6 py-3 text-sm font-semibold text-[#1e1e2e] overflow-hidden"
@@ -35,7 +26,7 @@ const ProfileButtons: React.FC<ProfileButtonsProps> = ({ buttonControls }) => {
         whileTap={{ scale: 0.98 }}
       >
         <motion.span
-          className="absolute inset-0 bg-gradient-to-r from-[#89b4fa] to-[#cba6f7] opacity-0 group-hover:opacity-100"
+          className="absolute inset-0 bg-gradient-to-r from-ctp-blue to-ctp-purple opacity-0 group-hover:opacity-100"
           animate={{
             backgroundPosition: ["0% 0%", "100% 100%"],
           }}
@@ -49,72 +40,45 @@ const ProfileButtons: React.FC<ProfileButtonsProps> = ({ buttonControls }) => {
         <FaTerminal className="relative z-10" />
       </motion.button>
 
-      <motion.button
+      <button
         onClick={() => setActiveSection("projects")}
-        className="group relative inline-flex items-center gap-x-2 rounded-lg border border-[#cba6f7] bg-transparent px-6 py-3 text-sm font-semibold text-[#cba6f7] overflow-hidden"
-        whileHover={{
-          scale: 1.05,
-          boxShadow: "0 0 20px 0 rgba(203, 166, 247, 0.3)",
-        }}
-        whileTap={{ scale: 0.98 }}
+        className={cn(
+          "group relative inline-flex items-center gap-x-2 rounded-lg border border-ctp-mauve bg-transparent px-6 py-3 text-sm font-semibold text-ctp-mauve overflow-hidden",
+          "hover:scale-105 hover:shadow-md hover:shadow-ctp-mauve transition-all duration-300"
+        )}
       >
-        <motion.span
-          className="absolute inset-0 bg-[#cba6f7]/10 opacity-0 group-hover:opacity-100"
-          initial={{ y: "100%" }}
-          whileHover={{ y: "0%" }}
-          transition={{ duration: 0.3 }}
-        ></motion.span>
+        <span className="absolute inset-0 bg-ctp-mauve/10 opacity-0 group-hover:opacity-100"></span>
         <span className="relative z-10">View Projects</span>
-      </motion.button>
+      </button>
 
-      {/* Additional Social Buttons */}
-      <motion.div className="flex gap-2">
-        <motion.a
-          href="https://github.com/utkarsh5026"
+      {[
+        {
+          icon: <FaGithub />,
+          href: "https://github.com/utkarsh5026",
+        },
+        {
+          icon: <FaLinkedin />,
+          href: "https://www.linkedin.com/in/utkarsh-priyadarshi-8b5a731b9/",
+        },
+        {
+          icon: <HiOutlineDocumentDownload />,
+          href: "https://drive.google.com/file/d/1Rrg_GQMiwn2FL58L93sztTihyffN2sq9/view",
+        },
+      ].map(({ icon, href }) => (
+        <a
+          key={href}
+          href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-3 rounded-full bg-[#1e1e2e] border border-[#313244] text-[#cdd6f4]"
-          whileHover={{
-            scale: 1.1,
-            backgroundColor: "#313244",
-            boxShadow: "0 0 15px 0 rgba(203, 166, 247, 0.3)",
-          }}
-          whileTap={{ scale: 0.95 }}
+          className={cn(
+            "p-3 rounded-lg bg-ctp-mantle border border-ctp-surface0 text-[#cdd6f4]",
+            "hover:scale-105 hover:shadow-md hover:shadow-ctp-peach/50 transition-all duration-300"
+          )}
         >
-          <FaGithub />
-        </motion.a>
-
-        <motion.a
-          href="https://www.linkedin.com/in/utkarsh-priyadarshi-8b5a731b9/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-3 rounded-full bg-[#1e1e2e] border border-[#313244] text-[#cdd6f4]"
-          whileHover={{
-            scale: 1.1,
-            backgroundColor: "#313244",
-            boxShadow: "0 0 15px 0 rgba(137, 180, 250, 0.3)",
-          }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <FaLinkedin />
-        </motion.a>
-
-        <motion.a
-          href="https://drive.google.com/file/d/1Rrg_GQMiwn2FL58L93sztTihyffN2sq9/view"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-3 rounded-full bg-[#1e1e2e] border border-[#313244] text-[#cdd6f4]"
-          whileHover={{
-            scale: 1.1,
-            backgroundColor: "#313244",
-            boxShadow: "0 0 15px 0 rgba(166, 227, 161, 0.3)",
-          }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <HiOutlineDocumentDownload />
-        </motion.a>
-      </motion.div>
-    </motion.div>
+          {icon}
+        </a>
+      ))}
+    </div>
   );
 };
 
