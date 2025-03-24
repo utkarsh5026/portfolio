@@ -1,29 +1,14 @@
-import { motion, AnimationControls } from "framer-motion";
+import { motion } from "framer-motion";
 import React from "react";
-
-interface PersonalTitleProps {
-  nameControls: AnimationControls;
-  bioControls: AnimationControls;
-}
+import Reveal from "@/components/animations/reveal/Reveal";
 
 /**
  * PersonalTitle component displays a title and a brief bio for the user.
  * It utilizes framer-motion for animations to enhance the visual appeal.
  *
- * @component
- * @param {PersonalTitleProps} props - The properties for the component.
- * @param {AnimationControls} props.nameControls - Animation controls for the name text.
- * @param {AnimationControls} props.bioControls - Animation controls for the bio text.
- *
  * @returns {JSX.Element} The rendered PersonalTitle component.
- *
- * @example
- * <PersonalTitle nameControls={nameAnimation} bioControls={bioAnimation} />
  */
-const PersonalTitle: React.FC<PersonalTitleProps> = ({
-  nameControls,
-  bioControls,
-}) => {
+const PersonalTitle: React.FC = () => {
   return (
     <>
       <motion.h1
@@ -45,26 +30,20 @@ const PersonalTitle: React.FC<PersonalTitleProps> = ({
           >
             Hi, I'm
           </motion.span>{" "}
-          <motion.span
-            className="ml-6 bg-gradient-to-r from-[#89b4fa] to-[#cba6f7] text-transparent bg-clip-text"
-            initial={{ opacity: 0, y: 30 }}
-            animate={nameControls}
-          >
-            Utkarsh Priyadarshi
-          </motion.span>
+          <Reveal effect="slide-in" direction="right" delay={1}>
+            <span className="ml-6 bg-gradient-to-r from-ctp-teal to-ctp-mauve text-transparent bg-clip-text">
+              Utkarsh Priyadarshi
+            </span>
+          </Reveal>
         </span>
       </motion.h1>
 
-      <motion.p
-        className="text-lg sm:text-xl text-[#cdd6f4] mb-4"
-        initial={{ opacity: 0, y: 30 }}
-        animate={bioControls}
-      >
+      <p className="text-lg sm:text-xl text-[#cdd6f4] mb-4">
         <span className="border-r-2 border-[#89b4fa] pr-2 mr-2">
           Full-Stack Developer
         </span>
-        & DevOps Engineer
-      </motion.p>
+        <span>& DevOps Engineer</span>
+      </p>
     </>
   );
 };
