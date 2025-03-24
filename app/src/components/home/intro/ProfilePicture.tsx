@@ -1,27 +1,17 @@
-import { AnimationControls, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import React from "react";
 import ProfileAvatar from "./ProfileAvatar";
-
-interface ProfilePictureProps {
-  avatarControls: AnimationControls;
-}
 
 /**
  * ProfilePicture component displays a profile picture with animations.
  * It includes a profile avatar, a shadow effect, and a hover animation.
  *
  * @component
- * @param {ProfilePictureProps} props - The properties for the component.
- * @param {AnimationControls} props.avatarControls - Animation controls for the avatar.
  * @returns {JSX.Element} The rendered ProfilePicture component.
  */
-const ProfilePicture: React.FC<ProfilePictureProps> = ({ avatarControls }) => {
+const ProfilePicture: React.FC = () => {
   return (
-    <motion.div
-      className="lg:col-span-2 order-1 lg:order-2 flex justify-center"
-      initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-      animate={avatarControls}
-    >
+    <motion.div className="lg:col-span-2 order-1 lg:order-2 flex justify-center">
       <motion.div
         className="relative"
         whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
@@ -34,7 +24,7 @@ const ProfilePicture: React.FC<ProfilePictureProps> = ({ avatarControls }) => {
           <ProfileAvatar />
         </motion.div>
         <motion.div
-          className="absolute -bottom-2 -right-2 w-12 h-12 bg-[#1e1e2e] rounded-full border-2 border-[#a6e3a1] flex items-center justify-center"
+          className="absolute -bottom-2 -right-2 w-12 h-12 bg-[#1e1e2e] rounded-full border-2 border-[#a6e3a1] flex items-center justify-center z-50"
           animate={{
             boxShadow: [
               "0 0 0px rgba(166, 227, 161, 0)",
