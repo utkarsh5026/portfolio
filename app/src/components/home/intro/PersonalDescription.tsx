@@ -1,9 +1,10 @@
-import { motion, AnimationControls } from "framer-motion";
 import React from "react";
 
-interface PersonalDescriptionProps {
-  descriptionControls: AnimationControls;
-}
+const texts = [
+  "Passionate developer with a knack for crafting elegant solutions to complex problems.",
+  "I specialize in building scalable web applications and robust infrastructure systems that deliver exceptional user experiences.",
+  "With expertise spanning front-end aesthetics to back-end architecture, I bridge the gap between user needs and technical implementation.",
+];
 
 /**
  * PersonalDescription Component
@@ -11,44 +12,23 @@ interface PersonalDescriptionProps {
  * This component displays a personal description in a styled motion div.
  * It utilizes Framer Motion for animations and is designed to be visually appealing
  * with a responsive layout.
- *
- * Props:
- * - descriptionControls: AnimationControls
- *   Controls the animation state of the component, allowing for smooth transitions
- *   when the component comes into view.
- *
- * Usage:
- * <PersonalDescription descriptionControls={yourAnimationControls} />
- *
- * Example:
- * const descriptionControls = useAnimation();
- *
- * return (
- *   <PersonalDescription descriptionControls={descriptionControls} />
- * );
  */
-const PersonalDescription: React.FC<PersonalDescriptionProps> = ({
-  descriptionControls,
-}) => {
+const PersonalDescription: React.FC = () => {
   return (
-    <motion.div
-      className="mb-6 text-[#bac2de] p-4 border-l-2 border-ctp-peach bg-[#1e1e2e]/60 rounded-md shadow-lg hover:shadow-xl transition-all"
-      initial={{ opacity: 0, x: -30 }}
-      animate={descriptionControls}
-    >
-      <p className="mb-2">
-        Passionate developer with a knack for crafting elegant solutions to
-        complex problems.
-      </p>
-      <p className="mb-2">
-        I specialize in building scalable web applications and robust
-        infrastructure systems that deliver exceptional user experiences.
-      </p>
-      <p>
-        With expertise spanning front-end aesthetics to back-end architecture, I
-        bridge the gap between user needs and technical implementation.
-      </p>
-    </motion.div>
+    <div className="mb-8 text-[#bac2de] p-6 border-l-4 border-ctp-peach bg-gradient-to-br from-[#1e1e2e]/80 to-[#1e1e2e]/60 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
+      {texts.map((text, index) => (
+        <p
+          key={text}
+          className={`mb-4 leading-relaxed`}
+          style={{
+            textShadow: index === 0 ? "0 1px 2px rgba(0,0,0,0.2)" : "none",
+            animation: `fadeIn ${0.5 + index * 0.2}s ease-out`,
+          }}
+        >
+          {text}
+        </p>
+      ))}
+    </div>
   );
 };
 
