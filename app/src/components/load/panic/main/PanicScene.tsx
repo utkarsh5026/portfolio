@@ -332,7 +332,7 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
     >
       <MacOSContainer
         options={{
-          wallpaper: "url('/images/macos/wallpaper.jpg')",
+          wallpaper: "macos-color-optimized.jpg",
           showDock: true,
           showMenuBar: true,
           showDesktopIcons: true,

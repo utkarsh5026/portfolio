@@ -26,7 +26,7 @@ const MacOSContainer: React.FC<MacOSContainerProps> = ({
   options = {},
 }) => {
   const {
-    wallpaper,
+    wallpaper = "macos-black.jpg",
     showDock = true,
     showMenuBar = true,
     showDesktopIcons = true,
@@ -63,17 +63,16 @@ const MacOSContainer: React.FC<MacOSContainerProps> = ({
       ref={containerRef}
       className="macos-container max-h-screen w-full h-full overflow-hidden font-sans"
       style={{
-        ...(wallpaper && {
-          backgroundImage:
-            wallpaper.startsWith("url") || wallpaper.includes("gradient")
-              ? wallpaper
-              : `url(${wallpaper})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }),
+        backgroundImage: wallpaper
+          ? wallpaper.startsWith("url") || wallpaper.includes("gradient")
+            ? wallpaper
+            : `url(${wallpaper})`
+          : undefined,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
-      {/* Default wallpaper if none provided */}
+      {/* Only show default wallpaper if no wallpaper is provided */}
       {!wallpaper && (
         <div
           className="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-800 to-pink-800 z-0"
