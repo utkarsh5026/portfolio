@@ -8,6 +8,12 @@ import PrankPortfolio from "./simple-portfolio/PrankPortfolio";
 import FakePortfolioLoading from "./bridge/portfolio/FakePortfolioLoading";
 import CompilationLoading from "./bridge/compile/CompilationLoading";
 
+const IMAGES_TO_PRELOAD = [
+  "macos-color-optimized.jpg",
+  "personal.jpg",
+  "skoda-certificate.jpg",
+];
+
 type PortfolioStage =
   | "realization"
   | "panic"
@@ -16,6 +22,15 @@ type PortfolioStage =
   | "chaos"
   | "compilation-loading"
   | "portfolio";
+
+const preloadImage = (src: string): Promise<void> => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve();
+    img.onerror = () => reject();
+    img.src = src;
+  });
+};
 
 /**
  * PortfolioStory component that manages the different stages of the portfolio experience.
@@ -38,11 +53,30 @@ const PortfolioStory: React.FC = () => {
     useState<PortfolioStage>("realization");
   const [showSkipButton, setShowSkipButton] = useState(false);
 
+  /**
+   * Shows the skip button if the user has seen the intro before.
+   */
   useEffect(() => {
     const hasSeenIntro = localStorage.getItem("hasSeenPortfolioIntro");
     if (hasSeenIntro === "true") {
       setShowSkipButton(true);
     }
+  }, []);
+
+  /**
+   * Preloads the images specified in IMAGES_TO_PRELOAD.
+   * This is done to improve performance by ensuring the images are cached when the user first loads the page.
+   */
+  useEffect(() => {
+    const preloadImages = async () => {
+      try {
+        await Promise.all(IMAGES_TO_PRELOAD.map((url) => preloadImage(url)));
+        console.log("All images preloaded successfully");
+      } catch (error) {
+        console.error("Failed to preload some images", error);
+      }
+    };
+    preloadImages();
   }, []);
 
   /**
