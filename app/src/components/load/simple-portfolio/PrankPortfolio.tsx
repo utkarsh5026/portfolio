@@ -10,7 +10,7 @@ import {
 import "./PrankAnimations.css";
 import BasicPortfolio from "./BasicPortfolio";
 import Console from "./Console";
-import FatalError from "./FatalError";
+import FatalError from "./fatal/FatalError";
 import { cn } from "@/lib/utils";
 
 interface ChaoticPortfolioProps {

@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import "./FatalErrorAnimations.css";
+import styles from "./FatalErrorAnimations.module.css";
 
 interface FatalErrorProps {
   makeSkullLarge: boolean;
@@ -21,17 +21,30 @@ const FatalError: React.FC<FatalErrorProps> = ({
   onComplete,
 }) => {
   return (
-    <div className="fixed inset-0 bg-red-900 bg-opacity-95 z-50 flex justify-center items-center animate-fadeIn">
-      <div className="w-96 bg-gray-800 border-2 border-red-600 rounded-lg p-8 text-center text-white shadow-2xl">
+    <div
+      className={cn(
+        "fixed inset-0 bg-red-900 bg-opacity-95 z-50 flex justify-center items-center",
+        styles.container
+      )}
+    >
+      <div
+        className={cn(
+          "w-96 bg-gray-800 border-2 border-red-600 rounded-lg p-8 text-center text-white shadow-2xl",
+          styles.content
+        )}
+      >
         <div
           className={cn(
-            "text-5xl mb-5 inline-block fatal-error-icon",
-            makeSkullLarge && "skull-large-pulse"
+            "text-5xl mb-5 inline-block",
+            styles.icon,
+            makeSkullLarge && styles.skullLarge
           )}
         >
           💀
         </div>
-        <h2 className="text-2xl font-bold mb-4 text-red-600 fatal-error-title">
+        <h2
+          className={cn("text-2xl font-bold mb-4 text-red-600", styles.title)}
+        >
           FATAL ERROR
         </h2>
         <p className="text-gray-300 mb-5">
@@ -51,7 +64,10 @@ const FatalError: React.FC<FatalErrorProps> = ({
         </div>
 
         <button
-          className="bg-red-600 text-white border-none py-2.5 px-5 rounded font-bold text-base cursor-pointer"
+          className={cn(
+            "bg-red-600 text-white border-none py-2.5 px-5 rounded font-bold text-base cursor-pointer",
+            styles.button
+          )}
           onClick={() => {
             if (onComplete) onComplete();
           }}
