@@ -1,7 +1,33 @@
+/**
+ * Priority Levels
+ *
+ * This type defines the priority levels for thoughts displayed in the portfolio.
+ * - "low": Indicates a low-priority thought.
+ * - "medium": Indicates a medium-priority thought.
+ * - "high": Indicates a high-priority thought.
+ * - "critical": Indicates a critical thought that requires immediate attention.
+ */
 export type Priority = "low" | "medium" | "high" | "critical";
 
+/**
+ * Positioning Options
+ *
+ * This type defines the possible positions for displaying thoughts on the screen.
+ * - "left": Aligns the thought to the left side of the screen.
+ * - "right": Aligns the thought to the right side of the screen.
+ * - "center": Centers the thought on the screen.
+ */
 export type Position = "left" | "right" | "center";
 
+/**
+ * Thought Type
+ *
+ * This type represents a thought that can be displayed in the portfolio.
+ * - delay: The time (in milliseconds) before the thought is displayed.
+ * - text: The content of the thought.
+ * - priority: The priority level of the thought.
+ * - position: The position where the thought will be displayed on the screen.
+ */
 export type Thought = {
   delay: number;
   text: string;
@@ -9,6 +35,12 @@ export type Thought = {
   position: Position;
 };
 
+/**
+ * Thought Sequence
+ *
+ * This array contains a sequence of thoughts that will be displayed in the portfolio.
+ * Each thought has a delay, text, priority, and position.
+ */
 export const thoughtSequence: Thought[] = [
   {
     delay: 1800,
@@ -90,6 +122,12 @@ export const thoughtSequence: Thought[] = [
   },
 ];
 
+/**
+ * Error Messages
+ *
+ * This array contains various error messages that may be displayed during the portfolio's operation.
+ * These messages simulate common issues that can occur in web development.
+ */
 export const errorMessages = [
   "ERROR: Failed to load CSS: style.css not found",
   "WARNING: React encountered an error during rendering",
@@ -104,6 +142,13 @@ export const errorMessages = [
   "ERROR: React DevTools disconnected",
 ];
 
+/**
+ * Errors
+ *
+ * This array contains a list of error messages that represent various issues that can occur
+ * within the portfolio application. These messages are designed to mimic real-world errors
+ * that developers might encounter.
+ */
 export const errors = [
   "Error: CSS not found",
   "WARNING: Layout engine crashed",
