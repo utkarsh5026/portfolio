@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 import { BsLayoutSidebarInset } from "react-icons/bs";
 import { cn } from "@/lib/utils";
-import { useEditorContext } from "./context/explorerContext";
+import { useEditorContext } from "../context/explorerContext";
 import GhostButton from "@/components/utils/GhostButton";
 
 /**

@@ -2,9 +2,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { lazy, useMemo } from "react";
 import { cn } from "@/lib/utils";
 
-import Explorer from "./Explorer";
+import Explorer from "./left/Explorer";
 import type { SectionType } from "./context/explorerContext";
-import SideBar from "./SideBar";
+import SideBar from "./left/SideBar";
 import StatusBar from "./StatusBar";
 import CodeContent from "./CodeContent";
 import EditorTabs from "./tabs/EditorTabs";
