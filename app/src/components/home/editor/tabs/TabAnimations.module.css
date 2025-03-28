@@ -1,83 +1,111 @@
-/* Tab drag animations */
+/* Core tab animations */
 @keyframes tabPulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(137, 180, 250, 0.7); }
-    50% { box-shadow: 0 0 0 8px rgba(137, 180, 250, 0); }
-}
 
-@keyframes tabGlow {
-    0% { box-shadow: 0 0 0 0 rgba(137, 180, 250, 0.3); }
-    50% { box-shadow: 0 0 15px 3px rgba(137, 180, 250, 0.5); }
-    100% { box-shadow: 0 0 0 0 rgba(137, 180, 250, 0.3); }
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(137, 180, 250, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 4px rgba(137, 180, 250, 0);
+    }
 }
 
 @keyframes tabBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-3px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-2px);
+    }
 }
 
 @keyframes tabShake {
-    0%, 100% {
-        transform: translateX(0) scale(1);
-        box-shadow: 0 0 0 rgba(137, 180, 250, 0);
+
+    0%,
+    100% {
+        transform: translateX(0);
     }
-    10%, 30%, 50%, 70%, 90% {
-        transform: translateX(-4px) scale(1.07);
-        box-shadow: 0 0 20px rgba(137, 180, 250, 0.7);
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-2px);
     }
-    20%, 40%, 60%, 80% {
-        transform: translateX(4px) scale(1.05);
-        box-shadow: 0 0 15px rgba(203, 166, 247, 0.7);
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(2px);
     }
-}
-
-@keyframes tabPop {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.08); }
-    100% { transform: scale(1); }
-}
-
-@keyframes tabHighlight {
-    0% { background-color: transparent; }
-    50% { background-color: rgba(137, 180, 250, 0.2); }
-    100% { background-color: transparent; }
-}
-
-@keyframes slideInRight {
-    0% { transform: translateX(100%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes slideInLeft {
-    0% { transform: translateX(-100%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes slideOutRight {
-    0% { transform: translateX(0); opacity: 1; }
-    100% { transform: translateX(100%); opacity: 0; }
-}
-
-@keyframes slideOutLeft {
-    0% { transform: translateX(0); opacity: 1; }
-    100% { transform: translateX(-100%); opacity: 0; }
 }
 
 @keyframes insertionIndicatorPulse {
-    0%, 100% { opacity: 0.4; height: 60%; }
-    50% { opacity: 0.8; height: 90%; }
+
+    0%,
+    100% {
+        opacity: 0.4;
+        height: 60%;
+    }
+
+    50% {
+        opacity: 0.8;
+        height: 80%;
+    }
 }
 
-@keyframes containerShake {
-    0%, 100% { transform: translateX(0); filter: blur(0); }
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
-    20%, 40%, 60%, 80% { transform: translateX(4px); }
-    45%, 55% { filter: blur(0.5px); }
+@keyframes slideInRight {
+    0% {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
-@keyframes tabContainerFlash {
-    0% { box-shadow: inset 0 0 0 rgba(137, 180, 250, 0); }
-    20% { box-shadow: inset 0 0 30px rgba(137, 180, 250, 0.4); }
-    100% { box-shadow: inset 0 0 0 rgba(137, 180, 250, 0); }
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutLeft {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
 }
 
 /* Active tab styles */
@@ -86,33 +114,19 @@
     z-index: 20;
 }
 
-.tabActive::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(to right, #89b4fa, #cba6f7);
-    animation: tabGlow 2s ease-in-out infinite;
-}
-
 /* Being dragged tab style */
 .tabDragging {
-    animation: tabHighlight 1s ease-in-out infinite;
     position: relative;
     z-index: 100;
-    box-shadow: 0 0 20px rgba(137, 180, 250, 0.5);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform: scale(1.05);
-    opacity: 0.9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0.8;
 }
 
 /* Tab being dragged over */
 .tabDragOver {
     animation: tabPulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     transition: all 0.2s ease;
-    background-color: rgba(137, 180, 250, 0.1);
+    background-color: rgba(137, 180, 250, 0.05);
 }
 
 /* Left insertion indicator */
@@ -121,7 +135,7 @@
     position: absolute;
     left: 0;
     top: 20%;
-    width: 3px;
+    width: 2px;
     height: 60%;
     background: #89b4fa;
     border-radius: 4px;
@@ -134,7 +148,7 @@
     position: absolute;
     right: 0;
     top: 20%;
-    width: 3px;
+    width: 2px;
     height: 60%;
     background: #89b4fa;
     border-radius: 4px;
@@ -146,35 +160,9 @@
     animation: tabBounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* New tab appearing */
-.tabNew {
-    animation: tabPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Tab being dropped - much more impactful shake */
+/* Tab being dropped */
 .tabDropping {
-    animation: tabShake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97);
-    transform-origin: center;
-}
-
-/* Entire tab container shake when a tab is dropped */
-.tabsContainerShake {
-    animation: containerShake 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97);
-}
-
-/* Animation for tabs moving left */
-.tabShiftLeft {
-    animation: slideOutLeft 0.3s forwards;
-}
-
-/* Animation for tabs moving right */
-.tabShiftRight {
-    animation: slideOutRight 0.3s forwards;
-}
-
-/* Animation for tabs entering */
-.tabEnter {
-    animation: slideInRight 0.3s forwards;
+    animation: tabShake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97);
 }
 
 /* Tab container styles */
@@ -183,18 +171,8 @@
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
-    background-color: #1e1e2e;
-    border-bottom: 1px solid #313244;
     transition: box-shadow 0.3s ease;
-
-    /* Perspective for 3D transforms */
-    perspective: 1000px;
-    transform-style: preserve-3d;
-
-    /* Enable hardware acceleration for smoother animations */
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    will-change: transform, box-shadow;
+    background-color: var(--ctp-mantle);
 }
 
 /* Individual tab styles */
@@ -204,28 +182,16 @@
     height: 36px;
     padding: 0 16px;
     position: relative;
-    border-right: 1px solid #313244;
     font-size: 14px;
-    transition: background 0.2s, color 0.2s, transform 0.3s, opacity 0.3s, box-shadow 0.3s;
-    cursor: grab;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+    cursor: pointer;
+    -webkit-user-select: none;
     user-select: none;
-    will-change: transform, opacity, background-color, box-shadow, filter;
-
-    /* Add 3D perspective for more dramatic effects */
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
 }
 
 /* Tab hover effects */
 .editorTab:hover {
-    background-color: rgba(24, 24, 37, 0.7);
-}
-
-/* Tab active state */
-.editorTab.active {
-    background-color: #181825;
-    color: #cdd6f4;
-    border-bottom: 2px solid #89b4fa;
+    background-color: rgba(30, 30, 46, 0.7);
 }
 
 /* Make tab focus visible when tabbing through */
@@ -243,11 +209,9 @@
 .tabGhost {
     position: absolute;
     opacity: 0.6;
-    border-radius: 6px;
+    border-radius: 4px;
     pointer-events: none;
     z-index: 9999;
-    background: rgba(137, 180, 250, 0.2);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(4px);
-    transform: scale(1.05);
-} 
+    background: #1e1e2e;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
