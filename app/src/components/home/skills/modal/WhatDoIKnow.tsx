@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Terminal, Database, Code } from "lucide-react";
 import { FaDocker, FaReact, FaBrain } from "react-icons/fa";
 import useTypewriting from "@/components/type-write/hooks/use-type-write";
-import Modal from "@/components/utils/Modal";
 import ProgressBar from "@/components/utils/ProgressBar";
 import Cursor from "@/components/utils/Cursor";
 import { skillPoints } from "../data";
 import SkillIcon from "./SkillIcon";
 import Header from "./Header";
+import DialogModal from "@/components/utils/DialogModal";
 
 const pointIcons = [
   <FaReact className="w-5 h-5" key="code" />,
@@ -147,7 +147,7 @@ const WhatDoIKnow: React.FC<WhatDoIKnowProps> = ({ isOpen, onClose }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="4xl">
+    <DialogModal isOpen={isOpen} handleChange={onClose}>
       <div className="relative overflow-hidden">
         {/* Background decorative shapes - subtle but visible */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -290,7 +290,7 @@ const WhatDoIKnow: React.FC<WhatDoIKnowProps> = ({ isOpen, onClose }) => {
           </div>
         </motion.div>
       </div>
-    </Modal>
+    </DialogModal>
   );
 };
 
