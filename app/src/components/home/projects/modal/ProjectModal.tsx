@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Project } from "@/types";
 import { Code, ChevronRight, Info, FileCode, List, Brain } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Modal from "@/components/utils/Modal";
+import DialogModal from "@/components/utils/DialogModal";
 import TechStackDisplay from "./TechStackDisplay";
 import ProjectOverview from "./ProjectOverview";
 import { useProjectTheme } from "../context/ThemeContext";
@@ -67,13 +67,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 
   return (
     <AnimatePresence>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        closeOnOutsideClick
-        showCloseButton
-        size="full"
-      >
+      <DialogModal isOpen={isModalOpen} handleChange={closeModal}>
         <div className="inset-0 z-[1000] flex items-center justify-center overflow-y-auto overflow-x-hidden ">
           {/* Modal Container - Fixed width */}
           <motion.div
@@ -201,16 +195,15 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               </div>
             </div>
 
-            <Modal
+            <DialogModal
               isOpen={explainOpen}
-              onClose={() => setExplainOpen(false)}
-              size="4xl"
+              handleChange={() => setExplainOpen(false)}
             >
               <ExplainItToMe project={selectedProject} />
-            </Modal>
+            </DialogModal>
           </motion.div>
         </div>
-      </Modal>
+      </DialogModal>
     </AnimatePresence>
   );
 };
