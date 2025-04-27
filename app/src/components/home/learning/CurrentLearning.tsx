@@ -7,7 +7,6 @@ import LearningModal from "./LearningModal";
 import FeaturedLearnings from "./FeaturedLearnings";
 import LearningJourney from "./LearningJourney";
 import type { TechnologyLearning } from "@/types";
-import ParticlesAnimation from "./ParticlesAnimation";
 import "./LearningAnimations.css";
 
 type Category = (typeof currentLearningTechnologies)[number]["category"];
@@ -53,7 +52,6 @@ const CurrentLearning: React.FC = () => {
       glowAccent="blue"
     >
       <div className="relative flex flex-col w-full min-h-[700px] bg-gradient-to-b from-[#1e1e2e] to-[#232634] rounded-xl overflow-hidden shadow-2xl">
-        <ParticlesAnimation particlesCount={30} />
         <div className="p-8 z-20 relative">
           <motion.h2
             className="text-4xl font-bold text-white mb-3 flex items-center"
