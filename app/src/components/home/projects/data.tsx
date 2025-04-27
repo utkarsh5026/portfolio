@@ -13,6 +13,121 @@
 
 import type { Project } from "@/types";
 
+const firstPrinciples: Project = {
+  name: "First Principles",
+  description:
+    "A sophisticated document reading platform with analytics, progress tracking, and smart insights. This React and TypeScript application transforms static documentation into an engaging, interactive experience with reading history visualization, category breakdown analysis, time-of-day preferences, and AI-powered reading recommendations.",
+  githubLink: "https://github.com/utkarsh5026/FirstPrinciples",
+  liveLink: "https://first-principles-black.vercel.app/",
+  technologies: [
+    "react",
+    "typescript",
+    "tailwind",
+    "recharts",
+    "vite",
+    "framermotion",
+    "shadcn",
+    "lucideicons",
+  ],
+  features: [
+    "Interactive markdown document viewer with syntax highlighting and responsive design",
+    "Comprehensive reading analytics with visual data representations",
+    "Real-time reading progress tracking and section completion monitoring",
+    "Reading session timing and word count estimation",
+    "Category breakdown visualizations and content exploration tools",
+    "Daily, weekly and monthly reading pattern analysis",
+    "Time-of-day reading preference insights",
+    "Reading journey visualization with milestones",
+    "Smart todo list for organizing reading priorities",
+    "Offline support with IndexedDB for persistent storage",
+    "Category coverage and distribution analysis",
+    "Dark mode with customizable themes",
+    "Responsive design optimized for both mobile and desktop",
+  ],
+  techStack: {
+    "Core Framework": [
+      "React 19 - For building the UI components and managing state",
+      "TypeScript - For type safety and enhanced developer experience",
+      "Vite - For fast development and optimized builds",
+      "React Router - For declarative routing and navigation",
+    ],
+    "State Management": [
+      "Zustand - For lightweight global state management with slices",
+      "Custom stores - For domain-specific state separation",
+      "IndexedDB - For persistent client-side storage",
+      "Web workers - For performance-intensive operations",
+    ],
+    "Data Visualization": [
+      "Recharts - For responsive, customizable charts and graphs",
+      "Custom visualization components - For specialized data representations",
+      "D3-based visualizations - For complex interactive data displays",
+      "Motion-enhanced data presentations - For engaging user experiences",
+    ],
+    "Analytics Engine": [
+      "Reading session tracking - For accurate time measurement",
+      "Word count estimation - For reading progress calculations",
+      "Category and section analytics - For content organization insights",
+      "Time pattern analysis - For user behavior understanding",
+      "Streak and milestone tracking - For user engagement",
+    ],
+    "Styling & UI": [
+      "Tailwind CSS - For utility-first styling approach",
+      "shadcn/ui - For accessible and customizable UI components",
+      "CSS Variables - For theming and consistent styling",
+      "Responsive design - For optimal viewing across devices",
+    ],
+    "Animation & Interactions": [
+      "Framer Motion - For fluid animations and transitions",
+      "Custom animation hooks - For reusable motion logic",
+      "Interactive charts - For exploring visualization data",
+      "Smooth transitions - For improved user experience",
+    ],
+    "Document Processing": [
+      "React Markdown - For converting markdown to React components",
+      "Syntax highlighting - For code block formatting",
+      "Section parsing - For breaking content into navigable chunks",
+      "Progress tracking - For section-level completion monitoring",
+    ],
+    "Performance Optimization": [
+      "Component memoization - For preventing unnecessary re-renders",
+      "Lazy loading - For optimized resource usage",
+      "Data caching - For faster content delivery",
+      "Worker threads - For CPU-intensive calculations",
+    ],
+  },
+  explain: [
+    "I built DocTracker to solve a problem I frequently encountered: keeping track of my progress when reading through large documentation sets or technical books. Traditional document viewers just show content, but they don't help you understand your reading habits or remember where you left off across multiple documents.",
+
+    "The core of the application is the reading analytics engine. It tracks precisely which sections you've read, how long you spent on them, and estimates how many words you've covered. This data feeds into various visualizations that help you understand your reading patterns – like whether you read more on weekends, which times of day you're most active, or which categories you've explored most thoroughly.",
+
+    "I'm particularly proud of the reading journey visualization, which shows your progress over time with milestone markers for significant achievements. It creates a motivating experience that turns documentation reading from a chore into something more engaging.",
+
+    "On the technical side, I built this with React and TypeScript, using Zustand for state management. The persistent storage uses IndexedDB to track all your reading data locally. For visualizations, I used Recharts with custom components for specialized displays like heat maps and radar charts. The document processing system breaks markdown content into navigable sections and tracks completion at a granular level.",
+
+    "One interesting challenge was accurately estimating reading time and progress. I implemented algorithms that account for factors like word count, typical reading speed, and actual time spent on a section to determine if it was genuinely read or just skimmed.",
+
+    "The application is fully responsive, working seamlessly on both desktop and mobile devices, with a UI that adapts to different screen sizes while maintaining a consistent, intuitive experience across platforms.",
+  ],
+  highlights: [
+    "Transforms dry documentation reading into an engaging, gamified experience",
+    "Provides detailed insights into reading habits and preferences",
+    "Helps users track progress across large document collections",
+    "Uses sophisticated data visualization to make analytics intuitive",
+    "Offers entirely client-side operation with no server requirements",
+    "Maintains persistent reading history with offline support",
+  ],
+  tags: [
+    "Document Reader",
+    "Analytics Dashboard",
+    "React",
+    "TypeScript",
+    "Data Visualization",
+    "Reading Tracker",
+    "Web Application",
+    "Offline-First",
+  ],
+};
+
 const portfolio: Project = {
   name: "Modern React Portfolio",
   description:
@@ -1387,6 +1502,7 @@ export const projects: Project[] = [
   smashLeetcode,
   studio,
   reducer,
+  firstPrinciples,
   pauth,
   classConnect,
   current,
