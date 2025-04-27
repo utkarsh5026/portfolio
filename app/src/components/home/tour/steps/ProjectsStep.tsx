@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import TypeWriter from "../writer/TypeWriter";
 import Step from "./Step";
-import { projects } from "@/components/home/projects/data";
+import { useProject } from "@/hooks/use-project";
 import type { Project } from "@/types";
 import CodeTypeWriter from "../writer/JsTypeWriter";
-
-const usedProjects = projects.slice(0, 4);
 
 const prepareCodeText = (project: Project) => {
   return `
@@ -17,13 +15,11 @@ const prepareCodeText = (project: Project) => {
   `;
 };
 
-type ProjectName = (typeof usedProjects)[number]["name"];
-
 const ProjectsStep: React.FC = () => {
+  const { projects } = useProject();
+  const usedProjects = projects.slice(0, 4);
   const [typingComplete, setTypingComplete] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<ProjectName | null>(
-    null
-  );
+  const [selectedProject, setSelectedProject] = useState<string | null>(null);
 
   const currentProject = projects.find(
     (project) => project.name === selectedProject

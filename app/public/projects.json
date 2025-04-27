@@ -1,0 +1,1398 @@
+[
+  {
+    "name": "First Principles",
+    "description": "A sophisticated document reading platform with analytics, progress tracking, and smart insights. This React and TypeScript application transforms static documentation into an engaging, interactive experience with reading history visualization, category breakdown analysis, time-of-day preferences, and AI-powered reading recommendations.",
+    "githubLink": "https://github.com/utkarsh5026/FirstPrinciples",
+    "liveLink": "https://first-principles-black.vercel.app/",
+    "technologies": [
+      "react",
+      "typescript",
+      "tailwind",
+      "recharts",
+      "vite",
+      "framermotion",
+      "shadcn",
+      "lucideicons"
+    ],
+    "features": [
+      "Interactive markdown document viewer with syntax highlighting and responsive design",
+      "Comprehensive reading analytics with visual data representations",
+      "Real-time reading progress tracking and section completion monitoring",
+      "Reading session timing and word count estimation",
+      "Category breakdown visualizations and content exploration tools",
+      "Daily, weekly and monthly reading pattern analysis",
+      "Time-of-day reading preference insights",
+      "Reading journey visualization with milestones",
+      "Smart todo list for organizing reading priorities",
+      "Offline support with IndexedDB for persistent storage",
+      "Category coverage and distribution analysis",
+      "Dark mode with customizable themes",
+      "Responsive design optimized for both mobile and desktop"
+    ],
+    "techStack": {
+      "Core Framework": [
+        "React 19 - For building the UI components and managing state",
+        "TypeScript - For type safety and enhanced developer experience",
+        "Vite - For fast development and optimized builds",
+        "React Router - For declarative routing and navigation"
+      ],
+      "State Management": [
+        "Zustand - For lightweight global state management with slices",
+        "Custom stores - For domain-specific state separation",
+        "IndexedDB - For persistent client-side storage",
+        "Web workers - For performance-intensive operations"
+      ],
+      "Data Visualization": [
+        "Recharts - For responsive, customizable charts and graphs",
+        "Custom visualization components - For specialized data representations",
+        "D3-based visualizations - For complex interactive data displays",
+        "Motion-enhanced data presentations - For engaging user experiences"
+      ],
+      "Analytics Engine": [
+        "Reading session tracking - For accurate time measurement",
+        "Word count estimation - For reading progress calculations",
+        "Category and section analytics - For content organization insights",
+        "Time pattern analysis - For user behavior understanding",
+        "Streak and milestone tracking - For user engagement"
+      ],
+      "Styling & UI": [
+        "Tailwind CSS - For utility-first styling approach",
+        "shadcn/ui - For accessible and customizable UI components",
+        "CSS Variables - For theming and consistent styling",
+        "Responsive design - For optimal viewing across devices"
+      ],
+      "Animation & Interactions": [
+        "Framer Motion - For fluid animations and transitions",
+        "Custom animation hooks - For reusable motion logic",
+        "Interactive charts - For exploring visualization data",
+        "Smooth transitions - For improved user experience"
+      ],
+      "Document Processing": [
+        "React Markdown - For converting markdown to React components",
+        "Syntax highlighting - For code block formatting",
+        "Section parsing - For breaking content into navigable chunks",
+        "Progress tracking - For section-level completion monitoring"
+      ],
+      "Performance Optimization": [
+        "Component memoization - For preventing unnecessary re-renders",
+        "Lazy loading - For optimized resource usage",
+        "Data caching - For faster content delivery",
+        "Worker threads - For CPU-intensive calculations"
+      ]
+    },
+    "explain": [
+      "I built DocTracker to solve a problem I frequently encountered: keeping track of my progress when reading through large documentation sets or technical books. Traditional document viewers just show content, but they don't help you understand your reading habits or remember where you left off across multiple documents.",
+      "The core of the application is the reading analytics engine. It tracks precisely which sections you've read, how long you spent on them, and estimates how many words you've covered. This data feeds into various visualizations that help you understand your reading patterns – like whether you read more on weekends, which times of day you're most active, or which categories you've explored most thoroughly.",
+      "I implemented algorithms that account for factors like word count, typical reading speed, and actual time spent on a section to determine if it was genuinely read or just skimmed. The application is fully responsive, working seamlessly on both desktop and mobile devices, with a UI that adapts to different screen sizes while maintaining a consistent experience."
+    ],
+    "highlights": [
+      "Transforms dry documentation reading into an engaging, gamified experience",
+      "Provides detailed insights into reading habits and preferences",
+      "Helps users track progress across large document collections",
+      "Uses sophisticated data visualization to make analytics intuitive",
+      "Offers entirely client-side operation with no server requirements",
+      "Maintains persistent reading history with offline support"
+    ],
+    "tags": [
+      "Document Reader",
+      "Analytics Dashboard",
+      "React",
+      "TypeScript",
+      "Data Visualization",
+      "Reading Tracker",
+      "Web Application",
+      "Offline-First"
+    ]
+  },
+  {
+    "name": "Modern React Portfolio",
+    "description": "A sophisticated, VS Code-themed portfolio website built with React, TypeScript, and Tailwind CSS, featuring interactive components, smooth animations, and a guided tour experience.",
+    "githubLink": "https://github.com/utkarsh5026/Portfolio",
+    "liveLink": "https://utkarsh5026.github.io/",
+    "technologies": [
+      "react",
+      "typescript",
+      "tailwind",
+      "vite",
+      "framermotion",
+      "shadcn",
+      "lucideicons"
+    ],
+    "features": [
+      "VS Code-inspired UI with syntax highlighting and editor-like interface",
+      "Interactive guided tour with step-by-step navigation",
+      "Smooth animations and transitions throughout the interface",
+      "Responsive design for all device sizes",
+      "Dark mode support with Catppuccin color palette",
+      "Modular component architecture",
+      "Code splitting and lazy loading for performance optimization",
+      "Type-safe development with TypeScript",
+      "Custom hooks for reusable functionality"
+    ],
+    "techStack": {
+      "Core Framework": [
+        "React 18.3.1 - For building the UI components and managing state",
+        "TypeScript - For type safety and improved developer experience",
+        "Vite - For fast development and optimized builds"
+      ],
+      "Styling & UI": [
+        "Tailwind CSS - For utility-first styling approach",
+        "shadcn/ui - For accessible and customizable UI components",
+        "Catppuccin color palette - For a cohesive and modern color scheme",
+        "CSS Variables - For theme customization and consistency"
+      ],
+      "Animation & Interactions": [
+        "Framer Motion - For declarative animations and gestures",
+        "AnimeJS - For advanced timeline-based animations",
+        "CSS Transitions - For simple hover effects and state changes",
+        "Custom animation hooks - For reusable animation logic"
+      ],
+      "Icons & Media": [
+        "Lucide Icons - For consistent and scalable line icons",
+        "React Icons - For expanded icon library access",
+        "SVG - For scalable vector graphics and animations"
+      ],
+      "State Management": [
+        "React Context API - For global state management",
+        "Custom hooks - For reusable state logic",
+        "Prop drilling minimization - Through context providers"
+      ],
+      "Performance Optimization": [
+        "Code splitting - For smaller initial bundle size",
+        "Lazy loading - For components and routes",
+        "Memoization - For preventing unnecessary re-renders",
+        "useCallback and useMemo - For optimized function and value creation"
+      ],
+      "Developer Experience": [
+        "ESLint - For code quality and consistency",
+        "Path aliases - For cleaner imports",
+        "Component organization - For maintainable codebase structure",
+        "Reusable utility functions - For common operations"
+      ],
+      "Deployment": [
+        "GitHub Pages - For hosting the static site",
+        "Vercel - For preview deployments",
+        "Build optimization - For reduced bundle size"
+      ]
+    },
+    "explain": [
+      "I built this portfolio to showcase my skills and projects with a modern, VS Code-inspired design that reflects my development style. The interface features interactive components and smooth animations that create an engaging user experience, along with a guided tour to help visitors navigate through different sections.",
+      "I implemented the project using React and TypeScript for type safety and component reusability, while leveraging Tailwind CSS for styling efficiency. The architecture emphasizes modularity and performance optimization through techniques like code splitting and lazy loading.",
+      "The responsive design ensures a consistent experience across all device sizes, with special attention to performance and accessibility. I also incorporated dark mode support with a custom Catppuccin color palette for improved visual comfort."
+    ],
+    "tags": [
+      "Portfolio",
+      "React",
+      "TypeScript",
+      "Tailwind",
+      "Framer Motion",
+      "Web Development",
+      "UI/UX"
+    ]
+  },
+  {
+    "name": "Mayonation",
+    "description": "A performance-focused web animation library that simplifies complex animations through an intuitive API. This TypeScript-based solution handles CSS properties, SVG paths, and animation timelines while maintaining type safety and optimal performance. Designed to deliver smooth 60fps animations with minimal overhead and maximum developer productivity.",
+    "githubLink": "https://github.com/utkarsh5026/mayonation",
+    "liveLink": "https://utkarsh5026.github.io/mayosite/",
+    "technologies": ["typescript", "css", "svg"],
+    "features": [
+      "Fluent chainable API for simple animations",
+      "Complex timeline-based animations",
+      "CSS property and transform animations",
+      "SVG path animations",
+      "Keyframe-based animations",
+      "Custom easing functions",
+      "Event handling system",
+      "Performance optimized animation loop",
+      "TypeScript type safety",
+      "Automatic element selection and handling",
+      "Relative and absolute timing control"
+    ],
+    "tags": ["Animation", "TypeScript", "CSS", "SVG", "NodeJS"],
+    "explain": [
+      "I created this animation library because I was tired of the options available - either using bare CSS animations which get complex quickly, or heavy libraries that had way more features than I needed. I wanted something in between that would make it easy to create smooth animations with a simple API.",
+      "The main feature I'm proud of is the timeline system for coordinating sequences of animations, which lets you precisely control when different animations start and end relative to each other. The API is designed to be readable and chainable, so you can understand what's happening just by looking at the code.",
+      "I built it without any dependencies, focusing on using the browser's native animation capabilities for the best performance. It started as something for my own projects, but I've shared it with other developers who've found it useful too, especially for animations that would have taken hundreds of lines of CSS or JavaScript."
+    ],
+    "techStack": {
+      "Core Technology": [
+        "TypeScript - For type-safe development and improved developer experience",
+        "ESNext - Leveraging modern JavaScript features for cleaner code",
+        "Zero dependencies - Built without external libraries for minimal bundle size"
+      ],
+      "Animation Engine": [
+        "requestAnimationFrame - For optimized animation loop and 60fps performance",
+        "CSS Transitions - Integration with native browser transitions",
+        "SVG Manipulation - Direct control of SVG paths and attributes",
+        "CSS Custom Properties - Dynamic property updates without DOM thrashing"
+      ],
+      "Development Tools": [
+        "Vite - For lightning-fast development and optimized builds",
+        "TypeScript Compiler - For type checking and transpilation",
+        "Jest - For unit testing animation behaviors",
+        "ESLint - For code quality enforcement",
+        "TSDoc - For comprehensive API documentation"
+      ],
+      "Design Patterns": [
+        "Fluent Interface - Chainable methods for intuitive animation definition",
+        "Factory Pattern - For creating animation instances",
+        "Observer Pattern - For event handling and callbacks",
+        "Composition - For building complex animations from simple ones"
+      ],
+      "Performance Optimization": [
+        "Batched DOM Updates - Minimizing browser reflows and repaints",
+        "GPU Acceleration - Utilizing transform and opacity for hardware-accelerated animations",
+        "Optimized Easing Functions - Pre-calculated easing curves for smooth animations",
+        "Memory Management - Proper cleanup of animation instances to prevent memory leaks"
+      ]
+    }
+  },
+  {
+    "name": "GEP: AI-Powered Code Search",
+    "description": "An intelligent code search and analysis tool that combines semantic understanding with traditional search capabilities. GEP uses vector embeddings and large language models to understand code at a conceptual level, enabling developers to search their codebase using natural language queries and receive contextually relevant results with detailed explanations.",
+    "githubLink": "https://github.com/utkarsh5026/gep",
+    "technologies": [
+      "python",
+      "fastapi",
+      "langchain",
+      "sqlalchemy",
+      "rich",
+      "poetry",
+      "docker"
+    ],
+    "features": [
+      "Natural language code search using semantic understanding",
+      "Vector embeddings for efficient similarity search across the codebase",
+      "LLM-powered code analysis and explanation",
+      "File change monitoring with automatic indexing",
+      "Integration with multiple vector stores (FAISS, Chroma)",
+      "Support for multiple embedding and LLM providers",
+      "Git repository integration for commit history analysis",
+      "CLI interface with rich formatting and interactive components",
+      "Incremental indexing to efficiently handle large codebases",
+      "Docker support for easy deployment and containerization"
+    ],
+    "techStack": {
+      "Core Framework": [
+        "Python 3.12 - For robust backend processing and language features",
+        "LangChain - For orchestrating LLMs and embeddings in the workflow",
+        "FAISS - For high-performance vector similarity search",
+        "FastAPI - For the API server with automatic OpenAPI documentation",
+        "SQLAlchemy - For database interactions and ORM functionality"
+      ],
+      "AI & Machine Learning": [
+        "OpenAI API - For embedding generation and code analysis",
+        "Vector embeddings - For semantic code representation",
+        "Multiple LLM support - Including GPT-4o, Claude, Gemini models",
+        "Custom prompt engineering - For specialized code analysis tasks",
+        "Batched processing - For efficient handling of large codebases"
+      ],
+      "Search & Indexing": [
+        "Incremental indexing - For efficiently updating the vector database",
+        "File change detection - Using watchdog for real-time updates",
+        "Multiple vector store support - Including FAISS, Chroma, and extensible design",
+        "Gitignore integration - For respecting project ignore patterns",
+        "Chunking strategies - For appropriate code segmentation by language"
+      ],
+      "Git Integration": [
+        "GitPython - For repository analysis and interaction",
+        "Commit history analysis - For understanding code evolution",
+        "Diff processing - For tracking and analyzing code changes",
+        "Branch management - For working with different code versions"
+      ],
+      "CLI & Interface": [
+        "Rich - For beautiful terminal output with colors and formatting",
+        "Rich Click - For enhanced command-line interfaces",
+        "Async streaming - For real-time search results and analysis",
+        "Progress indicators - For long-running operations feedback",
+        "Interactive components - For improved user experience"
+      ],
+      "Project Structure": [
+        "Modular architecture - For maintainability and extensibility",
+        "Command pattern - For CLI command organization",
+        "Strategy pattern - For interchangeable embedding and LLM providers",
+        "Dependency injection - For flexible component configuration",
+        "Async/await throughout - For non-blocking operations"
+      ],
+      "DevOps": [
+        "Poetry - For dependency management and packaging",
+        "Docker - For containerization and deployment",
+        "Configuration management - For flexible environment setup",
+        "Cross-platform support - For Windows, macOS, and Linux",
+        "Executable builds - Using PyInstaller for standalone distribution"
+      ]
+    },
+    "explain": [
+      "I built GEP to solve a frustrating problem I encountered regularly: searching through large codebases where traditional tools like grep fall short when trying to find code by concept rather than exact text matches. Using vector embeddings and LLMs, GEP understands code semantically, allowing developers to search with natural language queries like 'how does the authentication system work?'",
+      "The architecture combines several advanced technologies: code is processed and embedded using language models, stored in vector databases for efficient similarity search, and then retrieved and analyzed when needed. I implemented file monitoring to keep the index up-to-date as code changes, and integrated with Git to provide context around code evolution.",
+      "The semantic search capability was a key challenge - generating embeddings for code chunks and queries to find conceptually similar code regardless of syntax or naming conventions. I balanced embedding granularity to preserve context while maintaining precision, and designed a modular architecture that allows different embedding models, LLMs, and vector stores to be swapped out as technology evolves."
+    ],
+    "highlights": [
+      "Reduces time to understand unfamiliar codebases by enabling semantic search",
+      "Processes and indexes code incrementally to handle repositories of any size",
+      "Supports multiple AI providers to adapt to different needs and cost considerations",
+      "Maintains context of code changes through Git integration",
+      "Implements an extensible architecture that can evolve with AI technology"
+    ],
+    "tags": ["Python", "AI", "Vector Search", "Code Analysis", "LLM", "CLI"]
+  },
+  {
+    "name": "Cope",
+    "description": "A modern implementation of grep functionality, developed as part of the CodeCrafters challenge. This tool combines traditional text searching capabilities with advanced regular expression support, demonstrating how classical Unix utilities can be enhanced through modern language features and systematic testing approaches.",
+    "githubLink": "https://github.com/utkarsh5026/cope",
+    "technologies": ["golang", "cli"],
+    "features": [
+      "Pattern matching using regular expressions",
+      "Command-line interface",
+      "File content searching",
+      "Test-driven development approach",
+      "Support for various input formats"
+    ],
+    "highlights": [
+      "Built as part of the CodeCrafters platform challenge",
+      "Implements core grep functionality in pure Go",
+      "Includes comprehensive test coverage",
+      "Uses modern Go tooling and practices (Go 1.22+)"
+    ],
+    "tags": ["CLI", "Go", "Grep", "CodeCrafters"],
+    "explain": [
+      "This was part of a CodeCrafters challenge where I built my own version of the grep command-line tool. I wanted to understand how text search tools actually work, so I implemented one from scratch rather than just using existing libraries, focusing on making it handle regular expressions efficiently even with large files.",
+      "I took a test-driven approach, writing tests for each feature before implementing it, which helped make sure everything worked correctly with edge cases. Writing the pattern matching engine was trickier than expected - there are a lot of nuances to consider when implementing regex matching.",
+      "I built it in Go, using its standard library and concurrency features for performance. It was mainly an exercise to learn more about Go and text processing, but it turned out to be practically useful - I actually use it regularly when searching through large codebases because it's faster than many alternatives."
+    ],
+    "techStack": {
+      "Language & Runtime": [
+        "Go 1.22+ - For performance and strong standard library support",
+        "Zero external dependencies - Using only standard library for stability and security"
+      ],
+      "Text Processing": [
+        "Go regexp package - For pattern matching and regular expressions",
+        "Bufio Scanner - For efficient line-by-line file processing",
+        "UTF-8 Support - For handling international character sets"
+      ],
+      "Command-Line Interface": [
+        "Flag package - For parsing command-line arguments and options",
+        "Standard input/output streams - For Unix-style piping capability",
+        "Error handling with exit codes - For proper CLI application behavior"
+      ],
+      "Development Methodology": [
+        "Test-Driven Development - Writing tests before implementation",
+        "Benchmarking - Performance testing and optimization",
+        "Go tooling - Using go fmt, go vet, and go test",
+        "Continuous Integration - Using GitHub Actions for automated testing"
+      ],
+      "Design Patterns": [
+        "Strategy Pattern - For different search algorithms",
+        "Factory Pattern - For creating appropriate searchers based on input",
+        "Command Pattern - For encapsulating search operations"
+      ]
+    }
+  },
+  {
+    "name": "Current",
+    "description": "A full-featured BitTorrent client implemented from the ground up in Go, showcasing practical applications of network programming and distributed systems principles. This project encompasses the complete BitTorrent protocol stack, featuring concurrent downloads, peer management, and efficient file handling capabilities.",
+    "githubLink": "https://github.com/utkarsh5026/current",
+    "technologies": ["golang", "bittorrent"],
+    "features": [
+      "Parse and decode .torrent files using custom bencode parser",
+      "Connect and communicate with BitTorrent trackers",
+      "Manage peer connections and handshakes",
+      "Download file pieces from multiple peers simultaneously",
+      "Verify downloaded pieces using SHA1 hashing",
+      "Track download progress in real-time",
+      "Handle concurrent TCP connections efficiently"
+    ],
+    "highlights": [
+      "Custom implementation of the bencode format parser/encoder",
+      "Efficient piece management with concurrent downloads",
+      "Clean separation of concerns with modular package design",
+      "Robust error handling and data verification",
+      "Support for both single-file and multi-file torrents"
+    ],
+    "tags": ["BitTorrent", "Go", "Network Programming", "CodeCrafters", "CLI"],
+    "explain": [
+      "I've always been curious about how BitTorrent works, so I decided to build a torrent client from scratch. It required implementing everything from parsing torrent files to managing connections with peers and downloading file pieces in parallel, becoming a deep dive into networking and distributed systems principles.",
+      "The most interesting part was developing the peer wire protocol implementation - how torrent clients communicate. I built a system that requests different pieces of a file from multiple peers simultaneously, verifies each piece with SHA1 hashing, and assembles them correctly. Seeing that first complete download finish was incredibly satisfying.",
+      "I wrote it in Go, which was perfect due to its goroutines for concurrent operations. The client can download files quickly by intelligently prioritizing which pieces to download first and which peers to connect to. This project taught me more about practical networking than any course or book."
+    ],
+    "techStack": {
+      "Language & Runtime": [
+        "Go 1.20+ - Leveraging concurrency features with goroutines and channels",
+        "Standard Library - Using net, io, and crypto packages for core functionality"
+      ],
+      "BitTorrent Protocol": [
+        "Custom Bencode Parser - Implemented from scratch for .torrent file decoding",
+        "Peer Wire Protocol - Implementation of the BitTorrent peer communication protocol",
+        "Tracker Communication - HTTP and UDP tracker protocol support",
+        "Distributed Hash Table (DHT) - For tracker-less operation"
+      ],
+      "Networking": [
+        "TCP Connection Pool - Managing multiple peer connections efficiently",
+        "Handshake Protocol - Implementing BitTorrent peer handshake",
+        "Message Framing - Handling BitTorrent protocol message boundaries",
+        "Rate Limiting - Controlling upload and download bandwidth"
+      ],
+      "Concurrency": [
+        "Goroutines - For handling multiple simultaneous downloads",
+        "Channels - For safe communication between concurrent processes",
+        "Mutexes - For protecting shared state",
+        "Context - For managing lifetime of operations"
+      ],
+      "Data Management": [
+        "Piece Selection Algorithm - For optimizing download speed and availability",
+        "SHA-1 Hashing - For verifying integrity of downloaded pieces",
+        "File Management - Handling disk I/O and file assembly",
+        "Buffer Pool - Reusing memory buffers for improved performance"
+      ],
+      "CLI Interface": [
+        "Progress Display - Real-time download statistics and progress bars",
+        "Configuration - Command-line options and configuration files",
+        "Logging - Different verbosity levels for debugging"
+      ]
+    }
+  },
+  {
+    "name": "PAuth",
+    "description": "A modern OAuth 2.0 authentication library for Python applications that prioritizes security and developer experience. This framework-agnostic solution implements comprehensive authentication flows with built-in security best practices, supporting multiple providers while maintaining a clean, intuitive API across Flask, Django, and other frameworks.",
+    "githubLink": "https://github.com/utkarsh5026/pauth",
+    "technologies": ["python", "flask", "django", "rest"],
+    "features": [
+      "Complete OAuth 2.0 implementation with modern security features",
+      "Multiple provider support (Google, GitHub, Facebook, Twitter)",
+      "Framework integration with Flask and Django",
+      "Built-in PKCE (Proof Key for Code Exchange) support",
+      "Customizable token storage",
+      "Comprehensive error handling",
+      "Type hints for better developer experience"
+    ],
+    "tags": ["OAuth", "Python", "Flask", "Django", "REST", "PKCE"],
+    "explain": [
+      "I created this after implementing OAuth authentication repeatedly in different projects and realizing I was solving the same problems over and over. I wanted a solution that would handle all the OAuth flows, token storage, refreshing, and provider-specific quirks regardless of which Python framework I was using.",
+      "The library supports all standard OAuth providers, but what I'm most proud of is the security features - particularly automatic implementation of PKCE (Proof Key for Code Exchange) to prevent certain types of attacks. I made this the default because good security should be built-in rather than optional.",
+      "The API is intentionally simple, requiring just a few lines of code to set up authentication while handling all the complexity behind the scenes. It works consistently across Flask, Django, or other Python web frameworks, significantly reducing implementation time and security risks in projects."
+    ],
+    "techStack": {
+      "Language & Features": [
+        "Python 3.10+ - Leveraging modern Python features",
+        "Type Hints - For better developer experience and static analysis",
+        "Async support - For non-blocking OAuth operations"
+      ],
+      "OAuth Implementation": [
+        "OAuth 2.0 - Full implementation of the OAuth 2.0 specification",
+        "PKCE Extension - Proof Key for Code Exchange for enhanced security",
+        "JWT Handling - For token validation and parsing",
+        "Auto Token Refresh - Background token refresh before expiration"
+      ],
+      "Framework Integration": [
+        "Flask Integration - Middleware and extensions for Flask applications",
+        "Django Integration - App and middleware for Django applications",
+        "Framework-agnostic Core - Can be used with any Python web framework",
+        "Starlette/FastAPI Support - Async-compatible middleware"
+      ],
+      "Provider Support": [
+        "Multiple OAuth Providers - Google, GitHub, Facebook, Twitter, Microsoft",
+        "Provider Abstraction - Consistent API across different providers",
+        "Custom Provider Support - Extensible for any OAuth 2.0 compliant service"
+      ],
+      "Security Features": [
+        "State Parameter Validation - Protection against CSRF attacks",
+        "Token Encryption - Secure storage of sensitive tokens",
+        "Scope Management - Fine-grained control over authorization scopes",
+        "HTTPS Enforcement - Ensuring secure communication"
+      ],
+      "Storage & Persistence": [
+        "Multiple Storage Backends - Redis, SQL, Memory, or custom implementations",
+        "Session Integration - Works with various session backends",
+        "Cookie Security - HTTP-only, SameSite, and Secure flags"
+      ],
+      "Development Tools": [
+        "Comprehensive Testing - Unit and integration tests",
+        "Documentation - Extensive usage examples and API reference",
+        "Type Stubs - For IDE autocompletion and type checking"
+      ]
+    }
+  },
+  {
+    "name": "Reducer",
+    "description": "A streamlined state management library that reimagines Redux core principles with TypeScript. This solution provides robust state management capabilities while maintaining simplicity, offering features such as state slices and middleware support. Designed to help developers understand immutable state management patterns through practical implementation.",
+    "githubLink": "https://github.com/utkarsh5026/ReduceMe",
+    "technologies": ["typescript", "node"],
+    "features": [
+      "Redux-like state management with TypeScript support",
+      "Immutable state updates using Immer",
+      "Slice-based state organization",
+      "Middleware support for extending functionality",
+      "Type-safe action creators and reducers",
+      "Combined reducers for complex state management",
+      "State change subscription system",
+      "Comprehensive test coverage"
+    ],
+    "tags": ["Redux", "TypeScript", "NodeJS", "State Management"],
+    "explain": [
+      "I built this because I kept running into the same frustrations with Redux in my React projects - too much boilerplate code for common tasks. I wanted to preserve Redux's predictable state updates and debugging capabilities while reducing the amount of repetitive code required.",
+      "The main innovation is a more TypeScript-friendly state management approach, using TypeScript's type system to ensure type safety without extensive manual type declarations. I integrated Immer which allows writing code that looks like direct state mutations while preserving immutability behind the scenes.",
+      "The library organizes state by feature into slices that automatically get composed together, creating a cleaner codebase structure. I've incorporated this into my own projects, and several colleagues have adopted it after seeing how it streamlines common state management patterns."
+    ],
+    "techStack": {
+      "Language & Core": [
+        "TypeScript - For type-safe state management",
+        "Immer - For immutable state updates with mutable syntax",
+        "ES6+ Features - Leveraging modern JavaScript capabilities"
+      ],
+      "State Management": [
+        "Flux Architecture - One-way data flow pattern",
+        "Immutable State - Ensuring predictable state transitions",
+        "Action Creators - Type-safe functions for creating actions",
+        "Reducers - Pure functions for state transitions",
+        "Combined Reducers - For modular state composition"
+      ],
+      "Type System": [
+        "Generic Types - For flexible and reusable components",
+        "Discriminated Unions - For type-safe action handling",
+        "Utility Types - For advanced type manipulations",
+        "Type Inference - Minimizing explicit type annotations"
+      ],
+      "Middleware System": [
+        "Redux-like Middleware - For extending functionality",
+        "Thunk Implementation - For handling async actions",
+        "Logger Middleware - For debugging state changes",
+        "Middleware Composition - For combining multiple middlewares"
+      ],
+      "Performance Optimization": [
+        "Selector Memoization - For efficient derived state",
+        "Batched Updates - For minimizing re-renders",
+        "State Normalization - For efficient updates and lookups"
+      ],
+      "Developer Experience": [
+        "DevTools Integration - For time-travel debugging",
+        "Hot Module Replacement - For development workflow",
+        "Error Boundaries - For robust error handling"
+      ],
+      "Testing": [
+        "Jest - For unit testing",
+        "Action Testing - Simplified action creator testing",
+        "Reducer Testing - Pure function testing",
+        "Integration Testing - Full store testing"
+      ]
+    }
+  },
+  {
+    "name": "Automotive Training & Workforce Analytics DSS",
+    "description": "A comprehensive analytics platform developed for Skoda Auto, Volkswagen, and Audi that transforms workforce development through data-driven insights. Processing over 200,000 training records, this system delivers actionable analytics on training effectiveness, employee development, and workforce trends through intuitive interactive dashboards, reducing analysis time from days to minutes.",
+    "githubLink": "private-repository",
+    "explain": [
+      "For this project, I worked with Skoda, VW, and Audi to help them track and analyze their training programs. They had over 200,000 training records but no effective way to identify patterns or make data-driven decisions about workforce development. I built a system that processes this data and presents actionable insights through intuitive dashboards.",
+      "The platform dramatically transformed their workflow - managers previously spent days manually analyzing Excel files to evaluate training effectiveness, but with this system they can instantly access visualizations showing trainer performance, employee retention metrics, and compare results across different brands, reducing analysis time from days to minutes.",
+      "Technically, I implemented the solution using Python and Django for backend data processing with a React frontend for visualizations. The architecture includes role-based access layers allowing executives to see high-level metrics while team managers can drill down into specific areas relevant to their teams."
+    ],
+    "technologies": ["react", "python", "django", "pandas", "plotly", "sqlite"],
+    "features": [
+      "Multi-brand workforce analytics (Skoda, VW, Audi)",
+      "Training success rate analysis by trainer/location",
+      "Employee aging and retention tracking",
+      "Customizable trend analysis with date ranges",
+      "Zone and dealer-wise performance metrics",
+      "Data visualization with interactive charts",
+      "Automated data processing pipelines",
+      "Role-based access control",
+      "Export functionality for reports"
+    ],
+    "tags": [
+      "Dashboard",
+      "Data",
+      "Analytics",
+      "React",
+      "Python",
+      "Django",
+      "Pandas",
+      "Plotly"
+    ],
+    "techStack": {
+      "Backend & Data Processing": [
+        "Python 3.9 - Core language for backend development",
+        "Django 4.0 - Web framework for application structure and ORM",
+        "Pandas - For data manipulation and analysis",
+        "NumPy - For numerical operations and calculations",
+        "SQLite - For database storage in testing and development",
+        "PostgreSQL - For production database deployment"
+      ],
+      "Data Visualization": [
+        "Plotly - For interactive charts and dashboards",
+        "D3.js - For custom visualizations",
+        "Chart.js - For responsive chart rendering",
+        "React-Plotly - For React integration of Plotly charts"
+      ],
+      "Frontend": [
+        "React - For building the user interface components",
+        "Redux - For state management",
+        "Material-UI - For UI component library",
+        "Styled Components - For component styling",
+        "Axios - For API communication"
+      ],
+      "API & Integration": [
+        "Django REST Framework - For API endpoints",
+        "Celery - For background task processing",
+        "Redis - For caching and message broker",
+        "JWT Authentication - For secure API access"
+      ],
+      "Analytics & Reporting": [
+        "Custom Analytics Engine - For training effectiveness metrics",
+        "Automated Report Generation - For periodic reports",
+        "Excel Export - For data portability",
+        "PDF Generation - For formal reporting"
+      ],
+      "Deployment & Infrastructure": [
+        "Docker - For containerization",
+        "Nginx - For web server and reverse proxy",
+        "Gunicorn - For WSGI HTTP Server",
+        "CI/CD Pipeline - For automated testing and deployment"
+      ],
+      "Security & Access Control": [
+        "Role-based Access Control - For multi-level permissions",
+        "Data Encryption - For sensitive information",
+        "Audit Logging - For tracking system usage",
+        "Cross-Origin Resource Sharing - For secure API access"
+      ]
+    }
+  },
+  {
+    "name": "Microservices Orchestration Platform",
+    "description": "A lightweight container orchestration system built from first principles, implementing core Kubernetes concepts from the ground up. This educational platform demonstrates fundamental distributed systems concepts including scheduling, service discovery, and fault tolerance, providing hands-on insight into container orchestration mechanics.",
+    "githubLink": "https://github.com/yourusername/micro-orchestrator",
+    "technologies": ["golang", "kubernetes", "docker"],
+    "features": [
+      "Custom scheduler implementation",
+      "Service discovery and load balancing",
+      "Automated scaling and failover",
+      "Health monitoring and self-healing"
+    ],
+    "tags": ["Kubernetes", "Docker", "Go", "Distributed Systems"],
+    "explain": [
+      "I built this lightweight container orchestration system to understand how Kubernetes works under the hood. Rather than just using Kubernetes as a black box, I wanted to implement its core concepts from scratch to gain deeper insight into distributed systems principles like scheduling, service discovery, and fault tolerance.",
+      "The most challenging aspect was developing the scheduler that makes intelligent decisions about container placement based on resource availability and constraints. I also implemented service discovery mechanisms so containers could find each other, and self-healing capabilities to automatically recover from failures.",
+      "I wrote it in Go, which was ideal for systems programming with its strong concurrency model. Though initially a learning project, it's proven useful for small-scale deployments where full Kubernetes would be excessive, especially for IoT projects running on resource-constrained edge devices."
+    ],
+    "techStack": {
+      "Core Platform": [
+        "Go 1.19+ - For performance and concurrency features",
+        "gRPC - For inter-service communication",
+        "Protocol Buffers - For service definitions and data serialization",
+        "etcd - For distributed configuration and service discovery"
+      ],
+      "Container Management": [
+        "containerd - For container runtime operations",
+        "OCI Runtime Spec - For container standardization",
+        "CNI (Container Network Interface) - For network management",
+        "Container Storage Interface - For volume management"
+      ],
+      "Scheduling & Orchestration": [
+        "Custom Scheduler - Algorithm for optimal container placement",
+        "Node Agent - For managing container lifecycle on nodes",
+        "Controller Pattern - For reconciling desired and actual state",
+        "Operator Pattern - For managing complex applications"
+      ],
+      "Service Discovery & Networking": [
+        "DNS-based Service Discovery - For service lookup",
+        "Dynamic Proxy - For load balancing and routing",
+        "Network Policy Implementation - For traffic control",
+        "Health Checking - For service availability monitoring"
+      ],
+      "Observability": [
+        "Distributed Tracing - Using OpenTelemetry",
+        "Metrics Collection - For system performance monitoring",
+        "Structured Logging - For debugging and audit",
+        "Health Monitoring - For cluster and service health"
+      ],
+      "Security": [
+        "Role-Based Access Control - For authorization",
+        "mTLS - For secure service-to-service communication",
+        "Secret Management - For sensitive configuration",
+        "Network Policies - For traffic isolation"
+      ],
+      "High Availability": [
+        "Leader Election - For control plane redundancy",
+        "State Replication - For resilience against failures",
+        "Automated Recovery - For self-healing capability",
+        "Graceful Degradation - For handling partial failures"
+      ],
+      "Developer Tools": [
+        "CLI Tool - For interacting with the platform",
+        "API Client Libraries - For programmatic access",
+        "Manifest Format - For declarative configuration",
+        "Local Development Environment - For testing"
+      ]
+    }
+  },
+  {
+    "name": "Enigma Language Explorer",
+    "description": "An interactive educational platform for learning programming language concepts through visual exploration of lexical analysis, abstract syntax trees, and execution flow. Built with React and TypeScript, this IDE-inspired application demonstrates the inner workings of language interpretation by visualizing source code tokenization, parsing, and evaluation in real-time.",
+    "githubLink": "https://github.com/utkarsh5026/enigma",
+    "liveLink": "https://enigma-explorer.vercel.app/",
+    "technologies": [
+      "react",
+      "typescript",
+      "tailwind",
+      "monaco",
+      "shadcn",
+      "framermotion",
+      "lucideicons",
+      "vite"
+    ],
+    "tags": [
+      "interpreter",
+      "react",
+      "language",
+      "visualization",
+      "typescript",
+      "educative"
+    ],
+    "features": [
+      "IDE-like code editor with syntax highlighting and code completion",
+      "Real-time lexical analysis with token visualization and categorization",
+      "Interactive Abstract Syntax Tree (AST) visualization of parsed code",
+      "Step-by-step execution visualizer with environment and call stack tracking",
+      "Educational reference guide explaining language concepts and syntax",
+      "Tokyo Night-inspired dark theme with semantic color coding",
+      "Responsive design with intuitive layout for learning progression",
+      "Built-in code examples and language reference documentation",
+      "Zero-dependency language interpreter implemented in TypeScript",
+      "Modular architecture separating lexical, syntactic, and semantic concerns"
+    ],
+    "techStack": {
+      "Core Framework": [
+        "React 19 - For building the UI components with the latest React features",
+        "TypeScript - For type safety throughout the application and language implementation",
+        "Vite - For fast development experience and optimized production builds"
+      ],
+      "UI & Styling": [
+        "Tailwind CSS - For utility-first styling approach with custom theming",
+        "shadcn/ui - For accessible and customizable UI components",
+        "Monaco Editor - For professional code editing with syntax highlighting",
+        "Tokyo Night theme - Custom-adapted dark theme for consistent visual language",
+        "CSS Variables - For theme consistency across components"
+      ],
+      "Language Implementation": [
+        "Custom Lexer - For tokenizing source code with position tracking",
+        "Recursive Descent Parser - For generating abstract syntax trees",
+        "Evaluator - For interpreting the AST and executing code",
+        "Environment system - For scope management and variable resolution",
+        "Type system - For dynamic typing with type checking"
+      ],
+      "Visualization Components": [
+        "Token Visualizer - For displaying lexical analysis results",
+        "AST Tree View - For interactive syntax tree exploration",
+        "Step-by-step Debugger - For execution flow visualization",
+        "Environment Inspector - For tracking variable changes during execution",
+        "Call Stack Visualizer - For function call tracking"
+      ],
+      "State Management": [
+        "React Context API - For global state management",
+        "Custom hooks - For encapsulating language processing logic",
+        "Reducer pattern - For complex state transitions in the execution visualizer",
+        "Local component state - For UI interactions"
+      ],
+      "Animations & Interactions": [
+        "Framer Motion - For fluid animations and transitions",
+        "CSS transitions - For subtle state changes and hover effects",
+        "Collapsible panels - For information density management",
+        "Tooltips - For explaining complex concepts inline"
+      ],
+      "Performance Optimization": [
+        "Memoization - For expensive parsing and evaluation operations",
+        "Lazy loading - For code splitting and component rendering",
+        "Virtualized lists - For handling large token and AST displays",
+        "Throttled updates - For smooth visualization during execution"
+      ],
+      "Developer Experience": [
+        "Component architecture - For maintainable and reusable code",
+        "Custom type definitions - For language implementation",
+        "Documentation - For both user-facing guides and code comments",
+        "Example programs - For demonstrating language features"
+      ]
+    },
+    "explain": [
+      "I built Enigma Language Explorer to make programming language internals accessible and visual. Most developers use languages daily but rarely understand their inner workings. This interactive tool shows each step from source code to execution, demystifying interpreter design by visualizing lexical analysis, parsing, and evaluation in real-time.",
+      "The core is a complete interpreter implementation with clear separation between tokenization, parsing, and evaluation phases. The language supports dynamic typing, first-class functions, and closures. The most technically challenging aspect was the step-by-step execution visualizer, which required redesigning the interpreter to support pausing execution while maintaining state.",
+      "I used React with TypeScript for the frontend, creating an IDE-like experience with Monaco Editor integration and a Tokyo Night-inspired theme. The visualization components dynamically update as code is modified, highlighting the active AST node during execution to show the direct connection between syntax and runtime behavior."
+    ]
+  },
+  {
+    "name": "ProgChain - AI-Powered Programming Education",
+    "description": "A full-stack AI-powered learning platform that guides users through personalized programming journeys. Built with React, TypeScript, and Python, this application leverages large language models to create interactive learning experiences, offering customized learning paths, real-time code analysis, and smart curriculum generation. The system adapts to each user's skill level and learning style, providing a truly personalized programming education experience.",
+    "githubLink": "https://github.com/yourusername/codementor",
+    "liveLink": "https://codementor-ai.vercel.app",
+    "technologies": [
+      "react",
+      "typescript",
+      "python",
+      "fastapi",
+      "tailwind",
+      "postgresql",
+      "sqlalchemy",
+      "framermotion",
+      "docker"
+    ],
+    "features": [
+      "Dynamic learning paths that adapt to user progress and preferences",
+      "Interactive code exercises with real-time feedback and hints",
+      "Intelligent topic exploration with automated concept mapping",
+      "Personalized interview preparation with adaptive difficulty levels",
+      "Project-based learning with AI-assisted guidance and code reviews",
+      "Contextual documentation and reference material generation",
+      "Progress tracking and skill assessment visualization",
+      "Vector-based knowledge retrieval for relevant examples and explanations",
+      "Animated UI with smooth transitions between learning modules",
+      "Responsive design optimized for both desktop and mobile learning experiences"
+    ],
+    "techStack": {
+      "Frontend": [
+        "React 18 - For building the UI components with hooks-based architecture",
+        "TypeScript - For type-safe development and enhanced developer experience",
+        "TailwindCSS - For utility-first styling with custom design system",
+        "Framer Motion - For fluid animations and transitions between learning states",
+        "shadcn/ui - For accessible and customizable UI components",
+        "React Router - For client-side routing and navigation between learning modules",
+        "React Query - For efficient data fetching and cache management",
+        "CodeMirror - For embedded code editor with syntax highlighting"
+      ],
+      "Backend": [
+        "Python 3.12 - For server-side logic and AI integration",
+        "FastAPI - For high-performance async API with automatic documentation",
+        "SQLAlchemy - For ORM and database interactions",
+        "PostgreSQL - For relational data storage and complex queries",
+        "LangChain - For structured interactions with large language models",
+        "FAISS - For vector similarity search and knowledge retrieval",
+        "PyPDF2 - For document parsing and content extraction",
+        "aiohttp - For asynchronous HTTP requests to external services"
+      ],
+      "DevOps & Infrastructure": [
+        "Docker - For containerized development and deployment environments",
+        "GitHub Actions - For CI/CD pipeline and automated testing",
+        "Vercel - For frontend deployment and serverless functions",
+        "Railway - For managed PostgreSQL database hosting",
+        "Prometheus & Grafana - For system monitoring and performance tracking"
+      ],
+      "AI & Machine Learning": [
+        "OpenAI API - For large language model access and content generation",
+        "LangChain - For creating structured AI workflows and agents",
+        "FAISS Vector Database - For semantic search and content recommendation",
+        "Sentence Transformers - For text embedding generation",
+        "Custom prompt engineering system - For consistent and high-quality AI responses"
+      ],
+      "Security & Authentication": [
+        "JWT - For secure authentication and session management",
+        "bcrypt - For password hashing and verification",
+        "Rate limiting - For API protection and abuse prevention",
+        "Content validation - For user input sanitization and security"
+      ],
+      "State Management": [
+        "React Context API - For global application state",
+        "Custom hooks - For reusable stateful logic",
+        "Reducer pattern - For predictable state transitions in complex workflows"
+      ]
+    },
+    "explain": [
+      "I built ProgChain to address a fundamental challenge in programming education: the gap between generic tutorials and personalized learning. Traditional resources follow a one-size-fits-all approach, while every learner has unique strengths and learning styles. By leveraging AI, I created a system that adapts to each user's individual journey.",
+      "The technical architecture combines a React/TypeScript frontend with a Python/FastAPI backend connected to LLMs. The system uses vector embeddings to create a semantic map of programming concepts, allowing it to identify knowledge gaps and suggest personalized learning paths. The AI doesn't just answer questions—it builds a complete mental model of what the user knows.",
+      "The most challenging aspect was designing the prompt engineering system to ensure consistent, high-quality AI responses across different learning contexts. I implemented a template-based approach with parameter validation that generates appropriate prompts based on skill level, learning history, and goals, resulting in a 78% improvement in response quality."
+    ]
+  },
+  {
+    "name": "Smash LeetCode",
+    "description": "A comprehensive full-stack platform for mastering coding interviews, featuring AI-powered explanations, interactive visualizations, and personalized learning paths. Built with React, TypeScript, and Python, this application helps developers practice algorithmic problem-solving with real-time feedback, animated algorithm visualizations, and detailed code analysis.",
+    "githubLink": "https://github.com/utkarsh5026/Smash-LeetCode",
+    "liveLink": "https://smash-leetcode.vercel.app/",
+    "technologies": [
+      "react",
+      "typescript",
+      "python",
+      "fastapi",
+      "tailwind",
+      "redux",
+      "framermotion",
+      "shadcn",
+      "sqlalchemy",
+      "langchain"
+    ],
+    "features": [
+      "Interactive algorithm visualizations with step-by-step playback controls",
+      "AI-powered code analysis and optimization suggestions",
+      "Personalized learning paths based on skill level and progress",
+      "Virtual coding coach with contextual hints and guidance",
+      "Real-time code execution and testing",
+      "Comprehensive problem library with difficulty filtering",
+      "Time and space complexity analysis of solutions",
+      "Alternative solution approaches with pros and cons",
+      "Side-by-side comparison of user solutions with optimal approaches",
+      "Responsive design for desktop and mobile learning",
+      "Dark mode with Catppuccin-inspired color palette",
+      "Performance metrics and progress tracking"
+    ],
+    "techStack": {
+      "Frontend Framework": [
+        "React 19 - For building the modern, component-based UI",
+        "TypeScript - For type safety and improved developer experience",
+        "Vite - For rapid development and optimized production builds",
+        "Redux Toolkit - For centralized application state management"
+      ],
+      "Styling & UI": [
+        "Tailwind CSS 4 - For utility-first styling with modern features",
+        "shadcn/ui - For accessible, customizable UI components",
+        "Framer Motion - For fluid animations and transitions",
+        "Lucide Icons - For consistent visual iconography",
+        "Catppuccin-inspired color scheme - For eye-friendly aesthetics"
+      ],
+      "Backend & API": [
+        "Python 3.12 - For efficient server-side operations",
+        "FastAPI - For high-performance, type-safe API endpoints",
+        "SQLAlchemy - For ORM-based database interactions",
+        "Pydantic - For data validation and settings management",
+        "LangChain - For integrating and orchestrating AI capabilities"
+      ],
+      "AI & Code Analysis": [
+        "OpenAI GPT models - For code explanation and optimization",
+        "LangChain - For prompt engineering and AI response processing",
+        "Custom code parsers - For syntax highlighting and static analysis",
+        "Algorithm visualization engine - For animated execution steps"
+      ],
+      "Database & Persistence": [
+        "SQLite - For lightweight, portable database storage",
+        "Async SQLAlchemy - For non-blocking database operations",
+        "Redis - For caching frequently accessed data",
+        "Session management - For user progress tracking"
+      ],
+      "Authentication & Security": [
+        "JWT authentication - For secure user sessions",
+        "Role-based access control - For feature permission management",
+        "Rate limiting - For API protection",
+        "Environment variable configuration - For sensitive credential management"
+      ],
+      "DevOps & Deployment": [
+        "GitHub Actions - For CI/CD automation",
+        "Docker - For containerized deployment",
+        "Vercel - For frontend hosting",
+        "Fly.io - For backend API hosting"
+      ],
+      "Testing & Quality": [
+        "Jest - For frontend unit and component testing",
+        "Pytest - For backend unit and integration testing",
+        "ESLint - For code quality and consistency",
+        "TypeScript static analysis - For type-safety enforcement"
+      ]
+    },
+    "explain": [
+      "I built Smash LeetCode to address the challenges I faced when preparing for technical interviews. Existing platforms often lack depth of explanation and visualization tools needed to truly grasp complex algorithms. I wanted to create an environment that not only tests coding ability but actually teaches underlying concepts through interactive visuals and AI guidance.",
+      "The feature I'm most proud of is the algorithm visualization system, which transforms abstract code into animated, step-by-step visual representations of how algorithms like graph traversals or dynamic programming actually work. The visualization engine elegantly handles various data structures from arrays and linked lists to trees and graphs.",
+      "The AI coaching component analyzes code in real-time, identifying potential optimizations and explaining complex concepts in an approachable way. It simulates having a patient mentor who helps you think through problems rather than just giving answers. The system balances hints with guidance, helping users develop problem-solving skills while tracking their progress over time."
+    ]
+  },
+  {
+    "name": "Class Connect",
+    "description": "A comprehensive e-learning platform built with React, TypeScript, and Go, enabling seamless course management, interactive learning experiences, and robust educational content delivery. This full-stack application helps educators create engaging courses with features like assignment management, content organization, real-time discussions, and performance analytics, all within an intuitive and responsive interface.",
+    "githubLink": "https://github.com/yourUsername/class-connect",
+    "liveLink": "https://class-connect.vercel.app/",
+    "technologies": [
+      "react",
+      "typescript",
+      "golang",
+      "postgresql",
+      "tailwind",
+      "redux",
+      "shadcn",
+      "vite",
+      "gin",
+      "firebase"
+    ],
+    "features": [
+      "Comprehensive course management with materials, quizzes, and assignments",
+      "Interactive dashboard with personalized learning paths and progress tracking",
+      "Real-time communication between students and instructors",
+      "Secure file storage and sharing for educational materials",
+      "Assignment submission system with plagiarism detection",
+      "Automated grading for quizzes and certain assignment types",
+      "Role-based access control for students, teachers, and administrators",
+      "Calendar integration for deadlines and scheduled activities",
+      "Responsive design supporting desktop and mobile learning experiences",
+      "Performance analytics and learning insights for instructors",
+      "Dark/light theme support with customizable interface options",
+      "Notifications system for important course updates and deadlines"
+    ],
+    "techStack": {
+      "Frontend Framework": [
+        "React 18 - For building a dynamic, component-based UI",
+        "TypeScript - For static typing and enhanced code reliability",
+        "Vite - For fast development and optimized build pipeline",
+        "Redux Toolkit - For centralized state management across the application"
+      ],
+      "Styling & UI": [
+        "Ant Design - For comprehensive UI component library",
+        "Tailwind CSS - For utility-based styling approach",
+        "Styled Components - For component-scoped CSS",
+        "Framer Motion - For smooth animations and transitions",
+        "Responsive layouts - For cross-device compatibility"
+      ],
+      "Backend & API": [
+        "Go (Golang) - For high-performance server-side operations",
+        "Gin - For robust HTTP routing and middleware support",
+        "GORM - For simplified database operations and ORM functionality",
+        "JWT - For secure authentication and authorization",
+        "RESTful API design - For predictable client-server communication"
+      ],
+      "Database & Storage": [
+        "PostgreSQL - For relational data management",
+        "Firebase Storage - For file management and delivery",
+        "Redis - For caching and performance optimization",
+        "Transaction management - For data integrity across operations"
+      ],
+      "Authentication & Security": [
+        "JWT-based authentication - For secure session management",
+        "Role-based access control - For permission management",
+        "Input validation - For preventing injection attacks",
+        "Rate limiting - For API protection against abuse",
+        "HTTPS enforcement - For encrypted data transmission"
+      ],
+      "DevOps & Deployment": [
+        "Docker - For containerized application packaging",
+        "GitHub Actions - For CI/CD workflow automation",
+        "Vercel - For frontend hosting and deployment",
+        "Digital Ocean - For backend server hosting",
+        "Environment configuration - For deployment-specific settings"
+      ],
+      "Testing & Quality": [
+        "Jest - For frontend unit and component testing",
+        "Go testing package - For backend unit and integration tests",
+        "ESLint - For code quality and consistency enforcement",
+        "TypeScript validation - For compile-time error checking",
+        "End-to-end testing - For validating complete user flows"
+      ]
+    },
+    "explain": [
+      "I developed Class Connect to address the growing need for comprehensive, user-friendly e-learning platforms that bridge the gap between educational content management and engaging learning experiences. Traditional learning management systems often feel clunky and unintuitive, so I created a solution combining robust functionality with modern UX principles.",
+      "The unified content management system allows instructors to seamlessly organize course materials, assignments, and assessments while providing students with a coherent learning journey. The real-time collaboration features enable discussions, feedback, and notifications that feel immediate and contextual, requiring careful architecture of both frontend state management and backend event systems.",
+      "From a technical perspective, this project taught me valuable lessons about full-stack development with Go and React. The frontend utilizes React with TypeScript for type safety and component reusability, while the backend leverages Go's concurrency model for reliable API services. The feedback from educators and students has validated the approach, particularly regarding how the platform makes online learning feel more connected."
+    ]
+  },
+  {
+    "name": "JustDoIt",
+    "description": "A ground-up implementation of Git version control system in Go, focusing on the core internals of how Git stores and manages data. This project rebuilds Git's object model, repository management, and command structure to provide insights into distributed version control systems while leveraging Go's performance characteristics and standard library.",
+    "githubLink": "https://github.com/utkarsh5026/justdoit",
+    "technologies": ["golang", "cobra", "git"],
+    "features": [
+      "Complete Git object model implementation (blobs, trees, commits, tags)",
+      "Content-addressable storage system with SHA-1 hashing",
+      "Key-value list message (KVLM) parsing for commit and tag objects",
+      "Repository initialization and management",
+      "Git index implementation for staging changes",
+      "Command-line interface with Cobra framework",
+      "Support for core Git commands (init, cat-file, hash-object, checkout, etc.)",
+      "Ordered dictionary implementation for metadata storage",
+      ".gitignore pattern matching and path filtering",
+      "Tree traversal and manipulation",
+      "Git references management (branches, tags)"
+    ],
+    "techStack": {
+      "Core Language & Libraries": [
+        "Go 1.22+ - For performance, strong typing, and efficient concurrency",
+        "Standard library - Leveraging built-in packages for file operations, cryptography, and more",
+        "Cobra - For structured command-line interface implementation",
+        "Viper - For configuration management and reading .git config files"
+      ],
+      "Git Internals": [
+        "Content-addressable storage - Implementation of Git's object storage model",
+        "Object serialization/deserialization - For handling Git's internal formats",
+        "Zlib compression - For efficient storage of Git objects",
+        "SHA-1 hashing - For generating consistent object identifiers",
+        "Tree structure modeling - For representing directory hierarchies"
+      ],
+      "Repository Management": [
+        "Repository discovery - Finding .git directories in parent folders",
+        "Reference management - For branches and tags",
+        "Working directory interaction - Reading and writing files",
+        "Index management - For staged changes tracking"
+      ],
+      "Data Structures & Algorithms": [
+        "Custom ordered dictionary - For preserving key order in metadata",
+        "Tree traversal algorithms - For working with directory structures",
+        "Regular expression pattern matching - For .gitignore support",
+        "Recursive descent parsing - For handling complex data formats"
+      ],
+      "Code Organization": [
+        "Command pattern - For implementing Git subcommands",
+        "Interface-based design - For abstraction of Git objects",
+        "Repository pattern - For encapsulating Git repository interactions",
+        "Factory methods - For object creation based on type"
+      ],
+      "Testing": [
+        "Unit tests - For core functionality validation",
+        "Test-driven development - Writing tests before implementation",
+        "Table-driven tests - For comprehensive test coverage with multiple scenarios",
+        "Edge case testing - Ensuring robustness in unexpected situations"
+      ]
+    },
+    "explain": [
+      "I built JustDoIt to deeply understand how Git actually works under the hood. While most developers use Git daily, few understand the elegant data structures and algorithms that make it so powerful. I wanted to explore these internals by reimplementing them from scratch in Go.",
+      "The most challenging aspect was implementing Git's content-addressable storage system, which uses SHA-1 hashes to uniquely identify content and build the object model (blobs, trees, commits, tags). The KVLM parsing for commit metadata was particularly intricate, requiring careful handling of multi-line values and nested structures.",
+      "I chose Go for this project because its strong typing, excellent standard library, and performance characteristics make it ideal for systems programming. Beyond being a learning exercise, this project gave me deep insights into distributed version control systems and content-addressable storage patterns that have improved my effectiveness when using Git professionally."
+    ],
+    "tags": ["Go", "Git", "Version Control", "CLI", "Systems Programming"]
+  },
+  {
+    "name": "Genshin Companion",
+    "description": "A comprehensive full-stack web application for Genshin Impact players, offering character information, talent book scheduling, weapon material tracking, tier list creation, and an interactive guessing game. Built with React, TypeScript, and a Node.js/GraphQL backend, this platform helps players optimize their farming routines, explore character details, and engage with the game's content through an intuitive and responsive interface.",
+    "githubLink": "https://github.com/yourusername/genshin-companion",
+    "liveLink": "https://genshin-companion.vercel.app",
+    "technologies": [
+      "react",
+      "typescript",
+      "apollo",
+      "graphql",
+      "tailwind",
+      "framermotion",
+      "redux",
+      "node",
+      "postgresql",
+      "shadcn"
+    ],
+    "features": [
+      "Character information dashboard with detailed stats, talents, constellations, and animations",
+      "Interactive talent book calendar with daily farming recommendations",
+      "Weapon material tracker organized by region and day of availability",
+      "Animated character profiles with idle and combat animations",
+      "Character and weapon tier list builder with drag-and-drop interface",
+      "Genshin character guessing game with visual feedback and contextual hints",
+      "Material farming planner with personal routine optimization",
+      "Dark/light theme support with Genshin-inspired color palette",
+      "Responsive design optimized for both desktop and mobile",
+      "Performance-optimized animations and smooth transitions between views",
+      "Comprehensive database of all in-game characters and weapons",
+      "User-friendly search functionality with visual character selection"
+    ],
+    "techStack": {
+      "Frontend Framework": [
+        "React 18 - For building a dynamic, component-based UI with hooks architecture",
+        "TypeScript - For type safety and improved developer experience",
+        "Redux Toolkit - For centralized state management with slice-based organization",
+        "Apollo Client - For GraphQL data fetching with efficient caching"
+      ],
+      "Styling & UI": [
+        "Tailwind CSS - For utility-first styling with custom design tokens",
+        "shadcn/ui - For accessible, reusable component primitives",
+        "Framer Motion - For smooth animations and interactive transitions",
+        "Lucide Icons - For consistent visual iconography across the application",
+        "CSS Grid & Flexbox - For responsive, adaptive layouts",
+        "Custom element-themed styling based on Genshin's visual language"
+      ],
+      "Backend & API": [
+        "Node.js - For JavaScript runtime environment",
+        "TypeORM - For object-relational mapping and database interactions",
+        "PostgreSQL - For relational data storage with complex relationships",
+        "GraphQL - For flexible data querying with Apollo Server",
+        "TypeGraphQL - For type-safe GraphQL schema definition",
+        "DataLoader - For efficient batched data fetching and caching"
+      ],
+      "State Management": [
+        "Redux Toolkit - For global application state with typed slices",
+        "React Context API - For theme management and UI state",
+        "Apollo Cache - For GraphQL query results management",
+        "Custom hooks - For reusable stateful logic across components"
+      ],
+      "Database & Data Management": [
+        "PostgreSQL - For relational data with character and weapon relationships",
+        "TypeORM Entities - For modeling game data with proper relationships",
+        "Database migrations - For versioned schema updates",
+        "Entity graph optimization - For efficient data loading patterns",
+        "Seed scripts - For populating the database with game content"
+      ],
+      "UI Components & Interactions": [
+        "Tabs, Cards, and Tables - For organized content presentation",
+        "Command palette - For quick navigation and character search",
+        "Drag and drop - For tier list organization with dnd-kit",
+        "Interactive calendars - For visualizing daily farming opportunities",
+        "Tooltips and popovers - For contextual information display",
+        "Modals and dialogs - For focused task completion"
+      ],
+      "DevOps & Deployment": [
+        "GitHub Actions - For CI/CD pipeline automation",
+        "Docker - For containerized development and deployment",
+        "Vercel - For frontend hosting and serverless functions",
+        "Railway - For managed PostgreSQL database hosting",
+        "Environment configuration - For deployment-specific settings"
+      ],
+      "Performance Optimization": [
+        "Code splitting - For reduced initial load times",
+        "Lazy loading - For component and route-based chunking",
+        "Image optimization - For fast loading of character and weapon assets",
+        "Memoization - For preventing unnecessary re-renders",
+        "GraphQL fragment optimization - For precise data requirements"
+      ]
+    },
+    "explain": [
+      "I built Genshin Companion to solve a common pain point for Genshin Impact players: optimizing character progression and resource farming. Players typically need to juggle multiple websites and spreadsheets to track materials needed on specific days. My goal was to create a unified, visually appealing solution that streamlines this process.",
+      "The feature I'm most proud of is the character routine planner, which analyzes talent book and weapon material requirements to generate a personalized farming schedule that minimizes resin usage. I implemented this using TypeScript for type safety and Redux for state management, ensuring complex data relationships between characters, weapons, and materials remained consistent.",
+      "The GraphQL backend was another significant challenge, requiring a schema that accurately represents the complex relationships between game entities while supporting efficient queries. Using TypeGraphQL with TypeORM provided excellent type safety across the entire stack, and I implemented DataLoader patterns to prevent the N+1 query problem for related entities."
+    ]
+  },
+  {
+    "name": "Studio",
+    "description": "An advanced image analysis toolkit that combines React and Rust (via WebAssembly) to provide comprehensive visual diagnostics for images. This application features multiple analysis modules including color distribution, luminance analysis, compression optimization, and performance metrics - all running directly in the browser without server processing. The hybrid architecture delivers near-native performance for complex image processing tasks while maintaining the responsive UI experience of a modern web application.",
+    "githubLink": "https://github.com/utkarsh5026/studio",
+    "liveLink": "https://utkarsh5026.github.io/studio/",
+    "technologies": [
+      "react",
+      "typescript",
+      "tailwind",
+      "rust",
+      "webassembly",
+      "vite",
+      "redux",
+      "recharts",
+      "shadcn",
+      "docker"
+    ],
+    "features": [
+      "Color analysis with dominant color extraction and RGB histograms",
+      "Luminance analysis with brightness distribution and dynamic range visualization",
+      "Compression optimization with format comparison and artifact detection",
+      "Performance metrics for loading time, memory usage, and browser compatibility",
+      "Real-time image processing using Rust compiled to WebAssembly",
+      "Responsive design with dark mode support",
+      "Drag-and-drop interface for quick image uploads",
+      "Interactive data visualizations with Recharts",
+      "Multi-format image support (JPEG, PNG, WebP, AVIF)"
+    ],
+    "techStack": {
+      "Core Architecture": [
+        "React 18.3.1 - For building the UI components and managing state",
+        "TypeScript - For type safety and improved developer experience",
+        "Redux Toolkit - For centralized state management",
+        "Rust - For high-performance image processing algorithms",
+        "WebAssembly - For running Rust code in the browser at near-native speed",
+        "Web Workers - For non-blocking UI during intensive calculations"
+      ],
+      "UI & Styling": [
+        "Tailwind CSS - For utility-first styling approach",
+        "shadcn/ui - For accessible and customizable UI components",
+        "Recharts - For interactive data visualizations",
+        "Lucide React - For consistent and scalable line icons",
+        "CSS Variables - For theme customization and dark/light mode"
+      ],
+      "Development & Build Tools": [
+        "Vite - For fast development and optimized builds",
+        "Docker - For consistent development environment",
+        "wasm-pack - For building and bundling Rust WebAssembly modules",
+        "ESLint - For code quality and consistency",
+        "TypeScript Compiler - For type checking and transpilation"
+      ],
+      "Image Processing": [
+        "Custom Rust algorithms - For efficient color and luminance analysis",
+        "Web Canvas API - For image data extraction and manipulation",
+        "ArrayBuffer manipulation - For direct pixel-level operations",
+        "Dynamic memory management - For handling large images efficiently"
+      ],
+      "Performance Optimization": [
+        "WebAssembly parallelization - For CPU-intensive tasks",
+        "Memoization - For preventing unnecessary calculations",
+        "Lazy loading - For components and analysis modules",
+        "Canvas optimization - For efficient image rendering",
+        "Typed arrays - For memory-efficient data structures"
+      ]
+    },
+    "explain": [
+      "I created Studio as an advanced image analysis toolkit combining web technologies with high-performance computing. The core challenge was processing complex image analysis in real-time within the browser environment, which I solved using a hybrid architecture with Rust compiled to WebAssembly for performance-critical components while maintaining a React frontend.",
+      "The communication layer between JavaScript/React and Rust WebAssembly modules was particularly interesting to design. I implemented a worker-based approach that prevents UI blocking during intensive calculations. Redux manages application state while WebAssembly modules handle computational work, communicating via a message-passing interface.",
+      "For the analysis modules, I built visualization components that translate complex image data into intuitive representations - from luminance histograms showing brightness distribution to color analysis extracting dominant colors and generating RGB histograms. The project taught me about cross-language development, memory management in WebAssembly, and efficient image processing algorithms."
+    ],
+    "tags": [
+      "React",
+      "TypeScript",
+      "Rust",
+      "WebAssembly",
+      "Image Processing",
+      "Data Visualization"
+    ]
+  },
+  {
+    "name": "TypeScript HTTP Server",
+    "description": "A lightweight, modular HTTP server implementation built from scratch using TypeScript and Node.js. This test-driven project features a robust, type-safe foundation for handling HTTP requests and responses with an Express-inspired API, including advanced features like cookie management, caching, content encoding, and a flexible middleware-based routing system.",
+    "githubLink": "https://github.com/utkarsh5026/tstp",
+    "technologies": ["typescript", "node", "jest", "http"],
+    "features": [
+      "Complete HTTP request and response handling with type safety",
+      "Cookie management with extensive security options",
+      "Response caching and cache control directives",
+      "Content compression with gzip encoding",
+      "Flexible routing with path parameters and middleware support",
+      "Chainable API for expressive and readable code",
+      "Content type negotiation and MIME type support",
+      "Header parsing and manipulation with type-safe enums",
+      "Query parameter parsing and body content processing",
+      "Comprehensive error handling and status code management",
+      "Test-driven architecture with high test coverage"
+    ],
+    "tags": [
+      "Backend",
+      "TypeScript",
+      "Node.js",
+      "HTTP",
+      "Web Server",
+      "CodeCrafters"
+    ],
+    "explain": [
+      "I built this HTTP server as part of the CodeCrafters challenge to understand how web servers function under the hood. Instead of using Express or similar frameworks, I implemented the HTTP protocol from scratch to grasp the intricacies of request/response handling and protocol details.",
+      "The most satisfying aspect was designing the chainable API that enables clean, expressive code when building responses. I focused on creating interfaces that are both type-safe and developer-friendly, balancing API flexibility with TypeScript's type constraints. This approach taught me about creating intuitive APIs while maintaining type safety.",
+      "I followed a test-driven development methodology, writing comprehensive tests for each component before implementation. This was crucial for handling edge cases correctly, especially with HTTP headers, cookies, and content negotiation. The project gave me a deep appreciation for how web frameworks abstract complex protocol details while maintaining performance and security."
+    ],
+    "techStack": {
+      "Core Framework": [
+        "TypeScript - For type safety and improved developer experience",
+        "Node.js Core HTTP Module - Building on native capabilities without external dependencies",
+        "Custom HTTP Protocol Implementation - Handling HTTP/1.1 specification details",
+        "Jest - For comprehensive test coverage and TDD approach"
+      ],
+      "Request Processing": [
+        "Middleware Pipeline - For flexible request processing with next() flow control",
+        "Query Parameter Extraction - Automated URL query parsing",
+        "Cookie Parsing - Type-safe cookie management with security options",
+        "Content Type Detection - Dynamic content type negotiation",
+        "Body Parsing - Support for various content types"
+      ],
+      "Response Generation": [
+        "Chainable API - Fluent interface for response construction",
+        "MIME Type Support - Proper content type handling",
+        "Compression - gzip encoding based on client capabilities",
+        "Status Code Management - Enum-based status codes for type safety",
+        "Cookie Management - Extensive options for secure cookie handling",
+        "Cache Control - HTTP caching directives and helpers"
+      ],
+      "Routing System": [
+        "Path Parameter Support - Dynamic route segments with type safety",
+        "Method-Based Routing - Support for GET, POST, PUT, DELETE, etc.",
+        "Router Prefixing - Modular route organization",
+        "Middleware Chains - Multiple handlers per route",
+        "Route Matching Algorithm - Efficient pattern matching"
+      ],
+      "Design Patterns": [
+        "Builder Pattern - Chainable API design for response objects",
+        "Middleware Pattern - Composable request handlers",
+        "Factory Pattern - For component creation",
+        "Separation of Concerns - Modular, focused components",
+        "Fluent Interface - Intuitive, readable API design"
+      ],
+      "Testing Methodology": [
+        "Test-Driven Development - Tests written before implementation",
+        "Unit Testing - Focused component testing",
+        "Integration Testing - Verifying components work together",
+        "Mocking - Isolating components with dependency injection",
+        "Edge Case Coverage - Handling protocol complexities correctly"
+      ]
+    },
+    "highlights": [
+      "Built as part of the CodeCrafters platform challenge",
+      "Implements HTTP/1.1 protocol details from scratch",
+      "Extensive test coverage with Jest",
+      "Zero external dependencies - pure Node.js and TypeScript",
+      "Express-inspired API with modern TypeScript features"
+    ]
+  }
+]

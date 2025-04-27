@@ -4,7 +4,7 @@ import {
   type SectionType,
   useEditorContext,
 } from "@/components/home/editor/context/explorerContext";
-import { projects } from "@/components/home/projects/data";
+import { useProject } from "@/hooks/use-project";
 import { articles } from "@/components/home/articles/articlesdump";
 import { experiences } from "@/components/home/work/experienceDump";
 import { technologies } from "@/components/base/technologies";
@@ -47,6 +47,7 @@ export type Command = {
  */
 export const useLinuxCommands = () => {
   const { setActiveSection, activeSection } = useEditorContext();
+  const { projects } = useProject();
   return useMemo(() => {
     const cd = {
       name: "cd",
@@ -219,6 +220,7 @@ Type 'about' for more information or 'contact' to get in touch.
  * @returns {Record<string, Command>} A collection of command objects for exploring portfolio content
  */
 export const useSectionCommands = () => {
+  const { projects } = useProject();
   return useMemo(() => {
     const skillsCMD = {
       name: "skills",
@@ -398,6 +400,7 @@ Type 'projects' to see what I've built, or 'skills' to see my technical expertis
  * @returns {Record<string, Command>} A collection of utility command objects
  */
 export const useUtilityCommands = () => {
+  const { projects } = useProject();
   return useMemo(() => {
     const findCMD = {
       name: "find",

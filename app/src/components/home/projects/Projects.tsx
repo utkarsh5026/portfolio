@@ -1,8 +1,6 @@
-import React, { useState, useCallback, useRef, useEffect } from "react";
+import React, { useCallback, useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Section from "@/components/section/Section";
-import projects from "./data";
-import type { Project } from "@/types";
 import OutlineNode from "../editor/outline/OutlineNode";
 import { Sparkles, Code, Globe, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,19 +8,38 @@ import ProjectModal from "./modal/ProjectModal";
 import FeaturedProject from "./featured/FeaturedProject";
 import ProjectSmall from "./ProjectSmall";
 import { ProjectThemeProvider } from "./context/ProjectThemeProvider";
-
-const [featuredProject, ...otherProjects] = projects;
+import { useProject } from "@/hooks/use-project";
+import type { Project } from "@/types";
 
 const Projects: React.FC = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const {
+    featuredProject,
+    otherProjects,
+    isLoading,
+    error,
+    selectProject,
+    selectedProject,
+  } = useProject();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(6);
   const projectsRef = useRef<HTMLDivElement>(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
-  const handleProjectSelect = useCallback((project: Project) => {
-    setSelectedProject(project);
-    setIsModalOpen(true);
-  }, []);
+  const handleProjectSelect = useCallback(
+    (project: Project) => {
+      selectProject(project);
+      setIsModalOpen(true);
+    },
+    [selectProject]
+  );
+
+  // Close modal handler
+  const handleCloseModal = useCallback(() => {
+    setIsModalOpen(false);
+    // Optional: delay clearing the selected project for smooth animation
+    setTimeout(() => selectProject(null), 300);
+  }, [selectProject]);
 
   // Scroll to top function
   const scrollToTop = () => {
@@ -32,9 +49,7 @@ const Projects: React.FC = () => {
     });
   };
 
-  // Check if scroll is beyond a threshold to show scroll-to-top button
-  const [showScrollTop, setShowScrollTop] = useState(false);
-
+  // Detect scroll position to show/hide scroll-to-top button
   useEffect(() => {
     const handleScroll = () => {
       const projectsEl = projectsRef.current;
@@ -49,10 +64,34 @@ const Projects: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Load more projects
+  // Load more projects handler
   const loadMore = () => {
     setVisibleCount((prev) => Math.min(prev + 6, otherProjects.length));
   };
+
+  // Handle loading state
+  if (isLoading) {
+    return (
+      <Section id="projects" label="Projects" icon="code" glowAccent="blue">
+        <div className="flex justify-center items-center h-64">
+          <div className="text-ctp-text">Loading projects...</div>
+        </div>
+      </Section>
+    );
+  }
+
+  // Handle error state
+  if (error || !featuredProject) {
+    return (
+      <Section id="projects" label="Projects" icon="code" glowAccent="blue">
+        <div className="flex justify-center items-center h-64">
+          <div className="text-ctp-red">
+            {error || "Failed to load projects data"}
+          </div>
+        </div>
+      </Section>
+    );
+  }
 
   return (
     <Section id="projects" label="Projects" icon="code" glowAccent="blue">
@@ -145,7 +184,7 @@ const Projects: React.FC = () => {
           <ProjectModal
             isModalOpen={isModalOpen}
             selectedProject={selectedProject}
-            closeModal={() => setIsModalOpen(false)}
+            closeModal={handleCloseModal}
           />
         </div>
       </ProjectThemeProvider>
