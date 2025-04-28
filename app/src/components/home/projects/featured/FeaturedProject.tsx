@@ -36,7 +36,6 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
   featuredProject,
   handleProjectSelect,
 }) => {
-  const [isOpen, setIsOpen] = useState(true);
   const [activeTab, setActiveTab] = useState<Tab>("overview");
   const [isAnimated, setIsAnimated] = useState(false);
 
@@ -54,72 +53,70 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
         <HiOutlineSparkles className="w-full h-full" />
       </div>
 
-      <FeaturedHeader isOpen={isOpen} toggleOpen={() => setIsOpen(!isOpen)} />
+      <FeaturedHeader />
 
       <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.5 }}
-            className="overflow-hidden"
-          >
-            <div className="relative">
-              {/* Spotlight glow effect */}
-              <div className="absolute -inset-2 bg-gradient-radial from-ctp-peach/20 via-transparent to-transparent rounded-full blur-2xl opacity-70 -z-10 animate-pulse-slow" />
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.5 }}
+          className="overflow-hidden"
+        >
+          <div className="relative">
+            {/* Spotlight glow effect */}
+            <div className="absolute -inset-2 bg-gradient-radial from-ctp-peach/20 via-transparent to-transparent rounded-full blur-2xl opacity-70 -z-10 animate-pulse-slow" />
 
-              {/* Main content card */}
-              <motion.div
-                className="relative rounded-xl overflow-hidden"
-                initial={{ y: 40, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                {/* Gradient border */}
-                <div className="absolute inset-0 p-1 rounded-xl bg-gradient-to-br from-ctp-peach via-ctp-maroon to-ctp-blue motion-safe:animate-border">
-                  <div className="w-full h-full rounded-lg bg-ctp-crust" />
-                </div>
+            {/* Main content card */}
+            <motion.div
+              className="relative rounded-xl overflow-hidden"
+              initial={{ y: 40, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              {/* Gradient border */}
+              <div className="absolute inset-0 p-1 rounded-xl bg-gradient-to-br from-ctp-peach via-ctp-maroon to-ctp-blue motion-safe:animate-border">
+                <div className="w-full h-full rounded-lg bg-ctp-crust" />
+              </div>
 
-                <div className="relative rounded-xl overflow-hidden shadow-xl">
-                  {/* Project card header with featured badge */}
-                  <div className="relative px-8 pt-8 pb-4 bg-gradient-to-br from-ctp-mantle to-ctp-crust">
-                    <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-ctp-peach/20 text-ctp-peach border border-ctp-peach/10 text-xs font-semibold">
-                      <FaStar className="text-ctp-peach" />
-                      Featured
-                    </div>
-
-                    <motion.h2
-                      className="text-3xl font-bold bg-gradient-to-r from-ctp-peach via-ctp-maroon to-ctp-peach bg-clip-text text-transparent"
-                      initial={{ y: -20, opacity: 0 }}
-                      animate={isAnimated ? { y: 0, opacity: 1 } : {}}
-                      transition={{ duration: 0.6 }}
-                    >
-                      {featuredProject.name}
-                    </motion.h2>
+              <div className="relative rounded-xl overflow-hidden shadow-xl">
+                {/* Project card header with featured badge */}
+                <div className="relative px-8 pt-8 pb-4 bg-gradient-to-br from-ctp-mantle to-ctp-crust">
+                  <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-ctp-peach/20 text-ctp-peach border border-ctp-peach/10 text-xs font-semibold">
+                    <FaStar className="text-ctp-peach" />
+                    Featured
                   </div>
 
-                  {/* Tab navigation */}
-                  <TabNavigation
-                    activeTab={activeTab}
-                    setActiveTab={setActiveTab}
-                  />
+                  <motion.h2
+                    className="text-3xl font-bold bg-gradient-to-r from-ctp-peach via-ctp-maroon to-ctp-peach bg-clip-text text-transparent"
+                    initial={{ y: -20, opacity: 0 }}
+                    animate={isAnimated ? { y: 0, opacity: 1 } : {}}
+                    transition={{ duration: 0.6 }}
+                  >
+                    {featuredProject.name}
+                  </motion.h2>
+                </div>
 
-                  <div className="bg-gradient-to-br from-ctp-crust to-ctp-mantle p-8">
-                    <div className="flex flex-col xl:flex-row gap-10 items-center">
-                      <ProjectContent
-                        activeTab={activeTab}
-                        featuredProject={featuredProject}
-                        handleProjectSelect={handleProjectSelect}
-                      />
-                      <Certificate name={featuredProject.name} />
-                    </div>
+                {/* Tab navigation */}
+                <TabNavigation
+                  activeTab={activeTab}
+                  setActiveTab={setActiveTab}
+                />
+
+                <div className="bg-gradient-to-br from-ctp-crust to-ctp-mantle p-8">
+                  <div className="flex flex-col xl:flex-row gap-10 items-center">
+                    <ProjectContent
+                      activeTab={activeTab}
+                      featuredProject={featuredProject}
+                      handleProjectSelect={handleProjectSelect}
+                    />
+                    <Certificate name={featuredProject.name} />
                   </div>
                 </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
       </AnimatePresence>
     </div>
   );

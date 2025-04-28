@@ -1,11 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Sparkles, ChevronDown, ChevronUp } from "lucide-react";
-
-interface FeaturedHeaderProps {
-  isOpen: boolean;
-  toggleOpen: () => void;
-}
+import { Sparkles } from "lucide-react";
 
 /**
  * FeaturedHeader component displays the header for the featured project section.
@@ -17,10 +11,7 @@ interface FeaturedHeaderProps {
  *
  * @returns {JSX.Element} The rendered FeaturedHeader component.
  */
-const FeaturedHeader: React.FC<FeaturedHeaderProps> = ({
-  isOpen,
-  toggleOpen,
-}) => {
+const FeaturedHeader: React.FC = () => {
   return (
     <div className="flex items-center gap-3 mb-6">
       <motion.div
@@ -57,20 +48,6 @@ const FeaturedHeader: React.FC<FeaturedHeaderProps> = ({
           transformOrigin: "left",
         }}
       />
-
-      <Button
-        variant="ghost"
-        size="sm"
-        className="p-0 h-8 w-8"
-        onClick={toggleOpen}
-      >
-        {isOpen ? (
-          <ChevronUp className="h-4 w-4 text-ctp-subtext0" />
-        ) : (
-          <ChevronDown className="h-4 w-4 text-ctp-subtext0" />
-        )}
-        <span className="sr-only">Toggle featured project</span>
-      </Button>
     </div>
   );
 };
