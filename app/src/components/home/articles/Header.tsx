@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import { BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { articles } from "./articlesdump";
 import React from "react";
+import Reveal from "@/components/animations/reveal/Reveal";
 
 interface HeaderProps {
   categories: string[];
@@ -11,38 +11,18 @@ interface HeaderProps {
   setSelectedCategory: (category: string | null) => void;
 }
 
-/**
- * Header component for displaying the title and category filters for articles.
- *
- * This component renders a header section that includes:
- * - A title indicating the number of published articles.
- * - A list of category buttons that allow users to filter articles by category.
- * - An "All" button to reset the category filter.
- *
- * Props:
- * @param {string[]} categories - An array of category names to display as filter buttons.
- * @param {string | null} selectedCategory - The currently selected category, or null if no category is selected.
- * @param {function} setSelectedCategory - A function to update the selected category when a button is clicked.
- *
- * Usage:
- * <Header
- *   categories={['Web Development', 'Databases', 'JavaScript']}
- *   selectedCategory={selectedCategory}
- *   setSelectedCategory={setSelectedCategory}
- * />
- */
 const Header: React.FC<HeaderProps> = ({
   categories,
   selectedCategory,
   setSelectedCategory,
 }) => {
   return (
-    <div className="flex justify-between items-center mb-8 px-4">
-      <motion.div
+    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 px-4 gap-4">
+      <Reveal
+        effect="slide-in"
+        direction="left"
+        duration={0.5}
         className="flex items-center gap-3"
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
       >
         <div className="p-2 rounded-lg bg-gradient-to-br from-ctp-pink to-ctp-mauve text-ctp-base shadow-lg shadow-ctp-pink/20">
           <BookOpen className="w-5 h-5" />
@@ -56,13 +36,14 @@ const Header: React.FC<HeaderProps> = ({
             and more
           </p>
         </div>
-      </motion.div>
+      </Reveal>
 
-      <motion.div
-        className="hidden md:flex gap-2 items-center"
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+      <Reveal
+        effect="slide-in"
+        direction="right"
+        duration={0.5}
+        delay={0.2}
+        className="hidden md:flex gap-2 items-center flex-wrap"
       >
         {categories.map((category) => (
           <Button
@@ -97,7 +78,7 @@ const Header: React.FC<HeaderProps> = ({
         >
           All
         </Button>
-      </motion.div>
+      </Reveal>
     </div>
   );
 };

@@ -2,12 +2,12 @@ import React, { useMemo, useState } from "react";
 import Section from "@/components/section/Section";
 import { articles } from "./articlesdump";
 import OutlineNode from "../editor/outline/OutlineNode";
-import { motion } from "framer-motion";
 import { Book, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ArticleCard from "./ArticleCard";
 import MobileFilter from "./MobileFilter";
 import Header from "./Header";
+import Reveal from "@/components/animations/reveal/Reveal";
 
 /**
  * ArticlesComponent - A React component that displays a collection of articles with filtering and search capabilities.
@@ -105,11 +105,11 @@ const ArticlesComponent: React.FC = () => {
         />
 
         {/* Search Bar */}
-        <motion.div
+        <Reveal
+          effect="fade-up"
+          duration={0.5}
+          delay={0.3}
           className="relative mb-8 mx-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
         >
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <Search className="h-4 w-4 text-ctp-subtext0" />
@@ -121,7 +121,7 @@ const ArticlesComponent: React.FC = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="block w-full pl-10 pr-4 py-2 border border-ctp-surface0 bg-ctp-mantle rounded-lg focus:ring-ctp-pink focus:border-ctp-pink outline-none transition-colors duration-200 text-ctp-text placeholder-ctp-subtext0"
           />
-        </motion.div>
+        </Reveal>
 
         {/* Mobile Category Filter */}
         <MobileFilter
@@ -133,11 +133,10 @@ const ArticlesComponent: React.FC = () => {
         {/* Articles Grid with improved styling */}
         <div className="px-4">
           {filteredArticles.length === 0 ? (
-            <motion.div
+            <Reveal
+              effect="fade-through"
+              duration={0.5}
               className="flex flex-col items-center justify-center py-20 text-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
             >
               <Book className="w-12 h-12 text-ctp-surface0 mb-4" />
               <h3 className="text-xl font-medium text-ctp-text mb-2">
@@ -156,7 +155,7 @@ const ArticlesComponent: React.FC = () => {
                   Clear search
                 </Button>
               )}
-            </motion.div>
+            </Reveal>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredArticles.map((article, index) => (

@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
 import { Book, ExternalLink, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { articles } from "./articlesdump";
+import Reveal from "@/components/animations/reveal/Reveal";
 
 interface ArticleCardProps {
   article: (typeof articles)[0];
@@ -47,20 +47,19 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   const color = categoryColors[category] || "mauve";
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+    <Reveal
+      effect="fade-up"
+      duration={0.5}
+      delay={index * 0.1}
       className="h-full"
     >
-      <motion.div
+      <div
         className={cn(
           "group flex flex-col h-full rounded-xl overflow-hidden transition-all duration-300 relative",
           "border border-ctp-surface0 hover:border-ctp-pink/50",
           "bg-gradient-to-br from-ctp-mantle to-ctp-base",
-          "shadow-md hover:shadow-xl"
+          "shadow-md hover:shadow-xl hover:-translate-y-1"
         )}
-        whileHover={{ y: -4 }}
       >
         <div className="p-5 pb-3 flex-grow">
           <div className="flex justify-between items-start mb-4">
@@ -127,7 +126,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
         <div className="mt-auto px-5 py-4 border-t border-ctp-surface0">
           <Button
             onClick={() => window.open(article.link, "_blank")}
-            className="w-full bg-ctp-surface0 hover:bg-ctp-surface1 text-ctp-text group"
+            className="w-full bg-ctp-surface0 hover:bg-ctp-pink/20 text-ctp-text group"
             size="sm"
           >
             <span className="group-hover:text-ctp-pink transition-colors">
@@ -136,8 +135,8 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
             <ExternalLink className="w-3.5 h-3.5 ml-1.5 text-ctp-subtext0 group-hover:text-ctp-pink transition-colors" />
           </Button>
         </div>
-      </motion.div>
-    </motion.div>
+      </div>
+    </Reveal>
   );
 };
 
