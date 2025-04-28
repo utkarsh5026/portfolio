@@ -6,16 +6,6 @@ interface CodeContentProps {
   sections: Record<string, React.ReactNode>;
 }
 
-/**
- * CodeContent component renders the main content area of the editor.
- * This clean, minimal implementation focuses on readability and performance
- * while maintaining a modern aesthetic.
- *
- * @component
- * @param {Object} props - Component props
- * @param {Record<string, React.ReactNode>} props.sections - Object containing all available code sections
- * @returns {JSX.Element} Rendered code content with line numbers and active section
- */
 const CodeContent: React.FC<CodeContentProps> = ({ sections }) => {
   const { activeSection, loadingSection, loadingText } = useEditorContext();
   const contentRef = useRef<HTMLDivElement>(null);
@@ -56,10 +46,10 @@ const CodeContent: React.FC<CodeContentProps> = ({ sections }) => {
               transition={{ duration: 0.2 }}
               className="min-h-[calc(100vh-10rem)] flex"
             >
-              {/* Line numbers */}
-
-              {/* Main content */}
-              <div ref={contentRef} className="grow pl-4 pt-8 pr-4">
+              <div
+                ref={contentRef}
+                className="grow pl-4 pt-8 pr-4 flex flex-col"
+              >
                 {sections[activeSection]}
               </div>
             </motion.div>
