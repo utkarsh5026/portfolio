@@ -109,28 +109,6 @@ const AboutMe: React.FC = () => {
       <div className="max-w-4xl mx-auto">
         <Reveal effect="fade-up" duration={0.7}>
           <div className="border border-[#313244] bg-[#181825] rounded-lg overflow-hidden shadow-lg relative">
-            {/* Decorative background elements */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#cba6f7]/5 to-transparent pointer-events-none"></div>
-            <div className="absolute -top-24 -right-24 w-48 h-48 bg-ctp-pink/5 rounded-full blur-2xl"></div>
-            <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-ctp-blue/5 rounded-full blur-2xl"></div>
-
-            {/* Editor header */}
-            <div className="bg-[#1e1e2e] px-4 py-3 border-b border-[#313244] flex items-center">
-              <div className="flex space-x-2 mr-4">
-                <div className="w-3 h-3 rounded-full bg-[#f38ba8]"></div>
-                <div className="w-3 h-3 rounded-full bg-[#f9e2af]"></div>
-                <div className="w-3 h-3 rounded-full bg-[#a6e3a1]"></div>
-              </div>
-              <div className="flex-1 text-center text-[#6c7086] text-xs">
-                about_me.tsx
-              </div>
-              <div className="ml-auto text-[#6c7086] text-xs">
-                <span className="px-2 py-1 rounded bg-[#313244]/40">
-                  Utkarsh Priyadarshi
-                </span>
-              </div>
-            </div>
-
             {/* Main content */}
             <div className="p-6 relative">
               <div className="space-y-8 pl-8 flex flex-col gap-6">
@@ -151,16 +129,6 @@ const AboutMe: React.FC = () => {
                   </Reveal>
                 ))}
               </div>
-            </div>
-
-            {/* Editor footer */}
-            <div className="bg-[#1e1e2e] py-2 px-4 border-t border-[#313244] flex items-center text-xs text-[#6c7086]">
-              <div className="flex items-center">
-                <span className="w-2 h-2 rounded-full bg-[#a6e3a1] mr-1"></span>
-                <span>active</span>
-              </div>
-              <div className="mx-auto">about_me.tsx - 152 lines</div>
-              <div>utf-8</div>
             </div>
           </div>
         </Reveal>
