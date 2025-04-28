@@ -48,7 +48,7 @@ const Section: React.FC<SectionProps> = ({
         id={id}
         className={`${id}-section relative  ${className}`}
       >
-        <div className="rounded-lg shadow-lg bg-ctp-base border-none overflow-hidden relative">
+        <div className="rounded-lg shadow-lg bg-ctp-mantle border-none overflow-hidden relative">
           {scanlines && (
             <div className="absolute inset-0 z-10 pointer-events-none">
               <div
