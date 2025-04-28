@@ -42,7 +42,7 @@ const LearningModal: React.FC<LearningModalProps> = ({
           damping: 30,
           duration: 0.3,
         }}
-        className="relative overflow-hidden rounded-xl"
+        className="relative overflow-hidden rounded-xl w-full"
         onClick={(e) => e.stopPropagation()}
       >
         <div
