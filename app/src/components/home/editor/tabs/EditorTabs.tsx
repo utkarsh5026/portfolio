@@ -84,7 +84,7 @@ const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
   };
 
   return (
-    <div className="sticky top-0 z-30 bg-ctp-mantle border-b border-ctp-surface0">
+    <div className="sticky top-0 bg-ctp-mantle border-b border-ctp-surface0">
       <Tabs
         value={activeSection}
         onValueChange={(value) => setActiveSection(value as SectionType)}
