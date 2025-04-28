@@ -1,4 +1,83 @@
 [
+    {
+    "name": "Automotive Training & Workforce Analytics DSS",
+    "description": "A comprehensive analytics platform developed for Skoda Auto, Volkswagen, and Audi that transforms workforce development through data-driven insights. Processing over 200,000 training records, this system delivers actionable analytics on training effectiveness, employee development, and workforce trends through intuitive interactive dashboards, reducing analysis time from days to minutes.",
+    "githubLink": "private-repository",
+    "explain": [
+      "For this project, I worked with Skoda, VW, and Audi to help them track and analyze their training programs. They had over 200,000 training records but no effective way to identify patterns or make data-driven decisions about workforce development. I built a system that processes this data and presents actionable insights through intuitive dashboards.",
+      "The platform dramatically transformed their workflow - managers previously spent days manually analyzing Excel files to evaluate training effectiveness, but with this system they can instantly access visualizations showing trainer performance, employee retention metrics, and compare results across different brands, reducing analysis time from days to minutes.",
+      "Technically, I implemented the solution using Python and Django for backend data processing with a React frontend for visualizations. The architecture includes role-based access layers allowing executives to see high-level metrics while team managers can drill down into specific areas relevant to their teams."
+    ],
+    "technologies": ["react", "python", "django", "pandas", "plotly", "sqlite"],
+    "features": [
+      "Multi-brand workforce analytics (Skoda, VW, Audi)",
+      "Training success rate analysis by trainer/location",
+      "Employee aging and retention tracking",
+      "Customizable trend analysis with date ranges",
+      "Zone and dealer-wise performance metrics",
+      "Data visualization with interactive charts",
+      "Automated data processing pipelines",
+      "Role-based access control",
+      "Export functionality for reports"
+    ],
+    "tags": [
+      "Dashboard",
+      "Data",
+      "Analytics",
+      "React",
+      "Python",
+      "Django",
+      "Pandas",
+      "Plotly"
+    ],
+    "techStack": {
+      "Backend & Data Processing": [
+        "Python 3.9 - Core language for backend development",
+        "Django 4.0 - Web framework for application structure and ORM",
+        "Pandas - For data manipulation and analysis",
+        "NumPy - For numerical operations and calculations",
+        "SQLite - For database storage in testing and development",
+        "PostgreSQL - For production database deployment"
+      ],
+      "Data Visualization": [
+        "Plotly - For interactive charts and dashboards",
+        "D3.js - For custom visualizations",
+        "Chart.js - For responsive chart rendering",
+        "React-Plotly - For React integration of Plotly charts"
+      ],
+      "Frontend": [
+        "React - For building the user interface components",
+        "Redux - For state management",
+        "Material-UI - For UI component library",
+        "Styled Components - For component styling",
+        "Axios - For API communication"
+      ],
+      "API & Integration": [
+        "Django REST Framework - For API endpoints",
+        "Celery - For background task processing",
+        "Redis - For caching and message broker",
+        "JWT Authentication - For secure API access"
+      ],
+      "Analytics & Reporting": [
+        "Custom Analytics Engine - For training effectiveness metrics",
+        "Automated Report Generation - For periodic reports",
+        "Excel Export - For data portability",
+        "PDF Generation - For formal reporting"
+      ],
+      "Deployment & Infrastructure": [
+        "Docker - For containerization",
+        "Nginx - For web server and reverse proxy",
+        "Gunicorn - For WSGI HTTP Server",
+        "CI/CD Pipeline - For automated testing and deployment"
+      ],
+      "Security & Access Control": [
+        "Role-based Access Control - For multi-level permissions",
+        "Data Encryption - For sensitive information",
+        "Audit Logging - For tracking system usage",
+        "Cross-Origin Resource Sharing - For secure API access"
+      ]
+    }
+  },
   {
     "name": "First Principles",
     "description": "A sophisticated document reading platform with analytics, progress tracking, and smart insights. This React and TypeScript application transforms static documentation into an engaging, interactive experience with reading history visualization, category breakdown analysis, time-of-day preferences, and AI-powered reading recommendations.",
@@ -574,85 +653,6 @@
         "Action Testing - Simplified action creator testing",
         "Reducer Testing - Pure function testing",
         "Integration Testing - Full store testing"
-      ]
-    }
-  },
-  {
-    "name": "Automotive Training & Workforce Analytics DSS",
-    "description": "A comprehensive analytics platform developed for Skoda Auto, Volkswagen, and Audi that transforms workforce development through data-driven insights. Processing over 200,000 training records, this system delivers actionable analytics on training effectiveness, employee development, and workforce trends through intuitive interactive dashboards, reducing analysis time from days to minutes.",
-    "githubLink": "private-repository",
-    "explain": [
-      "For this project, I worked with Skoda, VW, and Audi to help them track and analyze their training programs. They had over 200,000 training records but no effective way to identify patterns or make data-driven decisions about workforce development. I built a system that processes this data and presents actionable insights through intuitive dashboards.",
-      "The platform dramatically transformed their workflow - managers previously spent days manually analyzing Excel files to evaluate training effectiveness, but with this system they can instantly access visualizations showing trainer performance, employee retention metrics, and compare results across different brands, reducing analysis time from days to minutes.",
-      "Technically, I implemented the solution using Python and Django for backend data processing with a React frontend for visualizations. The architecture includes role-based access layers allowing executives to see high-level metrics while team managers can drill down into specific areas relevant to their teams."
-    ],
-    "technologies": ["react", "python", "django", "pandas", "plotly", "sqlite"],
-    "features": [
-      "Multi-brand workforce analytics (Skoda, VW, Audi)",
-      "Training success rate analysis by trainer/location",
-      "Employee aging and retention tracking",
-      "Customizable trend analysis with date ranges",
-      "Zone and dealer-wise performance metrics",
-      "Data visualization with interactive charts",
-      "Automated data processing pipelines",
-      "Role-based access control",
-      "Export functionality for reports"
-    ],
-    "tags": [
-      "Dashboard",
-      "Data",
-      "Analytics",
-      "React",
-      "Python",
-      "Django",
-      "Pandas",
-      "Plotly"
-    ],
-    "techStack": {
-      "Backend & Data Processing": [
-        "Python 3.9 - Core language for backend development",
-        "Django 4.0 - Web framework for application structure and ORM",
-        "Pandas - For data manipulation and analysis",
-        "NumPy - For numerical operations and calculations",
-        "SQLite - For database storage in testing and development",
-        "PostgreSQL - For production database deployment"
-      ],
-      "Data Visualization": [
-        "Plotly - For interactive charts and dashboards",
-        "D3.js - For custom visualizations",
-        "Chart.js - For responsive chart rendering",
-        "React-Plotly - For React integration of Plotly charts"
-      ],
-      "Frontend": [
-        "React - For building the user interface components",
-        "Redux - For state management",
-        "Material-UI - For UI component library",
-        "Styled Components - For component styling",
-        "Axios - For API communication"
-      ],
-      "API & Integration": [
-        "Django REST Framework - For API endpoints",
-        "Celery - For background task processing",
-        "Redis - For caching and message broker",
-        "JWT Authentication - For secure API access"
-      ],
-      "Analytics & Reporting": [
-        "Custom Analytics Engine - For training effectiveness metrics",
-        "Automated Report Generation - For periodic reports",
-        "Excel Export - For data portability",
-        "PDF Generation - For formal reporting"
-      ],
-      "Deployment & Infrastructure": [
-        "Docker - For containerization",
-        "Nginx - For web server and reverse proxy",
-        "Gunicorn - For WSGI HTTP Server",
-        "CI/CD Pipeline - For automated testing and deployment"
-      ],
-      "Security & Access Control": [
-        "Role-based Access Control - For multi-level permissions",
-        "Data Encryption - For sensitive information",
-        "Audit Logging - For tracking system usage",
-        "Cross-Origin Resource Sharing - For secure API access"
       ]
     }
   },
