@@ -1,54 +1,61 @@
-import { motion } from "framer-motion";
 import React from "react";
 import { FaLaptopCode } from "react-icons/fa";
 import { skills } from "./data";
+import {
+  AboutSectionTemplate,
+  AboutSectionHeader,
+  AboutSectionContent,
+} from "./AboutSectionTemplate";
+import Reveal from "@/components/animations/reveal/Reveal";
+import { Card, CardContent } from "@/components/ui/card";
 
-/**
- * Skills Component
- *
- * This component displays the core skills of the user, categorized into different sections.
- * It utilizes Framer Motion for animations to enhance the user experience.
- *
- * The component includes:
- * - A title indicating the section is about core skills.
- * - A grid layout that organizes skills into categories such as Frontend, Backend, DevOps & Cloud, and Tools & Others.
- * - Each category is displayed with its name and a list of relevant skills.
- *
- * The component is styled to fit within the overall theme of the application, ensuring a visually appealing presentation.
- */
 const Skills: React.FC = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.3 }}
-    >
-      <div className="flex items-center mb-3">
-        <div className="bg-gradient-to-r from-[#fab387] to-[#f9e2af] w-2 h-6 mr-3 rounded-sm"></div>
-        <h3 className="text-[#fab387] font-medium text-lg flex items-center">
-          <FaLaptopCode className="mr-2" /> Core Skills
-        </h3>
-      </div>
-      <div className="text-[#cdd6f4] ml-5 bg-[#1e1e2e]/30 p-4 rounded-md border-l-2 border-[#fab387]/30">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {skills.map((skill) => (
-            <div
-              className="p-3 bg-[#313244]/30 rounded-md border border-[#313244]/50"
-              key={skill.category}
-            >
-              <div className="font-medium text-[#fab387] mb-2 pb-1 border-b border-[#313244]/50">
-                {skill.category}
-              </div>
-              <ul className="list-disc ml-5 text-sm space-y-1">
-                {skill.skills.map((skill) => (
-                  <li key={skill}>{skill}</li>
-                ))}
-              </ul>
+    <AboutSectionTemplate>
+      <AboutSectionHeader
+        icon={<FaLaptopCode />}
+        title="Core Skills"
+        accentColor="red"
+      />
+      <AboutSectionContent>
+        <Card className="bg-[#1e1e2e]/30 border-ctp-surface0 overflow-hidden">
+          <div className="h-1 bg-gradient-to-r from-ctp-red/80 to-ctp-peach/50"></div>
+          <CardContent className="p-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {skills.map((skill, index) => (
+                <Reveal
+                  key={skill.category}
+                  effect="fade-up"
+                  delay={0.1 * index}
+                  duration={0.5}
+                >
+                  <Card className="bg-[#313244]/30 border-ctp-surface0 h-full overflow-hidden group hover:shadow-lg transition-all duration-300">
+                    <div className="h-0.5 bg-gradient-to-r from-ctp-peach to-ctp-red opacity-40 group-hover:opacity-70 transition-opacity"></div>
+                    <CardContent className="p-4">
+                      <div className="font-medium text-[#fab387] mb-2 pb-1 border-b border-[#313244]/50 flex items-center">
+                        {skill.category}
+                      </div>
+                      <ul className="list-disc ml-5 text-sm space-y-1">
+                        {skill.skills.map((skillItem, itemIndex) => (
+                          <Reveal
+                            key={skillItem}
+                            effect="fade-up"
+                            delay={0.2 + index * 0.05 + itemIndex * 0.03}
+                            duration={0.4}
+                          >
+                            <li className="text-ctp-text">{skillItem}</li>
+                          </Reveal>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </Reveal>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-    </motion.div>
+          </CardContent>
+        </Card>
+      </AboutSectionContent>
+    </AboutSectionTemplate>
   );
 };
 

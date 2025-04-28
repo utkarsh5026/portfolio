@@ -1,69 +1,85 @@
-import { motion } from "framer-motion";
 import React from "react";
 import { FaBook } from "react-icons/fa";
 import { interests } from "./data";
+import {
+  AboutSectionTemplate,
+  AboutSectionHeader,
+  AboutSectionContent,
+} from "./AboutSectionTemplate";
+import Reveal from "@/components/animations/reveal/Reveal";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
-/**
- * InterestsHobbies Component
- *
- * This component displays a list of personal interests and hobbies.
- * It is animated using Framer Motion to fade in and slide up when rendered.
- *
- * The component is structured as follows:
- * - A container that holds the title and the list of interests.
- * - Interests are categorized into technical and non-technical sections.
- * - Each category is displayed with a title and a list of items.
- *
- * Usage:
- * <InterestsHobbies />
- *
- * Note: Ensure that the 'interests' object is defined and contains the relevant data.
- */
 const InterestsHobbies: React.FC = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.5 }}
-      className="p-4 rounded-lg bg-[#1e1e2e]/50 backdrop-blur-sm border border-[#313244]/50 shadow-md"
-    >
-      <div className="flex items-center mb-4">
-        <div className="bg-ctp-green w-2 h-8 mr-3 rounded-full"></div>
-        <h3 className="text-ctp-green font-semibold text-xl flex items-center">
-          <FaBook className="mr-2" /> Interests & Hobbies
-        </h3>
-      </div>
-      <div className="text-[#cdd6f4] ml-5 flex flex-col gap-4">
-        <p className="mb-3 text-[#bac2de]">
-          When I'm not coding, you can find me engaged in various activities
-          that keep me balanced and inspired:
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {Object.entries(interests).map(([category, items]) => (
-            <div
-              key={category}
-              className="bg-ctp-mantle p-4 rounded-lg hover:shadow-lg transition-all duration-300"
-            >
-              <div className="font-medium text-ctp-green mb-3 text-lg border-b border-ctp-green/30 pb-2">
-                {category
-                  .split(/(?=[A-Z])/)
-                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                  .join(" ")}
-              </div>
-              <ul className="list-disc ml-5 space-y-2">
-                {items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+    <AboutSectionTemplate>
+      <AboutSectionHeader
+        icon={<FaBook />}
+        title="Interests & Hobbies"
+        accentColor="green"
+      />
+      <AboutSectionContent>
+        <div className="space-y-6">
+          <Reveal effect="fade-up" duration={0.7}>
+            <Alert className="bg-ctp-surface0/30 border-ctp-green/30">
+              <AlertDescription className="text-ctp-text">
+                When I'm not coding, you can find me engaged in various
+                activities that keep me balanced and inspired:
+              </AlertDescription>
+            </Alert>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            {Object.entries(interests).map(([category, items], index) => (
+              <Reveal
+                key={category}
+                effect="slide-in"
+                direction={index % 2 === 0 ? "left" : "right"}
+                delay={0.2 * index}
+                duration={0.6}
+              >
+                <Card className="bg-ctp-mantle hover:shadow-lg transition-all duration-300 border-ctp-surface0 overflow-hidden">
+                  <div className="h-1 bg-gradient-to-r from-ctp-green/70 to-ctp-teal/50"></div>
+                  <CardHeader className="pb-2">
+                    <h4 className="font-medium text-ctp-green text-lg border-b border-ctp-green/30 pb-2">
+                      {category
+                        .split(/(?=[A-Z])/)
+                        .map(
+                          (word) => word.charAt(0).toUpperCase() + word.slice(1)
+                        )
+                        .join(" ")}
+                    </h4>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="list-disc ml-5 space-y-2">
+                      {items.map((item, itemIndex) => (
+                        <Reveal
+                          key={item}
+                          effect="fade-through"
+                          delay={0.3 + index * 0.1 + itemIndex * 0.05}
+                          duration={0.5}
+                        >
+                          <li className="text-ctp-text">{item}</li>
+                        </Reveal>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal effect="fade-up" delay={0.4} duration={0.7}>
+            <Alert className="bg-ctp-surface0/20 border-l-2 border-ctp-green mt-6">
+              <AlertDescription className="text-sm italic text-ctp-text">
+                I'm always looking to connect with like-minded professionals for
+                collaborations and knowledge exchange. Feel free to reach out!
+              </AlertDescription>
+            </Alert>
+          </Reveal>
         </div>
-        <p className="mt-4 text-sm italic text-ctp-text bg-[#313244]/20 p-3 rounded-md border-l-2 border-ctp-green">
-          I'm always looking to connect with like-minded professionals for
-          collaborations and knowledge exchange. Feel free to reach out!
-        </p>
-      </div>
-    </motion.div>
+      </AboutSectionContent>
+    </AboutSectionTemplate>
   );
 };
 

@@ -1,55 +1,68 @@
-import { motion } from "framer-motion";
 import React from "react";
 import { GiBullseye } from "react-icons/gi";
 import { focusAreas } from "./data";
+import {
+  AboutSectionTemplate,
+  AboutSectionHeader,
+  AboutSectionContent,
+} from "./AboutSectionTemplate";
+import Reveal from "@/components/animations/reveal/Reveal";
+import { Card, CardContent } from "@/components/ui/card";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
-/**
- * CurrentFocus Component
- *
- * This component displays the user's current focus areas in web development.
- * It utilizes Framer Motion for animations to enhance the user experience.
- *
- * The component includes:
- * - A title with an icon indicating the section is about current focus.
- * - A brief description of the user's focus areas.
- * - A list of focus areas that the user is currently deepening their expertise in.
- * - A styled container that enhances the visual appeal of the component.
- *
- * Usage:
- * <CurrentFocus />
- *
- */
 const CurrentFocus: React.FC = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.6 }}
-      className="p-4 rounded-lg  backdrop-blur-sm border border-ctp-mantle/50 shadow-md"
-    >
-      <div className="flex items-center mb-4">
-        <div className="bg-ctp-pink w-2 h-8 mr-3 rounded-full"></div>
-        <h3 className="text-ctp-pink font-semibold text-xl flex items-center">
-          <GiBullseye className="mr-2" /> Current Focus
-        </h3>
-      </div>
-      <div className="text-ctp-text ml-5 flex flex-col gap-4">
-        <p className="mb-3 text-[#bac2de]">
-          I'm currently focused on deepening my expertise in:
-        </p>
-        <div className="bg-[#313244]/30 p-4 rounded-lg">
-          <ul className="list-disc ml-5 space-y-2">
-            {focusAreas.map((area) => (
-              <li key={area}>{area}</li>
-            ))}
-          </ul>
+    <AboutSectionTemplate>
+      <AboutSectionHeader
+        icon={<GiBullseye />}
+        title="Current Focus"
+        accentColor="pink"
+      />
+      <AboutSectionContent>
+        <div className="space-y-6">
+          <Reveal effect="fade-up" duration={0.7}>
+            <Alert className="bg-ctp-surface0/30 border-ctp-pink/30">
+              <AlertDescription className="text-ctp-text">
+                I'm currently focused on deepening my expertise in:
+              </AlertDescription>
+            </Alert>
+          </Reveal>
+
+          <Card className="bg-[#313244]/30 border-ctp-surface0 overflow-hidden">
+            <div className="h-1 bg-gradient-to-r from-ctp-pink/80 to-ctp-mauve/50"></div>
+            <CardContent className="p-5">
+              <ul className="space-y-4 mt-2">
+                {focusAreas.map((area, index) => (
+                  <Reveal
+                    key={area}
+                    effect="fade-through"
+                    delay={0.2 + index * 0.1}
+                    duration={0.6}
+                  >
+                    <li className="flex items-start gap-3 group items-center">
+                      <div className="bg-ctp-surface0 p-2 rounded-md relative mt-1 group-hover:bg-ctp-pink/10 transition-colors">
+                        <div className="absolute inset-0 bg-ctp-pink/10 rounded-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <GiBullseye className="w-4 h-4 text-ctp-pink relative" />
+                      </div>
+                      <span className="text-ctp-text">{area}</span>
+                    </li>
+                  </Reveal>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Reveal effect="fade-up" delay={0.5} duration={0.7}>
+            <Alert className="bg-ctp-surface0/20 border-l-2 border-ctp-pink mt-4">
+              <AlertDescription className="text-sm font-mono text-ctp-text">
+                I am learning this to improve my skills and become a better
+                developer 😊.
+              </AlertDescription>
+            </Alert>
+          </Reveal>
         </div>
-        <p className="mt-4 text-sm italic text-[#bac2de] bg-[#313244]/20 p-3 rounded-md border-l-2 border-ctp-pink">
-          These focus areas help me stay at the cutting edge of web development
-          and deliver exceptional solutions.
-        </p>
-      </div>
-    </motion.div>
+      </AboutSectionContent>
+    </AboutSectionTemplate>
   );
 };
 
