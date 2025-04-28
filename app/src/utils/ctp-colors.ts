@@ -1,0 +1,18 @@
+export type CtpColor =
+  | "ctp-red"
+  | "ctp-green"
+  | "ctp-blue"
+  | "ctp-yellow"
+  | "ctp-purple"
+  | "ctp-pink"
+  | "ctp-orange"
+  | "ctp-peach"
+  | "ctp-teal"
+  | "ctp-mauve"
+  | "ctp-mantle"
+  | "ctp-surface0"
+  | "ctp-surface1"
+  | "ctp-surface2"
+  | "ctp-surface3"
+  | "ctp-surface4"
+  | "ctp-surface5";
