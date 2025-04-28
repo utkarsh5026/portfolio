@@ -1,56 +1,41 @@
-import React, { useEffect, useMemo, useRef, type ReactNode } from "react";
+import React, { useMemo, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { FaCode } from "react-icons/fa";
-import { useOutline } from "../outline/context/outlineContext";
-import { useEditorContext, type SectionType } from "../context/explorerContext";
-import styles from "./TabAnimations.module.css";
-import { useTabDrag } from "./useTabDrag";
+import { useOutline } from "@/components/home/editor/outline/context/outlineContext";
+import {
+  useEditorContext,
+  type SectionType,
+} from "@/components/home/editor/context/explorerContext";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { motion } from "framer-motion";
 
 interface EditorTabsProps {
-  sections: Record<SectionType, ReactNode>;
+  sections: Record<SectionType, React.ReactNode>;
 }
 
 /**
- * EditorTabs component renders a set of tabs for the editor section.
- * It handles tab dragging, reordering, and selection with subtle glass effects.
+ * Modern EditorTabs component using Shadcn UI
+ * Provides a sleek tab interface for switching between different sections
+ * Optimized for both desktop and mobile with responsive design
+ * Uses the project's Catppuccin color theme for visual consistency
  */
 const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
   const { setCurrentSection } = useOutline();
   const { activeSection, setActiveSection } = useEditorContext();
 
-  /* Extract section keys from the sections object */
+  // Extract section keys from the sections object
   const sectionKeys = useMemo(
     () => Object.keys(sections) as SectionType[],
     [sections]
   );
 
-  /* Initialize the useTabDrag hook with section keys */
-  const {
-    draggedTab,
-    dragOverTab,
-    dragDirection,
-    recentlyMovedTab,
-    handleDragStart,
-    handleDragOver,
-    handleDragEnd,
-    handleDrop,
-    tabOrder,
-    tabRefs,
-  } = useTabDrag(sectionKeys);
-
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  /*
-   Updates the current section in the outline context when the active section changes
-  */
+  // Update the current section in the outline context when active section changes
   useEffect(
     () => setCurrentSection(activeSection),
     [activeSection, setCurrentSection]
   );
 
-  /**
-   * Gets icon color based on section type
-   */
+  // Gets icon color based on section type for consistent visual cues
   const getIconColor = (section: SectionType): string => {
     switch (section) {
       case "home":
@@ -74,92 +59,74 @@ const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
     }
   };
 
-  /**
-   * Gets bottom border color for active tab
-   */
-  const getActiveTabBorder = (section: SectionType): string => {
+  // Gets color for active tab indicator
+  const getActiveTabColor = (section: SectionType): string => {
     switch (section) {
       case "home":
-        return "border-ctp-red";
+        return "from-ctp-red to-ctp-peach";
       case "projects":
-        return "border-ctp-green";
+        return "from-ctp-green to-ctp-teal";
       case "skills":
-        return "border-ctp-yellow";
+        return "from-ctp-yellow to-ctp-peach";
       case "about":
-        return "border-ctp-blue";
+        return "from-ctp-blue to-ctp-lavender";
       case "experience":
-        return "border-ctp-mauve";
+        return "from-ctp-mauve to-ctp-pink";
       case "contact":
-        return "border-ctp-pink";
+        return "from-ctp-pink to-ctp-red";
       case "articles":
-        return "border-ctp-teal";
+        return "from-ctp-teal to-ctp-green";
       case "learning":
-        return "border-ctp-sapphire";
+        return "from-ctp-sapphire to-ctp-blue";
       default:
-        return "border-ctp-blue";
+        return "from-ctp-blue to-ctp-lavender";
     }
   };
 
-  /**
-   * Generates classes for a tab based on its state
-   */
-  const getTabClasses = (tab: SectionType) => {
-    const isActiveTab = activeSection === tab;
-
-    const baseClasses = cn(
-      styles.editorTab,
-      "h-full px-4 whitespace-nowrap text-sm flex items-center gap-2 relative",
-      "transition-all duration-200",
-      isActiveTab
-        ? `bg-ctp-base border-b-2 ${getActiveTabBorder(tab)}`
-        : "border-r border-ctp-surface0/60 bg-ctp-surface0/80 hover:bg-ctp-base/90"
-    );
-
-    const stateClasses = cn({
-      [styles.active]: isActiveTab,
-      [styles.tabDragging]: draggedTab === tab,
-      [styles.tabDragOver]: dragOverTab === tab,
-      [styles.tabMoved]: recentlyMovedTab === tab,
-      [styles.tabInsertLeft]: dragOverTab === tab && dragDirection === "left",
-      [styles.tabInsertRight]: dragOverTab === tab && dragDirection === "right",
-    });
-
-    return cn(baseClasses, stateClasses);
-  };
-
   return (
-    <div
-      className={cn(
-        "bg-ctp-mantle border-b border-ctp-surface0 font-roboto-mono sticky top-0 z-30 overflow-x-auto scrollbar-hide md:h-9",
-        styles.tabsContainer
-      )}
-      ref={containerRef}
-    >
-      <div className="flex items-center h-full">
-        {tabOrder.map((id) => (
-          <button
-            key={id}
-            ref={(el) => (tabRefs.current[id] = el)}
-            className={getTabClasses(id)}
-            onClick={() => setActiveSection(id)}
-            draggable={true}
-            onDragStart={(e) => handleDragStart(e, id)}
-            onDragOver={(e) => handleDragOver(e, id)}
-            onDragEnd={handleDragEnd}
-            onDrop={(e) => handleDrop(e, id)}
-            onDragEnter={(e) => e.preventDefault()}
-            data-section={id}
-          >
-            <FaCode className={cn("w-3 h-3", getIconColor(id))} />
-            <span>{id}</span>
-            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 ml-1 text-ctp-surface2 hover:text-ctp-red">
-              ×
-            </span>
-          </button>
-        ))}
+    <div className="sticky top-0 z-30 bg-ctp-mantle border-b border-ctp-surface0">
+      <Tabs
+        value={activeSection}
+        onValueChange={(value) => setActiveSection(value as SectionType)}
+        className="w-full"
+      >
+        <div className="w-full overflow-x-auto scrollbar-hide">
+          <TabsList className="h-10 bg-transparent px-2 py-0 w-max min-w-full flex items-center  rounded-none justify-start">
+            {sectionKeys.map((section) => (
+              <TabsTrigger
+                key={section}
+                value={section}
+                className={cn(
+                  "relative h-9 px-4 rounded-none font-mono text-xs transition-all duration-200",
+                  "data-[state=inactive]:bg-ctp-surface0/50 data-[state=inactive]:text-ctp-subtext0",
+                  "data-[state=active]:bg-ctp-base data-[state=active]:text-ctp-text",
+                  "hover:bg-ctp-surface0 hover:text-ctp-text",
+                  "focus-visible:ring-ctp-lavender focus-visible:ring-opacity-50"
+                )}
+              >
+                <div className="flex items-center gap-2">
+                  <FaCode className={cn("w-3 h-3", getIconColor(section))} />
+                  <span>{section}</span>
+                </div>
 
-        <div className="flex-1 border-b border-ctp-surface0"></div>
-      </div>
+                {/* Animated active indicator */}
+                {activeSection === section && (
+                  <motion.div
+                    layoutId="activeTabIndicator"
+                    className={cn(
+                      "absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r",
+                      getActiveTabColor(section)
+                    )}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                )}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </div>
+      </Tabs>
     </div>
   );
 };

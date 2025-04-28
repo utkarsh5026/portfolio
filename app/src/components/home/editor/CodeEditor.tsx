@@ -25,8 +25,16 @@ const Learning = lazy(
 );
 const Articles = lazy(() => import("@/components/home/articles/Articles"));
 
+/**
+ * CodeEditor component represents the main editor interface of the application
+ * It manages the layout and interactions between the sidebar, explorer, tabs, and content areas
+ * Uses lazy loading for content components to improve performance
+ * Implements responsive design for mobile optimization
+ */
 const CodeEditor: React.FC = () => {
   const { explorerOpen, terminalOpen } = useEditorContext();
+
+  // Create a mapping of all section components
   const sections: Record<SectionType, React.ReactNode> = useMemo(
     () => ({
       home: <TerminalHeader />,
@@ -43,8 +51,8 @@ const CodeEditor: React.FC = () => {
 
   return (
     <OutlineProvider>
-      <div className="min-h-screen bg-[#1e1e2e] flex">
-        <div className="flex h-screen w-screen max-w-screen">
+      <div className="min-h-screen bg-ctp-base flex">
+        <div className="flex h-screen w-screen max-w-screen overflow-hidden">
           <SideBar />
           <div className={cn("flex-1 flex")}>
             <AnimatePresence>
