@@ -101,22 +101,24 @@ const Projects: React.FC = () => {
         <div ref={projectsRef} className="relative max-w-6xl mx-auto px-4 py-8">
           <Reveal effect="fade-up" duration={0.7} delay={0.1}>
             <Tabs defaultValue="featured" className="w-full">
-              <TabsList className="mb-8 bg-ctp-surface0/30 backdrop-blur-md border border-ctp-surface0 p-1 rounded-lg">
-                <TabsTrigger
-                  value="featured"
-                  className="flex-1 data-[state=active]:bg-ctp-peach/20 data-[state=active]:text-ctp-peach"
-                >
-                  <Sparkles className="w-4 h-4 mr-2" />
-                  Featured Project
-                </TabsTrigger>
-                <TabsTrigger
-                  value="gallery"
-                  className="flex-1 data-[state=active]:bg-ctp-green/20 data-[state=active]:text-ctp-green"
-                >
-                  <Code className="w-4 h-4 mr-2" />
-                  Project Gallery
-                </TabsTrigger>
-              </TabsList>
+              <div className="w-full flex justify-end">
+                <TabsList className="mb-8 bg-ctp-surface0/30 backdrop-blur-md border border-ctp-surface0 p-1 rounded-lg">
+                  <TabsTrigger
+                    value="featured"
+                    className="flex-1 data-[state=active]:bg-ctp-peach/20 data-[state=active]:text-ctp-peach"
+                  >
+                    <Sparkles className="w-4 h-4 mr-2" />
+                    Featured Project
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value="gallery"
+                    className="flex-1 data-[state=active]:bg-ctp-green/20 data-[state=active]:text-ctp-green"
+                  >
+                    <Code className="w-4 h-4 mr-2" />
+                    Project Gallery
+                  </TabsTrigger>
+                </TabsList>
+              </div>
 
               <TabsContent
                 value="featured"
