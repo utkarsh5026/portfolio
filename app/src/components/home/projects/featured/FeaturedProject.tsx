@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
 import type { Project } from "@/types";
 import { FaStar } from "react-icons/fa";
 import { HiOutlineSparkles } from "react-icons/hi";
 import ProjectContent from "./ProjectContent";
 import Certificate from "./Certificate";
 import FeaturedHeader from "./FeaturedHeader";
+import Reveal from "@/components/animations/reveal/Reveal";
 
 interface FeaturedProjectProps {
   featuredProject: Project;
@@ -25,24 +25,12 @@ type Tab = "overview" | "features";
  * @param {function} props.handleProjectSelect - Function to handle the selection of the project.
  *
  * @returns {JSX.Element} A styled component that showcases the featured project with animations.
- *
- * @example
- * <FeaturedProject
- *   featuredProject={projectData}
- *   handleProjectSelect={selectProject}
- * />
  */
 const FeaturedProject: React.FC<FeaturedProjectProps> = ({
   featuredProject,
   handleProjectSelect,
 }) => {
   const [activeTab, setActiveTab] = useState<Tab>("overview");
-  const [isAnimated, setIsAnimated] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsAnimated(true), 200);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <div className="mb-16 max-w-6xl mx-auto relative">
@@ -55,69 +43,57 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
 
       <FeaturedHeader />
 
-      <AnimatePresence>
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.5 }}
-          className="overflow-hidden"
-        >
+      <Reveal effect="zoom-in" duration={0.5}>
+        <div className="overflow-hidden">
           <div className="relative">
             {/* Spotlight glow effect */}
             <div className="absolute -inset-2 bg-gradient-radial from-ctp-peach/20 via-transparent to-transparent rounded-full blur-2xl opacity-70 -z-10 animate-pulse-slow" />
 
             {/* Main content card */}
-            <motion.div
-              className="relative rounded-xl overflow-hidden"
-              initial={{ y: 40, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              {/* Gradient border */}
-              <div className="absolute inset-0 p-1 rounded-xl bg-gradient-to-br from-ctp-peach via-ctp-maroon to-ctp-blue motion-safe:animate-border">
-                <div className="w-full h-full rounded-lg bg-ctp-crust" />
-              </div>
-
-              <div className="relative rounded-xl overflow-hidden shadow-xl">
-                {/* Project card header with featured badge */}
-                <div className="relative px-8 pt-8 pb-4 bg-gradient-to-br from-ctp-mantle to-ctp-crust">
-                  <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-ctp-peach/20 text-ctp-peach border border-ctp-peach/10 text-xs font-semibold">
-                    <FaStar className="text-ctp-peach" />
-                    Featured
-                  </div>
-
-                  <motion.h2
-                    className="text-3xl font-bold bg-gradient-to-r from-ctp-peach via-ctp-maroon to-ctp-peach bg-clip-text text-transparent"
-                    initial={{ y: -20, opacity: 0 }}
-                    animate={isAnimated ? { y: 0, opacity: 1 } : {}}
-                    transition={{ duration: 0.6 }}
-                  >
-                    {featuredProject.name}
-                  </motion.h2>
+            <Reveal effect="fade-up" duration={0.6} delay={0.2}>
+              <div className="relative rounded-xl overflow-hidden">
+                {/* Gradient border */}
+                <div className="absolute inset-0 p-1 rounded-xl bg-gradient-to-br from-ctp-peach via-ctp-maroon to-ctp-blue motion-safe:animate-border">
+                  <div className="w-full h-full rounded-lg bg-ctp-crust" />
                 </div>
 
-                {/* Tab navigation */}
-                <TabNavigation
-                  activeTab={activeTab}
-                  setActiveTab={setActiveTab}
-                />
+                <div className="relative rounded-xl overflow-hidden shadow-xl">
+                  {/* Project card header with featured badge */}
+                  <div className="relative px-8 pt-8 pb-4 bg-gradient-to-br from-ctp-mantle to-ctp-crust">
+                    <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-ctp-peach/20 text-ctp-peach border border-ctp-peach/10 text-xs font-semibold">
+                      <FaStar className="text-ctp-peach" />
+                      Featured
+                    </div>
 
-                <div className="bg-gradient-to-br from-ctp-crust to-ctp-mantle p-8">
-                  <div className="flex flex-col xl:flex-row gap-10 items-center">
-                    <ProjectContent
-                      activeTab={activeTab}
-                      featuredProject={featuredProject}
-                      handleProjectSelect={handleProjectSelect}
-                    />
-                    <Certificate name={featuredProject.name} />
+                    <Reveal effect="slide-in" direction="up" duration={0.6}>
+                      <h2 className="text-3xl font-bold bg-gradient-to-r from-ctp-peach via-ctp-maroon to-ctp-peach bg-clip-text text-transparent">
+                        {featuredProject.name}
+                      </h2>
+                    </Reveal>
+                  </div>
+
+                  {/* Tab navigation */}
+                  <TabNavigation
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                  />
+
+                  <div className="bg-gradient-to-br from-ctp-crust to-ctp-mantle p-8">
+                    <div className="flex flex-col xl:flex-row gap-10 items-center">
+                      <ProjectContent
+                        activeTab={activeTab}
+                        featuredProject={featuredProject}
+                        handleProjectSelect={handleProjectSelect}
+                      />
+                      <Certificate name={featuredProject.name} />
+                    </div>
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
           </div>
-        </motion.div>
-      </AnimatePresence>
+        </div>
+      </Reveal>
     </div>
   );
 };
@@ -131,19 +107,6 @@ interface TabNavigationProps {
  * TabNavigation component allows users to switch between different tabs
  * in the FeaturedProject section. It provides buttons for "Overview" and
  * "Key Features", highlighting the active tab for better user experience.
- *
- * @component
- * @param {TabNavigationProps} props - The properties for the TabNavigation component.
- * @param {Tab} props.activeTab - The currently active tab, either "overview" or "features".
- * @param {function} props.setActiveTab - Function to update the active tab state.
- *
- * @returns {JSX.Element} A navigation bar with buttons for tab selection.
- *
- * @example
- * <TabNavigation
- *   activeTab="overview"
- *   setActiveTab={setActiveTab}
- * />
  */
 const TabNavigation: React.FC<TabNavigationProps> = ({
   activeTab,
@@ -161,10 +124,7 @@ const TabNavigation: React.FC<TabNavigationProps> = ({
       >
         Overview
         {activeTab === "overview" && (
-          <motion.div
-            className="absolute bottom-0 left-0 right-0 h-0.5 bg-ctp-peach"
-            layoutId="activeTab"
-          />
+          <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-ctp-peach" />
         )}
       </button>
       <button
@@ -177,10 +137,7 @@ const TabNavigation: React.FC<TabNavigationProps> = ({
       >
         Key Features
         {activeTab === "features" && (
-          <motion.div
-            className="absolute bottom-0 left-0 right-0 h-0.5 bg-ctp-peach"
-            layoutId="activeTab"
-          />
+          <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-ctp-peach" />
         )}
       </button>
     </div>
