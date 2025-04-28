@@ -95,13 +95,7 @@ const ArticlesComponent: React.FC = () => {
   );
 
   return (
-    <Section
-      id="articles"
-      label="Articles"
-      icon="api"
-      glowAccent="pink"
-      scanlines={true}
-    >
+    <Section id="articles" label="Articles" icon="api" scanlines={true}>
       <div className="mb-8 max-w-6xl mx-auto">
         {/* Header with statistics */}
         <Header

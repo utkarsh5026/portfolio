@@ -1,9 +1,3 @@
-/* 
-    This is the Contact Me section of the home page.
-    It contains a card with a form to send an email to the user.    
-    It also contains a list of social media links.
-*/
-
 import React from "react";
 import Section from "@/components/section/Section";
 import { Card, CardContent } from "@/components/ui/card";
@@ -46,7 +40,7 @@ const socialLinks = [
 
 const ContactMe: React.FC = () => {
   return (
-    <Section id="contact" label="Contact" glowAccent="mauve" scanlines={true}>
+    <Section id="contact" label="Contact" scanlines={true}>
       <div className="max-w-4xl mx-auto px-4 md:px-8 lg:px-12">
         <Card className="border-2 border-ctp-surface0 bg-ctp-base/60 backdrop-blur-sm hover:border-ctp-mauve/20 transition-all duration-500">
           <CardContent className="p-4 sm:p-6 md:p-8 lg:p-10">

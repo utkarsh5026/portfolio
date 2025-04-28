@@ -72,7 +72,7 @@ const Projects: React.FC = () => {
   // Handle loading state
   if (isLoading) {
     return (
-      <Section id="projects" label="Projects" icon="code" glowAccent="blue">
+      <Section id="projects" label="Projects" icon="code">
         <div className="flex justify-center items-center h-64">
           <div className="text-ctp-text">Loading projects...</div>
         </div>
@@ -83,7 +83,7 @@ const Projects: React.FC = () => {
   // Handle error state
   if (error || !featuredProject) {
     return (
-      <Section id="projects" label="Projects" icon="code" glowAccent="blue">
+      <Section id="projects" label="Projects" icon="code">
         <div className="flex justify-center items-center h-64">
           <div className="text-ctp-red">
             {error || "Failed to load projects data"}
@@ -94,7 +94,7 @@ const Projects: React.FC = () => {
   }
 
   return (
-    <Section id="projects" label="Projects" icon="code" glowAccent="blue">
+    <Section id="projects" label="Projects" icon="code">
       <ProjectThemeProvider>
         <div ref={projectsRef} className="relative max-w-6xl mx-auto px-4 py-8">
           <OutlineNode

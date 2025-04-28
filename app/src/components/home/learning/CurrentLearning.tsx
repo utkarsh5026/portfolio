@@ -45,12 +45,7 @@ const CurrentLearning: React.FC = () => {
   }, []);
 
   return (
-    <Section
-      id="learning"
-      label="Learning Journey"
-      icon="code"
-      glowAccent="blue"
-    >
+    <Section id="learning" label="Learning Journey" icon="code">
       <div className="relative flex flex-col w-full min-h-[700px] bg-gradient-to-b from-[#1e1e2e] to-[#232634] rounded-xl overflow-hidden shadow-2xl">
         <div className="p-8 z-20 relative">
           <motion.h2
