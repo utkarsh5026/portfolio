@@ -106,9 +106,9 @@ const AboutMe: React.FC = () => {
 
   return (
     <Section id={ABOUT_SECTION} label="About Me" icon="class">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <Reveal effect="fade-up" duration={0.7}>
-          <div className=" rounded-lg overflow-hidden shadow-lg relative">
+          <div className="overflow-hidden relative">
             {/* Main content */}
             <div className="p-6 relative">
               <div className="space-y-8 pl-8 flex flex-col gap-6">
