@@ -5,6 +5,18 @@ interface SkillItemProps {
   accentColor?: string;
 }
 
+/**
+ * SkillItem Component
+ *
+ * This component renders an individual skill item with a bullet point and text.
+ * It includes hover effects and subtle animations for user engagement.
+ *
+ * @param {SkillItemProps} props - The component props
+ * @param {string} props.item - The skill text to display
+ * @param {string} props.accentColor - The accent color for the bullet point (defaults to "lavender")
+ *
+ * @returns {React.ReactElement} The rendered skill item
+ */
 const SkillItem = React.memo(function SkillItem({
   item,
   accentColor = "lavender",
