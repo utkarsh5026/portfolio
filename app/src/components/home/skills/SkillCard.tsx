@@ -20,17 +20,6 @@ interface SkillCardProps {
   description?: string;
 }
 
-const colorPairs = {
-  mauve: "blue",
-  blue: "lavender",
-  lavender: "sapphire",
-  sapphire: "sky",
-  teal: "green",
-  green: "teal",
-  red: "peach",
-  peach: "yellow",
-};
-
 /**
  * SkillCard Component
  *
@@ -57,8 +46,6 @@ const SkillCard: React.FC<SkillCardProps> = ({
   accentColor = "lavender",
   description,
 }) => {
-  const secondaryColor = colorPairs[accentColor] || "blue";
-
   return (
     <Reveal
       effect="rise"
@@ -68,10 +55,6 @@ const SkillCard: React.FC<SkillCardProps> = ({
       <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-ctp-blue/30 to-ctp-lavender/30 opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500"></div>
 
       <Card className="relative bg-ctp-mantle border border-ctp-surface0 hover:border-ctp-surface2 transition-all duration-300 overflow-hidden">
-        <div
-          className={`h-1 w-full bg-gradient-to-r from-ctp-${accentColor} to-ctp-${secondaryColor}`}
-        ></div>
-
         <div className="p-6">
           <Reveal effect="fade-up" duration={0.5} delay={0.1}>
             <div className="flex items-start gap-4 mb-4">

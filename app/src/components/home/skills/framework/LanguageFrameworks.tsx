@@ -95,9 +95,6 @@ const LanguageFrameworks: React.FC<LanguageFrameworksProps> = ({
                 {/* Language name */}
                 <span
                   className={`text-ctp-${getLanguageConfigs(language).color}`}
-                  style={{
-                    animation: "neon-pulse 1.5s ease-in-out infinite alternate",
-                  }}
                 >
                   {language}
                 </span>

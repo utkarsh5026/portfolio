@@ -35,7 +35,7 @@ export const frameworks = {
     "Express",
   ],
   Python: ["FastAPI", "Flask", "Django", "Pandas", "Langchain"],
-  Golang: ["Gin", "Gorm"],
+  Golang: ["Gin", "Gorm", "Fiber", "Echo", "Buffalo"],
 } as const;
 
 export const tools = ["Git", "Docker", "Kubernetes", "Jenkins", "CI/CD"];
