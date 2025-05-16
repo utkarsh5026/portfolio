@@ -53,65 +53,64 @@ const AboutMeSection: React.FC<AboutMeSectionProps> = ({
   );
 };
 
+const sections: AboutMeSectionProps[] = [
+  {
+    id: "background",
+    label: "Background",
+    icon: <FaCode />,
+    iconColor: "blue",
+    content: <Background />,
+  },
+  {
+    id: "education",
+    label: "Education",
+    icon: <FaGraduationCap />,
+    iconColor: "blue",
+    content: <Education />,
+  },
+  {
+    id: "skills",
+    label: "Skills",
+    icon: <FaLaptopCode />,
+    iconColor: "red",
+    content: <Skills />,
+  },
+  {
+    id: "philosophy",
+    label: "Philosophy",
+    icon: <FaBrain />,
+    iconColor: "blue",
+    content: <Philosophy />,
+  },
+  {
+    id: "interests",
+    label: "Interests & Hobbies",
+    icon: <FaBook />,
+    iconColor: "green",
+    content: <InterestsHobbies />,
+  },
+  {
+    id: "current-focus",
+    label: "Current Focus",
+    icon: <GiBullseye />,
+    iconColor: "pink",
+    content: <CurrentFocus />,
+  },
+];
+
 /**
  * AboutMe component is the main component for the About Me page
  * It organizes multiple sections in a editor-like interface
  */
 const AboutMe: React.FC = () => {
-  // Define all sections with their properties for consistency
-  const sections: AboutMeSectionProps[] = [
-    {
-      id: "background",
-      label: "Background",
-      icon: <FaCode />,
-      iconColor: "blue",
-      content: <Background />,
-    },
-    {
-      id: "education",
-      label: "Education",
-      icon: <FaGraduationCap />,
-      iconColor: "blue",
-      content: <Education />,
-    },
-    {
-      id: "skills",
-      label: "Skills",
-      icon: <FaLaptopCode />,
-      iconColor: "red",
-      content: <Skills />,
-    },
-    {
-      id: "philosophy",
-      label: "Philosophy",
-      icon: <FaBrain />,
-      iconColor: "blue",
-      content: <Philosophy />,
-    },
-    {
-      id: "interests",
-      label: "Interests & Hobbies",
-      icon: <FaBook />,
-      iconColor: "green",
-      content: <InterestsHobbies />,
-    },
-    {
-      id: "current-focus",
-      label: "Current Focus",
-      icon: <GiBullseye />,
-      iconColor: "pink",
-      content: <CurrentFocus />,
-    },
-  ];
-
   return (
     <Section id={ABOUT_SECTION} label="About Me" icon="class">
-      <div className="max-w-5xl mx-auto">
+      <div className="w-full max-w-5xl mx-auto">
         <Reveal effect="fade-up" duration={0.7}>
           <div className="overflow-hidden relative">
             {/* Main content */}
-            <div className="p-6 relative">
-              <div className="space-y-8 pl-8 flex flex-col gap-6">
+            <div className="p-3 sm:p-6 relative">
+              <div className="space-y-6 sm:space-y-8 pl-2 sm:pl-8 flex flex-col gap-4 sm:gap-6">
                 {sections.map((section, index) => (
                   <Reveal
                     key={section.id}

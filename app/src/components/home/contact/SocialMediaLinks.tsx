@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 const socialLinks = [
   {
     name: "Email",
-    icon: <MdEmail className="w-6 h-6" />,
+    icon: <MdEmail className="w-6 h-6 text-ctp-blue" />,
     href: "mailto:utkarshpriyadarshi5026@gmail.com",
     color: "hover:text-ctp-blue",
     outlineIcon: <MdEmail className="w-3 h-3 text-ctp-blue" />,
@@ -17,7 +17,7 @@ const socialLinks = [
   },
   {
     name: "GitHub",
-    icon: <FaGithub className="w-6 h-6" />,
+    icon: <FaGithub className="w-6 h-6 text-ctp-mauve" />,
     href: "https://github.com/utkarsh5026",
     color: "hover:text-ctp-mauve",
     outlineIcon: <FaGithub className="w-3 h-3 text-ctp-mauve" />,
@@ -26,7 +26,7 @@ const socialLinks = [
   },
   {
     name: "LinkedIn",
-    icon: <FaLinkedin className="w-6 h-6" />,
+    icon: <FaLinkedin className="w-6 h-6 text-ctp-sapphire" />,
     href: "https://www.linkedin.com/in/utkarsh-priyadarshi-8b5a731b9/",
     color: "hover:text-ctp-sapphire",
     outlineIcon: <FaLinkedin className="w-3 h-3 text-ctp-sapphire" />,
@@ -35,7 +35,7 @@ const socialLinks = [
   },
   {
     name: "Twitter",
-    icon: <FaTwitter className="w-6 h-6" />,
+    icon: <FaTwitter className="w-6 h-6 text-ctp-sky" />,
     href: "https://x.com/UtkarshPriyad10",
     color: "hover:text-ctp-sky",
     outlineIcon: <FaTwitter className="w-3 h-3 text-ctp-sky" />,
