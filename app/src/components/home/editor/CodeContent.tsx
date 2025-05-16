@@ -1,17 +1,41 @@
 import { Suspense, useRef } from "react";
-import { useEditorContext } from "./context/explorerContext";
+import {
+  useEditorContext,
+  sections as sectionKeys,
+} from "./context/explorerContext";
 import { motion, AnimatePresence } from "framer-motion";
+import { useSwipeable } from "react-swipeable";
 
 interface CodeContentProps {
   sections: Record<string, React.ReactNode>;
 }
 
 const CodeContent: React.FC<CodeContentProps> = ({ sections }) => {
-  const { activeSection, loadingSection, loadingText } = useEditorContext();
+  const { activeSection, loadingSection, loadingText, setActiveSection } =
+    useEditorContext();
   const contentRef = useRef<HTMLDivElement>(null);
 
+  const handlers = useSwipeable({
+    onSwipedLeft: () => {
+      // Go to next section (right)
+      const currentIndex = sectionKeys.indexOf(activeSection);
+      if (currentIndex < sectionKeys.length - 1) {
+        setActiveSection(sectionKeys[currentIndex + 1]);
+      }
+    },
+    onSwipedRight: () => {
+      // Go to previous section (left)
+      const currentIndex = sectionKeys.indexOf(activeSection);
+      if (currentIndex > 0) {
+        setActiveSection(sectionKeys[currentIndex - 1]);
+      }
+    },
+    preventScrollOnSwipe: true,
+    trackMouse: false,
+  });
+
   return (
-    <main className="flex-1 overflow-y-auto bg-ctp-crust">
+    <main className="flex-1 overflow-y-auto bg-ctp-crust" {...handlers}>
       <AnimatePresence mode="wait">
         {loadingSection ? (
           <motion.div
