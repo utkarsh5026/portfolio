@@ -21,14 +21,14 @@ const CurrentFocus: React.FC = () => {
       <AboutSectionContent>
         <div className="space-y-6">
           <Reveal effect="fade-up" duration={0.7}>
-            <Alert className="bg-ctp-surface0/30 border-ctp-pink/30">
+            <Alert className="bg-ctp-surface0/30 border-none">
               <AlertDescription className="text-ctp-text">
                 I'm currently focused on deepening my expertise in:
               </AlertDescription>
             </Alert>
           </Reveal>
 
-          <Card className="bg-[#313244]/30 border-ctp-surface0 overflow-hidden">
+          <Card className="bg-ctp-base border-none overflow-hidden">
             <div className="h-1 bg-gradient-to-r from-ctp-pink/80 to-ctp-mauve/50"></div>
             <CardContent className="p-5">
               <ul className="space-y-4 mt-2">
@@ -53,8 +53,8 @@ const CurrentFocus: React.FC = () => {
           </Card>
 
           <Reveal effect="fade-up" delay={0.5} duration={0.7}>
-            <Alert className="bg-ctp-surface0/20 border-l-2 border-ctp-pink mt-4">
-              <AlertDescription className="text-sm font-mono text-ctp-text">
+            <Alert className="bg-ctp-surface0/20 border-none">
+              <AlertDescription className="text-sm font-mono text-ctp-pink">
                 I am learning this to improve my skills and become a better
                 developer 😊.
               </AlertDescription>

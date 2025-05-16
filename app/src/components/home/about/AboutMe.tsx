@@ -107,27 +107,24 @@ const AboutMe: React.FC = () => {
     <Section id={ABOUT_SECTION} label="About Me" icon="class">
       <div className="w-full max-w-5xl mx-auto">
         <Reveal effect="fade-up" duration={0.7}>
-          <div className="overflow-hidden relative">
-            {/* Main content */}
-            <div className="p-3 sm:p-6 relative">
-              <div className="space-y-6 sm:space-y-8 pl-2 sm:pl-8 flex flex-col gap-4 sm:gap-6">
-                {sections.map((section, index) => (
-                  <Reveal
-                    key={section.id}
-                    effect="fade-up"
-                    delay={0.2 + index * 0.1}
-                    duration={0.5}
-                  >
-                    <AboutMeSection
-                      id={section.id}
-                      label={section.label}
-                      icon={section.icon}
-                      iconColor={section.iconColor}
-                      content={section.content}
-                    />
-                  </Reveal>
-                ))}
-              </div>
+          <div className="overflow-auto relative">
+            <div className="space-y-6 sm:space-y-8  flex flex-col gap-4 sm:gap-6">
+              {sections.map((section, index) => (
+                <Reveal
+                  key={section.id}
+                  effect="fade-up"
+                  delay={0.2 + index * 0.1}
+                  duration={0.5}
+                >
+                  <AboutMeSection
+                    id={section.id}
+                    label={section.label}
+                    icon={section.icon}
+                    iconColor={section.iconColor}
+                    content={section.content}
+                  />
+                </Reveal>
+              ))}
             </div>
           </div>
         </Reveal>

@@ -103,7 +103,7 @@ export const AboutCard: React.FC<AboutCardProps> = ({
   return (
     <Card
       className={cn(
-        "bg-[#313244]/30 border-ctp-surface0",
+        "bg-ctp-crust border-none",
         hover && "hover:shadow-lg transition-all duration-300",
         className
       )}

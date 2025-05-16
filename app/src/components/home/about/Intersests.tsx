@@ -21,7 +21,7 @@ const InterestsHobbies: React.FC = () => {
       <AboutSectionContent>
         <div className="space-y-6">
           <Reveal effect="fade-up" duration={0.7}>
-            <Alert className="bg-ctp-surface0/30 border-ctp-green/30">
+            <Alert className="bg-ctp-surface0/30 border-none">
               <AlertDescription className="text-ctp-text">
                 When I'm not coding, you can find me engaged in various
                 activities that keep me balanced and inspired:
@@ -38,7 +38,7 @@ const InterestsHobbies: React.FC = () => {
                 delay={0.2 * index}
                 duration={0.6}
               >
-                <Card className="bg-ctp-mantle hover:shadow-lg transition-all duration-300 border-ctp-surface0 overflow-hidden">
+                <Card className="bg-ctp-crust hover:shadow-lg transition-all duration-300 border-none overflow-hidden">
                   <div className="h-1 bg-gradient-to-r from-ctp-green/70 to-ctp-teal/50"></div>
                   <CardHeader className="pb-2">
                     <h4 className="font-medium text-ctp-green text-lg border-b border-ctp-green/30 pb-2">

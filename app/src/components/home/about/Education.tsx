@@ -28,7 +28,7 @@ const Education: React.FC = () => {
               delay={0.1 * index}
               duration={0.6}
             >
-              <Card className="bg-[#313244]/30 hover:shadow-lg transition-all duration-300 border-ctp-surface0">
+              <Card className="bg-[#313244]/30 hover:shadow-lg transition-all duration-300 border-none">
                 <CardContent className="p-4">
                   <div className="font-medium text-[#89b4fa] text-lg">
                     {item.degree}
