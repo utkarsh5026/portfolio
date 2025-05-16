@@ -1,73 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { useSkillAnimation, useCloneElements } from "../hooks";
-import {
-  SiJavascript,
-  SiDocker,
-  SiReact,
-  SiTypescript,
-  SiNodedotjs,
-  SiPython,
-  SiKubernetes,
-  SiGit,
-  SiMongodb,
-  SiPostgresql,
-  SiRedis,
-  SiAmazon,
-  SiDjango,
-  SiFirebase,
-  SiTailwindcss,
-  SiFastapi,
-  SiExpress,
-  SiLangchain,
-  SiGo,
-} from "react-icons/si";
+import { useSkillAnimation, useCloneElements } from "./hooks";
 import SkillItem from "./SkillItem";
-
-// Map skills to Catppuccin colors
-const skillColors: Record<string, string> = {
-  JavaScript: "yellow",
-  Docker: "blue",
-  React: "sapphire",
-  TypeScript: "lavender",
-  "Node.js": "green",
-  Python: "yellow",
-  Golang: "blue",
-  Kubernetes: "blue",
-  Git: "maroon",
-  MongoDB: "green",
-  PostgreSQL: "blue",
-  Redis: "red",
-  AWS: "peach",
-  Django: "green",
-  Firebase: "peach",
-  Tailwind: "blue",
-  FastAPI: "green",
-  Express: "mauve",
-  Langchain: "pink",
-};
-
-const skills = [
-  { icon: <SiJavascript />, name: "JavaScript" },
-  { icon: <SiDocker />, name: "Docker" },
-  { icon: <SiReact />, name: "React" },
-  { icon: <SiTypescript />, name: "TypeScript" },
-  { icon: <SiNodedotjs />, name: "Node.js" },
-  { icon: <SiPython />, name: "Python" },
-  { icon: <SiGo />, name: "Golang" },
-  { icon: <SiKubernetes />, name: "Kubernetes" },
-  { icon: <SiGit />, name: "Git" },
-  { name: "MongoDB", icon: <SiMongodb /> },
-  { name: "PostgreSQL", icon: <SiPostgresql /> },
-  { name: "Redis", icon: <SiRedis /> },
-  { name: "AWS", icon: <SiAmazon /> },
-  { name: "Django", icon: <SiDjango /> },
-  { name: "Firebase", icon: <SiFirebase /> },
-  { name: "Tailwind", icon: <SiTailwindcss /> },
-  { name: "FastAPI", icon: <SiFastapi /> },
-  { name: "Express", icon: <SiExpress /> },
-  { name: "Langchain", icon: <SiLangchain /> },
-];
+import { skillColors, skills } from "./skill-style";
 
 const debounce = <T extends (...args: unknown[]) => unknown>(
   fn: T,
