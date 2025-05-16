@@ -31,7 +31,7 @@ const ContactMe: React.FC = () => {
                   opportunities to be part of your visions. Feel free to reach
                   out through any of the following channels. If you have any
                   questions, email me at{" "}
-                  <span className="border-b-2 border-ctp-pink hover:border-ctp-pink/50 transition-all duration-300 break-all">
+                  <span className="inline-block px-2 py-1 my-1 font-medium text-ctp-pink bg-ctp-pink/5 rounded-md border-b-2 border-ctp-pink hover:bg-ctp-pink/10 hover:text-ctp-pink transition-all duration-300 break-words">
                     utkarshpriyadarshi5026@gmail.com
                   </span>
                 </p>
