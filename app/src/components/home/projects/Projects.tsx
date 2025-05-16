@@ -1,8 +1,7 @@
-import React, { useCallback, useRef, useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useCallback, useRef, useState } from "react";
 import Section from "@/components/section/Section";
 import OutlineNode from "@/components/home/editor/outline/OutlineNode";
-import { Sparkles, Code, Globe, ArrowUp } from "lucide-react";
+import { Sparkles, Code, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ProjectModal from "./modal/ProjectModal";
@@ -26,7 +25,6 @@ const Projects: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(6);
   const projectsRef = useRef<HTMLDivElement>(null);
-  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const handleProjectSelect = useCallback(
     (project: Project) => {
@@ -43,35 +41,10 @@ const Projects: React.FC = () => {
     setTimeout(() => selectProject(null), 300);
   }, [selectProject]);
 
-  // Scroll to top function
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: projectsRef.current?.offsetTop ?? 0,
-      behavior: "smooth",
-    });
-  };
-
-  // Detect scroll position to show/hide scroll-to-top button
-  useEffect(() => {
-    const handleScroll = () => {
-      const projectsEl = projectsRef.current;
-      if (projectsEl) {
-        const scrollPosition = window.scrollY;
-        const projectsPosition = projectsEl.offsetTop;
-        setShowScrollTop(scrollPosition > projectsPosition + 600);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Load more projects handler
   const loadMore = () => {
     setVisibleCount((prev) => Math.min(prev + 6, otherProjects.length));
   };
 
-  // Handle loading state
   if (isLoading) {
     return (
       <Section id="projects" label="Projects" icon="code">
@@ -82,7 +55,6 @@ const Projects: React.FC = () => {
     );
   }
 
-  // Handle error state
   if (error || !featuredProject) {
     return (
       <Section id="projects" label="Projects" icon="code">
@@ -95,6 +67,21 @@ const Projects: React.FC = () => {
     );
   }
 
+  const tabs = [
+    {
+      value: "featured",
+      label: "Featured Project",
+      small: "Featured",
+      icon: <Sparkles className="w-4 h-4 mr-2" />,
+    },
+    {
+      value: "gallery",
+      label: "Project Gallery",
+      small: "Gallery",
+      icon: <Code className="w-4 h-4 mr-2" />,
+    },
+  ];
+
   return (
     <Section id="projects" label="Projects" icon="code">
       <ProjectThemeProvider>
@@ -103,22 +90,17 @@ const Projects: React.FC = () => {
             <Tabs defaultValue="featured" className="w-full">
               <div className="w-full flex justify-end">
                 <TabsList className="mb-8 bg-ctp-surface0/30 backdrop-blur-md border border-ctp-surface0 p-1 rounded-lg">
-                  <TabsTrigger
-                    value="featured"
-                    className="flex-1 data-[state=active]:bg-ctp-peach/20 data-[state=active]:text-ctp-peach"
-                  >
-                    <Sparkles className="w-4 h-4 mr-2" />
-                    <span className="hidden md:block">Featured Project</span>
-                    <span className="block md:hidden">Featured</span>
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="gallery"
-                    className="flex-1 data-[state=active]:bg-ctp-green/20 data-[state=active]:text-ctp-green"
-                  >
-                    <Code className="w-4 h-4 mr-2" />
-                    <span className="hidden md:block">Project Gallery</span>
-                    <span className="block md:hidden">Gallery</span>
-                  </TabsTrigger>
+                  {tabs.map(({ value, label, small, icon }) => (
+                    <TabsTrigger
+                      key={value}
+                      value={value}
+                      className="flex-1 data-[state=active]:bg-ctp-peach/20 data-[state=active]:text-ctp-peach"
+                    >
+                      {icon}
+                      <span className="hidden md:block">{label}</span>
+                      <span className="block md:hidden">{small}</span>
+                    </TabsTrigger>
+                  ))}
                 </TabsList>
               </div>
 
@@ -222,22 +204,6 @@ const Projects: React.FC = () => {
               </TabsContent>
             </Tabs>
           </Reveal>
-
-          {/* Scroll to top button - Made mobile friendly with larger touch target */}
-          <AnimatePresence>
-            {showScrollTop && (
-              <motion.button
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                className="fixed bottom-6 right-6 z-40 p-4 rounded-full bg-ctp-blue/90 text-ctp-mantle shadow-lg hover:bg-ctp-lavender transition-colors backdrop-blur-sm border border-ctp-blue/20"
-                onClick={scrollToTop}
-                aria-label="Scroll to top"
-              >
-                <ArrowUp size={24} />
-              </motion.button>
-            )}
-          </AnimatePresence>
 
           {/* Project modal */}
           <ProjectModal
