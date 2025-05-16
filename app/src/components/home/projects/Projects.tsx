@@ -209,10 +209,10 @@ const Projects: React.FC = () => {
                           <Button
                             onClick={loadMore}
                             variant="outline"
-                            className="border-ctp-green/30 hover:border-ctp-green/50 bg-ctp-green/5 hover:bg-ctp-green/10 hover:text-ctp-green text-ctp-green px-6 py-6 text-base hover:scale-105 transition-all duration-300"
+                            className="border-ctp-green/30 hover:border-ctp-green/50 bg-ctp-green/5 hover:bg-ctp-green/10 hover:text-ctp-green text-ctp-green px-6 py-6 text-small hover:scale-105 transition-all duration-300"
                           >
-                            Load more projects (
-                            {otherProjects.length - visibleCount} remaining)
+                            Load more ({otherProjects.length - visibleCount}{" "}
+                            remaining)
                           </Button>
                         </div>
                       </Reveal>
