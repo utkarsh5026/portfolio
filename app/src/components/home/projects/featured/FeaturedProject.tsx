@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import type { Project } from "@/types";
 import { FaStar } from "react-icons/fa";
-import { HiOutlineSparkles } from "react-icons/hi";
 import ProjectContent from "./ProjectContent";
 import Certificate from "./Certificate";
 import FeaturedHeader from "./FeaturedHeader";
@@ -36,15 +35,7 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
 
   return (
     <div className="mb-16 max-w-6xl mx-auto relative">
-      <div className="absolute -left-10 -top-10 w-20 h-20 text-ctp-peach/10 animate-spin-slow pointer-events-none">
-        <HiOutlineSparkles className="w-full h-full" />
-      </div>
-      <div className="absolute -right-5 -bottom-5 w-16 h-16 text-ctp-lavender/10 animate-float pointer-events-none">
-        <HiOutlineSparkles className="w-full h-full" />
-      </div>
-
       <FeaturedHeader />
-
       <Reveal effect="zoom-in" duration={0.5}>
         <div className="overflow-hidden">
           <div className="relative">
