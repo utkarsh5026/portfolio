@@ -64,7 +64,7 @@ const ContactMe: React.FC = () => {
             <CardContent className="p-4 sm:p-6 md:p-8 lg:p-10">
               <div className="text-center space-y-4 sm:space-y-6 md:space-y-8">
                 <Reveal effect="zoom-in" duration={0.7} delay={0.1}>
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-ctp-mauve">
+                  <h3 className="text-2xl sm:text-2xl md:text-3xl font-bold text-ctp-mauve">
                     Let's Work Together!
                   </h3>
                 </Reveal>
@@ -107,12 +107,12 @@ const ContactMe: React.FC = () => {
                         <Button
                           variant="ghost"
                           size="default"
-                          className={`w-full sm:w-[calc(50%-0.5rem)] md:w-auto group relative overflow-hidden transition-all duration-300 ${link.color} hover:bg-ctp-base`}
+                          className={`w-full sm:w-[calc(50%-0.5rem)] md:w-auto px-4 py-3 rounded-lg group relative overflow-hidden transition-all duration-300 ${link.color} hover:bg-ctp-base`}
                           onClick={() => window.open(link.href, "_blank")}
                         >
-                          <div className="relative flex items-center gap-2 text-ctp-text">
-                            {link.icon}
-                            <span>{link.name}</span>
+                          <div className="relative flex items-center justify-center gap-3 text-ctp-text">
+                            <span className="text-xl">{link.icon}</span>
+                            <span className="font-medium">{link.name}</span>
                           </div>
                         </Button>
                       </Reveal>
