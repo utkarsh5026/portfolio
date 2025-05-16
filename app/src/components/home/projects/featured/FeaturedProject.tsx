@@ -6,6 +6,7 @@ import Certificate from "./Certificate";
 import FeaturedHeader from "./FeaturedHeader";
 import Reveal from "@/components/animations/reveal/Reveal";
 import useMobile from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
 
 interface FeaturedProjectProps {
   featuredProject: Project;
@@ -44,47 +45,50 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
 
             {/* Main content card */}
             <Reveal effect="fade-up" duration={0.6} delay={0.2}>
-              <div className="relative rounded-xl overflow-hidden">
-                {/* Gradient border */}
-                <div className="absolute inset-0 p-1 rounded-xl bg-gradient-to-br from-ctp-peach via-ctp-maroon to-ctp-blue motion-safe:animate-border">
-                  <div className="w-full h-full rounded-lg bg-ctp-crust" />
+              <div
+                className={cn(
+                  "relative rounded-xl overflow-auto shadow-xl",
+                  !isMobile && "bg-gradient-to-br from-ctp-mantle to-ctp-crust"
+                )}
+              >
+                <div className="relative px-8 pt-8 pb-4">
+                  {!isMobile && (
+                    <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-ctp-peach/20 text-ctp-peach border border-ctp-peach/10 text-xs font-semibold">
+                      <FaStar className="text-ctp-peach" />
+                      Featured
+                    </div>
+                  )}
+
+                  <Reveal effect="slide-in" direction="up" duration={0.6}>
+                    <h2 className="text-3xl font-bold bg-gradient-to-r from-ctp-peach via-ctp-maroon to-ctp-peach bg-clip-text text-transparent text-pretty">
+                      {featuredProject.name}
+                    </h2>
+                  </Reveal>
                 </div>
 
-                <div className="relative rounded-xl overflow-hidden shadow-xl">
-                  {/* Project card header with featured badge */}
-                  <div className="relative px-8 pt-8 pb-4 bg-gradient-to-br from-ctp-mantle to-ctp-crust">
-                    {!isMobile && (
-                      <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-ctp-peach/20 text-ctp-peach border border-ctp-peach/10 text-xs font-semibold">
-                        <FaStar className="text-ctp-peach" />
-                        Featured
-                      </div>
+                {/* Tab navigation */}
+                <TabNavigation
+                  activeTab={activeTab}
+                  setActiveTab={setActiveTab}
+                />
+
+                <div
+                  className={cn(
+                    "p-8",
+                    !isMobile &&
+                      "bg-gradient-to-br from-ctp-mantle to-ctp-crust"
+                  )}
+                >
+                  <div className="flex flex-col xl:flex-row gap-10 items-center">
+                    {isMobile && activeTab === "overview" && (
+                      <Certificate name={featuredProject.name} />
                     )}
-
-                    <Reveal effect="slide-in" direction="up" duration={0.6}>
-                      <h2 className="text-3xl font-bold bg-gradient-to-r from-ctp-peach via-ctp-maroon to-ctp-peach bg-clip-text text-transparent text-pretty">
-                        {featuredProject.name}
-                      </h2>
-                    </Reveal>
-                  </div>
-
-                  {/* Tab navigation */}
-                  <TabNavigation
-                    activeTab={activeTab}
-                    setActiveTab={setActiveTab}
-                  />
-
-                  <div className="bg-gradient-to-br from-ctp-crust to-ctp-mantle p-8">
-                    <div className="flex flex-col xl:flex-row gap-10 items-center">
-                      {isMobile && activeTab === "overview" && (
-                        <Certificate name={featuredProject.name} />
-                      )}
-                      <ProjectContent
-                        activeTab={activeTab}
-                        featuredProject={featuredProject}
-                        handleProjectSelect={handleProjectSelect}
-                      />
-                      {!isMobile && <Certificate name={featuredProject.name} />}
-                    </div>
+                    <ProjectContent
+                      activeTab={activeTab}
+                      featuredProject={featuredProject}
+                      handleProjectSelect={handleProjectSelect}
+                    />
+                    {!isMobile && <Certificate name={featuredProject.name} />}
                   </div>
                 </div>
               </div>
@@ -111,7 +115,7 @@ const TabNavigation: React.FC<TabNavigationProps> = ({
   setActiveTab,
 }) => {
   return (
-    <div className="flex bg-ctp-crust border-b border-ctp-surface0">
+    <div className="flex">
       <button
         className={`px-6 py-2.5 text-sm font-medium transition-colors relative ${
           activeTab === "overview"

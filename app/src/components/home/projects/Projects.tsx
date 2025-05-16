@@ -85,7 +85,7 @@ const Projects: React.FC = () => {
   return (
     <Section id="projects" label="Projects" icon="code">
       <ProjectThemeProvider>
-        <div ref={projectsRef} className="relative max-w-6xl mx-auto px-4 py-8">
+        <div ref={projectsRef} className="relative max-w-6xl mx-auto">
           <Reveal effect="fade-up" duration={0.7} delay={0.1}>
             <Tabs defaultValue="featured" className="w-full">
               <div className="w-full flex justify-end">
