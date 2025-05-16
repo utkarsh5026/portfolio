@@ -108,14 +108,16 @@ const Projects: React.FC = () => {
                     className="flex-1 data-[state=active]:bg-ctp-peach/20 data-[state=active]:text-ctp-peach"
                   >
                     <Sparkles className="w-4 h-4 mr-2" />
-                    Featured Project
+                    <span className="hidden md:block">Featured Project</span>
+                    <span className="block md:hidden">Featured</span>
                   </TabsTrigger>
                   <TabsTrigger
                     value="gallery"
                     className="flex-1 data-[state=active]:bg-ctp-green/20 data-[state=active]:text-ctp-green"
                   >
                     <Code className="w-4 h-4 mr-2" />
-                    Project Gallery
+                    <span className="hidden md:block">Project Gallery</span>
+                    <span className="block md:hidden">Gallery</span>
                   </TabsTrigger>
                 </TabsList>
               </div>

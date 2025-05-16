@@ -6,6 +6,7 @@ import ProjectContent from "./ProjectContent";
 import Certificate from "./Certificate";
 import FeaturedHeader from "./FeaturedHeader";
 import Reveal from "@/components/animations/reveal/Reveal";
+import useMobile from "@/hooks/use-mobile";
 
 interface FeaturedProjectProps {
   featuredProject: Project;
@@ -31,6 +32,7 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
   handleProjectSelect,
 }) => {
   const [activeTab, setActiveTab] = useState<Tab>("overview");
+  const { isMobile } = useMobile();
 
   return (
     <div className="mb-16 max-w-6xl mx-auto relative">
@@ -60,13 +62,15 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
                 <div className="relative rounded-xl overflow-hidden shadow-xl">
                   {/* Project card header with featured badge */}
                   <div className="relative px-8 pt-8 pb-4 bg-gradient-to-br from-ctp-mantle to-ctp-crust">
-                    <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-ctp-peach/20 text-ctp-peach border border-ctp-peach/10 text-xs font-semibold">
-                      <FaStar className="text-ctp-peach" />
-                      Featured
-                    </div>
+                    {!isMobile && (
+                      <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-ctp-peach/20 text-ctp-peach border border-ctp-peach/10 text-xs font-semibold">
+                        <FaStar className="text-ctp-peach" />
+                        Featured
+                      </div>
+                    )}
 
                     <Reveal effect="slide-in" direction="up" duration={0.6}>
-                      <h2 className="text-3xl font-bold bg-gradient-to-r from-ctp-peach via-ctp-maroon to-ctp-peach bg-clip-text text-transparent">
+                      <h2 className="text-3xl font-bold bg-gradient-to-r from-ctp-peach via-ctp-maroon to-ctp-peach bg-clip-text text-transparent text-pretty">
                         {featuredProject.name}
                       </h2>
                     </Reveal>
@@ -80,12 +84,15 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
 
                   <div className="bg-gradient-to-br from-ctp-crust to-ctp-mantle p-8">
                     <div className="flex flex-col xl:flex-row gap-10 items-center">
+                      {isMobile && activeTab === "overview" && (
+                        <Certificate name={featuredProject.name} />
+                      )}
                       <ProjectContent
                         activeTab={activeTab}
                         featuredProject={featuredProject}
                         handleProjectSelect={handleProjectSelect}
                       />
-                      <Certificate name={featuredProject.name} />
+                      {!isMobile && <Certificate name={featuredProject.name} />}
                     </div>
                   </div>
                 </div>
