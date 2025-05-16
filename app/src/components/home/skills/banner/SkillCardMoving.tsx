@@ -22,7 +22,7 @@ import {
   SiLangchain,
   SiGo,
 } from "react-icons/si";
-import { motion } from "framer-motion";
+import SkillItem from "./SkillItem";
 
 // Map skills to Catppuccin colors
 const skillColors: Record<string, string> = {
@@ -126,16 +126,6 @@ const SkillCardMoving: React.FC = () => {
       {/* Decorative background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-ctp-crust via-ctp-mantle to-ctp-crust z-0"></div>
 
-      {/* Subtle pattern overlay */}
-      <div
-        className="absolute inset-0 opacity-5 z-0"
-        style={{
-          backgroundImage: `radial-gradient(circle, var(--ctp-overlay0) 1px, transparent 1px)`,
-          backgroundSize: "20px 20px",
-        }}
-      ></div>
-
-      {/* Skills slider */}
       <div className="relative py-3 sm:py-4 md:py-5 z-10">
         <div
           ref={elementRef}
@@ -151,58 +141,14 @@ const SkillCardMoving: React.FC = () => {
             const color = skillColors[skill.name] || "ctp-text";
 
             return (
-              <div
+              <button
                 key={`${skill.name}-${index}`}
                 className="mx-4 sm:mx-6 md:mx-8"
                 onMouseEnter={() => setHoveredSkill(`${skill.name}-${index}`)}
+                title={skill.name}
               >
-                <motion.div
-                  className={`
-                    flex items-center gap-2 px-3 py-1 rounded-full
-                    bg-ctp-surface0/50 backdrop-blur-sm
-                    border border-ctp-surface0 hover:border-ctp-${color}
-                    transition-all duration-300
-                    ${isHovered ? `shadow-md shadow-ctp-${color}/20` : ""}
-                  `}
-                  animate={{
-                    scale: isHovered ? 1.05 : 1,
-                    y: isHovered ? -2 : 0,
-                  }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {/* Icon with dynamic color */}
-                  <div
-                    className={`
-                    text-ctp-${color} text-xs sm:text-sm md:text-base
-                    transition-all duration-300
-                    ${isHovered ? "scale-110" : ""}
-                  `}
-                  >
-                    {skill.icon}
-                  </div>
-
-                  {/* Skill name */}
-                  <span
-                    className={`
-                    text-sm  font-medium
-                    transition-colors duration-300
-                    ${isHovered ? `text-ctp-${color}` : "text-ctp-text"}
-                  `}
-                  >
-                    {skill.name}
-                  </span>
-
-                  {/* Hover indicator dot */}
-                  {isHovered && (
-                    <motion.div
-                      className={`absolute -right-1 -top-1 w-2 h-2 rounded-full bg-ctp-${color}`}
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      exit={{ scale: 0, opacity: 0 }}
-                    />
-                  )}
-                </motion.div>
-              </div>
+                <SkillItem skill={skill} isHovered={isHovered} color={color} />
+              </button>
             );
           })}
         </div>
