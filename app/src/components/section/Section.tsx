@@ -63,7 +63,7 @@ const Section: React.FC<SectionProps> = ({
           )}
 
           <div className="flex relative z-10">
-            <div ref={contentRef} className="p-5 flex-1 overflow-hidden">
+            <div ref={contentRef} className="p-5 flex-1 overflow-auto">
               {children}
             </div>
           </div>
