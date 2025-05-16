@@ -11,6 +11,7 @@ import EditorTabs from "./tabs/EditorTabs";
 import { OutlineProvider } from "./outline/context/OutlineProvider";
 import { useEditorContext } from "./context/explorerContext";
 import Terminal from "./terminal/Terminal";
+import useMobile from "@/hooks/use-mobile";
 
 const TerminalHeader = lazy(
   () => import("@/components/home/intro/PersonalHeader")
@@ -33,6 +34,7 @@ const Articles = lazy(() => import("@/components/home/articles/Articles"));
  */
 const CodeEditor: React.FC = () => {
   const { explorerOpen, terminalOpen } = useEditorContext();
+  const { isMobile } = useMobile();
 
   // Create a mapping of all section components
   const sections: Record<SectionType, React.ReactNode> = useMemo(
@@ -53,21 +55,23 @@ const CodeEditor: React.FC = () => {
     <OutlineProvider>
       <div className="min-h-screen bg-ctp-base flex">
         <div className="flex h-screen w-screen max-w-screen overflow-hidden">
-          <SideBar />
+          {!isMobile && <SideBar />}
           <div className={cn("flex-1 flex")}>
-            <AnimatePresence>
-              {explorerOpen && (
-                <motion.div
-                  initial={{ width: 0, opacity: 0 }}
-                  animate={{ width: "13rem", opacity: 1 }}
-                  exit={{ width: 0, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="h-full"
-                >
-                  <Explorer />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {!isMobile && (
+              <AnimatePresence>
+                {explorerOpen && (
+                  <motion.div
+                    initial={{ width: 0, opacity: 0 }}
+                    animate={{ width: "13rem", opacity: 1 }}
+                    exit={{ width: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="h-full"
+                  >
+                    <Explorer />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            )}
             <div className="flex-1 flex flex-col flex-grow">
               <EditorTabs sections={sections} />
               <CodeContent sections={sections} />
