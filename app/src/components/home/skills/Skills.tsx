@@ -10,6 +10,7 @@ import SkillCardMoving from "./SkillCardMoving";
 import WhatDoIKnow from "./modal/WhatDoIKnow";
 import { cn } from "@/lib/utils";
 import Reveal from "@/components/animations/reveal/Reveal";
+import useMobile from "@/hooks/use-mobile";
 
 const SKILL_ID = "skills";
 
@@ -19,6 +20,7 @@ const Skills: React.FC = () => {
     triggerOnce: true,
   });
   const [isOpen, setIsOpen] = useState(false);
+  const { isMobile } = useMobile();
 
   return (
     <Section id={SKILL_ID} label="Skills" icon="magic">
@@ -54,11 +56,13 @@ const Skills: React.FC = () => {
           </Reveal>
         </div>
 
-        <Reveal effect="fade-up" duration={0.8} delay={0.3}>
-          <div className="relative z-10 overflow-hidden rounded-xl shadow-lg">
-            <SkillCardMoving />
-          </div>
-        </Reveal>
+        {!isMobile && (
+          <Reveal effect="fade-up" duration={0.8} delay={0.3}>
+            <div className="relative z-10 overflow-auto rounded-xl shadow-lg">
+              <SkillCardMoving />
+            </div>
+          </Reveal>
+        )}
 
         <div className="flex flex-col gap-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

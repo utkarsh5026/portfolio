@@ -117,7 +117,7 @@ const SkillCardMoving: React.FC = () => {
   return (
     <div
       ref={ref}
-      className="w-full overflow-hidden rounded-xl relative"
+      className="w-full overflow-auto rounded-xl relative max-w-full"
       style={{
         willChange: "transform",
         contain: "content",
@@ -134,10 +134,6 @@ const SkillCardMoving: React.FC = () => {
           backgroundSize: "20px 20px",
         }}
       ></div>
-
-      {/* Top and bottom gradients for fading effect */}
-      {/* <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-ctp-mauve via-ctp-blue to-ctp-lavender opacity-50 z-10"></div>
-      <div className="absolute bottom-0 inset-x-0 h-1 bg-gradient-to-r from-ctp-lavender via-ctp-blue to-ctp-mauve opacity-50 z-10"></div> */}
 
       {/* Skills slider */}
       <div className="relative py-3 sm:py-4 md:py-5 z-10">
