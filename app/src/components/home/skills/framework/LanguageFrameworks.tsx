@@ -118,7 +118,7 @@ const LanguageFrameworks: React.FC<LanguageFrameworksProps> = ({
                 onMouseLeave={() => setHoveredFramework(null)}
               >
                 <div
-                  className={`flex items-center gap-2 px-3 py-2 text-sm rounded-md text-ctp-subtext1 hover:text-ctp-text transition-all duration-300 bg-ctp-crust hover:bg-ctp-surface0 border border-ctp-surface0 hover:border-ctp-${
+                  className={`flex items-center gap-2 px-3 py-2 text-sm rounded-md text-ctp-subtext1 hover:text-ctp-text transition-all duration-300  hover:bg-ctp-surface0  hover:border-ctp-${
                     getLanguageConfigs(language).color
                   }/50 hover:-translate-y-1 hover:shadow-md`}
                 >
