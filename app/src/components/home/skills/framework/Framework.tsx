@@ -33,7 +33,7 @@ const Framework: React.FC = () => {
       className="skill-card relative group w-full perspective-1000"
     >
       {/* Main card */}
-      <Card className="relative bg-ctp-mantle backdrop-blur-sm border border-ctp-surface0 hover:border-ctp-surface1 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:transform overflow-hidden">
+      <Card className="relative bg-ctp-crust backdrop-blur-sm border-none hover:border-ctp-surface1 transition-all duration-300 shadow-lg hover:shadow-xl group-hover:transform overflow-hidden">
         {/* Accent line at the top */}
 
         <CardHeader className="pb-4">

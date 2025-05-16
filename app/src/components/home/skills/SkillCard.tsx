@@ -54,7 +54,7 @@ const SkillCard: React.FC<SkillCardProps> = ({
     >
       <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-ctp-blue/30 to-ctp-lavender/30 opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500"></div>
 
-      <Card className="relative bg-ctp-mantle border border-ctp-surface0 hover:border-ctp-surface2 transition-all duration-300 overflow-hidden">
+      <Card className="relative bg-ctp-base border-none hover:border-ctp-surface2 transition-all duration-300 overflow-hidden">
         <div className="p-6">
           <Reveal effect="fade-up" duration={0.5} delay={0.1}>
             <div className="flex items-start gap-4 mb-4">
