@@ -6,7 +6,7 @@ import { Languages, Database, Server, Code2, Sparkles } from "lucide-react";
 import OutlineNode from "@/components/home/editor/outline/OutlineNode";
 import SkillCard from "./SkillCard";
 import Framework from "./framework/Framework";
-import SkillCardMoving from "./SkillCardMoving";
+import SkillCardMoving from "./banner/SkillCardMoving";
 import WhatDoIKnow from "./modal/WhatDoIKnow";
 import { cn } from "@/lib/utils";
 import Reveal from "@/components/animations/reveal/Reveal";

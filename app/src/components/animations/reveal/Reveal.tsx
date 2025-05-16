@@ -8,6 +8,7 @@ import {
   getDelayClass,
   getClassForEffect,
 } from "./effects";
+import useMobile from "@/hooks/use-mobile";
 
 interface RevealProps {
   children: React.ReactNode;
@@ -45,6 +46,7 @@ const Reveal: React.FC<RevealProps> = ({
   style = {},
 }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const { isMobile } = useMobile();
 
   const [ref, inView] = useInView({
     triggerOnce: once,
@@ -53,11 +55,8 @@ const Reveal: React.FC<RevealProps> = ({
   });
 
   useEffect(() => {
-    if (inView) {
-      setIsVisible(true);
-    } else if (!once) {
-      setIsVisible(false);
-    }
+    if (inView) setIsVisible(true);
+    else if (!once) setIsVisible(false);
   }, [inView, once]);
 
   const getAnimationClasses = () => {
@@ -101,6 +100,14 @@ const Reveal: React.FC<RevealProps> = ({
     "--random-y": cascade ? "0px" : `${(Math.random() - 0.5) * 20}px`,
     "--random-angle": cascade ? "0deg" : `${(Math.random() - 0.5) * 10}deg`,
   } as React.CSSProperties;
+
+  if (isMobile) {
+    return (
+      <div ref={ref} style={customStyle} className={className}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <div ref={ref} className={combinedClassName} style={customStyle}>

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { useSkillAnimation, useCloneElements } from "./hooks";
+import { useSkillAnimation, useCloneElements } from "../hooks";
 import {
   SiJavascript,
   SiDocker,
