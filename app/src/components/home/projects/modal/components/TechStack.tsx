@@ -7,6 +7,7 @@ import Reveal from "@/components/animations/reveal/Reveal";
 import { cn } from "@/lib/utils";
 import getCategoryIcon from "@/components/base/category-icon";
 import { Button } from "@/components/ui/button";
+import getRandomColors from "@/components/home/projects/context/colors";
 
 interface TechStackProps {
   project: Project;
@@ -113,6 +114,7 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
             const zIndex = totalCards - absOffset;
 
             const rotate = isActive ? 0 : stackOffset * 3.5;
+            const cardTheme = getRandomColors(index);
 
             return (
               <motion.div
@@ -144,7 +146,11 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
                   height: "480px",
                 }}
               >
-                <TechStackCard card={card} theme={theme} isActive={isActive} />
+                <TechStackCard
+                  card={card}
+                  theme={cardTheme}
+                  isActive={isActive}
+                />
               </motion.div>
             );
           })}
@@ -235,7 +241,7 @@ const TechStackCard: React.FC<TechStackCardProps> = ({
   return (
     <div
       className={cn(
-        "w-full h-full rounded-xl overflow-hidden",
+        "w-full h-full rounded-xl overflow-hidden flex flex-col",
         "bg-ctp-mantle border border-ctp-surface0",
         "shadow-lg",
         isActive
@@ -272,7 +278,7 @@ const TechStackCard: React.FC<TechStackCardProps> = ({
       </div>
 
       {/* Card Content */}
-      <div className="p-4 h-auto overflow-y-auto custom-scrollbar">
+      <div className="p-4 h-auto overflow-y-auto custom-scrollbar flex-1">
         <div className="space-y-3">
           {card.technologies.map((tech, techIndex) => {
             const [name, description] = tech.includes(" - ")
