@@ -1,7 +1,6 @@
 import {
   Dialog,
   DialogContent,
-  DialogClose,
   DialogPortal,
   DialogOverlay,
 } from "@/components/ui/dialog";
@@ -36,7 +35,6 @@ const DialogModal: React.FC<DialogModalProps> = ({
           )}
         />
         <DialogContent className="bg-ctp-crust text-ctp-flamingo h-full w-full z-[99999] border-ctp-surface0 rounded-3xl overflow-auto max-w-[90%] max-h-max">
-          <DialogClose asChild={false} />
           {children}
         </DialogContent>
       </DialogPortal>

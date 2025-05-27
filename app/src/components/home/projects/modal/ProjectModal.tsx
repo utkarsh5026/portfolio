@@ -26,27 +26,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<Tab>("overview");
   const [explainOpen, setExplainOpen] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const { getProjectTheme } = useProjectTheme();
   const modalRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (modalRef.current) {
-        const rect = modalRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: ((e.clientX - rect.left) / rect.width) * 100,
-          y: ((e.clientY - rect.top) / rect.height) * 100,
-        });
-      }
-    };
-
-    if (isModalOpen) {
-      document.addEventListener("mousemove", handleMouseMove);
-    }
-
-    return () => document.removeEventListener("mousemove", handleMouseMove);
-  }, [isModalOpen]);
 
   useEffect(() => setActiveTab("overview"), [selectedProject]);
 
@@ -57,24 +38,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
     selectedProject.media?.gallery &&
     selectedProject.media?.gallery?.length > 0;
 
-  const backgroundPattern = `
-    radial-gradient(circle at ${mousePosition.x}% ${
-    mousePosition.y
-  }%, var(--ctp-${theme.main})/20 0%, transparent 50%),
-    radial-gradient(circle at ${100 - mousePosition.x}% ${
-    100 - mousePosition.y
-  }%, var(--ctp-${theme.secondary})/15 0%, transparent 50%),
-    linear-gradient(135deg, var(--ctp-base)/95 0%, var(--ctp-mantle)/98 100%)
-  `;
-
   return (
     <DialogModal isOpen={isModalOpen} handleChange={closeModal}>
-      <Reveal className=" inset-0 z-[9999999] flex items-center justify-center p-4 overflow-hidden w-full h-full ">
+      <Reveal className=" inset-0 z-[9999999] flex items-center justify-center  overflow-hidden w-full h-full ">
         <div
           ref={modalRef}
-          className="relative w-[95vw] max-w-7xl h-[90vh] rounded-3xl overflow-hidden shadow-2xl backdrop-blur-xl border border-white/10"
+          className="relative w-[95vw] max-w-6xl h-[90vh] rounded-3xl overflow-hidden shadow-2xl backdrop-blur-xl border border-white/10"
           style={{
-            background: backgroundPattern,
             transform: "perspective(1000px)",
           }}
         >

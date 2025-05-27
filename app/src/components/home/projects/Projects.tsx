@@ -140,66 +140,64 @@ const Projects: React.FC = () => {
                   parentId="projects"
                   icon={<Code className="w-3 h-3 text-ctp-green" />}
                 >
-                  <div>
-                    <Reveal effect="fade-up" duration={0.7}>
-                      <div className="sticky top-0 z-20 bg-ctp-mantle/80 backdrop-blur-md py-4 border-b border-ctp-surface0 mb-8 rounded-t-lg">
-                        <div className="flex flex-col md:flex-row md:items-center gap-4 px-4">
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-ctp-green to-ctp-teal flex items-center justify-center shadow-md shadow-ctp-green/10">
-                              <Globe className="w-5 h-5 text-ctp-crust" />
-                            </div>
-                            <h3 className="text-xl font-semibold bg-gradient-to-r from-ctp-green to-ctp-teal text-transparent bg-clip-text">
-                              Project Gallery
-                            </h3>
+                  <Reveal effect="fade-up" duration={0.7}>
+                    <div className="sticky top-0 z-20 bg-ctp-mantle/80 backdrop-blur-md py-4 border-b border-ctp-surface0 mb-8 rounded-t-lg">
+                      <div className="flex flex-col md:flex-row md:items-center gap-4 px-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-ctp-green to-ctp-teal flex items-center justify-center shadow-md shadow-ctp-green/10">
+                            <Globe className="w-5 h-5 text-ctp-crust" />
                           </div>
+                          <h3 className="text-xl font-semibold bg-gradient-to-r from-ctp-green to-ctp-teal text-transparent bg-clip-text">
+                            Project Gallery
+                          </h3>
                         </div>
                       </div>
-                    </Reveal>
-
-                    {/* Project grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                      {otherProjects
-                        .slice(0, visibleCount)
-                        .map((project, index) => (
-                          <OutlineNode
-                            key={project.name}
-                            id={`project-${project.name}`}
-                            label={project.name}
-                            level={2}
-                            parentId="project-gallery"
-                          >
-                            <Reveal
-                              effect="fade-up"
-                              duration={0.7}
-                              delay={0.1 * (index % 3)}
-                              staggerChildren={0.1}
-                              className="w-full h-full flex flex-1"
-                            >
-                              <ProjectSmall
-                                project={project}
-                                handleProjectSelect={handleProjectSelect}
-                                index={index}
-                              />
-                            </Reveal>
-                          </OutlineNode>
-                        ))}
                     </div>
+                  </Reveal>
 
-                    {visibleCount < otherProjects.length && (
-                      <Reveal effect="fade-up" duration={0.7} delay={0.3}>
-                        <div className="flex justify-center mt-12">
-                          <Button
-                            onClick={loadMore}
-                            variant="outline"
-                            className="border-ctp-green/30 hover:border-ctp-green/50 bg-ctp-green/5 hover:bg-ctp-green/10 hover:text-ctp-green text-ctp-green px-6 py-6 text-small hover:scale-105 transition-all duration-300"
+                  {/* Project grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                    {otherProjects
+                      .slice(0, visibleCount)
+                      .map((project, index) => (
+                        <OutlineNode
+                          key={project.name}
+                          id={`project-${project.name}`}
+                          label={project.name}
+                          level={2}
+                          parentId="project-gallery"
+                        >
+                          <Reveal
+                            effect="fade-up"
+                            duration={0.7}
+                            delay={0.1 * (index % 3)}
+                            staggerChildren={0.1}
+                            className="w-full h-full flex flex-1"
                           >
-                            Load more ({otherProjects.length - visibleCount}{" "}
-                            remaining)
-                          </Button>
-                        </div>
-                      </Reveal>
-                    )}
+                            <ProjectSmall
+                              project={project}
+                              handleProjectSelect={handleProjectSelect}
+                              index={index}
+                            />
+                          </Reveal>
+                        </OutlineNode>
+                      ))}
                   </div>
+
+                  {visibleCount < otherProjects.length && (
+                    <Reveal effect="fade-up" duration={0.7} delay={0.3}>
+                      <div className="flex justify-center mt-12">
+                        <Button
+                          onClick={loadMore}
+                          variant="outline"
+                          className="border-ctp-green/30 hover:border-ctp-green/50 bg-ctp-green/5 hover:bg-ctp-green/10 hover:text-ctp-green text-ctp-green px-6 py-6 text-small hover:scale-105 transition-all duration-300"
+                        >
+                          Load more ({otherProjects.length - visibleCount}{" "}
+                          remaining)
+                        </Button>
+                      </div>
+                    </Reveal>
+                  )}
                 </OutlineNode>
               </TabsContent>
             </Tabs>
