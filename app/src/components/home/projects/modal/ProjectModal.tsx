@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Project } from "@/types";
-import { Code, ChevronRight, Info, FileCode, List, Brain } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import DialogModal from "@/components/utils/DialogModal";
-import TechStackDisplay from "./TechStackDisplay";
-import ProjectOverview from "./ProjectOverview";
-import { useProjectTheme } from "../context/ThemeContext";
-import { cn } from "@/lib/utils";
-import ExplainItToMe from "./ExplainItToMe";
+import { type ProjectTheme, useProjectTheme } from "../context/ThemeContext";
+import {
+  OverviewContent,
+  FeaturesContent,
+  TechStack,
+  MediaShowcase,
+  Sidebar,
+} from "./components";
+import Reveal from "@/components/animations/reveal/Reveal";
+import "./style.css";
 
-type Tab = "overview" | "features" | "tech";
+type Tab = "overview" | "features" | "tech" | "media";
 
 interface ProjectModalProps {
   isModalOpen: boolean;
@@ -17,365 +21,144 @@ interface ProjectModalProps {
   closeModal: () => void;
 }
 
-/**
- * ProjectModal Component
- *
- * This component displays a modal for a selected project, allowing users to view
- * detailed information about the project, including its overview, key features,
- * and technology stack. The modal can be opened or closed based on user interaction.
- *
- * Props:
- * - isModalOpen: boolean - Indicates if the modal is currently open.
- * - selectedProject: Project | null - The project object containing details to display.
- * - closeModal: () => void - Function to close the modal.
- *
- * State:
- * - activeTab: Tab - Tracks the currently active tab (overview, features, tech).
- * - explainOpen: boolean - Controls the visibility of the explanation modal.
- *
- * Usage:
- * <ProjectModal
- *   isModalOpen={isOpen}
- *   selectedProject={project}
- *   closeModal={handleClose}
- * />
- */
 const ProjectModal: React.FC<ProjectModalProps> = ({
   isModalOpen,
   selectedProject,
   closeModal,
 }) => {
   const [activeTab, setActiveTab] = useState<Tab>("overview");
-  const { getProjectTheme } = useProjectTheme();
   const [explainOpen, setExplainOpen] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { getProjectTheme } = useProjectTheme();
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (modalRef.current) {
+        const rect = modalRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: ((e.clientX - rect.left) / rect.width) * 100,
+          y: ((e.clientY - rect.top) / rect.height) * 100,
+        });
+      }
+    };
+
+    if (isModalOpen) {
+      document.addEventListener("mousemove", handleMouseMove);
+    }
+
+    return () => document.removeEventListener("mousemove", handleMouseMove);
+  }, [isModalOpen]);
+
+  useEffect(() => setActiveTab("overview"), [selectedProject]);
 
   if (!selectedProject) return null;
 
   const theme = getProjectTheme(selectedProject);
+  const hasMedia =
+    selectedProject.media?.gallery &&
+    selectedProject.media?.gallery?.length > 0;
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      x: 0,
-      transition: {
-        delay: 0.1 + i * 0.05,
-        duration: 0.5,
-      },
-    }),
-  };
+  const backgroundPattern = `
+    radial-gradient(circle at ${mousePosition.x}% ${
+    mousePosition.y
+  }%, var(--ctp-${theme.main})/20 0%, transparent 50%),
+    radial-gradient(circle at ${100 - mousePosition.x}% ${
+    100 - mousePosition.y
+  }%, var(--ctp-${theme.secondary})/15 0%, transparent 50%),
+    linear-gradient(135deg, var(--ctp-base)/95 0%, var(--ctp-mantle)/98 100%)
+  `;
 
   return (
-    <AnimatePresence>
-      <DialogModal isOpen={isModalOpen} handleChange={closeModal}>
-        <div className="inset-0 z-[1000] flex items-center justify-center overflow-y-auto overflow-x-hidden ">
-          {/* Modal Container - Fixed width */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 30,
-              duration: 0.3,
-            }}
-            className="relative w-[90vw] max-w-6xl h-[85vh] bg-ctp-mantle border border-ctp-surface0 rounded-xl shadow-xl overflow-hidden z-[1001]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Decorative corner elements */}
-            <div className="absolute top-0 left-0 w-16 h-16 overflow-hidden">
-              <div
-                className={`absolute -top-8 -left-8 w-16 h-16 rotate-45 bg-ctp-${theme.main}/30`}
-              ></div>
-            </div>
-            <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
-              <div
-                className={`absolute -top-8 -right-8 w-16 h-16 rotate-45 bg-ctp-${theme.secondary}/30`}
-              ></div>
-            </div>
-
-            {/* Colored accent line */}
-            <div
-              className={`h-1.5 w-full bg-gradient-to-r from-ctp-${theme.main} via-ctp-${theme.main}/70 to-ctp-${theme.secondary}`}
-            />
-
-            {/* Fixed header area */}
-            <ModalHeader
+    <DialogModal isOpen={isModalOpen} handleChange={closeModal}>
+      <Reveal className=" inset-0 z-[9999999] flex items-center justify-center p-4 overflow-hidden w-full h-full ">
+        <div
+          ref={modalRef}
+          className="relative w-[95vw] max-w-7xl h-[90vh] rounded-3xl overflow-hidden shadow-2xl backdrop-blur-xl border border-white/10"
+          style={{
+            background: backgroundPattern,
+            transform: "perspective(1000px)",
+          }}
+        >
+          {/* Main Content Layout */}
+          <div className="flex h-full">
+            <Sidebar
+              project={selectedProject}
               theme={theme}
-              selectedProject={selectedProject}
               activeTab={activeTab}
               setActiveTab={setActiveTab}
               explainOpen={explainOpen}
               setExplainOpen={setExplainOpen}
+              hasMedia={hasMedia || false}
             />
 
-            {/* Scrollable content area */}
-            <div className="overflow-y-auto h-[calc(85vh-8.5rem)] hide-scrollbar">
-              <div className="px-8 py-6">
-                <AnimatePresence mode="wait">
-                  {activeTab === "overview" && (
-                    <TabContent key="overview">
-                      <ProjectOverview project={selectedProject} />
-                    </TabContent>
-                  )}
-
-                  {activeTab === "features" && (
-                    <TabContent key="features">
-                      <motion.div
-                        className="bg-ctp-crust rounded-xl border border-ctp-surface0 overflow-hidden shadow-lg"
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <div
-                          className={`py-3 px-5 border-b border-ctp-surface0 flex items-center gap-2 bg-ctp-${theme.main}/10`}
-                        >
-                          <List className={`w-4 h-4 text-ctp-${theme.main}`} />
-                          <h4 className={`font-bold text-ctp-${theme.main}`}>
-                            Key Features
-                          </h4>
-                        </div>
-
-                        <div className="p-6">
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                            {selectedProject.features.map((feature) => (
-                              <motion.div
-                                key={feature}
-                                custom={feature}
-                                initial="hidden"
-                                animate="visible"
-                                variants={itemVariants}
-                                className="flex items-start gap-3 group"
-                              >
-                                <div
-                                  className={`p-1.5 rounded-full bg-ctp-${theme.main}/10 text-ctp-${theme.main} mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform`}
-                                >
-                                  <ChevronRight className="w-3.5 h-3.5" />
-                                </div>
-                                <span className="text-ctp-subtext0 group-hover:text-ctp-text transition-colors">
-                                  {feature}
-                                </span>
-                              </motion.div>
-                            ))}
-                          </div>
-                        </div>
-                      </motion.div>
-                    </TabContent>
-                  )}
-
-                  {activeTab === "tech" && (
-                    <TabContent key="tech">
-                      <motion.div
-                        className="bg-ctp-crust rounded-xl border border-ctp-surface0 overflow-hidden shadow-lg"
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <div
-                          className={`p-5 border-b border-ctp-surface0 flex items-center gap-2 bg-ctp-${theme.main}/10`}
-                        >
-                          <FileCode
-                            className={`w-4 h-4 text-ctp-${theme.main}`}
-                          />
-                          <h4 className={`font-bold text-ctp-${theme.main}`}>
-                            Technology Stack
-                          </h4>
-                        </div>
-                        {selectedProject.techStack && (
-                          <TechStackDisplay
-                            techStack={selectedProject.techStack}
-                            theme={theme}
-                          />
-                        )}
-                      </motion.div>
-                    </TabContent>
-                  )}
-                </AnimatePresence>
-              </div>
-            </div>
-
-            <DialogModal
-              isOpen={explainOpen}
-              handleChange={() => setExplainOpen(false)}
-            >
-              <ExplainItToMe project={selectedProject} />
-            </DialogModal>
-          </motion.div>
+            {/* Right Content Area */}
+            <RightContent
+              project={selectedProject}
+              theme={theme}
+              activeTab={activeTab}
+            />
+          </div>
         </div>
-      </DialogModal>
-    </AnimatePresence>
+      </Reveal>
+    </DialogModal>
   );
 };
 
-interface TabButtonProps {
-  isActive: boolean;
-  onClick: () => void;
-  icon: React.ReactNode;
-  label: string;
-  theme: { main: string; secondary: string };
-}
-
-const TabButton: React.FC<TabButtonProps> = ({
-  isActive,
-  onClick,
-  icon,
-  label,
-  theme,
-}) => (
-  <button
-    className={`relative px-4 py-3 flex items-center gap-2 text-sm font-medium transition-colors ${
-      isActive
-        ? `text-ctp-${theme.main}`
-        : "text-ctp-subtext0 hover:text-ctp-text"
-    }`}
-    onClick={onClick}
-  >
-    {icon}
-    {label}
-    {isActive && (
-      <motion.div
-        className={`absolute bottom-0 left-0 right-0 h-0.5 bg-ctp-${theme.main}`}
-        layoutId="activeProjectTab"
-      />
-    )}
-  </button>
-);
-
-const TabContent: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 10 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -10 }}
-    transition={{ duration: 0.3 }}
-  >
-    {children}
-  </motion.div>
-);
-
-interface ModalHeaderProps {
-  theme: {
-    main: string;
-    secondary: string;
-  };
-  selectedProject: Project;
+interface RightContentProps {
+  project: Project;
   activeTab: Tab;
-  setActiveTab: (tab: Tab) => void;
-  explainOpen: boolean;
-  setExplainOpen: (open: boolean) => void;
+  theme: ProjectTheme;
 }
-const ModalHeader: React.FC<ModalHeaderProps> = ({
+
+const RightContent: React.FC<RightContentProps> = ({
+  project,
   theme,
-  selectedProject,
   activeTab,
-  setActiveTab,
-  explainOpen,
-  setExplainOpen,
-}: ModalHeaderProps) => {
+}) => {
   return (
-    <div className="sticky top-0 z-20 backdrop-blur-md bg-ctp-mantle/95 border-b border-ctp-surface0 shadow-sm">
-      {/* Project title and info */}
-      <div className="px-8 py-5 flex justify-between items-center">
-        <div className="flex items-center gap-5">
-          <motion.div
-            initial={{ rotate: -8, scale: 0.9, opacity: 0 }}
-            animate={{ rotate: 0, scale: 1, opacity: 1 }}
-            transition={{ duration: 0.4 }}
-            className={`rounded-xl p-3 bg-gradient-to-br from-ctp-${theme.main} to-ctp-${theme.secondary} shadow-lg`}
-            style={{
-              boxShadow: `0 8px 20px -6px var(--ctp-${theme.main}40)`,
-            }}
-          >
-            <Code className="w-6 h-6 text-ctp-crust" />
-          </motion.div>
-
-          <div>
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-ctp-text to-ctp-text bg-clip-text text-transparent">
-              {selectedProject.name}
-            </h3>
-
-            <motion.div
-              initial={{ y: 10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="flex items-center gap-2 mt-1"
-            >
-              {selectedProject.tags && selectedProject.tags.length > 0 && (
-                <span
-                  className={`text-xs px-3 py-1 rounded-full font-medium bg-ctp-${theme.main}/20 text-ctp-${theme.main}`}
-                >
-                  {selectedProject.tags[0]}
-                </span>
-              )}
-              {selectedProject.tags && selectedProject.tags.length > 1 && (
-                <span className="text-xs px-3 py-1 rounded-full bg-ctp-surface0 text-ctp-subtext0 font-medium">
-                  +{selectedProject.tags.length - 1} tags
-                </span>
-              )}
-            </motion.div>
-          </div>
-        </div>
-
-        <button
-          onClick={() => setExplainOpen(!explainOpen)}
-          className={cn(
-            "relative py-2.5 px-2.5 rounded-lg font-medium text-sm",
-            "overflow-hidden transition-all duration-300",
-            `bg-gradient-to-r from-ctp-${theme.main}/10 to-ctp-${theme.secondary}/10`,
-            "border border-white/10",
-            `shadow-md shadow-ctp-${theme.main}/10`
+    <div className="flex-1 overflow-hidden relative">
+      <div className="h-full overflow-y-auto custom-scrollbar">
+        <AnimatePresence mode="wait">
+          {activeTab === "overview" && (
+            <OverviewContent key="overview" project={project} theme={theme} />
           )}
-        >
-          {/* Add subtle shine effect overlay */}
-
-          {/* Button content */}
-          <div className="flex items-center gap-2 relative z-10">
-            <motion.div
-              animate={{
-                rotate: [0, 5, -5, 0],
-                scale: [1, 1.1, 1.05, 1],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: "loop",
-                repeatDelay: 3,
-              }}
-            >
-              <Brain className="w-5 h-5 text-white/90" />
-            </motion.div>
-            <span className="font-semibold text-white tracking-wide">
-              Explain It To Me
-            </span>
-          </div>
-        </button>
-      </div>
-
-      {/* Tab navigation */}
-      <div className="flex px-8 border-t border-ctp-surface0">
-        <TabButton
-          isActive={activeTab === "overview"}
-          onClick={() => setActiveTab("overview")}
-          icon={<Info className="w-4 h-4" />}
-          label="Overview"
-          theme={theme}
-        />
-        <TabButton
-          isActive={activeTab === "features"}
-          onClick={() => setActiveTab("features")}
-          icon={<List className="w-4 h-4" />}
-          label="Features"
-          theme={theme}
-        />
-        <TabButton
-          isActive={activeTab === "tech"}
-          onClick={() => setActiveTab("tech")}
-          icon={<FileCode className="w-4 h-4" />}
-          label="Tech Stack"
-          theme={theme}
-        />
+          {activeTab === "features" && (
+            <FeaturesContent key="features" project={project} theme={theme} />
+          )}
+          {activeTab === "tech" && (
+            <TechStack key="tech" project={project} theme={theme} />
+          )}
+          {activeTab === "media" && project.media && (
+            <MediaContent key="media" project={project} theme={theme} />
+          )}
+        </AnimatePresence>
       </div>
     </div>
+  );
+};
+
+// Media Content
+const MediaContent: React.FC<{ project: Project; theme: ProjectTheme }> = ({
+  project,
+  theme,
+}) => {
+  if (!project.media) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      className="p-8"
+    >
+      <div className="mb-8">
+        <h2 className="text-3xl font-bold text-white mb-2">Media Gallery</h2>
+        <p className="text-white/60">Visual showcase of the project</p>
+      </div>
+
+      <MediaShowcase media={project.media?.gallery || []} theme={theme} />
+    </motion.div>
   );
 };
 

@@ -1,7 +1,6 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogClose,
   DialogPortal,
   DialogOverlay,
@@ -36,9 +35,9 @@ const DialogModal: React.FC<DialogModalProps> = ({
             blurClasses[blurIntensity]
           )}
         />
-        <DialogContent className="bg-ctp-crust text-ctp-flamingo w-auto z-[99999] border-ctp-surface0 rounded-3xl overflow-auto max-w-[90%] max-h-max">
+        <DialogContent className="bg-ctp-crust text-ctp-flamingo h-full w-full z-[99999] border-ctp-surface0 rounded-3xl overflow-auto max-w-[90%] max-h-max">
           <DialogClose asChild={false} />
-          <DialogDescription className="w-full">{children}</DialogDescription>
+          {children}
         </DialogContent>
       </DialogPortal>
     </Dialog>

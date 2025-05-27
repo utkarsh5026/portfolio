@@ -16,6 +16,19 @@ export type Technology = {
   icon?: React.ReactNode;
 };
 
+export type MediaItem = {
+  type: "image" | "video";
+  url: string;
+  thumbnail?: string;
+  caption?: string;
+  alt?: string;
+  aspectRatio?: string;
+  title: string;
+  description: string;
+  featured?: boolean;
+  tags?: string[];
+};
+
 export type Project = {
   name: string;
   description: string;
@@ -28,6 +41,12 @@ export type Project = {
   tags?: string[];
   techStack?: Record<string, string[]>;
   explain: string[];
+
+  // New media properties
+  media?: {
+    gallery?: MediaItem[]; // Additional media items
+    demo?: MediaItem; // Specific demo video/gif
+  };
 };
 
 export type Article = {

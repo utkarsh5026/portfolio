@@ -1,0 +1,173 @@
+/* Add these styles to your global CSS or index.css */
+
+/* Custom Scrollbar for Modern Modal */
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    transition: background 0.3s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Glassmorphism Effects */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-effect-dark {
+    background: rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth Animations */
+.smooth-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.smooth-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Floating Animation */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Particle Animation */
+@keyframes particle-float {
+
+    0%,
+    100% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translateY(-20px) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+.particle {
+    animation: particle-float 4s ease-in-out infinite;
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Modern Card Hover */
+.modern-card {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modern-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* Glow Effect */
+.glow-effect {
+    position: relative;
+}
+
+.glow-effect::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    filter: blur(10px);
+}
+
+.glow-effect:hover::before {
+    opacity: 0.7;
+}
+
+/* Interactive Button */
+.interactive-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.interactive-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.interactive-btn:hover::before {
+    left: 100%;
+}
+
+.interactive-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .modern-card:hover {
+        transform: translateY(-2px) scale(1.01);
+    }
+
+    .smooth-hover:hover {
+        transform: translateY(-1px);
+    }
+}
