@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import type { ProjectTheme } from "@/components/home/projects/context/ThemeContext";
 import { Layers } from "lucide-react";
 import { technologies } from "@/components/base/technologies";
+import Reveal from "@/components/animations/reveal/Reveal";
 
 interface TechStackProps {
   project: Project;
@@ -11,12 +12,7 @@ interface TechStackProps {
 
 const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      className="p-8"
-    >
+    <Reveal className="p-8">
       <div className="mb-8">
         <h2 className="text-3xl font-bold text-white mb-2">Technology Stack</h2>
         <p className="text-white/60">
@@ -28,47 +24,44 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
         <div className="space-y-8">
           {Object.entries(project.techStack).map(
             ([category, technologies], categoryIndex) => (
-              <motion.div
-                key={category}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: categoryIndex * 0.1 }}
-                className="rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 p-6"
-              >
-                <h3
-                  className={`text-xl font-bold text-ctp-${theme.main} mb-4 flex items-center gap-3`}
-                >
-                  <Layers className="w-5 h-5" />
-                  {category}
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {technologies.map((tech, techIndex) => {
-                    const [name, description] = tech.includes(" - ")
-                      ? tech.split(" - ")
-                      : [tech, ""];
-                    return (
-                      <motion.div
-                        key={tech}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{
-                          delay: 0.1 + categoryIndex * 0.05 + techIndex * 0.02,
-                        }}
-                        className="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300"
-                      >
-                        <div className="font-medium text-white mb-1">
-                          {name}
-                        </div>
-                        {description && (
-                          <div className="text-sm text-white/60">
-                            {description}
+              <Reveal key={category}>
+                <div className="rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 p-6">
+                  <h3
+                    className={`text-xl font-bold text-ctp-${theme.main} mb-4 flex items-center gap-3`}
+                  >
+                    <Layers className="w-5 h-5" />
+                    {category}
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {technologies.map((tech, techIndex) => {
+                      const [name, description] = tech.includes(" - ")
+                        ? tech.split(" - ")
+                        : [tech, ""];
+                      return (
+                        <motion.div
+                          key={tech}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{
+                            delay:
+                              0.1 + categoryIndex * 0.05 + techIndex * 0.02,
+                          }}
+                          className="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300"
+                        >
+                          <div className="font-medium text-white mb-1">
+                            {name}
                           </div>
-                        )}
-                      </motion.div>
-                    );
-                  })}
+                          {description && (
+                            <div className="text-sm text-white/60">
+                              {description}
+                            </div>
+                          )}
+                        </motion.div>
+                      );
+                    })}
+                  </div>
                 </div>
-              </motion.div>
+              </Reveal>
             )
           )}
         </div>
@@ -97,7 +90,7 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
           ))}
         </div>
       )}
-    </motion.div>
+    </Reveal>
   );
 };
 

@@ -1,17 +1,10 @@
 import { Project } from "@/types";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import {
-  Code,
-  List,
-  FileCode,
-  Images,
-  Brain,
-  ExternalLink,
-  Info,
-} from "lucide-react";
+import { Code, List, FileCode, Images, ExternalLink, Info } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { ProjectTheme } from "@/components/home/projects/context/ThemeContext";
+import Reveal from "@/components/animations/reveal/Reveal";
 
 type Tab = "overview" | "features" | "tech" | "media";
 
@@ -30,7 +23,6 @@ const Sidebar: React.FC<SidebarProps> = ({
   theme,
   activeTab,
   setActiveTab,
-  setExplainOpen,
   hasMedia,
 }) => {
   const {
@@ -71,12 +63,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   return (
     <div className="w-80 min-w-80 bg-black/20 backdrop-blur-xl border-r border-white/10 flex flex-col">
       {/* Project Header */}
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.1 }}
-        className="p-8 border-b border-white/10"
-      >
+      <Reveal className="p-8 border-b border-white/10">
         <div className="flex items-center gap-4 mb-6">
           <div
             className={`w-16 h-16 rounded-2xl bg-gradient-to-br from-ctp-${theme.main} to-ctp-${theme.secondary} flex items-center justify-center shadow-lg`}
@@ -111,13 +98,13 @@ const Sidebar: React.FC<SidebarProps> = ({
             <div className="text-xs text-white/60">Media</div>
           </div>
         </div>
-      </motion.div>
+      </Reveal>
 
       {/* Navigation Tabs */}
-      <div className="flex-1 p-6">
+      <Reveal className="flex-1 p-6">
         <nav className="space-y-2">
           {tabs.map((tab) => (
-            <motion.button
+            <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as Tab)}
               className={cn(
@@ -126,8 +113,6 @@ const Sidebar: React.FC<SidebarProps> = ({
                   ? `bg-ctp-${theme.main}/20 border border-ctp-${theme.main}/30 text-ctp-${theme.main}`
                   : "hover:bg-white/5 text-white/70 hover:text-white"
               )}
-              whileHover={{ x: 4 }}
-              whileTap={{ scale: 0.98 }}
             >
               <div
                 className={cn(
@@ -152,45 +137,33 @@ const Sidebar: React.FC<SidebarProps> = ({
                   {tab.count}
                 </span>
               )}
-            </motion.button>
+            </button>
           ))}
         </nav>
-      </div>
+      </Reveal>
 
       {/* Action Buttons */}
       <div className="p-6 border-t border-white/10 space-y-3">
         <motion.button
-          onClick={() => setExplainOpen(true)}
-          className={`w-full p-4 rounded-xl bg-gradient-to-r from-ctp-${theme.main} to-ctp-${theme.secondary} text-white font-medium flex items-center justify-center gap-3 hover:shadow-lg transition-all duration-300`}
+          onClick={() => window.open(githubLink, "_blank")}
+          className={`w-full p-4 rounded-xl bg-gradient-to-r from-ctp-${theme.main}/60 to-ctp-${theme.secondary}/60 text-white font-medium flex items-center justify-center gap-3 hover:shadow-lg transition-all duration-300`}
           whileHover={{ scale: 1.02, y: -2 }}
           whileTap={{ scale: 0.98 }}
+          disabled={githubLink === "private-repository"}
         >
-          <Brain className="w-5 h-5" />
-          Explain It To Me
+          <FaGithub className="w-4 h-4" />
+          Go To Repository
         </motion.button>
 
         <div className="flex gap-3">
-          {githubLink !== "private-repository" && (
-            <motion.button
-              onClick={() => window.open(githubLink, "_blank")}
-              className="flex-1 p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <FaGithub className="w-4 h-4" />
-              Code
-            </motion.button>
-          )}
           {liveLink && (
-            <motion.button
+            <button
               onClick={() => window.open(liveLink, "_blank")}
               className="flex-1 p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.98 }}
             >
               <ExternalLink className="w-4 h-4" />
               Live
-            </motion.button>
+            </button>
           )}
         </div>
       </div>
