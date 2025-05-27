@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from "react";
 import { motion, PanInfo } from "framer-motion";
 import type { Project } from "@/types";
 import type { ProjectTheme } from "@/components/home/projects/context/ThemeContext";
@@ -24,26 +30,29 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Transform techStack object into array of cards
-  const techCards: TechStackCard[] = project.techStack
-    ? Object.entries(project.techStack).map(
-        ([category, technologies], index) => ({
-          category,
-          technologies,
-          index,
-        })
-      )
-    : [];
+  const techCards: TechStackCard[] = useMemo(
+    () =>
+      project.techStack
+        ? Object.entries(project.techStack).map(
+            ([category, technologies], index) => ({
+              category,
+              technologies,
+              index,
+            })
+          )
+        : [],
+    [project.techStack]
+  );
 
   const totalCards = techCards.length;
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % totalCards);
-  };
+  }, [totalCards]);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + totalCards) % totalCards);
-  };
+  }, [totalCards]);
 
   const goToCard = (index: number) => {
     setCurrentIndex(index);
@@ -70,7 +79,7 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [goToNext, goToPrevious]);
 
   if (!project.techStack || totalCards === 0) {
     return (
@@ -242,39 +251,14 @@ const TechStackCard: React.FC<TechStackCardProps> = ({
     <div
       className={cn(
         "w-full h-full rounded-2xl overflow-hidden flex flex-col relative",
-        "bg-gradient-to-br from-ctp-mantle via-ctp-mantle to-ctp-surface0/50",
-        "backdrop-blur-sm border border-white/10",
+        "bg-ctp-mantle",
+        `backdrop-blur-sm border-2 border-ctp-${theme.main}/20`,
         "transition-all duration-300 ease-out",
         isActive
-          ? `shadow-2xl shadow-ctp-${theme.main}/25 border-ctp-${theme.main}/40 scale-[1.02]`
+          ? `shadow-2xl shadow-ctp-${theme.main}/60 border-ctp-${theme.main}/40 scale-[1.02]`
           : "shadow-lg shadow-black/20 hover:shadow-xl hover:shadow-black/30"
       )}
     >
-      {/* Gradient Overlay */}
-      <div
-        className={cn(
-          "absolute inset-0 opacity-20 rounded-2xl",
-          `bg-gradient-to-br from-ctp-${theme.main}/30 via-transparent to-ctp-${theme.secondary}/20`
-        )}
-      />
-
-      {/* Animated Border */}
-      {isActive && (
-        <div
-          className={cn(
-            "absolute inset-0 rounded-2xl opacity-60",
-            `bg-gradient-to-r from-ctp-${theme.main}/40 via-ctp-${theme.secondary}/40 to-ctp-${theme.main}/40`,
-            "animate-pulse"
-          )}
-          style={{
-            background: `conic-gradient(from 0deg, var(--ctp-${theme.main}), var(--ctp-${theme.secondary}), var(--ctp-${theme.main}))`,
-            padding: "1px",
-            mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-            maskComposite: "xor",
-          }}
-        />
-      )}
-
       {/* Card Header */}
       <div className="relative z-10 p-6">
         <div className="flex items-start justify-between mb-4">
@@ -282,7 +266,7 @@ const TechStackCard: React.FC<TechStackCardProps> = ({
             <div
               className={cn(
                 "p-3 rounded-xl relative overflow-hidden",
-                `bg-gradient-to-br from-ctp-${theme.main}/20 to-ctp-${theme.main}/10`,
+
                 "border border-white/10 backdrop-blur-sm"
               )}
             >
@@ -300,7 +284,7 @@ const TechStackCard: React.FC<TechStackCardProps> = ({
               <h3
                 className={cn(
                   "text-xl font-bold mb-1 bg-gradient-to-r bg-clip-text text-transparent",
-                  `from-ctp-${theme.main} to-ctp-${theme.secondary}`
+                  `text-ctp-${theme.main}`
                 )}
               >
                 {card.category}
