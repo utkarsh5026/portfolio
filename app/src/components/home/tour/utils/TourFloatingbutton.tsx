@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useTour } from "../context/TourContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { Lightbulb, Sparkles, PanelRightOpen } from "lucide-react";
+import { generateArrayWithUniqueIds } from "@/utils/unique-ids";
+
+const lightRays = generateArrayWithUniqueIds(4);
 
 const TourFloatingButton: React.FC = () => {
   const { active, startTour } = useTour();
@@ -57,9 +60,9 @@ const TourFloatingButton: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              {[...Array(4)].map((_, i) => (
+              {lightRays.map((ray, i) => (
                 <motion.div
-                  key={`light-ray-${i}`}
+                  key={ray}
                   className="absolute left-1/2 top-1/2 w-px bg-yellow-500 origin-bottom"
                   style={{
                     height: 8 + i * 2,
