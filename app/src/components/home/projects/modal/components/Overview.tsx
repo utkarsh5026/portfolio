@@ -5,7 +5,7 @@ import { Zap, Brain, Lightbulb, X } from "lucide-react";
 import { technologies } from "@/components/base/technologies";
 import Reveal from "@/components/animations/reveal/Reveal";
 import { useState } from "react";
-import ExplainItToMe from "../ExplainItToMe";
+import ExplainItToMe from "../explain-to-me/ExplainItToMe";
 import { Button } from "@/components/ui/button";
 
 interface OverviewContentProps {
