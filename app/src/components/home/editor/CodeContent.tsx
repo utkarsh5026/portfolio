@@ -1,4 +1,4 @@
-import { Suspense, useRef, useState, useEffect } from "react";
+import { Suspense, useRef, useEffect } from "react";
 import {
   useEditorContext,
   sections as sectionKeys,
@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useSwipeable } from "react-swipeable";
 import useMobile from "@/hooks/use-mobile";
 import SwipeTutorialOverlay from "./SwipeTutorialOverlay";
+import { useLocalStorage } from "@/hooks/use-local-storage";
 
 interface CodeContentProps {
   sections: Record<string, React.ReactNode>;
@@ -17,29 +18,28 @@ const CodeContent: React.FC<CodeContentProps> = ({ sections }) => {
     useEditorContext();
   const contentRef = useRef<HTMLDivElement>(null);
   const { isMobile } = useMobile();
-  const [showSwipeTutorial, setShowSwipeTutorial] = useState(false);
+  const {
+    storedValue: hasSeenSwipeTutorial,
+    setValue: setHasSeenSwipeTutorial,
+  } = useLocalStorage("hasSeenSwipeTutorial", false);
 
-  // Check if user has seen tutorial before
   useEffect(() => {
-    if (isMobile) {
-      const hasSeenTutorial = localStorage.getItem("hasSeenSwipeTutorial");
-      if (!hasSeenTutorial) {
-        const timer = setTimeout(() => {
-          setShowSwipeTutorial(true);
-        }, 2000);
-        return () => clearTimeout(timer);
-      }
-    }
-  }, [isMobile]);
+    if (!isMobile) return;
+    if (hasSeenSwipeTutorial) return;
+
+    const timer = setTimeout(() => {
+      setHasSeenSwipeTutorial(true);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [isMobile, hasSeenSwipeTutorial, setHasSeenSwipeTutorial]);
 
   const dismissTutorial = () => {
-    setShowSwipeTutorial(false);
-    localStorage.setItem("hasSeenSwipeTutorial", "true");
+    setHasSeenSwipeTutorial(true);
   };
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {
-      // Go to next section (right)
       const currentIndex = sectionKeys.indexOf(activeSection);
       if (currentIndex < sectionKeys.length - 1) {
         setActiveSection(sectionKeys[currentIndex + 1]);
@@ -107,9 +107,9 @@ const CodeContent: React.FC<CodeContentProps> = ({ sections }) => {
       </main>
 
       {/* Show tutorial overlay for first-time mobile users */}
-      {showSwipeTutorial && (
+      {!hasSeenSwipeTutorial && (
         <SwipeTutorialOverlay
-          isOpen={showSwipeTutorial}
+          isOpen={!hasSeenSwipeTutorial}
           onDismiss={dismissTutorial}
         />
       )}
