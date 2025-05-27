@@ -12,18 +12,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-type MediaItem = {
-  id: string;
-  type: "image" | "video";
-  url: string;
-  thumbnail?: string;
-  title?: string;
-  description?: string;
-  tags?: string[];
-  aspectRatio?: "square" | "landscape" | "portrait" | "ultra-wide";
-  featured?: boolean;
-};
+import type { MediaItem } from "@/types";
 
 interface MediaShowcaseProps {
   media: MediaItem[];
@@ -112,6 +101,11 @@ const MediaShowcase: React.FC<MediaShowcaseProps> = ({ media, theme }) => {
   return (
     <div className="space-y-8">
       {/* Featured Media Section */}
+      <div className="mb-8">
+        <h2 className="text-3xl font-bold text-white mb-2">Media Gallery</h2>
+        <p className="text-white/60">Visual showcase of the project</p>
+      </div>
+
       {featuredMedia.length > 0 && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}

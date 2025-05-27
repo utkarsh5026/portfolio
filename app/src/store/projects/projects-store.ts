@@ -43,7 +43,7 @@ const useProjectStore = create<ProjectState>((set, get) => ({
     try {
       set({ isLoading: true, error: null });
 
-      const response = await fetch("/projects.json");
+      const response = await fetch("/data/projects.json");
 
       if (!response.ok) {
         throw new Error(

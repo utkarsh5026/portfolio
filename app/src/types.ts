@@ -17,6 +17,7 @@ export type Technology = {
 };
 
 export type MediaItem = {
+  id: string;
   type: "image" | "video";
   url: string;
   thumbnail?: string;
