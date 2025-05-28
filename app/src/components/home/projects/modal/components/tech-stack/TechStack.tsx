@@ -138,19 +138,6 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
           cardTitles={techCards.map((t) => t.category)}
           theme={theme}
         />
-
-        {/* Card Info */}
-        <div className="text-center mt-6">
-          <div className="flex items-center justify-center gap-4">
-            <span className="text-ctp-subtext0 text-sm">
-              {currentIndex + 1} of {totalCards}
-            </span>
-            <div className="w-px h-4 bg-ctp-surface1" />
-            <span className={`text-ctp-${theme.main} text-sm font-medium`}>
-              {techCards[currentIndex]?.category}
-            </span>
-          </div>
-        </div>
       </div>
     </Reveal>
   );
