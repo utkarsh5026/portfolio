@@ -1,7 +1,6 @@
 import { ProjectTheme } from "@/components/home/projects/context/ThemeContext";
 import { cn } from "@/lib/utils";
 import getCategoryIcon from "@/components/base/category-icon";
-import { motion } from "framer-motion";
 
 type TechStackCard = {
   category: string;
@@ -87,15 +86,8 @@ const TechStackCard: React.FC<TechStackCardProps> = ({
               : [tech, ""];
 
             return (
-              <motion.div
+              <div
                 key={`${tech}-${techIndex}`}
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{
-                  delay: isActive ? techIndex * 0.08 : 0,
-                  duration: 0.4,
-                  ease: "easeOut",
-                }}
                 className={cn(
                   "group relative p-4 rounded-xl transition-all duration-300",
                   "bg-gradient-to-br from-ctp-surface0/80 to-ctp-surface0/40",
@@ -132,7 +124,7 @@ const TechStackCard: React.FC<TechStackCardProps> = ({
                     )}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
