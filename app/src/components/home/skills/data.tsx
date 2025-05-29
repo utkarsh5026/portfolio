@@ -19,9 +19,10 @@ import {
   SiKubernetes,
   SiGit,
   SiJenkins,
+  SiNodedotjs,
 } from "react-icons/si";
 import { FaJava, FaTools } from "react-icons/fa";
-import { Code2, Database, Layers, Server } from "lucide-react";
+import { Code2, Database, Layers, Server, Zap, Heart } from "lucide-react";
 
 export const skillCategories = [
   {
@@ -304,16 +305,63 @@ export const frameworks = [
   "Gin",
 ] as const;
 
-export const skillPoints = [
-  "I've become quite fluent in JavaScript and TypeScript over the years. They're my go-to languages for most projects, and I love how they've evolved. React is where I spend most of time, building interfaces that people actually enjoy using.",
-
-  "On the backend, I'm comfortable with Node.js and Express, but I've also ventured into Python with FastAPI and Django. I believe in choosing the right tool for the job — sometimes that's Go when performance really matters.",
-
-  "Databases are my playground! From PostgreSQL for structured data to MongoDB when I need more flexibility. I've developed a weird appreciation for database optimization — there's something satisfying about a well-indexed query.",
-
-  "Docker containers have changed how I build and deploy. Combined with some Kubernetes for orchestration, I can create environments that are consistent and scalable. That's been a game-changer for reliability.",
-
-  "Right now, I'm diving deeper into vector databases and RAG patterns for AI applications. I'm always learning something new — currently exploring React Native for mobile development and fascinated by compiler design.",
-
-  "My journey started with jQuery and PHP years ago, and I still appreciate what they taught me. Each technology I've worked with has added something valuable to my approach to problem-solving.",
+export const journeySteps = [
+  {
+    id: "frontend-mastery",
+    title: "Frontend Mastery",
+    icon: <SiReact className="w-6 h-6" />,
+    color: "sapphire",
+    description:
+      "I've become quite fluent in JavaScript and TypeScript over the years. They're my go-to languages for most projects, and I love how they've evolved. React is where I spend most of my time, building interfaces that people actually enjoy using.",
+    highlights: [
+      "JavaScript & TypeScript",
+      "React Ecosystem",
+      "User Experience",
+    ],
+  },
+  {
+    id: "backend-expertise",
+    title: "Backend Expertise",
+    icon: <SiNodedotjs className="w-6 h-6" />,
+    color: "green",
+    description:
+      "On the backend, I'm comfortable with Node.js and Express, but I've also ventured into Python with FastAPI and Django. I believe in choosing the right tool for the job — sometimes that's Go when performance really matters.",
+    highlights: ["Node.js & Express", "Python FastAPI", "Go for Performance"],
+  },
+  {
+    id: "database-passion",
+    title: "Database Passion",
+    icon: <Database className="w-6 h-6" />,
+    color: "mauve",
+    description:
+      "Databases are my playground! From PostgreSQL for structured data to MongoDB when I need more flexibility. I've developed a weird appreciation for database optimization — there's something satisfying about a well-indexed query.",
+    highlights: ["PostgreSQL", "MongoDB", "Query Optimization"],
+  },
+  {
+    id: "devops-evolution",
+    title: "DevOps Evolution",
+    icon: <SiDocker className="w-6 h-6" />,
+    color: "blue",
+    description:
+      "Docker containers have changed how I build and deploy. Combined with some Kubernetes for orchestration, I can create environments that are consistent and scalable. That's been a game-changer for reliability.",
+    highlights: ["Docker Containers", "Kubernetes", "Scalable Systems"],
+  },
+  {
+    id: "ai-exploration",
+    title: "AI Exploration",
+    icon: <Zap className="w-6 h-6" />,
+    color: "yellow",
+    description:
+      "Right now, I'm diving deeper into vector databases and RAG patterns for AI applications. I'm always learning something new — currently exploring React Native for mobile development and fascinated by compiler design.",
+    highlights: ["Vector Databases", "RAG Patterns", "Compiler Design"],
+  },
+  {
+    id: "journey-reflection",
+    title: "The Journey",
+    icon: <Heart className="w-6 h-6" />,
+    color: "pink",
+    description:
+      "My journey started with jQuery and PHP years ago, and I still appreciate what they taught me. Each technology I've worked with has added something valuable to my approach to problem-solving.",
+    highlights: ["Continuous Learning", "Problem Solving", "Growth Mindset"],
+  },
 ];
