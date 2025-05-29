@@ -39,11 +39,32 @@ export type ProjectDemoVideo = {
   highlights?: string[];
   fileSize?: string;
 };
+
+interface MajorFeature {
+  id: string;
+  title: string;
+  description: string;
+  icon: React.ElementType;
+  subFeatures: SubFeature[];
+  media: MediaItem[];
+  tags: string[];
+  priority: "high" | "medium" | "low";
+}
+
+interface SubFeature {
+  id: string;
+  title: string;
+  description?: string;
+  metrics?: string; // e.g., "10,000 users", "99.9% uptime"
+  isHighlight?: boolean;
+}
+
 export interface Project {
   name: string;
   description: string;
   technologies: string[];
   features: string[];
+  projectFeatures: MajorFeature[];
   githubLink: string;
   liveLink?: string;
   tags?: string[];
@@ -52,8 +73,6 @@ export interface Project {
   };
   techStack?: Record<string, string[]>;
   explain?: string[];
-
-  // New demo video property
   demoVideo?: ProjectDemoVideo;
 }
 

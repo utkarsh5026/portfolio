@@ -5,6 +5,7 @@ import { skillCategories } from "./data";
 import SkillCard from "./SkillCard";
 import WhatDoIKnow from "./modal/WhatDoIKnow";
 import Section from "@/components/section/Section";
+import OutlineNode from "@/components/home/editor/outline/OutlineNode";
 
 const Skills = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -46,7 +47,15 @@ const Skills = () => {
         {/* Skills Grid */}
         <div className="grid gap-6 sm:gap-8">
           {skillCategories.map((category, index) => (
-            <SkillCard key={category.id} category={category} index={index} />
+            <OutlineNode
+              key={category.id}
+              id={category.id}
+              level={1}
+              label={category.title}
+              parentId="skills"
+            >
+              <SkillCard key={category.id} category={category} index={index} />
+            </OutlineNode>
           ))}
         </div>
 
