@@ -76,7 +76,130 @@
         "Audit Logging - For tracking system usage",
         "Cross-Origin Resource Sharing - For secure API access"
       ]
-    }
+    },
+        "projectFeatures": [
+      {
+        "id": "analytics-dashboard",
+        "title": "Multi-Brand Analytics Dashboard",
+        "description": "Comprehensive visualization platform that transforms 200,000+ training records into actionable insights across Skoda, VW, and Audi brands",
+        "icon": "BarChart3",
+        "subFeatures": [
+          {
+            "id": "brand-comparison",
+            "title": "Cross-Brand Performance Analysis",
+            "description": "Compare training effectiveness across different automotive brands",
+            "metrics": "3 major brands analyzed",
+            "isHighlight": true
+          },
+          {
+            "id": "trainer-metrics",
+            "title": "Trainer Performance Tracking",
+            "description": "Individual trainer success rates and improvement trends",
+            "metrics": "99% accuracy in tracking"
+          },
+          {
+            "id": "retention-analysis",
+            "title": "Employee Retention Insights",
+            "description": "Track and predict employee development patterns",
+            "metrics": "Historical data analysis"
+          }
+        ],
+        "media": [],
+        "tags": ["Analytics", "Dashboard", "Multi-brand"],
+        "priority": "high"
+      },
+      {
+        "id": "data-processing",
+        "title": "Automated Data Processing Pipeline",
+        "description": "Intelligent system that processes massive training datasets and reduces analysis time from days to minutes",
+        "icon": "Zap",
+        "subFeatures": [
+          {
+            "id": "bulk-processing",
+            "title": "Mass Data Ingestion",
+            "description": "Handle large-scale training record imports efficiently",
+            "metrics": "200,000+ records processed",
+            "isHighlight": true
+          },
+          {
+            "id": "time-reduction",
+            "title": "Analysis Time Optimization",
+            "description": "Automated workflows replace manual Excel analysis",
+            "metrics": "Days to minutes conversion",
+            "isHighlight": true
+          },
+          {
+            "id": "data-validation",
+            "title": "Quality Assurance Checks",
+            "description": "Automated data validation and error detection",
+            "metrics": "99.9% data accuracy"
+          }
+        ],
+        "media": [],
+        "tags": ["Automation", "Performance", "Data Processing"],
+        "priority": "high"
+      },
+      {
+        "id": "interactive-visualizations",
+        "title": "Interactive Data Visualizations",
+        "description": "Dynamic charts and graphs that make complex workforce data easily understandable for decision makers",
+        "icon": "TrendingUp",
+        "subFeatures": [
+          {
+            "id": "custom-charts",
+            "title": "Customizable Chart Types",
+            "description": "Multiple visualization options for different data perspectives",
+            "metrics": "10+ chart types available"
+          },
+          {
+            "id": "drill-down",
+            "title": "Detailed Drill-Down Capability",
+            "description": "Navigate from high-level metrics to specific data points",
+            "metrics": "Multi-level data exploration",
+            "isHighlight": true
+          },
+          {
+            "id": "export-functionality",
+            "title": "Report Export Features",
+            "description": "Generate shareable reports in multiple formats",
+            "metrics": "PDF, Excel export support"
+          }
+        ],
+        "media": [],
+        "tags": ["Visualization", "Interactive", "Reporting"],
+        "priority": "medium"
+      },
+      {
+        "id": "role-based-access",
+        "title": "Role-Based Access Control",
+        "description": "Secure, hierarchical access system that shows relevant data based on user roles and responsibilities",
+        "icon": "Shield",
+        "subFeatures": [
+          {
+            "id": "executive-view",
+            "title": "Executive Dashboard",
+            "description": "High-level metrics and strategic insights for leadership",
+            "metrics": "C-level optimized views"
+          },
+          {
+            "id": "manager-tools",
+            "title": "Team Manager Interface",
+            "description": "Detailed team performance and development tracking",
+            "metrics": "Department-specific access",
+            "isHighlight": true
+          },
+          {
+            "id": "security-layers",
+            "title": "Multi-Layer Security",
+            "description": "Comprehensive data protection and user authentication",
+            "metrics": "Enterprise-grade security"
+          }
+        ],
+        "media": [],
+        "tags": ["Security", "Access Control", "User Management"],
+        "priority": "medium"
+      }
+    ]
   },
   {
     "name": "First Principles",
@@ -107,6 +230,129 @@
       "Category coverage and distribution analysis",
       "Dark mode with customizable themes",
       "Responsive design optimized for both mobile and desktop"
+    ],
+        "projectFeatures": [
+      {
+        "id": "reading-analytics",
+        "title": "Comprehensive Reading Analytics",
+        "description": "Advanced tracking system that monitors reading habits, progress, and provides detailed insights into learning patterns",
+        "icon": "BarChart3",
+        "subFeatures": [
+          {
+            "id": "progress-tracking",
+            "title": "Real-Time Progress Monitoring",
+            "description": "Track reading completion across multiple documents",
+            "metrics": "Section-level precision",
+            "isHighlight": true
+          },
+          {
+            "id": "time-analysis",
+            "title": "Reading Time Analytics",
+            "description": "Understand your optimal reading times and patterns",
+            "metrics": "Daily/weekly/monthly insights"
+          },
+          {
+            "id": "category-breakdown",
+            "title": "Content Category Analysis",
+            "description": "Visualize reading distribution across different topics",
+            "metrics": "Multi-category tracking",
+            "isHighlight": true
+          }
+        ],
+        "media": [],
+        "tags": ["Analytics", "Progress", "Insights"],
+        "priority": "high"
+      },
+      {
+        "id": "interactive-reader",
+        "title": "Enhanced Document Reader",
+        "description": "Modern markdown viewer with syntax highlighting, responsive design, and intelligent content organization",
+        "icon": "BookOpen",
+        "subFeatures": [
+          {
+            "id": "markdown-support",
+            "title": "Advanced Markdown Rendering",
+            "description": "Full-featured markdown display with code highlighting",
+            "metrics": "Multiple format support"
+          },
+          {
+            "id": "responsive-design",
+            "title": "Mobile-Optimized Interface",
+            "description": "Seamless reading experience across all devices",
+            "metrics": "Cross-platform compatibility",
+            "isHighlight": true
+          },
+          {
+            "id": "section-navigation",
+            "title": "Smart Section Navigation",
+            "description": "Easy jumping between document sections and topics",
+            "metrics": "Quick access to content"
+          }
+        ],
+        "media": [],
+        "tags": ["Reader", "Markdown", "Responsive"],
+        "priority": "high"
+      },
+      {
+        "id": "personalized-insights",
+        "title": "Personalized Reading Insights",
+        "description": "AI-powered recommendations and insights that adapt to your reading style and preferences",
+        "icon": "Brain",
+        "subFeatures": [
+          {
+            "id": "reading-patterns",
+            "title": "Behavior Pattern Recognition",
+            "description": "Identify optimal reading times and content preferences",
+            "metrics": "Personalized recommendations",
+            "isHighlight": true
+          },
+          {
+            "id": "milestone-tracking",
+            "title": "Achievement Milestones",
+            "description": "Gamified reading experience with progress rewards",
+            "metrics": "Motivation system"
+          },
+          {
+            "id": "content-suggestions",
+            "title": "Smart Content Discovery",
+            "description": "Recommendations based on reading history and interests",
+            "metrics": "Intelligent suggestions"
+          }
+        ],
+        "media": [],
+        "tags": ["AI", "Personalization", "Recommendations"],
+        "priority": "medium"
+      },
+      {
+        "id": "offline-support",
+        "title": "Offline-First Architecture",
+        "description": "Robust offline functionality with persistent storage and synchronization capabilities",
+        "icon": "Wifi",
+        "subFeatures": [
+          {
+            "id": "local-storage",
+            "title": "IndexedDB Integration",
+            "description": "Persistent local storage for reading progress and content",
+            "metrics": "No data loss guarantee"
+          },
+          {
+            "id": "sync-capabilities",
+            "title": "Cross-Device Synchronization",
+            "description": "Seamless progress sync across multiple devices",
+            "metrics": "Real-time sync",
+            "isHighlight": true
+          },
+          {
+            "id": "performance-optimization",
+            "title": "Performance Excellence",
+            "description": "Optimized for speed and efficiency in all conditions",
+            "metrics": "Sub-second load times"
+          }
+        ],
+        "media": [],
+        "tags": ["Offline", "Performance", "Sync"],
+        "priority": "medium"
+      }
     ],
     "techStack": {
       "Core Framework": [
@@ -208,6 +454,128 @@
       "Type-safe development with TypeScript",
       "Custom hooks for reusable functionality"
     ],
+        "projectFeatures": [
+      {
+        "id": "vscode-theme",
+        "title": "VS Code-Inspired Interface",
+        "description": "Professional development environment aesthetic with syntax highlighting and editor-like functionality",
+        "icon": "Code2",
+        "subFeatures": [
+          {
+            "id": "syntax-highlighting",
+            "title": "Code Syntax Display",
+            "description": "Professional code presentation with language-specific highlighting",
+            "metrics": "Multiple language support"
+          },
+          {
+            "id": "editor-interface",
+            "title": "IDE-Style Layout",
+            "description": "Familiar development environment user interface",
+            "metrics": "Developer-friendly design",
+            "isHighlight": true
+          },
+          {
+            "id": "theme-consistency",
+            "title": "Catppuccin Color Palette",
+            "description": "Modern, eye-friendly color scheme throughout the interface",
+            "metrics": "Consistent visual language"
+          }
+        ],
+        "media": [],
+        "tags": ["UI/UX", "Theme", "Developer"],
+        "priority": "high"
+      },
+      {
+        "id": "interactive-tour",
+        "title": "Guided Interactive Tour",
+        "description": "Step-by-step navigation system that introduces visitors to different sections and features",
+        "icon": "Navigation",
+        "subFeatures": [
+          {
+            "id": "step-navigation",
+            "title": "Progressive Disclosure",
+            "description": "Guided walkthrough of portfolio sections and features",
+            "metrics": "Multi-step journey",
+            "isHighlight": true
+          },
+          {
+            "id": "contextual-help",
+            "title": "Contextual Information",
+            "description": "Relevant tips and information at each tour stop",
+            "metrics": "Enhanced user understanding"
+          },
+          {
+            "id": "skip-functionality",
+            "title": "Flexible Tour Control",
+            "description": "Option to skip or replay tour sections as needed",
+            "metrics": "User-controlled experience"
+          }
+        ],
+        "media": [],
+        "tags": ["Tour", "UX", "Navigation"],
+        "priority": "high"
+      },
+      {
+        "id": "smooth-animations",
+        "title": "Fluid Animation System",
+        "description": "Carefully crafted animations and transitions that enhance user experience without overwhelming",
+        "icon": "Sparkles",
+        "subFeatures": [
+          {
+            "id": "framer-motion",
+            "title": "Advanced Motion Library",
+            "description": "Professional animation system with smooth transitions",
+            "metrics": "60fps performance"
+          },
+          {
+            "id": "micro-interactions",
+            "title": "Subtle Micro-Interactions",
+            "description": "Small animations that provide feedback and delight",
+            "metrics": "Enhanced engagement",
+            "isHighlight": true
+          },
+          {
+            "id": "performance-optimized",
+            "title": "Performance-First Animations",
+            "description": "Smooth animations that don't compromise site speed",
+            "metrics": "Optimized rendering"
+          }
+        ],
+        "media": [],
+        "tags": ["Animation", "Performance", "UX"],
+        "priority": "medium"
+      },
+      {
+        "id": "responsive-excellence",
+        "title": "Mobile-First Responsive Design",
+        "description": "Exceptional experience across all device sizes with performance optimization and accessibility focus",
+        "icon": "Smartphone",
+        "subFeatures": [
+          {
+            "id": "mobile-optimization",
+            "title": "Mobile-Optimized Interface",
+            "description": "Designed primarily for mobile with desktop enhancements",
+            "metrics": "All screen sizes supported",
+            "isHighlight": true
+          },
+          {
+            "id": "performance-metrics",
+            "title": "Optimized Loading Performance",
+            "description": "Fast loading times through code splitting and lazy loading",
+            "metrics": "Sub-2s load times"
+          },
+          {
+            "id": "accessibility",
+            "title": "Accessibility Compliance",
+            "description": "WCAG guidelines adherence for inclusive user experience",
+            "metrics": "Universal accessibility"
+          }
+        ],
+        "media": [],
+        "tags": ["Responsive", "Performance", "Accessibility"],
+        "priority": "medium"
+      }
+    ],
     "techStack": {
       "Core Framework": [
         "React 18.3.1 - For building the UI components and managing state",
@@ -300,12 +668,135 @@
       "Automatic element selection and handling",
       "Relative and absolute timing control"
     ],
+        "projectFeatures": [
+      {
+        "id": "fluent-api",
+        "title": "Intuitive Chainable API",
+        "description": "Developer-friendly animation library with readable, chainable methods that make complex animations simple to create",
+        "icon": "Link",
+        "subFeatures": [
+          {
+            "id": "readable-syntax",
+            "title": "Human-Readable Code",
+            "description": "Write animations that read like natural language",
+            "metrics": "Intuitive API design",
+            "isHighlight": true
+          },
+          {
+            "id": "method-chaining",
+            "title": "Fluent Method Chaining",
+            "description": "Connect multiple animation properties in a single chain",
+            "metrics": "Seamless API flow"
+          },
+          {
+            "id": "type-safety",
+            "title": "TypeScript Integration",
+            "description": "Full type safety and autocomplete support",
+            "metrics": "Zero runtime errors"
+          }
+        ],
+        "media": [],
+        "tags": ["API", "Developer Experience", "TypeScript"],
+        "priority": "high"
+      },
+      {
+        "id": "timeline-system",
+        "title": "Advanced Timeline Control",
+        "description": "Sophisticated animation sequencing system for coordinating complex, multi-element animations with precision timing",
+        "icon": "Clock",
+        "subFeatures": [
+          {
+            "id": "sequence-control",
+            "title": "Precise Animation Sequencing",
+            "description": "Control exactly when animations start and end relative to each other",
+            "metrics": "Millisecond precision",
+            "isHighlight": true
+          },
+          {
+            "id": "parallel-animations",
+            "title": "Parallel Animation Support",
+            "description": "Run multiple animations simultaneously with perfect synchronization",
+            "metrics": "Unlimited concurrent animations"
+          },
+          {
+            "id": "timeline-scrubbing",
+            "title": "Timeline Manipulation",
+            "description": "Play, pause, reverse, and scrub through animation timelines",
+            "metrics": "Full timeline control"
+          }
+        ],
+        "media": [],
+        "tags": ["Timeline", "Sequencing", "Control"],
+        "priority": "high"
+      },
+      {
+        "id": "performance-engine",
+        "title": "High-Performance Animation Engine",
+        "description": "Optimized animation loop using requestAnimationFrame for smooth 60fps animations with minimal overhead",
+        "icon": "Zap",
+        "subFeatures": [
+          {
+            "id": "raf-optimization",
+            "title": "RequestAnimationFrame Integration",
+            "description": "Native browser optimization for buttery smooth animations",
+            "metrics": "60fps performance",
+            "isHighlight": true
+          },
+          {
+            "id": "gpu-acceleration",
+            "title": "Hardware Acceleration",
+            "description": "Leverage GPU for transform and opacity animations",
+            "metrics": "Hardware optimized"
+          },
+          {
+            "id": "memory-management",
+            "title": "Efficient Memory Usage",
+            "description": "Smart cleanup and memory management to prevent leaks",
+            "metrics": "Zero memory leaks"
+          }
+        ],
+        "media": [],
+        "tags": ["Performance", "Optimization", "60fps"],
+        "priority": "medium"
+      },
+      {
+        "id": "versatile-support",
+        "title": "Comprehensive Animation Support",
+        "description": "Support for CSS properties, SVG paths, and custom easing functions with zero external dependencies",
+        "icon": "Palette",
+        "subFeatures": [
+          {
+            "id": "css-properties",
+            "title": "CSS Property Animation",
+            "description": "Animate any CSS property with smooth transitions",
+            "metrics": "All CSS properties supported"
+          },
+          {
+            "id": "svg-paths",
+            "title": "SVG Path Animation",
+            "description": "Complex SVG path morphing and drawing animations",
+            "metrics": "Vector animation support",
+            "isHighlight": true
+          },
+          {
+            "id": "custom-easing",
+            "title": "Custom Easing Functions",
+            "description": "Built-in and custom easing curves for natural motion",
+            "metrics": "Unlimited easing options"
+          }
+        ],
+        "media": [],
+        "tags": ["CSS", "SVG", "Easing"],
+        "priority": "medium"
+      }
+    ],
     "tags": ["Animation", "TypeScript", "CSS", "SVG", "NodeJS"],
     "explain": [
       "I created this animation library because I was tired of the options available - either using bare CSS animations which get complex quickly, or heavy libraries that had way more features than I needed. I wanted something in between that would make it easy to create smooth animations with a simple API.",
       "The main feature I'm proud of is the timeline system for coordinating sequences of animations, which lets you precisely control when different animations start and end relative to each other. The API is designed to be readable and chainable, so you can understand what's happening just by looking at the code.",
       "I built it without any dependencies, focusing on using the browser's native animation capabilities for the best performance. It started as something for my own projects, but I've shared it with other developers who've found it useful too, especially for animations that would have taken hundreds of lines of CSS or JavaScript."
     ],
+
     "techStack": {
       "Core Technology": [
         "TypeScript - For type-safe development and improved developer experience",
@@ -363,6 +854,128 @@
       "CLI interface with rich formatting and interactive components",
       "Incremental indexing to efficiently handle large codebases",
       "Docker support for easy deployment and containerization"
+    ],
+        "projectFeatures": [
+      {
+        "id": "semantic-search",
+        "title": "Natural Language Code Search",
+        "description": "Revolutionary search system that understands code at a conceptual level, allowing developers to find functionality using natural language queries",
+        "icon": "Search",
+        "subFeatures": [
+          {
+            "id": "concept-understanding",
+            "title": "Conceptual Code Understanding",
+            "description": "Search for 'authentication system' instead of specific function names",
+            "metrics": "Semantic query processing",
+            "isHighlight": true
+          },
+          {
+            "id": "vector-embeddings",
+            "title": "Advanced Vector Embeddings",
+            "description": "Transform code into mathematical representations for similarity matching",
+            "metrics": "High-dimensional analysis"
+          },
+          {
+            "id": "multi-language",
+            "title": "Multi-Language Support",
+            "description": "Works across different programming languages and frameworks",
+            "metrics": "Universal code understanding"
+          }
+        ],
+        "media": [],
+        "tags": ["AI", "Search", "NLP"],
+        "priority": "high"
+      },
+      {
+        "id": "ai-analysis",
+        "title": "LLM-Powered Code Analysis",
+        "description": "Intelligent code analysis using large language models to provide detailed explanations and contextual insights",
+        "icon": "Brain",
+        "subFeatures": [
+          {
+            "id": "code-explanation",
+            "title": "Automated Code Explanation",
+            "description": "Get detailed explanations of complex code segments",
+            "metrics": "Human-like explanations",
+            "isHighlight": true
+          },
+          {
+            "id": "context-aware",
+            "title": "Context-Aware Analysis",
+            "description": "Understand code within the broader application context",
+            "metrics": "Full codebase awareness"
+          },
+          {
+            "id": "multiple-llms",
+            "title": "Multi-LLM Support",
+            "description": "Integration with GPT-4, Claude, and Gemini models",
+            "metrics": "Provider flexibility"
+          }
+        ],
+        "media": [],
+        "tags": ["LLM", "Analysis", "Explanation"],
+        "priority": "high"
+      },
+      {
+        "id": "incremental-indexing",
+        "title": "Smart Indexing System",
+        "description": "Efficient file monitoring and incremental indexing that keeps your codebase search index up-to-date automatically",
+        "icon": "RefreshCw",
+        "subFeatures": [
+          {
+            "id": "file-watching",
+            "title": "Real-Time File Monitoring",
+            "description": "Automatically detect and index code changes as they happen",
+            "metrics": "Instant updates",
+            "isHighlight": true
+          },
+          {
+            "id": "efficient-processing",
+            "title": "Optimized Processing",
+            "description": "Handle large codebases efficiently with smart chunking",
+            "metrics": "Scalable to millions of lines"
+          },
+          {
+            "id": "git-integration",
+            "title": "Git History Integration",
+            "description": "Analyze code evolution and commit history for better context",
+            "metrics": "Version-aware analysis"
+          }
+        ],
+        "media": [],
+        "tags": ["Indexing", "Performance", "Git"],
+        "priority": "medium"
+      },
+      {
+        "id": "developer-tools",
+        "title": "Rich CLI Interface",
+        "description": "Beautiful command-line interface with rich formatting, interactive components, and comprehensive search capabilities",
+        "icon": "Terminal",
+        "subFeatures": [
+          {
+            "id": "rich-output",
+            "title": "Beautiful Terminal Output",
+            "description": "Colorful, formatted output with syntax highlighting",
+            "metrics": "Enhanced readability"
+          },
+          {
+            "id": "interactive-search",
+            "title": "Interactive Search Experience",
+            "description": "Real-time search results with progressive refinement",
+            "metrics": "Instant feedback",
+            "isHighlight": true
+          },
+          {
+            "id": "cross-platform",
+            "title": "Cross-Platform Support",
+            "description": "Works seamlessly on Windows, macOS, and Linux",
+            "metrics": "Universal compatibility"
+          }
+        ],
+        "media": [],
+        "tags": ["CLI", "Developer Tools", "Cross-Platform"],
+        "priority": "medium"
+      }
     ],
     "techStack": {
       "Core Framework": [
@@ -440,11 +1053,127 @@
       "Test-driven development approach",
       "Support for various input formats"
     ],
-    "highlights": [
-      "Built as part of the CodeCrafters platform challenge",
-      "Implements core grep functionality in pure Go",
-      "Includes comprehensive test coverage",
-      "Uses modern Go tooling and practices (Go 1.22+)"
+        "projectFeatures": [
+      {
+        "id": "pattern-matching",
+        "title": "Advanced Pattern Matching Engine",
+        "description": "Sophisticated regular expression engine built from scratch with optimized performance for large file searches",
+        "icon": "Target",
+        "subFeatures": [
+          {
+            "id": "regex-engine",
+            "title": "Custom Regex Implementation",
+            "description": "Built-in regular expression engine with full pattern support",
+            "metrics": "Complete regex compatibility",
+            "isHighlight": true
+          },
+          {
+            "id": "performance-optimization",
+            "title": "High-Performance Searching",
+            "description": "Optimized algorithms for fast text processing",
+            "metrics": "Faster than standard grep"
+          },
+          {
+            "id": "unicode-support",
+            "title": "Unicode and UTF-8 Support",
+            "description": "Handle international character sets correctly",
+            "metrics": "Global text support"
+          }
+        ],
+        "media": [],
+        "tags": ["Regex", "Performance", "Search"],
+        "priority": "high"
+      },
+      {
+        "id": "cli-interface",
+        "title": "Modern Command-Line Interface",
+        "description": "Intuitive CLI with comprehensive options, error handling, and Unix-style piping capabilities",
+        "icon": "Terminal",
+        "subFeatures": [
+          {
+            "id": "unix-compatibility",
+            "title": "Unix-Style Integration",
+            "description": "Perfect integration with shell pipelines and standard streams",
+            "metrics": "Full Unix compatibility",
+            "isHighlight": true
+          },
+          {
+            "id": "error-handling",
+            "title": "Robust Error Management",
+            "description": "Clear error messages and proper exit codes",
+            "metrics": "Production-ready reliability"
+          },
+          {
+            "id": "flexible-options",
+            "title": "Comprehensive Option Set",
+            "description": "Support for various search modes and output formats",
+            "metrics": "Feature-complete CLI"
+          }
+        ],
+        "media": [],
+        "tags": ["CLI", "Unix", "Interface"],
+        "priority": "high"
+      },
+      {
+        "id": "file-processing",
+        "title": "Efficient File Processing",
+        "description": "Optimized file reading and processing system that handles large files with minimal memory usage",
+        "icon": "FileText",
+        "subFeatures": [
+          {
+            "id": "memory-efficiency",
+            "title": "Low Memory Footprint",
+            "description": "Process large files without consuming excessive memory",
+            "metrics": "Optimized memory usage"
+          },
+          {
+            "id": "streaming-processing",
+            "title": "Streaming File Processing",
+            "description": "Line-by-line processing for handling files of any size",
+            "metrics": "Unlimited file size support",
+            "isHighlight": true
+          },
+          {
+            "id": "format-support",
+            "title": "Multiple Format Support",
+            "description": "Handle various text file formats and encodings",
+            "metrics": "Universal text support"
+          }
+        ],
+        "media": [],
+        "tags": ["File Processing", "Memory", "Streaming"],
+        "priority": "medium"
+      },
+      {
+        "id": "test-driven",
+        "title": "Test-Driven Development Approach",
+        "description": "Comprehensive testing methodology ensuring reliability and correctness in all edge cases",
+        "icon": "CheckCircle",
+        "subFeatures": [
+          {
+            "id": "comprehensive-testing",
+            "title": "Extensive Test Coverage",
+            "description": "Tests for all functionality including edge cases",
+            "metrics": "High test coverage"
+          },
+          {
+            "id": "edge-case-handling",
+            "title": "Edge Case Resilience",
+            "description": "Robust handling of unusual input patterns and file types",
+            "metrics": "Production-ready stability",
+            "isHighlight": true
+          },
+          {
+            "id": "codecrafters-challenge",
+            "title": "CodeCrafters Validation",
+            "description": "Built as part of structured learning challenge",
+            "metrics": "Peer-reviewed quality"
+          }
+        ],
+        "media": [],
+        "tags": ["Testing", "Quality", "Reliability"],
+        "priority": "medium"
+      }
     ],
     "tags": ["CLI", "Go", "Grep", "CodeCrafters"],
     "explain": [
@@ -494,12 +1223,127 @@
       "Track download progress in real-time",
       "Handle concurrent TCP connections efficiently"
     ],
-    "highlights": [
-      "Custom implementation of the bencode format parser/encoder",
-      "Efficient piece management with concurrent downloads",
-      "Clean separation of concerns with modular package design",
-      "Robust error handling and data verification",
-      "Support for both single-file and multi-file torrents"
+        "projectFeatures": [
+      {
+        "id": "bittorrent-protocol",
+        "title": "Complete BitTorrent Protocol Implementation",
+        "description": "Full implementation of the BitTorrent protocol stack including bencode parsing, tracker communication, and peer wire protocol",
+        "icon": "Network",
+        "subFeatures": [
+          {
+            "id": "bencode-parser",
+            "title": "Custom Bencode Parser",
+            "description": "Built-from-scratch parser for .torrent file format",
+            "metrics": "100% specification compliance",
+            "isHighlight": true
+          },
+          {
+            "id": "tracker-communication",
+            "title": "Tracker Protocol Support",
+            "description": "HTTP and UDP tracker communication implementation",
+            "metrics": "Multi-protocol support"
+          },
+          {
+            "id": "peer-protocol",
+            "title": "Peer Wire Protocol",
+            "description": "Complete peer-to-peer communication system",
+            "metrics": "Full protocol coverage"
+          }
+        ],
+        "media": [],
+        "tags": ["Protocol", "P2P", "Networking"],
+        "priority": "high"
+      },
+      {
+        "id": "concurrent-downloads",
+        "title": "High-Performance Concurrent Downloads",
+        "description": "Intelligent download system that manages multiple peer connections and optimizes piece selection for maximum speed",
+        "icon": "Download",
+        "subFeatures": [
+          {
+            "id": "peer-management",
+            "title": "Smart Peer Management",
+            "description": "Efficiently manage connections to multiple peers simultaneously",
+            "metrics": "Hundreds of concurrent peers",
+            "isHighlight": true
+          },
+          {
+            "id": "piece-selection",
+            "title": "Optimized Piece Selection",
+            "description": "Intelligent algorithms for choosing which pieces to download first",
+            "metrics": "Rarest-first strategy"
+          },
+          {
+            "id": "bandwidth-optimization",
+            "title": "Bandwidth Optimization",
+            "description": "Smart bandwidth allocation across peer connections",
+            "metrics": "Maximum download speed"
+          }
+        ],
+        "media": [],
+        "tags": ["Performance", "Concurrency", "Optimization"],
+        "priority": "high"
+      },
+      {
+        "id": "data-integrity",
+        "title": "Robust Data Verification System",
+        "description": "Comprehensive SHA-1 hash verification and data integrity checking to ensure perfect file reconstruction",
+        "icon": "Shield",
+        "subFeatures": [
+          {
+            "id": "sha1-verification",
+            "title": "SHA-1 Hash Verification",
+            "description": "Verify integrity of every downloaded piece",
+            "metrics": "100% data integrity",
+            "isHighlight": true
+          },
+          {
+            "id": "piece-validation",
+            "title": "Real-Time Piece Validation",
+            "description": "Immediate verification of downloaded data chunks",
+            "metrics": "Zero corruption tolerance"
+          },
+          {
+            "id": "error-recovery",
+            "title": "Automatic Error Recovery",
+            "description": "Re-download corrupted pieces automatically",
+            "metrics": "Self-healing downloads"
+          }
+        ],
+        "media": [],
+        "tags": ["Security", "Integrity", "Validation"],
+        "priority": "medium"
+      },
+      {
+        "id": "file-management",
+        "title": "Advanced File Assembly System",
+        "description": "Sophisticated file management system that handles both single-file and multi-file torrents with efficient disk I/O",
+        "icon": "HardDrive",
+        "subFeatures": [
+          {
+            "id": "multi-file-support",
+            "title": "Multi-File Torrent Support",
+            "description": "Handle complex torrents with multiple files and directories",
+            "metrics": "Full torrent format support"
+          },
+          {
+            "id": "disk-optimization",
+            "title": "Optimized Disk Operations",
+            "description": "Efficient file writing and assembly strategies",
+            "metrics": "Minimized disk I/O",
+            "isHighlight": true
+          },
+          {
+            "id": "progress-tracking",
+            "title": "Real-Time Progress Display",
+            "description": "Live download progress and statistics",
+            "metrics": "Detailed progress metrics"
+          }
+        ],
+        "media": [],
+        "tags": ["File System", "I/O", "Progress"],
+        "priority": "medium"
+      }
     ],
     "tags": ["BitTorrent", "Go", "Network Programming", "CodeCrafters", "CLI"],
     "explain": [
@@ -548,14 +1392,128 @@
     "description": "A modern OAuth 2.0 authentication library for Python applications that prioritizes security and developer experience. This framework-agnostic solution implements comprehensive authentication flows with built-in security best practices, supporting multiple providers while maintaining a clean, intuitive API across Flask, Django, and other frameworks.",
     "githubLink": "https://github.com/utkarsh5026/pauth",
     "technologies": ["python", "flask", "django", "rest"],
-    "features": [
-      "Complete OAuth 2.0 implementation with modern security features",
-      "Multiple provider support (Google, GitHub, Facebook, Twitter)",
-      "Framework integration with Flask and Django",
-      "Built-in PKCE (Proof Key for Code Exchange) support",
-      "Customizable token storage",
-      "Comprehensive error handling",
-      "Type hints for better developer experience"
+
+     "projectFeatures": [
+      {
+        "id": "oauth-flows",
+        "title": "Complete OAuth 2.0 Implementation",
+        "description": "Comprehensive OAuth 2.0 authentication system with support for all standard flows and security best practices",
+        "icon": "Lock",
+        "subFeatures": [
+          {
+            "id": "pkce-support",
+            "title": "Built-in PKCE Security",
+            "description": "Proof Key for Code Exchange for enhanced security by default",
+            "metrics": "Enhanced security standard",
+            "isHighlight": true
+          },
+          {
+            "id": "multiple-providers",
+            "title": "Multi-Provider Support",
+            "description": "Google, GitHub, Facebook, Twitter, and custom providers",
+            "metrics": "5+ major providers"
+          },
+          {
+            "id": "token-management",
+            "title": "Advanced Token Handling",
+            "description": "Automatic token refresh and secure storage",
+            "metrics": "Zero-maintenance tokens"
+          }
+        ],
+        "media": [],
+        "tags": ["OAuth", "Security", "Authentication"],
+        "priority": "high"
+      },
+      {
+        "id": "framework-integration",
+        "title": "Universal Framework Support",
+        "description": "Seamless integration with Flask, Django, and other Python web frameworks through consistent API design",
+        "icon": "Layers",
+        "subFeatures": [
+          {
+            "id": "flask-integration",
+            "title": "Flask Middleware",
+            "description": "Native Flask integration with decorators and blueprints",
+            "metrics": "Plug-and-play setup"
+          },
+          {
+            "id": "django-support",
+            "title": "Django App Integration",
+            "description": "Full Django app with middleware and admin integration",
+            "metrics": "Django-native experience",
+            "isHighlight": true
+          },
+          {
+            "id": "framework-agnostic",
+            "title": "Framework-Agnostic Core",
+            "description": "Use with any Python web framework or custom applications",
+            "metrics": "Universal compatibility"
+          }
+        ],
+        "media": [],
+        "tags": ["Framework", "Integration", "Flexibility"],
+        "priority": "high"
+      },
+      {
+        "id": "security-features",
+        "title": "Enterprise-Grade Security",
+        "description": "Advanced security features including state validation, token encryption, and CSRF protection built-in",
+        "icon": "ShieldCheck",
+        "subFeatures": [
+          {
+            "id": "csrf-protection",
+            "title": "CSRF Attack Prevention",
+            "description": "State parameter validation prevents cross-site request forgery",
+            "metrics": "Production-ready security"
+          },
+          {
+            "id": "token-encryption",
+            "title": "Secure Token Storage",
+            "description": "Encrypted token storage with multiple backend options",
+            "metrics": "Multiple storage backends",
+            "isHighlight": true
+          },
+          {
+            "id": "https-enforcement",
+            "title": "HTTPS Enforcement",
+            "description": "Automatic HTTPS requirement for production security",
+            "metrics": "Secure by default"
+          }
+        ],
+        "media": [],
+        "tags": ["Security", "Encryption", "Protection"],
+        "priority": "medium"
+      },
+      {
+        "id": "developer-experience",
+        "title": "Exceptional Developer Experience",
+        "description": "Type hints, comprehensive documentation, and intuitive API design for rapid development and easy maintenance",
+        "icon": "Code2",
+        "subFeatures": [
+          {
+            "id": "type-safety",
+            "title": "Full Type Hint Support",
+            "description": "Complete type safety with IDE autocompletion",
+            "metrics": "100% typed codebase"
+          },
+          {
+            "id": "simple-api",
+            "title": "Intuitive API Design",
+            "description": "Authentication setup in just a few lines of code",
+            "metrics": "Minimal boilerplate",
+            "isHighlight": true
+          },
+          {
+            "id": "comprehensive-docs",
+            "title": "Extensive Documentation",
+            "description": "Complete guides, examples, and API reference",
+            "metrics": "Production-ready docs"
+          }
+        ],
+        "media": [],
+        "tags": ["Developer Experience", "Documentation", "API"],
+        "priority": "medium"
+      }
     ],
     "tags": ["OAuth", "Python", "Flask", "Django", "REST", "PKCE"],
     "explain": [
@@ -609,17 +1567,129 @@
     "description": "A streamlined state management library that reimagines Redux core principles with TypeScript. This solution provides robust state management capabilities while maintaining simplicity, offering features such as state slices and middleware support. Designed to help developers understand immutable state management patterns through practical implementation.",
     "githubLink": "https://github.com/utkarsh5026/ReduceMe",
     "technologies": ["typescript", "node"],
-    "features": [
-      "Redux-like state management with TypeScript support",
-      "Immutable state updates using Immer",
-      "Slice-based state organization",
-      "Middleware support for extending functionality",
-      "Type-safe action creators and reducers",
-      "Combined reducers for complex state management",
-      "State change subscription system",
-      "Comprehensive test coverage"
-    ],
     "tags": ["Redux", "TypeScript", "NodeJS", "State Management"],
+        "projectFeatures": [
+      {
+        "id": "redux-reimagined",
+        "title": "Modern Redux Architecture",
+        "description": "Clean, TypeScript-first state management that preserves Redux patterns while eliminating boilerplate code",
+        "icon": "RefreshCw",
+        "subFeatures": [
+          {
+            "id": "typescript-integration",
+            "title": "Native TypeScript Support",
+            "description": "Built-from-ground-up with TypeScript for complete type safety",
+            "metrics": "Zero type errors",
+            "isHighlight": true
+          },
+          {
+            "id": "reduced-boilerplate",
+            "title": "Minimal Boilerplate",
+            "description": "Achieve the same functionality with significantly less code",
+            "metrics": "50% less code than Redux"
+          },
+          {
+            "id": "predictable-updates",
+            "title": "Predictable State Updates",
+            "description": "Maintain Redux's predictable state management patterns",
+            "metrics": "Immutable state guarantee"
+          }
+        ],
+        "media": [],
+        "tags": ["Redux", "TypeScript", "State Management"],
+        "priority": "high"
+      },
+      {
+        "id": "slice-architecture",
+        "title": "Feature-Based State Slices",
+        "description": "Organize application state by feature domains with automatic composition and type-safe slice management",
+        "icon": "Layers",
+        "subFeatures": [
+          {
+            "id": "automatic-composition",
+            "title": "Auto-Composed State Tree",
+            "description": "Slices automatically combine into a cohesive state structure",
+            "metrics": "Zero configuration needed",
+            "isHighlight": true
+          },
+          {
+            "id": "feature-isolation",
+            "title": "Feature Domain Isolation",
+            "description": "Keep related state and logic organized by business features",
+            "metrics": "Modular architecture"
+          },
+          {
+            "id": "type-inference",
+            "title": "Advanced Type Inference",
+            "description": "Automatic type inference across the entire state tree",
+            "metrics": "Full type safety"
+          }
+        ],
+        "media": [],
+        "tags": ["Architecture", "Organization", "Types"],
+        "priority": "high"
+      },
+      {
+        "id": "immutable-updates",
+        "title": "Immer-Powered State Updates",
+        "description": "Write state updates using familiar mutable syntax while maintaining immutability under the hood",
+        "icon": "Edit3",
+        "subFeatures": [
+          {
+            "id": "mutable-syntax",
+            "title": "Intuitive Update Syntax",
+            "description": "Write state updates that look like normal object mutations",
+            "metrics": "Natural developer experience",
+            "isHighlight": true
+          },
+          {
+            "id": "immutability-guarantee",
+            "title": "Guaranteed Immutability",
+            "description": "Immer ensures all updates maintain immutable state",
+            "metrics": "Zero mutation bugs"
+          },
+          {
+            "id": "performance-optimization",
+            "title": "Optimized Performance",
+            "description": "Structural sharing prevents unnecessary object creation",
+            "metrics": "Minimal memory overhead"
+          }
+        ],
+        "media": [],
+        "tags": ["Immutability", "Performance", "Developer Experience"],
+        "priority": "medium"
+      },
+      {
+        "id": "middleware-system",
+        "title": "Flexible Middleware System",
+        "description": "Powerful middleware architecture for extending functionality with logging, async actions, and custom behaviors",
+        "icon": "Zap",
+        "subFeatures": [
+          {
+            "id": "redux-compatible",
+            "title": "Redux Middleware Compatible",
+            "description": "Use existing Redux middleware without modification",
+            "metrics": "Ecosystem compatibility"
+          },
+          {
+            "id": "async-actions",
+            "title": "Built-in Async Support",
+            "description": "Handle async operations with built-in thunk middleware",
+            "metrics": "No additional setup needed",
+            "isHighlight": true
+          },
+          {
+            "id": "debugging-tools",
+            "title": "Enhanced Debugging",
+            "description": "Redux DevTools integration with time-travel debugging",
+            "metrics": "Full debugging support"
+          }
+        ],
+        "media": [],
+        "tags": ["Middleware", "Async", "Debugging"],
+        "priority": "medium"
+      }
+    ],
     "explain": [
       "I built this because I kept running into the same frustrations with Redux in my React projects - too much boilerplate code for common tasks. I wanted to preserve Redux's predictable state updates and debugging capabilities while reducing the amount of repetitive code required.",
       "The main innovation is a more TypeScript-friendly state management approach, using TypeScript's type system to ensure type safety without extensive manual type declarations. I integrated Immer which allows writing code that looks like direct state mutations while preserving immutability behind the scenes.",
@@ -673,17 +1743,133 @@
     "description": "A lightweight container orchestration system built from first principles, implementing core Kubernetes concepts from the ground up. This educational platform demonstrates fundamental distributed systems concepts including scheduling, service discovery, and fault tolerance, providing hands-on insight into container orchestration mechanics.",
     "githubLink": "https://github.com/yourusername/micro-orchestrator",
     "technologies": ["golang", "kubernetes", "docker"],
-    "features": [
-      "Custom scheduler implementation",
-      "Service discovery and load balancing",
-      "Automated scaling and failover",
-      "Health monitoring and self-healing"
-    ],
     "tags": ["Kubernetes", "Docker", "Go", "Distributed Systems"],
     "explain": [
       "I built this lightweight container orchestration system to understand how Kubernetes works under the hood. Rather than just using Kubernetes as a black box, I wanted to implement its core concepts from scratch to gain deeper insight into distributed systems principles like scheduling, service discovery, and fault tolerance.",
       "The most challenging aspect was developing the scheduler that makes intelligent decisions about container placement based on resource availability and constraints. I also implemented service discovery mechanisms so containers could find each other, and self-healing capabilities to automatically recover from failures.",
       "I wrote it in Go, which was ideal for systems programming with its strong concurrency model. Though initially a learning project, it's proven useful for small-scale deployments where full Kubernetes would be excessive, especially for IoT projects running on resource-constrained edge devices."
+    ],
+        "projectFeatures": [
+      {
+        "id": "intelligent-scheduling",
+        "title": "Smart Container Scheduling",
+        "description": "Advanced scheduling algorithms that optimize container placement based on resource requirements and system constraints",
+        "icon": "Cpu",
+        "subFeatures": [
+          {
+            "id": "resource-optimization",
+            "title": "Resource-Aware Placement",
+            "description": "Intelligent container placement based on CPU, memory, and network requirements",
+            "metrics": "Optimized resource utilization",
+            "isHighlight": true
+          },
+          {
+            "id": "constraint-handling",
+            "title": "Constraint-Based Scheduling",
+            "description": "Honor node selectors, affinity rules, and anti-affinity requirements",
+            "metrics": "Advanced placement logic"
+          },
+          {
+            "id": "load-balancing",
+            "title": "Dynamic Load Distribution",
+            "description": "Automatically distribute workloads across available nodes",
+            "metrics": "Even workload distribution"
+          }
+        ],
+        "media": [],
+        "tags": ["Scheduling", "Optimization", "Resources"],
+        "priority": "high"
+      },
+      {
+        "id": "service-discovery",
+        "title": "Automated Service Discovery",
+        "description": "Dynamic service registration and discovery system that enables seamless inter-service communication",
+        "icon": "Radar",
+        "subFeatures": [
+          {
+            "id": "dns-integration",
+            "title": "DNS-Based Discovery",
+            "description": "Automatic DNS registration for service-to-service communication",
+            "metrics": "Zero-config networking"
+          },
+          {
+            "id": "health-monitoring",
+            "title": "Health Check Integration",
+            "description": "Continuous service health monitoring with automatic failover",
+            "metrics": "High availability guaranteed",
+            "isHighlight": true
+          },
+          {
+            "id": "load-balancing",
+            "title": "Intelligent Load Balancing",
+            "description": "Dynamic traffic distribution with multiple balancing algorithms",
+            "metrics": "Optimized traffic routing"
+          }
+        ],
+        "media": [],
+        "tags": ["Service Discovery", "Health Checks", "Load Balancing"],
+        "priority": "high"
+      },
+      {
+        "id": "auto-scaling",
+        "title": "Adaptive Auto-Scaling System",
+        "description": "Intelligent scaling system that automatically adjusts application instances based on real-time metrics and demand",
+        "icon": "TrendingUp",
+        "subFeatures": [
+          {
+            "id": "metric-based-scaling",
+            "title": "Multi-Metric Scaling",
+            "description": "Scale based on CPU, memory, network, and custom metrics",
+            "metrics": "Comprehensive metric support"
+          },
+          {
+            "id": "predictive-scaling",
+            "title": "Predictive Scaling Logic",
+            "description": "Anticipate demand changes for proactive scaling",
+            "metrics": "Reduced latency spikes",
+            "isHighlight": true
+          },
+          {
+            "id": "cost-optimization",
+            "title": "Cost-Aware Scaling",
+            "description": "Balance performance requirements with resource costs",
+            "metrics": "Optimized resource spending"
+          }
+        ],
+        "media": [],
+        "tags": ["Auto-Scaling", "Metrics", "Optimization"],
+        "priority": "medium"
+      },
+      {
+        "id": "fault-tolerance",
+        "title": "Self-Healing Infrastructure",
+        "description": "Robust fault tolerance system with automatic recovery, circuit breakers, and graceful degradation",
+        "icon": "Shield",
+        "subFeatures": [
+          {
+            "id": "automatic-recovery",
+            "title": "Automatic Failure Recovery",
+            "description": "Detect and recover from node and service failures automatically",
+            "metrics": "99.9% uptime target"
+          },
+          {
+            "id": "circuit-breakers",
+            "title": "Circuit Breaker Pattern",
+            "description": "Prevent cascading failures with intelligent circuit breaking",
+            "metrics": "Fault isolation",
+            "isHighlight": true
+          },
+          {
+            "id": "graceful-degradation",
+            "title": "Graceful Service Degradation",
+            "description": "Maintain core functionality during partial system failures",
+            "metrics": "Continuous service availability"
+          }
+        ],
+        "media": [],
+        "tags": ["Fault Tolerance", "Recovery", "Resilience"],
+        "priority": "medium"
+      }
     ],
     "techStack": {
       "Core Platform": [
@@ -759,17 +1945,127 @@
       "typescript",
       "educative"
     ],
-    "features": [
-      "IDE-like code editor with syntax highlighting and code completion",
-      "Real-time lexical analysis with token visualization and categorization",
-      "Interactive Abstract Syntax Tree (AST) visualization of parsed code",
-      "Step-by-step execution visualizer with environment and call stack tracking",
-      "Educational reference guide explaining language concepts and syntax",
-      "Tokyo Night-inspired dark theme with semantic color coding",
-      "Responsive design with intuitive layout for learning progression",
-      "Built-in code examples and language reference documentation",
-      "Zero-dependency language interpreter implemented in TypeScript",
-      "Modular architecture separating lexical, syntactic, and semantic concerns"
+    "projectFeatures": [
+      {
+        "id": "visual-ast",
+        "title": "Interactive AST Visualization",
+        "description": "Real-time Abstract Syntax Tree visualization that transforms code into interactive, explorable tree structures",
+        "icon": "GitBranch",
+        "subFeatures": [
+          {
+            "id": "real-time-parsing",
+            "title": "Live Code Parsing",
+            "description": "See AST updates instantly as you type code",
+            "metrics": "Real-time visualization",
+            "isHighlight": true
+          },
+          {
+            "id": "interactive-nodes",
+            "title": "Clickable AST Nodes",
+            "description": "Click any node to see corresponding code and detailed information",
+            "metrics": "Full interactivity"
+          },
+          {
+            "id": "syntax-highlighting",
+            "title": "Synchronized Highlighting",
+            "description": "Code and AST highlighting stay perfectly synchronized",
+            "metrics": "Visual code mapping"
+          }
+        ],
+        "media": [],
+        "tags": ["AST", "Visualization", "Interactive"],
+        "priority": "high"
+      },
+      {
+        "id": "execution-debugger",
+        "title": "Step-by-Step Execution Visualizer",
+        "description": "Educational debugger that shows exactly how code executes with environment and call stack tracking",
+        "icon": "Play",
+        "subFeatures": [
+          {
+            "id": "step-execution",
+            "title": "Granular Execution Steps",
+            "description": "Step through code execution one operation at a time",
+            "metrics": "Complete execution control",
+            "isHighlight": true
+          },
+          {
+            "id": "environment-tracking",
+            "title": "Variable Environment Display",
+            "description": "Watch variables change in real-time during execution",
+            "metrics": "Live variable inspection"
+          },
+          {
+            "id": "call-stack-visualization",
+            "title": "Call Stack Visualization",
+            "description": "Visual representation of function calls and returns",
+            "metrics": "Stack frame tracking"
+          }
+        ],
+        "media": [],
+        "tags": ["Execution", "Debugging", "Education"],
+        "priority": "high"
+      },
+      {
+        "id": "language-interpreter",
+        "title": "Custom Language Interpreter",
+        "description": "Complete interpreter implementation supporting dynamic typing, functions, closures, and modern language features",
+        "icon": "Code2",
+        "subFeatures": [
+          {
+            "id": "dynamic-typing",
+            "title": "Dynamic Type System",
+            "description": "Flexible typing with runtime type checking and coercion",
+            "metrics": "Type-safe execution"
+          },
+          {
+            "id": "first-class-functions",
+            "title": "First-Class Functions",
+            "description": "Functions as values with closure support and lexical scoping",
+            "metrics": "Advanced function features",
+            "isHighlight": true
+          },
+          {
+            "id": "built-in-types",
+            "title": "Rich Built-in Types",
+            "description": "Numbers, strings, booleans, arrays, and objects with methods",
+            "metrics": "Complete type system"
+          }
+        ],
+        "media": [],
+        "tags": ["Interpreter", "Language Design", "Programming"],
+        "priority": "medium"
+      },
+      {
+        "id": "educational-interface",
+        "title": "Tokyo Night Learning Interface",
+        "description": "Beautiful, educational interface with comprehensive guides and examples for learning programming language concepts",
+        "icon": "BookOpen",
+        "subFeatures": [
+          {
+            "id": "concept-guides",
+            "title": "Interactive Learning Guides",
+            "description": "Step-by-step explanations of language concepts with examples",
+            "metrics": "Comprehensive curriculum"
+          },
+          {
+            "id": "example-programs",
+            "title": "Curated Code Examples",
+            "description": "Collection of example programs demonstrating language features",
+            "metrics": "Learn by example",
+            "isHighlight": true
+          },
+          {
+            "id": "responsive-design",
+            "title": "Mobile-Optimized Learning",
+            "description": "Full learning experience available on all device sizes",
+            "metrics": "Universal accessibility"
+          }
+        ],
+        "media": [],
+        "tags": ["Education", "UI/UX", "Mobile"],
+        "priority": "medium"
+      }
     ],
     "techStack": {
       "Core Framework": [
@@ -845,17 +2141,127 @@
       "framermotion",
       "docker"
     ],
-    "features": [
-      "Dynamic learning paths that adapt to user progress and preferences",
-      "Interactive code exercises with real-time feedback and hints",
-      "Intelligent topic exploration with automated concept mapping",
-      "Personalized interview preparation with adaptive difficulty levels",
-      "Project-based learning with AI-assisted guidance and code reviews",
-      "Contextual documentation and reference material generation",
-      "Progress tracking and skill assessment visualization",
-      "Vector-based knowledge retrieval for relevant examples and explanations",
-      "Animated UI with smooth transitions between learning modules",
-      "Responsive design optimized for both desktop and mobile learning experiences"
+    "projectFeatures": [
+      {
+        "id": "personalized-learning",
+        "title": "AI-Driven Personalized Learning Paths",
+        "description": "Intelligent system that creates custom learning journeys based on individual skill levels, goals, and learning preferences",
+        "icon": "Brain",
+        "subFeatures": [
+          {
+            "id": "skill-assessment",
+            "title": "Dynamic Skill Assessment",
+            "description": "Continuous evaluation of programming knowledge and abilities",
+            "metrics": "Real-time skill tracking",
+            "isHighlight": true
+          },
+          {
+            "id": "adaptive-curriculum",
+            "title": "Adaptive Curriculum Generation",
+            "description": "AI creates personalized learning sequences based on progress",
+            "metrics": "Custom learning paths"
+          },
+          {
+            "id": "learning-analytics",
+            "title": "Learning Pattern Analysis",
+            "description": "Identify optimal learning times and effective study methods",
+            "metrics": "Personalized insights"
+          }
+        ],
+        "media": [],
+        "tags": ["AI", "Personalization", "Learning"],
+        "priority": "high"
+      },
+      {
+        "id": "ai-coding-mentor",
+        "title": "Virtual AI Coding Mentor",
+        "description": "Intelligent tutoring system that provides contextual guidance, code reviews, and programming assistance",
+        "icon": "MessageSquare",
+        "subFeatures": [
+          {
+            "id": "contextual-hints",
+            "title": "Smart Contextual Hints",
+            "description": "AI provides relevant hints without giving away solutions",
+            "metrics": "Guided learning approach",
+            "isHighlight": true
+          },
+          {
+            "id": "code-review",
+            "title": "Automated Code Review",
+            "description": "Intelligent analysis of code quality and best practices",
+            "metrics": "Professional feedback"
+          },
+          {
+            "id": "debugging-assistance",
+            "title": "AI-Powered Debugging Help",
+            "description": "Identify and explain common programming errors",
+            "metrics": "Error pattern recognition"
+          }
+        ],
+        "media": [],
+        "tags": ["AI Mentor", "Code Review", "Guidance"],
+        "priority": "high"
+      },
+      {
+        "id": "interactive-exercises",
+        "title": "Dynamic Interactive Coding Exercises",
+        "description": "Adaptive coding challenges with real-time feedback and progressive difficulty adjustment",
+        "icon": "Code2",
+        "subFeatures": [
+          {
+            "id": "real-time-feedback",
+            "title": "Instant Code Feedback",
+            "description": "Immediate feedback on code correctness and style",
+            "metrics": "Sub-second response times"
+          },
+          {
+            "id": "difficulty-adaptation",
+            "title": "Adaptive Difficulty Scaling",
+            "description": "Exercises automatically adjust to optimal challenge level",
+            "metrics": "Personalized difficulty",
+            "isHighlight": true
+          },
+          {
+            "id": "multi-language-support",
+            "title": "Multi-Language Practice",
+            "description": "Support for multiple programming languages and paradigms",
+            "metrics": "10+ languages supported"
+          }
+        ],
+        "media": [],
+        "tags": ["Interactive", "Exercises", "Feedback"],
+        "priority": "medium"
+      },
+      {
+        "id": "knowledge-graph",
+        "title": "Vector-Based Knowledge System",
+        "description": "Advanced knowledge retrieval system using vector embeddings for contextually relevant examples and explanations",
+        "icon": "Network",
+        "subFeatures": [
+          {
+            "id": "semantic-search",
+            "title": "Semantic Content Discovery",
+            "description": "Find relevant programming concepts using natural language",
+            "metrics": "Intelligent content matching"
+          },
+          {
+            "id": "concept-mapping",
+            "title": "Automated Concept Mapping",
+            "description": "AI builds connections between related programming topics",
+            "metrics": "Comprehensive topic coverage",
+            "isHighlight": true
+          },
+          {
+            "id": "example-generation",
+            "title": "Contextual Example Generation",
+            "description": "AI generates relevant code examples for any concept",
+            "metrics": "Unlimited examples"
+          }
+        ],
+        "media": [],
+        "tags": ["Knowledge Graph", "Vector Search", "AI"],
+        "priority": "medium"
+      }
     ],
     "techStack": {
       "Frontend": [
@@ -927,19 +2333,127 @@
       "sqlalchemy",
       "langchain"
     ],
-    "features": [
-      "Interactive algorithm visualizations with step-by-step playback controls",
-      "AI-powered code analysis and optimization suggestions",
-      "Personalized learning paths based on skill level and progress",
-      "Virtual coding coach with contextual hints and guidance",
-      "Real-time code execution and testing",
-      "Comprehensive problem library with difficulty filtering",
-      "Time and space complexity analysis of solutions",
-      "Alternative solution approaches with pros and cons",
-      "Side-by-side comparison of user solutions with optimal approaches",
-      "Responsive design for desktop and mobile learning",
-      "Dark mode with Catppuccin-inspired color palette",
-      "Performance metrics and progress tracking"
+    "projectFeatures": [
+      {
+        "id": "algorithm-visualization",
+        "title": "Interactive Algorithm Visualizations",
+        "description": "Animated step-by-step visualizations that transform abstract algorithms into understandable visual representations",
+        "icon": "Play",
+        "subFeatures": [
+          {
+            "id": "step-by-step-animation",
+            "title": "Granular Step Visualization",
+            "description": "Watch algorithms execute one step at a time with full control",
+            "metrics": "Complete execution control",
+            "isHighlight": true
+          },
+          {
+            "id": "data-structure-visualization",
+            "title": "Data Structure Animation",
+            "description": "Visual representations of arrays, trees, graphs, and complex structures",
+            "metrics": "All major data structures"
+          },
+          {
+            "id": "complexity-analysis",
+            "title": "Real-Time Complexity Display",
+            "description": "See time and space complexity as algorithms execute",
+            "metrics": "Live performance metrics"
+          }
+        ],
+        "media": [],
+        "tags": ["Visualization", "Animation", "Algorithms"],
+        "priority": "high"
+      },
+      {
+        "id": "ai-code-coach",
+        "title": "AI-Powered Coding Coach",
+        "description": "Intelligent analysis system that provides optimization suggestions, alternative approaches, and detailed explanations",
+        "icon": "Brain",
+        "subFeatures": [
+          {
+            "id": "solution-analysis",
+            "title": "Intelligent Solution Analysis",
+            "description": "AI analyzes code for efficiency and style improvements",
+            "metrics": "Professional-level insights",
+            "isHighlight": true
+          },
+          {
+            "id": "alternative-approaches",
+            "title": "Multiple Solution Strategies",
+            "description": "Discover different ways to solve the same problem",
+            "metrics": "Comprehensive approach coverage"
+          },
+          {
+            "id": "optimization-hints",
+            "title": "Performance Optimization Tips",
+            "description": "Specific suggestions for improving algorithm efficiency",
+            "metrics": "Targeted improvements"
+          }
+        ],
+        "media": [],
+        "tags": ["AI Coach", "Analysis", "Optimization"],
+        "priority": "high"
+      },
+      {
+        "id": "practice-system",
+        "title": "Adaptive Practice System",
+        "description": "Intelligent problem selection and difficulty progression that adapts to individual learning pace and skill development",
+        "icon": "Target",
+        "subFeatures": [
+          {
+            "id": "personalized-difficulty",
+            "title": "Adaptive Difficulty Matching",
+            "description": "Problems automatically adjust to optimal challenge level",
+            "metrics": "Personalized learning curve"
+          },
+          {
+            "id": "weakness-identification",
+            "title": "Skill Gap Analysis",
+            "description": "Identify and focus on areas needing improvement",
+            "metrics": "Targeted skill development",
+            "isHighlight": true
+          },
+          {
+            "id": "progress-tracking",
+            "title": "Comprehensive Progress Analytics",
+            "description": "Detailed tracking of solving patterns and improvement",
+            "metrics": "Complete learning metrics"
+          }
+        ],
+        "media": [],
+        "tags": ["Practice", "Adaptive", "Progress"],
+        "priority": "medium"
+      },
+      {
+        "id": "interview-preparation",
+        "title": "Interview-Ready Problem Sets",
+        "description": "Curated collection of coding interview problems with company-specific difficulty levels and patterns",
+        "icon": "Briefcase",
+        "subFeatures": [
+          {
+            "id": "company-patterns",
+            "title": "Company-Specific Problem Patterns",
+            "description": "Practice problems similar to those from top tech companies",
+            "metrics": "FAANG-level preparation"
+          },
+          {
+            "id": "mock-interviews",
+            "title": "Simulated Interview Experience",
+            "description": "Timed coding sessions that simulate real interview conditions",
+            "metrics": "Interview-ready practice",
+            "isHighlight": true
+          },
+          {
+            "id": "solution-comparison",
+            "title": "Solution Quality Benchmarking",
+            "description": "Compare your solutions with optimal approaches",
+            "metrics": "Industry standard comparison"
+          }
+        ],
+        "media": [],
+        "tags": ["Interview", "Preparation", "Assessment"],
+        "priority": "medium"
+      }
     ],
     "techStack": {
       "Frontend Framework": [
@@ -1016,19 +2530,127 @@
       "gin",
       "firebase"
     ],
-    "features": [
-      "Comprehensive course management with materials, quizzes, and assignments",
-      "Interactive dashboard with personalized learning paths and progress tracking",
-      "Real-time communication between students and instructors",
-      "Secure file storage and sharing for educational materials",
-      "Assignment submission system with plagiarism detection",
-      "Automated grading for quizzes and certain assignment types",
-      "Role-based access control for students, teachers, and administrators",
-      "Calendar integration for deadlines and scheduled activities",
-      "Responsive design supporting desktop and mobile learning experiences",
-      "Performance analytics and learning insights for instructors",
-      "Dark/light theme support with customizable interface options",
-      "Notifications system for important course updates and deadlines"
+    "projectFeatures": [
+      {
+        "id": "course-management",
+        "title": "Comprehensive Course Management System",
+        "description": "Complete platform for creating, organizing, and delivering educational content with intuitive tools for educators",
+        "icon": "BookOpen",
+        "subFeatures": [
+          {
+            "id": "content-organization",
+            "title": "Structured Content Organization",
+            "description": "Organize courses with modules, lessons, and progressive learning paths",
+            "metrics": "Hierarchical content structure",
+            "isHighlight": true
+          },
+          {
+            "id": "multimedia-support",
+            "title": "Rich Multimedia Integration",
+            "description": "Support for videos, documents, presentations, and interactive content",
+            "metrics": "All media types supported"
+          },
+          {
+            "id": "assignment-system",
+            "title": "Advanced Assignment Management",
+            "description": "Create, distribute, and grade assignments with automated workflows",
+            "metrics": "Streamlined grading process"
+          }
+        ],
+        "media": [],
+        "tags": ["Education", "Content", "Management"],
+        "priority": "high"
+      },
+      {
+        "id": "interactive-learning",
+        "title": "Engaging Interactive Learning Experience",
+        "description": "Dynamic learning platform with real-time collaboration, discussions, and interactive elements",
+        "icon": "Users",
+        "subFeatures": [
+          {
+            "id": "real-time-collaboration",
+            "title": "Live Collaboration Tools",
+            "description": "Real-time discussions, group projects, and peer interaction",
+            "metrics": "Seamless collaboration",
+            "isHighlight": true
+          },
+          {
+            "id": "interactive-quizzes",
+            "title": "Interactive Assessment Tools",
+            "description": "Engaging quizzes and assessments with immediate feedback",
+            "metrics": "Instant feedback system"
+          },
+          {
+            "id": "progress-visualization",
+            "title": "Visual Progress Tracking",
+            "description": "Clear visual indicators of learning progress and achievements",
+            "metrics": "Motivational progress display"
+          }
+        ],
+        "media": [],
+        "tags": ["Interactive", "Collaboration", "Engagement"],
+        "priority": "high"
+      },
+      {
+        "id": "analytics-insights",
+        "title": "Educational Analytics Dashboard",
+        "description": "Comprehensive analytics system providing insights into student performance and course effectiveness",
+        "icon": "BarChart3",
+        "subFeatures": [
+          {
+            "id": "performance-analytics",
+            "title": "Student Performance Insights",
+            "description": "Detailed analytics on individual and class performance",
+            "metrics": "Data-driven insights"
+          },
+          {
+            "id": "engagement-metrics",
+            "title": "Engagement Tracking",
+            "description": "Monitor student participation and course interaction levels",
+            "metrics": "Comprehensive engagement data",
+            "isHighlight": true
+          },
+          {
+            "id": "predictive-analytics",
+            "title": "Early Warning System",
+            "description": "Identify students at risk of falling behind",
+            "metrics": "Proactive intervention support"
+          }
+        ],
+        "media": [],
+        "tags": ["Analytics", "Insights", "Performance"],
+        "priority": "medium"
+      },
+      {
+        "id": "mobile-learning",
+        "title": "Mobile-First Learning Platform",
+        "description": "Fully responsive design optimized for mobile learning with offline capabilities and seamless synchronization",
+        "icon": "Smartphone",
+        "subFeatures": [
+          {
+            "id": "responsive-design",
+            "title": "Mobile-Optimized Interface",
+            "description": "Exceptional learning experience on all device sizes",
+            "metrics": "Cross-device compatibility",
+            "isHighlight": true
+          },
+          {
+            "id": "offline-support",
+            "title": "Offline Learning Capability",
+            "description": "Download content for offline study and automatic sync",
+            "metrics": "Uninterrupted learning"
+          },
+          {
+            "id": "push-notifications",
+            "title": "Smart Notification System",
+            "description": "Timely reminders for assignments, deadlines, and updates",
+            "metrics": "Enhanced engagement"
+          }
+        ],
+        "media": [],
+        "tags": ["Mobile", "Responsive", "Offline"],
+        "priority": "medium"
+      }
     ],
     "techStack": {
       "Frontend Framework": [
@@ -1090,18 +2712,127 @@
     "description": "A ground-up implementation of Git version control system in Go, focusing on the core internals of how Git stores and manages data. This project rebuilds Git's object model, repository management, and command structure to provide insights into distributed version control systems while leveraging Go's performance characteristics and standard library.",
     "githubLink": "https://github.com/utkarsh5026/justdoit",
     "technologies": ["golang", "cobra", "git"],
-    "features": [
-      "Complete Git object model implementation (blobs, trees, commits, tags)",
-      "Content-addressable storage system with SHA-1 hashing",
-      "Key-value list message (KVLM) parsing for commit and tag objects",
-      "Repository initialization and management",
-      "Git index implementation for staging changes",
-      "Command-line interface with Cobra framework",
-      "Support for core Git commands (init, cat-file, hash-object, checkout, etc.)",
-      "Ordered dictionary implementation for metadata storage",
-      ".gitignore pattern matching and path filtering",
-      "Tree traversal and manipulation",
-      "Git references management (branches, tags)"
+    "projectFeatures": [
+      {
+        "id": "git-object-model",
+        "title": "Complete Git Object Model Implementation",
+        "description": "Full implementation of Git's core data structures including blobs, trees, commits, and tags with content-addressable storage",
+        "icon": "Database",
+        "subFeatures": [
+          {
+            "id": "content-addressable-storage",
+            "title": "SHA-1 Content Addressing",
+            "description": "Implement Git's unique content identification system",
+            "metrics": "100% Git compatibility",
+            "isHighlight": true
+          },
+          {
+            "id": "object-serialization",
+            "title": "Object Serialization System",
+            "description": "Complete parsing and generation of Git object formats",
+            "metrics": "Full format support"
+          },
+          {
+            "id": "compression-handling",
+            "title": "Zlib Compression Integration",
+            "description": "Efficient storage using Git's compression algorithms",
+            "metrics": "Optimized storage efficiency"
+          }
+        ],
+        "media": [],
+        "tags": ["Git Internals", "Data Structures", "Storage"],
+        "priority": "high"
+      },
+      {
+        "id": "repository-management",
+        "title": "Advanced Repository Management",
+        "description": "Comprehensive repository operations including initialization, reference management, and working directory interaction",
+        "icon": "FolderGit",
+        "subFeatures": [
+          {
+            "id": "repo-initialization",
+            "title": "Repository Initialization",
+            "description": "Create and configure new Git repositories from scratch",
+            "metrics": "Standard Git repo structure"
+          },
+          {
+            "id": "reference-system",
+            "title": "Git References Management",
+            "description": "Handle branches, tags, and symbolic references",
+            "metrics": "Complete reference support",
+            "isHighlight": true
+          },
+          {
+            "id": "working-directory",
+            "title": "Working Directory Operations",
+            "description": "File tracking, staging, and working tree management",
+            "metrics": "Full working tree support"
+          }
+        ],
+        "media": [],
+        "tags": ["Repository", "References", "Working Tree"],
+        "priority": "high"
+      },
+      {
+        "id": "cli-interface",
+        "title": "Professional CLI Interface",
+        "description": "Feature-complete command-line interface built with Cobra framework, providing familiar Git commands and options",
+        "icon": "Terminal",
+        "subFeatures": [
+          {
+            "id": "command-structure",
+            "title": "Git-Compatible Command Structure",
+            "description": "Familiar command syntax and options matching Git standards",
+            "metrics": "Standard Git commands"
+          },
+          {
+            "id": "help-system",
+            "title": "Comprehensive Help System",
+            "description": "Detailed help and usage information for all commands",
+            "metrics": "Full documentation",
+            "isHighlight": true
+          },
+          {
+            "id": "error-handling",
+            "title": "Robust Error Management",
+            "description": "Clear error messages and proper exit codes",
+            "metrics": "Production-ready reliability"
+          }
+        ],
+        "media": [],
+        "tags": ["CLI", "Commands", "Interface"],
+        "priority": "medium"
+      },
+      {
+        "id": "version-control-core",
+        "title": "Core Version Control Features",
+        "description": "Essential version control operations including staging, committing, and file history tracking",
+        "icon": "GitBranch",
+        "subFeatures": [
+          {
+            "id": "staging-system",
+            "title": "Git Index Implementation",
+            "description": "Complete staging area functionality for change management",
+            "metrics": "Full index support"
+          },
+          {
+            "id": "commit-system",
+            "title": "Commit Creation System",
+            "description": "Generate commits with proper metadata and history linking",
+            "metrics": "Complete commit functionality",
+            "isHighlight": true
+          },
+          {
+            "id": "file-tracking",
+            "title": "File Change Tracking",
+            "description": "Monitor and track changes across the entire working directory",
+            "metrics": "Comprehensive change detection"
+          }
+        ],
+        "media": [],
+        "tags": ["Version Control", "Commits", "Staging"],
+        "priority": "medium"
+      }
     ],
     "techStack": {
       "Core Language & Libraries": [
@@ -1166,19 +2897,127 @@
       "postgresql",
       "shadcn"
     ],
-    "features": [
-      "Character information dashboard with detailed stats, talents, constellations, and animations",
-      "Interactive talent book calendar with daily farming recommendations",
-      "Weapon material tracker organized by region and day of availability",
-      "Animated character profiles with idle and combat animations",
-      "Character and weapon tier list builder with drag-and-drop interface",
-      "Genshin character guessing game with visual feedback and contextual hints",
-      "Material farming planner with personal routine optimization",
-      "Dark/light theme support with Genshin-inspired color palette",
-      "Responsive design optimized for both desktop and mobile",
-      "Performance-optimized animations and smooth transitions between views",
-      "Comprehensive database of all in-game characters and weapons",
-      "User-friendly search functionality with visual character selection"
+    "projectFeatures": [
+      {
+        "id": "character-database",
+        "title": "Comprehensive Character Information System",
+        "description": "Complete database of all Genshin Impact characters with detailed stats, talents, constellations, and visual elements",
+        "icon": "User",
+        "subFeatures": [
+          {
+            "id": "detailed-profiles",
+            "title": "Complete Character Profiles",
+            "description": "Full character information including stats, talents, and lore",
+            "metrics": "100+ characters covered",
+            "isHighlight": true
+          },
+          {
+            "id": "visual-animations",
+            "title": "Character Animation Display",
+            "description": "Idle and combat animations for immersive character exploration",
+            "metrics": "Animated character showcase"
+          },
+          {
+            "id": "constellation-tracking",
+            "title": "Constellation and Talent Tracking",
+            "description": "Detailed breakdown of character progression paths",
+            "metrics": "Complete progression data"
+          }
+        ],
+        "media": [],
+        "tags": ["Characters", "Database", "Gaming"],
+        "priority": "high"
+      },
+      {
+        "id": "farming-optimizer",
+        "title": "Smart Farming Schedule Optimizer",
+        "description": "Intelligent system that optimizes daily farming routes and material collection based on character needs",
+        "icon": "Calendar",
+        "subFeatures": [
+          {
+            "id": "daily-planner",
+            "title": "Daily Farming Calendar",
+            "description": "Visual calendar showing optimal farming days for materials",
+            "metrics": "7-day farming optimization",
+            "isHighlight": true
+          },
+          {
+            "id": "route-optimization",
+            "title": "Efficient Route Planning",
+            "description": "Minimize resin usage with intelligent farming route suggestions",
+            "metrics": "Optimized resin efficiency"
+          },
+          {
+            "id": "material-tracking",
+            "title": "Material Requirement Tracking",
+            "description": "Track needed materials across multiple characters",
+            "metrics": "Multi-character planning"
+          }
+        ],
+        "media": [],
+        "tags": ["Optimization", "Planning", "Resources"],
+        "priority": "high"
+      },
+      {
+        "id": "tier-list-builder",
+        "title": "Interactive Tier List Creator",
+        "description": "Drag-and-drop tier list builder for characters and weapons with sharing and comparison features",
+        "icon": "BarChart3",
+        "subFeatures": [
+          {
+            "id": "drag-drop-interface",
+            "title": "Intuitive Drag-and-Drop Builder",
+            "description": "Easy tier list creation with smooth drag-and-drop interactions",
+            "metrics": "Seamless user experience"
+          },
+          {
+            "id": "custom-categories",
+            "title": "Customizable Tier Categories",
+            "description": "Create tier lists for different game modes and purposes",
+            "metrics": "Flexible categorization",
+            "isHighlight": true
+          },
+          {
+            "id": "sharing-system",
+            "title": "Tier List Sharing",
+            "description": "Share and compare tier lists with the community",
+            "metrics": "Community integration"
+          }
+        ],
+        "media": [],
+        "tags": ["Tier Lists", "Community", "Comparison"],
+        "priority": "medium"
+      },
+      {
+        "id": "gaming-tools",
+        "title": "Interactive Gaming Tools Suite",
+        "description": "Collection of engaging tools including character guessing games and progress tracking features",
+        "icon": "Gamepad2",
+        "subFeatures": [
+          {
+            "id": "guessing-game",
+            "title": "Character Guessing Game",
+            "description": "Fun and challenging character identification game with hints",
+            "metrics": "Gamified learning experience"
+          },
+          {
+            "id": "progress-tracking",
+            "title": "Account Progress Tracking",
+            "description": "Track your in-game progress and achievement milestones",
+            "metrics": "Comprehensive progress data",
+            "isHighlight": true
+          },
+          {
+            "id": "weapon-database",
+            "title": "Complete Weapon Information",
+            "description": "Detailed weapon stats, materials, and upgrade paths",
+            "metrics": "Full weapon catalog"
+          }
+        ],
+        "media": [],
+        "tags": ["Gaming", "Tools", "Progress"],
+        "priority": "medium"
+      }
     ],
     "techStack": {
       "Frontend Framework": [
@@ -1262,16 +3101,127 @@
       "shadcn",
       "docker"
     ],
-    "features": [
-      "Color analysis with dominant color extraction and RGB histograms",
-      "Luminance analysis with brightness distribution and dynamic range visualization",
-      "Compression optimization with format comparison and artifact detection",
-      "Performance metrics for loading time, memory usage, and browser compatibility",
-      "Real-time image processing using Rust compiled to WebAssembly",
-      "Responsive design with dark mode support",
-      "Drag-and-drop interface for quick image uploads",
-      "Interactive data visualizations with Recharts",
-      "Multi-format image support (JPEG, PNG, WebP, AVIF)"
+    "projectFeatures": [
+      {
+        "id": "rust-wasm-engine",
+        "title": "High-Performance Rust+WebAssembly Engine",
+        "description": "Cutting-edge image processing engine combining Rust's performance with WebAssembly for near-native browser execution",
+        "icon": "Zap",
+        "subFeatures": [
+          {
+            "id": "rust-algorithms",
+            "title": "Optimized Rust Algorithms",
+            "description": "Custom image processing algorithms written in Rust for maximum performance",
+            "metrics": "Near-native performance",
+            "isHighlight": true
+          },
+          {
+            "id": "wasm-integration",
+            "title": "Seamless WebAssembly Integration",
+            "description": "Smooth communication between JavaScript frontend and Rust backend",
+            "metrics": "Zero-copy data transfer"
+          },
+          {
+            "id": "memory-management",
+            "title": "Efficient Memory Management",
+            "description": "Optimized memory usage for processing large images efficiently",
+            "metrics": "Minimal memory footprint"
+          }
+        ],
+        "media": [],
+        "tags": ["Rust", "WebAssembly", "Performance"],
+        "priority": "high"
+      },
+      {
+        "id": "comprehensive-analysis",
+        "title": "Multi-Dimensional Image Analysis",
+        "description": "Advanced analysis toolkit covering color distribution, luminance patterns, compression artifacts, and performance metrics",
+        "icon": "BarChart3",
+        "subFeatures": [
+          {
+            "id": "color-analysis",
+            "title": "Advanced Color Analysis",
+            "description": "Dominant color extraction, RGB histograms, and color distribution mapping",
+            "metrics": "Comprehensive color insights",
+            "isHighlight": true
+          },
+          {
+            "id": "luminance-analysis",
+            "title": "Luminance and Brightness Analysis",
+            "description": "Dynamic range visualization and brightness distribution analysis",
+            "metrics": "Professional-grade analysis"
+          },
+          {
+            "id": "compression-optimization",
+            "title": "Format Comparison and Optimization",
+            "description": "Compare different image formats and detect compression artifacts",
+            "metrics": "Multi-format support"
+          }
+        ],
+        "media": [],
+        "tags": ["Analysis", "Color", "Compression"],
+        "priority": "high"
+      },
+      {
+        "id": "real-time-processing",
+        "title": "Real-Time Interactive Processing",
+        "description": "Instant image analysis with live updates and interactive data visualizations using modern web technologies",
+        "icon": "Activity",
+        "subFeatures": [
+          {
+            "id": "live-updates",
+            "title": "Real-Time Analysis Updates",
+            "description": "Instant processing and visualization as images are uploaded",
+            "metrics": "Sub-second processing times"
+          },
+          {
+            "id": "interactive-visualizations",
+            "title": "Interactive Data Visualizations",
+            "description": "Clickable, explorable charts and graphs using Recharts",
+            "metrics": "Rich interactive experience",
+            "isHighlight": true
+          },
+          {
+            "id": "drag-drop-interface",
+            "title": "Intuitive Drag-and-Drop Interface",
+            "description": "Simple image upload with immediate processing feedback",
+            "metrics": "Seamless user experience"
+          }
+        ],
+        "media": [],
+        "tags": ["Real-Time", "Interactive", "Visualization"],
+        "priority": "medium"
+      },
+      {
+        "id": "professional-interface",
+        "title": "Professional Analysis Interface",
+        "description": "Clean, responsive design with dark mode support and professional-grade data presentation",
+        "icon": "Monitor",
+        "subFeatures": [
+          {
+            "id": "responsive-design",
+            "title": "Mobile-Optimized Interface",
+            "description": "Full analysis capabilities available on all device sizes",
+            "metrics": "Cross-device compatibility"
+          },
+          {
+            "id": "dark-mode",
+            "title": "Dark Mode Support",
+            "description": "Professional dark theme for comfortable extended use",
+            "metrics": "Eye-friendly interface",
+            "isHighlight": true
+          },
+          {
+            "id": "data-export",
+            "title": "Analysis Data Export",
+            "description": "Export analysis results in various formats for further use",
+            "metrics": "Professional workflow integration"
+          }
+        ],
+        "media": [],
+        "tags": ["Interface", "Responsive", "Professional"],
+        "priority": "medium"
+      }
     ],
     "techStack": {
       "Core Architecture": [
@@ -1329,18 +3279,127 @@
     "description": "A lightweight, modular HTTP server implementation built from scratch using TypeScript and Node.js. This test-driven project features a robust, type-safe foundation for handling HTTP requests and responses with an Express-inspired API, including advanced features like cookie management, caching, content encoding, and a flexible middleware-based routing system.",
     "githubLink": "https://github.com/utkarsh5026/tstp",
     "technologies": ["typescript", "node", "jest", "http"],
-    "features": [
-      "Complete HTTP request and response handling with type safety",
-      "Cookie management with extensive security options",
-      "Response caching and cache control directives",
-      "Content compression with gzip encoding",
-      "Flexible routing with path parameters and middleware support",
-      "Chainable API for expressive and readable code",
-      "Content type negotiation and MIME type support",
-      "Header parsing and manipulation with type-safe enums",
-      "Query parameter parsing and body content processing",
-      "Comprehensive error handling and status code management",
-      "Test-driven architecture with high test coverage"
+    "projectFeatures": [
+      {
+        "id": "http-protocol-implementation",
+        "title": "Complete HTTP Protocol Implementation",
+        "description": "Ground-up implementation of HTTP/1.1 protocol with comprehensive request/response handling and specification compliance",
+        "icon": "Globe",
+        "subFeatures": [
+          {
+            "id": "protocol-compliance",
+            "title": "HTTP/1.1 Specification Compliance",
+            "description": "Full adherence to HTTP/1.1 standards and best practices",
+            "metrics": "100% specification compliance",
+            "isHighlight": true
+          },
+          {
+            "id": "header-parsing",
+            "title": "Advanced Header Processing",
+            "description": "Comprehensive HTTP header parsing and manipulation",
+            "metrics": "All header types supported"
+          },
+          {
+            "id": "content-negotiation",
+            "title": "Content Type Negotiation",
+            "description": "Automatic content type detection and MIME type handling",
+            "metrics": "Smart content handling"
+          }
+        ],
+        "media": [],
+        "tags": ["HTTP", "Protocol", "Web Server"],
+        "priority": "high"
+      },
+      {
+        "id": "typescript-api",
+        "title": "Type-Safe Chainable API",
+        "description": "Elegant, Express-inspired API with full TypeScript support and intuitive method chaining for developer productivity",
+        "icon": "Code2",
+        "subFeatures": [
+          {
+            "id": "chainable-methods",
+            "title": "Fluent Chainable Interface",
+            "description": "Intuitive API design with method chaining for readable code",
+            "metrics": "Developer-friendly API",
+            "isHighlight": true
+          },
+          {
+            "id": "type-safety",
+            "title": "Complete Type Safety",
+            "description": "Full TypeScript integration with compile-time error checking",
+            "metrics": "Zero runtime type errors"
+          },
+          {
+            "id": "express-inspired",
+            "title": "Express-Compatible Design",
+            "description": "Familiar API patterns for easy adoption by Express developers",
+            "metrics": "Low learning curve"
+          }
+        ],
+        "media": [],
+        "tags": ["TypeScript", "API Design", "Developer Experience"],
+        "priority": "high"
+      },
+      {
+        "id": "advanced-features",
+        "title": "Enterprise-Grade HTTP Features",
+        "description": "Comprehensive HTTP server features including cookies, caching, compression, and security enhancements",
+        "icon": "Shield",
+        "subFeatures": [
+          {
+            "id": "cookie-management",
+            "title": "Advanced Cookie Management",
+            "description": "Complete cookie handling with security options and encryption",
+            "metrics": "Enterprise cookie support"
+          },
+          {
+            "id": "response-caching",
+            "title": "Intelligent Response Caching",
+            "description": "Built-in caching with cache control directives and optimization",
+            "metrics": "Performance-optimized caching",
+            "isHighlight": true
+          },
+          {
+            "id": "compression-support",
+            "title": "Content Compression",
+            "description": "Automatic gzip compression based on client capabilities",
+            "metrics": "Bandwidth optimization"
+          }
+        ],
+        "media": [],
+        "tags": ["Features", "Performance", "Security"],
+        "priority": "medium"
+      },
+      {
+        "id": "test-driven-quality",
+        "title": "Test-Driven Development Excellence",
+        "description": "Comprehensive testing methodology with high coverage ensuring reliability and correctness in production use",
+        "icon": "CheckCircle",
+        "subFeatures": [
+          {
+            "id": "comprehensive-testing",
+            "title": "Extensive Test Coverage",
+            "description": "Unit and integration tests covering all functionality",
+            "metrics": "High test coverage achieved"
+          },
+          {
+            "id": "edge-case-handling",
+            "title": "Edge Case Resilience",
+            "description": "Robust handling of unusual HTTP scenarios and malformed requests",
+            "metrics": "Production-ready reliability",
+            "isHighlight": true
+          },
+          {
+            "id": "codecrafters-validated",
+            "title": "CodeCrafters Challenge Completion",
+            "description": "Built and validated through structured learning platform",
+            "metrics": "Peer-reviewed quality"
+          }
+        ],
+        "media": [],
+        "tags": ["Testing", "Quality", "Reliability"],
+        "priority": "medium"
+      }
     ],
     "tags": [
       "Backend",

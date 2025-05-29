@@ -40,7 +40,7 @@ export type ProjectDemoVideo = {
   fileSize?: string;
 };
 
-interface MajorFeature {
+export type MajorFeature = {
   id: string;
   title: string;
   description: string;
@@ -49,17 +49,17 @@ interface MajorFeature {
   media: MediaItem[];
   tags: string[];
   priority: "high" | "medium" | "low";
-}
+};
 
-interface SubFeature {
+export type SubFeature = {
   id: string;
   title: string;
   description?: string;
   metrics?: string; // e.g., "10,000 users", "99.9% uptime"
   isHighlight?: boolean;
-}
+};
 
-export interface Project {
+export type Project = {
   name: string;
   description: string;
   technologies: string[];
@@ -74,7 +74,7 @@ export interface Project {
   techStack?: Record<string, string[]>;
   explain?: string[];
   demoVideo?: ProjectDemoVideo;
-}
+};
 
 export type Article = {
   title: string;
