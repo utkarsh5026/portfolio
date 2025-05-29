@@ -1,105 +1,142 @@
-import React from "react";
-import { Card } from "@/components/ui/card";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import { ChevronRight } from "lucide-react";
-import SkillItem from "./SkillItem";
-import Reveal from "@/components/animations/reveal/Reveal";
+import { skillCategories } from "./data";
 
 interface SkillCardProps {
-  skill: string;
-  icon?: React.ReactNode;
-  items: string[];
-  accentColor?:
-    | "mauve"
-    | "blue"
-    | "lavender"
-    | "sapphire"
-    | "teal"
-    | "green"
-    | "red"
-    | "peach";
-  description?: string;
+  category: (typeof skillCategories)[number];
+  index: number;
 }
 
-/**
- * SkillCard Component
- *
- * This component renders a card for a specific skill, including the skill title, icon, description, and a list of items.
- * It uses reveal animations to create smooth entrance effects for each element.
- *
- * Props:
- * - skill: string - The title of the skill.
- * - icon: React.ReactNode - The icon of the skill.
- * - items: string[] - The list of items related to the skill.
- * - accentColor: string - The accent color of the skill card. Defaults to "lavender".
- * - description: string - The description of the skill.
- *
- * The animations are optimized for both mobile and desktop viewing experiences, with careful
- * attention to performance, timing, and visual hierarchy.
- *
- * @param {SkillCardProps} props - The component props
- * @returns {React.ReactElement} The rendered skill card component
- */
-const SkillCard: React.FC<SkillCardProps> = ({
-  skill,
-  icon,
-  items,
-  accentColor = "lavender",
-  description,
-}) => {
+const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
-    <Reveal
-      effect="rise"
-      duration={0.7}
-      className="skill-card group relative w-full transition-all duration-500 hover:-translate-y-2"
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.5 }}
+      className="group"
     >
-      <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-ctp-blue/30 to-ctp-lavender/30 opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500"></div>
-
-      <Card className="relative bg-ctp-base border-none hover:border-ctp-surface2 transition-all duration-300 overflow-hidden">
-        <div className="p-6">
-          <Reveal effect="fade-up" duration={0.5} delay={0.1}>
-            <div className="flex items-start gap-4 mb-4">
-              <Reveal effect="zoom-in" duration={0.6} delay={0.2}>
-                <div
-                  className={`relative p-3 rounded-lg bg-ctp-${accentColor}/10 flex items-center justify-center`}
-                >
-                  {icon || (
-                    <ChevronRight
-                      className={`w-5 h-5 text-ctp-${accentColor}`}
-                    />
-                  )}
-                </div>
-              </Reveal>
-
-              {/* Title and description */}
-              <div>
-                <h3
-                  className={`text-xl font-bold text-ctp-${accentColor} mb-1`}
-                >
-                  {skill}
-                </h3>
-                {description && (
-                  <p className="text-sm text-ctp-subtext0">{description}</p>
-                )}
-              </div>
+      <div
+        className="bg-ctp-surface0/50 backdrop-blur-sm rounded-2xl p-6 border border-ctp-surface1/50 hover:border-ctp-surface2/80 transition-all duration-300 cursor-pointer"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <div
+              className={`p-2.5 rounded-xl bg-ctp-${category.color}/10 text-ctp-${category.color}`}
+            >
+              {category.icon}
             </div>
-          </Reveal>
+            <div>
+              <h3 className="text-lg font-semibold text-ctp-text">
+                {category.title}
+              </h3>
+              <p className="text-sm text-ctp-subtext0 hidden sm:block">
+                {category.description}
+              </p>
+            </div>
+          </div>
 
-          <Reveal
-            effect="cascade"
-            duration={0.5}
-            delay={0.3}
-            staggerChildren={0.05}
-            className="grid grid-cols-2 gap-x-4 gap-y-3 mt-6"
+          <motion.div
+            animate={{ rotate: isExpanded ? 90 : 0 }}
+            transition={{ duration: 0.2 }}
+            className="text-ctp-subtext0"
           >
-            {items.map((item) => (
-              <div key={item}>
-                <SkillItem item={item} accentColor={accentColor} />
-              </div>
-            ))}
-          </Reveal>
+            <ChevronRight className="w-5 h-5" />
+          </motion.div>
         </div>
-      </Card>
-    </Reveal>
+
+        {/* Skills Preview (Always visible on mobile) */}
+        <div className="flex flex-wrap gap-2 mb-3 sm:hidden">
+          {category.skills.map((skill) => (
+            <div
+              key={skill.name}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 bg-ctp-surface1/50 rounded-lg"
+            >
+              <div className={`text-ctp-${skill.color} text-sm`}>
+                {skill.icon}
+              </div>
+              <span className="text-xs text-ctp-subtext1 font-medium">
+                {skill.name}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop Preview */}
+        <div className="hidden sm:flex flex-wrap gap-2">
+          {category.skills.slice(0, 4).map((skill) => (
+            <div
+              key={skill.name}
+              className="flex items-center gap-2 px-3 py-1.5 bg-ctp-surface1/30 rounded-lg"
+            >
+              <div className={`text-ctp-${skill.color}`}>{skill.icon}</div>
+              <span className="text-sm text-ctp-subtext1 font-medium">
+                {skill.name}
+              </span>
+            </div>
+          ))}
+          {category.skills.length > 4 && (
+            <div className="flex items-center px-3 py-1.5 bg-ctp-surface1/30 rounded-lg">
+              <span className="text-sm text-ctp-subtext0">
+                +{category.skills.length - 4} more
+              </span>
+            </div>
+          )}
+        </div>
+
+        {/* Expanded Skills */}
+        <motion.div
+          animate={{
+            height: isExpanded ? "auto" : 0,
+            opacity: isExpanded ? 1 : 0,
+          }}
+          transition={{ duration: 0.3 }}
+          className="overflow-hidden"
+        >
+          <div className="pt-4 border-t border-ctp-surface1/50 mt-4">
+            <div className="space-y-4">
+              {category.skills.map((skill) => (
+                <div
+                  key={skill.name}
+                  className="p-4 bg-ctp-surface1/20 rounded-xl hover:bg-ctp-surface1/30 transition-colors duration-200"
+                >
+                  {/* Skill Header */}
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className={`text-ctp-${skill.color} flex-shrink-0`}>
+                      {skill.icon}
+                    </div>
+                    <span className="text-ctp-text font-semibold text-lg">
+                      {skill.name}
+                    </span>
+                  </div>
+
+                  {/* Usage Examples */}
+                  <div className="space-y-2">
+                    <p className="text-ctp-subtext0 text-sm font-medium mb-2">
+                      How I've used it:
+                    </p>
+                    <ul className="space-y-1.5">
+                      {skill.usage.map((use) => (
+                        <li
+                          key={use}
+                          className="text-sm text-ctp-subtext1 pl-4 relative before:absolute before:left-0 before:top-[0.4em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-ctp-subtext0"
+                        >
+                          {use}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
   );
 };
 
