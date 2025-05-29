@@ -110,16 +110,6 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
                     <h3 className="text-xl sm:text-2xl font-bold text-white">
                       {feature.title}
                     </h3>
-                    <div
-                      className={cn(
-                        "px-2 py-1 rounded-full text-xs font-medium",
-                        `bg-${priorityColors[feature.priority]}/20 text-${
-                          priorityColors[feature.priority]
-                        } border border-${priorityColors[feature.priority]}/30`
-                      )}
-                    >
-                      {feature.priority}
-                    </div>
                   </div>
                   <p className="text-white/80 leading-relaxed text-sm sm:text-base mb-4">
                     {feature.description}

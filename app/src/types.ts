@@ -62,7 +62,7 @@ export type SubFeature = {
 export type Project = {
   name: string;
   description: string;
-  technologies: string[];
+  technologies: TechName[];
   features: string[];
   projectFeatures: MajorFeature[];
   githubLink: string;
@@ -72,7 +72,7 @@ export type Project = {
     gallery?: MediaItem[];
   };
   techStack?: Record<string, string[]>;
-  explain?: string[];
+  explain: string[];
   demoVideo?: ProjectDemoVideo;
 };
 

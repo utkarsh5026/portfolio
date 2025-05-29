@@ -73,11 +73,11 @@ const Technologies: React.FC<TechnologiesProps> = ({ project, theme }) => {
                   className={`w-12 h-12 mx-auto mb-3 rounded-xl flex items-center justify-center`}
                 >
                   <span className="text-2xl font-bold text-white">
-                    {technologies[tech].icon}
+                    {technologies[tech as keyof typeof technologies].icon}
                   </span>
                 </div>
                 <div className="text-white text-sm font-medium">
-                  {technologies[tech].name}
+                  {technologies[tech as keyof typeof technologies].name}
                 </div>
               </div>
             </div>
