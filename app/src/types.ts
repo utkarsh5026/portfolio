@@ -30,25 +30,32 @@ export type MediaItem = {
   tags?: string[];
 };
 
-export type Project = {
+export type ProjectDemoVideo = {
+  videoUrl: string;
+  title?: string;
+  description?: string;
+  thumbnail?: string;
+  duration?: string;
+  highlights?: string[];
+  fileSize?: string;
+};
+export interface Project {
   name: string;
   description: string;
+  technologies: string[];
+  features: string[];
   githubLink: string;
   liveLink?: string;
-  technologies: TechName[];
-  features: string[];
-  thumbnail?: string;
-  highlights?: string[];
   tags?: string[];
-  techStack?: Record<string, string[]>;
-  explain: string[];
-
-  // New media properties
   media?: {
-    gallery?: MediaItem[]; // Additional media items
-    demo?: MediaItem; // Specific demo video/gif
+    gallery?: MediaItem[];
   };
-};
+  techStack?: Record<string, string[]>;
+  explain?: string[];
+
+  // New demo video property
+  demoVideo?: ProjectDemoVideo;
+}
 
 export type Article = {
   title: string;

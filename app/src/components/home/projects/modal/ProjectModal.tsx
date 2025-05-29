@@ -8,10 +8,11 @@ import {
   TechStack,
   MediaShowcase,
   Sidebar,
+  DemoVideo,
 } from "./components";
 import Reveal from "@/components/animations/reveal/Reveal";
 
-type Tab = "overview" | "features" | "tech" | "media";
+type Tab = "overview" | "features" | "tech" | "media" | "demo";
 
 interface ProjectModalProps {
   isModalOpen: boolean;
@@ -37,6 +38,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   const hasMedia =
     selectedProject.media?.gallery &&
     selectedProject.media?.gallery?.length > 0;
+  const hasDemo = true;
 
   return (
     <DialogModal isOpen={isModalOpen} handleChange={closeModal}>
@@ -58,6 +60,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               explainOpen={explainOpen}
               setExplainOpen={setExplainOpen}
               hasMedia={hasMedia || false}
+              hasDemo={hasDemo || false}
             />
 
             {/* Right Content Area */}
@@ -102,6 +105,9 @@ const RightContent: React.FC<RightContentProps> = ({
             media={project.media.gallery || []}
             theme={theme}
           />
+        )}
+        {activeTab === "demo" && (
+          <DemoVideo key="demo" project={project} theme={theme} />
         )}
       </div>
     </div>
