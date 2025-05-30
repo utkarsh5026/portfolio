@@ -39,7 +39,7 @@ const ContactMe: React.FC = () => {
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Button
                 variant="outline"
-                className="bg-ctp-pink/10 text-ctp-pink border-ctp-pink/30 hover:bg-ctp-pink/20 hover:border-ctp-pink/50 hover:text-ctp-pink/80 hover:shadow-ctp-pink/20 hover:shadow-lg hover:scale-105 hover:rotate-1 hover:translate-y-[-2px] px-6 py-3 rounded-xl font-medium transition-all duration-300 group-hover:shadow-ctp-pink/30 group-hover:shadow-xl"
+                className="bg-ctp-pink/10 text-ctp-pink border-ctp-pink/30 hover:bg-ctp-pink/20 hover:border-ctp-pink/50 hover:text-ctp-pink/80 hover:shadow-ctp-pink/20 hover:shadow-lg hover:scale-105 hover:rotate-1 hover:translate-y-[-2px] px-2 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-all duration-300 group-hover:shadow-ctp-pink/30 group-hover:shadow-xl w-full max-w-md mx-auto"
                 onClick={() =>
                   window.open(
                     "mailto:utkarshpriyadarshi5026@gmail.com",
@@ -47,8 +47,12 @@ const ContactMe: React.FC = () => {
                   )
                 }
               >
-                <FaEnvelope className="w-4 h-4 mr-2" />
-                utkarshpriyadarshi5026@gmail.com
+                <div className="flex items-center justify-center gap-2 min-w-0">
+                  <FaEnvelope className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+                  <span className="text-xs sm:text-sm font-mono break-all leading-tight min-w-0">
+                    utkarshpriyadarshi5026@gmail.com
+                  </span>
+                </div>
               </Button>
             </motion.div>
           </div>
