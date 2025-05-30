@@ -16,25 +16,27 @@ const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      className="group"
+      className="group w-full"
     >
       <div
-        className="bg-ctp-surface0/50 backdrop-blur-sm rounded-2xl p-6 border border-ctp-surface1/50 hover:border-ctp-surface2/80 transition-all duration-300 cursor-pointer"
+        className="bg-ctp-surface0/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 border border-ctp-surface1/50 hover:border-ctp-surface2/80 transition-all duration-300 cursor-pointer w-full overflow-hidden"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         {/* Header */}
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between mb-3 sm:mb-4 gap-2">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
             <div
-              className={`p-2.5 rounded-xl bg-ctp-${category.color}/10 text-ctp-${category.color}`}
+              className={`p-1.5 sm:p-2 md:p-2.5 rounded-lg sm:rounded-xl bg-ctp-${category.color}/10 text-ctp-${category.color} flex-shrink-0`}
             >
-              {category.icon}
+              <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6">
+                {category.icon}
+              </div>
             </div>
-            <div>
-              <h3 className="text-lg font-semibold text-ctp-text">
+            <div className="min-w-0 flex-1">
+              <h3 className="text-base sm:text-lg font-semibold text-ctp-text leading-tight break-words">
                 {category.title}
               </h3>
-              <p className="text-sm text-ctp-subtext0 hidden sm:block">
+              <p className="text-xs sm:text-sm text-ctp-subtext0 hidden sm:block mt-0.5 break-words">
                 {category.description}
               </p>
             </div>
@@ -43,27 +45,38 @@ const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
           <motion.div
             animate={{ rotate: isExpanded ? 90 : 0 }}
             transition={{ duration: 0.2 }}
-            className="text-ctp-subtext0"
+            className="text-ctp-subtext0 flex-shrink-0"
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </motion.div>
         </div>
 
-        {/* Skills Preview (Always visible on mobile) */}
-        <div className="flex flex-wrap gap-2 mb-3 sm:hidden">
-          {category.skills.map((skill) => (
-            <div
-              key={skill.name}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 bg-ctp-surface1/50 rounded-lg"
-            >
-              <div className={`text-ctp-${skill.color} text-sm`}>
-                {skill.icon}
+        {/* Skills Preview - Mobile optimized */}
+        <div className="sm:hidden">
+          <div className="flex flex-wrap gap-1.5 mb-2">
+            {category.skills.slice(0, 3).map((skill) => (
+              <div
+                key={skill.name}
+                className="flex items-center gap-1 px-2 py-1 bg-ctp-surface1/50 rounded-md"
+              >
+                <div
+                  className={`text-ctp-${skill.color} text-xs flex-shrink-0`}
+                >
+                  {skill.icon}
+                </div>
+                <span className="text-xs text-ctp-subtext1 font-medium truncate">
+                  {skill.name}
+                </span>
               </div>
-              <span className="text-xs text-ctp-subtext1 font-medium">
-                {skill.name}
-              </span>
-            </div>
-          ))}
+            ))}
+            {category.skills.length > 3 && (
+              <div className="flex items-center px-2 py-1 bg-ctp-surface1/30 rounded-md">
+                <span className="text-xs text-ctp-subtext0">
+                  +{category.skills.length - 3}
+                </span>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Desktop Preview */}
@@ -71,9 +84,11 @@ const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
           {category.skills.slice(0, 4).map((skill) => (
             <div
               key={skill.name}
-              className="flex items-center gap-2 px-3 py-1.5 bg-ctp-surface1/30 rounded-lg"
+              className="flex items-center gap-2 px-2.5 sm:px-3 py-1.5 bg-ctp-surface1/30 rounded-lg"
             >
-              <div className={`text-ctp-${skill.color}`}>{skill.icon}</div>
+              <div className={`text-ctp-${skill.color} flex-shrink-0`}>
+                {skill.icon}
+              </div>
               <span className="text-sm text-ctp-subtext1 font-medium">
                 {skill.name}
               </span>
@@ -97,38 +112,56 @@ const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
           transition={{ duration: 0.3 }}
           className="overflow-hidden"
         >
-          <div className="pt-4 border-t border-ctp-surface1/50 mt-4">
-            <div className="space-y-4">
+          <div className="pt-3 sm:pt-4 border-t border-ctp-surface1/50 mt-3 sm:mt-4">
+            <div className="space-y-2 sm:space-y-3 md:space-y-4">
               {category.skills.map((skill) => (
                 <div
                   key={skill.name}
-                  className="p-4 bg-ctp-surface1/20 rounded-xl hover:bg-ctp-surface1/30 transition-colors duration-200"
+                  className="p-2 sm:p-3 md:p-4 bg-ctp-surface1/20 rounded-lg sm:rounded-xl hover:bg-ctp-surface1/30 transition-colors duration-200 w-full overflow-hidden"
                 >
                   {/* Skill Header */}
-                  <div className="flex items-center gap-3 mb-3">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                     <div className={`text-ctp-${skill.color} flex-shrink-0`}>
-                      {skill.icon}
+                      <div className="w-4 h-4 sm:w-5 sm:h-5">{skill.icon}</div>
                     </div>
-                    <span className="text-ctp-text font-semibold text-lg">
+                    <span className="text-ctp-text font-semibold text-sm sm:text-base md:text-lg break-words">
                       {skill.name}
                     </span>
                   </div>
 
                   {/* Usage Examples */}
-                  <div className="space-y-2">
-                    <p className="text-ctp-subtext0 text-sm font-medium mb-2">
-                      How I've used it:
-                    </p>
-                    <ul className="space-y-1.5">
-                      {skill.usage.map((use) => (
-                        <li
+                  <div className="space-y-2 sm:space-y-3">
+                    <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                      <div className="h-0.5 w-6 bg-gradient-to-r from-ctp-blue to-ctp-mauve rounded-full"></div>
+                      <p className="text-ctp-subtext0 text-xs sm:text-sm font-semibold">
+                        How I've used it:
+                      </p>
+                      <div className="h-0.5 flex-1 bg-gradient-to-r from-ctp-mauve to-transparent rounded-full"></div>
+                    </div>
+                    <div className="grid gap-2 sm:gap-2.5">
+                      {skill.usage.map((use, index) => (
+                        <motion.div
                           key={use}
-                          className="text-sm text-ctp-subtext1 pl-4 relative before:absolute before:left-0 before:top-[0.4em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-ctp-subtext0"
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                          className="group relative"
                         >
-                          {use}
-                        </li>
+                          <div className="flex items-start gap-3 p-2 sm:p-3 rounded-lg bg-gradient-to-r from-ctp-surface1/20 to-ctp-surface1/10 hover:from-ctp-surface1/30 hover:to-ctp-surface1/20 transition-all duration-200 border border-ctp-surface1/20 hover:border-ctp-surface2/30">
+                            <div
+                              className={`mt-1 p-1 rounded-full bg-ctp-${skill.color}/20 flex-shrink-0`}
+                            >
+                              <div
+                                className={`h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-ctp-${skill.color}`}
+                              ></div>
+                            </div>
+                            <p className="text-xs sm:text-sm text-ctp-subtext1 leading-relaxed flex-1 group-hover:text-ctp-text transition-colors duration-200">
+                              {use}
+                            </p>
+                          </div>
+                        </motion.div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </div>
               ))}
