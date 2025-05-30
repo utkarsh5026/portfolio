@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
 import OutlineNode from "@/components/home/editor/outline/OutlineNode";
 import { getIcon } from "./sec-utils";
 
@@ -19,17 +20,6 @@ interface SectionProps {
   scanlines?: boolean;
 }
 
-/**
- * Enhanced Section component with coding-themed effects
- *
- * Features:
- * - Terminal/code editor aesthetics with line numbers & command prompt
- * - Matrix-style falling code animation
- * - CRT scanline effect
- * - Animated glowing accents using Catppuccin colors
- * - Typing animation on section title
- * - Dynamic blur effects in background
- */
 const Section: React.FC<SectionProps> = ({
   id,
   label,
@@ -40,35 +30,204 @@ const Section: React.FC<SectionProps> = ({
 }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile viewport
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Intersection observer for progressive loading
+  const isInView = useInView(sectionRef, {
+    once: true,
+    margin: "-10% 0px -10% 0px",
+  });
 
   return (
     <OutlineNode id={id} label={label} level={0} icon={getIcon(icon)}>
-      <div
+      <motion.div
         ref={sectionRef}
         id={id}
-        className={`${id}-section relative  ${className}`}
+        className={`${id}-section relative w-full ${className}`}
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{
+          duration: 0.6,
+          ease: [0.25, 0.46, 0.45, 0.94], // Custom easing for smooth mobile animation
+        }}
       >
-        <div className="rounded-lg shadow-lg border-none overflow-auto relative">
+        {/* Mobile-optimized container with responsive design */}
+        <div className="relative w-full overflow-hidden">
+          {/* Enhanced background with mobile considerations */}
+          <div className="absolute inset-0 bg-gradient-to-br from-ctp-surface0/5 via-transparent to-ctp-mantle/5 pointer-events-none" />
+
+          {/* Adaptive scanlines effect - more subtle on mobile */}
           {scanlines && (
-            <div className="absolute inset-0 z-10 pointer-events-none">
+            <motion.div
+              className="absolute inset-0 z-10 pointer-events-none"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isInView ? 1 : 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+            >
               <div
-                className="absolute inset-0 opacity-10"
+                className={`absolute inset-0 ${
+                  isMobile ? "opacity-5" : "opacity-10"
+                }`}
                 style={{
-                  backgroundImage:
-                    "repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0, 0, 0, 0.5) 1px, rgba(0, 0, 0, 0.5) 2px)",
-                  backgroundSize: "100% 2px",
+                  backgroundImage: `repeating-linear-gradient(
+                    0deg, 
+                    transparent, 
+                    transparent ${isMobile ? "2px" : "1px"}, 
+                    rgba(0, 0, 0, 0.3) ${isMobile ? "2px" : "1px"}, 
+                    rgba(0, 0, 0, 0.3) ${isMobile ? "3px" : "2px"}
+                  )`,
+                  backgroundSize: `100% ${isMobile ? "3px" : "2px"}`,
                 }}
-              ></div>
-            </div>
+              />
+            </motion.div>
           )}
 
-          <div className="flex relative">
-            <div ref={contentRef} className="p-5 flex-1 overflow-auto">
-              {children}
-            </div>
+          {/* Main content container with mobile-first responsive design */}
+          <div className="relative w-full">
+            {/* Mobile-optimized content wrapper */}
+            <motion.div
+              ref={contentRef}
+              className={`
+                // Mobile-first padding: comfortable touch areas
+                px-4 py-6
+                // Small tablets and larger phones
+                sm:px-6 sm:py-8
+                // Tablets
+                md:px-8 md:py-10
+                // Desktop
+                lg:px-10 lg:py-12
+                xl:px-12 xl:py-14
+                
+                // Responsive width constraints
+                w-full max-w-full
+                
+                // Mobile scroll optimization
+                overflow-x-hidden overflow-y-auto
+                
+                // Touch-friendly scrolling on mobile
+                overscroll-behavior-y-contain
+                
+                // Enhanced focus styles for accessibility
+                focus-within:outline-none focus-within:ring-2 focus-within:ring-ctp-blue/20 focus-within:ring-offset-2
+                
+                // Smooth transitions
+                transition-all duration-300 ease-out
+              `}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+            >
+              {/* Mobile section header (optional, for better mobile UX) */}
+              <motion.div
+                className={`
+                  // Only show on mobile for certain sections
+                  ${
+                    isMobile && ["about", "skills", "projects"].includes(id)
+                      ? "block"
+                      : "hidden"
+                  }
+                  mb-6 sm:hidden
+                `}
+                initial={{ opacity: 0, y: 10 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                }
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                <div className="flex items-center gap-3 p-4 bg-ctp-surface0/30 backdrop-blur-sm rounded-2xl border border-ctp-surface1/20">
+                  <div className="flex-shrink-0 p-2 bg-ctp-blue/10 rounded-xl">
+                    {getIcon(icon)}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h2 className="text-lg font-semibold text-ctp-text truncate">
+                      {label}
+                    </h2>
+                    <div className="w-8 h-0.5 bg-ctp-blue/60 rounded-full mt-1" />
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Main content with progressive enhancement */}
+              <motion.div
+                className={`
+                  space-y-6
+                  sm:space-y-8
+                  lg:space-y-10
+                  
+
+                  text-sm
+                  sm:text-base
+                  lg:text-lg
+                  
+                  leading-relaxed
+                  sm:leading-relaxed
+                  lg:leading-loose
+                `}
+                initial={{ opacity: 0, y: 15 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }
+                }
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                {children}
+              </motion.div>
+
+              {/* Mobile-friendly bottom spacing */}
+              <div className="h-4 sm:h-6 lg:h-8" />
+            </motion.div>
           </div>
+
+          {/* Mobile scroll indicator (subtle visual cue) */}
+          {isMobile && (
+            <motion.div
+              className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-ctp-surface2/30 rounded-full"
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={
+                isInView ? { opacity: 1, scaleX: 1 } : { opacity: 0, scaleX: 0 }
+              }
+              transition={{ duration: 0.8, delay: 0.5 }}
+            />
+          )}
+
+          {/* Responsive border decoration */}
+          <motion.div
+            className={`
+              absolute inset-0 rounded-none
+              sm:rounded-lg
+              lg:rounded-xl
+              
+              border-0
+              sm:border border-ctp-surface1/10
+              
+              shadow-none
+              sm:shadow-sm
+              lg:shadow-md
+              
+              pointer-events-none
+            `}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          />
         </div>
-      </div>
+
+        {isInView && (
+          <div className="sr-only" aria-live="polite">
+            {label} section loaded
+          </div>
+        )}
+      </motion.div>
     </OutlineNode>
   );
 };
