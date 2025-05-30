@@ -38,47 +38,51 @@ const StatusItem: React.FC<{
   isLast?: boolean;
 }> = ({ text, color, icon: Icon, isLast }) => (
   <>
-    <div className="flex items-center gap-2">
-      <Icon className={`w-3 h-3 text-${color}`} />
-      <span>{text}</span>
+    <div className="flex items-center gap-1 sm:gap-2 min-w-0">
+      <Icon className={`w-3 h-3 sm:w-4 sm:h-4 text-${color} flex-shrink-0`} />
+      <span className="text-xs sm:text-sm truncate">{text}</span>
     </div>
-    {!isLast && <div className="w-px h-4 bg-ctp-surface1" />}
+    {!isLast && (
+      <div className="w-px h-3 sm:h-4 bg-ctp-surface1 flex-shrink-0" />
+    )}
   </>
 );
 
 const ModernBackground: React.FC = () => {
   return (
-    <div className="relative">
-      {/* Background decorative elements */}
-      <div className="absolute -top-8 -right-8 w-32 h-32 bg-ctp-blue/5 rounded-full blur-3xl" />
-      <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-ctp-mauve/5 rounded-full blur-3xl" />
+    <div className="relative w-full overflow-hidden">
+      {/* Background decorative elements - hidden on very small screens */}
+      <div className="absolute -top-4 -right-4 sm:-top-8 sm:-right-8 w-16 h-16 sm:w-32 sm:h-32 bg-ctp-blue/5 rounded-full blur-2xl sm:blur-3xl hidden sm:block" />
+      <div className="absolute -bottom-4 -left-4 sm:-bottom-8 sm:-left-8 w-16 h-16 sm:w-32 sm:h-32 bg-ctp-mauve/5 rounded-full blur-2xl sm:blur-3xl hidden sm:block" />
 
-      <div className="relative bg-gradient-to-br from-ctp-surface0/30 to-ctp-mantle/20 backdrop-blur-sm rounded-3xl border border-ctp-surface1/30 overflow-hidden">
+      <div className="relative bg-gradient-to-br from-ctp-surface0/30 to-ctp-mantle/20 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-ctp-surface1/30 overflow-hidden w-full">
         {/* Header gradient bar */}
-        <div className="h-1 bg-gradient-to-r from-ctp-blue via-ctp-mauve to-ctp-pink" />
+        <div className="h-0.5 sm:h-1 bg-gradient-to-r from-ctp-blue via-ctp-mauve to-ctp-pink" />
 
-        <div className="p-6 sm:p-8">
+        <div className="p-3 sm:p-4 md:p-6 lg:p-8">
           {/* Section Header */}
           <Reveal effect="fade-up" duration={0.6}>
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
               <motion.div
-                className="p-2.5 rounded-xl bg-ctp-blue/10 text-ctp-blue"
+                className="p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl bg-ctp-blue/10 text-ctp-blue flex-shrink-0"
                 whileHover={{ rotate: 5, scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <User className="w-5 h-5" />
+                <User className="w-4 h-4 sm:w-5 sm:h-5" />
               </motion.div>
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-ctp-text">
+              <div className="min-w-0 flex-1">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-ctp-text leading-tight">
                   My Story
                 </h3>
-                <p className="text-sm text-ctp-subtext0">The journey so far</p>
+                <p className="text-xs sm:text-sm text-ctp-subtext0">
+                  The journey so far
+                </p>
               </div>
             </div>
           </Reveal>
 
           {/* Story Cards */}
-          <div className="space-y-6">
+          <div className="space-y-3 sm:space-y-4 md:space-y-6">
             {background.map((paragraph, index) => (
               <Reveal
                 key={paragraph}
@@ -87,31 +91,31 @@ const ModernBackground: React.FC = () => {
                 delay={0.2 + index * 0.1}
                 duration={0.6}
               >
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-ctp-blue/5 to-ctp-mauve/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative group w-full">
+                  <div className="absolute inset-0 bg-gradient-to-r from-ctp-blue/5 to-ctp-mauve/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  <div className="relative flex gap-4 p-4 sm:p-6 bg-ctp-surface0/20 hover:bg-ctp-surface0/40 rounded-2xl border border-ctp-surface1/20 hover:border-ctp-surface2/40 transition-all duration-300">
+                  <div className="relative flex gap-2 sm:gap-3 md:gap-4 p-3 sm:p-4 md:p-6 bg-ctp-surface0/20 hover:bg-ctp-surface0/40 rounded-xl sm:rounded-2xl border border-ctp-surface1/20 hover:border-ctp-surface2/40 transition-all duration-300 w-full overflow-hidden">
                     {/* Story icon */}
-                    <div className="flex-shrink-0 mt-1">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-ctp-blue/20 to-ctp-mauve/20 flex items-center justify-center">
+                    <div className="flex-shrink-0 mt-0.5 sm:mt-1">
+                      <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-md sm:rounded-lg bg-gradient-to-br from-ctp-blue/20 to-ctp-mauve/20 flex items-center justify-center">
                         {index === 0 && (
-                          <Code2 className="w-4 h-4 text-ctp-blue" />
+                          <Code2 className="w-3 h-3 sm:w-4 sm:h-4 text-ctp-blue" />
                         )}
                         {index === 1 && (
-                          <Rocket className="w-4 h-4 text-ctp-mauve" />
+                          <Rocket className="w-3 h-3 sm:w-4 sm:h-4 text-ctp-mauve" />
                         )}
                         {index === 2 && (
-                          <Heart className="w-4 h-4 text-ctp-pink" />
+                          <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-ctp-pink" />
                         )}
                         {index === 3 && (
-                          <User className="w-4 h-4 text-ctp-green" />
+                          <User className="w-3 h-3 sm:w-4 sm:h-4 text-ctp-green" />
                         )}
                       </div>
                     </div>
 
                     {/* Story content */}
-                    <div className="flex-1 min-w-0">
-                      <p className="text-ctp-text leading-relaxed text-sm sm:text-base">
+                    <div className="flex-1 min-w-0 overflow-hidden">
+                      <p className="text-ctp-text leading-relaxed text-xs sm:text-sm md:text-base break-words">
                         {paragraph}
                       </p>
 
@@ -123,10 +127,10 @@ const ModernBackground: React.FC = () => {
                             delay: 0.8 + index * 0.1,
                             duration: 0.5,
                           }}
-                          className="mt-4 flex items-center gap-2 text-ctp-pink"
+                          className="mt-2 sm:mt-3 md:mt-4 flex items-center gap-1 sm:gap-2 text-ctp-pink"
                         >
-                          <Heart className="w-4 h-4 animate-pulse" />
-                          <span className="text-sm font-medium">
+                          <Heart className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse flex-shrink-0" />
+                          <span className="text-xs sm:text-sm font-medium break-words">
                             Let's build something amazing together!
                           </span>
                         </motion.div>
@@ -140,17 +144,33 @@ const ModernBackground: React.FC = () => {
 
           {/* Bottom highlight */}
           <Reveal effect="fade-up" delay={0.8} duration={0.6}>
-            <div className="mt-8 pt-6 border-t border-ctp-surface1/30">
-              <div className="flex items-center justify-center gap-4 text-sm text-ctp-subtext0">
-                {statusItems.map((item, index) => (
-                  <StatusItem
-                    key={item.text}
-                    text={item.text}
-                    color={item.color}
-                    icon={item.icon}
-                    isLast={index === statusItems.length - 1}
-                  />
-                ))}
+            <div className="mt-4 sm:mt-6 md:mt-8 pt-3 sm:pt-4 md:pt-6 border-t border-ctp-surface1/30">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 md:gap-4 text-ctp-subtext0 overflow-hidden w-full">
+                {/* Mobile: Stack vertically, Desktop: Horizontal with separators */}
+                <div className="flex flex-col sm:hidden space-y-2 w-full">
+                  {statusItems.map((item) => (
+                    <div
+                      key={item.text}
+                      className="flex items-center justify-center gap-2"
+                    >
+                      <item.icon className={`w-3 h-3 text-${item.color}`} />
+                      <span className="text-xs">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Desktop: Horizontal layout */}
+                <div className="hidden sm:flex items-center justify-center gap-2 md:gap-4 w-full overflow-hidden">
+                  {statusItems.map((item, index) => (
+                    <StatusItem
+                      key={item.text}
+                      text={item.text}
+                      color={item.color}
+                      icon={item.icon}
+                      isLast={index === statusItems.length - 1}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </Reveal>
