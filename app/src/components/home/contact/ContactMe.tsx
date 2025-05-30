@@ -32,7 +32,7 @@ const ContactMe: React.FC = () => {
 
         {/* Email Highlight */}
         <Reveal effect="fade-through" duration={0.9} delay={0.2}>
-          <Card className="mb-12 bg-ctp-surface0/30 border border-ctp-surface1/30 overflow-hidden backdrop-blur-sm">
+          <Card className="mb-12 bg-ctp-surface0/30 border border-ctp-surface1/30 overflow-hidden backdrop-blur-sm group transition-all duration-500 hover:border-ctp-pink/50 hover:shadow-lg hover:shadow-ctp-pink/20 hover:ring-2 hover:ring-ctp-pink/20">
             <CardContent className="p-6 text-center">
               <p className="text-ctp-subtext0 mb-4">
                 Have a question or want to discuss a project?
@@ -43,7 +43,7 @@ const ContactMe: React.FC = () => {
               >
                 <Button
                   variant="outline"
-                  className="bg-ctp-pink/10 text-ctp-pink border-ctp-pink/30 hover:bg-ctp-pink/20 hover:border-ctp-pink/50 hover:text-ctp-pink/80 hover:shadow-ctp-pink/20 hover:shadow-lg hover:scale-105 hover:rotate-1 hover:translate-y-[-2px] px-6 py-3 rounded-xl font-medium transition-all duration-300"
+                  className="bg-ctp-pink/10 text-ctp-pink border-ctp-pink/30 hover:bg-ctp-pink/20 hover:border-ctp-pink/50 hover:text-ctp-pink/80 hover:shadow-ctp-pink/20 hover:shadow-lg hover:scale-105 hover:rotate-1 hover:translate-y-[-2px] px-6 py-3 rounded-xl font-medium transition-all duration-300 group-hover:shadow-ctp-pink/30 group-hover:shadow-xl"
                   onClick={() =>
                     window.open(
                       "mailto:utkarshpriyadarshi5026@gmail.com",
