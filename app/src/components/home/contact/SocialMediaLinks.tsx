@@ -1,4 +1,3 @@
-import { Card, CardContent } from "@/components/ui/card";
 import Reveal from "@/components/animations/reveal/Reveal";
 import { motion } from "framer-motion";
 import { MdEmail } from "react-icons/md";
@@ -48,7 +47,7 @@ const socialLinks = [
 
 const SocialMediaLinks = () => {
   return (
-    <div className="space-y-6">
+    <div className="flex flex-col gap-6">
       <Reveal effect="fade-up" duration={0.7} delay={0.3}>
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -86,51 +85,47 @@ const SocialMediaLinks = () => {
               <motion.div
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="h-full"
+                className={`h-full bg-ctp-surface0/30 border border-ctp-surface1/30 hover:border-ctp-${link.color}/30 hover:bg-ctp-surface0/50 transition-all duration-300 overflow-auto group cursor-pointer backdrop-blur-sm rounded-2xl`}
               >
-                <Card
-                  className={`h-full bg-ctp-surface0/30 border border-ctp-surface1/30 hover:border-ctp-${link.color}/30 hover:bg-ctp-surface0/50 transition-all duration-300 overflow-hidden group cursor-pointer backdrop-blur-sm`}
+                <div
+                  className="p-3 sm:p-5 h-full flex flex-col justify-between"
+                  onClick={() => window.open(link.href, "_blank")}
                 >
-                  <CardContent
-                    className="p-5 h-full flex flex-col justify-between"
-                    onClick={() => window.open(link.href, "_blank")}
-                  >
-                    <div className="flex items-start gap-4 flex-1">
-                      <div
-                        className={`w-12 h-12 flex-shrink-0 rounded-xl bg-ctp-${link.color}/20 flex items-center justify-center text-ctp-${link.color} group-hover:scale-110 transition-transform duration-300`}
-                      >
-                        {link.icon}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h4
-                          className={`font-semibold text-lg text-ctp-${link.color} mb-2 leading-tight`}
-                        >
-                          {link.name}
-                        </h4>
-                        <p className="text-xs text-ctp-subtext0 group-hover:text-ctp-subtext1 transition-colors leading-relaxed">
-                          {link.description}
-                        </p>
-                      </div>
-                      <motion.div
-                        className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0"
-                        whileHover={{ x: 2 }}
-                      >
-                        <FaRocket className="w-4 h-4 text-ctp-subtext0" />
-                      </motion.div>
+                  <div className="flex items-start gap-3 sm:gap-4 flex-1">
+                    <div
+                      className={`w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 rounded-xl bg-ctp-${link.color}/20 flex items-center justify-center text-ctp-${link.color} group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      {link.icon}
                     </div>
-
-                    {/* Subtle URL display */}
-                    <div className="mt-3 pt-2 border-t border-ctp-surface1/20">
-                      <p className="text-[10px] text-ctp-subtext0/60 font-mono break-words group-hover:text-ctp-subtext0/80 transition-colors">
-                        {link.href
-                          .replace(/^https?:\/\//, "")
-                          .replace(/^mailto:/, "")}
+                    <div className="flex-1 min-w-0">
+                      <h4
+                        className={`font-semibold text-base sm:text-lg text-ctp-${link.color} mb-1 sm:mb-2 leading-tight`}
+                      >
+                        {link.name}
+                      </h4>
+                      <p className="text-xs sm:text-sm text-ctp-subtext0 group-hover:text-ctp-subtext1 transition-colors leading-relaxed">
+                        {link.description}
                       </p>
                     </div>
+                    <motion.div
+                      className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0"
+                      whileHover={{ x: 2 }}
+                    >
+                      <FaRocket className="w-4 h-4 text-ctp-subtext0" />
+                    </motion.div>
+                  </div>
 
-                    {/* Status indicator */}
-                  </CardContent>
-                </Card>
+                  {/* Subtle URL display */}
+                  <div className="mt-3 pt-2 border-t border-ctp-surface1/20">
+                    <p className="text-[10px] text-ctp-subtext0/60 font-mono break-words group-hover:text-ctp-subtext0/80 transition-colors">
+                      {link.href
+                        .replace(/^https?:\/\//, "")
+                        .replace(/^mailto:/, "")}
+                    </p>
+                  </div>
+
+                  {/* Status indicator */}
+                </div>
               </motion.div>
             </Reveal>
           </OutlineNode>
