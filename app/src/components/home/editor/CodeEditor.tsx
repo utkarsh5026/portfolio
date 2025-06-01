@@ -1,7 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
 import React, { lazy, useMemo } from "react";
-import { cn } from "@/lib/utils";
-
 import Explorer from "./left/Explorer";
 import type { SectionType } from "./context/explorerContext";
 import SideBar from "./left/SideBar";
@@ -56,28 +53,12 @@ const CodeEditor: React.FC = () => {
       <div className="min-h-screen bg-ctp-base flex">
         <div className="flex h-screen w-screen max-w-screen overflow-hidden">
           {!isMobile && <SideBar />}
-          <div className={cn("flex-1 flex")}>
-            {!isMobile && (
-              <AnimatePresence>
-                {explorerOpen && (
-                  <motion.div
-                    initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: "13rem", opacity: 1 }}
-                    exit={{ width: 0, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="h-full"
-                  >
-                    <Explorer />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            )}
-            <div className="flex-1 flex flex-col flex-grow">
-              <EditorTabs sections={sections} />
-              <CodeContent sections={sections} />
-              <StatusBar />
-              {terminalOpen && <Terminal />}
-            </div>
+          {!isMobile && explorerOpen && <Explorer />}
+          <div className="flex-1 flex flex-col flex-grow">
+            <EditorTabs sections={sections} />
+            <CodeContent sections={sections} />
+            <StatusBar />
+            {terminalOpen && <Terminal />}
           </div>
         </div>
       </div>
