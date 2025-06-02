@@ -78,10 +78,10 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
 
   if (!project.techStack || totalCards === 0) {
     return (
-      <Reveal className="p-8">
-        <div className="text-center py-12">
-          <Code className="w-16 h-16 mx-auto mb-4 text-white/30" />
-          <p className="text-white/60">
+      <Reveal className="p-4 sm:p-8">
+        <div className="text-center py-8 sm:py-12">
+          <Code className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 text-white/30" />
+          <p className="text-white/60 text-sm sm:text-base">
             No technology stack information available
           </p>
         </div>
@@ -90,23 +90,21 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
   }
 
   return (
-    <Reveal className="p-4 sm:p-8">
-      <div className="mb-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+    <Reveal className="p-3 sm:p-4 lg:p-8">
+      <div className="mb-6 sm:mb-8">
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2">
           Technology Stack
         </h2>
-        <p className="text-white/60 text-sm sm:text-base">
+        <p className="text-white/60 text-xs sm:text-sm lg:text-base">
           The tools and technologies powering this project
         </p>
       </div>
 
-      <div className="relative w-full max-w-6xl mx-auto">
+      <div className="relative w-full max-w-6xl mx-auto h-full">
         <div
           ref={containerRef}
-          className="relative h-[620px] sm:h-[480px] flex items-center justify-center"
+          className="relative flex items-center justify-center overflow-auto  h-[600px]"
         >
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-72 sm:w-80 h-4 bg-black/20 blur-lg rounded-full" />
-
           {techCards.map((card, index) => {
             const cardTheme = getRandomColors(index);
 
