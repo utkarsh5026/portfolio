@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown, ChevronRight, Star, Zap, TrendingUp } from "lucide-react";
+import { ChevronDown, ChevronRight, Star, Zap } from "lucide-react";
 import { Project, MajorFeature } from "@/types";
 import { type ProjectTheme } from "@/components/home/projects/context/ThemeContext";
 import getCategoryIcon from "@/components/base/category-icon";
@@ -58,7 +58,7 @@ const FeaturesContent: React.FC<FeaturesContentProps> = ({
         </div>
 
         {/* Features Grid */}
-        <div className="grid gap-3 sm:gap-4 md:gap-6">
+        <div className="grid gap-6">
           {features.map((feature, index) => (
             <FeatureCard
               key={feature.id}
@@ -78,7 +78,7 @@ const FeaturesContent: React.FC<FeaturesContentProps> = ({
         </div>
 
         {/* Feature Stats */}
-        <FeatureStats features={features} theme={theme} />
+        {/* <FeatureStats features={features} theme={theme} /> */}
       </div>
     </div>
   );
@@ -304,58 +304,6 @@ const SubFeaturesList: React.FC<SubFeaturesListProps> = ({
         </div>
       )}
     </div>
-  );
-};
-
-interface FeatureStatsProps {
-  features: MajorFeature[];
-  theme: ProjectTheme;
-}
-
-const FeatureStats: React.FC<FeatureStatsProps> = ({ features, theme }) => {
-  const totalSubFeatures = features.reduce(
-    (acc, f) => acc + f.subFeatures.length,
-    0
-  );
-  const highlightedFeatures = features.reduce(
-    (acc, f) => acc + f.subFeatures.filter((sf) => sf.isHighlight).length,
-    0
-  );
-
-  const stats = [
-    { label: "Major Features", value: features.length, icon: Star },
-    { label: "Total Capabilities", value: totalSubFeatures, icon: Zap },
-    { label: "Key Highlights", value: highlightedFeatures, icon: TrendingUp },
-  ];
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5 }}
-      className="mt-6 sm:mt-8 p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl bg-ctp-surface0/30 border border-ctp-surface1/30"
-    >
-      <h3 className="text-base sm:text-lg font-semibold text-ctp-text mb-3 sm:mb-4 text-center">
-        Feature Overview
-      </h3>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-        {stats.map((stat) => (
-          <div key={stat.label} className="text-center">
-            <div
-              className={`w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-2 rounded-lg bg-ctp-${theme.main}/20 flex items-center justify-center`}
-            >
-              <stat.icon
-                className={`w-4 h-4 sm:w-5 sm:h-5 text-ctp-${theme.main}`}
-              />
-            </div>
-            <div className="text-xl sm:text-2xl font-bold text-ctp-text mb-1">
-              {stat.value}
-            </div>
-            <div className="text-xs text-ctp-subtext0">{stat.label}</div>
-          </div>
-        ))}
-      </div>
-    </motion.div>
   );
 };
 
