@@ -7,6 +7,8 @@ import Terminal from "./Terminal";
 import PersonalDescription from "./PersonalDescription";
 import TechSkills from "./TechSkills";
 import ProfilePicture from "./ProfilePicture";
+import { cn } from "@/lib/utils";
+import useMobile from "@/hooks/use-mobile";
 
 /**
  * Enhanced PersonalHeader with cinematic reveal animations
@@ -15,13 +17,14 @@ import ProfilePicture from "./ProfilePicture";
  * the CinematicReveal component for all child elements.
  */
 const PersonalHeader: React.FC = () => {
+  const { isMobile } = useMobile();
   return (
     <Reveal
       effect="fade-up"
       duration={0.7}
       className="relative isolate min-h-screen overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1e1e2e] via-[#181825] to-[#11111b] -z-20">
+      <div className="absolute inset-0  -z-20">
         <Reveal effect="blur-in" duration={1.8} delay={0.8}>
           <div
             className="absolute inset-0 opacity-25 mix-blend-overlay"
@@ -38,7 +41,12 @@ const PersonalHeader: React.FC = () => {
           effect="emerge"
           duration={0.9}
           delay={0.2}
-          className="relative backdrop-blur-md bg-[#1e1e2e]/70 border border-[#313244] rounded-xl p-6 md:p-10 shadow-2xl mb-10 overflow-hidden"
+          className={cn(
+            "relative",
+            !isMobile &&
+              "backdrop-blur-md bg-[#1e1e2e]/70 border border-[#313244] rounded-2xl",
+            "p-6 md:p-10 shadow-2xl mb-10 overflow-hidden"
+          )}
         >
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-center relative z-10">
             <Reveal
