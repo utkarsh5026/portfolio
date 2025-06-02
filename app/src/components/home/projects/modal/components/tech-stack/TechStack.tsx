@@ -101,41 +101,70 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
       </div>
 
       <div className="relative w-full max-w-6xl mx-auto h-full">
-        <div
-          ref={containerRef}
-          className="relative flex items-center justify-center overflow-auto  h-[600px]"
-        >
-          {techCards.map((card, index) => {
-            const cardTheme = getRandomColors(index);
+        {/* Main layout with left button, center content, right button */}
+        <div className="flex items-center justify-between gap-4 h-[600px]">
+          {/* Left Navigation Button */}
+          <NavigationControls
+            handleCard={goToCard}
+            handleNext={goToNext}
+            handlePrev={goToPrevious}
+            currentIndex={currentIndex}
+            cardTitles={techCards.map((t) => t.category)}
+            theme={theme}
+            layout="left"
+          />
 
-            return (
-              <StackLayer
-                key={`${card.category}-${index}`}
-                itemIndex={index}
-                activeItemIndex={currentIndex}
-                totalCards={totalCards}
-                handleDragEnd={handleDragEnd}
-                goToCard={goToCard}
-              >
-                <TechStackCard
-                  card={card}
-                  theme={cardTheme}
-                  isActive={index === currentIndex}
-                />
-              </StackLayer>
-            );
-          })}
+          {/* Center Content - Tech Stack Cards */}
+          <div className="flex-1 flex flex-col items-center">
+            <div
+              ref={containerRef}
+              className="relative flex items-center justify-center overflow-auto  w-full h-[700px]"
+            >
+              {techCards.map((card, index) => {
+                const cardTheme = getRandomColors(index);
+
+                return (
+                  <StackLayer
+                    key={`${card.category}-${index}`}
+                    itemIndex={index}
+                    activeItemIndex={currentIndex}
+                    totalCards={totalCards}
+                    handleDragEnd={handleDragEnd}
+                    goToCard={goToCard}
+                  >
+                    <TechStackCard
+                      card={card}
+                      theme={cardTheme}
+                      isActive={index === currentIndex}
+                    />
+                  </StackLayer>
+                );
+              })}
+            </div>
+
+            {/* Card Indicators below the stack */}
+            <NavigationControls
+              handleCard={goToCard}
+              handleNext={goToNext}
+              handlePrev={goToPrevious}
+              currentIndex={currentIndex}
+              cardTitles={techCards.map((t) => t.category)}
+              theme={theme}
+              layout="indicators"
+            />
+          </div>
+
+          {/* Right Navigation Button */}
+          <NavigationControls
+            handleCard={goToCard}
+            handleNext={goToNext}
+            handlePrev={goToPrevious}
+            currentIndex={currentIndex}
+            cardTitles={techCards.map((t) => t.category)}
+            theme={theme}
+            layout="right"
+          />
         </div>
-
-        {/* Navigation Controls */}
-        <NavigationControls
-          handleCard={goToCard}
-          handleNext={goToNext}
-          handlePrev={goToPrevious}
-          currentIndex={currentIndex}
-          cardTitles={techCards.map((t) => t.category)}
-          theme={theme}
-        />
       </div>
     </Reveal>
   );
