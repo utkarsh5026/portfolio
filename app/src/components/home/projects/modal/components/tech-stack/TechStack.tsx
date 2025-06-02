@@ -101,8 +101,48 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
       </div>
 
       <div className="relative w-full max-w-6xl mx-auto h-full">
-        {/* Main layout with left button, center content, right button */}
-        <div className="flex items-center justify-between gap-4 h-[600px]">
+        {/* Mobile Layout - Stack cards with bottom navigation */}
+        <div className="block lg:hidden">
+          <div
+            ref={containerRef}
+            className="relative flex items-center justify-center overflow-auto h-[600px]"
+          >
+            {techCards.map((card, index) => {
+              const cardTheme = getRandomColors(index);
+
+              return (
+                <StackLayer
+                  key={`${card.category}-${index}`}
+                  itemIndex={index}
+                  activeItemIndex={currentIndex}
+                  totalCards={totalCards}
+                  handleDragEnd={handleDragEnd}
+                  goToCard={goToCard}
+                >
+                  <TechStackCard
+                    card={card}
+                    theme={cardTheme}
+                    isActive={index === currentIndex}
+                  />
+                </StackLayer>
+              );
+            })}
+          </div>
+
+          {/* Mobile Navigation Controls - Bottom layout */}
+          <NavigationControls
+            handleCard={goToCard}
+            handleNext={goToNext}
+            handlePrev={goToPrevious}
+            currentIndex={currentIndex}
+            cardTitles={techCards.map((t) => t.category)}
+            theme={theme}
+            layout="full"
+          />
+        </div>
+
+        {/* Desktop Layout - Side navigation */}
+        <div className="hidden lg:flex items-center justify-between gap-4 h-[600px]">
           {/* Left Navigation Button */}
           <NavigationControls
             handleCard={goToCard}
@@ -118,7 +158,7 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
           <div className="flex-1 flex flex-col items-center">
             <div
               ref={containerRef}
-              className="relative flex items-center justify-center overflow-auto  w-full h-[700px]"
+              className="relative flex items-center justify-center overflow-auto w-full h-full"
             >
               {techCards.map((card, index) => {
                 const cardTheme = getRandomColors(index);
