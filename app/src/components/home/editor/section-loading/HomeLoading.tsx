@@ -41,87 +41,126 @@ const HomeLoading = () => {
 
   return (
     <div className="w-full max-w-4xl mx-auto px-2 sm:px-4">
-      {/* Terminal Header */}
-      <div className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-t-xl p-3 sm:p-4 border-b border-gray-600">
-        <div className="flex items-center justify-between">
-          <div className="flex space-x-1.5 sm:space-x-2">
-            <div className="w-3 h-3 sm:w-4 sm:h-4 bg-red-500 rounded-full shadow-lg"></div>
-            <div className="w-3 h-3 sm:w-4 sm:h-4 bg-yellow-500 rounded-full shadow-lg"></div>
-            <div className="w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full shadow-lg"></div>
-          </div>
-          <div className="text-gray-300 font-mono text-xs sm:text-sm hidden sm:block">
-            bash - utkarsh@portfolio
-          </div>
-          <div className="text-gray-300 font-mono text-xs sm:hidden">bash</div>
-          <div className="w-8 sm:w-16"></div>
-        </div>
-      </div>
+      {/* Glass Container */}
+      <div className="relative backdrop-blur-xl bg-white/5 rounded-2xl border border-white/10 shadow-2xl overflow-hidden">
+        {/* Background Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-800/90 to-slate-900/90"></div>
 
-      {/* Terminal Body */}
-      <div className="bg-black rounded-b-xl p-4 sm:p-6 lg:p-8 font-mono text-xs sm:text-sm lg:text-base min-h-[350px] sm:min-h-[400px] border border-gray-700 shadow-2xl overflow-x-auto">
-        <div className="space-y-3 sm:space-y-4">
-          {terminalLines.slice(0, currentLine + 1).map((line, index) => (
-            <motion.div
-              key={`${line.cmd}-${index}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.3 }}
-              className="space-y-2"
-            >
-              <div className="flex items-start">
-                <span className="text-green-400 mr-2 flex-shrink-0">➜</span>
-                <span className="text-blue-400 mr-2 flex-shrink-0">~</span>
-                <span className="text-white break-all">{line.cmd}</span>
-                {index === currentLine && showCursor && (
-                  <span className="text-green-400 ml-1 animate-pulse">█</span>
-                )}
+        {/* Terminal Header */}
+        <div className="relative bg-gradient-to-r from-slate-800/80 to-slate-700/80 backdrop-blur-md border-b border-white/10 p-4">
+          <div className="flex items-center justify-between">
+            {/* Window Controls */}
+            <div className="flex items-center space-x-2">
+              <div className="flex space-x-2">
+                <div className="w-3 h-3 bg-gradient-to-br from-red-400 to-red-600 rounded-full shadow-lg border border-red-300/30"></div>
+                <div className="w-3 h-3 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full shadow-lg border border-yellow-300/30"></div>
+                <div className="w-3 h-3 bg-gradient-to-br from-green-400 to-green-600 rounded-full shadow-lg border border-green-300/30"></div>
               </div>
+            </div>
+
+            {/* Terminal Title */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg px-4 py-1 border border-white/10">
+                <span className="text-slate-200 font-medium text-sm">
+                  utkarsh@portfolio
+                </span>
+              </div>
+            </div>
+
+            {/* Right Side Controls */}
+            <div className="flex items-center space-x-2">
+              <div className="w-4 h-4 bg-white/10 rounded border border-white/20"></div>
+              <div className="w-4 h-4 bg-white/10 rounded border border-white/20"></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Terminal Body */}
+        <div className="relative bg-gradient-to-br from-slate-900/95 to-black/95 backdrop-blur-xl p-6 lg:p-8 font-mono text-sm lg:text-base min-h-[400px] sm:min-h-[450px]">
+          {/* Content */}
+          <div className="space-y-4">
+            {terminalLines.slice(0, currentLine + 1).map((line, index) => (
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: index * 0.3 + 0.5 }}
-                className="text-gray-300 ml-4 sm:ml-6 pl-2 sm:pl-4 border-l-2 border-green-400/30 break-words"
+                key={`${line.cmd}-${index}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.3, duration: 0.5 }}
+                className="space-y-3"
               >
-                {line.output}
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
+                {/* Command Line */}
+                <div className="flex items-start group">
+                  <span className="text-emerald-400 mr-3 font-bold">❯</span>
+                  <span className="text-slate-300/80 mr-2">~</span>
+                  <span className="text-white font-medium break-all">
+                    {line.cmd}
+                  </span>
+                  {index === currentLine && showCursor && (
+                    <motion.span
+                      className="text-emerald-400 ml-1 font-bold"
+                      animate={{ opacity: [0, 1, 0] }}
+                      transition={{ duration: 0.8, repeat: Infinity }}
+                    >
+                      ▊
+                    </motion.span>
+                  )}
+                </div>
 
-        {/* System Stats */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-700"
-        >
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-xs sm:text-sm">
-            <div className="text-center">
-              <div className="text-green-400 font-bold text-xs sm:text-sm">
-                SKILLS
-              </div>
-              <div className="text-gray-300">∞</div>
-            </div>
-            <div className="text-center">
-              <div className="text-blue-400 font-bold text-xs sm:text-sm">
-                PROJECTS
-              </div>
-              <div className="text-gray-300">20+</div>
-            </div>
-            <div className="text-center">
-              <div className="text-yellow-400 font-bold text-xs sm:text-sm">
-                COFFEE
-              </div>
-              <div className="text-gray-300">9999+</div>
-            </div>
-            <div className="text-center">
-              <div className="text-purple-400 font-bold text-xs sm:text-sm">
-                STATUS
-              </div>
-              <div className="text-green-400">ONLINE</div>
-            </div>
+                {/* Output */}
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.3 + 0.3, duration: 0.4 }}
+                  className="ml-8 pl-4 border-l-2 border-emerald-400/30 bg-white/5 backdrop-blur-sm rounded-r-lg p-3"
+                >
+                  <span className="text-slate-300/90 font-light">
+                    {line.output}
+                  </span>
+                </motion.div>
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
+
+          {/* System Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2, duration: 0.6 }}
+            className="mt-8 pt-6 border-t border-white/10"
+          >
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                { label: "SKILLS", value: "∞", color: "emerald" },
+                { label: "PROJECTS", value: "20+", color: "blue" },
+                { label: "COFFEE", value: "9999+", color: "amber" },
+                { label: "STATUS", value: "ONLINE", color: "green" },
+              ].map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 2 + index * 0.1, duration: 0.4 }}
+                  className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 text-center group hover:bg-white/10 transition-all duration-300"
+                >
+                  <div
+                    className={`text-${stat.color}-400 font-bold text-xs mb-2 tracking-wider`}
+                  >
+                    {stat.label}
+                  </div>
+                  <div
+                    className={`text-${
+                      stat.color === "green" ? "green-400" : "slate-200"
+                    } font-mono font-semibold text-lg`}
+                  >
+                    {stat.value}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Ambient Glow Effect */}
+          <div className="absolute inset-0 bg-gradient-to-t from-emerald-500/5 via-transparent to-transparent pointer-events-none"></div>
+        </div>
       </div>
     </div>
   );
