@@ -39,7 +39,7 @@ const ProjectsLoading = () => {
     const interval = setInterval(() => {
       setCurrentOp((prev) => (prev + 1) % gitOps.length);
       setCommitCount((prev) => prev + Math.floor(Math.random() * 15) + 5);
-    }, 1500);
+    }, 500);
     return () => clearInterval(interval);
   }, []);
 
@@ -112,7 +112,7 @@ const ProjectsLoading = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4">
             {projects.map((project, index) => (
               <motion.div
-                key={index}
+                key={`${project.name}-${index}`}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 2 + index * 0.2 }}
