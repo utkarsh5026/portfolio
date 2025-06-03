@@ -99,29 +99,20 @@ const Section: React.FC<SectionProps> = ({
             <motion.div
               ref={contentRef}
               className={`
-                // Mobile-first padding: comfortable touch areas
                 px-4 py-6
-                // Small tablets and larger phones
                 sm:px-6 sm:py-8
-                // Tablets
                 md:px-8 md:py-10
-                // Desktop
                 lg:px-10 lg:py-12
                 xl:px-12 xl:py-14
                 
-                // Responsive width constraints
                 w-full max-w-full
                 
-                // Mobile scroll optimization
                 overflow-x-hidden overflow-y-auto
                 
-                // Touch-friendly scrolling on mobile
                 overscroll-behavior-y-contain
                 
-                // Enhanced focus styles for accessibility
                 focus-within:outline-none focus-within:ring-2 focus-within:ring-ctp-blue/20 focus-within:ring-offset-2
                 
-                // Smooth transitions
                 transition-all duration-300 ease-out
               `}
               initial={{ opacity: 0 }}
@@ -131,7 +122,6 @@ const Section: React.FC<SectionProps> = ({
               {/* Mobile section header (optional, for better mobile UX) */}
               <motion.div
                 className={`
-                  // Only show on mobile for certain sections
                   ${
                     isMobile && ["about", "skills", "projects"].includes(id)
                       ? "block"
