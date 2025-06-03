@@ -48,7 +48,14 @@ const StatusItem: React.FC<{
   </>
 );
 
-const ModernBackground: React.FC = () => {
+/**
+ * 📖 Personal background story component with animated cards
+ *
+ * Tells my personal journey through beautifully animated story cards.
+ * Each paragraph gets its own card with hover effects and smooth transitions.
+ * It's like reading an interactive autobiography! 🎭✨
+ */
+const Background: React.FC = () => {
   return (
     <div className="relative w-full overflow-hidden">
       {/* Background decorative elements - hidden on very small screens */}
@@ -180,4 +187,4 @@ const ModernBackground: React.FC = () => {
   );
 };
 
-export default ModernBackground;
+export default Background;

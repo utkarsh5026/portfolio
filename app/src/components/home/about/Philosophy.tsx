@@ -25,8 +25,14 @@ const philosophyPrinciples = [
     icon: Zap,
   },
 ];
-
-const ModernPhilosophy: React.FC = () => {
+/**
+ * 🧠 Development philosophy and principles showcase
+ *
+ * Shares my approach to development and life through elegant quote cards
+ * and principle sections. Shows how I think about writing code and
+ * building software. It's my coding wisdom in visual form! 💭⚡
+ */
+const Philosophy: React.FC = () => {
   return (
     <div className="relative w-full overflow-hidden">
       {/* Background decorative elements - hidden on mobile */}
@@ -166,4 +172,4 @@ const ModernPhilosophy: React.FC = () => {
   );
 };
 
-export default ModernPhilosophy;
+export default Philosophy;

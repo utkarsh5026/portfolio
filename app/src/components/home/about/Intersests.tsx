@@ -29,7 +29,14 @@ const categoryData = {
 
 const interestIcons = [Code, Zap, Coffee, Music, Gamepad2, Dumbbell, Heart];
 
-const ModernInterests: React.FC = () => {
+/**
+ * ❤️ Personal interests and hobbies showcase
+ *
+ * Displays both technical and non-technical interests in beautiful
+ * categorized sections. Shows what keeps me curious, motivated, and
+ * balanced outside of coding. It's my personality in component form! 🎮☕🎵
+ */
+const Interests: React.FC = () => {
   return (
     <div className="relative w-full overflow-hidden">
       {/* Background decorative elements - hidden on mobile */}
@@ -278,4 +285,4 @@ const ModernInterests: React.FC = () => {
   );
 };
 
-export default ModernInterests;
+export default Interests;

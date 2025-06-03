@@ -10,7 +10,14 @@ import {
 import { education } from "./data";
 import Reveal from "@/components/animations/reveal/Reveal";
 
-const ModernEducation: React.FC = () => {
+/**
+ * 🎓 Educational background timeline with achievements
+ *
+ * Showcases my academic journey through an interactive timeline.
+ * Each education milestone gets its own beautiful card with institution
+ * details, grades, and highlights. Like a digital diploma wall! 🏆📜
+ */
+const Education: React.FC = () => {
   return (
     <div className="relative w-full overflow-hidden">
       {/* Background decorative elements - hidden on mobile */}
@@ -174,4 +181,4 @@ const ModernEducation: React.FC = () => {
   );
 };
 
-export default ModernEducation;
+export default Education;

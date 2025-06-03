@@ -18,7 +18,15 @@ const categoryIcons = {
   "Tools & Others": Code2,
 } as const;
 
-const ModernSkills: React.FC = () => {
+/**
+ * 💻 Technical skills showcase with expandable categories
+ *
+ * Interactive component displaying my technical expertise across
+ * different categories (Frontend, Backend, DevOps, etc.). Each category
+ * can be expanded to show all technologies. It's my technical toolkit
+ * presented beautifully! 🛠️✨
+ */
+const Skills: React.FC = () => {
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
 
   const toggleCategory = (category: string) => {
@@ -228,4 +236,4 @@ const ModernSkills: React.FC = () => {
   );
 };
 
-export default ModernSkills;
+export default Skills;

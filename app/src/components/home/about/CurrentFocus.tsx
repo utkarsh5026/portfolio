@@ -35,7 +35,13 @@ const learningPhilosophy = [
     icon: TrendingUp,
   },
 ];
-
+/**
+ * 🎯 Current learning focus and growth mindset showcase
+ *
+ * Displays what I'm actively learning and improving on right now.
+ * Shows my commitment to continuous growth with beautiful focus area cards
+ * and learning philosophy principles. It's my roadmap to the future! 🚀📚
+ */
 const CurrentFocus: React.FC = () => {
   return (
     <div className="relative w-full overflow-hidden">
