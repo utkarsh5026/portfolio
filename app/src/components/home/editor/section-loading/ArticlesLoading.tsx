@@ -70,11 +70,11 @@ const ArticlesLoading = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-6xl mx-auto">
+    <div className="w-full max-w-6xl mx-auto px-2 sm:px-4">
       {/* CMS Header */}
-      <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 p-6 rounded-t-xl">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
+      <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 p-4 sm:p-6 rounded-t-xl">
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <div className="flex items-center space-x-3 sm:space-x-4">
             <motion.div
               animate={{
                 scale: [1, 1.1, 1],
@@ -85,44 +85,46 @@ const ArticlesLoading = () => {
                 duration: 3,
                 ease: "easeInOut",
               }}
-              className="w-12 h-12 bg-white rounded-lg flex items-center justify-center"
+              className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0"
             >
-              <span className="text-2xl">📝</span>
+              <span className="text-xl sm:text-2xl">📝</span>
             </motion.div>
-            <div>
-              <h2 className="text-white text-xl font-bold">
+            <div className="min-w-0">
+              <h2 className="text-white text-lg sm:text-xl font-bold leading-tight">
                 Content Management System
               </h2>
-              <p className="text-emerald-100">
+              <p className="text-emerald-100 text-sm sm:text-base">
                 Processing articles and blog posts...
               </p>
             </div>
           </div>
-          <div className="text-emerald-100 text-sm font-mono">CMS v3.2.1</div>
+          <div className="text-emerald-100 text-xs sm:text-sm font-mono">
+            CMS v3.2.1
+          </div>
         </div>
       </div>
 
       {/* Content Processing */}
-      <div className="bg-gray-900 p-6 sm:p-8 min-h-[600px] border border-gray-700 shadow-2xl">
+      <div className="bg-gray-900 p-4 sm:p-6 lg:p-8 min-h-[500px] sm:min-h-[600px] border border-gray-700 shadow-2xl">
         {/* Processing Status */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-white text-lg font-semibold">
+        <div className="mb-6 sm:mb-8">
+          <div className="flex items-center justify-between mb-3 sm:mb-4 gap-2">
+            <h3 className="text-white text-base sm:text-lg font-semibold">
               Processing Pipeline
             </h3>
-            <div className="text-emerald-400 font-mono text-sm">
+            <div className="text-emerald-400 font-mono text-xs sm:text-sm">
               Step {processingStep + 1} of {processingSteps.length}
             </div>
           </div>
 
-          <div className="bg-gray-800 rounded-lg p-4">
-            <div className="flex items-center space-x-3 mb-3">
+          <div className="bg-gray-800 rounded-lg p-3 sm:p-4">
+            <div className="flex items-center space-x-2 sm:space-x-3 mb-2 sm:mb-3">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ repeat: Infinity, duration: 2 }}
-                className="w-6 h-6 border-2 border-emerald-400 border-t-transparent rounded-full"
+                className="w-5 h-5 sm:w-6 sm:h-6 border-2 border-emerald-400 border-t-transparent rounded-full flex-shrink-0"
               />
-              <span className="text-emerald-400 font-mono">
+              <span className="text-emerald-400 font-mono text-xs sm:text-sm truncate">
                 {processingSteps[processingStep]}
               </span>
             </div>
@@ -143,8 +145,8 @@ const ArticlesLoading = () => {
         </div>
 
         {/* Articles Grid */}
-        <div className="space-y-4">
-          <h3 className="text-white text-lg font-semibold mb-4">
+        <div className="space-y-3 sm:space-y-4">
+          <h3 className="text-white text-base sm:text-lg font-semibold mb-3 sm:mb-4">
             Recent Articles
           </h3>
 
@@ -158,24 +160,24 @@ const ArticlesLoading = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2 }}
-                className={`p-6 rounded-lg border transition-all duration-500 ${
+                className={`p-4 sm:p-6 rounded-lg border transition-all duration-500 ${
                   isComplete
                     ? "bg-emerald-900/20 border-emerald-400"
                     : "bg-gray-800/50 border-gray-600"
                 }`}
               >
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-3 mb-2">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
                       <h4
-                        className={`text-lg font-semibold ${
+                        className={`text-base sm:text-lg font-semibold leading-tight ${
                           isComplete ? "text-emerald-400" : "text-white"
                         }`}
                       >
                         {article.title}
                       </h4>
                       <span
-                        className={`px-2 py-1 rounded-full text-xs ${
+                        className={`px-2 py-1 rounded-full text-xs self-start ${
                           article.status === "published"
                             ? "bg-green-600 text-white"
                             : article.status === "review"
@@ -187,7 +189,7 @@ const ArticlesLoading = () => {
                       </span>
                     </div>
 
-                    <div className="flex items-center space-x-4 text-sm text-gray-400 mb-3">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-400 mb-2 sm:mb-3">
                       <span className="bg-gray-700 px-2 py-1 rounded">
                         {article.category}
                       </span>
@@ -210,18 +212,20 @@ const ArticlesLoading = () => {
                     </div>
                   </div>
 
-                  <div className="ml-6 text-right">
+                  <div className="sm:ml-6 self-center sm:self-start">
                     {isComplete ? (
-                      <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center">
-                        <span className="text-white text-xl">✓</span>
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-500 rounded-full flex items-center justify-center">
+                        <span className="text-white text-lg sm:text-xl">✓</span>
                       </div>
                     ) : (
                       <motion.div
                         animate={{ scale: [1, 1.1, 1] }}
                         transition={{ repeat: Infinity, duration: 2 }}
-                        className="w-12 h-12 border-2 border-teal-400 rounded-full flex items-center justify-center"
+                        className="w-10 h-10 sm:w-12 sm:h-12 border-2 border-teal-400 rounded-full flex items-center justify-center"
                       >
-                        <span className="text-teal-400">📄</span>
+                        <span className="text-teal-400 text-lg sm:text-xl">
+                          📄
+                        </span>
                       </motion.div>
                     )}
                   </div>
@@ -236,24 +240,34 @@ const ArticlesLoading = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2 }}
-          className="mt-8 pt-6 border-t border-gray-700"
+          className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-700"
         >
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="bg-gray-800 p-4 rounded-lg text-center">
-              <div className="text-2xl font-bold text-emerald-400">42</div>
-              <div className="text-gray-400 text-sm">Published</div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            <div className="bg-gray-800 p-3 sm:p-4 rounded-lg text-center">
+              <div className="text-xl sm:text-2xl font-bold text-emerald-400">
+                42
+              </div>
+              <div className="text-gray-400 text-xs sm:text-sm">Published</div>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg text-center">
-              <div className="text-2xl font-bold text-teal-400">12K</div>
-              <div className="text-gray-400 text-sm">Total Views</div>
+            <div className="bg-gray-800 p-3 sm:p-4 rounded-lg text-center">
+              <div className="text-xl sm:text-2xl font-bold text-teal-400">
+                12K
+              </div>
+              <div className="text-gray-400 text-xs sm:text-sm">
+                Total Views
+              </div>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg text-center">
-              <div className="text-2xl font-bold text-cyan-400">89%</div>
-              <div className="text-gray-400 text-sm">Engagement</div>
+            <div className="bg-gray-800 p-3 sm:p-4 rounded-lg text-center">
+              <div className="text-xl sm:text-2xl font-bold text-cyan-400">
+                3.2K
+              </div>
+              <div className="text-gray-400 text-xs sm:text-sm">Reactions</div>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg text-center">
-              <div className="text-2xl font-bold text-blue-400">5.2K</div>
-              <div className="text-gray-400 text-sm">Followers</div>
+            <div className="bg-gray-800 p-3 sm:p-4 rounded-lg text-center">
+              <div className="text-xl sm:text-2xl font-bold text-blue-400">
+                85%
+              </div>
+              <div className="text-gray-400 text-xs sm:text-sm">Engagement</div>
             </div>
           </div>
         </motion.div>

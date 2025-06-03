@@ -80,15 +80,12 @@ export const EditorProvider: React.FC<ProviderProps> = ({ children }) => {
   useEffect(() => {
     if (activeSection) {
       setLoadingSection(true);
-      const loadingInterval = setInterval(() => {}, 1200);
 
       const timeoutId = setTimeout(() => {
-        clearInterval(loadingInterval);
         setLoadingSection(false);
-      }, 1200);
+      }, 3200);
 
       return () => {
-        clearInterval(loadingInterval);
         clearTimeout(timeoutId);
       };
     }

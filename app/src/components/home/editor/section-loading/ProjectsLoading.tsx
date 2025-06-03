@@ -44,44 +44,52 @@ const ProjectsLoading = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-6xl mx-auto">
+    <div className="w-full max-w-6xl mx-auto px-2 sm:px-4">
       {/* Git Dashboard Header */}
-      <div className="bg-gradient-to-r from-orange-600 to-red-600 p-6 rounded-t-xl">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-              <span className="text-orange-600 font-bold">Git</span>
+      <div className="bg-gradient-to-r from-orange-600 to-red-600 p-4 sm:p-6 rounded-t-xl">
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <div className="flex items-center space-x-3 sm:space-x-4">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
+              <span className="text-orange-600 font-bold text-sm sm:text-base">
+                Git
+              </span>
             </div>
-            <div>
-              <h2 className="text-white text-xl font-bold">
+            <div className="min-w-0">
+              <h2 className="text-white text-lg sm:text-xl font-bold truncate">
                 Project Repository
               </h2>
-              <p className="text-orange-100">Showcasing development journey</p>
+              <p className="text-orange-100 text-sm sm:text-base">
+                Showcasing development journey
+              </p>
             </div>
           </div>
-          <div className="text-orange-100 text-sm font-mono">main branch</div>
+          <div className="text-orange-100 text-xs sm:text-sm font-mono">
+            main branch
+          </div>
         </div>
       </div>
 
       {/* Git Operations */}
-      <div className="bg-gray-900 p-6 sm:p-8 border border-gray-700 shadow-2xl">
-        <div className="font-mono text-sm space-y-6">
+      <div className="bg-gray-900 p-4 sm:p-6 lg:p-8 border border-gray-700 shadow-2xl">
+        <div className="font-mono text-xs sm:text-sm space-y-4 sm:space-y-6">
           {gitOps.slice(0, currentOp + 1).map((op, index) => (
             <motion.div
-              key={index}
+              key={`${op.cmd}-${index}`}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.5 }}
-              className="space-y-3"
+              className="space-y-2 sm:space-y-3"
             >
-              <div className="flex items-center space-x-3">
-                <span className="text-orange-400">$</span>
-                <span className="text-white">{op.cmd}</span>
+              <div className="flex items-start space-x-2 sm:space-x-3">
+                <span className="text-orange-400 flex-shrink-0">$</span>
+                <span className="text-white break-all">{op.cmd}</span>
               </div>
 
-              <div className="ml-6 space-y-2">
-                <div className="text-gray-300">{op.status}</div>
-                <div className="w-full bg-gray-700 rounded-full h-3">
+              <div className="ml-4 sm:ml-6 space-y-2">
+                <div className="text-gray-300 text-xs sm:text-sm">
+                  {op.status}
+                </div>
+                <div className="w-full bg-gray-700 rounded-full h-2 sm:h-3">
                   <motion.div
                     className="h-full bg-gradient-to-r from-orange-500 to-red-500 rounded-full"
                     initial={{ width: 0 }}
@@ -99,23 +107,23 @@ const ProjectsLoading = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2 }}
-          className="mt-8 pt-6 border-t border-gray-700"
+          className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-700"
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 2 + index * 0.2 }}
-                className="bg-gray-800 p-4 rounded-lg border border-gray-600 hover:border-orange-400 transition-all"
+                className="bg-gray-800 p-3 sm:p-4 rounded-lg border border-gray-600 hover:border-orange-400 transition-all"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-white font-semibold text-sm truncate">
+                <div className="flex items-start justify-between mb-2 gap-2">
+                  <h3 className="text-white font-semibold text-xs sm:text-sm leading-tight">
                     {project.name}
                   </h3>
                   <div
-                    className={`w-3 h-3 rounded-full ${
+                    className={`w-3 h-3 rounded-full flex-shrink-0 ${
                       project.status === "production"
                         ? "bg-green-400"
                         : project.status === "development"
@@ -124,7 +132,7 @@ const ProjectsLoading = () => {
                     }`}
                   />
                 </div>
-                <div className="text-gray-400 text-xs mb-2">
+                <div className="text-gray-400 text-xs mb-1">
                   {project.commits} commits
                 </div>
                 <div className="text-xs text-gray-500 capitalize">
@@ -135,21 +143,23 @@ const ProjectsLoading = () => {
           </div>
 
           {/* Commit Activity */}
-          <div className="mt-6 bg-gray-800 p-4 rounded-lg">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-white font-semibold">Commit Activity</h3>
-              <span className="text-orange-400 font-mono">
+          <div className="mt-4 sm:mt-6 bg-gray-800 p-3 sm:p-4 rounded-lg">
+            <div className="flex items-center justify-between mb-3 sm:mb-4 gap-2">
+              <h3 className="text-white font-semibold text-sm sm:text-base">
+                Commit Activity
+              </h3>
+              <span className="text-orange-400 font-mono text-xs sm:text-sm">
                 {commitCount} total commits
               </span>
             </div>
-            <div className="flex space-x-1">
+            <div className="flex space-x-0.5 sm:space-x-1 overflow-x-auto">
               {Array.from({ length: 52 }, (_, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, scaleY: 0 }}
                   animate={{ opacity: 1, scaleY: 1 }}
                   transition={{ delay: 3 + i * 0.02 }}
-                  className={`w-3 h-12 rounded-sm ${
+                  className={`w-2 sm:w-3 h-8 sm:h-12 rounded-sm flex-shrink-0 ${
                     Math.random() > 0.3
                       ? "bg-orange-400"
                       : Math.random() > 0.6
