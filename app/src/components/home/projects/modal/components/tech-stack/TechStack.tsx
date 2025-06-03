@@ -158,7 +158,7 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
           <div className="flex-1 flex flex-col items-center">
             <div
               ref={containerRef}
-              className="relative flex items-center justify-center overflow-auto w-full h-full"
+              className="relative flex items-center justify-center overflow-auto w-full h-[700px]"
             >
               {techCards.map((card, index) => {
                 const cardTheme = getRandomColors(index);
