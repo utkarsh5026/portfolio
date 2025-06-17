@@ -1563,6 +1563,296 @@
     }
   },
   {
+  "name": "MDHD",
+  "description": "A revolutionary markdown reading platform that transforms overwhelming documents into focused, digestible sections. Built with React and TypeScript, MDHD eliminates information overload by intelligently parsing markdown content and presenting it as navigable cards, complete with progress tracking, 25+ themes, syntax highlighting, and mobile-optimized navigation for an enhanced reading experience.",
+  "githubLink": "https://github.com/utkarsh5026/mdhd",
+  "liveLink": "https://mdhd.vercel.app/",
+  "technologies": [
+    "react",
+    "typescript",
+    "tailwind",
+    "vite",
+    "framermotion",
+    "zustand",
+    "shadcn",
+    "lucideicons"
+  ],
+  "features": [
+    
+  ],
+  "projectFeatures": [
+    {
+      "id": "intelligent-parsing",
+      "title": "Smart Markdown Section Detection",
+      "description": "Advanced parsing engine that intelligently breaks down markdown documents into digestible sections based on heading hierarchy and content structure",
+      "icon": "Hash",
+      "subFeatures": [
+        {
+          "id": "heading-detection",
+          "title": "Automatic Section Boundaries",
+          "description": "Detects H1 and H2 headings to create logical reading breaks",
+          "metrics": "Multi-level heading support",
+          "isHighlight": true
+        },
+        {
+          "id": "content-preservation",
+          "title": "Format-Preserving Processing",
+          "description": "Maintains all markdown formatting including code blocks, tables, and media",
+          "metrics": "100% formatting retention"
+        },
+        {
+          "id": "word-analysis",
+          "title": "Reading Time Estimation",
+          "description": "Calculates word counts and estimated reading time per section",
+          "metrics": "250 WPM calculation base",
+          "isHighlight": true
+        }
+      ],
+      "media": [],
+      "tags": ["Parsing", "Intelligence", "Automation"],
+      "priority": "high"
+    },
+    {
+      "id": "focused-reading",
+      "title": "Card-Based Reading Experience",
+      "description": "Revolutionary one-section-at-a-time approach that eliminates information overload and improves comprehension through focused attention",
+      "icon": "Target",
+      "subFeatures": [
+        {
+          "id": "section-isolation",
+          "title": "Distraction-Free Display",
+          "description": "Shows only current section to maintain focus and reduce cognitive load",
+          "metrics": "Single-section focus",
+          "isHighlight": true
+        },
+        {
+          "id": "smooth-transitions",
+          "title": "Fluid Section Navigation",
+          "description": "Seamless transitions between sections with loading animations",
+          "metrics": "200ms transition timing"
+        },
+        {
+          "id": "progress-visualization",
+          "title": "Visual Progress Tracking",
+          "description": "Real-time indicators showing reading completion and section status",
+          "metrics": "Section-level precision",
+          "isHighlight": true
+        }
+      ],
+      "media": [],
+      "tags": ["Reading", "Focus", "UX"],
+      "priority": "high"
+    },
+    {
+      "id": "theme-customization",
+      "title": "Comprehensive Theme System",
+      "description": "Extensive customization options with 25+ carefully crafted themes and 20+ reading-optimized fonts for personalized reading experiences",
+      "icon": "Palette",
+      "subFeatures": [
+        {
+          "id": "theme-categories",
+          "title": "Multi-Category Theme Collection",
+          "description": "Organized themes across Dark, Light, Developer, and Unique categories",
+          "metrics": "25+ professional themes",
+          "isHighlight": true
+        },
+        {
+          "id": "font-selection",
+          "title": "Reading-Optimized Typography",
+          "description": "Curated fonts including accessibility options and technical typefaces",
+          "metrics": "20+ font families available"
+        },
+        {
+          "id": "real-time-preview",
+          "title": "Live Theme Switching",
+          "description": "Instant theme changes without losing reading progress",
+          "metrics": "Zero-interruption switching",
+          "isHighlight": true
+        }
+      ],
+      "media": [],
+      "tags": ["Themes", "Customization", "Typography"],
+      "priority": "high"
+    },
+    {
+      "id": "mobile-optimization",
+      "title": "Mobile-First Navigation",
+      "description": "Touch-optimized interface with intuitive swipe gestures, responsive design, and mobile-specific reading optimizations",
+      "icon": "Smartphone",
+      "subFeatures": [
+        {
+          "id": "swipe-navigation",
+          "title": "Gesture-Based Controls",
+          "description": "Natural left/right swipe navigation between sections",
+          "metrics": "Touch-optimized interaction",
+          "isHighlight": true
+        },
+        {
+          "id": "responsive-typography",
+          "title": "Adaptive Text Scaling",
+          "description": "Font sizes and spacing that adjust to screen dimensions",
+          "metrics": "Cross-device optimization"
+        },
+        {
+          "id": "mobile-controls",
+          "title": "Auto-Hiding Interface",
+          "description": "Controls that appear on interaction and fade for distraction-free reading",
+          "metrics": "4-second timeout system",
+          "isHighlight": true
+        }
+      ],
+      "media": [],
+      "tags": ["Mobile", "Responsive", "Gestures"],
+      "priority": "high"
+    },
+    {
+      "id": "code-highlighting",
+      "title": "Advanced Code Display",
+      "description": "Professional syntax highlighting with 25+ themes, collapsible blocks, and developer-friendly features for technical documentation",
+      "icon": "Code2",
+      "subFeatures": [
+        {
+          "id": "syntax-themes",
+          "title": "Multiple Highlighting Themes",
+          "description": "Comprehensive collection including One Dark, VS Code Dark+, Dracula",
+          "metrics": "25+ syntax themes available"
+        },
+        {
+          "id": "code-interaction",
+          "title": "Interactive Code Blocks",
+          "description": "Copy functionality, language detection, and collapsible display",
+          "metrics": "Enhanced developer UX",
+          "isHighlight": true
+        },
+        {
+          "id": "download-options",
+          "title": "Export Capabilities",
+          "description": "Download code as files or generate images of syntax-highlighted code",
+          "metrics": "Multiple export formats"
+        }
+      ],
+      "media": [],
+      "tags": ["Code", "Syntax", "Developer"],
+      "priority": "medium"
+    },
+    {
+      "id": "reading-analytics",
+      "title": "Progress Tracking System",
+      "description": "Sophisticated analytics that track reading completion, estimate progress, and provide insights into reading patterns",
+      "icon": "BarChart3",
+      "subFeatures": [
+        {
+          "id": "section-tracking",
+          "title": "Granular Progress Monitoring",
+          "description": "Track completion status for individual sections and overall documents",
+          "metrics": "Section-level accuracy"
+        },
+        {
+          "id": "time-estimation",
+          "title": "Reading Time Calculation",
+          "description": "Estimates remaining reading time based on content and reading speed",
+          "metrics": "Dynamic time updates",
+          "isHighlight": true
+        },
+        {
+          "id": "completion-insights",
+          "title": "Reading Completion Analytics",
+          "description": "Visual indicators and statistics for document reading progress",
+          "metrics": "Real-time progress display"
+        }
+      ],
+      "media": [],
+      "tags": ["Analytics", "Progress", "Insights"],
+      "priority": "medium"
+    }
+  ],
+  "techStack": {
+    "Core Framework": [
+      "React 18+ - Modern component-based architecture with hooks and concurrent features",
+      "TypeScript - Type safety and enhanced developer experience throughout the codebase",
+      "Vite - Lightning-fast development server and optimized production builds",
+      "React Router - Client-side routing for seamless navigation experiences"
+    ],
+    "State Management": [
+      "Zustand - Lightweight state management with separate stores for different concerns",
+      "Theme Store - Centralized theme management with localStorage persistence",
+      "Reading Settings Store - User preferences and reading configuration storage",
+      "Code Theme Store - Syntax highlighting theme management with real-time switching"
+    ],
+    "Markdown Processing": [
+      "React Markdown - Converting markdown to React components with custom renderers",
+      "Remark GFM - GitHub Flavored Markdown support for tables, strikethrough, and more",
+      "Custom Section Parser - Intelligent markdown parsing for section boundary detection",
+      "Word Count Analysis - Reading time estimation and content analysis algorithms"
+    ],
+    "Syntax Highlighting": [
+      "React Syntax Highlighter - Professional code display with Prism.js integration",
+      "25+ Syntax Themes - Comprehensive theme collection including popular dark/light options",
+      "Language Detection - Automatic programming language identification",
+      "Custom Code Renderer - Enhanced code blocks with interaction features"
+    ],
+    "Styling & UI": [
+      "Tailwind CSS - Utility-first CSS framework for rapid styling and consistency",
+      "shadcn/ui - Accessible and customizable component library built on Radix",
+      "CSS Custom Properties - Dynamic theming system with real-time color switching",
+      "Responsive Design - Mobile-first approach with adaptive layouts"
+    ],
+    "Animation & Interactions": [
+      "Framer Motion - Production-ready motion library for smooth animations and transitions",
+      "React Swipeable - Touch gesture handling for mobile navigation",
+      "Auto-hiding Controls - Intelligent UI that appears on interaction and fades away",
+      "Page Transitions - Smooth section changes with loading states"
+    ],
+    "Icons & Media": [
+      "Lucide React - Consistent icon library with extensive symbol collection",
+      "React Icons - Extended icon support for technology logos and brand symbols",
+      "Custom Icon Mapping - Technology-specific icon assignment for code languages"
+    ],
+    "Reading Experience": [
+      "Font Management - 20+ reading-optimized typefaces with CSS font loading",
+      "Theme Categorization - Organized theme system with Dark/Light/Developer/Unique categories",
+      "Progress Visualization - Real-time reading progress with section completion tracking",
+      "Table of Contents - Dynamic navigation with reading status indicators"
+    ],
+    "Mobile Optimization": [
+      "Touch Gesture Support - Swipe navigation with momentum and edge detection",
+      "Responsive Typography - Adaptive font scaling based on screen size",
+      "Mobile-First Design - Optimized layouts starting from mobile and scaling up",
+      "Auto-hiding Interface - Touch-friendly controls that maximize reading space"
+    ],
+    "Performance Optimization": [
+      "Code Splitting - Lazy loading of components for faster initial page loads",
+      "Memoization - React.memo and useMemo for preventing unnecessary re-renders",
+      "Efficient Re-renders - Optimized state updates and component lifecycle management",
+      "Local Storage - Client-side persistence for themes and reading preferences"
+    ],
+    "Developer Experience": [
+      "TypeScript Integration - Full type coverage for better maintainability",
+      "Custom Hooks - Reusable logic for device detection, theming, and interactions",
+      "Component Architecture - Modular design with clear separation of concerns",
+      "Error Boundaries - Graceful error handling and user feedback"
+    ]
+  },
+  "explain": [
+    "I created MDHD to solve a fundamental problem with reading long technical documentation: information overload. Traditional markdown viewers present everything at once, making it difficult to maintain focus and track progress through lengthy documents. MDHD transforms this experience by intelligently parsing markdown into logical sections and presenting them one at a time, similar to how Netflix presents episodes in a series.",
+    "The core innovation is the section detection algorithm that analyzes markdown structure to identify natural reading breaks based on heading hierarchy. When you paste markdown content, the system automatically creates a card-based reading experience where each section becomes a focused reading session. This approach is based on cognitive science research showing that breaking information into smaller chunks improves comprehension and retention.",
+    "The technical implementation leverages React's component architecture with TypeScript for type safety and maintainability. I built a comprehensive theming system with 25+ carefully crafted themes and 20+ reading-optimized fonts, including accessibility options. The mobile experience features intuitive swipe navigation and auto-hiding controls that maximize reading space while keeping essential navigation accessible.",
+    "For developers reading technical documentation, I included advanced syntax highlighting with 25+ code themes, collapsible code blocks, and export functionality. The progress tracking system provides real-time feedback on reading completion, estimated time remaining, and section-level analytics to help users understand their reading patterns and stay motivated through long documents."
+  ],
+  "tags": [
+    "Markdown Reader",
+    "Reading Experience",
+    "React",
+    "TypeScript",
+    "Mobile-First",
+    "Theme System",
+    "Progress Tracking",
+    "Developer Tools",
+    "Cognitive Science",
+    "Web Application"
+  ]
+},
+  {
     "name": "Reducer",
     "description": "A streamlined state management library that reimagines Redux core principles with TypeScript. This solution provides robust state management capabilities while maintaining simplicity, offering features such as state slices and middleware support. Designed to help developers understand immutable state management patterns through practical implementation.",
     "githubLink": "https://github.com/utkarsh5026/ReduceMe",

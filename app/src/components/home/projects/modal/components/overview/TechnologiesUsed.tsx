@@ -9,6 +9,9 @@ interface TechnologiesProps {
 }
 
 const Technologies: React.FC<TechnologiesProps> = ({ project, theme }) => {
+  const projectTechnologies = project.technologies.filter(
+    (tech) => tech in technologies
+  );
   return (
     <>
       <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
@@ -16,7 +19,7 @@ const Technologies: React.FC<TechnologiesProps> = ({ project, theme }) => {
         Technology Stack
       </h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-        {project.technologies.map((tech) => (
+        {projectTechnologies.map((tech) => (
           <div key={tech} className="group relative">
             <div className="relative p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
               <div className="text-center">
@@ -24,11 +27,11 @@ const Technologies: React.FC<TechnologiesProps> = ({ project, theme }) => {
                   className={`w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 rounded-lg sm:rounded-xl flex items-center justify-center`}
                 >
                   <span className="text-xl sm:text-2xl font-bold text-white">
-                    {technologies[tech as keyof typeof technologies].icon}
+                    {technologies[tech].icon}
                   </span>
                 </div>
                 <div className="text-white text-xs sm:text-sm font-medium leading-tight">
-                  {technologies[tech as keyof typeof technologies].name}
+                  {technologies[tech].name}
                 </div>
               </div>
             </div>
