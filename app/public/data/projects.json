@@ -1850,7 +1850,14 @@
     "Developer Tools",
     "Cognitive Science",
     "Web Application"
-  ]
+  ],
+  "demoVideo": {
+    "videoUrl": "/media/mdhd/demo_video.mp4",
+    "title": "MDHD Demo",
+    "description": "A demo of the MDHD project",
+    "thumbnail": "/media/mdhd/demo_thumbnail.png",
+    "duration": "00:00:00"
+  }
 },
   {
     "name": "Reducer",
