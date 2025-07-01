@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { journeySteps } from "../data";
-import JourneyCard from "./JourneyIndicator";
-import StepIndicator from "./StepIndicator";
+import JourneyCard from "./journey-indicator";
+import StepIndicator from "./step-indicator";
 import {
   Drawer,
   DrawerContent,

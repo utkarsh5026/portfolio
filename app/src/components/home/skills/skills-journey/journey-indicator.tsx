@@ -61,35 +61,6 @@ const JourneyCard: React.FC<JourneyCardProps> = ({ step, index }) => {
         >
           {step.description}
         </motion.p>
-
-        {/* Highlights */}
-        <motion.div
-          className="space-y-2 sm:space-y-3"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-        >
-          <p className="text-xs sm:text-sm font-medium text-ctp-subtext0 mb-2 sm:mb-3">
-            Key highlights:
-          </p>
-          <div className="flex flex-wrap gap-1.5 sm:gap-2">
-            {step.highlights.map((highlight, hIndex) => (
-              <motion.div
-                key={highlight}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5 + hIndex * 0.1, duration: 0.3 }}
-                className={`px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 rounded-full bg-ctp-${step.color}/10 border border-ctp-${step.color}/20 max-w-full`}
-              >
-                <span
-                  className={`text-xs sm:text-sm font-medium text-ctp-${step.color} break-words`}
-                >
-                  {highlight}
-                </span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </motion.div>
   );

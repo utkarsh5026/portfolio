@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 import { Terminal, Sparkles } from "lucide-react";
 import { skillCategories } from "./data";
 import SkillCard from "./skill-card";
-import WhatDoIKnow from "./modal/WhatDoIKnow";
+import SkillsJourney from "./skills-journey/skills-journey";
 import Section from "@/components/section/Section";
 import OutlineNode from "@/components/home/editor/outline/OutlineNode";
 
-const Skills = () => {
+const SkillsSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -59,7 +59,7 @@ const Skills = () => {
           ))}
         </div>
 
-        <WhatDoIKnow
+        <SkillsJourney
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
         />
@@ -68,4 +68,4 @@ const Skills = () => {
   );
 };
 
-export default Skills;
+export default SkillsSection;
