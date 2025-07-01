@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Terminal, Sparkles } from "lucide-react";
 import { skillCategories } from "./data";
-import SkillCard from "./SkillCard";
+import SkillCard from "./skill-card";
 import WhatDoIKnow from "./modal/WhatDoIKnow";
 import Section from "@/components/section/Section";
 import OutlineNode from "@/components/home/editor/outline/OutlineNode";

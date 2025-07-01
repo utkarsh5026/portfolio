@@ -14,7 +14,7 @@ const TerminalHeader = lazy(
   () => import("@/components/home/intro/PersonalHeader")
 );
 const AboutMe = lazy(() => import("@/components/home/about/AboutMe"));
-const Skills = lazy(() => import("@/components/home/skills/Skills"));
+const Skills = lazy(() => import("@/components/home/skills/skills-section"));
 const Projects = lazy(() => import("@/components/home/projects/Projects"));
 const Experience = lazy(() => import("@/components/home/work/WorkExperience"));
 const ContactMe = lazy(() => import("@/components/home/contact/ContactMe"));
