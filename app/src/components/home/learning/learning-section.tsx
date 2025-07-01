@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { BookOpen, Lightbulb, ArrowRight } from "lucide-react";
 import Section from "@/components/section/Section";
 import { currentLearningTechnologies } from "./data";
-import LearningModal from "./LearningModal";
-import LearningJourney from "./LearningJourney";
+import LearningModal from "./learning-project-drawer";
+import LearningJourney from "./learning-journey";
 import type { TechnologyLearning } from "@/types";
 
 type Category = (typeof currentLearningTechnologies)[number]["category"];
