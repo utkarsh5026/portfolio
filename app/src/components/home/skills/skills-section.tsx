@@ -59,13 +59,10 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Simple Modal */}
-        {isModalOpen && (
-          <WhatDoIKnow
-            isOpen={isModalOpen}
-            onClose={() => setIsModalOpen(false)}
-          />
-        )}
+        <WhatDoIKnow
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
       </div>
     </Section>
   );
