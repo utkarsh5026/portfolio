@@ -1,11 +1,11 @@
-import HomeLoading from "./HomeLoading";
-import AboutLoading from "./AboutLoading";
-import ProjectsLoading from "./ProjectsLoading";
-import ExperienceLoading from "./ExperienceLoading";
-import ContactLoading from "./ContactLoading";
-import LearningLoading from "./LearningLoading";
-import ArticlesLoading from "./ArticlesLoading";
-import SkillsLoading from "./SkillsLoading";
+import HomeLoading from "./home-loading";
+import AboutLoading from "./about-loading";
+import ProjectsLoading from "./projects-loading";
+import ExperienceLoading from "./experience-loading";
+import ContactLoading from "./contact-loading";
+import LearningLoading from "./learning-loading";
+import ArticlesLoading from "./articles-loading";
+import SkillsLoading from "./skills-loading";
 
 export {
   HomeLoading,
