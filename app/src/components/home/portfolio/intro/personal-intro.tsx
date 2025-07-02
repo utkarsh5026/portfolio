@@ -1,6 +1,5 @@
 import React from "react";
 import Reveal from "@/components/animations/reveal/Reveal";
-
 import PersonalTitle from "./personal-title";
 import ProfileButtons from "./profile-buttons";
 import Terminal from "./statements-terminal";
@@ -10,67 +9,11 @@ import ProfilePicture from "./profile-picture";
 import { cn } from "@/lib/utils";
 import useMobile from "@/hooks/use-mobile";
 
-// New component for right sidebar content
-const RightSidebarContent: React.FC = () => {
+// Desktop-optimized layout
+const DesktopPersonalIntro: React.FC = () => {
   return (
-    <div className="flex flex-col justify-center h-full gap-12">
-      {/* Profile Picture */}
-      <Reveal effect="ripple-in" direction="right" duration={1} delay={0.5}>
-        <ProfilePicture />
-      </Reveal>
-
-      {/* Terminal - moved to right side for balance */}
-      <Reveal effect="fold-unfold" delay={1.2}>
-        <Terminal />
-      </Reveal>
-
-      {/* Quick Stats Card */}
-      {/* <Reveal effect="fade-up" delay={1.5}>
-        <div
-          className={cn(
-            "bg-gradient-to-br from-ctp-surface0/60 to-ctp-mantle/40",
-            "backdrop-blur-sm rounded-xl border border-ctp-surface1/40",
-            "p-4 shadow-lg"
-          )}
-        >
-          <h3 className="text-sm font-mono text-ctp-green mb-3">
-            ❯ whoami --stats
-          </h3>
-          <div className="space-y-2 text-sm">
-            <div className="flex justify-between">
-              <span className="text-ctp-overlay1">Experience:</span>
-              <span className="text-ctp-blue font-mono">3+ years</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-ctp-overlay1">Projects:</span>
-              <span className="text-ctp-green font-mono">15+ built</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-ctp-overlay1">Coffee:</span>
-              <span className="text-ctp-yellow font-mono">∞ cups</span>
-            </div>
-          </div>
-        </div>
-      </Reveal> */}
-    </div>
-  );
-};
-
-/**
- * Enhanced PersonalHeader with cinematic reveal animations
- *
- * This component orchestrates a cinematic entrance sequence using
- * the CinematicReveal component for all child elements.
- */
-const PersonalIntro: React.FC = () => {
-  const { isMobile } = useMobile();
-
-  return (
-    <Reveal
-      effect="fade-up"
-      duration={0.7}
-      className="relative isolate min-h-screen overflow-hidden"
-    >
+    <>
+      {/* Background Effects */}
       <div className="absolute inset-0 -z-20">
         <Reveal effect="blur-in" duration={1.8} delay={0.8}>
           <div
@@ -94,12 +37,7 @@ const PersonalIntro: React.FC = () => {
             "p-6 md:p-10 shadow-2xl mb-10 overflow-hidden"
           )}
         >
-          <div
-            className={cn(
-              "grid gap-8 lg:gap-12 items-start relative z-10",
-              isMobile ? "grid-cols-1" : "grid-cols-1 lg:grid-cols-2"
-            )}
-          >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start relative z-10">
             {/* Left Column - Main Content */}
             <Reveal
               effect="assemble"
@@ -118,41 +56,123 @@ const PersonalIntro: React.FC = () => {
               <Reveal effect="fade-up" delay={0.7}>
                 <ProfileButtons />
               </Reveal>
-              {/* 
-              <Reveal effect="fold-unfold" delay={1.2}>
-                <Terminal />
-              </Reveal> */}
+            </Reveal>
 
-              {/* On mobile, show a simplified version here */}
-              {isMobile && (
-                <Reveal effect="fade-up" delay={1}>
-                  <div className="flex justify-center py-4">
-                    <ProfilePicture />
-                  </div>
+            {/* Right Column - Visual Content */}
+            <div className="lg:pl-8 h-full">
+              <div className="flex flex-col justify-center h-full gap-12">
+                {/* Profile Picture */}
+                <Reveal
+                  effect="ripple-in"
+                  direction="right"
+                  duration={1}
+                  delay={0.5}
+                >
+                  <ProfilePicture />
                 </Reveal>
-              )}
-            </Reveal>
 
-            {/* Right Column - Visual Content (Desktop Only) */}
-            {!isMobile && (
-              <div className="lg:pl-8 h-full">
-                <RightSidebarContent />
+                {/* Terminal */}
+                <Reveal effect="fold-unfold" delay={1.2}>
+                  <Terminal />
+                </Reveal>
               </div>
-            )}
+            </div>
           </div>
-
-          {/* Mobile Terminal - shown below main content on mobile */}
-          {isMobile && (
-            <Reveal effect="fold-unfold" delay={1.2}>
-              <div className="mt-6">
-                <Terminal />
-              </div>
-            </Reveal>
-          )}
         </Reveal>
 
         <TechSkills />
       </div>
+    </>
+  );
+};
+
+// Mobile-optimized layout
+const MobilePersonalIntro: React.FC = () => {
+  return (
+    <>
+      {/* Simplified background for mobile */}
+      <div className="absolute inset-0 -z-20">
+        <Reveal duration={1.2} delay={0.5}>
+          <div
+            className="absolute inset-0 opacity-20"
+            style={{
+              backgroundImage: `radial-gradient(circle at 50% 30%, rgba(203, 166, 247, 0.1), transparent 60%)`,
+            }}
+          />
+        </Reveal>
+      </div>
+
+      <div className="mx-auto max-w-2xl px-4 py-6">
+        <Reveal
+          duration={0.8}
+          delay={0.1}
+          className={cn(
+            "relative",
+            "backdrop-blur-md bg-gradient-to-b from-ctp-mantle/80 to-ctp-crust/60 rounded-xl",
+            "p-4 shadow-xl mb-8 overflow-hidden"
+          )}
+        >
+          {/* Mobile-first vertical layout */}
+          <div className="space-y-8">
+            {/* Header Section */}
+            <div className="text-center space-y-6">
+              <Reveal effect="zoom-in" delay={0.3}>
+                <div className="inline-block">
+                  <ProfilePicture />
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.5}>
+                <PersonalTitle />
+              </Reveal>
+            </div>
+
+            {/* Description */}
+            <Reveal effect="fade-up" delay={0.7}>
+              <PersonalDescription />
+            </Reveal>
+
+            {/* Action Buttons */}
+            <Reveal delay={0.9}>
+              <div className="flex justify-center">
+                <ProfileButtons />
+              </div>
+            </Reveal>
+
+            {/* Mobile Terminal - Compact Version */}
+            <Reveal delay={1.1}>
+              <div className="bg-ctp-surface0/30 rounded-lg p-3 border border-ctp-surface1/20">
+                <Terminal />
+              </div>
+            </Reveal>
+          </div>
+        </Reveal>
+
+        {/* Tech Skills with mobile spacing */}
+        <div className="mt-8">
+          <TechSkills />
+        </div>
+      </div>
+    </>
+  );
+};
+
+/**
+ * Enhanced PersonalHeader with separate mobile and desktop optimized layouts
+ *
+ * This component chooses between completely different structures based on device type,
+ * providing optimal experiences for each platform.
+ */
+const PersonalIntro: React.FC = () => {
+  const { isMobile } = useMobile();
+
+  return (
+    <Reveal
+      effect="fade-up"
+      duration={0.7}
+      className="relative isolate min-h-screen overflow-hidden"
+    >
+      {isMobile ? <MobilePersonalIntro /> : <DesktopPersonalIntro />}
     </Reveal>
   );
 };
