@@ -56,7 +56,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
               />
             </div>
           </DrawerTrigger>
-          <DrawerContent className="max-h-[90vh] bg-ctp-base border-ctp-surface1/50 border-none z-[999999]">
+          <DrawerContent className="max-h-[90vh] bg-ctp-crust border-none z-[999999]">
             <DrawerHeader className="border-b border-ctp-surface1/50 p-4">
               <div className="flex items-center gap-3">
                 <div
@@ -80,9 +80,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
           </DrawerContent>
         </Drawer>
       ) : (
-        // Desktop: Use Collapsible with sticky trigger
         <div className="relative">
-          {/* Sticky Trigger Content when expanded */}
           {isExpanded && (
             <div className="sticky top-4 z-50 mb-4">
               <TriggerContent
