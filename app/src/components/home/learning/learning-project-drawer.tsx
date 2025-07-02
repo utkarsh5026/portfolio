@@ -7,6 +7,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerFooter,
+  DrawerOverlay,
 } from "@/components/ui/drawer";
 import { FaGithub } from "react-icons/fa";
 
@@ -114,6 +115,8 @@ const LearningModal: React.FC<LearningModalProps> = ({
           </DrawerFooter>
         )}
       </DrawerContent>
+
+      <DrawerOverlay className="bg-ctp-base/50" />
     </Drawer>
   );
 };
