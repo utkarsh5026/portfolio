@@ -6,7 +6,7 @@ import {
   languages,
   tools,
   frameworks,
-} from "@/components/home/skills/data";
+} from "@/components/home/portfolio/skills/data";
 import CodeTypeWriter from "../writer/JsTypeWriter";
 import { cn } from "@/lib/utils";
 

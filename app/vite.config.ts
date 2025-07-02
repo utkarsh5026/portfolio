@@ -56,7 +56,7 @@ export default defineConfig({
           icons: ["lucide-react", "react-icons"],
           "home-components": [
             "./src/components/home/intro/PersonalHeader",
-            "./src/components/home/skills/Skills",
+            "./src/components/home/portfolio/skills/skills-section",
             "./src/components/home/projects/Projects",
             "./src/components/home/articles/Articles",
             "./src/components/home/work/WorkExperience",

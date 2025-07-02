@@ -13,7 +13,7 @@ import {
   frameworks,
   languages,
   tools,
-} from "@/components/home/skills/data";
+} from "@/components/home/portfolio/skills/data";
 
 export type Command = {
   /** The name of the command */
