@@ -25,7 +25,7 @@ const LearningCard: React.FC<LearningCardProps> = ({
       className="group cursor-pointer"
       onClick={() => onSelect(tech)}
     >
-      <div className="h-full bg-ctp-surface0/50 backdrop-blur-sm rounded-2xl p-6 border border-ctp-surface1/50 hover:border-ctp-surface2/80 transition-all duration-300 hover:bg-ctp-surface0/80">
+      <div className="h-full bg-gradient-to-b from-ctp-mantle to-ctp-crust backdrop-blur-sm rounded-2xl p-6 border-none hover:border-ctp-surface2/80 transition-all duration-300 hover:bg-ctp-surface0/80">
         {/* Card Header */}
         <div className="flex items-start justify-between mb-4">
           <div
@@ -44,11 +44,11 @@ const LearningCard: React.FC<LearningCardProps> = ({
 
         {/* Content */}
         <div className="space-y-3">
-          <h3 className="text-lg font-semibold text-ctp-text group-hover:text-ctp-lavender transition-colors duration-300">
+          <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-ctp-text group-hover:text-ctp-lavender transition-colors duration-300">
             {tech.name}
           </h3>
 
-          <p className="text-sm text-ctp-subtext0 line-clamp-3 leading-relaxed">
+          <p className="text-sm md:text-base lg:text-lg text-ctp-subtext0 line-clamp-3 leading-relaxed">
             {tech.description}
           </p>
 
@@ -56,11 +56,11 @@ const LearningCard: React.FC<LearningCardProps> = ({
           <div className="pt-2">
             <div className="flex items-center gap-2 mb-2">
               <div className={`w-1 h-1 rounded-full bg-ctp-${categoryColor}`} />
-              <span className="text-xs font-medium text-ctp-subtext1">
+              <span className="text-xs md:text-sm font-medium text-ctp-subtext1">
                 Learning Focus
               </span>
             </div>
-            <p className="text-xs text-ctp-subtext0 line-clamp-2">
+            <p className="text-xs md:text-sm lg:text-base text-ctp-subtext0 line-clamp-2">
               {tech.learningGoals[0]}
             </p>
           </div>
@@ -70,7 +70,7 @@ const LearningCard: React.FC<LearningCardProps> = ({
         <div className="mt-4 pt-4 border-t border-ctp-surface1/30">
           <div className="flex items-center justify-between">
             <span
-              className={`text-xs px-2 py-1 rounded-full bg-ctp-${categoryColor}/10 text-ctp-${categoryColor} font-medium`}
+              className={`text-xs md:text-sm px-2 py-1 rounded-full bg-ctp-${categoryColor}/10 text-ctp-${categoryColor} font-medium`}
             >
               {category}
             </span>
@@ -79,7 +79,9 @@ const LearningCard: React.FC<LearningCardProps> = ({
               <div
                 className={`w-1.5 h-1.5 rounded-full bg-ctp-${categoryColor}`}
               />
-              <span className="text-xs text-ctp-subtext0">Active</span>
+              <span className="text-xs md:text-sm text-ctp-subtext0">
+                Active
+              </span>
             </div>
           </div>
         </div>
