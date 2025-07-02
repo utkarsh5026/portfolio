@@ -4,7 +4,7 @@ import type { SectionType } from "./context/explorer-context";
 import SideBar from "./left/side-bar";
 import StatusBar from "./StatusBar";
 import CodeContent from "./CodeContent";
-import EditorTabs from "./tabs/EditorTabs";
+import EditorTabs from "./tabs/editor-tabs";
 import { OutlineProvider } from "./outline/context/OutlineProvider";
 import { useEditorContext } from "./context/explorer-context";
 import Terminal from "./terminal/Terminal";

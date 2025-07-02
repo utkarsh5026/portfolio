@@ -27,7 +27,6 @@ const MobileEditorDropdown: React.FC<MobileEditorDropdownProps> = ({
     <div className="flex items-center justify-between px-4 h-10 w-full">
       <Logo />
 
-      {/* Menu dropdown */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
