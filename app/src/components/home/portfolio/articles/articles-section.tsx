@@ -1,12 +1,11 @@
 import React, { useMemo, useState } from "react";
 import Section from "@/components/section/portfolio-section";
-import { articles } from "./articlesdump";
+import { articles } from "./articles-dump";
 import OutlineNode from "../../editor/outline/OutlineNode";
 import { Book, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ArticleCard from "./ArticleCard";
-import MobileFilter from "./MobileFilter";
-import Header from "./Header";
+import ArticleCard from "./article-card";
+import MobileFilter from "./mobile-filter";
 import Reveal from "@/components/animations/reveal/Reveal";
 
 /**
@@ -95,20 +94,22 @@ const ArticlesComponent: React.FC = () => {
   );
 
   return (
-    <Section id="articles" label="Articles" icon="api" scanlines={true}>
+    <Section
+      id="articles"
+      label="Articles"
+      title="Published Articles"
+      description={`${articles.length} articles on database internals, web development, and more`}
+      headerIcon={Book}
+      icon="api"
+      scanlines={true}
+      showHeader={true}
+    >
       <div className="mb-8 max-w-6xl mx-auto">
-        {/* Header with statistics */}
-        <Header
-          categories={categories}
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-        />
-
         {/* Search Bar */}
         <Reveal
           effect="fade-up"
           duration={0.5}
-          delay={0.3}
+          delay={0.1}
           className="relative mb-8 mx-4"
         >
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">

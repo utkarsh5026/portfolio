@@ -1,7 +1,7 @@
 import { Book, ExternalLink, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { articles } from "./articlesdump";
+import { articles } from "./articles-dump";
 import Reveal from "@/components/animations/reveal/Reveal";
 
 interface ArticleCardProps {

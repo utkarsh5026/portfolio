@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from "react";
 import Section from "@/components/section/portfolio-section";
 import OutlineNode from "@/components/home/editor/outline/OutlineNode";
-import { Sparkles, Code, Globe } from "lucide-react";
+import { Sparkles, Code, Globe, Folder } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ProjectModal from "./modal/ProjectModal";
@@ -47,7 +47,15 @@ const Projects: React.FC = () => {
 
   if (isLoading) {
     return (
-      <Section id="projects" label="Projects" icon="code">
+      <Section
+        id="projects"
+        label="Projects"
+        title="My Projects"
+        description="A showcase of applications and tools I've built"
+        headerIcon={Folder}
+        icon="code"
+        showHeader={true}
+      >
         <div className="flex justify-center items-center h-64">
           <div className="text-ctp-text">Loading projects...</div>
         </div>
@@ -57,7 +65,15 @@ const Projects: React.FC = () => {
 
   if (error || !featuredProject) {
     return (
-      <Section id="projects" label="Projects" icon="code">
+      <Section
+        id="projects"
+        label="Projects"
+        title="My Projects"
+        description="A showcase of applications and tools I've built"
+        headerIcon={Folder}
+        icon="code"
+        showHeader={true}
+      >
         <div className="flex justify-center items-center h-64">
           <div className="text-ctp-red">
             {error ?? "Failed to load projects data"}
@@ -83,7 +99,15 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <Section id="projects" label="Projects" icon="code">
+    <Section
+      id="projects"
+      label="Projects"
+      title="My Projects"
+      description="A showcase of applications and tools I've built"
+      headerIcon={Folder}
+      icon="code"
+      showHeader={true}
+    >
       <ProjectThemeProvider>
         <div
           ref={projectsRef}
@@ -97,7 +121,7 @@ const Projects: React.FC = () => {
                     <TabsTrigger
                       key={value}
                       value={value}
-                      className="flex-1 data-[state=active]:bg-ctp-peach/20 data-[state=active]:text-ctp-peach"
+                      className="flex-1 data-[state=active]:bg-ctp-yellow/20 data-[state=active]:text-ctp-yellow"
                     >
                       {icon}
                       <span className="hidden md:block">{label}</span>
@@ -116,7 +140,7 @@ const Projects: React.FC = () => {
                   label="Featured Project"
                   level={1}
                   parentId="projects"
-                  icon={<Sparkles className="w-3 h-3 text-ctp-lavender" />}
+                  icon={<Sparkles className="w-3 h-3 text-ctp-yellow" />}
                 >
                   <Reveal
                     effect="fade-up"
@@ -141,16 +165,16 @@ const Projects: React.FC = () => {
                   label="Project Gallery"
                   level={1}
                   parentId="projects"
-                  icon={<Code className="w-3 h-3 text-ctp-green" />}
+                  icon={<Code className="w-3 h-3 text-ctp-peach" />}
                 >
                   <Reveal effect="fade-up" duration={0.7}>
                     <div className="sticky top-0 z-20 bg-ctp-mantle/80 backdrop-blur-md py-4 border-b border-ctp-surface0 mb-8 rounded-t-lg">
                       <div className="flex flex-col md:flex-row md:items-center gap-4 px-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-ctp-green to-ctp-teal flex items-center justify-center shadow-md shadow-ctp-green/10">
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-ctp-peach to-ctp-red flex items-center justify-center shadow-md shadow-ctp-peach/10">
                             <Globe className="w-5 h-5 text-ctp-crust" />
                           </div>
-                          <h3 className="text-xl font-semibold bg-gradient-to-r from-ctp-green to-ctp-teal text-transparent bg-clip-text">
+                          <h3 className="text-xl font-semibold bg-gradient-to-r from-ctp-peach to-ctp-red text-transparent bg-clip-text">
                             Project Gallery
                           </h3>
                         </div>
@@ -193,7 +217,7 @@ const Projects: React.FC = () => {
                         <Button
                           onClick={loadMore}
                           variant="outline"
-                          className="border-ctp-green/30 hover:border-ctp-green/50 bg-ctp-green/5 hover:bg-ctp-green/10 hover:text-ctp-green text-ctp-green px-6 py-6 text-small hover:scale-105 transition-all duration-300"
+                          className="border-ctp-peach/30 hover:border-ctp-peach/50 bg-ctp-peach/5 hover:bg-ctp-peach/10 hover:text-ctp-peach text-ctp-peach px-6 py-6 text-small hover:scale-105 transition-all duration-300"
                         >
                           Load more ({otherProjects.length - visibleCount}{" "}
                           remaining)

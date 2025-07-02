@@ -44,33 +44,27 @@ const CurrentLearning: React.FC = () => {
   }, []);
 
   return (
-    <Section id="learning" label="Learning Journey" icon="code">
+    <Section
+      id="learning"
+      label="Learning Journey"
+      title="Current Learning"
+      description="Exploring new technologies and building projects to expand my knowledge"
+      headerIcon={BookOpen}
+      icon="code"
+      showHeader={true}
+    >
       <div className="w-full max-w-6xl mx-auto px-4 py-12">
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center mb-8"
         >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="p-3 rounded-2xl bg-gradient-to-r from-ctp-green/20 to-ctp-teal/20 backdrop-blur-sm">
-              <BookOpen className="w-6 h-6 text-ctp-green" />
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-ctp-green via-ctp-teal to-ctp-blue bg-clip-text text-transparent">
-              Current Learning
-            </h2>
-          </div>
-
-          <p className="text-ctp-subtext0 text-lg max-w-2xl mx-auto mb-8">
-            Exploring new technologies and building projects to expand my
-            knowledge
-          </p>
-
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => setIsJourneyOpen(true)}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-ctp-surface0/80 hover:bg-ctp-surface1/80 rounded-full text-ctp-text font-medium border border-ctp-surface1/50 hover:border-ctp-surface2/80 transition-all duration-300 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-ctp-surface0/80 hover:bg-ctp-surface1/80 rounded-full text-ctp-text font-medium border border-ctp-surface1/50 hover:border-ctp-peach/80 transition-all duration-300 backdrop-blur-sm"
           >
             <Lightbulb className="w-4 h-4" />
             <span>Learning Journey</span>

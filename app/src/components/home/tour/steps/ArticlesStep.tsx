@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TypeWriter from "../writer/TypeWriter";
 import Step from "./Step";
-import { articles } from "@/components/home/portfolio/articles/articlesdump";
+import { articles } from "@/components/home/portfolio/articles/articles-dump";
 import CodeTypeWriter from "../writer/JsTypeWriter";
 import TourStepFinalMessage from "../utils/TourStepFinalMessage";
 import {

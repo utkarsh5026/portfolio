@@ -32,7 +32,7 @@ const Learning = lazy(
   () => import("@/components/home/portfolio/learning/learning-section")
 );
 const Articles = lazy(
-  () => import("@/components/home/portfolio/articles/Articles")
+  () => import("@/components/home/portfolio/articles/articles-section")
 );
 
 /**
