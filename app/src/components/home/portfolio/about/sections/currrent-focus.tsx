@@ -9,7 +9,7 @@ import {
   Code,
   Cloud,
 } from "lucide-react";
-import { focusAreas } from "./data";
+import { focusAreas } from "../data/data";
 import Reveal from "@/components/animations/reveal/Reveal";
 
 const focusIcons = [Cloud, Database, TrendingUp, Code, Globe];

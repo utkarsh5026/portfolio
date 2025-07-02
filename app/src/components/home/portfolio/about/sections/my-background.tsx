@@ -9,7 +9,7 @@ import {
   Puzzle,
   Users,
 } from "lucide-react";
-import { background } from "./data";
+import { background } from "../data/data";
 import Reveal from "@/components/animations/reveal/Reveal";
 
 // Status items configuration

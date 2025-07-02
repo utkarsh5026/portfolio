@@ -7,7 +7,7 @@ import {
   Award,
   MapPin,
 } from "lucide-react";
-import { education } from "./data";
+import { education } from "../data/data";
 import Reveal from "@/components/animations/reveal/Reveal";
 
 /**

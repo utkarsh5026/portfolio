@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Code2, ChevronRight, Layers } from "lucide-react";
-import { skills } from "./data";
+import { skills } from "../data/data";
 import Reveal from "@/components/animations/reveal/Reveal";
 
 const categoryColors = {

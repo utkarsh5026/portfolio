@@ -1,6 +1,6 @@
 import React from "react";
 import { Brain, Quote, Zap, Target, Heart } from "lucide-react";
-import { philosophy } from "./data";
+import { philosophy } from "../data/data";
 import Reveal from "@/components/animations/reveal/Reveal";
 
 const philosophyIcons = [Target, Zap, Heart];

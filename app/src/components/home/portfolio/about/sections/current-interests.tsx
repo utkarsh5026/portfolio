@@ -9,7 +9,7 @@ import {
   Dumbbell,
   Zap,
 } from "lucide-react";
-import { interests } from "./data";
+import { interests } from "../data/data";
 import Reveal from "@/components/animations/reveal/Reveal";
 
 const categoryData = {
