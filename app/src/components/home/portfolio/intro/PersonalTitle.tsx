@@ -21,9 +21,9 @@ const PersonalTitle: React.FC = () => {
             className="text-white"
             animate={{
               textShadow: [
-                "0 0 10px rgba(180, 190, 254, 0)",
+                "0 0 40px rgba(180, 190, 254, 0)",
                 "0 0 20px rgba(180, 190, 254, 0.5)",
-                "0 0 10px rgba(180, 190, 254, 0)",
+                "0 0 40px rgba(180, 190, 254, 0)",
               ],
             }}
             transition={{ duration: 3, repeat: Infinity }}
@@ -39,7 +39,7 @@ const PersonalTitle: React.FC = () => {
       </motion.h1>
 
       <Reveal effect="typewriter" direction="left" delay={1} duration={1.5}>
-        <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-[#cdd6f4] mb-4">
+        <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-ctp-text mb-4">
           <span className="inline-block border-r-2 border-ctp-yellow pr-1 xs:pr-2 mr-1 xs:mr-2">
             Full-Stack Developer
           </span>

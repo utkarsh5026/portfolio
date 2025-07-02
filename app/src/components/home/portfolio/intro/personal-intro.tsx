@@ -8,7 +8,6 @@ import PersonalDescription from "./personal-description";
 import TechSkills from "./TechSkills";
 import ProfilePicture from "./ProfilePicture";
 import { cn } from "@/lib/utils";
-import useMobile from "@/hooks/use-mobile";
 
 /**
  * Enhanced PersonalHeader with cinematic reveal animations
@@ -16,8 +15,7 @@ import useMobile from "@/hooks/use-mobile";
  * This component orchestrates a cinematic entrance sequence using
  * the CinematicReveal component for all child elements.
  */
-const PersonalHeader: React.FC = () => {
-  const { isMobile } = useMobile();
+const PersonalIntro: React.FC = () => {
   return (
     <Reveal
       effect="fade-up"
@@ -43,8 +41,7 @@ const PersonalHeader: React.FC = () => {
           delay={0.2}
           className={cn(
             "relative",
-            !isMobile &&
-              "backdrop-blur-md bg-[#1e1e2e]/70 border border-[#313244] rounded-2xl",
+            "backdrop-blur-lg bg-gradient-to-r from-ctp-mantle to-ctp-crust  rounded-2xl",
             "p-6 md:p-10 shadow-2xl mb-10 overflow-hidden"
           )}
         >
@@ -90,4 +87,4 @@ const PersonalHeader: React.FC = () => {
   );
 };
 
-export default PersonalHeader;
+export default PersonalIntro;
