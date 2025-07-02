@@ -4,7 +4,7 @@ import OutlineNode from "@/components/home/editor/outline/OutlineNode";
 import { Sparkles, Code, Globe, Folder } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import ProjectModal from "./modal/ProjectModal";
+import ProjectDrawer from "./modal/project-drawer";
 import FeaturedProject from "./featured/FeaturedProject";
 import ProjectSmall from "./project-small";
 import { ProjectThemeProvider } from "./context/ProjectThemeProvider";
@@ -231,7 +231,7 @@ const Projects: React.FC = () => {
           </Reveal>
 
           {/* Project modal */}
-          <ProjectModal
+          <ProjectDrawer
             isModalOpen={isModalOpen}
             selectedProject={selectedProject}
             closeModal={handleCloseModal}
