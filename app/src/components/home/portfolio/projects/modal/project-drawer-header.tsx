@@ -44,15 +44,17 @@ const ProjectDrawerHeader: React.FC<ProjectDrawerHeaderProps> = ({
         </div>
 
         {/* Close Button */}
-        <DrawerClose asChild>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="p-2 rounded-lg bg-ctp-surface0/50 hover:bg-ctp-surface1/50 text-ctp-subtext0 hover:text-ctp-text transition-all duration-200 flex-shrink-0"
-          >
-            <X className="w-5 h-5" />
-          </Button>
-        </DrawerClose>
+        {!isMobile && (
+          <DrawerClose asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="p-2 rounded-lg bg-ctp-surface0/50 hover:bg-ctp-surface1/50 text-ctp-subtext0 hover:text-ctp-text transition-all duration-200 flex-shrink-0"
+            >
+              <X className="w-5 h-5" />
+            </Button>
+          </DrawerClose>
+        )}
       </div>
 
       {/* Action Buttons - Distinct Solid Design */}
@@ -90,29 +92,6 @@ const ProjectDrawerHeader: React.FC<ProjectDrawerHeaderProps> = ({
           </motion.div>
         )}
       </div>
-
-      {/* Tags - Distinct Minimal Chip Design */}
-      {selectedProject.tags && selectedProject.tags.length > 0 && (
-        <div className="flex items-center gap-2 flex-wrap">
-          {selectedProject.tags.slice(0, isMobile ? 4 : 6).map((tag, index) => (
-            <motion.div
-              key={tag}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.05 }}
-              whileHover={{ scale: 1.05 }}
-              className={`px-3 py-1 text-xs font-medium rounded-full bg-ctp-surface0 border border-ctp-surface1 text-ctp-${theme.main} hover:border-ctp-${theme.main}/40 hover:bg-ctp-${theme.main}/5 transition-all duration-200 cursor-default`}
-            >
-              {tag}
-            </motion.div>
-          ))}
-          {selectedProject.tags.length > (isMobile ? 4 : 6) && (
-            <span className="px-3 py-1 text-xs text-ctp-subtext1 bg-ctp-surface0/50 rounded-full border border-ctp-surface1/50">
-              +{selectedProject.tags.length - (isMobile ? 4 : 6)}
-            </span>
-          )}
-        </div>
-      )}
     </DrawerHeader>
   );
 };
