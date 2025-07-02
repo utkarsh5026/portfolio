@@ -10,7 +10,7 @@ import {
   LearningLoading,
   ArticlesLoading,
   SkillsLoading,
-} from "../section-loading";
+} from "../../../section/section-loading";
 
 interface SectionLoadingScreenProps {
   section: SectionType;
