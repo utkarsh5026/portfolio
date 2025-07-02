@@ -29,7 +29,9 @@ const ContactMe = lazy(
 const Learning = lazy(
   () => import("@/components/home/portfolio/learning/learning-section")
 );
-const Articles = lazy(() => import("@/components/home/articles/Articles"));
+const Articles = lazy(
+  () => import("@/components/home/portfolio/articles/Articles")
+);
 
 /**
  * CodeEditor component represents the main editor interface of the application

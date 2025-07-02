@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import Section from "@/components/section/Section";
 import { articles } from "./articlesdump";
-import OutlineNode from "../editor/outline/OutlineNode";
+import OutlineNode from "../../editor/outline/OutlineNode";
 import { Book, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ArticleCard from "./ArticleCard";
