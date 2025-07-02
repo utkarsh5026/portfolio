@@ -47,9 +47,6 @@ const MobileSkillsPreview: React.FC<MobileSkillsPreviewProps> = ({
 }) => {
   return (
     <div className="mb-3">
-      <h3 className="text-sm font-semibold text-ctp-text mb-2 tracking-wide">
-        Key Technologies
-      </h3>
       <div className="flex flex-wrap gap-2">
         {category.skills.slice(0, 3).map((skill) => (
           <div

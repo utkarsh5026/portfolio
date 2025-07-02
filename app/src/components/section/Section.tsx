@@ -119,36 +119,6 @@ const Section: React.FC<SectionProps> = ({
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.4, delay: 0.2 }}
             >
-              {/* Mobile section header (optional, for better mobile UX) */}
-              <motion.div
-                className={`
-                  ${
-                    isMobile && ["about", "skills", "projects"].includes(id)
-                      ? "block"
-                      : "hidden"
-                  }
-                  mb-6 sm:hidden
-                `}
-                initial={{ opacity: 0, y: 10 }}
-                animate={
-                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
-                }
-                transition={{ duration: 0.5, delay: 0.1 }}
-              >
-                <div className="flex items-center gap-3 p-4 bg-ctp-surface0/30 backdrop-blur-sm rounded-2xl border border-ctp-surface1/20">
-                  <div className="flex-shrink-0 p-2 bg-ctp-blue/10 rounded-xl">
-                    {getIcon(icon)}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h2 className="text-lg font-semibold text-ctp-text truncate">
-                      {label}
-                    </h2>
-                    <div className="w-8 h-0.5 bg-ctp-blue/60 rounded-full mt-1" />
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Main content with progressive enhancement */}
               <motion.div
                 className={`
                   space-y-6
