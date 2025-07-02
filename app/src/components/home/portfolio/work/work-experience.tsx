@@ -3,7 +3,7 @@ import Section from "@/components/section/portfolio-section";
 import { experiences } from "./experienceDump";
 import { motion } from "framer-motion";
 import Reveal from "@/components/animations/reveal/Reveal";
-import { FaBuilding } from "react-icons/fa";
+import { Building } from "lucide-react";
 import ExperienceTabs from "./experience-tabs";
 import ExperienceDetails from "./experience-details";
 
@@ -17,24 +17,16 @@ const WorkExperience: React.FC = () => {
   };
 
   return (
-    <Section id={EXPERIENCE_ID} label="Work Experience" icon="database">
+    <Section
+      id={EXPERIENCE_ID}
+      label="Work Experience"
+      title="Professional Experience"
+      description="My journey in building impactful solutions and driving innovation"
+      headerIcon={Building}
+      icon="database"
+      showHeader={true}
+    >
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-        <Reveal effect="fade-up" duration={0.8} delay={0.1}>
-          <div className="text-center mb-8 sm:mb-10 md:mb-12">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-              <div className="p-2 sm:p-2.5 md:p-3 rounded-xl sm:rounded-2xl bg-ctp-blue/20 backdrop-blur-sm flex-shrink-0">
-                <FaBuilding className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-ctp-blue" />
-              </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-ctp-blue via-ctp-lavender to-ctp-mauve bg-clip-text text-transparent text-center break-words">
-                Professional Experience
-              </h2>
-            </div>
-            <p className="text-ctp-subtext0 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-2 leading-relaxed break-words">
-              My journey in building impactful solutions and driving innovation
-            </p>
-          </div>
-        </Reveal>
-
         <div className="space-y-6 sm:space-y-8">
           {/* Experience Selection (Mobile: Horizontal scroll, Desktop: Sidebar) */}
           {experiences.length > 1 && (
