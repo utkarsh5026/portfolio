@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import React from "react";
-import ProfileAvatar from "./ProfileAvatar";
+import ProfileAvatar from "./profile-avatar";
 
 /**
  * ProfilePicture component displays a profile picture with animations.
@@ -16,7 +16,7 @@ const ProfilePicture: React.FC = () => {
         className="relative"
         whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
       >
-        <div className="absolute inset-0 bg-[#1e1e2e] rounded-full blur-sm opacity-10"></div>
+        <div className="absolute inset-0 bg-ctp-crust rounded-full blur-sm opacity-10"></div>
         <motion.div
           whileHover={{ rotate: 5 }}
           transition={{ type: "spring", stiffness: 200, damping: 10 }}
@@ -24,7 +24,7 @@ const ProfilePicture: React.FC = () => {
           <ProfileAvatar />
         </motion.div>
         <motion.div
-          className="absolute -bottom-2 -right-2 w-12 h-12 bg-[#1e1e2e] rounded-full border-2 border-[#a6e3a1] flex items-center justify-center z-50"
+          className="absolute -bottom-2 -right-2 w-12 h-12 bg-ctp-crust rounded-full border-2 border-ctp-green flex items-center justify-center z-50"
           animate={{
             boxShadow: [
               "0 0 0px rgba(166, 227, 161, 0)",
@@ -35,7 +35,7 @@ const ProfilePicture: React.FC = () => {
           transition={{ duration: 2, repeat: Infinity }}
         >
           <motion.div
-            className="w-4 h-4 rounded-full bg-[#a6e3a1]"
+            className="w-4 h-4 rounded-full bg-ctp-green"
             animate={{ scale: [0.1, 1.2, 0.1] }}
             transition={{ duration: 6, repeat: Infinity }}
           ></motion.div>
