@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { BookOpen, Lightbulb, ArrowRight } from "lucide-react";
+import { BookOpen, Lightbulb } from "lucide-react";
 import Section from "@/components/section/Section";
 import { currentLearningTechnologies } from "./data";
 import LearningModal from "./learning-project-drawer";
 import LearningJourney from "./learning-journey/learning-journey";
 import type { TechnologyLearning } from "@/types";
+import LearningCard from "./learning-card";
 
 type Category = (typeof currentLearningTechnologies)[number]["category"];
+
+const categorizedTech = currentLearningTechnologies.reduce((acc, tech) => {
+  if (!acc[tech.category]) {
+    acc[tech.category] = [];
+  }
+  acc[tech.category].push(tech);
+  return acc;
+}, {} as Record<Category, TechnologyLearning[]>);
 
 const CurrentLearning: React.FC = () => {
   const [selectedTech, setSelectedTech] = useState<TechnologyLearning | null>(
@@ -15,14 +24,6 @@ const CurrentLearning: React.FC = () => {
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isJourneyOpen, setIsJourneyOpen] = useState(false);
-
-  const categorizedTech = currentLearningTechnologies.reduce((acc, tech) => {
-    if (!acc[tech.category]) {
-      acc[tech.category] = [];
-    }
-    acc[tech.category].push(tech);
-    return acc;
-  }, {} as Record<Category, TechnologyLearning[]>);
 
   const handleTechSelect = (tech: TechnologyLearning) => {
     setSelectedTech(tech);
@@ -45,7 +46,6 @@ const CurrentLearning: React.FC = () => {
   return (
     <Section id="learning" label="Learning Journey" icon="code">
       <div className="w-full max-w-6xl mx-auto px-4 py-12">
-        {/* Clean Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -116,6 +116,7 @@ const CurrentLearning: React.FC = () => {
                       category={category}
                       onSelect={handleTechSelect}
                       delay={categoryIndex * 0.1 + techIndex * 0.05}
+                      categoryColor={getCategoryColor(category)}
                     />
                   ))}
                 </div>
@@ -140,7 +141,6 @@ const CurrentLearning: React.FC = () => {
   );
 };
 
-// Helper function to get category colors
 const getCategoryColor = (category: string): string => {
   const colors: Record<string, string> = {
     Database: "blue",
@@ -150,93 +150,6 @@ const getCategoryColor = (category: string): string => {
     "AI/ML": "pink",
   };
   return colors[category] || "text";
-};
-
-// LearningCard.tsx - Clean, modern card design
-interface LearningCardProps {
-  tech: TechnologyLearning;
-  category: string;
-  onSelect: (tech: TechnologyLearning) => void;
-  delay?: number;
-}
-
-const LearningCard: React.FC<LearningCardProps> = ({
-  tech,
-  category,
-  onSelect,
-  delay = 0,
-}) => {
-  const categoryColor = getCategoryColor(category);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.5 }}
-      className="group cursor-pointer"
-      onClick={() => onSelect(tech)}
-    >
-      <div className="h-full bg-ctp-surface0/50 backdrop-blur-sm rounded-2xl p-6 border border-ctp-surface1/50 hover:border-ctp-surface2/80 transition-all duration-300 hover:bg-ctp-surface0/80">
-        {/* Card Header */}
-        <div className="flex items-start justify-between mb-4">
-          <div
-            className={`p-3 rounded-xl bg-ctp-${categoryColor}/10 text-ctp-${categoryColor} group-hover:scale-105 transition-transform duration-300`}
-          >
-            {tech.icon}
-          </div>
-
-          <motion.div
-            className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            whileHover={{ x: 2 }}
-          >
-            <ArrowRight className="w-4 h-4 text-ctp-subtext0" />
-          </motion.div>
-        </div>
-
-        {/* Content */}
-        <div className="space-y-3">
-          <h3 className="text-lg font-semibold text-ctp-text group-hover:text-ctp-lavender transition-colors duration-300">
-            {tech.name}
-          </h3>
-
-          <p className="text-sm text-ctp-subtext0 line-clamp-3 leading-relaxed">
-            {tech.description}
-          </p>
-
-          {/* Learning Goals Preview */}
-          <div className="pt-2">
-            <div className="flex items-center gap-2 mb-2">
-              <div className={`w-1 h-1 rounded-full bg-ctp-${categoryColor}`} />
-              <span className="text-xs font-medium text-ctp-subtext1">
-                Learning Focus
-              </span>
-            </div>
-            <p className="text-xs text-ctp-subtext0 line-clamp-2">
-              {tech.learningGoals[0]}
-            </p>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="mt-4 pt-4 border-t border-ctp-surface1/30">
-          <div className="flex items-center justify-between">
-            <span
-              className={`text-xs px-2 py-1 rounded-full bg-ctp-${categoryColor}/10 text-ctp-${categoryColor} font-medium`}
-            >
-              {category}
-            </span>
-
-            <div className="flex items-center gap-1">
-              <div
-                className={`w-1.5 h-1.5 rounded-full bg-ctp-${categoryColor}`}
-              />
-              <span className="text-xs text-ctp-subtext0">Active</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
 };
 
 export default CurrentLearning;

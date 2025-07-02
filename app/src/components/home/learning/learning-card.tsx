@@ -1,98 +1,90 @@
+import { TechnologyLearning } from "@/types";
 import { motion } from "framer-motion";
-import type { TechnologyLearning } from "@/types";
-import { categoryInfo, currentLearningTechnologies } from "./data";
-
-import React from "react";
+import { ArrowRight } from "lucide-react";
 
 interface LearningCardProps {
   tech: TechnologyLearning;
-  catInfo: (typeof categoryInfo)[keyof typeof categoryInfo];
-  isActive: boolean;
-  category: (typeof currentLearningTechnologies)[number]["category"];
+  category: string;
+  onSelect: (tech: TechnologyLearning) => void;
+  delay?: number;
+  categoryColor: string;
 }
 
 const LearningCard: React.FC<LearningCardProps> = ({
   tech,
-  catInfo,
-  isActive,
   category,
+  onSelect,
+  delay = 0,
+  categoryColor,
 }) => {
   return (
-    <div className="relative rounded-xl p-1 bg-gradient-to-b from-ctp-surface0/70 to-ctp-mantle/70 backdrop-blur-md z-10 h-full overflow-hidden">
-      <div className="h-full flex flex-col bg-gradient-to-b from-ctp-crust/90 to-ctp-mantle/90 rounded-lg p-6">
-        {/* Card header with tech info */}
-        <div className="mb-6">
-          <div className="flex justify-between items-start">
-            {/* Tech icon with interactive effects */}
-            <motion.div
-              className="flex-shrink-0 relative"
-              whileHover={{ scale: 1.05 }}
-            >
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center relative overflow-hidden"
-                style={{
-                  background: `linear-gradient(135deg, ${catInfo.color}40, ${catInfo.hoverColor}10)`,
-                }}
-              >
-                <div className="relative z-10 text-xl group-hover:text-white text-ctp-text transition-colors duration-300">
-                  {tech.icon}
-                </div>
-
-                {/* Icon background animation */}
-                <motion.div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background: `linear-gradient(135deg, ${catInfo.color}30, ${catInfo.hoverColor}10)`,
-                  }}
-                  animate={{
-                    rotate: isActive ? [0, 10, 0] : 0,
-                    scale: isActive ? [1, 1.1, 1] : 1,
-                  }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                  }}
-                />
-              </div>
-
-              {/* Decorative accent ring */}
-              {isActive && (
-                <motion.div
-                  className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-100"
-                  style={{
-                    border: `1px solid ${catInfo.color}30`,
-                  }}
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-              )}
-            </motion.div>
-            <div
-              className="px-3 py-1 rounded-full text-xs font-medium"
-              style={{
-                backgroundColor: `${catInfo.color}20`,
-                color: catInfo.color,
-              }}
-            >
-              {category}
-            </div>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay, duration: 0.5 }}
+      className="group cursor-pointer"
+      onClick={() => onSelect(tech)}
+    >
+      <div className="h-full bg-ctp-surface0/50 backdrop-blur-sm rounded-2xl p-6 border border-ctp-surface1/50 hover:border-ctp-surface2/80 transition-all duration-300 hover:bg-ctp-surface0/80">
+        {/* Card Header */}
+        <div className="flex items-start justify-between mb-4">
+          <div
+            className={`p-3 rounded-xl bg-ctp-${categoryColor}/10 text-ctp-${categoryColor} group-hover:scale-105 transition-transform duration-300`}
+          >
+            {tech.icon}
           </div>
 
-          {/* Tech name with hover effect */}
-          <h3 className="mt-4 text-xl font-bold group-hover:text-ctp-blue text-ctp-text transition-colors duration-300">
-            {tech.name}
-          </h3>
+          <motion.div
+            className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            whileHover={{ x: 2 }}
+          >
+            <ArrowRight className="w-4 h-4 text-ctp-subtext0" />
+          </motion.div>
         </div>
 
-        {/* Tech description with line clamp */}
-        <div className="mb-4 flex-grow">
-          <p className="text-ctp-subtext0 text-sm line-clamp-3 group-hover:text-ctp-subtext1 transition-colors duration-300">
+        {/* Content */}
+        <div className="space-y-3">
+          <h3 className="text-lg font-semibold text-ctp-text group-hover:text-ctp-lavender transition-colors duration-300">
+            {tech.name}
+          </h3>
+
+          <p className="text-sm text-ctp-subtext0 line-clamp-3 leading-relaxed">
             {tech.description}
           </p>
+
+          {/* Learning Goals Preview */}
+          <div className="pt-2">
+            <div className="flex items-center gap-2 mb-2">
+              <div className={`w-1 h-1 rounded-full bg-ctp-${categoryColor}`} />
+              <span className="text-xs font-medium text-ctp-subtext1">
+                Learning Focus
+              </span>
+            </div>
+            <p className="text-xs text-ctp-subtext0 line-clamp-2">
+              {tech.learningGoals[0]}
+            </p>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-4 pt-4 border-t border-ctp-surface1/30">
+          <div className="flex items-center justify-between">
+            <span
+              className={`text-xs px-2 py-1 rounded-full bg-ctp-${categoryColor}/10 text-ctp-${categoryColor} font-medium`}
+            >
+              {category}
+            </span>
+
+            <div className="flex items-center gap-1">
+              <div
+                className={`w-1.5 h-1.5 rounded-full bg-ctp-${categoryColor}`}
+              />
+              <span className="text-xs text-ctp-subtext0">Active</span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
