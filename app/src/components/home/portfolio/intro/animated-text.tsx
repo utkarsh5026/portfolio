@@ -4,15 +4,17 @@ import { useTypewriting } from "@/components/type-write/hooks/use-type-write";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import useMobile from "@/hooks/use-mobile";
+import { SiJavascript, SiPython, SiGo, SiTypescript } from "react-icons/si";
 import {
-  SiJavascript,
-  SiPython,
-  SiGo,
-  SiReact,
-  SiDocker,
-} from "react-icons/si";
-import { HiHeart, HiGlobeAlt, HiCpuChip } from "react-icons/hi2";
-import { MdBuild } from "react-icons/md";
+  HiLightBulb,
+  HiWrenchScrewdriver,
+  HiBookOpen,
+  HiRocketLaunch,
+  HiSparkles,
+  HiCog6Tooth,
+  HiFire,
+} from "react-icons/hi2";
+import { TbBrandVscode, TbTerminal2 } from "react-icons/tb";
 
 const TYPING_SPEED = 50;
 const ERASING_SPEED = 30;
@@ -128,21 +130,52 @@ const AnimatedText: React.FC<AnimatedTextProps> = memo(({ qaPairs }) => {
 const getSyntaxColorAndIcon = (
   answer: string
 ): { syntaxClass: string; icon: JSX.Element } => {
-  if (answer.includes("build") || answer.includes("creating")) {
+  // Building/Creating/Development
+  if (
+    answer.includes("build") ||
+    answer.includes("creating") ||
+    answer.includes("developing")
+  ) {
     return {
       syntaxClass: "text-ctp-yellow",
-      icon: <MdBuild className="text-ctp-yellow" />,
+      icon: (
+        <motion.div
+          animate={{ rotate: [0, 180, 360] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+        >
+          <HiCog6Tooth className="text-ctp-yellow" />
+        </motion.div>
+      ),
     };
-  } else if (answer.includes("love") || answer.includes("passionate")) {
+  }
+
+  // Passion/Love/Enthusiasm
+  else if (
+    answer.includes("love") ||
+    answer.includes("passionate") ||
+    answer.includes("excited")
+  ) {
     return {
       syntaxClass: "text-ctp-pink",
-      icon: <HiHeart className="text-ctp-pink" />,
+      icon: (
+        <motion.div
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          <HiFire className="text-ctp-pink" />
+        </motion.div>
+      ),
     };
-  } else if (
+  }
+
+  // Programming Languages
+  else if (
     answer.includes("JavaScript") ||
     answer.includes("Python") ||
     answer.includes("Go") ||
-    answer.includes("languages")
+    answer.includes("TypeScript") ||
+    answer.includes("languages") ||
+    answer.includes("programming")
   ) {
     return {
       syntaxClass: "text-ctp-blue",
@@ -154,31 +187,158 @@ const getSyntaxColorAndIcon = (
         >
           <div className="flex gap-1">
             <SiJavascript className="text-ctp-yellow text-sm" />
+            <SiTypescript className="text-ctp-blue text-sm" />
             <SiPython className="text-ctp-blue text-sm" />
             <SiGo className="text-ctp-teal text-sm" />
           </div>
         </motion.div>
       ),
     };
-  } else if (answer.includes("code") || answer.includes("development")) {
+  }
+
+  // Coding/Development/Software
+  else if (
+    answer.includes("code") ||
+    answer.includes("development") ||
+    answer.includes("software")
+  ) {
     return {
       syntaxClass: "text-ctp-green",
-      icon: <SiDocker className="text-ctp-green" />,
-    };
-  } else if (answer.includes("exploring") || answer.includes("learning")) {
-    return {
-      syntaxClass: "text-ctp-purple",
       icon: (
-        <div className="flex gap-1">
-          <SiReact className="text-ctp-purple text-sm" />
-          <HiCpuChip className="text-ctp-mauve text-sm" />
-        </div>
+        <motion.div
+          animate={{
+            y: [0, -2, 0],
+            rotate: [0, 2, -2, 0],
+          }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <TbTerminal2 className="text-ctp-green" />
+        </motion.div>
       ),
     };
   }
+
+  // Learning/Exploring/Research
+  else if (
+    answer.includes("exploring") ||
+    answer.includes("learning") ||
+    answer.includes("studying")
+  ) {
+    return {
+      syntaxClass: "text-ctp-purple",
+      icon: (
+        <motion.div
+          animate={{ rotateY: [0, 180, 360] }}
+          transition={{ duration: 3, repeat: Infinity }}
+        >
+          <HiBookOpen className="text-ctp-purple" />
+        </motion.div>
+      ),
+    };
+  }
+
+  // Innovation/Ideas/Creative
+  else if (
+    answer.includes("innovative") ||
+    answer.includes("creative") ||
+    answer.includes("ideas")
+  ) {
+    return {
+      syntaxClass: "text-ctp-yellow",
+      icon: (
+        <motion.div
+          animate={{
+            scale: [1, 1.1, 1],
+            rotate: [0, 5, -5, 0],
+          }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <HiLightBulb className="text-ctp-yellow" />
+        </motion.div>
+      ),
+    };
+  }
+
+  // Problem Solving/Solutions
+  else if (
+    answer.includes("problem") ||
+    answer.includes("solution") ||
+    answer.includes("solving")
+  ) {
+    return {
+      syntaxClass: "text-ctp-mauve",
+      icon: (
+        <motion.div
+          animate={{
+            rotate: [0, 90, 180, 270, 360],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{ duration: 3, repeat: Infinity }}
+        >
+          <HiWrenchScrewdriver className="text-ctp-mauve" />
+        </motion.div>
+      ),
+    };
+  }
+
+  // Projects/Portfolio/Work
+  else if (
+    answer.includes("project") ||
+    answer.includes("portfolio") ||
+    answer.includes("work")
+  ) {
+    return {
+      syntaxClass: "text-ctp-teal",
+      icon: (
+        <motion.div
+          animate={{
+            y: [0, -5, 0],
+            rotate: [0, 10, -10, 0],
+          }}
+          transition={{ duration: 2.5, repeat: Infinity }}
+        >
+          <HiRocketLaunch className="text-ctp-teal" />
+        </motion.div>
+      ),
+    };
+  }
+
+  // Available/Ready/Open
+  else if (
+    answer.includes("available") ||
+    answer.includes("ready") ||
+    answer.includes("open")
+  ) {
+    return {
+      syntaxClass: "text-ctp-green",
+      icon: (
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [1, 0.7, 1],
+          }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          <HiSparkles className="text-ctp-green" />
+        </motion.div>
+      ),
+    };
+  }
+
+  // Default case - Developer/Tech
   return {
-    syntaxClass: "text-ctp-mauve",
-    icon: <HiGlobeAlt className="text-ctp-mauve" />,
+    syntaxClass: "text-ctp-blue",
+    icon: (
+      <motion.div
+        animate={{
+          rotate: [0, 360],
+          scale: [1, 1.05, 1],
+        }}
+        transition={{ duration: 4, repeat: Infinity }}
+      >
+        <TbBrandVscode className="text-ctp-blue" />
+      </motion.div>
+    ),
   };
 };
 
