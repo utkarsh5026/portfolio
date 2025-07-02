@@ -26,7 +26,7 @@ const ExperienceDetails: React.FC<ExperienceDetailsProps> = ({
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.4 }}
         >
-          <Card className="overflow-hidden border border-ctp-surface1/30 bg-ctp-surface0/30 backdrop-blur-sm">
+          <Card className="overflow-hidden border-none bg-ctp-surface0/10 backdrop-blur-sm">
             <CardContent className="p-0">
               {/* Header */}
               <Reveal effect="fade-up" duration={0.7} delay={0.3}>

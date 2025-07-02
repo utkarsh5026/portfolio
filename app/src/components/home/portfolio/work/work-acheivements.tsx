@@ -81,7 +81,7 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
   index,
 }) => {
   return (
-    <Card className="h-full bg-ctp-base backdrop-blur-sm border-none hover:border-ctp-surface1/50 hover:bg-ctp-surface0/70 transition-all duration-300 overflow-hidden group">
+    <Card className="h-full bg-transparent backdrop-blur-sm border-none hover:border-ctp-surface1/50 hover:bg-ctp-surface0/70 transition-all duration-300 overflow-hidden group">
       <CardContent className="p-4 sm:p-5 md:p-6 lg:p-8">
         <div className="flex items-start gap-3 sm:gap-4 md:gap-5 mb-4 sm:mb-5">
           {achievement.icon && iconMap[achievement.icon] && (

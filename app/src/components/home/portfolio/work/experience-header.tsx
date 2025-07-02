@@ -18,7 +18,7 @@ const ExperienceHeader: React.FC<ExperienceHeaderProps> = ({ selectedExp }) => {
   const experience = experiences[selectedExp];
 
   return (
-    <div className="relative mb-4 sm:mb-6 md:mb-8">
+    <div className="relative mb-4 sm:mb-6 md:mb-8 bg-ctp-surface0/10 backdrop-blur-2xl">
       <div className="p-4 sm:p-5 md:p-6 lg:p-8">
         <div className="flex flex-col gap-4 sm:gap-6">
           <div className="flex-1">

@@ -59,7 +59,7 @@ export default defineConfig({
             "./src/components/home/portfolio/skills/skills-section",
             "./src/components/home/portfolio/projects/projects-section",
             "./src/components/home/portfolio/articles/Articles",
-            "./src/components/home/portfolio/work/WorkExperience",
+            "./src/components/home/portfolio/work/work-experience",
             "./src/components/home/portfolio/contact/contact-me",
             "./src/components/home/portfolio/learning/learning-section",
             "./src/components/home/portfolio/about/about-me",
