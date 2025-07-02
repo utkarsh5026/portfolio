@@ -1,5 +1,5 @@
 import React from "react";
-import useMobile from "@/hooks/use-mobile";
+
 import { cn } from "@/lib/utils";
 
 const texts = [
@@ -16,13 +16,10 @@ const texts = [
  * with a responsive layout.
  */
 const PersonalDescription: React.FC = () => {
-  const { isMobile } = useMobile();
-
   return (
     <div
       className={cn(
-        "mb-8 text-ctp-text p-6  bg-gradient-to-br from-ctp-mantle to-ctp-crust rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-2xl",
-        !isMobile && "border-ctp-peach border-l-4"
+        "mb-8 text-ctp-text p-6  bg-gradient-to-br from-ctp-mantle to-ctp-crust rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-2xl"
       )}
     >
       {texts.map((text, index) => (
