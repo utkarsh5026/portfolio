@@ -4,12 +4,28 @@ import AnimatedText from "./animated-text";
 import { cn } from "@/lib/utils";
 import useMobile from "@/hooks/use-mobile";
 
-const statements = [
-  "I build things for the web",
-  "I love creating user interfaces",
-  "I speak JavaScript, Python & Go",
-  "I want to write code that humans can read",
-  "I am currently exploring databases and LLMs",
+const qaPairs = [
+  {
+    question: "whoami",
+    answer: "Passionate full-stack developer",
+  },
+  {
+    question: "cat skills.txt",
+    answer:
+      "Building scalable web applications with JavaScript, Python, and Go",
+  },
+  {
+    question: "echo $PASSION",
+    answer: "I love creating elegant solutions to complex problems",
+  },
+  {
+    question: "ls current_projects/",
+    answer: "Exploring modern web technologies and AI integration",
+  },
+  {
+    question: "status --availability",
+    answer: "Available for exciting development opportunities",
+  },
 ];
 
 /**
@@ -30,17 +46,14 @@ const Terminal: React.FC = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={cn(
         "group relative overflow-hidden",
-        "bg-gradient-to-br from-ctp-crust via-ctp-base to-ctp-crust",
-        "backdrop-blur-xl rounded-xl border-none",
+        "bg-gradient-to-br from-ctp-crust to-ctp-mantle",
+        "backdrop-blur-sm rounded-xl border-none",
         "shadow-2xl shadow-ctp-surface1/20",
         isMobile ? "p-3" : "p-6",
         "hover:shadow-3xl hover:shadow-ctp-green/10 transition-all duration-500",
         "hover:border-ctp-green/40 hover:scale-[1.02] hover:-translate-y-1"
       )}
     >
-      {/* Ambient background glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-ctp-green/10 via-transparent to-ctp-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-xl" />
-
       {/* Terminal Header */}
       <div
         className={cn(
@@ -86,12 +99,7 @@ const Terminal: React.FC = () => {
           transition={{ duration: 8, repeat: Infinity }}
         >
           <span className="text-ctp-green">❯</span>
-          <span className="text-ctp-blue font-mono">utkarsh</span>
-          <span className="text-ctp-overlay1">@</span>
-          <span className="text-ctp-yellow font-mono">dev</span>
-          <span className="text-ctp-overlay1">:</span>
-          <span className="text-ctp-mauve">~</span>
-          <span className="text-ctp-green">$</span>
+          <span className="text-ctp-blue font-mono">utkarsh.me</span>
         </motion.div>
       </div>
 
@@ -99,12 +107,12 @@ const Terminal: React.FC = () => {
       <div
         className={cn(
           "relative z-10",
-          "bg-ctp-surface0/30 rounded-lg border border-ctp-surface1/30",
+          "bg-gradient-to-r from-ctp-crust to-ctp-mantle",
           "backdrop-blur-sm",
           isMobile ? "p-3" : "p-4"
         )}
       >
-        <AnimatedText statements={statements} />
+        <AnimatedText qaPairs={qaPairs} />
       </div>
     </motion.div>
   );

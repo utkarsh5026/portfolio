@@ -16,53 +16,58 @@ import { MdBuild } from "react-icons/md";
 
 const TYPING_SPEED = 50;
 const ERASING_SPEED = 30;
-const PAUSE_BEFORE_ERASE = 2000;
+const PAUSE_BEFORE_ERASE = 2500;
 
-interface AnimatedTextProps {
-  statements: string[];
+interface QAPair {
+  question: string;
+  answer: string;
 }
 
-const AnimatedText: React.FC<AnimatedTextProps> = memo(({ statements }) => {
+interface AnimatedTextProps {
+  qaPairs: QAPair[];
+}
+
+const AnimatedText: React.FC<AnimatedTextProps> = memo(({ qaPairs }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { isPhone } = useMobile();
 
+  const currentPair = qaPairs[currentIndex];
+
   const { displayedText } = useTypewriting({
-    text: statements[currentIndex],
+    text: currentPair.answer,
     speed: TYPING_SPEED,
     deleteSpeed: ERASING_SPEED,
     deleteDelay: PAUSE_BEFORE_ERASE,
     repeat: true,
     onCycle: () => {
-      setCurrentIndex((prev) => (prev + 1) % statements.length);
+      setCurrentIndex((prev) => (prev + 1) % qaPairs.length);
     },
   });
 
-  const { syntaxClass, icon } = getSyntaxColorAndIcon(statements[currentIndex]);
+  const { syntaxClass, icon } = getSyntaxColorAndIcon(currentPair.answer);
 
   return (
     <motion.div
       className={cn(
-        "font-mono relative overflow-hidden",
-        "bg-gradient-to-r from-ctp-surface0/40 to-ctp-surface0/20",
-        "border border-ctp-surface1/30 rounded-lg",
-        "backdrop-blur-sm",
+        "font-mono relative overflow-hidden bg-transparent",
         isPhone ? "p-3" : "p-4"
       )}
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Command prefix */}
-      <div className="flex items-center gap-2 mb-2">
+      {/* Question/Command */}
+      <div className="flex items-center gap-2 mb-3">
         <span className="text-ctp-green text-sm">❯</span>
-        <span className="text-ctp-overlay1 text-sm font-mono">echo</span>
-        <span className="text-ctp-blue text-sm">"</span>
+        <span className="text-ctp-mauve text-sm font-mono">
+          {currentPair.question}
+        </span>
       </div>
 
-      {/* Main text output */}
+      {/* Answer/Response */}
       <div
         className={cn(
-          "flex items-center gap-3",
+          "flex items-center gap-3 ml-4",
           isPhone ? "text-sm" : "text-base"
         )}
       >
@@ -85,54 +90,66 @@ const AnimatedText: React.FC<AnimatedTextProps> = memo(({ statements }) => {
         </div>
       </div>
 
-      {/* Closing quote */}
-      <div className="flex items-center gap-2 mt-2">
-        <span className="text-ctp-blue text-sm">"</span>
-        {displayedText.length === statements[currentIndex].length && (
+      {/* Status indicator */}
+      <div className="flex items-center gap-2 mt-3 ml-4">
+        {displayedText.length === currentPair.answer.length && (
           <motion.span
-            className="text-ctp-green text-sm font-mono"
+            className="text-ctp-green text-xs font-mono opacity-70"
             initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 0.7, x: 0 }}
             transition={{ delay: 0.5 }}
           >
-            ✓ executed
+            ✓ response complete
           </motion.span>
         )}
       </div>
 
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-gradient-to-br from-ctp-green/20 via-transparent to-ctp-blue/20" />
+      {/* Progress indicator */}
+      <div className="flex items-center justify-between mt-4 pt-3 border-t border-ctp-surface1/20">
+        <div className="flex gap-1">
+          {qaPairs.map((_, index) => (
+            <div
+              key={index}
+              className={cn(
+                "w-2 h-1 rounded-full transition-colors duration-300",
+                index === currentIndex ? "bg-ctp-green" : "bg-ctp-surface1"
+              )}
+            />
+          ))}
+        </div>
+        <span className="text-ctp-overlay1 text-xs font-mono">
+          {currentIndex + 1}/{qaPairs.length}
+        </span>
       </div>
     </motion.div>
   );
 });
 
 const getSyntaxColorAndIcon = (
-  statement: string
+  answer: string
 ): { syntaxClass: string; icon: JSX.Element } => {
-  if (statement.includes("build")) {
+  if (answer.includes("build") || answer.includes("creating")) {
     return {
       syntaxClass: "text-ctp-yellow",
       icon: <MdBuild className="text-ctp-yellow" />,
     };
-  } else if (statement.includes("love")) {
+  } else if (answer.includes("love") || answer.includes("passionate")) {
     return {
       syntaxClass: "text-ctp-pink",
       icon: <HiHeart className="text-ctp-pink" />,
     };
   } else if (
-    statement.includes("JavaScript") ||
-    statement.includes("Python") ||
-    statement.includes("Go")
+    answer.includes("JavaScript") ||
+    answer.includes("Python") ||
+    answer.includes("Go") ||
+    answer.includes("languages")
   ) {
-    // For multi-language statement, show rotating icons
     return {
       syntaxClass: "text-ctp-blue",
       icon: (
         <motion.div
           className="flex items-center"
-          animate={{ x: [-20, 0, 20, 0, -20] }}
+          animate={{ x: [-15, 0, 15, 0, -15] }}
           transition={{ duration: 4, repeat: Infinity }}
         >
           <div className="flex gap-1">
@@ -143,12 +160,12 @@ const getSyntaxColorAndIcon = (
         </motion.div>
       ),
     };
-  } else if (statement.includes("code")) {
+  } else if (answer.includes("code") || answer.includes("development")) {
     return {
       syntaxClass: "text-ctp-green",
       icon: <SiDocker className="text-ctp-green" />,
     };
-  } else if (statement.includes("exploring")) {
+  } else if (answer.includes("exploring") || answer.includes("learning")) {
     return {
       syntaxClass: "text-ctp-purple",
       icon: (
