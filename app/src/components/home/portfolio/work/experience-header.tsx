@@ -18,7 +18,7 @@ const ExperienceHeader: React.FC<ExperienceHeaderProps> = ({ selectedExp }) => {
   const experience = experiences[selectedExp];
 
   return (
-    <div className="relative mb-4 sm:mb-6 md:mb-8 bg-ctp-surface0/10 backdrop-blur-2xl">
+    <div className="relative mb-4 sm:mb-6 md:mb-8 bg-transparent backdrop-blur-2xl">
       <div className="p-4 sm:p-5 md:p-6 lg:p-8">
         <div className="flex flex-col gap-4 sm:gap-6">
           <div className="flex-1">
@@ -67,14 +67,6 @@ const ExperienceHeader: React.FC<ExperienceHeaderProps> = ({ selectedExp }) => {
               >
                 <FaCalendarAlt className="w-3 h-3 sm:w-4 sm:h-4 mr-2 sm:mr-3" />
                 {experience.duration}
-              </Badge>
-
-              <Badge
-                variant="outline"
-                className="bg-ctp-green/10 text-ctp-green border-ctp-green/30 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base md:text-lg self-start"
-              >
-                <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-ctp-green rounded-full mr-2 sm:mr-3 animate-pulse" />
-                Experience Completed
               </Badge>
             </div>
           </div>
