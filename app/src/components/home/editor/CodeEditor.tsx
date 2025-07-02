@@ -1,7 +1,7 @@
 import React, { lazy, useMemo } from "react";
-import Explorer from "./left/Explorer";
+import Explorer from "./left/editor-explorer";
 import type { SectionType } from "./context/explorer-context";
-import SideBar from "./left/SideBar";
+import SideBar from "./left/side-bar";
 import StatusBar from "./StatusBar";
 import CodeContent from "./CodeContent";
 import EditorTabs from "./tabs/EditorTabs";
