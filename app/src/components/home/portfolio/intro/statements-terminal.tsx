@@ -3,28 +3,40 @@ import React from "react";
 import AnimatedText from "./animated-text";
 import { cn } from "@/lib/utils";
 import useMobile from "@/hooks/use-mobile";
+import { HiBookOpen, HiSparkles, HiFire } from "react-icons/hi2";
+import { TbBrandVscode, TbTerminal2 } from "react-icons/tb";
 
 const qaPairs = [
   {
     question: "whoami",
     answer: "Passionate full-stack developer",
+    syntaxClass: "text-ctp-blue",
+    icon: <TbBrandVscode className="text-ctp-blue" />,
   },
   {
     question: "cat skills.txt",
     answer:
       "Building scalable web applications with JavaScript, Python, and Go",
+    syntaxClass: "text-ctp-green",
+    icon: <TbTerminal2 className="text-ctp-green" />,
   },
   {
     question: "echo $PASSION",
     answer: "I love creating elegant solutions to complex problems",
+    syntaxClass: "text-ctp-pink",
+    icon: <HiFire className="text-ctp-pink" />,
   },
   {
     question: "ls current_projects/",
     answer: "Exploring modern web technologies and AI integration",
+    syntaxClass: "text-ctp-purple",
+    icon: <HiBookOpen className="text-ctp-purple" />,
   },
   {
     question: "status --availability",
     answer: "Available for exciting development opportunities",
+    syntaxClass: "text-ctp-green",
+    icon: <HiSparkles className="text-ctp-green" />,
   },
 ];
 
