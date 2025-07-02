@@ -4,7 +4,7 @@ import PersonalTitle from "./personal-title";
 import ProfileButtons from "./profile-buttons";
 import Terminal from "./statements-terminal";
 import PersonalDescription from "./personal-description";
-import TechSkills from "./TechSkills";
+import TechSkills from "./tech-skills";
 import ProfilePicture from "./profile-picture";
 import { cn } from "@/lib/utils";
 import useMobile from "@/hooks/use-mobile";
@@ -37,30 +37,32 @@ const DesktopPersonalIntro: React.FC = () => {
             "p-6 md:p-10 shadow-2xl mb-10 overflow-hidden"
           )}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start relative z-10">
-            {/* Left Column - Main Content */}
-            <Reveal
-              effect="assemble"
-              cascade={true}
-              staggerChildren={0.09}
-              className="space-y-6"
-            >
-              <Reveal effect="slide-in" direction="left">
-                <PersonalTitle />
-              </Reveal>
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start relative z-10">
+            {/* Left Column - Main Content (3 columns) */}
+            <div className="lg:col-span-3">
+              <Reveal
+                effect="assemble"
+                cascade={true}
+                staggerChildren={0.09}
+                className="space-y-6"
+              >
+                <Reveal effect="slide-in" direction="left">
+                  <PersonalTitle />
+                </Reveal>
 
-              <Reveal effect="spotlight-in" delay={1}>
-                <PersonalDescription />
-              </Reveal>
+                <Reveal effect="spotlight-in" delay={1}>
+                  <PersonalDescription />
+                </Reveal>
 
-              <Reveal effect="fade-up" delay={0.7}>
-                <ProfileButtons />
+                <Reveal effect="fade-up" delay={0.7}>
+                  <ProfileButtons />
+                </Reveal>
               </Reveal>
-            </Reveal>
+            </div>
 
-            {/* Right Column - Visual Content */}
-            <div className="lg:pl-8 h-full">
-              <div className="flex flex-col justify-center h-full gap-12">
+            {/* Right Column - Visual Content (2 columns) */}
+            <div className="lg:col-span-2 h-full">
+              <div className="flex flex-col justify-center h-full gap-8">
                 {/* Profile Picture */}
                 <Reveal
                   effect="ripple-in"
@@ -77,10 +79,25 @@ const DesktopPersonalIntro: React.FC = () => {
                 </Reveal>
               </div>
             </div>
+
+            {/* Tech Skills - Full width spanning all columns */}
+            <div className="lg:col-span-5 mt-8">
+              <Reveal effect="fade-up" delay={1.4}>
+                <div className="border-t border-ctp-surface1/20 pt-8">
+                  <div className="text-center mb-6">
+                    <h3 className="text-xl font-semibold text-ctp-text mb-2">
+                      Tech Stack
+                    </h3>
+                    <p className="text-ctp-subtext1 text-sm">
+                      Tools & technologies I work with
+                    </p>
+                  </div>
+                  <TechSkills />
+                </div>
+              </Reveal>
+            </div>
           </div>
         </Reveal>
-
-        <TechSkills />
       </div>
     </>
   );
@@ -148,10 +165,25 @@ const MobilePersonalIntro: React.FC = () => {
           </div>
         </Reveal>
 
-        {/* Tech Skills with mobile spacing */}
-        <div className="mt-8">
-          <TechSkills />
-        </div>
+        {/* Tech Skills integrated into mobile layout */}
+        <Reveal delay={1.3} className="mt-8">
+          <div
+            className={cn(
+              "backdrop-blur-md bg-gradient-to-b from-ctp-mantle/80 to-ctp-crust/60 rounded-xl",
+              "p-4 shadow-xl border-t border-ctp-surface1/20"
+            )}
+          >
+            <div className="text-center mb-4">
+              <h3 className="text-lg font-semibold text-ctp-text mb-1">
+                Tech Stack
+              </h3>
+              <p className="text-ctp-subtext1 text-xs">
+                Technologies I work with
+              </p>
+            </div>
+            <TechSkills />
+          </div>
+        </Reveal>
       </div>
     </>
   );
