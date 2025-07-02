@@ -1,5 +1,5 @@
 import React from "react";
-import Section from "@/components/section/Section";
+import Section from "@/components/section/portfolio-section";
 import Reveal from "@/components/animations/reveal/Reveal";
 import { motion } from "framer-motion";
 import { FaHandshake, FaEnvelope } from "react-icons/fa";

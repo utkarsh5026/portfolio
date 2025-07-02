@@ -1,5 +1,5 @@
 import React from "react";
-import Section from "@/components/section/Section";
+import Section from "@/components/section/portfolio-section";
 import { motion } from "framer-motion";
 import { User, Sparkles } from "lucide-react";
 import ModernBackground from "./Background";

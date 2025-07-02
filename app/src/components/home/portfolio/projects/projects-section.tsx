@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
-import Section from "@/components/section/Section";
+import Section from "@/components/section/portfolio-section";
 import OutlineNode from "@/components/home/editor/outline/OutlineNode";
 import { Sparkles, Code, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";

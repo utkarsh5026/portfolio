@@ -1,7 +1,8 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import OutlineNode from "@/components/home/editor/outline/OutlineNode";
 import { getIcon } from "./sec-utils";
+import useMobile from "@/hooks/use-mobile";
 
 interface SectionProps {
   id: string;
@@ -26,22 +27,10 @@ const Section: React.FC<SectionProps> = ({
   className = "",
   children,
   icon = "code",
-  scanlines = false,
 }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Detect mobile viewport
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  const { isMobile } = useMobile();
 
   // Intersection observer for progressive loading
   const isInView = useInView(sectionRef, {
@@ -62,36 +51,8 @@ const Section: React.FC<SectionProps> = ({
           ease: [0.25, 0.46, 0.45, 0.94], // Custom easing for smooth mobile animation
         }}
       >
-        {/* Mobile-optimized container with responsive design */}
         <div className="relative w-full overflow-hidden">
-          {/* Enhanced background with mobile considerations */}
           <div className="absolute inset-0 bg-gradient-to-br from-ctp-surface0/5 via-transparent to-ctp-mantle/5 pointer-events-none" />
-
-          {/* Adaptive scanlines effect - more subtle on mobile */}
-          {scanlines && (
-            <motion.div
-              className="absolute inset-0 z-10 pointer-events-none"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isInView ? 1 : 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-            >
-              <div
-                className={`absolute inset-0 ${
-                  isMobile ? "opacity-5" : "opacity-10"
-                }`}
-                style={{
-                  backgroundImage: `repeating-linear-gradient(
-                    0deg, 
-                    transparent, 
-                    transparent ${isMobile ? "2px" : "1px"}, 
-                    rgba(0, 0, 0, 0.3) ${isMobile ? "2px" : "1px"}, 
-                    rgba(0, 0, 0, 0.3) ${isMobile ? "3px" : "2px"}
-                  )`,
-                  backgroundSize: `100% ${isMobile ? "3px" : "2px"}`,
-                }}
-              />
-            </motion.div>
-          )}
 
           {/* Main content container with mobile-first responsive design */}
           <div className="relative w-full">

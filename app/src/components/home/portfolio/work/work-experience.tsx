@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Section from "@/components/section/Section";
+import Section from "@/components/section/portfolio-section";
 import { experiences } from "./experienceDump";
 import { motion } from "framer-motion";
 import Reveal from "@/components/animations/reveal/Reveal";

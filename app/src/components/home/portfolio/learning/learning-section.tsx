@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { BookOpen, Lightbulb } from "lucide-react";
-import Section from "@/components/section/Section";
+import Section from "@/components/section/portfolio-section";
 import { currentLearningTechnologies } from "./data";
 import LearningModal from "./learning-project-drawer";
 import LearningJourney from "./learning-journey/learning-journey";
