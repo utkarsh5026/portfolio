@@ -1,7 +1,7 @@
 import React from "react";
 import Reveal from "@/components/animations/reveal/Reveal";
 
-import PersonalTitle from "./PersonalTitle";
+import PersonalTitle from "./personal-title";
 import ProfileButtons from "./ProfileButtons";
 import Terminal from "./Terminal";
 import PersonalDescription from "./personal-description";
@@ -41,7 +41,7 @@ const PersonalIntro: React.FC = () => {
           delay={0.2}
           className={cn(
             "relative",
-            "backdrop-blur-lg bg-gradient-to-r from-ctp-mantle to-ctp-crust  rounded-2xl",
+            "backdrop-blur-lg bg-gradient-to-b from-ctp-mantle to-ctp-crust  rounded-2xl",
             "p-6 md:p-10 shadow-2xl mb-10 overflow-hidden"
           )}
         >
