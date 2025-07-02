@@ -1,4 +1,6 @@
 import React from "react";
+import useMobile from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
 
 const texts = [
   "Passionate developer with a knack for crafting elegant solutions to complex problems.",
@@ -14,8 +16,15 @@ const texts = [
  * with a responsive layout.
  */
 const PersonalDescription: React.FC = () => {
+  const { isMobile } = useMobile();
+
   return (
-    <div className="mb-8 text-[#bac2de] p-6 border-l-4 border-ctp-peach bg-gradient-to-br from-[#1e1e2e]/80 to-[#1e1e2e]/60 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
+    <div
+      className={cn(
+        "mb-8 text-ctp-text p-6  bg-gradient-to-br from-ctp-mantle to-ctp-crust rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-2xl",
+        !isMobile && "border-ctp-peach border-l-4"
+      )}
+    >
       {texts.map((text, index) => (
         <p
           key={text}

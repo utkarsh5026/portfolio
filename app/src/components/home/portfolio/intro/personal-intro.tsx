@@ -4,7 +4,7 @@ import Reveal from "@/components/animations/reveal/Reveal";
 import PersonalTitle from "./PersonalTitle";
 import ProfileButtons from "./ProfileButtons";
 import Terminal from "./Terminal";
-import PersonalDescription from "./PersonalDescription";
+import PersonalDescription from "./personal-description";
 import TechSkills from "./TechSkills";
 import ProfilePicture from "./ProfilePicture";
 import { cn } from "@/lib/utils";

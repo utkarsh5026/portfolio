@@ -11,7 +11,7 @@ import Terminal from "./terminal/Terminal";
 import useMobile from "@/hooks/use-mobile";
 
 const TerminalHeader = lazy(
-  () => import("@/components/home/portfolio/intro/PersonalHeader")
+  () => import("@/components/home/portfolio/intro/personal-intro")
 );
 const AboutMe = lazy(
   () => import("@/components/home/portfolio/about/about-me")
