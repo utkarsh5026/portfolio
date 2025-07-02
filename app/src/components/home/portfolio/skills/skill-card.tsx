@@ -19,7 +19,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
       className="group w-full"
     >
       <div
-        className="bg-ctp-surface0/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 border border-ctp-surface1/50 hover:border-ctp-surface2/80 transition-all duration-300 cursor-pointer w-full overflow-hidden"
+        className="bg-ctp-surface0/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 border border-none hover:border-ctp-surface2/80 transition-all duration-300 cursor-pointer w-full overflow-hidden"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         {/* Header */}
@@ -57,7 +57,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
             {category.skills.slice(0, 3).map((skill) => (
               <div
                 key={skill.name}
-                className="flex items-center gap-1 px-2 py-1 bg-ctp-surface1/50 rounded-md"
+                className="flex items-center gap-1 px-2 py-1 bg-transparent rounded-md"
               >
                 <div
                   className={`text-ctp-${skill.color} text-xs flex-shrink-0`}
@@ -112,12 +112,12 @@ const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
           transition={{ duration: 0.3 }}
           className="overflow-hidden"
         >
-          <div className="pt-3 sm:pt-4 border-t border-ctp-surface1/50 mt-3 sm:mt-4">
+          <div className="pt-3 sm:pt-4 border-none bg-transparent mt-3 sm:mt-4">
             <div className="space-y-2 sm:space-y-3 md:space-y-4">
               {category.skills.map((skill) => (
                 <div
                   key={skill.name}
-                  className="p-2 sm:p-3 md:p-4 bg-ctp-surface1/20 rounded-lg sm:rounded-xl hover:bg-ctp-surface1/30 transition-colors duration-200 w-full overflow-hidden"
+                  className="p-2 sm:p-3 md:p-4 bg-transparent rounded-lg sm:rounded-xl hover:bg-ctp-surface1/30 transition-colors duration-200 w-full overflow-hidden"
                 >
                   {/* Skill Header */}
                   <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
@@ -147,12 +147,12 @@ const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
                           transition={{ delay: index * 0.1 }}
                           className="group relative"
                         >
-                          <div className="flex items-start gap-3 p-2 sm:p-3 rounded-lg bg-gradient-to-r from-ctp-surface1/20 to-ctp-surface1/10 hover:from-ctp-surface1/30 hover:to-ctp-surface1/20 transition-all duration-200 border border-ctp-surface1/20 hover:border-ctp-surface2/30">
+                          <div className="flex items-start gap-3 p-2 sm:p-3 rounded-lg bg-transparent hover:bg-ctp-surface1/30 transition-all duration-200 border-none">
                             <div
-                              className={`mt-1 p-1 rounded-full bg-ctp-${skill.color}/20 flex-shrink-0`}
+                              className={`mt-1 p-1 rounded-full bg-ctp-surface1/30 flex-shrink-0`}
                             >
                               <div
-                                className={`h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-ctp-${skill.color}`}
+                                className={`h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-ctp-green/50`}
                               ></div>
                             </div>
                             <p className="text-xs sm:text-sm text-ctp-subtext1 leading-relaxed flex-1 group-hover:text-ctp-text transition-colors duration-200">
