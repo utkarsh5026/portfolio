@@ -4,7 +4,7 @@ import { useTypewriting } from "@/components/type-write/hooks/use-type-write";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import useMobile from "@/hooks/use-mobile";
-import { SiJavascript, SiPython, SiGo, SiTypescript } from "react-icons/si";
+
 import {
   HiLightBulb,
   HiWrenchScrewdriver,
@@ -132,7 +132,7 @@ const getSyntaxColorAndIcon = (
 ): { syntaxClass: string; icon: JSX.Element } => {
   // Building/Creating/Development
   if (
-    answer.includes("build") ||
+    answer.includes("exploring") ||
     answer.includes("creating") ||
     answer.includes("developing")
   ) {
@@ -178,19 +178,13 @@ const getSyntaxColorAndIcon = (
     answer.includes("programming")
   ) {
     return {
-      syntaxClass: "text-ctp-blue",
+      syntaxClass: "text-ctp-pink",
       icon: (
         <motion.div
-          className="flex items-center"
-          animate={{ x: [-15, 0, 15, 0, -15] }}
-          transition={{ duration: 4, repeat: Infinity }}
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
         >
-          <div className="flex gap-1">
-            <SiJavascript className="text-ctp-yellow text-sm" />
-            <SiTypescript className="text-ctp-blue text-sm" />
-            <SiPython className="text-ctp-blue text-sm" />
-            <SiGo className="text-ctp-teal text-sm" />
-          </div>
+          <HiFire className="text-ctp-pink" />
         </motion.div>
       ),
     };
