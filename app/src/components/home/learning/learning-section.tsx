@@ -4,7 +4,7 @@ import { BookOpen, Lightbulb, ArrowRight } from "lucide-react";
 import Section from "@/components/section/Section";
 import { currentLearningTechnologies } from "./data";
 import LearningModal from "./learning-project-drawer";
-import LearningJourney from "./learning-journey";
+import LearningJourney from "./learning-journey/learning-journey";
 import type { TechnologyLearning } from "@/types";
 
 type Category = (typeof currentLearningTechnologies)[number]["category"];
