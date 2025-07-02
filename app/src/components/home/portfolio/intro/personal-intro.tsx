@@ -125,8 +125,8 @@ const MobilePersonalIntro: React.FC = () => {
           delay={0.1}
           className={cn(
             "relative",
-            "backdrop-blur-md bg-gradient-to-b from-ctp-mantle/80 to-ctp-crust/60 rounded-xl",
-            "p-4 shadow-xl mb-8 overflow-hidden"
+            "bg-transparent rounded-xl",
+            "p-4  mb-8 overflow-hidden"
           )}
         >
           {/* Mobile-first vertical layout */}
