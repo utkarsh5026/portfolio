@@ -1,6 +1,6 @@
 import type { Project } from "@/types";
 import { List, FileCode, Images, Info, PlayCircle } from "lucide-react";
-import type { ProjectTheme } from "@/components/home/projects/context/ThemeContext";
+import type { ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
 import Reveal from "@/components/animations/reveal/Reveal";
 import TabButton from "./TabButton";
 import SidebarHeader from "./SidebarHeader";

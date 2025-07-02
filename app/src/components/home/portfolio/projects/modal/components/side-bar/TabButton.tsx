@@ -1,4 +1,4 @@
-import type { ProjectTheme } from "@/components/home/projects/context/ThemeContext";
+import type { ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Sparkles } from "lucide-react";

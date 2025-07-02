@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
-import type { ProjectTheme } from "@/components/home/projects/context/ThemeContext";
+import type { ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
 
 interface VideoHighlightsProps {
   highlights: string[];

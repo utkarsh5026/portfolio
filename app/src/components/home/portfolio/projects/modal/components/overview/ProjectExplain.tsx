@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import type { ProjectTheme } from "@/components/home/projects/context/ThemeContext";
+import type { ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
 import type { Project } from "@/types";
 import { Brain, Lightbulb, X } from "lucide-react";
 import { useState } from "react";

@@ -1,6 +1,6 @@
 import { FaGithub } from "react-icons/fa";
 import { ExternalLink, Lock } from "lucide-react";
-import { ProjectTheme } from "@/components/home/projects/context/ThemeContext";
+import { ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
 import { Button } from "@/components/ui/button";
 
 interface ActionButtonsProps {

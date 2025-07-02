@@ -7,10 +7,10 @@ import React, {
 } from "react";
 import { PanInfo } from "framer-motion";
 import type { Project } from "@/types";
-import type { ProjectTheme } from "@/components/home/projects/context/ThemeContext";
+import type { ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
 import { Code } from "lucide-react";
 import Reveal from "@/components/animations/reveal/Reveal";
-import getRandomColors from "@/components/home/projects/context/colors";
+import getRandomColors from "@/components/home/portfolio/projects/context/colors";
 import TechStackCard from "./TechStackCard";
 import NavigationControls from "./NavigationControls";
 import StackLayer from "./StackLayer";

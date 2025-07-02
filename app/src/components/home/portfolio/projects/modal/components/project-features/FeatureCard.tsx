@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Eye } from "lucide-react";
 import Reveal from "@/components/animations/reveal/Reveal";
-import type { ProjectTheme } from "@/components/home/projects/context/ThemeContext";
+import type { ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
 import FeatureMediaShowcase from "./MediaShowcase";
 import SubFeatureCard from "./SubFeatureCard";
 

@@ -1,4 +1,4 @@
-import { ProjectTheme } from "@/components/home/projects/context/ThemeContext";
+import { ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
 import { SubFeature } from "@/types";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";

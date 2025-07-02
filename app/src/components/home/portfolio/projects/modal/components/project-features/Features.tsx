@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, ChevronRight, Star, Zap } from "lucide-react";
 import { Project, MajorFeature } from "@/types";
-import { type ProjectTheme } from "@/components/home/projects/context/ThemeContext";
+import { type ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
 import getCategoryIcon from "@/components/base/category-icon";
 import {
   Collapsible,

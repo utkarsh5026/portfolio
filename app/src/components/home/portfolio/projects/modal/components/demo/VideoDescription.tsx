@@ -1,6 +1,6 @@
 import Reveal from "@/components/animations/reveal/Reveal";
 import { Eye } from "lucide-react";
-import type { ProjectTheme } from "@/components/home/projects/context/ThemeContext";
+import type { ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
 import type { Project, ProjectDemoVideo } from "@/types";
 
 interface VideoDescriptionProps {

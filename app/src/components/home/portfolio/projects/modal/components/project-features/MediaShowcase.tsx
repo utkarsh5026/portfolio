@@ -1,4 +1,4 @@
-import { ProjectTheme } from "@/components/home/projects/context/ThemeContext";
+import { ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
 import { MediaItem } from "@/types";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";

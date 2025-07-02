@@ -1,6 +1,6 @@
 import type { Project } from "@/types";
 import Reveal from "@/components/animations/reveal/Reveal";
-import { ProjectTheme } from "@/components/home/projects/context/ThemeContext";
+import { ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
 import { Sparkles } from "lucide-react";
 
 interface FeatureHeaderProps {

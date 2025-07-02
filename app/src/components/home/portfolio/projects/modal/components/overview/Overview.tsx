@@ -1,4 +1,4 @@
-import type { ProjectTheme } from "@/components/home/projects/context/ThemeContext";
+import type { ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
 import type { Project } from "@/types";
 import Reveal from "@/components/animations/reveal/Reveal";
 import Technologies from "./TechnologiesUsed";
