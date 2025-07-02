@@ -39,14 +39,7 @@ const interestIcons = [Code, Zap, Coffee, Music, Gamepad2, Dumbbell, Heart];
 const Interests: React.FC = () => {
   return (
     <div className="relative w-full overflow-hidden">
-      {/* Background decorative elements - hidden on mobile */}
-      <div className="absolute -top-4 -right-4 sm:-top-8 sm:-right-8 w-16 h-16 sm:w-32 sm:h-32 bg-ctp-green/5 rounded-full blur-2xl sm:blur-3xl hidden sm:block" />
-      <div className="absolute -bottom-4 -left-4 sm:-bottom-8 sm:-left-8 w-16 h-16 sm:w-32 sm:h-32 bg-ctp-pink/5 rounded-full blur-2xl sm:blur-3xl hidden sm:block" />
-
-      <div className="relative bg-gradient-to-br from-ctp-surface0/40 to-ctp-mantle/20 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-ctp-surface1/30 overflow-hidden w-full">
-        {/* Header gradient bar */}
-        <div className="h-0.5 sm:h-1 bg-gradient-to-r from-ctp-green via-ctp-teal to-ctp-pink" />
-
+      <div className="relative bg-transparent backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-none overflow-hidden w-full">
         <div className="p-3 sm:p-4 md:p-6 lg:p-8">
           {/* Section Header */}
           <Reveal effect="fade-up" duration={0.6}>
@@ -105,7 +98,7 @@ const Interests: React.FC = () => {
                       transition={{ type: "spring", stiffness: 300 }}
                     >
                       <div
-                        className={`relative bg-gradient-to-br from-ctp-surface0/30 to-ctp-mantle/30 rounded-xl sm:rounded-2xl border border-ctp-surface1/30 hover:border-ctp-${categoryConfig.color}/30 transition-all duration-300 overflow-hidden h-full`}
+                        className={`relative bg-ctp-surface0/20 hover:bg-ctp-surface0/40 rounded-xl sm:rounded-2xl border border-none hover:border-ctp-${categoryConfig.color}/30 transition-all duration-300 overflow-hidden h-full`}
                       >
                         {/* Category header */}
                         <div

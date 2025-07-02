@@ -45,16 +45,8 @@ const learningPhilosophy = [
 const CurrentFocus: React.FC = () => {
   return (
     <div className="relative w-full overflow-hidden">
-      {/* Background decorative elements - hidden on mobile */}
-      <div className="absolute -top-4 -right-4 sm:-top-8 sm:-right-8 w-16 h-16 sm:w-32 sm:h-32 bg-ctp-peach/5 rounded-full blur-2xl sm:blur-3xl hidden sm:block" />
-      <div className="absolute -bottom-4 -left-4 sm:-bottom-8 sm:-left-8 w-16 h-16 sm:w-32 sm:h-32 bg-ctp-blue/5 rounded-full blur-2xl sm:blur-3xl hidden sm:block" />
-
-      <div className="relative bg-gradient-to-br from-ctp-surface0/40 to-ctp-mantle/20 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-ctp-surface1/30 overflow-hidden w-full">
-        {/* Header gradient bar */}
-        <div className="h-0.5 sm:h-1 bg-gradient-to-r from-ctp-peach via-ctp-blue to-ctp-green" />
-
+      <div className="relative bg-transparent backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-none overflow-hidden w-full">
         <div className="p-3 sm:p-4 md:p-6 lg:p-8">
-          {/* Section Header */}
           <Reveal effect="fade-up" duration={0.6}>
             <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 md:mb-8">
               <div className="p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl bg-ctp-peach/10 text-ctp-peach flex-shrink-0">
@@ -73,7 +65,7 @@ const CurrentFocus: React.FC = () => {
 
           {/* Focus Intro */}
           <Reveal effect="fade-up" duration={0.6} delay={0.1}>
-            <div className="mb-4 sm:mb-6 md:mb-8 p-3 sm:p-4 md:p-6 bg-gradient-to-r from-ctp-surface0/30 via-ctp-mantle/20 to-ctp-surface0/30 rounded-xl sm:rounded-2xl border border-ctp-surface1/30">
+            <div className="mb-4 sm:mb-6 md:mb-8 p-3 sm:p-4 md:p-6 bg-ctp-surface0/20 hover:bg-ctp-surface0/40 rounded-xl sm:rounded-2xl border border-none">
               <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                 <Rocket className="w-4 h-4 sm:w-5 sm:h-5 text-ctp-peach flex-shrink-0" />
                 <span className="text-ctp-text font-semibold text-sm sm:text-base">
@@ -104,13 +96,8 @@ const CurrentFocus: React.FC = () => {
                 >
                   <div className="group w-full">
                     <div
-                      className={`relative bg-gradient-to-br from-ctp-surface0/30 to-ctp-mantle/30 rounded-xl sm:rounded-2xl border border-ctp-surface1/30 hover:border-ctp-${color}/30 transition-all duration-300 overflow-hidden p-3 sm:p-4 md:p-6 w-full`}
+                      className={`relative bg-ctp-surface0/20 hover:bg-ctp-surface0/40 rounded-xl sm:rounded-2xl border border-none hover:border-ctp-${color}/30 transition-all duration-300 overflow-hidden p-3 sm:p-4 md:p-6 w-full`}
                     >
-                      {/* Subtle background gradient */}
-                      <div
-                        className={`absolute inset-0 bg-gradient-to-br from-ctp-${color}/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-                      />
-
                       <div className="relative flex items-start gap-2 sm:gap-3 md:gap-4 w-full overflow-hidden">
                         {/* Focus Icon */}
                         <div

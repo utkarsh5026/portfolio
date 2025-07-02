@@ -174,8 +174,8 @@ const MobileAboutSection: React.FC<MobileAboutSectionProps> = ({
             />
           </motion.button>
         </DrawerTrigger>
-        <DrawerContent className="bg-ctp-base border-ctp-surface1 z-[99999]">
-          <div className="py-8 px-4 max-h-[80vh] overflow-y-auto">
+        <DrawerContent className="bg-ctp-mantle border-none z-[99999]">
+          <div className="py-8 max-h-[90vh] h-[90vh] overflow-y-auto">
             {section.component}
           </div>
         </DrawerContent>

@@ -20,7 +20,7 @@ import Reveal from "@/components/animations/reveal/Reveal";
 const Education: React.FC = () => {
   return (
     <div className="relative w-full overflow-hidden">
-      <div className="relative bg-gradient-to-br from-ctp-mantle to-ctp-crust backdrop-blur-sm rounded-2xl sm:rounded-3xl border-none overflow-hidden w-full">
+      <div className="relative bg-transparent backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-none overflow-hidden w-full">
         <div className="p-3 sm:p-4 md:p-6 lg:p-8">
           {/* Section Header */}
           <Reveal effect="fade-up" duration={0.6}>
