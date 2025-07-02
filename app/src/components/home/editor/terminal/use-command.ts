@@ -6,7 +6,7 @@ import {
 } from "@/components/home/editor/context/explorerContext";
 import { useProject } from "@/hooks/use-project";
 import { articles } from "@/components/home/articles/articlesdump";
-import { experiences } from "@/components/home/work/experienceDump";
+import { experiences } from "@/components/home/portfolio/work/experienceDump";
 import { technologies } from "@/components/base/technologies";
 import {
   databases,

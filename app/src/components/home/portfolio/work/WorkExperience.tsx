@@ -3,7 +3,7 @@ import Section from "@/components/section/Section";
 import { experiences } from "./experienceDump";
 import { motion, AnimatePresence } from "framer-motion";
 import TechBadge from "@/components/base/TechBadge";
-import OutlineNode from "../editor/outline/OutlineNode";
+import OutlineNode from "../../editor/outline/OutlineNode";
 import Reveal from "@/components/animations/reveal/Reveal";
 import {
   FaExternalLinkAlt,

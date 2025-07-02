@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TypeWriter from "../writer/TypeWriter";
 import Step from "./Step";
 import CodeTypeWriter from "../writer/JsTypeWriter";
-import { experiences } from "@/components/home/work/experienceDump";
+import { experiences } from "@/components/home/portfolio/work/experienceDump";
 
 const experience = experiences[0];
 
