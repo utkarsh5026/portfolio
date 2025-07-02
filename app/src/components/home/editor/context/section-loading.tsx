@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { SectionType } from "../context/explorerContext";
+import { SectionType } from "./explorer-context";
 import {
   HomeLoading,
   AboutLoading,

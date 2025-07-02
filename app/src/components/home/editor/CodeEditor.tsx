@@ -1,12 +1,12 @@
 import React, { lazy, useMemo } from "react";
 import Explorer from "./left/Explorer";
-import type { SectionType } from "./context/explorerContext";
+import type { SectionType } from "./context/explorer-context";
 import SideBar from "./left/SideBar";
 import StatusBar from "./StatusBar";
 import CodeContent from "./CodeContent";
 import EditorTabs from "./tabs/EditorTabs";
 import { OutlineProvider } from "./outline/context/OutlineProvider";
-import { useEditorContext } from "./context/explorerContext";
+import { useEditorContext } from "./context/explorer-context";
 import Terminal from "./terminal/Terminal";
 import useMobile from "@/hooks/use-mobile";
 

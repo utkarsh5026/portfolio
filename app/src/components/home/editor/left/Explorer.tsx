@@ -2,7 +2,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import { FaCode } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
-import { useEditorContext } from "../context/explorerContext";
+import { useEditorContext } from "../context/explorer-context";
 import Logo from "@/components/home/appbar/Logo";
 import OutlinePanel from "../outline/OutlinePanel";
 

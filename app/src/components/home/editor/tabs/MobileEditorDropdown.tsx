@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import type { SectionType } from "@/components/home/editor/context/explorerContext";
+import type { SectionType } from "@/components/home/editor/context/explorer-context";
 import { sectionIconMap, getIconColor } from "./tab-style";
 import {
   DropdownMenu,

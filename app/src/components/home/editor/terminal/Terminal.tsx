@@ -3,7 +3,7 @@ import useTerminal from "./use-terminal";
 import "./Terminal.css";
 import { motion, AnimatePresence } from "framer-motion";
 import TerminalHeader from "./TerminalHeader";
-import { useEditorContext } from "../context/explorerContext";
+import { useEditorContext } from "../context/explorer-context";
 import TerminalInput from "./TerminalInput";
 import TerminalCommandSuggestions from "./TerminalCommandSuggestions";
 import TerminalCommandOutput from "./TerminalCommandOutput";

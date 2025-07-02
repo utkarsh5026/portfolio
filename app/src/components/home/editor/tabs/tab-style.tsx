@@ -1,4 +1,4 @@
-import { SectionType } from "../context/explorerContext";
+import { SectionType } from "../context/explorer-context";
 import {
   FaHome,
   FaLaptopCode,

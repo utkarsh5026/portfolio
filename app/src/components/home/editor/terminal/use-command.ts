@@ -3,7 +3,7 @@ import {
   sections,
   type SectionType,
   useEditorContext,
-} from "@/components/home/editor/context/explorerContext";
+} from "@/components/home/editor/context/explorer-context";
 import { useProject } from "@/hooks/use-project";
 import { articles } from "@/components/home/portfolio/articles/articlesdump";
 import { experiences } from "@/components/home/portfolio/work/experienceDump";

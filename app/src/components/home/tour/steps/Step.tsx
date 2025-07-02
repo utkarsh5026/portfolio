@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import {
   useEditorContext,
   SectionType,
-} from "@/components/home/editor/context/explorerContext";
+} from "@/components/home/editor/context/explorer-context";
 import TypeWriter from "../writer/TypeWriter";
 import { ArrowRight, ChevronRightCircle, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";

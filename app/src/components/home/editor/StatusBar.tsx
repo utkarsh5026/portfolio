@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { useEditorContext, type SectionType } from "./context/explorerContext";
+import { useEditorContext, type SectionType } from "./context/explorer-context";
 import { cn } from "@/lib/utils";
 import {
   FaGitAlt,

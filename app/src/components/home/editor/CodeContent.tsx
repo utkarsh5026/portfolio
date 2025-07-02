@@ -2,13 +2,13 @@ import { Suspense, useRef, useEffect } from "react";
 import {
   useEditorContext,
   sections as sectionKeys,
-} from "./context/explorerContext";
+} from "./context/explorer-context";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSwipeable } from "react-swipeable";
 import useMobile from "@/hooks/use-mobile";
 import SwipeTutorialOverlay from "./SwipeTutorialOverlay";
 import { useLocalStorage } from "@/hooks/use-local-storage";
-import SectionLoadingScreen from "./context/Loading";
+import SectionLoadingScreen from "./context/section-loading";
 
 interface CodeContentProps {
   sections: Record<string, React.ReactNode>;

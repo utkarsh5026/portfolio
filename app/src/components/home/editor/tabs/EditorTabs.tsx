@@ -4,7 +4,7 @@ import { useOutline } from "@/components/home/editor/outline/context/outlineCont
 import {
   useEditorContext,
   type SectionType,
-} from "@/components/home/editor/context/explorerContext";
+} from "@/components/home/editor/context/explorer-context";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 import MobileEditorDropdown from "./MobileEditorDropdown";

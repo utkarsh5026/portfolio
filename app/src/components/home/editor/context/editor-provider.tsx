@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useCallback,
 } from "react";
-import { EditorContext, SectionType } from "./explorerContext";
+import { EditorContext, SectionType } from "./explorer-context";
 
 const sections = [
   "home",
