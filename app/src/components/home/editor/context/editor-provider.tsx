@@ -22,24 +22,6 @@ interface ProviderProps {
   children: ReactNode;
 }
 
-/**
- * EditorProvider Component
- *
- * This component is a provider for the editor context. It manages the state and functionality of the editor.
- * It utilizes React's context API to provide the editor state and functions to its children.
- *
- * The component includes:
- * - State for the active section, mobile menu open status, explorer open status, loading section status, loading text, notifications, and terminal open status.
- * - Functions to add notifications, handle key down events, and get notification icons.
- * - Data for the files and loading texts used in the editor.
- *
- * Usage:
- * <EditorProvider>
- *   ...children
- * </EditorProvider>
- *
- * Note: Ensure that the 'sections' array is defined and contains the relevant data.
- */
 export const EditorProvider: React.FC<ProviderProps> = ({ children }) => {
   const [activeSection, setActiveSection] =
     useState<(typeof sections)[number]>("home");
