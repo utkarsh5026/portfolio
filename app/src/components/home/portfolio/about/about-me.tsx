@@ -3,12 +3,12 @@ import Section from "@/components/section/Section";
 import { motion } from "framer-motion";
 import { User, Sparkles } from "lucide-react";
 import ModernBackground from "./Background";
-import ModernEducation from "./Education";
+import ModernEducation from "./my-education";
 import ModernSkills from "./Skills";
 import ModernPhilosophy from "./Philosophy";
 import ModernInterests from "./Intersests";
-import ModernCurrentFocus from "./CurrentFocus";
-import OutlineNode from "../editor/outline/OutlineNode";
+import ModernCurrentFocus from "./currrent-focus";
+import OutlineNode from "../../editor/outline/OutlineNode";
 import Reveal from "@/components/animations/reveal/Reveal";
 
 const ABOUT_SECTION = "about";

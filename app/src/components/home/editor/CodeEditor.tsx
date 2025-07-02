@@ -13,7 +13,9 @@ import useMobile from "@/hooks/use-mobile";
 const TerminalHeader = lazy(
   () => import("@/components/home/intro/PersonalHeader")
 );
-const AboutMe = lazy(() => import("@/components/home/about/AboutMe"));
+const AboutMe = lazy(
+  () => import("@/components/home/portfolio/about/about-me")
+);
 const Skills = lazy(
   () => import("@/components/home/portfolio/skills/skills-section")
 );
