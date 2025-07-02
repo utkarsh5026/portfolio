@@ -2,7 +2,7 @@ import React from "react";
 import Reveal from "@/components/animations/reveal/Reveal";
 
 import PersonalTitle from "./personal-title";
-import ProfileButtons from "./ProfileButtons";
+import ProfileButtons from "./profile-buttons";
 import Terminal from "./statements-terminal";
 import PersonalDescription from "./personal-description";
 import TechSkills from "./TechSkills";
