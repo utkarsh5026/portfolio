@@ -4,8 +4,8 @@ import Reveal from "@/components/animations/reveal/Reveal";
 import { motion } from "framer-motion";
 import { FaHandshake, FaEnvelope } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
-import SocialMediaLinks from "./SocialMediaLinks";
-import AvailableForOpportunities from "./AvailableForOpportunities";
+import SocialMediaLinks from "./social-media-links";
+import AvailableForOpportunities from "./available-for-opportunities";
 
 const ContactMe: React.FC = () => {
   return (

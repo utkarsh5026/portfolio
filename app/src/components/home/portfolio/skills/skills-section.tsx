@@ -7,7 +7,7 @@ import SkillsJourney from "./skills-journey/skills-journey";
 import Section from "@/components/section/Section";
 import OutlineNode from "@/components/home/editor/outline/OutlineNode";
 
-const SkillsSection = () => {
+const SkillsSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (

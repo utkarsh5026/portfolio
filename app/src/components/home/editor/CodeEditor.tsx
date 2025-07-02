@@ -19,7 +19,9 @@ const Skills = lazy(
 );
 const Projects = lazy(() => import("@/components/home/projects/Projects"));
 const Experience = lazy(() => import("@/components/home/work/WorkExperience"));
-const ContactMe = lazy(() => import("@/components/home/contact/ContactMe"));
+const ContactMe = lazy(
+  () => import("@/components/home/portfolio/contact/contact-me")
+);
 const Learning = lazy(
   () => import("@/components/home/portfolio/learning/learning-section")
 );
