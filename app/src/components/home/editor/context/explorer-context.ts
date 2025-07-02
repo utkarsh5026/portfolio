@@ -20,7 +20,6 @@ interface UseEditorReturnType {
   setMobileMenuOpen: (open: boolean) => void;
   explorerOpen: boolean;
   setExplorerOpen: (open: boolean) => void;
-  loadingSection: boolean;
   terminalOpen: boolean;
   setTerminalOpen: (open: boolean) => void;
   files: { name: string; section: SectionType }[];

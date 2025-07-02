@@ -45,7 +45,6 @@ export const EditorProvider: React.FC<ProviderProps> = ({ children }) => {
     useState<(typeof sections)[number]>("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [explorerOpen, setExplorerOpen] = useState(true);
-  const [loadingSection, setLoadingSection] = useState(false);
   const [terminalOpen, setTerminalOpen] = useState(false);
 
   const handleKeyyDownEvents = useCallback(() => {
@@ -76,21 +75,6 @@ export const EditorProvider: React.FC<ProviderProps> = ({ children }) => {
     };
   }, []);
 
-  // Simulates loading state when changing sections
-  useEffect(() => {
-    if (activeSection) {
-      setLoadingSection(true);
-
-      const timeoutId = setTimeout(() => {
-        setLoadingSection(false);
-      }, 3200);
-
-      return () => {
-        clearTimeout(timeoutId);
-      };
-    }
-  }, [activeSection]);
-
   useEffect(() => {
     const cleanup = handleKeyyDownEvents();
     return () => cleanup();
@@ -115,7 +99,6 @@ export const EditorProvider: React.FC<ProviderProps> = ({ children }) => {
       activeSection,
       mobileMenuOpen,
       explorerOpen,
-      loadingSection,
       files,
       terminalOpen,
       setTerminalOpen,
@@ -127,7 +110,6 @@ export const EditorProvider: React.FC<ProviderProps> = ({ children }) => {
       activeSection,
       mobileMenuOpen,
       explorerOpen,
-      loadingSection,
       files,
       setActiveSection,
       setMobileMenuOpen,

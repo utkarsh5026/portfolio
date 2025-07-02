@@ -15,8 +15,7 @@ interface CodeContentProps {
 }
 
 const CodeContent: React.FC<CodeContentProps> = ({ sections }) => {
-  const { activeSection, loadingSection, setActiveSection } =
-    useEditorContext();
+  const { activeSection, setActiveSection } = useEditorContext();
   const contentRef = useRef<HTMLDivElement>(null);
   const { isMobile } = useMobile();
   const {
@@ -59,31 +58,25 @@ const CodeContent: React.FC<CodeContentProps> = ({ sections }) => {
   return (
     <>
       <main className="flex-1 overflow-y-auto bg-ctp-crust" {...handlers}>
-        <AnimatePresence mode="wait">
-          {loadingSection ? (
-            <SectionLoadingScreen key="loading" section={activeSection} />
-          ) : (
-            <Suspense
-              fallback={<SectionLoadingScreen section={activeSection} />}
+        <Suspense fallback={<SectionLoadingScreen section={activeSection} />}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeSection}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="min-h-[calc(100vh-8rem)] sm:min-h-[calc(100vh-10rem)] flex"
             >
-              <motion.div
-                key="content"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="min-h-[calc(100vh-8rem)] sm:min-h-[calc(100vh-10rem)] flex"
+              <div
+                ref={contentRef}
+                className="grow px-3 py-4 md:px-4 md:pt-8 flex flex-col"
               >
-                <div
-                  ref={contentRef}
-                  className="grow px-3 py-4 md:px-4 md:pt-8 flex flex-col"
-                >
-                  {sections[activeSection]}
-                </div>
-              </motion.div>
-            </Suspense>
-          )}
-        </AnimatePresence>
+                {sections[activeSection]}
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </Suspense>
       </main>
 
       {/* Show tutorial overlay for first-time mobile users */}
