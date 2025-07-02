@@ -2,7 +2,7 @@ import Skills from "./skills/skills-section";
 import Learning from "./learning/learning-section";
 import ContactMe from "./contact/contact-me";
 import AboutMe from "./about/about-me";
-import WorkExperience from "./work/WorkExperience";
+import WorkExperience from "./work/work-experience";
 import ArticlesComponent from "./articles/Articles";
 import Projects from "./projects/projects-section";
 
