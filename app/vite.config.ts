@@ -55,7 +55,7 @@ export default defineConfig({
           ui: ["@radix-ui/react-avatar", "@radix-ui/react-slot"],
           icons: ["lucide-react", "react-icons"],
           "home-components": [
-            "./src/components/home/intro/PersonalHeader",
+            "./src/components/home/portfolio/intro/PersonalHeader",
             "./src/components/home/portfolio/skills/skills-section",
             "./src/components/home/portfolio/projects/projects-section",
             "./src/components/home/portfolio/articles/articles-section",
