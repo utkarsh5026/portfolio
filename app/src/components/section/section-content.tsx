@@ -41,6 +41,7 @@ const SectionContent = forwardRef<HTMLDivElement, SectionContentProps>(
                 md:px-8 md:py-10
                 lg:px-10 lg:py-12
                 xl:px-12 xl:py-14
+                bg-ctp-crust
                 
                 w-full max-w-full
                 
