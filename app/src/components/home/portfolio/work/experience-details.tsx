@@ -82,8 +82,8 @@ const MobileDrawerContent: React.FC<{ selectedExp: number }> = ({
   selectedExp,
 }) => (
   <DrawerContent className="max-h-[90vh] bg-ctp-mantle border-ctp-surface1/50 z-[999999] w-full">
-    <DrawerHeader className="border-b border-ctp-surface1/50 p-4">
-      <div className="flex items-center gap-3">
+    <DrawerHeader className="border-b border-ctp-surface1/50 p-4 pb-6">
+      <div className="flex items-center gap-4">
         <div className="w-12 h-12 rounded-xl bg-ctp-surface0/80 backdrop-blur-sm border border-ctp-surface1/50 overflow-hidden flex-shrink-0">
           <img
             src={experiences[selectedExp].imageSrc}
@@ -92,7 +92,7 @@ const MobileDrawerContent: React.FC<{ selectedExp: number }> = ({
           />
         </div>
         <div className="min-w-0 flex-1">
-          <DrawerTitle className="text-xl font-bold text-ctp-text text-left">
+          <DrawerTitle className="text-xl font-bold text-ctp-text text-left leading-tight">
             {experiences[selectedExp].position}
           </DrawerTitle>
           <p className="text-sm text-ctp-subtext0 mt-1 text-left">
@@ -102,9 +102,9 @@ const MobileDrawerContent: React.FC<{ selectedExp: number }> = ({
       </div>
     </DrawerHeader>
 
-    <div className="overflow-y-auto flex-1 space-y-6">
+    <div className="overflow-y-auto flex-1 pb-6">
       {/* Achievements */}
-      <div className="px-4 pb-6">
+      <div className="pt-6 px-4">
         <Reveal
           effect="cascade"
           duration={0.8}
@@ -116,14 +116,18 @@ const MobileDrawerContent: React.FC<{ selectedExp: number }> = ({
       </div>
 
       {/* Technologies */}
-      <Reveal effect="fade-up" duration={0.7} delay={0.2}>
-        <TechnologiesContent selectedExp={selectedExp} />
-      </Reveal>
+      <div className="pt-4">
+        <Reveal effect="fade-up" duration={0.7} delay={0.2}>
+          <TechnologiesContent selectedExp={selectedExp} />
+        </Reveal>
+      </div>
 
       {/* Footer */}
-      <Reveal effect="fade-up" duration={0.7} delay={0.3}>
-        <FooterContent />
-      </Reveal>
+      <div className="pt-4">
+        <Reveal effect="fade-up" duration={0.7} delay={0.3}>
+          <FooterContent />
+        </Reveal>
+      </div>
     </div>
   </DrawerContent>
 );
@@ -183,27 +187,29 @@ const ExperienceDetails: React.FC<ExperienceDetailsProps> = ({
               <DrawerTrigger asChild>
                 <div className="cursor-pointer group">
                   <Card className="overflow-hidden border-none bg-ctp-surface0/10 backdrop-blur-sm hover:bg-ctp-surface0/15 transition-all duration-300 relative">
-                    <CardContent className="p-0">
+                    <CardContent className="p-0 pb-12">
                       <Reveal effect="fade-up" duration={0.7} delay={0.3}>
                         <ExperienceHeader selectedExp={selectedExp} />
                       </Reveal>
-
-                      {/* Mobile Click Indicator */}
-                      <div className="absolute bottom-2 right-2 flex items-center gap-2 px-3 py-1.5 bg-ctp-blue/10 backdrop-blur-sm rounded-full border border-ctp-blue/20 text-ctp-blue text-xs transition-all duration-300 group-hover:bg-ctp-blue/20 group-hover:scale-105">
-                        <FaHandPointer className="w-3 h-3 animate-pulse" />
-                        <span className="font-medium">Tap for details</span>
-                        <motion.div
-                          animate={{ y: [0, 2, 0] }}
-                          transition={{
-                            duration: 1.5,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                          }}
-                        >
-                          <FaChevronDown className="w-3 h-3" />
-                        </motion.div>
-                      </div>
                     </CardContent>
+
+                    {/* Mobile Click Indicator */}
+                    <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex items-center gap-2 px-4 py-2 bg-ctp-blue/10 backdrop-blur-sm rounded-full border border-ctp-blue/20 text-ctp-blue text-sm transition-all duration-300 group-hover:bg-ctp-blue/20 group-hover:scale-105 shadow-lg">
+                      <FaHandPointer className="w-3 h-3 animate-pulse" />
+                      <span className="font-medium whitespace-nowrap">
+                        Tap for details
+                      </span>
+                      <motion.div
+                        animate={{ y: [0, 2, 0] }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                      >
+                        <FaChevronDown className="w-3 h-3" />
+                      </motion.div>
+                    </div>
                   </Card>
                 </div>
               </DrawerTrigger>
