@@ -28,7 +28,7 @@ type FileItem = {
 
 const projectStructure: FileItem[] = [
   {
-    name: "src",
+    name: "frontend",
     type: "folder",
     color: "#89b4fa",
     delay: 0,
