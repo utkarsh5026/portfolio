@@ -158,9 +158,7 @@ const MobilePersonalIntro: React.FC = () => {
 
             {/* Mobile Terminal - Compact Version */}
             <Reveal delay={1.1}>
-              <div className="bg-ctp-surface0/30 rounded-lg p-3 border border-ctp-surface1/20">
-                <Terminal />
-              </div>
+              <Terminal />
             </Reveal>
           </div>
         </Reveal>

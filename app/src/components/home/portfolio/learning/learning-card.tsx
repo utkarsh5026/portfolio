@@ -26,7 +26,6 @@ const LearningCard: React.FC<LearningCardProps> = ({
       onClick={() => onSelect(tech)}
     >
       <div className="h-full bg-gradient-to-b from-ctp-mantle to-ctp-crust backdrop-blur-sm rounded-2xl p-6 border-none hover:border-ctp-surface2/80 transition-all duration-300 hover:bg-ctp-surface0/80">
-        {/* Card Header */}
         <div className="flex items-start justify-between mb-4">
           <div
             className={`p-3 rounded-xl bg-ctp-${categoryColor}/10 text-ctp-${categoryColor} group-hover:scale-105 transition-transform duration-300`}
