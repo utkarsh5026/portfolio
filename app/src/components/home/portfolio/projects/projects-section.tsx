@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ProjectModal from "./modal/ProjectModal";
 import FeaturedProject from "./featured/FeaturedProject";
-import ProjectSmall from "./ProjectSmall";
+import ProjectSmall from "./project-small";
 import { ProjectThemeProvider } from "./context/ProjectThemeProvider";
 import { useProject } from "@/hooks/use-project";
 import type { Project } from "@/types";

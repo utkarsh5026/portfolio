@@ -6,7 +6,7 @@ import { FaGithub } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useProjectTheme } from "./context/ThemeContext";
 import { technologies } from "@/components/base/technologies";
-import LayeredCard3D from "./LayeredGuide";
+import LayeredCard3D from "./utils/layered-guide";
 
 interface ProjectSmallProps {
   project: Project;

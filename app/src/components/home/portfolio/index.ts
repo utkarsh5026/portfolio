@@ -4,6 +4,7 @@ import ContactMe from "./contact/contact-me";
 import AboutMe from "./about/about-me";
 import WorkExperience from "./work/WorkExperience";
 import ArticlesComponent from "./articles/Articles";
+import Projects from "./projects/projects-section";
 
 export {
   Skills,
@@ -12,4 +13,5 @@ export {
   AboutMe,
   WorkExperience,
   ArticlesComponent,
+  Projects,
 };
