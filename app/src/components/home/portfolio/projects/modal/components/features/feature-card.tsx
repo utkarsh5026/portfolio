@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import type { MajorFeature } from "@/types";
 import { type ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
-import getCategoryIcon from "@/components/base/category-icon";
 import {
   Collapsible,
   CollapsibleContent,
@@ -27,8 +26,6 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   isExpanded,
   onToggle,
 }) => {
-  const IconComponent = getCategoryIcon(feature.title);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -51,12 +48,6 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
         <div className="relative p-3 sm:p-4 md:p-6">
           {/* Header */}
           <div className="flex items-start gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-3 md:mb-4">
-            <div
-              className={`flex-shrink-0 p-1.5 sm:p-2 md:p-3 rounded-lg sm:rounded-xl bg-ctp-${theme.main}/20 text-ctp-${theme.main} group-hover:scale-110 transition-transform duration-300`}
-            >
-              <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-            </div>
-
             <div className="flex-1 min-w-0">
               <div className="flex items-start sm:items-center justify-between gap-1 sm:gap-2 mb-1 sm:mb-2">
                 <h3 className="text-base sm:text-lg md:text-xl font-bold text-ctp-text group-hover:text-ctp-text transition-colors leading-tight">
