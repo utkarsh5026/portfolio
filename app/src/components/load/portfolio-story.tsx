@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Realization from "./realization/Realization";
 import Panic from "./panic/main/Panic";
 import CodeCompilation from "./compilation/CodeCompilation";
-import MainPortfolio from "./MainPortfolio";
+import MainPortfolio from "./main-portfolio";
 import PrankPortfolio from "./simple-portfolio/PrankPortfolio";
 import FakePortfolioLoading from "./bridge/portfolio/FakePortfolioLoading";
 import CompilationLoading from "./bridge/compile/CompilationLoading";
@@ -52,7 +52,7 @@ const preloadImage = (src: string): Promise<void> => {
 const PortfolioStory: React.FC = () => {
   const { isMobile } = useMobile();
   const [currentStage, setCurrentStage] = useState<PortfolioStage>(
-    isMobile ? "realization" : "chaos"
+    isMobile ? "chaos" : "realization"
   );
   const [showSkipButton, setShowSkipButton] = useState(false);
 
