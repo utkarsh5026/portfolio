@@ -1,5 +1,5 @@
 import OverviewContent from "./overview/project-overview";
-import FeaturesContent from "./project-features/Features";
+import ProjectFeatures from "./features/project-features";
 import TechStack from "./tech-stack/TechStack";
 import MediaShowcase from "./MediaShowcase";
 import Sidebar from "./side-bar/SideBar";
@@ -8,7 +8,7 @@ import MobileTabBar from "./side-bar/MobileTabBar";
 
 export {
   OverviewContent,
-  FeaturesContent,
+  ProjectFeatures,
   TechStack,
   MediaShowcase,
   Sidebar,

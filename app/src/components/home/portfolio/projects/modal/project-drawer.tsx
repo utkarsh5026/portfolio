@@ -4,7 +4,7 @@ import type { Project } from "@/types";
 import { type ProjectTheme, useProjectTheme } from "../context/ThemeContext";
 import {
   OverviewContent,
-  FeaturesContent,
+  ProjectFeatures,
   TechStack,
   MediaShowcase,
   Sidebar,
@@ -164,7 +164,7 @@ const ContentRenderer: React.FC<ContentRendererProps> = ({
         <OverviewContent project={project} theme={theme} />
       )}
       {activeTab === "features" && (
-        <FeaturesContent project={project} theme={theme} />
+        <ProjectFeatures project={project} theme={theme} />
       )}
       {activeTab === "tech" && <TechStack project={project} theme={theme} />}
       {activeTab === "media" && project.media && (
