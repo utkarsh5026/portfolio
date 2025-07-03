@@ -1,11 +1,13 @@
 import React from "react";
 import Reveal from "@/components/animations/reveal/Reveal";
-import PersonalTitle from "./personal-title";
-import ProfileButtons from "./profile-buttons";
 import { Terminal } from "./terminal";
-import PersonalDescription from "./personal-description";
 import { TechSkills } from "./skills";
-import ProfilePicture from "./profile-picture";
+import {
+  PersonalTitle,
+  PersonalDescription,
+  ProfilePicture,
+  ProfileButtons,
+} from "./profile";
 import { cn } from "@/lib/utils";
 import useMobile from "@/hooks/use-mobile";
 
