@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import FloatingElement from "@/components/animations/FloatingElement";
+import { FloatingElement } from "@/components/animations";
 import { ChevronRight, ChevronDown, Folder, FolderOpen } from "lucide-react";
 import {
   SiReact,
