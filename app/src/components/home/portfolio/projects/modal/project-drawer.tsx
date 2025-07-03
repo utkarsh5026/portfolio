@@ -13,6 +13,7 @@ import {
 } from "./components";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import ProjectDrawerHeader from "./project-drawer-header";
+import useMobile from "@/hooks/use-mobile";
 
 type Tab = "overview" | "features" | "tech" | "media" | "demo";
 
@@ -42,6 +43,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   const [activeTab, setActiveTab] = useState<Tab>("overview");
   const [explainOpen, setExplainOpen] = useState(false);
   const { getProjectTheme } = useProjectTheme();
+  const { isMobile } = useMobile();
 
   useEffect(() => {
     setActiveTab("overview");
@@ -76,10 +78,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   return (
     <Drawer open={isModalOpen} onOpenChange={closeModal}>
       <DrawerContent className="max-h-[95vh] bg-ctp-base border-ctp-surface1/50 z-[99999] w-full">
-        <ProjectDrawerHeader selectedProject={selectedProject} />
+        {isMobile && <ProjectDrawerHeader selectedProject={selectedProject} />}
 
         {/* Content Area */}
-        <div className="flex h-full max-h-[calc(95vh-180px)] flex-col overflow-hidden">
+        <div className="flex h-full  flex-col overflow-hidden">
           {/* Mobile Tab Bar */}
           <div className="lg:hidden border-b border-ctp-surface1/20">
             <MobileTabBar
