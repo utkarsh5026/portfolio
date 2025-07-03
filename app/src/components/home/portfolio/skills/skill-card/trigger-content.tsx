@@ -51,19 +51,19 @@ const MobileSkillsPreview: React.FC<MobileSkillsPreviewProps> = ({
         {category.skills.slice(0, 3).map((skill) => (
           <div
             key={skill.name}
-            className="flex items-center gap-2 px-3 py-2 bg-ctp-surface1/20 hover:bg-ctp-surface1/40 rounded-lg transition-colors duration-200 border border-ctp-surface1/30"
+            className="flex items-center gap-2 px-3 py-2 bg-gradient-to-br from-ctp-base to-ctp-crust hover:bg-ctp-surface1/40 rounded-lg transition-colors duration-200 border-none"
           >
             <div className={`text-ctp-${skill.color} text-sm flex-shrink-0`}>
               {skill.icon}
             </div>
-            <span className="text-sm text-ctp-subtext1 font-medium truncate">
+            <span className="text-xs text-ctp-subtext1 font-medium truncate">
               {skill.name}
             </span>
           </div>
         ))}
         {category.skills.length > 3 && (
-          <div className="flex items-center px-3 py-2 bg-ctp-surface1/15 border border-ctp-surface1/30 rounded-lg">
-            <span className="text-sm text-ctp-subtext0 font-medium">
+          <div className="flex items-center px-3 py-2 bg-ctp-surface1/15 border-none rounded-lg">
+            <span className="text-xs text-ctp-subtext0 font-medium">
               +{category.skills.length - 3} more
             </span>
           </div>
@@ -145,7 +145,7 @@ const Header: React.FC<HeaderProps> = ({
           <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-ctp-text leading-tight break-words group-hover:text-ctp-text transition-colors duration-200">
             {category.title}
           </h2>
-          <p className="text-sm sm:text-base text-ctp-subtext0 group-hover:text-ctp-subtext1 mt-1 break-words font-medium leading-relaxed">
+          <p className="text-xs sm:text-base text-ctp-subtext0 group-hover:text-ctp-subtext1 mt-1 break-words font-medium leading-relaxed">
             {category.description}
           </p>
         </div>
