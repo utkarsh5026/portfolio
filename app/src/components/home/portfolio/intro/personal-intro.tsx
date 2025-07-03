@@ -4,16 +4,14 @@ import PersonalTitle from "./personal-title";
 import ProfileButtons from "./profile-buttons";
 import { Terminal } from "./terminal";
 import PersonalDescription from "./personal-description";
-import TechSkills from "./tech-skills";
+import { TechSkills } from "./skills";
 import ProfilePicture from "./profile-picture";
 import { cn } from "@/lib/utils";
 import useMobile from "@/hooks/use-mobile";
 
-// Desktop-optimized layout
 const DesktopPersonalIntro: React.FC = () => {
   return (
     <>
-      {/* Background Effects */}
       <div className="absolute inset-0 -z-20">
         <Reveal effect="blur-in" duration={1.8} delay={0.8}>
           <div
@@ -103,11 +101,9 @@ const DesktopPersonalIntro: React.FC = () => {
   );
 };
 
-// Mobile-optimized layout
 const MobilePersonalIntro: React.FC = () => {
   return (
     <>
-      {/* Simplified background for mobile */}
       <div className="absolute inset-0 -z-20">
         <Reveal duration={1.2} delay={0.5}>
           <div
