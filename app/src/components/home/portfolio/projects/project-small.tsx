@@ -102,32 +102,6 @@ const ProjectSmall: React.FC<ProjectSmallProps> = ({
               )}
             </div>
 
-            {project.tags && project.tags.length > 0 && (
-              <div className="mt-2 flex flex-wrap gap-1.5">
-                {project.tags.slice(0, 2).map((tag, i) => (
-                  <motion.span
-                    key={`${tag}-${i}`}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 + i * 0.1, duration: 0.3 }}
-                    className={cn(
-                      "text-xs px-2 py-0.5 rounded-full transition-all duration-300",
-                      isHovered
-                        ? `bg-ctp-${accentColor}/10 text-ctp-${accentColor} border border-ctp-${accentColor}/30`
-                        : "bg-ctp-surface0 text-ctp-subtext1 border border-transparent"
-                    )}
-                  >
-                    {tag}
-                  </motion.span>
-                ))}
-                {project.tags.length > 2 && (
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-ctp-surface0 text-ctp-subtext0">
-                    +{project.tags.length - 2}
-                  </span>
-                )}
-              </div>
-            )}
-
             {/* Description - Set a fixed height */}
             <div className="mt-3 h-[4.5rem]">
               <p className="text-ctp-subtext0 text-sm line-clamp-3 transition-colors duration-300 group-hover:text-ctp-text">
