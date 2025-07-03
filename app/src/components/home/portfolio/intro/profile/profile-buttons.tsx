@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiOutlineDocumentDownload } from "react-icons/hi";
-import { useEditorContext } from "../../editor/context/explorer-context";
+import { useEditorContext } from "@/components/home/editor";
 import React from "react";
 import { cn } from "@/lib/utils";
 import useMobile from "@/hooks/use-mobile";
