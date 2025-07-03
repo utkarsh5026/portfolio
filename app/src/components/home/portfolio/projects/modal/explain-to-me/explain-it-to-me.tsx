@@ -104,7 +104,7 @@ const ExplainItToMe: React.FC<ExplainItToMeProps> = ({ project }) => {
       ref={containerRef}
     >
       {/* Optional: Add a button to re-enable auto-scroll */}
-      {!autoScrollEnabled && (
+      {/* {!autoScrollEnabled && (
         <motion.button
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -113,13 +113,13 @@ const ExplainItToMe: React.FC<ExplainItToMeProps> = ({ project }) => {
         >
           Re-enable auto-scroll
         </motion.button>
-      )}
+      )} */}
 
       <div
         ref={contentRef}
         className={cn(
-          "relative border-none rounded-xl overflow-hidden shadow-2xl bg-transparent p-4 sm:p-6",
-          !isMobile && "bg-gradient-to-b from-ctp-base to-ctp-crust"
+          "relative border-none rounded-xl overflow-hidden shadow-2xl bg-transparent",
+          !isMobile && "bg-gradient-to-b from-ctp-base to-ctp-crust p-6"
         )}
       >
         <div className="relative z-10  space-y-6 sm:space-y-8  h-auto">
