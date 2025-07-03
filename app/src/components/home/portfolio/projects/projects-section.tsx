@@ -109,10 +109,7 @@ const Projects: React.FC = () => {
       showHeader={true}
     >
       <ProjectThemeProvider>
-        <div
-          ref={projectsRef}
-          className="relative max-w-6xl mx-auto px-4 py-12"
-        >
+        <div ref={projectsRef} className="relative max-w-6xl mx-auto px-4 ">
           <Reveal effect="fade-up" duration={0.7} delay={0.1}>
             <Tabs defaultValue="featured" className="w-full">
               <div className="w-full flex justify-end">

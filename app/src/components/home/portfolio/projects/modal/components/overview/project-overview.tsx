@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { FaGithub } from "react-icons/fa";
 import { Lock, ExternalLink } from "lucide-react";
-import useMobile from "@/hooks/use-mobile";
 
 interface OverviewContentProps {
   project: Project;
@@ -18,7 +17,6 @@ const ProjectOverview: React.FC<OverviewContentProps> = ({
   project,
   theme,
 }) => {
-  const { isMobile } = useMobile();
   return (
     <Reveal className="p-4 sm:p-6 md:p-8 space-y-6 md:space-y-8">
       {/* Project Overview */}
@@ -32,9 +30,7 @@ const ProjectOverview: React.FC<OverviewContentProps> = ({
         </p>
 
         <div
-          className={`flex items-center gap-2 sm:gap-3 my-4 sm:mb-4 ${
-            isMobile ? "justify-center flex-wrap" : "justify-start"
-          }`}
+          className={`flex items-center gap-2 sm:gap-3 my-4 sm:mb-4 justify-start`}
         >
           {project.githubLink && (
             <motion.div whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }}>

@@ -3,12 +3,12 @@ import { List, FileCode, Images, Info, PlayCircle } from "lucide-react";
 import type { ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
 import Reveal from "@/components/animations/reveal/Reveal";
 import TabButton from "./TabButton";
-import SidebarHeader from "./SidebarHeader";
-import ActionButtons from "./ActionButtons";
+import SidebarHeader from "./sidebar-header";
+import ActionButtons from "./action-buttons";
 
 type Tab = "overview" | "features" | "tech" | "media" | "demo";
 
-interface SidebarProps {
+interface ProjectSidebarProps {
   project: Project;
   theme: ProjectTheme;
   activeTab: Tab;
@@ -19,7 +19,7 @@ interface SidebarProps {
   hasDemo: boolean;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({
+const ProjectSidebar: React.FC<ProjectSidebarProps> = ({
   project,
   theme,
   activeTab,
@@ -76,10 +76,10 @@ const Sidebar: React.FC<SidebarProps> = ({
   ];
 
   return (
-    <div className="w-80 min-w-80 bg-black/20 backdrop-blur-xl border-r border-white/10 flex flex-col overflow-y-auto">
+    <div className="w-80 min-w-80 bg-ctp-base backdrop-blur-xl border-r border-ctp-surface1/50 flex flex-col overflow-y-auto">
       {/* Project Header */}
-      <Reveal className="p-8 border-b border-white/10">
-        <SidebarHeader project={project} theme={theme} hasDemo={hasDemo} />
+      <Reveal className="p-8 border-b border-ctp-surface1/50">
+        <SidebarHeader project={project} theme={theme} />
       </Reveal>
 
       {/* Navigation Tabs */}
@@ -108,4 +108,4 @@ const Sidebar: React.FC<SidebarProps> = ({
   );
 };
 
-export default Sidebar;
+export default ProjectSidebar;
