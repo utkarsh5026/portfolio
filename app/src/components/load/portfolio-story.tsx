@@ -7,6 +7,7 @@ import MainPortfolio from "./MainPortfolio";
 import PrankPortfolio from "./simple-portfolio/PrankPortfolio";
 import FakePortfolioLoading from "./bridge/portfolio/FakePortfolioLoading";
 import CompilationLoading from "./bridge/compile/CompilationLoading";
+import useMobile from "@/hooks/use-mobile";
 
 const IMAGES_TO_PRELOAD = [
   "macos-color-optimized.jpg",
@@ -49,8 +50,10 @@ const preloadImage = (src: string): Promise<void> => {
  * @returns {JSX.Element} The rendered PortfolioStory component.
  */
 const PortfolioStory: React.FC = () => {
-  const [currentStage, setCurrentStage] =
-    useState<PortfolioStage>("realization");
+  const { isMobile } = useMobile();
+  const [currentStage, setCurrentStage] = useState<PortfolioStage>(
+    isMobile ? "realization" : "chaos"
+  );
   const [showSkipButton, setShowSkipButton] = useState(false);
 
   /**
