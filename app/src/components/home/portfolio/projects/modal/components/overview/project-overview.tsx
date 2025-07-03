@@ -1,15 +1,15 @@
 import type { ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
 import type { Project } from "@/types";
 import Reveal from "@/components/animations/reveal/Reveal";
-import Technologies from "./TechnologiesUsed";
-import ProjectExplainCollapsible from "./ProjectExplain";
+import Technologies from "./technologies-used";
+import ProjectExplainCollapsible from "./project-explain";
 
 interface OverviewContentProps {
   project: Project;
   theme: ProjectTheme;
 }
 
-const OverviewContent: React.FC<OverviewContentProps> = ({
+const ProjectOverview: React.FC<OverviewContentProps> = ({
   project,
   theme,
 }) => {
@@ -21,7 +21,7 @@ const OverviewContent: React.FC<OverviewContentProps> = ({
         <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
           Project Overview
         </h2>
-        <p className="text-white/80 text-sm sm:text-base leading-relaxed">
+        <p className="text-ctp-text text-sm sm:text-base leading-relaxed">
           {project.description}
         </p>
       </OverViewComponent>
@@ -43,10 +43,10 @@ interface OverViewComponentProps {
 }
 const OverViewComponent: React.FC<OverViewComponentProps> = ({ children }) => {
   return (
-    <Reveal className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 p-4 sm:p-6 md:p-8">
+    <Reveal className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-ctp-surface0/10 to-ctp-surface0/5 backdrop-blur-md border-none p-4 sm:p-6 md:p-8">
       {children}
     </Reveal>
   );
 };
 
-export default OverviewContent;
+export default ProjectOverview;

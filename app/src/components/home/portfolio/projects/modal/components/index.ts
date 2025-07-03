@@ -1,4 +1,4 @@
-import OverviewContent from "./overview/Overview";
+import OverviewContent from "./overview/project-overview";
 import FeaturesContent from "./project-features/Features";
 import TechStack from "./tech-stack/TechStack";
 import MediaShowcase from "./MediaShowcase";
