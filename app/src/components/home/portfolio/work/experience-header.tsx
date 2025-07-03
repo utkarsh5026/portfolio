@@ -134,11 +134,11 @@ const ExperienceHeader: React.FC<ExperienceHeaderProps> = ({ selectedExp }) => {
               }
             >
               <Badge
-                variant="outline"
+                variant="default"
                 className={
                   isMobile
-                    ? "bg-ctp-surface0/50 text-ctp-blue border-ctp-blue/30 px-3 py-2 hover:bg-ctp-surface1/50 text-sm self-start"
-                    : "bg-ctp-surface0/50 text-ctp-blue border-ctp-blue/30 px-3 sm:px-4 py-2 sm:py-2.5 hover:bg-ctp-surface1/50 text-sm sm:text-base md:text-lg self-start"
+                    ? "bg-ctp-surface0/50 text-ctp-blue border-none px-3 py-2 hover:bg-ctp-surface1/50 text-xs self-start"
+                    : "bg-ctp-surface0/50 text-ctp-blue border-none px-3 sm:px-4 py-2 sm:py-2.5 hover:bg-ctp-surface1/50 text-xs sm:text-sm md:text-base self-start"
                 }
               >
                 <FaCalendarAlt
@@ -161,11 +161,10 @@ const ExperienceHeader: React.FC<ExperienceHeaderProps> = ({ selectedExp }) => {
               className={isMobile ? "w-full" : "self-start sm:self-end"}
             >
               <Button
-                variant="default"
                 className={
                   isMobile
-                    ? "w-full bg-ctp-blue hover:bg-ctp-lavender active:bg-ctp-lavender text-ctp-base font-medium px-4 py-3 rounded-lg shadow-lg shadow-ctp-blue/20 hover:shadow-ctp-lavender/20 transition-all duration-300 border-none text-sm"
-                    : "bg-ctp-blue hover:bg-ctp-lavender text-ctp-base font-medium px-5 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl shadow-lg shadow-ctp-blue/20 hover:shadow-ctp-lavender/20 transition-all duration-300 border-none text-sm sm:text-base md:text-lg"
+                    ? "w-full text-ctp-text bg-gradient-to-r from-ctp-base to-ctp-mantle font-medium px-4 py-3 rounded-lg  hover:shadow-ctp-lavender/20 transition-all duration-300 border-none text-xs mt-6"
+                    : "bg-ctp-blue hover:bg-ctp-lavender text-ctp-base font-medium px-5 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl shadow-lg shadow-ctp-blue/20 hover:shadow-ctp-lavender/20 transition-all duration-300 border-none text-xs sm:text-sm md:text-base"
                 }
                 onClick={() => window.open(experience.docsUrl, "_blank")}
               >
@@ -177,13 +176,15 @@ const ExperienceHeader: React.FC<ExperienceHeaderProps> = ({ selectedExp }) => {
                   }
                 />
                 Show Project Info
-                <FaChevronRight
-                  className={
-                    isMobile
-                      ? "w-4 h-4 ml-2"
-                      : "w-4 h-4 sm:w-5 sm:h-5 ml-2 sm:ml-3"
-                  }
-                />
+                {!isMobile && (
+                  <FaChevronRight
+                    className={
+                      isMobile
+                        ? "w-4 h-4 ml-2"
+                        : "w-4 h-4 sm:w-5 sm:h-5 ml-2 sm:ml-3"
+                    }
+                  />
+                )}
               </Button>
             </motion.div>
           )}

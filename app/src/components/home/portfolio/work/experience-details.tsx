@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import TechBadge from "@/components/base/TechBadge";
 import { OutlineNode } from "@/components/home/editor/outline";
 import Reveal from "@/components/animations/reveal/Reveal";
-import { FaCode, FaChevronDown, FaHandPointer } from "react-icons/fa";
+import { FaCode, FaHandPointer } from "react-icons/fa";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Drawer,
@@ -63,7 +63,6 @@ const TechnologiesContent: React.FC<{ selectedExp: number }> = ({
   </div>
 );
 
-// Shared Footer Content Component
 const FooterContent: React.FC = () => (
   <div className="px-4 sm:px-5 md:px-6 lg:px-8 py-5 sm:py-6 bg-ctp-surface0/30 border-t border-ctp-surface1/20">
     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 text-sm sm:text-base md:text-lg text-ctp-subtext0">
@@ -132,7 +131,6 @@ const MobileDrawerContent: React.FC<{ selectedExp: number }> = ({
   </DrawerContent>
 );
 
-// Desktop Content Component
 const DesktopContent: React.FC<{ selectedExp: number }> = ({ selectedExp }) => (
   <Card className="overflow-hidden border-none bg-ctp-surface0/10 backdrop-blur-sm">
     <CardContent className="p-0">
@@ -193,22 +191,11 @@ const ExperienceDetails: React.FC<ExperienceDetailsProps> = ({
                       </Reveal>
                     </CardContent>
 
-                    {/* Mobile Click Indicator */}
-                    <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex items-center gap-2 px-4 py-2 bg-ctp-blue/10 backdrop-blur-sm rounded-full border border-ctp-blue/20 text-ctp-blue text-sm transition-all duration-300 group-hover:bg-ctp-blue/20 group-hover:scale-105 shadow-lg">
+                    <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex items-center gap-2 px-4 py-2 bg-transparent backdrop-blur-sm rounded-full border-none text-ctp-overlay0 shadow-lg text-xs">
                       <FaHandPointer className="w-3 h-3 animate-pulse" />
                       <span className="font-medium whitespace-nowrap">
                         Tap for details
                       </span>
-                      <motion.div
-                        animate={{ y: [0, 2, 0] }}
-                        transition={{
-                          duration: 1.5,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }}
-                      >
-                        <FaChevronDown className="w-3 h-3" />
-                      </motion.div>
                     </div>
                   </Card>
                 </div>
