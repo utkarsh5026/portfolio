@@ -29,9 +29,9 @@ const ProjectDrawerHeader: React.FC<ProjectDrawerHeaderProps> = ({
           {selectedProject.tagline && (
             <div className="mt-2 sm:mt-3 text-center sm:text-left">
               <span
-                className={`inline-block px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium tracking-wide uppercase  bg-ctp-${theme.main}/10 text-ctp-${theme.main} border-none shadow-sm`}
+                className={`inline-block px-3 py-1.5 rounded-lg text-xs sm:text-sm font-extrabold tracking-wider uppercase italic bg-ctp-${theme.main}/10 text-ctp-${theme.main} border-none backdrop-blur-sm shadow-sm`}
               >
-                {selectedProject.tagline}
+                "{selectedProject.tagline}"
               </span>
             </div>
           )}

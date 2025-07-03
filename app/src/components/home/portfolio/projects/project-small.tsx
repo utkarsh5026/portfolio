@@ -83,6 +83,23 @@ const ProjectSmall: React.FC<ProjectSmallProps> = ({
               >
                 {project.name}
               </h4>
+
+              {/* Tagline */}
+              {project.tagline && (
+                <motion.p
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1, duration: 0.4 }}
+                  className={cn(
+                    "mt-1 text-sm font-medium italic transition-all duration-300",
+                    isHovered
+                      ? `text-ctp-${accentColor}/80`
+                      : "text-ctp-subtext1"
+                  )}
+                >
+                  "{project.tagline}"
+                </motion.p>
+              )}
             </div>
 
             {project.tags && project.tags.length > 0 && (
