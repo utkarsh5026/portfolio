@@ -1,5 +1,5 @@
 import { skillCategories } from "../data";
-import { motion } from "framer-motion";
+import Reveal from "@/components/animations/reveal/Reveal";
 
 interface ExpandedSkillsContentProps {
   category: (typeof skillCategories)[number];
@@ -32,9 +32,7 @@ const ExpandedSkillsContent: React.FC<ExpandedSkillsContentProps> = ({
             </div>
           </div>
 
-          {/* Usage Examples */}
           <div className="space-y-4">
-            {/* Section Header */}
             <div className="flex items-center gap-3 mb-4">
               <div className="h-1 w-8 bg-gradient-to-r from-ctp-blue to-ctp-mauve rounded-full"></div>
               <h4 className="text-ctp-text text-base sm:text-lg font-bold tracking-wide">
@@ -46,11 +44,12 @@ const ExpandedSkillsContent: React.FC<ExpandedSkillsContentProps> = ({
             {/* Usage List */}
             <div className="space-y-3 sm:space-y-4">
               {skill.usage.map((use, index) => (
-                <motion.div
+                <Reveal
                   key={use}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.15, duration: 0.4 }}
+                  effect={index < 2 ? "slide-in" : "typewriter"}
+                  direction={index % 2 === 0 ? "left" : "right"}
+                  duration={0.4}
+                  delay={index * 0.15}
                   className="group relative"
                 >
                   <div className="flex items-start gap-4 p-3 sm:p-4 rounded-xl bg-transparent hover:bg-ctp-surface1/20 transition-all duration-300 border-l-2 border-ctp-green/30 hover:border-ctp-green/60">
@@ -60,7 +59,7 @@ const ExpandedSkillsContent: React.FC<ExpandedSkillsContentProps> = ({
                       </p>
                     </div>
                   </div>
-                </motion.div>
+                </Reveal>
               ))}
             </div>
           </div>
