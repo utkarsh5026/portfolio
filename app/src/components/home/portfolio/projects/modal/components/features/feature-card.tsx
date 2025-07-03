@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import type { MajorFeature } from "@/types";
 import { type ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
@@ -10,6 +9,7 @@ import {
 } from "@/components/ui/collapsible";
 import SubFeaturesList from "./sub-features-list";
 import { cn } from "@/lib/utils";
+import Reveal from "@/components/animations/reveal/Reveal";
 
 interface FeatureCardProps {
   feature: MajorFeature;
@@ -27,15 +27,14 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   onToggle,
 }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
+    <Reveal
+      effect="fade-up"
+      delay={index * 0.1}
+      duration={0.5}
       className={cn(
         "group relative overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl border transition-all duration-300 border-none",
         `hover:border-ctp-${theme.main}/50 hover:bg-ctp-${theme.main}/5 hover:shadow-lg hover:shadow-ctp-${theme.main}/20 transition-all duration-300`
       )}
-      onClick={onToggle}
     >
       {/* Background Pattern - smaller on mobile */}
       <div className="absolute inset-0 opacity-30">
@@ -89,7 +88,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
           </CollapsibleContent>
         </div>
       </Collapsible>
-    </motion.div>
+    </Reveal>
   );
 };
 
