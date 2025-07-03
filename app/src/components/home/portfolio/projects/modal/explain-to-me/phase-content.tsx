@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { cn } from "@/lib/utils";
-import { type Phase, processText, type PhaseConfig } from "./config";
+import { type PhaseConfig } from "./config";
 import { motion } from "framer-motion";
 import { ProgressBar, Cursor } from "@/components/utils";
 import useMobile from "@/hooks/use-mobile";
@@ -19,7 +19,6 @@ interface PhaseContentProps {
 const PhaseContent: React.FC<PhaseContentProps> = ({
   explanations,
   activeParagraph,
-  phase,
   config,
   progress,
   displayedText,
@@ -112,18 +111,20 @@ const PhaseContent: React.FC<PhaseContentProps> = ({
 
           <div className="relative">
             <p className="text-ctp-text leading-relaxed text-sm sm:text-base relative z-10">
-              {index < activeParagraph &&
-                processText(explanations[index], phase as Phase)}
+              {index < activeParagraph && explanations[index]}
               {index === activeParagraph && (
                 <>
-                  {processText(displayedText, phase as Phase)}
+                  {displayedText}
                   {!isComplete && <Cursor color={config.colors.primary} />}
                 </>
               )}
             </p>
 
             {index === activeParagraph && (
-              <ProgressBar color={config.colors.primary} progress={progress} />
+              <ProgressBar
+                color={config.colors.secondary.split("ctp-")[1]}
+                progress={progress}
+              />
             )}
           </div>
         </div>

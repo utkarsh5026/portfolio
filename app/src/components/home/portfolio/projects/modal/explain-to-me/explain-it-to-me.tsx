@@ -39,16 +39,12 @@ const ExplainItToMe: React.FC<ExplainItToMeProps> = ({ project }) => {
     },
   });
 
+  console.log(displayedText, progress);
+
   const paragraphRefs = useRef<HTMLDivElement[]>([]);
 
   // Handle scroll detection to disable auto-scroll when user scrolls manually
   const handleScroll = useCallback(() => {
-    // Ignore programmatic scrolling
-    if (isScrollingProgrammatically.current) {
-      return;
-    }
-
-    // Debounce scroll detection
     if (scrollTimeoutRef.current) {
       clearTimeout(scrollTimeoutRef.current);
     }
@@ -64,7 +60,6 @@ const ExplainItToMe: React.FC<ExplainItToMeProps> = ({ project }) => {
       return;
     }
 
-    // Mark that we're scrolling programmatically
     isScrollingProgrammatically.current = true;
 
     paragraphRefs.current[activeParagraph]?.scrollIntoView({
@@ -72,7 +67,6 @@ const ExplainItToMe: React.FC<ExplainItToMeProps> = ({ project }) => {
       block: "center",
     });
 
-    // Reset the flag after scroll animation completes
     const resetTimeout = setTimeout(() => {
       isScrollingProgrammatically.current = false;
     }, 1000); // Account for smooth scroll duration
