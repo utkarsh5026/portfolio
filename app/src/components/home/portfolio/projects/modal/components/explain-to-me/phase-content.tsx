@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ProgressBar, Cursor } from "@/components/utils";
 import useMobile from "@/hooks/use-mobile";
 import ProgressIndicator from "./progress-indicator";
+import AnimatedIcon from "./animated-icon";
 
 interface PhaseContentProps {
   explanations: string[];
@@ -81,9 +82,8 @@ const PhaseContent: React.FC<PhaseContentProps> = ({
         <div
           className={cn(
             "relative p-6 sm:p-8 rounded-2xl transition-all duration-500 overflow-hidden",
-            "border-2 border-ctp-surface1",
-            classes.content,
-            classes.glow
+            "border-none",
+            classes.content
           )}
         >
           <ContentHeader
@@ -212,7 +212,11 @@ const ContentHeader: React.FC<ContentHeaderProps> = ({
               `border border-${config.colors.primary}/30`
             )}
           >
-            <IconComponent className="w-4 h-4" />
+            <AnimatedIcon
+              IconComponent={IconComponent}
+              className={`w-4 h-4 text-${config.colors.primary} drop-shadow-sm`}
+              isActive={true}
+            />
           </div>
         )}
         <h5

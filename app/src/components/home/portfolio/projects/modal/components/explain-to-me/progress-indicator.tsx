@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import type { PhaseConfig } from "./config";
+import AnimatedIcon from "./animated-icon";
 
 interface ProgressIndicatorProps {
   index: number;
@@ -27,7 +28,6 @@ const ProgressIndicator = ({
         )}
         animate={{
           scale: index === activeParagraph ? [1, 1.05, 1] : 1,
-          rotate: index === activeParagraph ? [0, 5, -5, 0] : 0,
         }}
         transition={{
           duration: index === activeParagraph ? 2 : 0.3,
@@ -51,21 +51,11 @@ const ProgressIndicator = ({
           />
         )}
 
-        <div className="relative z-10">
-          <motion.div
-            animate={{
-              rotateY: [0, 360],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              repeatDelay: 2,
-            }}
-          >
-            <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 drop-shadow-lg" />
-          </motion.div>
-        </div>
+        <AnimatedIcon
+          IconComponent={IconComponent}
+          className="w-6 h-6 sm:w-7 sm:h-7 drop-shadow-lg"
+          isActive={index === activeParagraph}
+        />
       </motion.div>
     </div>
   );

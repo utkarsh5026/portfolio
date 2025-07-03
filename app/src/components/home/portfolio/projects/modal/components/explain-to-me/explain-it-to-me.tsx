@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import useTypewriting from "@/components/type-write/hooks/use-type-write";
 import { type Phase, phaseConfig } from "./config";
@@ -15,11 +15,8 @@ const phases: Phase[] = ["problem", "execution", "future"];
 
 const ExplainItToMe: React.FC<ExplainItToMeProps> = ({ project }) => {
   const [activeParagraph, setActiveParagraph] = useState(0);
-  const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
   const contentRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const isScrollingProgrammatically = useRef(false);
-  const scrollTimeoutRef = useRef<NodeJS.Timeout>();
   const { isMobile } = useMobile();
   const { explain } = project;
 
@@ -43,58 +40,11 @@ const ExplainItToMe: React.FC<ExplainItToMeProps> = ({ project }) => {
 
   const paragraphRefs = useRef<HTMLDivElement[]>([]);
 
-  // Handle scroll detection to disable auto-scroll when user scrolls manually
-  const handleScroll = useCallback(() => {
-    if (scrollTimeoutRef.current) {
-      clearTimeout(scrollTimeoutRef.current);
-    }
-
-    scrollTimeoutRef.current = setTimeout(() => {
-      setAutoScrollEnabled(false);
-    }, 150); // Small delay to avoid triggering on programmatic scroll
-  }, []);
-
-  // Auto-scroll effect - only runs when auto-scroll is enabled
-  useEffect(() => {
-    if (!autoScrollEnabled || !paragraphRefs.current[activeParagraph]) {
-      return;
-    }
-
-    isScrollingProgrammatically.current = true;
-
-    paragraphRefs.current[activeParagraph]?.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-    });
-
-    const resetTimeout = setTimeout(() => {
-      isScrollingProgrammatically.current = false;
-    }, 1000); // Account for smooth scroll duration
-
-    return () => clearTimeout(resetTimeout);
-  }, [activeParagraph, displayedText, autoScrollEnabled]);
-
-  // Set up scroll event listener
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    container.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      container.removeEventListener("scroll", handleScroll);
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-    };
-  }, [handleScroll]);
-
   useEffect(() => {
     if (containerRef.current) start();
     return () => {
       reset();
       setActiveParagraph(0);
-      setAutoScrollEnabled(true); // Reset auto-scroll when component unmounts
     };
   }, [start, reset]);
 
@@ -103,18 +53,6 @@ const ExplainItToMe: React.FC<ExplainItToMeProps> = ({ project }) => {
       className="mt-6 w-full overflow-auto flex flex-col gap-6 h-full"
       ref={containerRef}
     >
-      {/* Optional: Add a button to re-enable auto-scroll */}
-      {/* {!autoScrollEnabled && (
-        <motion.button
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          onClick={() => setAutoScrollEnabled(true)}
-          className="mb-2 px-3 py-1 text-xs bg-ctp-blue text-ctp-base rounded-md hover:bg-ctp-sky transition-colors self-center"
-        >
-          Re-enable auto-scroll
-        </motion.button>
-      )} */}
-
       <div
         ref={contentRef}
         className={cn(
