@@ -3,7 +3,7 @@ import type { ProjectTheme } from "@/components/home/portfolio/projects/context/
 import type { Project } from "@/types";
 import { Brain, Lightbulb, X } from "lucide-react";
 import { useState } from "react";
-import ExplainItToMe from "../../explain-to-me/ExplainItToMe";
+import ExplainItToMe from "../../explain-to-me/explain-it-to-me";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {

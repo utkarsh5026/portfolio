@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { type Phase, processText, type PhaseConfig } from "./config";
 import { motion } from "framer-motion";
 import { ProgressBar, Cursor } from "@/components/utils";
+import useMobile from "@/hooks/use-mobile";
 
 interface PhaseContentProps {
   explanations: string[];
@@ -25,6 +26,7 @@ const PhaseContent: React.FC<PhaseContentProps> = ({
   isComplete,
   index,
 }) => {
+  const { isMobile } = useMobile();
   const IconComponent = config.icon;
 
   const classes = useMemo(() => {
@@ -52,38 +54,42 @@ const PhaseContent: React.FC<PhaseContentProps> = ({
   return (
     <div className="flex gap-3 sm:gap-4">
       {/* Enhanced step indicator with phase icons */}
-      <div className="flex-shrink-0 mt-1">
-        <div
-          className={cn(
-            "relative flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl",
-            classes.stepIndicator,
-            "transition-all duration-500"
-          )}
-        >
-          {index === activeParagraph ? (
-            <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
-          ) : (
-            <span className="text-sm sm:text-base">{index + 1}</span>
-          )}
+      {!isMobile && (
+        <div className="flex-shrink-0 mt-1">
+          <div
+            className={cn(
+              "relative flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl",
+              classes.stepIndicator,
+              "transition-all duration-500"
+            )}
+          >
+            {index === activeParagraph ? (
+              <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
+            ) : (
+              <span className="text-sm sm:text-base text-ctp-text font-bold">
+                {index + 1}
+              </span>
+            )}
 
-          {/* Enhanced connection line */}
-          {index < explanations.length - 1 && (
-            <div className="absolute top-full h-6 sm:h-8 w-1 left-1/2 -translate-x-1/2">
-              <motion.div
-                className={`h-full w-full bg-gradient-to-b from-${config.colors.primary} to-${config.colors.secondary}`}
-                initial={{ scaleY: 0, opacity: 0 }}
-                animate={{
-                  scaleY: index < activeParagraph ? 1 : 0,
-                  opacity: index < activeParagraph ? 0.6 : 0,
-                }}
-                transition={{ duration: 0.5 }}
-                style={{ transformOrigin: "top" }}
-              />
-              <div className="absolute inset-0 bg-ctp-surface0/30" />
-            </div>
-          )}
+            {/* Enhanced connection line */}
+            {index < explanations.length - 1 && (
+              <div className="absolute top-full h-6 sm:h-8 w-1 left-1/2 -translate-x-1/2">
+                <motion.div
+                  className={`h-full w-full bg-gradient-to-b from-${config.colors.primary} to-${config.colors.secondary}`}
+                  initial={{ scaleY: 0, opacity: 0 }}
+                  animate={{
+                    scaleY: index < activeParagraph ? 1 : 0,
+                    opacity: index < activeParagraph ? 0.6 : 0,
+                  }}
+                  transition={{ duration: 0.5 }}
+                  style={{ transformOrigin: "top" }}
+                />
+                <div className="absolute inset-0 bg-ctp-surface0/30" />
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Enhanced content card */}
       <div className="flex-grow min-w-0">
@@ -93,12 +99,10 @@ const PhaseContent: React.FC<PhaseContentProps> = ({
             classes.content
           )}
         >
-          {/* Phase header for better context */}
           <div className="mb-3">
             <h5
               className={cn(
-                "text-sm sm:text-base font-semibold",
-                classes.phaseHeader,
+                "text-sm sm:text-base font-bold text-ctp-text",
                 "transition-colors duration-300"
               )}
             >
