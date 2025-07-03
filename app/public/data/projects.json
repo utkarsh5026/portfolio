@@ -2231,7 +2231,7 @@
     }
   },
   {
-    "name": "Enigma Language Explorer",
+    "name": "Enigma",
     "description": "An interactive educational platform for learning programming language concepts through visual exploration of lexical analysis, abstract syntax trees, and execution flow. Built with React and TypeScript, this IDE-inspired application demonstrates the inner workings of language interpretation by visualizing source code tokenization, parsing, and evaluation in real-time.",
     "tagline": "🔍 Interpreter built from scratch",
     "githubLink": "https://github.com/utkarsh5026/enigma",
