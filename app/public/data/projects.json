@@ -3,6 +3,7 @@
     "name": "Automotive Training & Workforce Analytics DSS",
     "description": "A comprehensive analytics platform developed for Skoda Auto, Volkswagen, and Audi that transforms workforce development through data-driven insights. Processing over 200,000 training records, this system delivers actionable analytics on training effectiveness, employee development, and workforce trends through intuitive interactive dashboards, reducing analysis time from days to minutes.",
     "githubLink": "private-repository",
+    "tagline": "A data-driven approach to workforce development 📊",
     "explain": [
       "For this project, I worked with Skoda, VW, and Audi to help them track and analyze their training programs. They had over 200,000 training records but no effective way to identify patterns or make data-driven decisions about workforce development. I built a system that processes this data and presents actionable insights through intuitive dashboards.",
       "The platform dramatically transformed their workflow - managers previously spent days manually analyzing Excel files to evaluate training effectiveness, but with this system they can instantly access visualizations showing trainer performance, employee retention metrics, and compare results across different brands, reducing analysis time from days to minutes.",
@@ -206,6 +207,7 @@
     "description": "A sophisticated document reading platform with analytics, progress tracking, and smart insights. This React and TypeScript application transforms static documentation into an engaging, interactive experience with reading history visualization, category breakdown analysis, time-of-day preferences, and AI-powered reading recommendations.",
     "githubLink": "https://github.com/utkarsh5026/FirstPrinciples",
     "liveLink": "https://first-principles-black.vercel.app/",
+    "tagline": "A bookworm's best friend 💖",
     "technologies": [
       "react",
       "typescript",
@@ -432,7 +434,7 @@
   {
     "name": "Modern React Portfolio",
     "description": "A sophisticated, VS Code-themed portfolio website built with React, TypeScript, and Tailwind CSS, featuring interactive components, smooth animations, and a guided tour experience.",
-    "tagline": "My Personal Portfolio",
+    "tagline": "Looking at it right now 😎",
     "githubLink": "https://github.com/utkarsh5026/Portfolio",
     "liveLink": "https://utkarsh5026.github.io/",
     "technologies": [
@@ -656,6 +658,7 @@
     "githubLink": "https://github.com/utkarsh5026/mayonation",
     "liveLink": "https://utkarsh5026.github.io/mayosite/",
     "technologies": ["typescript", "css", "svg"],
+    "tagline": "A performance-focused web animation library 🚀",
     "features": [
       "Fluent chainable API for simple animations",
       "Complex timeline-based animations",
@@ -835,6 +838,7 @@
     "name": "GEP: AI-Powered Code Search",
     "description": "An intelligent code search and analysis tool that combines semantic understanding with traditional search capabilities. GEP uses vector embeddings and large language models to understand code at a conceptual level, enabling developers to search their codebase using natural language queries and receive contextually relevant results with detailed explanations.",
     "githubLink": "https://github.com/utkarsh5026/gep",
+    "tagline": "🔍 AI understands your codebase completely",
     "technologies": [
       "python",
       "fastapi",
@@ -1046,6 +1050,7 @@
     "name": "Cope",
     "description": "A modern implementation of grep functionality, developed as part of the CodeCrafters challenge. This tool combines traditional text searching capabilities with advanced regular expression support, demonstrating how classical Unix utilities can be enhanced through modern language features and systematic testing approaches.",
     "githubLink": "https://github.com/utkarsh5026/cope",
+    "tagline": "A modern implementation of grep 🔍",
     "technologies": ["golang", "cli"],
     "features": [
       "Pattern matching using regular expressions",
@@ -1213,6 +1218,7 @@
   {
     "name": "Current",
     "description": "A full-featured BitTorrent client implemented from the ground up in Go, showcasing practical applications of network programming and distributed systems principles. This project encompasses the complete BitTorrent protocol stack, featuring concurrent downloads, peer management, and efficient file handling capabilities.",
+    "tagline": "📡 BitTorrent protocol built from scratch",
     "githubLink": "https://github.com/utkarsh5026/current",
     "technologies": ["golang", "bittorrent"],
     "features": [
@@ -1393,6 +1399,7 @@
     "description": "A modern OAuth 2.0 authentication library for Python applications that prioritizes security and developer experience. This framework-agnostic solution implements comprehensive authentication flows with built-in security best practices, supporting multiple providers while maintaining a clean, intuitive API across Flask, Django, and other frameworks.",
     "githubLink": "https://github.com/utkarsh5026/pauth",
     "technologies": ["python", "flask", "django", "rest"],
+    "tagline": "🔒 OAuth 2.0 authentication made easy",
 
      "projectFeatures": [
       {
@@ -1566,6 +1573,7 @@
   {
   "name": "MDHD",
   "description": "A revolutionary markdown reading platform that transforms overwhelming documents into focused, digestible sections. Built with React and TypeScript, MDHD eliminates information overload by intelligently parsing markdown content and presenting it as navigable cards, complete with progress tracking, 25+ themes, syntax highlighting, and mobile-optimized navigation for an enhanced reading experience.",
+  "tagline": "🚀 Reading experience designed for focus",
   "githubLink": "https://github.com/utkarsh5026/mdhd",
   "liveLink": "https://mdhd.vercel.app/",
   "technologies": [
@@ -1864,6 +1872,7 @@
     "name": "Reducer",
     "description": "A streamlined state management library that reimagines Redux core principles with TypeScript. This solution provides robust state management capabilities while maintaining simplicity, offering features such as state slices and middleware support. Designed to help developers understand immutable state management patterns through practical implementation.",
     "githubLink": "https://github.com/utkarsh5026/ReduceMe",
+    "tagline": "⚡ State management without the boilerplate",
     "technologies": ["typescript", "node"],
     "tags": ["Redux", "TypeScript", "NodeJS", "State Management"],
         "projectFeatures": [
@@ -2037,9 +2046,10 @@
     }
   },
   {
-    "name": "Microservices Orchestration Platform",
+    "name": "Orchestra",
     "description": "A lightweight container orchestration system built from first principles, implementing core Kubernetes concepts from the ground up. This educational platform demonstrates fundamental distributed systems concepts including scheduling, service discovery, and fault tolerance, providing hands-on insight into container orchestration mechanics.",
-    "githubLink": "https://github.com/yourusername/micro-orchestrator",
+    "githubLink": "https://github.com/utkarsh5026/orchestra",
+    "tagline": "🚀 Kubernetes concepts built from scratch",
     "technologies": ["golang", "kubernetes", "docker"],
     "tags": ["Kubernetes", "Docker", "Go", "Distributed Systems"],
     "explain": [
@@ -2223,6 +2233,7 @@
   {
     "name": "Enigma Language Explorer",
     "description": "An interactive educational platform for learning programming language concepts through visual exploration of lexical analysis, abstract syntax trees, and execution flow. Built with React and TypeScript, this IDE-inspired application demonstrates the inner workings of language interpretation by visualizing source code tokenization, parsing, and evaluation in real-time.",
+    "tagline": "🔍 Interpreter built from scratch",
     "githubLink": "https://github.com/utkarsh5026/enigma",
     "liveLink": "https://enigma-explorer.vercel.app/",
     "technologies": [
@@ -2426,7 +2437,8 @@
   {
     "name": "ProgChain - AI-Powered Programming Education",
     "description": "A full-stack AI-powered learning platform that guides users through personalized programming journeys. Built with React, TypeScript, and Python, this application leverages large language models to create interactive learning experiences, offering customized learning paths, real-time code analysis, and smart curriculum generation. The system adapts to each user's skill level and learning style, providing a truly personalized programming education experience.",
-    "githubLink": "https://github.com/yourusername/codementor",
+    "tagline": "🎯 AI creates your personalized learning",
+    "githubLink": "https://github.com/utkarsh5026/ProgChain",
     "liveLink": "https://codementor-ai.vercel.app",
     "technologies": [
       "react",
@@ -2618,7 +2630,7 @@
     "name": "Smash LeetCode",
     "description": "A comprehensive full-stack platform for mastering coding interviews, featuring AI-powered explanations, interactive visualizations, and personalized learning paths. Built with React, TypeScript, and Python, this application helps developers practice algorithmic problem-solving with real-time feedback, animated algorithm visualizations, and detailed code analysis.",
     "githubLink": "https://github.com/utkarsh5026/Smash-LeetCode",
-    "liveLink": "https://smash-leetcode.vercel.app/",
+    "tagline": "🎯 AI coach for coding interviews",
     "technologies": [
       "react",
       "typescript",
@@ -2814,8 +2826,8 @@
   {
     "name": "Class Connect",
     "description": "A comprehensive e-learning platform built with React, TypeScript, and Go, enabling seamless course management, interactive learning experiences, and robust educational content delivery. This full-stack application helps educators create engaging courses with features like assignment management, content organization, real-time discussions, and performance analytics, all within an intuitive and responsive interface.",
-    "githubLink": "https://github.com/yourUsername/class-connect",
-    "liveLink": "https://class-connect.vercel.app/",
+    "githubLink": "https://github.com/utkarsh5026/class-connect",
+    "tagline": "🎓 A platform for seamless e-learning",
     "technologies": [
       "react",
       "typescript",
@@ -3009,6 +3021,7 @@
     "name": "JustDoIt",
     "description": "A ground-up implementation of Git version control system in Go, focusing on the core internals of how Git stores and manages data. This project rebuilds Git's object model, repository management, and command structure to provide insights into distributed version control systems while leveraging Go's performance characteristics and standard library.",
     "githubLink": "https://github.com/utkarsh5026/justdoit",
+    "tagline": "📂 Git internals built from scratch",
     "technologies": ["golang", "cobra", "git"],
     "projectFeatures": [
       {
@@ -3181,8 +3194,7 @@
   {
     "name": "Genshin Companion",
     "description": "A comprehensive full-stack web application for Genshin Impact players, offering character information, talent book scheduling, weapon material tracking, tier list creation, and an interactive guessing game. Built with React, TypeScript, and a Node.js/GraphQL backend, this platform helps players optimize their farming routines, explore character details, and engage with the game's content through an intuitive and responsive interface.",
-    "githubLink": "https://github.com/yourusername/genshin-companion",
-    "liveLink": "https://genshin-companion.vercel.app",
+    "tagline": "🎮 A companion for Genshin Impact players",
     "technologies": [
       "react",
       "typescript",
@@ -3385,8 +3397,8 @@
   {
     "name": "Studio",
     "description": "An advanced image analysis toolkit that combines React and Rust (via WebAssembly) to provide comprehensive visual diagnostics for images. This application features multiple analysis modules including color distribution, luminance analysis, compression optimization, and performance metrics - all running directly in the browser without server processing. The hybrid architecture delivers near-native performance for complex image processing tasks while maintaining the responsive UI experience of a modern web application.",
+    "tagline": "⚡ Image analysis with Rust performance",
     "githubLink": "https://github.com/utkarsh5026/studio",
-    "liveLink": "https://utkarsh5026.github.io/studio/",
     "technologies": [
       "react",
       "typescript",
@@ -3576,6 +3588,7 @@
     "name": "TypeScript HTTP Server",
     "description": "A lightweight, modular HTTP server implementation built from scratch using TypeScript and Node.js. This test-driven project features a robust, type-safe foundation for handling HTTP requests and responses with an Express-inspired API, including advanced features like cookie management, caching, content encoding, and a flexible middleware-based routing system.",
     "githubLink": "https://github.com/utkarsh5026/tstp",
+    "tagline": "🚀 HTTP server built from scratch",
     "technologies": ["typescript", "node", "jest", "http"],
     "projectFeatures": [
       {
