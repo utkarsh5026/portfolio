@@ -5,7 +5,7 @@ import { Sparkles, Code, Globe, Folder } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ProjectDrawer from "./modal/project-drawer";
-import FeaturedProject from "./featured/FeaturedProject";
+import FeaturedProject from "./featured/featured-project";
 import ProjectSmall from "./project-small";
 import { ProjectThemeProvider } from "./context/ProjectThemeProvider";
 import { useProject } from "@/hooks/use-project";

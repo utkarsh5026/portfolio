@@ -12,19 +12,6 @@ interface ProjectContentProps {
   handleProjectSelect: (project: Project) => void;
 }
 
-/**
- * ProjectContent component displays the content of a featured project.
- * It shows either an overview or a list of features based on the active tab.
- * Additionally, it provides buttons to explore the project, view the source code,
- * and access a live demo if available.
- *
- * @param {Object} props - The component props.
- * @param {"overview" | "features"} props.activeTab - The currently active tab.
- * @param {Project} props.featuredProject - The project object details.
- * @param {function} props.handleProjectSelect - Function to handle project selection.
- *
- * @returns {JSX.Element} The rendered component with reveal animations.
- */
 const ProjectContent: React.FC<ProjectContentProps> = ({
   activeTab,
   featuredProject,

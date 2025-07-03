@@ -1,32 +1,19 @@
-import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa";
 import React, { memo } from "react";
+import Reveal from "@/components/animations/reveal/Reveal";
 
 interface CertificateProps {
   name: string;
 }
 
-/**
- * Certificate component displays a certificate image with a decorative design.
- * It uses Framer Motion for animations and is memoized for performance optimization.
- *
- * @component
- * @param {CertificateProps} props - The properties for the Certificate component.
- * @param {string} props.name - The name associated with the certificate, used for the alt text of the image.
- *
- * @returns {JSX.Element} A styled certificate component with animations.
- *
- * @example
- * <Certificate name="John Doe" />
- */
 const Certificate: React.FC<CertificateProps> = memo(({ name }) => {
   return (
     <div className="xl:w-1/2">
-      <motion.div
+      <Reveal
+        effect="zoom-in"
+        duration={0.7}
+        delay={0.4}
         className="relative mx-auto max-w-md"
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.7, delay: 0.4 }}
       >
         <div className="absolute -inset-0.5 bg-gradient-to-r from-ctp-peach to-ctp-blue opacity-50 rounded-xl blur-sm" />
         <div className="absolute -inset-1 bg-ctp-crust rounded-xl" />
@@ -50,7 +37,7 @@ const Certificate: React.FC<CertificateProps> = memo(({ name }) => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </Reveal>
     </div>
   );
 });

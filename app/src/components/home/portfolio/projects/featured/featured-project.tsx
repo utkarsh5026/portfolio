@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import type { Project } from "@/types";
 import { FaStar } from "react-icons/fa";
-import ProjectContent from "./ProjectContent";
-import Certificate from "./Certificate";
-import FeaturedHeader from "./FeaturedHeader";
+import ProjectContent from "./project-content";
+import Certificate from "./project-certificate";
+import FeaturedHeader from "./featured-project-header";
 import Reveal from "@/components/animations/reveal/Reveal";
 import useMobile from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
@@ -14,19 +14,6 @@ interface FeaturedProjectProps {
 }
 type Tab = "overview" | "features";
 
-/**
- * FeaturedProject component displays the details of a featured project.
- * It includes an animated header, project content, and a certificate.
- * The component allows users to toggle the visibility of the project details
- * and switch between different tabs (Overview and Key Features).
- *
- * @component
- * @param {FeaturedProjectProps} props - The properties for the FeaturedProject component.
- * @param {Project} props.featuredProject - The project object containing details of the featured project.
- * @param {function} props.handleProjectSelect - Function to handle the selection of the project.
- *
- * @returns {JSX.Element} A styled component that showcases the featured project with animations.
- */
 const FeaturedProject: React.FC<FeaturedProjectProps> = ({
   featuredProject,
   handleProjectSelect,
@@ -105,11 +92,6 @@ interface TabNavigationProps {
   setActiveTab: (tab: Tab) => void;
 }
 
-/**
- * TabNavigation component allows users to switch between different tabs
- * in the FeaturedProject section. It provides buttons for "Overview" and
- * "Key Features", highlighting the active tab for better user experience.
- */
 const TabNavigation: React.FC<TabNavigationProps> = ({
   activeTab,
   setActiveTab,
