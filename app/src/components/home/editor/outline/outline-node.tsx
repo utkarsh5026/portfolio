@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { useOutline } from "./context/outlineContext";
+import { useOutline } from "./context/outline-context";
 
 interface OutlineNodeProps {
   // Outline item properties

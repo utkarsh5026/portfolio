@@ -4,7 +4,7 @@ import { skillCategories } from "./data";
 import SkillCard from "./skill-card/skill-card";
 import SkillsJourney from "./skills-journey/skills-journey";
 import Section from "@/components/section/portfolio-section";
-import OutlineNode from "@/components/home/editor/outline/OutlineNode";
+import { OutlineNode } from "@/components/home/editor/outline";
 
 const SkillsSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

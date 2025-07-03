@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from "react";
 import Section from "@/components/section/portfolio-section";
-import OutlineNode from "@/components/home/editor/outline/OutlineNode";
+import { OutlineNode } from "@/components/home/editor/outline";
 import { Sparkles, Code, Globe, Folder } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";

@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useEffect } from "react";
-import { useOutline, type OutlineItem } from "./context/outlineContext";
-import OutlineItemComponent from "./OutlineItem";
+import { useOutline, type OutlineItem } from "./context/outline-context";
+import OutlineItemComponent from "./outline-item";
 /**
  * OutlinePanel Component
  *

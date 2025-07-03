@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useCallback } from "react";
-import { OutlineContext, OutlineItem } from "./outlineContext";
+import { OutlineContext, OutlineItem } from "./outline-context";
 
 export const OutlineProvider: React.FC<{ children: React.ReactNode }> = ({
   children,

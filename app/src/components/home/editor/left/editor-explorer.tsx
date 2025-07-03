@@ -4,7 +4,7 @@ import { FaCode } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
 import { useEditorContext, SectionType } from "../context/explorer-context";
 import Logo from "@/components/home/appbar/Logo";
-import OutlinePanel from "../outline/OutlinePanel";
+import OutlinePanel from "../outline/outline-panel";
 
 const Explorer: React.FC = () => {
   const { activeSection, setActiveSection, files, mobileMenuOpen } =

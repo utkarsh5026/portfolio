@@ -1,7 +1,7 @@
 import React from "react";
 import { experiences } from "./experienceDump";
 import { motion } from "framer-motion";
-import OutlineNode from "../../editor/outline/OutlineNode";
+import { OutlineNode } from "@/components/home/editor/outline";
 import Reveal from "@/components/animations/reveal/Reveal";
 import {
   FaCode,

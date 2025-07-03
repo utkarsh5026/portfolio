@@ -8,7 +8,7 @@ import {
   FaRocket,
   FaHandshake,
 } from "react-icons/fa";
-import OutlineNode from "@/components/home/editor/outline/OutlineNode";
+import { OutlineNode } from "@/components/home/editor/outline";
 
 const socialLinks = [
   {

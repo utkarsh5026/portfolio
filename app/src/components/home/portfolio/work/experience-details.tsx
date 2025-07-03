@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { experiences } from "./experienceDump";
 import { motion, AnimatePresence } from "framer-motion";
 import TechBadge from "@/components/base/TechBadge";
-import OutlineNode from "../../editor/outline/OutlineNode";
+import { OutlineNode } from "@/components/home/editor/outline";
 import Reveal from "@/components/animations/reveal/Reveal";
 import { FaCode, FaChevronDown, FaHandPointer } from "react-icons/fa";
 import { Card, CardContent } from "@/components/ui/card";

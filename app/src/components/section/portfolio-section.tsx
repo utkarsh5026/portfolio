@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import OutlineNode from "@/components/home/editor/outline/OutlineNode";
+import { OutlineNode } from "@/components/home/editor/outline";
 import { getIcon } from "./sec-utils";
 import useMobile from "@/hooks/use-mobile";
 import { Book, LucideIcon } from "lucide-react";

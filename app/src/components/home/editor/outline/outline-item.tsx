@@ -1,5 +1,5 @@
 import React from "react";
-import type { OutlineItem } from "./context/outlineContext";
+import type { OutlineItem } from "./context/outline-context";
 import {
   Collapsible,
   CollapsibleContent,

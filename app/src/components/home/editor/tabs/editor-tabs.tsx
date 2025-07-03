@@ -1,5 +1,5 @@
 import React, { useMemo, useEffect } from "react";
-import { useOutline } from "@/components/home/editor/outline/context/outlineContext";
+import { useOutline } from "@/components/home/editor/outline/";
 import {
   useEditorContext,
   type SectionType,
