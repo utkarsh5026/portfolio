@@ -5,7 +5,7 @@ import SideBar from "./left/side-bar";
 import StatusBar from "./StatusBar";
 import CodeContent from "./CodeContent";
 import EditorTabs from "./tabs/editor-tabs";
-import { OutlineProvider } from "./outline/context/OutlineProvider";
+import { OutlineProvider } from "./outline";
 import { useEditorContext } from "./context/explorer-context";
 import Terminal from "./terminal/Terminal";
 import useMobile from "@/hooks/use-mobile";
