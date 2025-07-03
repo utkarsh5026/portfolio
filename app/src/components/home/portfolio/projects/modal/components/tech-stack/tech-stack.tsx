@@ -83,8 +83,8 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
   }
 
   return (
-    <Reveal className="p-3 sm:p-4 lg:p-8">
-      <div className="mb-6 sm:mb-8">
+    <Reveal className="p-2 sm:p-4 lg:p-8">
+      <div className="mb-4 sm:mb-6 lg:mb-8">
         <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2">
           Technology Stack
         </h2>
@@ -97,7 +97,7 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
         {/* Mobile Layout - Stack cards with bottom navigation */}
         <div className="block lg:hidden">
           <div
-            className="relative flex items-center justify-center overflow-auto h-[600px]"
+            className="relative flex items-center justify-center overflow-hidden h-[450px] sm:h-[500px]"
             {...swipeHandlers}
           >
             {techCards.map((card, index) => {
@@ -122,15 +122,17 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
           </div>
 
           {/* Mobile Navigation Controls - Bottom layout */}
-          <NavigationControls
-            handleCard={goToCard}
-            handleNext={goToNext}
-            handlePrev={goToPrevious}
-            currentIndex={currentIndex}
-            cardTitles={techCards.map((t) => t.category)}
-            theme={theme}
-            layout="full"
-          />
+          <div className="mt-4 sm:mt-6">
+            <NavigationControls
+              handleCard={goToCard}
+              handleNext={goToNext}
+              handlePrev={goToPrevious}
+              currentIndex={currentIndex}
+              cardTitles={techCards.map((t) => t.category)}
+              theme={theme}
+              layout="full"
+            />
+          </div>
         </div>
 
         {/* Desktop Layout - Side navigation */}

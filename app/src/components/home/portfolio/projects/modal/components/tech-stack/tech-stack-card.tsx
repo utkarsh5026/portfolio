@@ -32,17 +32,17 @@ const TechStackCard: React.FC<TechStackCardProps> = ({
       )}
     >
       {/* Card Header */}
-      <div className="relative z-10 p-3 sm:p-4 lg:p-6">
-        <div className="flex items-start justify-between mb-3 sm:mb-4">
+      <div className="relative z-10 p-2.5 sm:p-4 lg:p-6">
+        <div className="flex items-start justify-between mb-2.5 sm:mb-4">
           <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
             <div
               className={cn(
-                "p-2 sm:p-2.5 lg:p-3 rounded-lg sm:rounded-xl relative overflow-hidden",
+                "p-1.5 sm:p-2.5 lg:p-3 rounded-lg sm:rounded-xl relative overflow-hidden",
                 "border border-white/10 backdrop-blur-sm"
               )}
             >
               <CategoryIcon
-                className={`w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-ctp-${theme.main} relative z-10`}
+                className={`w-3.5 h-3.5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-ctp-${theme.main} relative z-10`}
               />
               <div
                 className={cn(
@@ -54,7 +54,7 @@ const TechStackCard: React.FC<TechStackCardProps> = ({
             <div>
               <h3
                 className={cn(
-                  "text-lg sm:text-xl font-bold mb-1 bg-gradient-to-r bg-clip-text text-transparent",
+                  "text-base sm:text-xl font-bold mb-1 bg-gradient-to-r bg-clip-text text-transparent",
                   `text-ctp-${theme.main}`
                 )}
               >
@@ -65,8 +65,8 @@ const TechStackCard: React.FC<TechStackCardProps> = ({
         </div>
       </div>
 
-      <div className="relative z-10 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4 lg:pb-6 h-auto overflow-y-auto custom-scrollbar flex-1">
-        <div className="grid gap-2 sm:gap-3">
+      <div className="relative z-10 px-2.5 sm:px-4 lg:px-6 pb-2.5 sm:pb-4 lg:pb-6 h-auto overflow-y-auto custom-scrollbar flex-1">
+        <div className="grid gap-1.5 sm:gap-3">
           {card.technologies.map((tech, techIndex) => {
             const [name, description] = tech.includes(" - ")
               ? tech.split(" - ")
@@ -76,7 +76,7 @@ const TechStackCard: React.FC<TechStackCardProps> = ({
               <div
                 key={`${tech}-${techIndex}`}
                 className={cn(
-                  "group relative p-3 sm:p-4 rounded-lg sm:rounded-xl transition-all duration-300",
+                  "group relative p-2.5 sm:p-4 rounded-lg sm:rounded-xl transition-all duration-300",
                   "bg-gradient-to-br from-ctp-base to-ctp-crust",
                   "border-none backdrop-blur-sm",
                   "hover:border-white/20 hover:shadow-lg hover:shadow-black/20"

@@ -86,7 +86,7 @@ const NavigationControls: React.FC<NavigationControlsProps> = ({
 
   // Original full layout (fallback)
   return (
-    <div className="flex items-center justify-between mt-8 px-4">
+    <div className="flex items-center justify-between mt-4 sm:mt-6 lg:mt-8 px-2 sm:px-4">
       <Button
         variant="ghost"
         size="icon"
@@ -98,7 +98,7 @@ const NavigationControls: React.FC<NavigationControlsProps> = ({
       </Button>
 
       {/* Card Indicators */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1.5 sm:gap-2">
         {cardTitles.map((techCard, index) => (
           <Button
             key={techCard}
@@ -108,8 +108,8 @@ const NavigationControls: React.FC<NavigationControlsProps> = ({
             className={cn(
               "transition-all duration-200 rounded-full",
               index === currentIndex
-                ? `w-8 h-3 bg-ctp-${theme.main}`
-                : "w-3 h-3 bg-ctp-surface1 hover:bg-ctp-surface2"
+                ? `w-6 sm:w-8 h-2.5 sm:h-3 bg-ctp-${theme.main}`
+                : "w-2.5 sm:w-3 h-2.5 sm:h-3 bg-ctp-surface1 hover:bg-ctp-surface2"
             )}
           />
         ))}

@@ -19,28 +19,28 @@ const StackLayer: React.FC<StackLayerProps> = memo(
     const absOffset = Math.abs(stackOffset);
 
     // Responsive spacing and positioning
-    const translateX = isMobile ? stackOffset * 20 : stackOffset * 36;
-    const translateY = isMobile ? absOffset * 8 : absOffset * 12;
+    const translateX = isMobile ? stackOffset * 15 : stackOffset * 36;
+    const translateY = isMobile ? absOffset * 6 : absOffset * 12;
     const scale = isActive
       ? 1
       : Math.max(
-          isMobile ? 0.94 : 0.92,
-          1 - absOffset * (isMobile ? 0.03 : 0.04)
+          isMobile ? 0.95 : 0.92,
+          1 - absOffset * (isMobile ? 0.025 : 0.04)
         );
     const zIndex = totalCards - absOffset;
 
-    const rotate = isActive ? 0 : stackOffset * (isMobile ? 2 : 3.5);
+    const rotate = isActive ? 0 : stackOffset * (isMobile ? 1.5 : 3.5);
 
-    // Responsive dimensions
-    const cardWidth = isMobile ? "300px" : "420px";
-    const cardHeight = isMobile ? "400px" : "480px";
+    // Responsive dimensions - smaller for mobile
+    const cardWidth = isMobile ? "280px" : "420px";
+    const cardHeight = isMobile ? "360px" : "480px";
 
     return (
       <motion.div
         className="absolute cursor-pointer select-none"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{
-          opacity: absOffset > (isMobile ? 3 : 4) ? 0 : 1,
+          opacity: absOffset > (isMobile ? 2 : 4) ? 0 : 1,
           scale,
           x: translateX,
           y: translateY,
@@ -50,8 +50,8 @@ const StackLayer: React.FC<StackLayerProps> = memo(
         exit={{ opacity: 0, scale: 0.9 }}
         transition={{
           type: "spring",
-          stiffness: isMobile ? 180 : 200,
-          damping: isMobile ? 25 : 20,
+          stiffness: isMobile ? 200 : 200,
+          damping: isMobile ? 28 : 20,
           opacity: { duration: 0.2 },
         }}
         onClick={() => !isActive && goToCard(itemIndex)}
