@@ -1,28 +1,17 @@
 import useMobile from "@/hooks/use-mobile";
-import { motion, PanInfo } from "framer-motion";
+import { motion } from "framer-motion";
 import { memo } from "react";
 
 interface StackLayerProps {
   itemIndex: number;
   activeItemIndex: number;
   totalCards: number;
-  handleDragEnd: (
-    event: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo
-  ) => void;
   goToCard: (index: number) => void;
   children: React.ReactNode;
 }
 
 const StackLayer: React.FC<StackLayerProps> = memo(
-  ({
-    itemIndex,
-    activeItemIndex,
-    totalCards,
-    handleDragEnd,
-    goToCard,
-    children,
-  }) => {
+  ({ itemIndex, activeItemIndex, totalCards, goToCard, children }) => {
     const { isMobile } = useMobile();
 
     const isActive = itemIndex === activeItemIndex;
@@ -48,7 +37,7 @@ const StackLayer: React.FC<StackLayerProps> = memo(
 
     return (
       <motion.div
-        className="absolute cursor-grab active:cursor-grabbing"
+        className="absolute cursor-pointer select-none"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{
           opacity: absOffset > (isMobile ? 3 : 4) ? 0 : 1,
@@ -65,10 +54,6 @@ const StackLayer: React.FC<StackLayerProps> = memo(
           damping: isMobile ? 25 : 20,
           opacity: { duration: 0.2 },
         }}
-        drag="x"
-        dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={isMobile ? 0.15 : 0.1}
-        onDragEnd={handleDragEnd}
         onClick={() => !isActive && goToCard(itemIndex)}
         style={{
           width: cardWidth,

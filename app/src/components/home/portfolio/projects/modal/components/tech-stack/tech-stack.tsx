@@ -1,19 +1,13 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-  useMemo,
-} from "react";
-import { PanInfo } from "framer-motion";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
+import { useSwipeable } from "react-swipeable";
 import type { Project } from "@/types";
 import type { ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
 import { Code } from "lucide-react";
 import Reveal from "@/components/animations/reveal/Reveal";
 import getRandomColors from "@/components/home/portfolio/projects/context/colors";
-import TechStackCard from "./TechStackCard";
-import NavigationControls from "./NavigationControls";
-import StackLayer from "./StackLayer";
+import TechStackCard from "./tech-stack-card";
+import NavigationControls from "./navigation-controls";
+import StackLayer from "./stack-layer";
 
 interface TechStackProps {
   project: Project;
@@ -26,8 +20,6 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
       ? Math.floor(Object.keys(project.techStack).length / 2)
       : 0;
   });
-
-  const containerRef = useRef<HTMLDivElement>(null);
 
   const techCards: TechStackCard[] = useMemo(
     () =>
@@ -57,14 +49,15 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
     setCurrentIndex(index);
   }, []);
 
-  const handleDragEnd = useCallback(
-    (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-      const THRESHOLD = 50;
-      if (info.offset.x > THRESHOLD) goToPrevious();
-      else if (info.offset.x < -THRESHOLD) goToNext();
-    },
-    [goToNext, goToPrevious]
-  );
+  // Replace handleDragEnd with swipe handlers
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: goToNext,
+    onSwipedRight: goToPrevious,
+    trackMouse: true, // Allow mouse swipe on desktop
+    trackTouch: true, // Allow touch swipe on mobile
+    preventScrollOnSwipe: true,
+    delta: 50, // Minimum swipe distance threshold
+  });
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -104,8 +97,8 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
         {/* Mobile Layout - Stack cards with bottom navigation */}
         <div className="block lg:hidden">
           <div
-            ref={containerRef}
             className="relative flex items-center justify-center overflow-auto h-[600px]"
+            {...swipeHandlers}
           >
             {techCards.map((card, index) => {
               const cardTheme = getRandomColors(index);
@@ -116,7 +109,6 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
                   itemIndex={index}
                   activeItemIndex={currentIndex}
                   totalCards={totalCards}
-                  handleDragEnd={handleDragEnd}
                   goToCard={goToCard}
                 >
                   <TechStackCard
@@ -155,10 +147,10 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
           />
 
           {/* Center Content - Tech Stack Cards */}
-          <div className="flex-1 flex flex-col items-center">
+          <div className="flex-1 flex flex-col items-center" {...swipeHandlers}>
             <div
-              ref={containerRef}
               className="relative flex items-center justify-center overflow-auto w-full h-[700px]"
+              {...swipeHandlers}
             >
               {techCards.map((card, index) => {
                 const cardTheme = getRandomColors(index);
@@ -169,7 +161,6 @@ const TechStack: React.FC<TechStackProps> = ({ project, theme }) => {
                     itemIndex={index}
                     activeItemIndex={currentIndex}
                     totalCards={totalCards}
-                    handleDragEnd={handleDragEnd}
                     goToCard={goToCard}
                   >
                     <TechStackCard
