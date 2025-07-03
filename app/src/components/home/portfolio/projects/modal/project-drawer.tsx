@@ -133,15 +133,6 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
             </div>
           </div>
         </div>
-
-        {/* Mobile Pull Indicator Enhancement */}
-        <div className="absolute top-2 left-1/2 transform -translate-x-1/2 lg:hidden">
-          <motion.div
-            className="w-12 h-1 bg-ctp-surface2 rounded-full"
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-        </div>
       </DrawerContent>
     </Drawer>
   );

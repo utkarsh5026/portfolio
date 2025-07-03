@@ -74,6 +74,7 @@ export type Project = {
   techStack?: Record<string, string[]>;
   explain: string[];
   demoVideo?: ProjectDemoVideo;
+  tagline?: string;
 };
 
 export type Article = {

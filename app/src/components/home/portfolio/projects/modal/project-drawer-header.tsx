@@ -1,10 +1,6 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { Lock, ExternalLink as ExternalLinkIcon } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
 import type { Project } from "@/types";
 import { useProjectTheme } from "../context/ThemeContext";
-import { Button } from "@/components/ui/button";
 import { DrawerTitle, DrawerHeader } from "@/components/ui/drawer";
 import useMobile from "@/hooks/use-mobile";
 
@@ -30,47 +26,16 @@ const ProjectDrawerHeader: React.FC<ProjectDrawerHeaderProps> = ({
           <DrawerTitle className="text-lg sm:text-xl md:text-2xl font-bold text-ctp-text leading-tight text-center sm:text-left">
             {selectedProject.name}
           </DrawerTitle>
+          {selectedProject.tagline && (
+            <div className="mt-2 sm:mt-3 text-center sm:text-left">
+              <span
+                className={`inline-block px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium tracking-wide uppercase  bg-ctp-${theme.main}/10 text-ctp-${theme.main} border-none shadow-sm`}
+              >
+                {selectedProject.tagline}
+              </span>
+            </div>
+          )}
         </div>
-      </div>
-
-      {/* Action Buttons - Responsive Layout */}
-      <div
-        className={`flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 ${
-          isMobile ? "justify-center flex-wrap" : "justify-start"
-        }`}
-      >
-        {selectedProject.githubLink && (
-          <motion.div whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }}>
-            <Button
-              size={"sm"}
-              onClick={() => window.open(selectedProject.githubLink, "_blank")}
-              disabled={selectedProject.githubLink === "private-repository"}
-              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 h-8 sm:h-9 rounded-lg bg-ctp-${theme.main} hover:bg-ctp-${theme.main}/90 text-ctp-base font-medium shadow-sm hover:shadow-md transition-all duration-200 disabled:opacity-50 text-xs sm:text-sm`}
-            >
-              {selectedProject.githubLink === "private-repository" ? (
-                <Lock className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              ) : (
-                <FaGithub className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              )}
-              {selectedProject.githubLink === "private-repository"
-                ? "Private"
-                : "Code"}
-            </Button>
-          </motion.div>
-        )}
-
-        {selectedProject.liveLink && (
-          <motion.div whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }}>
-            <Button
-              size={"sm"}
-              onClick={() => window.open(selectedProject.liveLink, "_blank")}
-              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 h-8 sm:h-9 rounded-lg bg-ctp-${theme.secondary} hover:bg-ctp-${theme.secondary}/90 text-ctp-base font-medium shadow-sm hover:shadow-md transition-all duration-200 text-xs sm:text-sm`}
-            >
-              <ExternalLinkIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              Demo
-            </Button>
-          </motion.div>
-        )}
       </div>
     </DrawerHeader>
   );

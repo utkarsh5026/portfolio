@@ -432,6 +432,7 @@
   {
     "name": "Modern React Portfolio",
     "description": "A sophisticated, VS Code-themed portfolio website built with React, TypeScript, and Tailwind CSS, featuring interactive components, smooth animations, and a guided tour experience.",
+    "tagline": "My Personal Portfolio",
     "githubLink": "https://github.com/utkarsh5026/Portfolio",
     "liveLink": "https://utkarsh5026.github.io/",
     "technologies": [
