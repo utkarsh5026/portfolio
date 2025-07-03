@@ -27,7 +27,7 @@ const MobileTabBar: React.FC<MobileTabBarProps> = ({
   ].filter((tab) => tab.enabled);
 
   return (
-    <div className="w-full bg-ctp-surface0/30 backdrop-blur-sm border-b border-ctp-surface1/50">
+    <div className="w-full bg-ctp-surface0/30 backdrop-blur-sm border-b border-none">
       <div className="px-4 py-2">
         <Tabs
           value={activeTab}
@@ -36,7 +36,7 @@ const MobileTabBar: React.FC<MobileTabBarProps> = ({
         >
           <TabsList
             className={`
-              grid w-full bg-ctp-surface1/30 border border-ctp-surface2/50 
+              grid w-full bg-ctp-surface1/30 border border-none 
               backdrop-blur-sm shadow-lg rounded-xl p-1.5 h-auto
               ${
                 tabs.length === 3
