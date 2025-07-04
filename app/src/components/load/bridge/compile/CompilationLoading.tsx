@@ -152,7 +152,9 @@ const CompilationLoading: React.FC<CompilationLoadingProps> = ({
 
       {!startCountDown && (
         <div className={`word-container ${currentWord ? "active" : ""}`}>
-          <span className={getWordClasses()}>{currentWord}</span>
+          <span className={cn(getWordClasses(), "break-words")}>
+            {currentWord}
+          </span>
         </div>
       )}
 

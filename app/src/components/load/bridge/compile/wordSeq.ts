@@ -7,7 +7,7 @@ export const wordSequence = [
     size: "text-7xl",
   },
   {
-    text: "SYSTEM FAILURE",
+    text: "FAILURE",
     duration: 500,
     effect: "slide-up",
     color: "text-yellow-500",
