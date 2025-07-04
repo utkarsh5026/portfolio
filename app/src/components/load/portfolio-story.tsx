@@ -22,7 +22,8 @@ type PortfolioStage =
   | "compilation"
   | "chaos"
   | "compilation-loading"
-  | "portfolio";
+  | "portfolio"
+  | undefined;
 
 const preloadImage = (src: string): Promise<void> => {
   return new Promise((resolve, reject) => {
@@ -50,11 +51,17 @@ const preloadImage = (src: string): Promise<void> => {
  * @returns {JSX.Element} The rendered PortfolioStory component.
  */
 const PortfolioStory: React.FC = () => {
-  const { isMobile } = useMobile();
-  const [currentStage, setCurrentStage] = useState<PortfolioStage>(
-    isMobile ? "chaos" : "realization"
-  );
+  const { isPhone } = useMobile();
+  const [currentStage, setCurrentStage] = useState<PortfolioStage>(undefined);
   const [showSkipButton, setShowSkipButton] = useState(false);
+
+  useEffect(() => {
+    if (isPhone) {
+      setCurrentStage("chaos");
+    } else {
+      setCurrentStage("realization");
+    }
+  }, [isPhone]);
 
   /**
    * Shows the skip button if the user has seen the intro before.
