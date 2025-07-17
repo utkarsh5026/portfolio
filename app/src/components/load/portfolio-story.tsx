@@ -2,7 +2,7 @@ import "./style.css";
 import React, { useEffect, useState } from "react";
 import Realization from "./realization/Realization";
 import Panic from "./panic/main/Panic";
-import CodeCompilation from "./compilation/CodeCompilation";
+import CodeCompilation from "./compilation/code-compilation";
 import MainPortfolio from "./main-portfolio";
 import PrankPortfolio from "./simple-portfolio/PrankPortfolio";
 import FakePortfolioLoading from "./bridge/portfolio/FakePortfolioLoading";
