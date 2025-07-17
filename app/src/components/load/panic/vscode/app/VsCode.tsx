@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import MacosTrafficController from "../../../macos/MacosTrafficController";
+import MacosTrafficController from "../../../macos/macos-traffic-controller";
 import { BiLogoVisualStudio } from "react-icons/bi";
 import {
   VscFiles,

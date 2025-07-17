@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { formatDate, formatTime } from "./utils";
 import { desktopIcons } from "./assets";
-import DesktopIcon from "./DesktopIcon";
+import DesktopIcon from "./desktop-icon";
 import "./macos.css";
-import MacOsDock from "./MacOsDock";
+import MacOsDock from "./macos-dock";
 
 type MacosAppOptions = {
   wallpaper?: string;

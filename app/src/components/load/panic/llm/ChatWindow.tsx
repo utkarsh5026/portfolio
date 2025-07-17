@@ -10,7 +10,7 @@ import { AiFillOpenAI } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { FiSend } from "react-icons/fi";
-import MacosTrafficController from "../../macos/MacosTrafficController";
+import MacosTrafficController from "../../macos/macos-traffic-controller";
 import { humanMessage, aiNormalResponse, aiCodeResponse } from "./content";
 import UserMessage from "./message/UserMessage";
 import AiMessage from "./message/AiMessage";

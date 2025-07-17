@@ -5,7 +5,7 @@ import { useEffect, useState, useCallback, useMemo, useRef } from "react";
 import { SiGooglechrome } from "react-icons/si";
 import "./BrowserWindow.css";
 import Twitter from "./tabs/Twitter";
-import MacosTrafficController from "../../macos/MacosTrafficController";
+import MacosTrafficController from "../../macos/macos-traffic-controller";
 import BrowserActions from "./BrowserActions";
 import BrowserTabs from "./BrowserTabs";
 import MediumPortfolio from "./tabs/Medium";
