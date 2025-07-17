@@ -5,7 +5,7 @@ import BrowserWindow from "../browser/BrowserWindow";
 import CodeEditors from "../vscode/CodeEditors";
 import ChatWindow from "../llm/ChatWindow";
 import Terminal from "../terminal/Terminal";
-import MacOSContainer from "../../macos/MacosContainer";
+import MacOSContainer from "../../macos/macos-container";
 import "./panic.css";
 import usePanic from "../use-panic";
 import {
