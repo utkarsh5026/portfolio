@@ -3018,178 +3018,277 @@
     ]
   },
   {
-    "name": "JustDoIt",
-    "description": "A ground-up implementation of Git version control system in Go, focusing on the core internals of how Git stores and manages data. This project rebuilds Git's object model, repository management, and command structure to provide insights into distributed version control systems while leveraging Go's performance characteristics and standard library.",
-    "githubLink": "https://github.com/utkarsh5026/justdoit",
-    "tagline": "📂 Git internals built from scratch",
-    "technologies": ["golang", "cobra", "git"],
+    "name": "SourceControl",
+    "description": "A comprehensive TypeScript implementation of Git version control system, built from the ground up to understand and demonstrate the core principles of distributed version control. This project reconstructs Git's entire architecture including object storage, repository management, branching, and working directory operations while leveraging TypeScript's type safety and Node.js ecosystem.",
+    "githubLink": "https://github.com/utkarsh5026/SourceControl",
+    "liveLink": "https://www.npmjs.com/package/sourcecontrol",
+    "tagline": "🎯 Git implementation from scratch in Typescript",
+    "technologies": ["typescript", "nodejs", "commander", "git"],
     "projectFeatures": [
       {
-        "id": "git-object-model",
-        "title": "Complete Git Object Model Implementation",
-        "description": "Full implementation of Git's core data structures including blobs, trees, commits, and tags with content-addressable storage",
+        "id": "git-object-architecture",
+        "title": "Complete Git Object Architecture",
+        "description": "Full implementation of Git's four core object types with proper serialization, compression, and content-addressable storage",
         "icon": "Database",
         "subFeatures": [
           {
-            "id": "content-addressable-storage",
-            "title": "SHA-1 Content Addressing",
-            "description": "Implement Git's unique content identification system",
-            "metrics": "100% Git compatibility",
+            "id": "object-serialization",
+            "title": "Git Object Serialization System",
+            "description": "Complete parsing and generation of blob, tree, commit, and tag objects with header validation",
+            "metrics": "100% Git format compatibility",
             "isHighlight": true
           },
           {
-            "id": "object-serialization",
-            "title": "Object Serialization System",
-            "description": "Complete parsing and generation of Git object formats",
-            "metrics": "Full format support"
+            "id": "content-addressing",
+            "title": "SHA-1 Content Addressing",
+            "description": "Cryptographic content identification using SHA-1 hashing for object storage",
+            "metrics": "Cryptographically secure storage"
           },
           {
-            "id": "compression-handling",
-            "title": "Zlib Compression Integration",
-            "description": "Efficient storage using Git's compression algorithms",
+            "id": "compression-storage",
+            "title": "DEFLATE Compression Storage",
+            "description": "Efficient object storage using zlib DEFLATE compression algorithms",
             "metrics": "Optimized storage efficiency"
           }
         ],
         "media": [],
-        "tags": ["Git Internals", "Data Structures", "Storage"],
+        "tags": ["Git Objects", "Serialization", "Content Addressing"],
         "priority": "high"
       },
       {
-        "id": "repository-management",
-        "title": "Advanced Repository Management",
-        "description": "Comprehensive repository operations including initialization, reference management, and working directory interaction",
+        "id": "repository-ecosystem",
+        "title": "Advanced Repository Ecosystem",
+        "description": "Comprehensive repository management with initialization, object storage, reference handling, and working directory operations",
         "icon": "FolderGit",
         "subFeatures": [
           {
             "id": "repo-initialization",
-            "title": "Repository Initialization",
-            "description": "Create and configure new Git repositories from scratch",
-            "metrics": "Standard Git repo structure"
+            "title": "Repository Initialization & Discovery",
+            "description": "Create new repositories and discover existing ones by walking directory trees",
+            "metrics": "Standard .source directory structure"
           },
           {
-            "id": "reference-system",
-            "title": "Git References Management",
-            "description": "Handle branches, tags, and symbolic references",
-            "metrics": "Complete reference support",
+            "id": "object-store",
+            "title": "File-Based Object Store",
+            "description": "Git-compatible object storage with directory sharding for performance",
+            "metrics": "Efficient object retrieval",
+            "isHighlight": true
+          },
+          {
+            "id": "reference-management",
+            "title": "Reference & Branch Management",
+            "description": "Complete handling of symbolic refs, branches, tags, and HEAD management",
+            "metrics": "Full reference support"
+          }
+        ],
+        "media": [],
+        "tags": ["Repository", "Object Store", "References"],
+        "priority": "high"
+      },
+      {
+        "id": "staging-index-system",
+        "title": "Sophisticated Index & Staging System",
+        "description": "Complete implementation of Git's staging area with binary index format, file tracking, and change detection",
+        "icon": "FileText",
+        "subFeatures": [
+          {
+            "id": "binary-index",
+            "title": "Binary Index Format",
+            "description": "Full implementation of Git's binary index file format with checksums",
+            "metrics": "Git-compatible index format"
+          },
+          {
+            "id": "change-detection",
+            "title": "Intelligent Change Detection",
+            "description": "Multi-level change detection using timestamps, file size, and content hashing",
+            "metrics": "Accurate change tracking",
+            "isHighlight": true
+          },
+          {
+            "id": "staging-operations",
+            "title": "Advanced Staging Operations",
+            "description": "Add, remove, and status operations with ignore pattern support",
+            "metrics": "Complete staging functionality"
+          }
+        ],
+        "media": [],
+        "tags": ["Index", "Staging", "Change Detection"],
+        "priority": "high"
+      },
+      {
+        "id": "branch-workflow-system",
+        "title": "Complete Branch & Workflow System",
+        "description": "Full branching system with creation, deletion, checkout, and merge support including detached HEAD states",
+        "icon": "GitBranch",
+        "subFeatures": [
+          {
+            "id": "branch-operations",
+            "title": "Branch Lifecycle Management",
+            "description": "Create, delete, rename, and list branches with validation and safety checks",
+            "metrics": "Complete branch operations"
+          },
+          {
+            "id": "checkout-system",
+            "title": "Atomic Checkout System",
+            "description": "Safe branch switching with rollback capabilities and conflict detection",
+            "metrics": "Atomic operations with rollback",
             "isHighlight": true
           },
           {
             "id": "working-directory",
-            "title": "Working Directory Operations",
-            "description": "File tracking, staging, and working tree management",
+            "title": "Working Directory Management",
+            "description": "Intelligent working directory updates with file permissions and symlink support",
             "metrics": "Full working tree support"
           }
         ],
         "media": [],
-        "tags": ["Repository", "References", "Working Tree"],
-        "priority": "high"
+        "tags": ["Branching", "Checkout", "Working Directory"],
+        "priority": "medium"
       },
       {
-        "id": "cli-interface",
+        "id": "commit-history-system",
+        "title": "Commit & History Management",
+        "description": "Complete commit creation system with tree building, author/committer metadata, and history traversal",
+        "icon": "Clock",
+        "subFeatures": [
+          {
+            "id": "commit-creation",
+            "title": "Commit Object Creation",
+            "description": "Generate commits with proper tree references, parent linking, and metadata",
+            "metrics": "Full commit functionality"
+          },
+          {
+            "id": "tree-building",
+            "title": "Bottom-Up Tree Building",
+            "description": "Efficient tree object creation from index entries using depth-first algorithms",
+            "metrics": "Optimized tree generation",
+            "isHighlight": true
+          },
+          {
+            "id": "history-traversal",
+            "title": "History Traversal & Analysis",
+            "description": "Walk commit graphs to analyze history and relationships",
+            "metrics": "Complete history support"
+          }
+        ],
+        "media": [],
+        "tags": ["Commits", "Trees", "History"],
+        "priority": "medium"
+      },
+      {
+        "id": "configuration-ignore-system",
+        "title": "Configuration & Ignore System",
+        "description": "Hierarchical configuration management and sophisticated ignore pattern matching with globbing support",
+        "icon": "Settings",
+        "subFeatures": [
+          {
+            "id": "config-hierarchy",
+            "title": "Multi-Level Configuration",
+            "description": "System, user, and repository-level configuration with JSON format support",
+            "metrics": "Complete config hierarchy"
+          },
+          {
+            "id": "ignore-patterns",
+            "title": "Advanced Ignore Patterns",
+            "description": "Full .sourceignore support with globbing, negation, and directory patterns",
+            "metrics": "Complete ignore functionality",
+            "isHighlight": true
+          },
+          {
+            "id": "pattern-caching",
+            "title": "Pattern Matching Optimization",
+            "description": "Efficient pattern matching with caching for large repositories",
+            "metrics": "Optimized pattern performance"
+          }
+        ],
+        "media": [],
+        "tags": ["Configuration", "Ignore Patterns", "Globbing"],
+        "priority": "low"
+      },
+      {
+        "id": "cli-interface-system",
         "title": "Professional CLI Interface",
-        "description": "Feature-complete command-line interface built with Cobra framework, providing familiar Git commands and options",
+        "description": "Rich command-line interface with colored output, progress indicators, and comprehensive help system",
         "icon": "Terminal",
         "subFeatures": [
           {
             "id": "command-structure",
-            "title": "Git-Compatible Command Structure",
-            "description": "Familiar command syntax and options matching Git standards",
-            "metrics": "Standard Git commands"
+            "title": "Git-Compatible Commands",
+            "description": "Familiar command syntax matching Git standards with proper option handling",
+            "metrics": "Standard Git command compatibility"
           },
           {
-            "id": "help-system",
-            "title": "Comprehensive Help System",
-            "description": "Detailed help and usage information for all commands",
-            "metrics": "Full documentation",
+            "id": "visual-feedback",
+            "title": "Rich Visual Feedback",
+            "description": "Colored output, progress bars, and formatted displays using Chalk and Boxen",
+            "metrics": "Enhanced user experience",
             "isHighlight": true
           },
           {
             "id": "error-handling",
-            "title": "Robust Error Management",
-            "description": "Clear error messages and proper exit codes",
+            "title": "Comprehensive Error Management",
+            "description": "Detailed error messages with context and proper exit codes",
             "metrics": "Production-ready reliability"
           }
         ],
         "media": [],
-        "tags": ["CLI", "Commands", "Interface"],
-        "priority": "medium"
-      },
-      {
-        "id": "version-control-core",
-        "title": "Core Version Control Features",
-        "description": "Essential version control operations including staging, committing, and file history tracking",
-        "icon": "GitBranch",
-        "subFeatures": [
-          {
-            "id": "staging-system",
-            "title": "Git Index Implementation",
-            "description": "Complete staging area functionality for change management",
-            "metrics": "Full index support"
-          },
-          {
-            "id": "commit-system",
-            "title": "Commit Creation System",
-            "description": "Generate commits with proper metadata and history linking",
-            "metrics": "Complete commit functionality",
-            "isHighlight": true
-          },
-          {
-            "id": "file-tracking",
-            "title": "File Change Tracking",
-            "description": "Monitor and track changes across the entire working directory",
-            "metrics": "Comprehensive change detection"
-          }
-        ],
-        "media": [],
-        "tags": ["Version Control", "Commits", "Staging"],
+        "tags": ["CLI", "User Interface", "Error Handling"],
         "priority": "medium"
       }
     ],
     "techStack": {
-      "Core Language & Libraries": [
-        "Go 1.22+ - For performance, strong typing, and efficient concurrency",
-        "Standard library - Leveraging built-in packages for file operations, cryptography, and more",
-        "Cobra - For structured command-line interface implementation",
-        "Viper - For configuration management and reading .git config files"
+      "Core Language & Runtime": [
+        "TypeScript 5.3+ - For type safety, modern JavaScript features, and enhanced developer experience",
+        "Node.js 16+ - For cross-platform runtime with excellent standard library support",
+        "Commander.js - For structured CLI application development with subcommands",
+        "Chalk & Boxen - For rich terminal output with colors and formatted displays"
       ],
-      "Git Internals": [
-        "Content-addressable storage - Implementation of Git's object storage model",
-        "Object serialization/deserialization - For handling Git's internal formats",
-        "Zlib compression - For efficient storage of Git objects",
-        "SHA-1 hashing - For generating consistent object identifiers",
-        "Tree structure modeling - For representing directory hierarchies"
+      "Git Internals Implementation": [
+        "Content-addressable storage - SHA-1 based object identification and storage",
+        "Object serialization/deserialization - Custom parsers for Git's binary and text formats",
+        "DEFLATE compression - Using Node's zlib for efficient object storage",
+        "Binary index format - Complete implementation of Git's staging area format",
+        "Tree structure algorithms - For directory hierarchy representation and traversal"
       ],
-      "Repository Management": [
-        "Repository discovery - Finding .git directories in parent folders",
-        "Reference management - For branches and tags",
-        "Working directory interaction - Reading and writing files",
-        "Index management - For staged changes tracking"
+      "File System & I/O": [
+        "fs-extra - Enhanced file system operations with promise support",
+        "glob - Pattern matching for file discovery and ignore functionality",
+        "minimatch - Advanced glob pattern matching with negation support",
+        "Path normalization - Cross-platform path handling and resolution"
       ],
       "Data Structures & Algorithms": [
-        "Custom ordered dictionary - For preserving key order in metadata",
-        "Tree traversal algorithms - For working with directory structures",
-        "Regular expression pattern matching - For .gitignore support",
-        "Recursive descent parsing - For handling complex data formats"
+        "Directed Acyclic Graph (DAG) - For commit history representation",
+        "Merkle tree structures - For efficient change detection and integrity",
+        "Bottom-up tree building - For converting flat file lists to hierarchical trees",
+        "Content-based deduplication - Using SHA-1 hashes for storage optimization",
+        "Atomic operations - With rollback capabilities for safe state transitions"
       ],
-      "Code Organization": [
-        "Command pattern - For implementing Git subcommands",
-        "Interface-based design - For abstraction of Git objects",
-        "Repository pattern - For encapsulating Git repository interactions",
-        "Factory methods - For object creation based on type"
+      "Architecture Patterns": [
+        "Service-oriented architecture - Clear separation of concerns across domains",
+        "Repository pattern - For abstracting data access and storage operations",
+        "Command pattern - For implementing CLI subcommands with consistent interfaces",
+        "Factory pattern - For object creation based on type and context",
+        "Observer pattern - For progress tracking and event handling"
       ],
-      "Testing": [
-        "Unit tests - For core functionality validation",
-        "Test-driven development - Writing tests before implementation",
-        "Table-driven tests - For comprehensive test coverage with multiple scenarios",
-        "Edge case testing - Ensuring robustness in unexpected situations"
+      "Error Handling & Reliability": [
+        "Comprehensive validation - Input validation at all system boundaries",
+        "Atomic operations - All-or-nothing semantics with automatic rollback",
+        "Type safety - Leveraging TypeScript's type system for compile-time error prevention",
+        "Exception handling - Structured error management with context preservation"
+      ],
+      "Testing & Quality": [
+        "Jest testing framework - For unit and integration testing",
+        "ESLint & Prettier - For code quality and consistent formatting",
+        "Type checking - Compile-time verification of type correctness",
+        "Path resolution testing - Ensuring cross-platform compatibility"
       ]
     },
     "explain": [
-      "I built JustDoIt to deeply understand how Git actually works under the hood. While most developers use Git daily, few understand the elegant data structures and algorithms that make it so powerful. I wanted to explore these internals by reimplementing them from scratch in Go.",
-      "The most challenging aspect was implementing Git's content-addressable storage system, which uses SHA-1 hashes to uniquely identify content and build the object model (blobs, trees, commits, tags). The KVLM parsing for commit metadata was particularly intricate, requiring careful handling of multi-line values and nested structures.",
-      "I chose Go for this project because its strong typing, excellent standard library, and performance characteristics make it ideal for systems programming. Beyond being a learning exercise, this project gave me deep insights into distributed version control systems and content-addressable storage patterns that have improved my effectiveness when using Git professionally."
+      "I built SourceControl to gain a deep understanding of Git's internal architecture and demonstrate how modern TypeScript can be used for systems programming. While Git is implemented in C, I wanted to explore how the same concepts could be expressed using TypeScript's type system and Node.js ecosystem, making the codebase more accessible to web developers.",
+      "The most challenging aspect was implementing Git's binary index format and ensuring atomic operations across the entire system. The index format requires precise byte-level manipulation while maintaining cross-platform compatibility. I also implemented a sophisticated change detection system that uses multiple strategies (timestamps, file size, content hashing) to efficiently detect modifications.",
+      "I chose TypeScript for this project because its type system provides excellent documentation and compile-time verification for complex data structures like Git objects and tree hierarchies. The service-oriented architecture allows each component (objects, repository, index, branches, etc.) to be developed and tested independently while maintaining clear interfaces between them."
     ],
-    "tags": ["Go", "Git", "Version Control", "CLI", "Systems Programming"]
+    "tags": ["TypeScript", "Git", "Version Control", "CLI", "Systems Programming", "Node.js"]
   },
   {
     "name": "Genshin Companion",
