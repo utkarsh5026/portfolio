@@ -27,7 +27,7 @@ const ProjectSidebar: React.FC<ProjectSidebarProps> = ({
   hasMedia,
   hasDemo,
 }) => {
-  const { technologies, features, media, githubLink, liveLink } = project;
+  const { technologies, media, githubLink, liveLink, projectFeatures } = project;
 
   const tabs = [
     {
@@ -41,7 +41,7 @@ const ProjectSidebar: React.FC<ProjectSidebarProps> = ({
       id: "features",
       icon: List,
       label: "Features",
-      count: features.length,
+      count: projectFeatures.length,
       isSpecial: false,
     },
     {
