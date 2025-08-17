@@ -218,21 +218,6 @@
       "shadcn",
       "lucideicons"
     ],
-    "features": [
-      "Interactive markdown document viewer with syntax highlighting and responsive design",
-      "Comprehensive reading analytics with visual data representations",
-      "Real-time reading progress tracking and section completion monitoring",
-      "Reading session timing and word count estimation",
-      "Category breakdown visualizations and content exploration tools",
-      "Daily, weekly and monthly reading pattern analysis",
-      "Time-of-day reading preference insights",
-      "Reading journey visualization with milestones",
-      "Smart todo list for organizing reading priorities",
-      "Offline support with IndexedDB for persistent storage",
-      "Category coverage and distribution analysis",
-      "Dark mode with customizable themes",
-      "Responsive design optimized for both mobile and desktop"
-    ],
         "projectFeatures": [
       {
         "id": "reading-analytics",
@@ -298,7 +283,7 @@
       {
         "id": "personalized-insights",
         "title": "Personalized Reading Insights",
-        "description": "AI-powered recommendations and insights that adapt to your reading style and preferences",
+        "description": "Recommendations and insights that adapt to your reading style and preferences",
         "icon": "Brain",
         "subFeatures": [
           {
@@ -324,36 +309,6 @@
         "media": [],
         "tags": ["AI", "Personalization", "Recommendations"],
         "priority": "medium"
-      },
-      {
-        "id": "offline-support",
-        "title": "Offline-First Architecture",
-        "description": "Robust offline functionality with persistent storage and synchronization capabilities",
-        "icon": "Wifi",
-        "subFeatures": [
-          {
-            "id": "local-storage",
-            "title": "IndexedDB Integration",
-            "description": "Persistent local storage for reading progress and content",
-            "metrics": "No data loss guarantee"
-          },
-          {
-            "id": "sync-capabilities",
-            "title": "Cross-Device Synchronization",
-            "description": "Seamless progress sync across multiple devices",
-            "metrics": "Real-time sync",
-            "isHighlight": true
-          },
-          {
-            "id": "performance-optimization",
-            "title": "Performance Excellence",
-            "description": "Optimized for speed and efficiency in all conditions",
-            "metrics": "Sub-second load times"
-          }
-        ],
-        "media": [],
-        "tags": ["Offline", "Performance", "Sync"],
-        "priority": "medium"
       }
     ],
     "techStack": {
@@ -372,7 +327,6 @@
       "Data Visualization": [
         "Recharts - For responsive, customizable charts and graphs",
         "Custom visualization components - For specialized data representations",
-        "D3-based visualizations - For complex interactive data displays",
         "Motion-enhanced data presentations - For engaging user experiences"
       ],
       "Analytics Engine": [
@@ -585,7 +539,7 @@
     "tags": ["TypeScript", "Git", "Version Control", "CLI", "Systems Programming", "Node.js"]
   },
   {
-    "name": "Modern React Portfolio",
+    "name": "DevPortfolio",
     "description": "A sophisticated, VS Code-themed portfolio website built with React, TypeScript, and Tailwind CSS, featuring interactive components, smooth animations, and a guided tour experience.",
     "tagline": "Looking at it right now 😎",
     "githubLink": "https://github.com/utkarsh5026/Portfolio",
@@ -598,17 +552,6 @@
       "framermotion",
       "shadcn",
       "lucideicons"
-    ],
-    "features": [
-      "VS Code-inspired UI with syntax highlighting and editor-like interface",
-      "Interactive guided tour with step-by-step navigation",
-      "Smooth animations and transitions throughout the interface",
-      "Responsive design for all device sizes",
-      "Dark mode support with Catppuccin color palette",
-      "Modular component architecture",
-      "Code splitting and lazy loading for performance optimization",
-      "Type-safe development with TypeScript",
-      "Custom hooks for reusable functionality"
     ],
         "projectFeatures": [
       {
@@ -765,17 +708,6 @@
         "Lazy loading - For components and routes",
         "Memoization - For preventing unnecessary re-renders",
         "useCallback and useMemo - For optimized function and value creation"
-      ],
-      "Developer Experience": [
-        "ESLint - For code quality and consistency",
-        "Path aliases - For cleaner imports",
-        "Component organization - For maintainable codebase structure",
-        "Reusable utility functions - For common operations"
-      ],
-      "Deployment": [
-        "GitHub Pages - For hosting the static site",
-        "Vercel - For preview deployments",
-        "Build optimization - For reduced bundle size"
       ]
     },
     "explain": [
@@ -988,7 +920,7 @@
     }
   },
   {
-    "name": "GEP: AI-Powered Code Search",
+    "name": "SemanticCode",
     "description": "An intelligent code search and analysis tool that combines semantic understanding with traditional search capabilities. GEP uses vector embeddings and large language models to understand code at a conceptual level, enabling developers to search their codebase using natural language queries and receive contextually relevant results with detailed explanations.",
     "githubLink": "https://github.com/utkarsh5026/gep",
     "tagline": "🔍 AI understands your codebase completely",
@@ -1000,18 +932,6 @@
       "rich",
       "poetry",
       "docker"
-    ],
-    "features": [
-      "Natural language code search using semantic understanding",
-      "Vector embeddings for efficient similarity search across the codebase",
-      "LLM-powered code analysis and explanation",
-      "File change monitoring with automatic indexing",
-      "Integration with multiple vector stores (FAISS, Chroma)",
-      "Support for multiple embedding and LLM providers",
-      "Git repository integration for commit history analysis",
-      "CLI interface with rich formatting and interactive components",
-      "Incremental indexing to efficiently handle large codebases",
-      "Docker support for easy deployment and containerization"
     ],
         "projectFeatures": [
       {
