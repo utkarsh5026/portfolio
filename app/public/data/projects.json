@@ -539,6 +539,210 @@
     "tags": ["TypeScript", "Git", "Version Control", "CLI", "Systems Programming", "Node.js"]
   },
   {
+    "name": "Enigma",
+    "description": "An interactive educational platform for learning programming language concepts through visual exploration of lexical analysis, abstract syntax trees, and execution flow. Built with React and TypeScript, this IDE-inspired application demonstrates the inner workings of language interpretation by visualizing source code tokenization, parsing, and evaluation in real-time.",
+    "tagline": "🔍 Interpreter built from scratch",
+    "githubLink": "https://github.com/utkarsh5026/enigma",
+    "liveLink": "https://enigma-explorer.vercel.app/",
+    "technologies": [
+      "react",
+      "typescript",
+      "tailwind",
+      "monaco",
+      "shadcn",
+      "framermotion",
+      "lucideicons",
+      "vite"
+    ],
+    "tags": [
+      "interpreter",
+      "react",
+      "language",
+      "visualization",
+      "typescript",
+      "educative"
+    ],
+    "projectFeatures": [
+      {
+        "id": "visual-ast",
+        "title": "Interactive AST Visualization",
+        "description": "Real-time Abstract Syntax Tree visualization that transforms code into interactive, explorable tree structures",
+        "icon": "GitBranch",
+        "subFeatures": [
+          {
+            "id": "real-time-parsing",
+            "title": "Live Code Parsing",
+            "description": "See AST updates instantly as you type code",
+            "metrics": "Real-time visualization",
+            "isHighlight": true
+          },
+          {
+            "id": "interactive-nodes",
+            "title": "Clickable AST Nodes",
+            "description": "Click any node to see corresponding code and detailed information",
+            "metrics": "Full interactivity"
+          },
+          {
+            "id": "syntax-highlighting",
+            "title": "Synchronized Highlighting",
+            "description": "Code and AST highlighting stay perfectly synchronized",
+            "metrics": "Visual code mapping"
+          }
+        ],
+        "media": [],
+        "tags": ["AST", "Visualization", "Interactive"],
+        "priority": "high"
+      },
+      {
+        "id": "execution-debugger",
+        "title": "Step-by-Step Execution Visualizer",
+        "description": "Educational debugger that shows exactly how code executes with environment and call stack tracking",
+        "icon": "Play",
+        "subFeatures": [
+          {
+            "id": "step-execution",
+            "title": "Granular Execution Steps",
+            "description": "Step through code execution one operation at a time",
+            "metrics": "Complete execution control",
+            "isHighlight": true
+          },
+          {
+            "id": "environment-tracking",
+            "title": "Variable Environment Display",
+            "description": "Watch variables change in real-time during execution",
+            "metrics": "Live variable inspection"
+          },
+          {
+            "id": "call-stack-visualization",
+            "title": "Call Stack Visualization",
+            "description": "Visual representation of function calls and returns",
+            "metrics": "Stack frame tracking"
+          }
+        ],
+        "media": [],
+        "tags": ["Execution", "Debugging", "Education"],
+        "priority": "high"
+      },
+      {
+        "id": "language-interpreter",
+        "title": "Custom Language Interpreter",
+        "description": "Complete interpreter implementation supporting dynamic typing, functions, closures, and modern language features",
+        "icon": "Code2",
+        "subFeatures": [
+          {
+            "id": "dynamic-typing",
+            "title": "Dynamic Type System",
+            "description": "Flexible typing with runtime type checking and coercion",
+            "metrics": "Type-safe execution"
+          },
+          {
+            "id": "first-class-functions",
+            "title": "First-Class Functions",
+            "description": "Functions as values with closure support and lexical scoping",
+            "metrics": "Advanced function features",
+            "isHighlight": true
+          },
+          {
+            "id": "built-in-types",
+            "title": "Rich Built-in Types",
+            "description": "Numbers, strings, booleans, arrays, and objects with methods",
+            "metrics": "Complete type system"
+          }
+        ],
+        "media": [],
+        "tags": ["Interpreter", "Language Design", "Programming"],
+        "priority": "medium"
+      },
+      {
+        "id": "educational-interface",
+        "title": "Tokyo Night Learning Interface",
+        "description": "Beautiful, educational interface with comprehensive guides and examples for learning programming language concepts",
+        "icon": "BookOpen",
+        "subFeatures": [
+          {
+            "id": "concept-guides",
+            "title": "Interactive Learning Guides",
+            "description": "Step-by-step explanations of language concepts with examples",
+            "metrics": "Comprehensive curriculum"
+          },
+          {
+            "id": "example-programs",
+            "title": "Curated Code Examples",
+            "description": "Collection of example programs demonstrating language features",
+            "metrics": "Learn by example",
+            "isHighlight": true
+          },
+          {
+            "id": "responsive-design",
+            "title": "Mobile-Optimized Learning",
+            "description": "Full learning experience available on all device sizes",
+            "metrics": "Universal accessibility"
+          }
+        ],
+        "media": [],
+        "tags": ["Education", "UI/UX", "Mobile"],
+        "priority": "medium"
+      }
+    ],
+    "techStack": {
+      "Core Framework": [
+        "React 19 - For building the UI components with the latest React features",
+        "TypeScript - For type safety throughout the application and language implementation",
+        "Vite - For fast development experience and optimized production builds"
+      ],
+      "UI & Styling": [
+        "Tailwind CSS - For utility-first styling approach with custom theming",
+        "shadcn/ui - For accessible and customizable UI components",
+        "Monaco Editor - For professional code editing with syntax highlighting",
+        "Tokyo Night theme - Custom-adapted dark theme for consistent visual language",
+        "CSS Variables - For theme consistency across components"
+      ],
+      "Language Implementation": [
+        "Custom Lexer - For tokenizing source code with position tracking",
+        "Recursive Descent Parser - For generating abstract syntax trees",
+        "Evaluator - For interpreting the AST and executing code",
+        "Environment system - For scope management and variable resolution",
+        "Type system - For dynamic typing with type checking"
+      ],
+      "Visualization Components": [
+        "Token Visualizer - For displaying lexical analysis results",
+        "AST Tree View - For interactive syntax tree exploration",
+        "Step-by-step Debugger - For execution flow visualization",
+        "Environment Inspector - For tracking variable changes during execution",
+        "Call Stack Visualizer - For function call tracking"
+      ],
+      "State Management": [
+        "React Context API - For global state management",
+        "Custom hooks - For encapsulating language processing logic",
+        "Reducer pattern - For complex state transitions in the execution visualizer",
+        "Local component state - For UI interactions"
+      ],
+      "Animations & Interactions": [
+        "Framer Motion - For fluid animations and transitions",
+        "CSS transitions - For subtle state changes and hover effects",
+        "Collapsible panels - For information density management",
+        "Tooltips - For explaining complex concepts inline"
+      ],
+      "Performance Optimization": [
+        "Memoization - For expensive parsing and evaluation operations",
+        "Lazy loading - For code splitting and component rendering",
+        "Virtualized lists - For handling large token and AST displays",
+        "Throttled updates - For smooth visualization during execution"
+      ],
+      "Developer Experience": [
+        "Component architecture - For maintainable and reusable code",
+        "Custom type definitions - For language implementation",
+        "Documentation - For both user-facing guides and code comments",
+        "Example programs - For demonstrating language features"
+      ]
+    },
+    "explain": [
+      "I built Enigma Language Explorer to make programming language internals accessible and visual. Most developers use languages daily but rarely understand their inner workings. This interactive tool shows each step from source code to execution, demystifying interpreter design by visualizing lexical analysis, parsing, and evaluation in real-time.",
+      "The core is a complete interpreter implementation with clear separation between tokenization, parsing, and evaluation phases. The language supports dynamic typing, first-class functions, and closures. The most technically challenging aspect was the step-by-step execution visualizer, which required redesigning the interpreter to support pausing execution while maintaining state.",
+      "I used React with TypeScript for the frontend, creating an IDE-like experience with Monaco Editor integration and a Tokyo Night-inspired theme. The visualization components dynamically update as code is modified, highlighting the active AST node during execution to show the direct connection between syntax and runtime behavior."
+    ]
+  },
+  {
     "name": "DevPortfolio",
     "description": "A sophisticated, VS Code-themed portfolio website built with React, TypeScript, and Tailwind CSS, featuring interactive components, smooth animations, and a guided tour experience.",
     "tagline": "Looking at it right now 😎",
@@ -1119,10 +1323,8 @@
     ],
     "tags": ["Python", "AI", "Vector Search", "Code Analysis", "LLM", "CLI"]
   },
-
-
   {
-    "name": "PAuth",
+    "name": "AuthGuard",
     "description": "A modern OAuth 2.0 authentication library for Python applications that prioritizes security and developer experience. This framework-agnostic solution implements comprehensive authentication flows with built-in security best practices, supporting multiple providers while maintaining a clean, intuitive API across Flask, Django, and other frameworks.",
     "githubLink": "https://github.com/utkarsh5026/pauth",
     "technologies": ["python", "flask", "django", "rest"],
@@ -1773,7 +1975,7 @@
     }
   },
   {
-    "name": "Orchestra",
+    "name": "MicroManage",
     "description": "A lightweight container orchestration system built from first principles, implementing core Kubernetes concepts from the ground up. This educational platform demonstrates fundamental distributed systems concepts including scheduling, service discovery, and fault tolerance, providing hands-on insight into container orchestration mechanics.",
     "githubLink": "https://github.com/utkarsh5026/orchestra",
     "tagline": "🚀 Kubernetes concepts built from scratch",
@@ -1956,210 +2158,6 @@
         "Local Development Environment - For testing"
       ]
     }
-  },
-  {
-    "name": "Enigma",
-    "description": "An interactive educational platform for learning programming language concepts through visual exploration of lexical analysis, abstract syntax trees, and execution flow. Built with React and TypeScript, this IDE-inspired application demonstrates the inner workings of language interpretation by visualizing source code tokenization, parsing, and evaluation in real-time.",
-    "tagline": "🔍 Interpreter built from scratch",
-    "githubLink": "https://github.com/utkarsh5026/enigma",
-    "liveLink": "https://enigma-explorer.vercel.app/",
-    "technologies": [
-      "react",
-      "typescript",
-      "tailwind",
-      "monaco",
-      "shadcn",
-      "framermotion",
-      "lucideicons",
-      "vite"
-    ],
-    "tags": [
-      "interpreter",
-      "react",
-      "language",
-      "visualization",
-      "typescript",
-      "educative"
-    ],
-    "projectFeatures": [
-      {
-        "id": "visual-ast",
-        "title": "Interactive AST Visualization",
-        "description": "Real-time Abstract Syntax Tree visualization that transforms code into interactive, explorable tree structures",
-        "icon": "GitBranch",
-        "subFeatures": [
-          {
-            "id": "real-time-parsing",
-            "title": "Live Code Parsing",
-            "description": "See AST updates instantly as you type code",
-            "metrics": "Real-time visualization",
-            "isHighlight": true
-          },
-          {
-            "id": "interactive-nodes",
-            "title": "Clickable AST Nodes",
-            "description": "Click any node to see corresponding code and detailed information",
-            "metrics": "Full interactivity"
-          },
-          {
-            "id": "syntax-highlighting",
-            "title": "Synchronized Highlighting",
-            "description": "Code and AST highlighting stay perfectly synchronized",
-            "metrics": "Visual code mapping"
-          }
-        ],
-        "media": [],
-        "tags": ["AST", "Visualization", "Interactive"],
-        "priority": "high"
-      },
-      {
-        "id": "execution-debugger",
-        "title": "Step-by-Step Execution Visualizer",
-        "description": "Educational debugger that shows exactly how code executes with environment and call stack tracking",
-        "icon": "Play",
-        "subFeatures": [
-          {
-            "id": "step-execution",
-            "title": "Granular Execution Steps",
-            "description": "Step through code execution one operation at a time",
-            "metrics": "Complete execution control",
-            "isHighlight": true
-          },
-          {
-            "id": "environment-tracking",
-            "title": "Variable Environment Display",
-            "description": "Watch variables change in real-time during execution",
-            "metrics": "Live variable inspection"
-          },
-          {
-            "id": "call-stack-visualization",
-            "title": "Call Stack Visualization",
-            "description": "Visual representation of function calls and returns",
-            "metrics": "Stack frame tracking"
-          }
-        ],
-        "media": [],
-        "tags": ["Execution", "Debugging", "Education"],
-        "priority": "high"
-      },
-      {
-        "id": "language-interpreter",
-        "title": "Custom Language Interpreter",
-        "description": "Complete interpreter implementation supporting dynamic typing, functions, closures, and modern language features",
-        "icon": "Code2",
-        "subFeatures": [
-          {
-            "id": "dynamic-typing",
-            "title": "Dynamic Type System",
-            "description": "Flexible typing with runtime type checking and coercion",
-            "metrics": "Type-safe execution"
-          },
-          {
-            "id": "first-class-functions",
-            "title": "First-Class Functions",
-            "description": "Functions as values with closure support and lexical scoping",
-            "metrics": "Advanced function features",
-            "isHighlight": true
-          },
-          {
-            "id": "built-in-types",
-            "title": "Rich Built-in Types",
-            "description": "Numbers, strings, booleans, arrays, and objects with methods",
-            "metrics": "Complete type system"
-          }
-        ],
-        "media": [],
-        "tags": ["Interpreter", "Language Design", "Programming"],
-        "priority": "medium"
-      },
-      {
-        "id": "educational-interface",
-        "title": "Tokyo Night Learning Interface",
-        "description": "Beautiful, educational interface with comprehensive guides and examples for learning programming language concepts",
-        "icon": "BookOpen",
-        "subFeatures": [
-          {
-            "id": "concept-guides",
-            "title": "Interactive Learning Guides",
-            "description": "Step-by-step explanations of language concepts with examples",
-            "metrics": "Comprehensive curriculum"
-          },
-          {
-            "id": "example-programs",
-            "title": "Curated Code Examples",
-            "description": "Collection of example programs demonstrating language features",
-            "metrics": "Learn by example",
-            "isHighlight": true
-          },
-          {
-            "id": "responsive-design",
-            "title": "Mobile-Optimized Learning",
-            "description": "Full learning experience available on all device sizes",
-            "metrics": "Universal accessibility"
-          }
-        ],
-        "media": [],
-        "tags": ["Education", "UI/UX", "Mobile"],
-        "priority": "medium"
-      }
-    ],
-    "techStack": {
-      "Core Framework": [
-        "React 19 - For building the UI components with the latest React features",
-        "TypeScript - For type safety throughout the application and language implementation",
-        "Vite - For fast development experience and optimized production builds"
-      ],
-      "UI & Styling": [
-        "Tailwind CSS - For utility-first styling approach with custom theming",
-        "shadcn/ui - For accessible and customizable UI components",
-        "Monaco Editor - For professional code editing with syntax highlighting",
-        "Tokyo Night theme - Custom-adapted dark theme for consistent visual language",
-        "CSS Variables - For theme consistency across components"
-      ],
-      "Language Implementation": [
-        "Custom Lexer - For tokenizing source code with position tracking",
-        "Recursive Descent Parser - For generating abstract syntax trees",
-        "Evaluator - For interpreting the AST and executing code",
-        "Environment system - For scope management and variable resolution",
-        "Type system - For dynamic typing with type checking"
-      ],
-      "Visualization Components": [
-        "Token Visualizer - For displaying lexical analysis results",
-        "AST Tree View - For interactive syntax tree exploration",
-        "Step-by-step Debugger - For execution flow visualization",
-        "Environment Inspector - For tracking variable changes during execution",
-        "Call Stack Visualizer - For function call tracking"
-      ],
-      "State Management": [
-        "React Context API - For global state management",
-        "Custom hooks - For encapsulating language processing logic",
-        "Reducer pattern - For complex state transitions in the execution visualizer",
-        "Local component state - For UI interactions"
-      ],
-      "Animations & Interactions": [
-        "Framer Motion - For fluid animations and transitions",
-        "CSS transitions - For subtle state changes and hover effects",
-        "Collapsible panels - For information density management",
-        "Tooltips - For explaining complex concepts inline"
-      ],
-      "Performance Optimization": [
-        "Memoization - For expensive parsing and evaluation operations",
-        "Lazy loading - For code splitting and component rendering",
-        "Virtualized lists - For handling large token and AST displays",
-        "Throttled updates - For smooth visualization during execution"
-      ],
-      "Developer Experience": [
-        "Component architecture - For maintainable and reusable code",
-        "Custom type definitions - For language implementation",
-        "Documentation - For both user-facing guides and code comments",
-        "Example programs - For demonstrating language features"
-      ]
-    },
-    "explain": [
-      "I built Enigma Language Explorer to make programming language internals accessible and visual. Most developers use languages daily but rarely understand their inner workings. This interactive tool shows each step from source code to execution, demystifying interpreter design by visualizing lexical analysis, parsing, and evaluation in real-time.",
-      "The core is a complete interpreter implementation with clear separation between tokenization, parsing, and evaluation phases. The language supports dynamic typing, first-class functions, and closures. The most technically challenging aspect was the step-by-step execution visualizer, which required redesigning the interpreter to support pausing execution while maintaining state.",
-      "I used React with TypeScript for the frontend, creating an IDE-like experience with Monaco Editor integration and a Tokyo Night-inspired theme. The visualization components dynamically update as code is modified, highlighting the active AST node during execution to show the direct connection between syntax and runtime behavior."
-    ]
   },
   {
     "name": "ProgChain - AI-Powered Programming Education",
