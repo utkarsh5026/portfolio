@@ -1119,354 +1119,8 @@
     ],
     "tags": ["Python", "AI", "Vector Search", "Code Analysis", "LLM", "CLI"]
   },
-  {
-    "name": "Cope",
-    "description": "A modern implementation of grep functionality, developed as part of the CodeCrafters challenge. This tool combines traditional text searching capabilities with advanced regular expression support, demonstrating how classical Unix utilities can be enhanced through modern language features and systematic testing approaches.",
-    "githubLink": "https://github.com/utkarsh5026/cope",
-    "tagline": "A modern implementation of grep 🔍",
-    "technologies": ["golang", "cli"],
-    "features": [
-      "Pattern matching using regular expressions",
-      "Command-line interface",
-      "File content searching",
-      "Test-driven development approach",
-      "Support for various input formats"
-    ],
-        "projectFeatures": [
-      {
-        "id": "pattern-matching",
-        "title": "Advanced Pattern Matching Engine",
-        "description": "Sophisticated regular expression engine built from scratch with optimized performance for large file searches",
-        "icon": "Target",
-        "subFeatures": [
-          {
-            "id": "regex-engine",
-            "title": "Custom Regex Implementation",
-            "description": "Built-in regular expression engine with full pattern support",
-            "metrics": "Complete regex compatibility",
-            "isHighlight": true
-          },
-          {
-            "id": "performance-optimization",
-            "title": "High-Performance Searching",
-            "description": "Optimized algorithms for fast text processing",
-            "metrics": "Faster than standard grep"
-          },
-          {
-            "id": "unicode-support",
-            "title": "Unicode and UTF-8 Support",
-            "description": "Handle international character sets correctly",
-            "metrics": "Global text support"
-          }
-        ],
-        "media": [],
-        "tags": ["Regex", "Performance", "Search"],
-        "priority": "high"
-      },
-      {
-        "id": "cli-interface",
-        "title": "Modern Command-Line Interface",
-        "description": "Intuitive CLI with comprehensive options, error handling, and Unix-style piping capabilities",
-        "icon": "Terminal",
-        "subFeatures": [
-          {
-            "id": "unix-compatibility",
-            "title": "Unix-Style Integration",
-            "description": "Perfect integration with shell pipelines and standard streams",
-            "metrics": "Full Unix compatibility",
-            "isHighlight": true
-          },
-          {
-            "id": "error-handling",
-            "title": "Robust Error Management",
-            "description": "Clear error messages and proper exit codes",
-            "metrics": "Production-ready reliability"
-          },
-          {
-            "id": "flexible-options",
-            "title": "Comprehensive Option Set",
-            "description": "Support for various search modes and output formats",
-            "metrics": "Feature-complete CLI"
-          }
-        ],
-        "media": [],
-        "tags": ["CLI", "Unix", "Interface"],
-        "priority": "high"
-      },
-      {
-        "id": "file-processing",
-        "title": "Efficient File Processing",
-        "description": "Optimized file reading and processing system that handles large files with minimal memory usage",
-        "icon": "FileText",
-        "subFeatures": [
-          {
-            "id": "memory-efficiency",
-            "title": "Low Memory Footprint",
-            "description": "Process large files without consuming excessive memory",
-            "metrics": "Optimized memory usage"
-          },
-          {
-            "id": "streaming-processing",
-            "title": "Streaming File Processing",
-            "description": "Line-by-line processing for handling files of any size",
-            "metrics": "Unlimited file size support",
-            "isHighlight": true
-          },
-          {
-            "id": "format-support",
-            "title": "Multiple Format Support",
-            "description": "Handle various text file formats and encodings",
-            "metrics": "Universal text support"
-          }
-        ],
-        "media": [],
-        "tags": ["File Processing", "Memory", "Streaming"],
-        "priority": "medium"
-      },
-      {
-        "id": "test-driven",
-        "title": "Test-Driven Development Approach",
-        "description": "Comprehensive testing methodology ensuring reliability and correctness in all edge cases",
-        "icon": "CheckCircle",
-        "subFeatures": [
-          {
-            "id": "comprehensive-testing",
-            "title": "Extensive Test Coverage",
-            "description": "Tests for all functionality including edge cases",
-            "metrics": "High test coverage"
-          },
-          {
-            "id": "edge-case-handling",
-            "title": "Edge Case Resilience",
-            "description": "Robust handling of unusual input patterns and file types",
-            "metrics": "Production-ready stability",
-            "isHighlight": true
-          },
-          {
-            "id": "codecrafters-challenge",
-            "title": "CodeCrafters Validation",
-            "description": "Built as part of structured learning challenge",
-            "metrics": "Peer-reviewed quality"
-          }
-        ],
-        "media": [],
-        "tags": ["Testing", "Quality", "Reliability"],
-        "priority": "medium"
-      }
-    ],
-    "tags": ["CLI", "Go", "Grep", "CodeCrafters"],
-    "explain": [
-      "This was part of a CodeCrafters challenge where I built my own version of the grep command-line tool. I wanted to understand how text search tools actually work, so I implemented one from scratch rather than just using existing libraries, focusing on making it handle regular expressions efficiently even with large files.",
-      "I took a test-driven approach, writing tests for each feature before implementing it, which helped make sure everything worked correctly with edge cases. Writing the pattern matching engine was trickier than expected - there are a lot of nuances to consider when implementing regex matching.",
-      "I built it in Go, using its standard library and concurrency features for performance. It was mainly an exercise to learn more about Go and text processing, but it turned out to be practically useful - I actually use it regularly when searching through large codebases because it's faster than many alternatives."
-    ],
-    "techStack": {
-      "Language & Runtime": [
-        "Go 1.22+ - For performance and strong standard library support",
-        "Zero external dependencies - Using only standard library for stability and security"
-      ],
-      "Text Processing": [
-        "Go regexp package - For pattern matching and regular expressions",
-        "Bufio Scanner - For efficient line-by-line file processing",
-        "UTF-8 Support - For handling international character sets"
-      ],
-      "Command-Line Interface": [
-        "Flag package - For parsing command-line arguments and options",
-        "Standard input/output streams - For Unix-style piping capability",
-        "Error handling with exit codes - For proper CLI application behavior"
-      ],
-      "Development Methodology": [
-        "Test-Driven Development - Writing tests before implementation",
-        "Benchmarking - Performance testing and optimization",
-        "Go tooling - Using go fmt, go vet, and go test",
-        "Continuous Integration - Using GitHub Actions for automated testing"
-      ],
-      "Design Patterns": [
-        "Strategy Pattern - For different search algorithms",
-        "Factory Pattern - For creating appropriate searchers based on input",
-        "Command Pattern - For encapsulating search operations"
-      ]
-    }
-  },
-  {
-    "name": "Current",
-    "description": "A full-featured BitTorrent client implemented from the ground up in Go, showcasing practical applications of network programming and distributed systems principles. This project encompasses the complete BitTorrent protocol stack, featuring concurrent downloads, peer management, and efficient file handling capabilities.",
-    "tagline": "📡 BitTorrent protocol built from scratch",
-    "githubLink": "https://github.com/utkarsh5026/current",
-    "technologies": ["golang", "bittorrent"],
-    "features": [
-      "Parse and decode .torrent files using custom bencode parser",
-      "Connect and communicate with BitTorrent trackers",
-      "Manage peer connections and handshakes",
-      "Download file pieces from multiple peers simultaneously",
-      "Verify downloaded pieces using SHA1 hashing",
-      "Track download progress in real-time",
-      "Handle concurrent TCP connections efficiently"
-    ],
-        "projectFeatures": [
-      {
-        "id": "bittorrent-protocol",
-        "title": "Complete BitTorrent Protocol Implementation",
-        "description": "Full implementation of the BitTorrent protocol stack including bencode parsing, tracker communication, and peer wire protocol",
-        "icon": "Network",
-        "subFeatures": [
-          {
-            "id": "bencode-parser",
-            "title": "Custom Bencode Parser",
-            "description": "Built-from-scratch parser for .torrent file format",
-            "metrics": "100% specification compliance",
-            "isHighlight": true
-          },
-          {
-            "id": "tracker-communication",
-            "title": "Tracker Protocol Support",
-            "description": "HTTP and UDP tracker communication implementation",
-            "metrics": "Multi-protocol support"
-          },
-          {
-            "id": "peer-protocol",
-            "title": "Peer Wire Protocol",
-            "description": "Complete peer-to-peer communication system",
-            "metrics": "Full protocol coverage"
-          }
-        ],
-        "media": [],
-        "tags": ["Protocol", "P2P", "Networking"],
-        "priority": "high"
-      },
-      {
-        "id": "concurrent-downloads",
-        "title": "High-Performance Concurrent Downloads",
-        "description": "Intelligent download system that manages multiple peer connections and optimizes piece selection for maximum speed",
-        "icon": "Download",
-        "subFeatures": [
-          {
-            "id": "peer-management",
-            "title": "Smart Peer Management",
-            "description": "Efficiently manage connections to multiple peers simultaneously",
-            "metrics": "Hundreds of concurrent peers",
-            "isHighlight": true
-          },
-          {
-            "id": "piece-selection",
-            "title": "Optimized Piece Selection",
-            "description": "Intelligent algorithms for choosing which pieces to download first",
-            "metrics": "Rarest-first strategy"
-          },
-          {
-            "id": "bandwidth-optimization",
-            "title": "Bandwidth Optimization",
-            "description": "Smart bandwidth allocation across peer connections",
-            "metrics": "Maximum download speed"
-          }
-        ],
-        "media": [],
-        "tags": ["Performance", "Concurrency", "Optimization"],
-        "priority": "high"
-      },
-      {
-        "id": "data-integrity",
-        "title": "Robust Data Verification System",
-        "description": "Comprehensive SHA-1 hash verification and data integrity checking to ensure perfect file reconstruction",
-        "icon": "Shield",
-        "subFeatures": [
-          {
-            "id": "sha1-verification",
-            "title": "SHA-1 Hash Verification",
-            "description": "Verify integrity of every downloaded piece",
-            "metrics": "100% data integrity",
-            "isHighlight": true
-          },
-          {
-            "id": "piece-validation",
-            "title": "Real-Time Piece Validation",
-            "description": "Immediate verification of downloaded data chunks",
-            "metrics": "Zero corruption tolerance"
-          },
-          {
-            "id": "error-recovery",
-            "title": "Automatic Error Recovery",
-            "description": "Re-download corrupted pieces automatically",
-            "metrics": "Self-healing downloads"
-          }
-        ],
-        "media": [],
-        "tags": ["Security", "Integrity", "Validation"],
-        "priority": "medium"
-      },
-      {
-        "id": "file-management",
-        "title": "Advanced File Assembly System",
-        "description": "Sophisticated file management system that handles both single-file and multi-file torrents with efficient disk I/O",
-        "icon": "HardDrive",
-        "subFeatures": [
-          {
-            "id": "multi-file-support",
-            "title": "Multi-File Torrent Support",
-            "description": "Handle complex torrents with multiple files and directories",
-            "metrics": "Full torrent format support"
-          },
-          {
-            "id": "disk-optimization",
-            "title": "Optimized Disk Operations",
-            "description": "Efficient file writing and assembly strategies",
-            "metrics": "Minimized disk I/O",
-            "isHighlight": true
-          },
-          {
-            "id": "progress-tracking",
-            "title": "Real-Time Progress Display",
-            "description": "Live download progress and statistics",
-            "metrics": "Detailed progress metrics"
-          }
-        ],
-        "media": [],
-        "tags": ["File System", "I/O", "Progress"],
-        "priority": "medium"
-      }
-    ],
-    "tags": ["BitTorrent", "Go", "Network Programming", "CodeCrafters", "CLI"],
-    "explain": [
-      "I've always been curious about how BitTorrent works, so I decided to build a torrent client from scratch. It required implementing everything from parsing torrent files to managing connections with peers and downloading file pieces in parallel, becoming a deep dive into networking and distributed systems principles.",
-      "The most interesting part was developing the peer wire protocol implementation - how torrent clients communicate. I built a system that requests different pieces of a file from multiple peers simultaneously, verifies each piece with SHA1 hashing, and assembles them correctly. Seeing that first complete download finish was incredibly satisfying.",
-      "I wrote it in Go, which was perfect due to its goroutines for concurrent operations. The client can download files quickly by intelligently prioritizing which pieces to download first and which peers to connect to. This project taught me more about practical networking than any course or book."
-    ],
-    "techStack": {
-      "Language & Runtime": [
-        "Go 1.20+ - Leveraging concurrency features with goroutines and channels",
-        "Standard Library - Using net, io, and crypto packages for core functionality"
-      ],
-      "BitTorrent Protocol": [
-        "Custom Bencode Parser - Implemented from scratch for .torrent file decoding",
-        "Peer Wire Protocol - Implementation of the BitTorrent peer communication protocol",
-        "Tracker Communication - HTTP and UDP tracker protocol support",
-        "Distributed Hash Table (DHT) - For tracker-less operation"
-      ],
-      "Networking": [
-        "TCP Connection Pool - Managing multiple peer connections efficiently",
-        "Handshake Protocol - Implementing BitTorrent peer handshake",
-        "Message Framing - Handling BitTorrent protocol message boundaries",
-        "Rate Limiting - Controlling upload and download bandwidth"
-      ],
-      "Concurrency": [
-        "Goroutines - For handling multiple simultaneous downloads",
-        "Channels - For safe communication between concurrent processes",
-        "Mutexes - For protecting shared state",
-        "Context - For managing lifetime of operations"
-      ],
-      "Data Management": [
-        "Piece Selection Algorithm - For optimizing download speed and availability",
-        "SHA-1 Hashing - For verifying integrity of downloaded pieces",
-        "File Management - Handling disk I/O and file assembly",
-        "Buffer Pool - Reusing memory buffers for improved performance"
-      ],
-      "CLI Interface": [
-        "Progress Display - Real-time download statistics and progress bars",
-        "Configuration - Command-line options and configuration files",
-        "Logging - Different verbosity levels for debugging"
-      ]
-    }
-  },
+
+
   {
     "name": "PAuth",
     "description": "A modern OAuth 2.0 authentication library for Python applications that prioritizes security and developer experience. This framework-agnostic solution implements comprehensive authentication flows with built-in security best practices, supporting multiple providers while maintaining a clean, intuitive API across Flask, Django, and other frameworks.",
@@ -3676,5 +3330,353 @@
       "Zero external dependencies - pure Node.js and TypeScript",
       "Express-inspired API with modern TypeScript features"
     ]
+  },
+    {
+    "name": "PatternFind",
+    "description": "A modern implementation of grep functionality, developed as part of the CodeCrafters challenge. This tool combines traditional text searching capabilities with advanced regular expression support, demonstrating how classical Unix utilities can be enhanced through modern language features and systematic testing approaches.",
+    "githubLink": "https://github.com/utkarsh5026/cope",
+    "tagline": "A modern implementation of grep 🔍",
+    "technologies": ["golang", "cli"],
+    "features": [
+      "Pattern matching using regular expressions",
+      "Command-line interface",
+      "File content searching",
+      "Test-driven development approach",
+      "Support for various input formats"
+    ],
+        "projectFeatures": [
+      {
+        "id": "pattern-matching",
+        "title": "Advanced Pattern Matching Engine",
+        "description": "Sophisticated regular expression engine built from scratch with optimized performance for large file searches",
+        "icon": "Target",
+        "subFeatures": [
+          {
+            "id": "regex-engine",
+            "title": "Custom Regex Implementation",
+            "description": "Built-in regular expression engine with full pattern support",
+            "metrics": "Complete regex compatibility",
+            "isHighlight": true
+          },
+          {
+            "id": "performance-optimization",
+            "title": "High-Performance Searching",
+            "description": "Optimized algorithms for fast text processing",
+            "metrics": "Faster than standard grep"
+          },
+          {
+            "id": "unicode-support",
+            "title": "Unicode and UTF-8 Support",
+            "description": "Handle international character sets correctly",
+            "metrics": "Global text support"
+          }
+        ],
+        "media": [],
+        "tags": ["Regex", "Performance", "Search"],
+        "priority": "high"
+      },
+      {
+        "id": "cli-interface",
+        "title": "Modern Command-Line Interface",
+        "description": "Intuitive CLI with comprehensive options, error handling, and Unix-style piping capabilities",
+        "icon": "Terminal",
+        "subFeatures": [
+          {
+            "id": "unix-compatibility",
+            "title": "Unix-Style Integration",
+            "description": "Perfect integration with shell pipelines and standard streams",
+            "metrics": "Full Unix compatibility",
+            "isHighlight": true
+          },
+          {
+            "id": "error-handling",
+            "title": "Robust Error Management",
+            "description": "Clear error messages and proper exit codes",
+            "metrics": "Production-ready reliability"
+          },
+          {
+            "id": "flexible-options",
+            "title": "Comprehensive Option Set",
+            "description": "Support for various search modes and output formats",
+            "metrics": "Feature-complete CLI"
+          }
+        ],
+        "media": [],
+        "tags": ["CLI", "Unix", "Interface"],
+        "priority": "high"
+      },
+      {
+        "id": "file-processing",
+        "title": "Efficient File Processing",
+        "description": "Optimized file reading and processing system that handles large files with minimal memory usage",
+        "icon": "FileText",
+        "subFeatures": [
+          {
+            "id": "memory-efficiency",
+            "title": "Low Memory Footprint",
+            "description": "Process large files without consuming excessive memory",
+            "metrics": "Optimized memory usage"
+          },
+          {
+            "id": "streaming-processing",
+            "title": "Streaming File Processing",
+            "description": "Line-by-line processing for handling files of any size",
+            "metrics": "Unlimited file size support",
+            "isHighlight": true
+          },
+          {
+            "id": "format-support",
+            "title": "Multiple Format Support",
+            "description": "Handle various text file formats and encodings",
+            "metrics": "Universal text support"
+          }
+        ],
+        "media": [],
+        "tags": ["File Processing", "Memory", "Streaming"],
+        "priority": "medium"
+      },
+      {
+        "id": "test-driven",
+        "title": "Test-Driven Development Approach",
+        "description": "Comprehensive testing methodology ensuring reliability and correctness in all edge cases",
+        "icon": "CheckCircle",
+        "subFeatures": [
+          {
+            "id": "comprehensive-testing",
+            "title": "Extensive Test Coverage",
+            "description": "Tests for all functionality including edge cases",
+            "metrics": "High test coverage"
+          },
+          {
+            "id": "edge-case-handling",
+            "title": "Edge Case Resilience",
+            "description": "Robust handling of unusual input patterns and file types",
+            "metrics": "Production-ready stability",
+            "isHighlight": true
+          },
+          {
+            "id": "codecrafters-challenge",
+            "title": "CodeCrafters Validation",
+            "description": "Built as part of structured learning challenge",
+            "metrics": "Peer-reviewed quality"
+          }
+        ],
+        "media": [],
+        "tags": ["Testing", "Quality", "Reliability"],
+        "priority": "medium"
+      }
+    ],
+    "tags": ["CLI", "Go", "Grep", "CodeCrafters"],
+    "explain": [
+      "This was part of a CodeCrafters challenge where I built my own version of the grep command-line tool. I wanted to understand how text search tools actually work, so I implemented one from scratch rather than just using existing libraries, focusing on making it handle regular expressions efficiently even with large files.",
+      "I took a test-driven approach, writing tests for each feature before implementing it, which helped make sure everything worked correctly with edge cases. Writing the pattern matching engine was trickier than expected - there are a lot of nuances to consider when implementing regex matching.",
+      "I built it in Go, using its standard library and concurrency features for performance. It was mainly an exercise to learn more about Go and text processing, but it turned out to be practically useful - I actually use it regularly when searching through large codebases because it's faster than many alternatives."
+    ],
+    "techStack": {
+      "Language & Runtime": [
+        "Go 1.22+ - For performance and strong standard library support",
+        "Zero external dependencies - Using only standard library for stability and security"
+      ],
+      "Text Processing": [
+        "Go regexp package - For pattern matching and regular expressions",
+        "Bufio Scanner - For efficient line-by-line file processing",
+        "UTF-8 Support - For handling international character sets"
+      ],
+      "Command-Line Interface": [
+        "Flag package - For parsing command-line arguments and options",
+        "Standard input/output streams - For Unix-style piping capability",
+        "Error handling with exit codes - For proper CLI application behavior"
+      ],
+      "Development Methodology": [
+        "Test-Driven Development - Writing tests before implementation",
+        "Benchmarking - Performance testing and optimization",
+        "Go tooling - Using go fmt, go vet, and go test",
+        "Continuous Integration - Using GitHub Actions for automated testing"
+      ],
+      "Design Patterns": [
+        "Strategy Pattern - For different search algorithms",
+        "Factory Pattern - For creating appropriate searchers based on input",
+        "Command Pattern - For encapsulating search operations"
+      ]
+    }
+  },
+    {
+    "name": "PeerShare",
+    "description": "A full-featured BitTorrent client implemented from the ground up in Go, showcasing practical applications of network programming and distributed systems principles. This project encompasses the complete BitTorrent protocol stack, featuring concurrent downloads, peer management, and efficient file handling capabilities.",
+    "tagline": "📡 BitTorrent protocol built from scratch",
+    "githubLink": "https://github.com/utkarsh5026/current",
+    "technologies": ["golang", "bittorrent"],
+    "features": [
+      "Parse and decode .torrent files using custom bencode parser",
+      "Connect and communicate with BitTorrent trackers",
+      "Manage peer connections and handshakes",
+      "Download file pieces from multiple peers simultaneously",
+      "Verify downloaded pieces using SHA1 hashing",
+      "Track download progress in real-time",
+      "Handle concurrent TCP connections efficiently"
+    ],
+        "projectFeatures": [
+      {
+        "id": "bittorrent-protocol",
+        "title": "Complete BitTorrent Protocol Implementation",
+        "description": "Full implementation of the BitTorrent protocol stack including bencode parsing, tracker communication, and peer wire protocol",
+        "icon": "Network",
+        "subFeatures": [
+          {
+            "id": "bencode-parser",
+            "title": "Custom Bencode Parser",
+            "description": "Built-from-scratch parser for .torrent file format",
+            "metrics": "100% specification compliance",
+            "isHighlight": true
+          },
+          {
+            "id": "tracker-communication",
+            "title": "Tracker Protocol Support",
+            "description": "HTTP and UDP tracker communication implementation",
+            "metrics": "Multi-protocol support"
+          },
+          {
+            "id": "peer-protocol",
+            "title": "Peer Wire Protocol",
+            "description": "Complete peer-to-peer communication system",
+            "metrics": "Full protocol coverage"
+          }
+        ],
+        "media": [],
+        "tags": ["Protocol", "P2P", "Networking"],
+        "priority": "high"
+      },
+      {
+        "id": "concurrent-downloads",
+        "title": "High-Performance Concurrent Downloads",
+        "description": "Intelligent download system that manages multiple peer connections and optimizes piece selection for maximum speed",
+        "icon": "Download",
+        "subFeatures": [
+          {
+            "id": "peer-management",
+            "title": "Smart Peer Management",
+            "description": "Efficiently manage connections to multiple peers simultaneously",
+            "metrics": "Hundreds of concurrent peers",
+            "isHighlight": true
+          },
+          {
+            "id": "piece-selection",
+            "title": "Optimized Piece Selection",
+            "description": "Intelligent algorithms for choosing which pieces to download first",
+            "metrics": "Rarest-first strategy"
+          },
+          {
+            "id": "bandwidth-optimization",
+            "title": "Bandwidth Optimization",
+            "description": "Smart bandwidth allocation across peer connections",
+            "metrics": "Maximum download speed"
+          }
+        ],
+        "media": [],
+        "tags": ["Performance", "Concurrency", "Optimization"],
+        "priority": "high"
+      },
+      {
+        "id": "data-integrity",
+        "title": "Robust Data Verification System",
+        "description": "Comprehensive SHA-1 hash verification and data integrity checking to ensure perfect file reconstruction",
+        "icon": "Shield",
+        "subFeatures": [
+          {
+            "id": "sha1-verification",
+            "title": "SHA-1 Hash Verification",
+            "description": "Verify integrity of every downloaded piece",
+            "metrics": "100% data integrity",
+            "isHighlight": true
+          },
+          {
+            "id": "piece-validation",
+            "title": "Real-Time Piece Validation",
+            "description": "Immediate verification of downloaded data chunks",
+            "metrics": "Zero corruption tolerance"
+          },
+          {
+            "id": "error-recovery",
+            "title": "Automatic Error Recovery",
+            "description": "Re-download corrupted pieces automatically",
+            "metrics": "Self-healing downloads"
+          }
+        ],
+        "media": [],
+        "tags": ["Security", "Integrity", "Validation"],
+        "priority": "medium"
+      },
+      {
+        "id": "file-management",
+        "title": "Advanced File Assembly System",
+        "description": "Sophisticated file management system that handles both single-file and multi-file torrents with efficient disk I/O",
+        "icon": "HardDrive",
+        "subFeatures": [
+          {
+            "id": "multi-file-support",
+            "title": "Multi-File Torrent Support",
+            "description": "Handle complex torrents with multiple files and directories",
+            "metrics": "Full torrent format support"
+          },
+          {
+            "id": "disk-optimization",
+            "title": "Optimized Disk Operations",
+            "description": "Efficient file writing and assembly strategies",
+            "metrics": "Minimized disk I/O",
+            "isHighlight": true
+          },
+          {
+            "id": "progress-tracking",
+            "title": "Real-Time Progress Display",
+            "description": "Live download progress and statistics",
+            "metrics": "Detailed progress metrics"
+          }
+        ],
+        "media": [],
+        "tags": ["File System", "I/O", "Progress"],
+        "priority": "medium"
+      }
+    ],
+    "tags": ["BitTorrent", "Go", "Network Programming", "CodeCrafters", "CLI"],
+    "explain": [
+      "I've always been curious about how BitTorrent works, so I decided to build a torrent client from scratch. It required implementing everything from parsing torrent files to managing connections with peers and downloading file pieces in parallel, becoming a deep dive into networking and distributed systems principles.",
+      "The most interesting part was developing the peer wire protocol implementation - how torrent clients communicate. I built a system that requests different pieces of a file from multiple peers simultaneously, verifies each piece with SHA1 hashing, and assembles them correctly. Seeing that first complete download finish was incredibly satisfying.",
+      "I wrote it in Go, which was perfect due to its goroutines for concurrent operations. The client can download files quickly by intelligently prioritizing which pieces to download first and which peers to connect to. This project taught me more about practical networking than any course or book."
+    ],
+    "techStack": {
+      "Language & Runtime": [
+        "Go 1.20+ - Leveraging concurrency features with goroutines and channels",
+        "Standard Library - Using net, io, and crypto packages for core functionality"
+      ],
+      "BitTorrent Protocol": [
+        "Custom Bencode Parser - Implemented from scratch for .torrent file decoding",
+        "Peer Wire Protocol - Implementation of the BitTorrent peer communication protocol",
+        "Tracker Communication - HTTP and UDP tracker protocol support",
+        "Distributed Hash Table (DHT) - For tracker-less operation"
+      ],
+      "Networking": [
+        "TCP Connection Pool - Managing multiple peer connections efficiently",
+        "Handshake Protocol - Implementing BitTorrent peer handshake",
+        "Message Framing - Handling BitTorrent protocol message boundaries",
+        "Rate Limiting - Controlling upload and download bandwidth"
+      ],
+      "Concurrency": [
+        "Goroutines - For handling multiple simultaneous downloads",
+        "Channels - For safe communication between concurrent processes",
+        "Mutexes - For protecting shared state",
+        "Context - For managing lifetime of operations"
+      ],
+      "Data Management": [
+        "Piece Selection Algorithm - For optimizing download speed and availability",
+        "SHA-1 Hashing - For verifying integrity of downloaded pieces",
+        "File Management - Handling disk I/O and file assembly",
+        "Buffer Pool - Reusing memory buffers for improved performance"
+      ],
+      "CLI Interface": [
+        "Progress Display - Real-time download statistics and progress bars",
+        "Configuration - Command-line options and configuration files",
+        "Logging - Different verbosity levels for debugging"
+      ]
+    }
   }
 ]
