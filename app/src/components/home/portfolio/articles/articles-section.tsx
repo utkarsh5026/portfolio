@@ -120,7 +120,7 @@ const ArticlesComponent: React.FC = () => {
             placeholder="Search articles..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="block w-full pl-10 pr-4 py-2 border border-ctp-surface0 bg-ctp-mantle rounded-lg focus:ring-ctp-pink focus:border-ctp-pink outline-none transition-colors duration-200 text-ctp-text placeholder-ctp-subtext0"
+            className="block w-full pl-10 pr-4 py-2 border-none bg-ctp-surface0/10 backdrop-blur-sm rounded-lg focus:ring-1 focus:ring-ctp-pink/30 focus:bg-ctp-surface0/15 outline-none transition-all duration-200 text-ctp-text placeholder-ctp-subtext0"
           />
         </Reveal>
 
@@ -150,7 +150,7 @@ const ArticlesComponent: React.FC = () => {
               {searchQuery && (
                 <Button
                   variant="outline"
-                  className="mt-4 border-ctp-pink text-ctp-pink hover:bg-ctp-pink/10"
+                  className="mt-4 border-none bg-ctp-pink/20 text-ctp-pink hover:bg-ctp-pink/30"
                   onClick={() => setSearchQuery("")}
                 >
                   Clear search

@@ -56,17 +56,17 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
       <div
         className={cn(
           "group flex flex-col h-full rounded-xl overflow-hidden transition-all duration-300 relative",
-          "border border-ctp-surface0 hover:border-ctp-pink/50",
-          "bg-gradient-to-br from-ctp-mantle to-ctp-base",
-          "shadow-md hover:shadow-xl hover:-translate-y-1"
+          "bg-ctp-surface0/10 backdrop-blur-sm border-none",
+          "hover:bg-ctp-surface0/15"
         )}
       >
         <div className="p-5 pb-3 flex-grow">
           <div className="flex justify-between items-start mb-4">
             <div
               className={cn(
-                "p-2.5 rounded-lg flex-shrink-0",
-                `bg-ctp-${color}/10 text-ctp-${color}`
+                "p-2.5 rounded-xl flex-shrink-0 transition-transform duration-200",
+                `bg-ctp-${color}/15 text-ctp-${color}`,
+                "group-hover:scale-105"
               )}
             >
               <Book className="w-4 h-4" />
@@ -75,7 +75,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
             <span
               className={cn(
                 "px-2.5 py-1 rounded-full text-xs font-medium",
-                `bg-ctp-${color}/20 text-ctp-${color} border border-ctp-${color}/30`
+                `bg-ctp-${color}/20 text-ctp-${color}`
               )}
             >
               {category}
@@ -95,6 +95,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
             <p
               className={cn(
                 "text-ctp-subtext0 text-sm transition-all duration-300",
+                "group-hover:text-ctp-subtext1",
                 isExpanded ? "" : "line-clamp-3"
               )}
             >
@@ -123,10 +124,10 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
           </div>
         </div>
 
-        <div className="mt-auto px-5 py-4 border-t border-ctp-surface0">
+        <div className="mt-auto px-5 py-4">
           <Button
             onClick={() => window.open(article.link, "_blank")}
-            className="w-full bg-ctp-surface0 hover:bg-ctp-pink/20 text-ctp-text group"
+            className="w-full bg-ctp-surface1/15 hover:bg-ctp-surface1/30 text-ctp-text border-none group"
             size="sm"
           >
             <span className="group-hover:text-ctp-pink transition-colors">
