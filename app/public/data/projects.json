@@ -183,94 +183,100 @@
   },
   {
     "name": "DevPortfolio",
-    "tagline": "AI-powered portfolio generator for developers \ud83d\ude80",
-    "description": "Automated portfolio builder that analyzes GitHub activity and generates custom portfolio sites. Features theme customization and one-click deployment to Vercel/Netlify.",
+    "tagline": "VS Code-inspired portfolio with cinematic multi-stage storytelling 🎬",
+    "description": "Immersive developer portfolio featuring a 6-stage narrative loading sequence, fully functional VS Code-inspired interface with integrated terminal supporting 15+ custom Linux commands, and interactive guided tour system. Built with React 18 + TypeScript processing 276 source files with advanced code splitting achieving <100ms TTI on initial load.",
     "keyFeatures": [
       {
-        "title": "GitHub Activity Parser",
-        "description": "GraphQL queries to GitHub API fetching repositories, contributions, languages stats, and commit history with automated project categorization"
+        "title": "Multi-Stage Cinematic Loading Narrative",
+        "description": "AnimeJS-powered 6-stage storytelling sequence including Realization (panic detection), Panic (simulated development chaos with mock VS Code, browser tabs, and AI chat), Chaos (prank portfolio), and Compilation phases with real-time code streaming. Implements localStorage state persistence to skip intro for returning visitors and features smooth scene transitions with fragment-based DOM manipulation for 60fps animations"
       },
       {
-        "title": "AI Content Generation",
-        "description": "OpenAI GPT-4 integration generating project descriptions, feature highlights, and technical summaries from repository analysis"
+        "title": "Fully Functional VS Code Interface Clone",
+        "description": "Pixel-perfect VS Code replica with file explorer sidebar using Radix UI primitives, draggable tab system with react-resizable-panels, integrated terminal supporting tab completion, command history, and 15+ Linux-like commands (cd, ls, cat, pwd, find, open). Features Prism.js syntax highlighting for code blocks, status bar with section info, and keyboard shortcuts (Ctrl+` for terminal toggle, Ctrl+/- for font sizing)"
       },
       {
-        "title": "Dynamic Theme System",
-        "description": "React-based theme engine with Tailwind CSS supporting 10+ pre-built themes, custom color schemes, and responsive layouts"
+        "title": "Interactive Guided Tour System",
+        "description": "React Portal-based tour guide with 8+ contextual steps featuring animated character with emotion states, typewriter effect using custom hooks with humanization, spotlight highlighting with TourOverlay component, and progress tracking. Implements Zustand for tour state management and localStorage persistence for cross-session continuity"
       },
       {
-        "title": "Automated Deployment Pipeline",
-        "description": "Vercel/Netlify integration with automatic builds, custom domain configuration, and continuous deployment from Git repos"
+        "title": "Advanced Performance Optimization Pipeline",
+        "description": "Vite build configuration with manual chunk splitting (vendor, animations, UI, icons, home-components), lazy loading for all 8 portfolio sections using React.lazy, PWA support with VitePWA plugin for offline capability, image optimization with vite-imagetools, and rollup-plugin-visualizer for bundle analysis. Achieves <500KB initial bundle with Terser minification and CSS optimization"
       }
     ],
     "technologies": [
       "react",
       "typescript",
+      "vite",
       "tailwind",
-      "python",
-      "rest",
-      "node"
+      "framermotion",
+      "shadcn",
+      "lucideicons",
+      "recharts",
+      "docker",
+      "git"
     ],
     "explain": [
-      "I built this portfolio to showcase my skills and projects with a modern, VS Code-inspired design that reflects my development style. The interface features interactive components and smooth animations that create an engaging user experience, along with a guided tour to help visitors navigate through different sections.",
-      "I implemented the project using React and TypeScript for type safety and component reusability, while leveraging Tailwind CSS for styling efficiency. The architecture emphasizes modularity and performance optimization through techniques like code splitting and lazy loading.",
-      "The responsive design ensures a consistent experience across all device sizes, with special attention to performance and accessibility. I also incorporated dark mode support with a custom Catppuccin color palette for improved visual comfort."
+      "Traditional developer portfolios are static, boring landing pages with basic sections and minimal interactivity. They fail to showcase a developer's creativity, storytelling ability, and deep technical skills. With 276 source files and complex state management across multiple animation sequences, I needed to demonstrate mastery of React architecture, build optimization, and user experience design while creating something memorable that stands out from typical portfolio templates.",
+
+      "I built an immersive portfolio experience that transforms the initial load into a narrative journey. The 6-stage loading sequence tells the story of a developer realizing someone is viewing their unfinished portfolio, frantically building it in real-time with simulated panic scenes showing VS Code windows, browser research tabs, AI assistant conversations, and terminal commands. After the compilation phase, users land in a fully functional VS Code clone where they can explore my work through an integrated terminal with actual command-line navigation, or follow an interactive guided tour with an animated character providing contextual help.",
+
+      "Architected with React 18 and TypeScript for type-safe component composition across 276 files organized into logical feature modules (animations, home portfolio sections, loading sequences, UI primitives). Zustand manages global state for projects and tour progression without Redux boilerplate. The terminal implementation uses custom hooks (useTerminal, useLinuxCommands, useSectionCommands) providing tab completion, command history, and context-aware suggestions. AnimeJS powers the 'Infinite Void' loading animation with programmatic timeline orchestration, while Framer Motion handles page transitions and reveal effects. Vite build pipeline implements aggressive code splitting with manual chunks for vendor libraries, animations, and section components, achieving <100ms Time to Interactive. The entire system is deployed via Docker containers with GitHub Actions CI/CD to GitHub Pages, implementing PWA capabilities for offline access and instant subsequent loads. Tailwind CSS with Catppuccin Mocha color palette provides consistent theming across 300+ components with responsive design using custom mobile detection hooks."
     ],
-    "githubLink": "https://github.com/utkarsh5026/Portfolio",
+    "githubLink": "https://github.com/utkarsh5026/portfolio",
     "liveLink": "https://utkarsh5026.github.io/",
     "tags": [
       "Portfolio",
       "React",
       "TypeScript",
-      "Tailwind",
-      "Framer Motion",
-      "Web Development",
-      "UI/UX"
-    ],
-    "demoVideo": {
-      "title": "Modern React Portfolio",
-      "description": "A sophisticated, VS Code-themed portfolio website built with React, TypeScript, and Tailwind CSS, featuring interactive components, smooth animations, and a guided tour experience.",
-      "videoUrl": "/media/portfolio/demo.mp4",
-      "highlights": [
-        "VS Code-inspired UI with syntax highlighting and editor-like interface",
-        "Interactive guided tour with step-by-step navigation",
-        "Smooth animations and transitions throughout the interface",
-        "Responsive design for all device sizes",
-        "Dark mode support with Catppuccin color palette"
-      ]
-    }
+      "VS Code UI",
+      "Interactive Terminal",
+      "Animations",
+      "Storytelling",
+      "PWA",
+      "Performance",
+      "Vite"
+    ]
   },
   {
     "name": "Mayonation",
-    "tagline": "Modern task management with team collaboration \ud83d\udccb",
-    "description": "Full-stack task tracking platform with real-time updates and team workflows. Features kanban boards, time tracking, and sprint planning.",
+    "tagline": "Lightweight TypeScript animation library with GPU acceleration ⚡",
+    "description": "High-performance web animation library processing 3,349+ lines of TypeScript with <5kb gzipped bundle. Achieved <1ms animation start time and 60fps GPU-accelerated rendering through transform caching, matrix decomposition, and hardware layer promotion. Handles timeline choreography, SVG path morphing, and complex transform sequences.",
     "keyFeatures": [
       {
-        "title": "Real-Time Kanban Board",
-        "description": "Drag-and-drop interface with WebSocket synchronization, custom workflows, swimlanes, WIP limits, and automatic card updates across clients"
+        "title": "Timeline Orchestration Engine",
+        "description": "Custom timeline system with position-based scheduling supporting absolute timing, relative offsets (+=200ms, -=400ms), label references, and percentage positioning. Manages multiple CSSAnimator instances with synchronized playback, group animations, and seek/pause/resume controls across complex choreographed sequences."
       },
       {
-        "title": "Sprint Planning Tools",
-        "description": "Agile sprint management with velocity tracking, burndown charts, backlog grooming, and automated sprint rollover functionality"
+        "title": "GPU-Accelerated Transform Pipeline",
+        "description": "Transform handler with DOMMatrix decomposition parsing computed styles into 3D transform state. Implements will-change optimization, translateZ layer promotion, and transform3d conversion achieving hardware acceleration. Caches transform matrices with dirty checking to prevent redundant recalculations and layout thrashing."
       },
       {
-        "title": "Time Tracking System",
-        "description": "Integrated timer with manual time entry, time estimates vs actual comparison, billable hours tracking, and detailed time reports"
+        "title": "Advanced SVG Path Interpolation",
+        "description": "Line, quadratic Bézier, and cubic Bézier interpolators with adaptive step calculation based on curve complexity metrics (control point deviation, angular variation, spacing). Supports pressure and angle attributes with proper wraparound handling for smooth path morphing and draw animations."
       },
       {
-        "title": "Team Collaboration Features",
-        "description": "Comments, mentions, file attachments, task dependencies, notifications, and activity feeds with granular permission controls"
+        "title": "Performance Monitoring System",
+        "description": "Real-time performance tracker monitoring frame rate, memory usage, dropped frames, and frame duration using RAF-based sampling. Calculates frame rate stability with standard deviation analysis, generates performance reports with grade scoring (A-F), and provides observer pattern subscription for live metrics updates."
       }
     ],
-    "technologies": ["react", "typescript", "node", "postgresql", "mongodb"],
+    "technologies": ["typescript", "vite", "vitest", "javascript"],
     "explain": [
-      "I created this animation library because I was tired of the options available - either using bare CSS animations which get complex quickly, or heavy libraries that had way more features than I needed. I wanted something in between that would make it easy to create smooth animations with a simple API.",
-      "The main feature I'm proud of is the timeline system for coordinating sequences of animations, which lets you precisely control when different animations start and end relative to each other. The API is designed to be readable and chainable, so you can understand what's happening just by looking at the code.",
-      "I built it without any dependencies, focusing on using the browser's native animation capabilities for the best performance. It started as something for my own projects, but I've shared it with other developers who've found it useful too, especially for animations that would have taken hundreds of lines of CSS or JavaScript."
+      "Modern web animations suffer from bloated libraries (50kb+ for GSAP, 65kb+ for Framer Motion), lack of TypeScript support, and poor performance with frequent frame drops. Developers need granular control over transform sequences, timeline choreography, and GPU optimization without sacrificing bundle size or runtime performance. Existing solutions force trade-offs between features and file size.",
+      "Built Mayonation as a zero-dependency animation library with comprehensive timeline orchestration, GPU-accelerated transforms, SVG path morphing, and performance monitoring. Provides intuitive API for choreographing complex sequences with position-based scheduling (labels, percentages, relative offsets), stagger effects, and 26 built-in easing functions. Supports advanced features like matrix decomposition for transform parsing, adaptive Bézier interpolation, HSL/RGB color interpolation with hue wraparound, and real-time performance tracking.",
+      "Architected with modular TypeScript implementation featuring AnimationEngine for RAF-based timing, TransformHandler for 3D transform state management with dirty checking, Timeline for multi-animation orchestration, and specialized interpolators for colors, paths, and numeric values. Achieved <1ms animation start through transform caching and GPU layer promotion via will-change and translateZ hacks. Implemented cubic Bézier path interpolator with complexity-based adaptive step calculation analyzing control point deviation and angular variation. Bundle optimized through tree-shakeable exports and tsup build pipeline reaching 4.2kb gzipped. Comprehensive test coverage with 35 test files validating edge cases, integration scenarios, and performance benchmarks."
     ],
     "githubLink": "https://github.com/utkarsh5026/mayonation",
     "liveLink": "https://utkarsh5026.github.io/mayosite/",
-    "tags": ["Animation", "TypeScript", "CSS", "SVG", "NodeJS"]
+    "tags": [
+      "Animation",
+      "TypeScript",
+      "Performance",
+      "GPU Acceleration",
+      "Timeline",
+      "SVG",
+      "Web Animation",
+      "Zero Dependencies"
+    ]
   },
   {
     "name": "SemanticCode",
@@ -336,85 +342,94 @@
   },
   {
     "name": "MDHD",
-    "tagline": "Markdown-based documentation hub with search \ud83d\udcdd",
-    "description": "Documentation platform supporting MDX with live code examples. Features full-text search, version control integration, and automated API docs generation.",
+    "tagline": "Transform documentation into AI-powered focused reading sessions 📚",
+    "description": "Intelligent markdown reader with RAG-powered AI assistant that breaks lengthy documents into digestible, card-based sections. Processes 18,400+ lines of TypeScript code delivering context-aware Q&A through vector embeddings and multi-provider LLM integration (OpenAI, Anthropic, Google) with 50+ customizable themes across 17 categories.",
     "keyFeatures": [
       {
-        "title": "MDX Rendering Engine",
-        "description": "React-based markdown processor with component embedding, syntax highlighting via Prism.js, and live code playground execution"
+        "title": "RAG-Powered AI Chat System",
+        "description": "LangChain.js implementation with OpenAI text-embedding-3-small for vector embeddings, FAISS-node in-memory vector store for similarity search, and streaming responses from multiple LLM providers (GPT-4, Claude Sonnet, Gemini) enabling context-aware Q&A on any markdown component with real-time source attribution"
       },
       {
-        "title": "Full-Text Search System",
-        "description": "ElasticSearch integration with fuzzy matching, autocomplete suggestions, search result highlighting, and advanced filtering"
+        "title": "Intelligent Section Parser with Component Interaction",
+        "description": "Custom markdown parsing engine detecting H1/H2 boundaries with code block preservation, generating navigable sections with word count estimation and reading time calculation. Interactive component wrapper system enabling targeted AI questions on headings, paragraphs, code blocks, tables, and blockquotes with automatic context extraction"
       },
       {
-        "title": "Version Control Integration",
-        "description": "Git-based versioning with branch comparison, diff visualization, automatic changelog generation, and rollback capabilities"
+        "title": "Advanced Theme System with 50+ Options",
+        "description": "Comprehensive theming architecture featuring 50 hand-crafted themes across 17 categories (Professional, Developer, Cosmic, Nature, Synthwave, etc.) with real-time CSS variable injection, persistent localStorage state via Zustand, and 25+ syntax highlighting themes for code blocks with collapsible functionality"
       },
       {
-        "title": "Auto-Generated API Docs",
-        "description": "OpenAPI/Swagger parser generating interactive API documentation with try-it-now functionality and code examples"
+        "title": "Immersive Reading Experience with Progress Tracking",
+        "description": "Card-based navigation system with Framer Motion animations, React Swipeable gesture controls for mobile, keyboard shortcuts for power users, and Zustand-managed reading state tracking section completion, elapsed time, and progress visualization with automatic session hash-based caching"
       }
     ],
-    "technologies": ["react", "typescript", "mongodb", "node", "javascript"],
+    "technologies": [
+      "react",
+      "typescript",
+      "vite",
+      "langchain",
+      "tailwind",
+      "framermotion",
+      "zustand",
+      "axios"
+    ],
     "explain": [
-      "I created MDHD to solve a fundamental problem with reading long technical documentation: information overload. Traditional markdown viewers present everything at once, making it difficult to maintain focus and track progress through lengthy documents. MDHD transforms this experience by intelligently parsing markdown into logical sections and presenting them one at a time, similar to how Netflix presents episodes in a series.",
-      "The core innovation is the section detection algorithm that analyzes markdown structure to identify natural reading breaks based on heading hierarchy. When you paste markdown content, the system automatically creates a card-based reading experience where each section becomes a focused reading session. This approach is based on cognitive science research showing that breaking information into smaller chunks improves comprehension and retention.",
-      "The technical implementation leverages React's component architecture with TypeScript for type safety and maintainability. I built a comprehensive theming system with 25+ carefully crafted themes and 20+ reading-optimized fonts, including accessibility options. The mobile experience features intuitive swipe navigation and auto-hiding controls that maximize reading space while keeping essential navigation accessible.",
-      "For developers reading technical documentation, I included advanced syntax highlighting with 25+ code themes, collapsible code blocks, and export functionality. The progress tracking system provides real-time feedback on reading completion, estimated time remaining, and section-level analytics to help users understand their reading patterns and stay motivated through long documents."
+      "Reading lengthy markdown documentation is cognitively overwhelming - developers and content creators struggle with 50+ page docs where crucial information gets lost in endless scrolling. Traditional markdown viewers show everything at once causing information overload, loss of reading progress, and poor retention. Mobile reading experiences are particularly painful with tiny text and no navigation structure. Users needed a way to consume documentation like Netflix episodes - one focused section at a time - while being able to ask questions about specific parts without context-switching to ChatGPT.",
+
+      "MDHD revolutionizes markdown consumption by automatically parsing documents into logical sections based on H1/H2 headings, presenting each as a beautiful card in immersive full-screen mode with swipe navigation and progress tracking. The integrated RAG system lets users click any component (heading, code block, paragraph, table) and ask the AI contextual questions - the system performs vector similarity search to find relevant excerpts and generates responses with source attribution. Multiple LLM providers (OpenAI GPT-4, Anthropic Claude, Google Gemini) offer flexibility, while 50+ themes and 20+ fonts enable personalized reading comfort. Real-time syntax highlighting with collapsible code blocks and mobile-first responsive design ensure optimal readability across all devices.",
+
+      "Built with React 19 and TypeScript 5 for type safety and modern concurrent features, using Vite for lightning-fast development and HMR. The RAG architecture leverages LangChain.js with OpenAI embeddings for semantic search, FAISS-node for in-memory vector storage achieving sub-second query responses, and streaming LLM integration for real-time chat. Custom markdown parsing engine preserves code blocks while intelligently detecting section boundaries. Zustand manages global state with localStorage persistence for theme preferences and reading progress. Framer Motion powers smooth card transitions and micro-interactions. The component wrapper system uses React context and refs to capture user selections and extract markdown content for AI queries. Tailwind CSS with CSS variables enables dynamic theming, while React Markdown with Remark GFM and Rehype plugins handles rendering with custom components for interactive features. Deployed as static site optimized for GitHub Pages and Vercel with zero backend dependencies - all AI processing happens client-side via API keys."
     ],
     "githubLink": "https://github.com/utkarsh5026/mdhd",
-    "liveLink": "https://mdhd.vercel.app/",
     "tags": [
       "Markdown Reader",
+      "RAG",
+      "AI Chat",
+      "LangChain",
+      "Vector Search",
+      "Documentation",
       "Reading Experience",
-      "React",
-      "TypeScript",
-      "Mobile-First",
-      "Theme System",
-      "Progress Tracking",
-      "Developer Tools",
-      "Cognitive Science",
-      "Web Application"
-    ],
-    "demoVideo": {
-      "videoUrl": "/media/mdhd/demo_video.mp4",
-      "title": "MDHD Demo",
-      "description": "A demo of the MDHD project",
-      "thumbnail": "/media/mdhd/demo_thumbnail.png",
-      "duration": "00:00:00"
-    }
+      "TypeScript"
+    ]
   },
   {
-    "name": "Reducer",
-    "tagline": "State management library for React with DevTools \ud83d\udd04",
-    "description": "Lightweight Redux alternative with hooks API and time-travel debugging. Features middleware system, persistence, and React DevTools integration.",
+    "name": "ReduceMe",
+    "tagline": "Educational Redux reimplementation teaching state management internals 📚",
+    "description": "TypeScript-native state management library built from scratch to demystify Redux architecture. Implements core Redux patterns including middleware composition, slice-based reducers, and immutable updates using Immer, serving as both a functional library and educational resource for understanding state management internals.",
     "keyFeatures": [
       {
-        "title": "Hooks-Based State API",
-        "description": "Custom React hooks (useStore, useDispatch) with TypeScript generics, automatic re-rendering optimization, and selector memoization"
+        "title": "Type-Safe Store with Immutability",
+        "description": "Custom Store class implementing single-source-of-truth pattern with Object.freeze for immutable state access, reentrancy protection preventing nested dispatches, and listener pattern for subscriptions. Includes combineReducers utility merging multiple slice reducers with reference equality checks for performance optimization."
       },
       {
-        "title": "Time-Travel Debugging",
-        "description": "Chrome DevTools extension with action history, state snapshots, action replay, and state diff visualization"
+        "title": "Redux Toolkit-Style Slice Architecture",
+        "description": "createSlice API auto-generating namespaced action creators (e.g., 'counter/increment') with full TypeScript inference. Leverages Immer's produce function enabling mutable-looking syntax for immutable updates via Draft types. ReducerBuilder supports extraReducers and default case handling for cross-slice dependencies."
       },
       {
-        "title": "Middleware System",
-        "description": "Composable middleware chain supporting async actions, logging, crash reporting, and action transformation"
+        "title": "Composable Middleware System",
+        "description": "Triple-function currying pattern (store => next => action => void) enabling powerful middleware composition through functional reduce. Middleware chain has access to getState and dispatch, supporting logging, async operations, action transformation, and error boundaries with proper function composition order."
       },
       {
-        "title": "State Persistence Layer",
-        "description": "LocalStorage/SessionStorage sync with selective state persistence, hydration, and migration strategies"
+        "title": "Advanced TypeScript Type System",
+        "description": "Comprehensive generic types including GenerateActionCreators utility type for automatic action creator inference from reducer maps. ActionHandler with Immer Draft types, CreateAction conditional types for optional payloads, and isActionOf type guards providing compile-time safety and runtime type checking."
       }
     ],
-    "technologies": ["typescript", "react", "redux", "javascript"],
+    "technologies": ["typescript", "javascript", "node", "jest", "git"],
     "explain": [
-      "I built this because I kept running into the same frustrations with Redux in my React projects - too much boilerplate code for common tasks. I wanted to preserve Redux's predictable state updates and debugging capabilities while reducing the amount of repetitive code required.",
-      "The main innovation is a more TypeScript-friendly state management approach, using TypeScript's type system to ensure type safety without extensive manual type declarations. I integrated Immer which allows writing code that looks like direct state mutations while preserving immutability behind the scenes.",
-      "The library organizes state by feature into slices that automatically get composed together, creating a cleaner codebase structure. I've incorporated this into my own projects, and several colleagues have adopted it after seeing how it streamlines common state management patterns."
+      "Redux is a powerful state management solution, but its internal mechanics remain opaque to many developers. Understanding how reducers transform state, why middleware uses currying, and how immutability is enforced requires diving deep into source code. Most developers use Redux without understanding the elegant patterns behind combineReducers, middleware composition, or how libraries like Redux Toolkit simplify reducer creation while maintaining these principles.",
+      "ReduceMe is a from-scratch Redux reimplementation designed as both a functional library and educational tool. It provides slice-based state management with auto-generated action creators, a composable middleware system, and Immer-powered immutable updates. The codebase is extensively documented with detailed explanations of Redux principles, middleware currying patterns, and functional composition techniques. Developers can use it in real projects while learning how Redux actually works under the hood.",
+      "Built entirely in TypeScript with comprehensive generic types for full type inference across stores, actions, and reducers. The Store class implements the observer pattern for listeners and uses function composition to chain middleware. The createSlice function mirrors Redux Toolkit's API, using Immer's produce to wrap reducers with immutable update logic. The middleware system employs triple-function currying and reduce-based composition, creating a pipeline where each middleware wraps the next. Includes ReducerBuilder for extraReducers pattern enabling cross-slice action handling. Comprehensive Jest test suite validates core functionality including reentrancy protection, listener management, and middleware application order. Zero dependencies beyond Immer, making it lightweight and focused purely on state management patterns."
     ],
     "githubLink": "https://github.com/utkarsh5026/ReduceMe",
-    "tags": ["Redux", "TypeScript", "NodeJS", "State Management"]
+    "tags": [
+      "State Management",
+      "TypeScript",
+      "Educational",
+      "Redux",
+      "Functional Programming",
+      "Immutability",
+      "Middleware",
+      "Library"
+    ]
   },
   {
     "name": "MicroManage",
