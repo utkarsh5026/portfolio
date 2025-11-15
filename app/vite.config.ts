@@ -43,7 +43,7 @@ export default defineConfig({
     cssMinify: true,
     terserOptions: {
       compress: {
-        drop_console: true,
+        drop_console: false, // Keep console.logs in production
         drop_debugger: true,
       },
     },
