@@ -39,9 +39,6 @@ const ProjectFeatures: React.FC<ProjectFeaturesProps> = ({
               Key Features
             </h2>
           </motion.div>
-          <p className="text-ctp-subtext0 text-xs sm:text-sm md:text-base max-w-xs sm:max-w-lg md:max-w-2xl leading-relaxed px-2 sm:px-0">
-            Technical highlights and core capabilities of {project.name}
-          </p>
         </div>
 
         {/* Features List */}
@@ -55,8 +52,12 @@ const ProjectFeatures: React.FC<ProjectFeaturesProps> = ({
               className={`group relative p-4 sm:p-5 lg:p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-ctp-surface0/50 border-ctp-surface1 hover:border-ctp-${theme.main}/40`}
             >
               <div className="flex items-start gap-3 sm:gap-4">
-                <div className={`p-2 sm:p-2.5 rounded-lg bg-ctp-${theme.main}/10 group-hover:bg-ctp-${theme.main}/20 transition-colors`}>
-                  <Zap className={`w-4 h-4 sm:w-5 sm:h-5 text-ctp-${theme.main}`} />
+                <div
+                  className={`p-2 sm:p-2.5 rounded-lg bg-ctp-${theme.main}/10 group-hover:bg-ctp-${theme.main}/20 transition-colors`}
+                >
+                  <Zap
+                    className={`w-4 h-4 sm:w-5 sm:h-5 text-ctp-${theme.main}`}
+                  />
                 </div>
 
                 <div className="flex-1 space-y-2">
@@ -73,7 +74,9 @@ const ProjectFeatures: React.FC<ProjectFeaturesProps> = ({
               </div>
 
               {/* Hover accent line */}
-              <div className={`absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full bg-gradient-to-r from-ctp-${theme.main}/50 to-transparent transition-all duration-500`} />
+              <div
+                className={`absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full bg-gradient-to-r from-ctp-${theme.main}/50 to-transparent transition-all duration-500`}
+              />
             </motion.div>
           ))}
         </div>
