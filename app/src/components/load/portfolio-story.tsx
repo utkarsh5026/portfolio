@@ -59,7 +59,8 @@ const PortfolioStory: React.FC = () => {
 
   useEffect(() => {
     // If user navigated directly to a specific section (not home), skip all intro animations
-    const isDirectNavigation = location.pathname !== "/" && location.pathname !== "";
+    const isDirectNavigation =
+      location.pathname !== "/" && location.pathname !== "";
 
     if (isDirectNavigation) {
       setCurrentStage("portfolio");
@@ -89,7 +90,7 @@ const PortfolioStory: React.FC = () => {
     const preloadImages = async () => {
       try {
         await Promise.all(IMAGES_TO_PRELOAD.map((url) => preloadImage(url)));
-        console.log("All images preloaded successfully");
+        console.debug("All images preloaded successfully");
       } catch (error) {
         console.error("Failed to preload some images", error);
       }

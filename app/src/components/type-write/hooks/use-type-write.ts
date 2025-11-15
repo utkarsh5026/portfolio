@@ -153,8 +153,8 @@ export const useTypewriting = (
 
   const timerRefs = useRef<Set<NodeJS.Timeout>>(new Set());
 
-  console.dir(timerRefs.current);
-  console.log(displayedText, state, currentIndex);
+  console.debug(timerRefs.current);
+  console.debug(displayedText, state, currentIndex);
 
   /**
    * Clear all active timers to avoid memory leaks and race conditions

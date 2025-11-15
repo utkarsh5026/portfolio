@@ -36,7 +36,7 @@ const ExplainItToMe: React.FC<ExplainItToMeProps> = ({ project }) => {
     },
   });
 
-  console.log(displayedText, progress);
+  console.debug(displayedText, progress);
 
   const paragraphRefs = useRef<HTMLDivElement[]>([]);
 
