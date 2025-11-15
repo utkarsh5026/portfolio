@@ -716,36 +716,5 @@
     ],
     "githubLink": "https://github.com/utkarsh5026/cope",
     "tags": ["CLI", "Go", "Grep", "CodeCrafters"]
-  },
-  {
-    "name": "PeerShare",
-    "tagline": "Peer-to-peer file sharing with WebRTC \ud83d\udce4",
-    "description": "Decentralized file transfer using WebRTC data channels. No server storage, direct browser-to-browser file sharing with encryption.",
-    "keyFeatures": [
-      {
-        "title": "WebRTC Data Channels",
-        "description": "Direct P2P connections with TURN/STUN servers, NAT traversal, and automatic fallback mechanisms"
-      },
-      {
-        "title": "Client-Side Encryption",
-        "description": "End-to-end encryption using Web Crypto API with AES-256-GCM and secure key exchange via ECDH"
-      },
-      {
-        "title": "Chunked File Transfer",
-        "description": "Large file splitting with parallel chunk transmission, progress tracking, and automatic retry on failure"
-      },
-      {
-        "title": "Room-Based Sharing",
-        "description": "Temporary sharing rooms with QR codes, link expiration, and multi-party file distribution"
-      }
-    ],
-    "technologies": ["react", "typescript", "javascript", "node"],
-    "explain": [
-      "I've always been curious about how BitTorrent works, so I decided to build a torrent client from scratch. It required implementing everything from parsing torrent files to managing connections with peers and downloading file pieces in parallel, becoming a deep dive into networking and distributed systems principles.",
-      "The most interesting part was developing the peer wire protocol implementation - how torrent clients communicate. I built a system that requests different pieces of a file from multiple peers simultaneously, verifies each piece with SHA1 hashing, and assembles them correctly. Seeing that first complete download finish was incredibly satisfying.",
-      "I wrote it in Go, which was perfect due to its goroutines for concurrent operations. The client can download files quickly by intelligently prioritizing which pieces to download first and which peers to connect to. This project taught me more about practical networking than any course or book."
-    ],
-    "githubLink": "https://github.com/utkarsh5026/current",
-    "tags": ["BitTorrent", "Go", "Network Programming", "CodeCrafters", "CLI"]
   }
 ]
