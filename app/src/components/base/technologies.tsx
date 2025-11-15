@@ -51,8 +51,9 @@ import {
   SiRust,
   SiWebassembly,
   SiJest,
+  SiVitest,
 } from "react-icons/si";
-import { FaAws, FaLinux, FaNode, FaChartBar } from "react-icons/fa";
+import { FaAws, FaLinux, FaNode, FaChartBar, FaDatabase } from "react-icons/fa";
 import { VscTerminalPowershell, VscEditorLayout } from "react-icons/vsc";
 import { TbApi } from "react-icons/tb";
 import { GoCommandPalette } from "react-icons/go";
@@ -304,6 +305,16 @@ export const technologies = {
     name: "HTTP",
     aboutLink: "https://developer.mozilla.org/en-US/docs/Web/HTTP",
     icon: <MdHttp className="text-ctp-yellow" />,
+  },
+  vitest: {
+    name: "Vitest",
+    aboutLink: "https://vitest.dev/",
+    icon: <SiVitest className="text-ctp-green" />,
+  },
+  zustand: {
+    name: "Zustand",
+    aboutLink: "https://zustand-demo.pmnd.rs/",
+    icon: <FaDatabase className="text-ctp-mauve" />,
   },
 } as const;
 
