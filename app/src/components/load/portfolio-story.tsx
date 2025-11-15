@@ -1,5 +1,6 @@
 import "./style.css";
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Realization from "./realization/Realization";
 import Panic from "./panic/main/Panic";
 import CodeCompilation from "./compilation/code-compilation";
@@ -52,16 +53,23 @@ const preloadImage = (src: string): Promise<void> => {
  */
 const PortfolioStory: React.FC = () => {
   const { isPhone } = useMobile();
+  const location = useLocation();
   const [currentStage, setCurrentStage] = useState<PortfolioStage>(undefined);
   const [showSkipButton, setShowSkipButton] = useState(false);
 
   useEffect(() => {
-    if (isPhone) {
+    // If user navigated directly to a specific section (not home), skip all intro animations
+    const isDirectNavigation = location.pathname !== "/" && location.pathname !== "";
+
+    if (isDirectNavigation) {
+      setCurrentStage("portfolio");
+      localStorage.setItem("hasSeenPortfolioIntro", "true");
+    } else if (isPhone) {
       setCurrentStage("chaos");
     } else {
       setCurrentStage("realization");
     }
-  }, [isPhone]);
+  }, [isPhone, location.pathname]);
 
   /**
    * Shows the skip button if the user has seen the intro before.
