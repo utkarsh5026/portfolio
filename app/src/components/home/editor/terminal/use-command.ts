@@ -138,7 +138,7 @@ export const useLinuxCommands = () => {
               return `
 Name: ${project.name}
 Description: ${project.description}
-Tech: ${project.technologies.map((t) => technologies[t].name).join(", ")}
+Tech: ${project.technologies.filter((t) => technologies[t]).map((t) => technologies[t].name).join(", ")}
 GitHub: ${project.githubLink}
 ${project.liveLink ? `Live: ${project.liveLink}` : ""}
               `;
@@ -280,6 +280,7 @@ Project: ${project.name}
 ${project.description}
 
 Technologies: ${project.technologies
+              .filter((t) => technologies[t])
               .map((t) => technologies[t].name)
               .join(", ")}
 
@@ -419,7 +420,7 @@ export const useUtilityCommands = () => {
             p.name.toLowerCase().includes(query) ||
             p.description.toLowerCase().includes(query) ||
             p.technologies.some((t) =>
-              technologies[t].name.toLowerCase().includes(query)
+              technologies[t] && technologies[t].name.toLowerCase().includes(query)
             )
         );
 

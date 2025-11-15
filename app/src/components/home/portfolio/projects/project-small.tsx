@@ -115,25 +115,28 @@ const ProjectSmall: React.FC<ProjectSmallProps> = ({
                 Tech Stack
               </div>
               <div className="flex flex-wrap gap-1.5">
-                {project.technologies.slice(0, 3).map((tech, i) => (
-                  <motion.span
-                    key={technologies[tech as keyof typeof technologies].name}
-                    initial={{ opacity: 0, y: 5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 + i * 0.1, duration: 0.3 }}
-                    className={cn(
-                      "text-xs px-2 py-0.5 rounded-md transition-all duration-300",
-                      isHovered
-                        ? `bg-ctp-surface0 border-ctp-${accentColor}/20 text-ctp-text`
-                        : "bg-ctp-surface0/50 text-ctp-subtext0 border-transparent"
-                    )}
-                  >
-                    {technologies[tech as keyof typeof technologies].name}
-                  </motion.span>
-                ))}
-                {project.technologies.length > 3 && (
+                {project.technologies
+                  .filter((tech) => technologies[tech as keyof typeof technologies])
+                  .slice(0, 3)
+                  .map((tech, i) => (
+                    <motion.span
+                      key={technologies[tech as keyof typeof technologies].name}
+                      initial={{ opacity: 0, y: 5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 + i * 0.1, duration: 0.3 }}
+                      className={cn(
+                        "text-xs px-2 py-0.5 rounded-md transition-all duration-300",
+                        isHovered
+                          ? `bg-ctp-surface0 border-ctp-${accentColor}/20 text-ctp-text`
+                          : "bg-ctp-surface0/50 text-ctp-subtext0 border-transparent"
+                      )}
+                    >
+                      {technologies[tech as keyof typeof technologies].name}
+                    </motion.span>
+                  ))}
+                {project.technologies.filter((tech) => technologies[tech as keyof typeof technologies]).length > 3 && (
                   <span className="text-xs px-2 py-0.5 rounded-md bg-ctp-surface0/50 text-ctp-subtext0">
-                    +{project.technologies.length - 3}
+                    +{project.technologies.filter((tech) => technologies[tech as keyof typeof technologies]).length - 3}
                   </span>
                 )}
               </div>
