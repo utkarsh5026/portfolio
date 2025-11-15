@@ -716,5 +716,45 @@
     ],
     "githubLink": "https://github.com/utkarsh5026/cope",
     "tags": ["CLI", "Go", "Grep", "CodeCrafters"]
+  },
+  {
+    "name": "chankit",
+    "tagline": "Transform Go channels into reactive, type-safe data pipelines 🚀",
+    "description": "Production-ready Go library providing 60+ channel operations with fluent pipeline API and reactive patterns. Achieved 4.4:1 test-to-code ratio (7,139 test lines) with zero external dependencies and sub-millisecond transformation overhead through type-safe generics.",
+    "keyFeatures": [
+      {
+        "title": "Type-Safe Fluent Pipeline API",
+        "description": "486-line chainable interface leveraging Go 1.18+ generics for compile-time type safety. Supports Map/Filter/Reduce transformations with type preservation, LINQ-style aliases (Where/Select), and lazy evaluation until terminal operations like ToSlice or Reduce are called."
+      },
+      {
+        "title": "Reactive Flow Control Primitives",
+        "description": "Implements Throttle (rate-limiting with value dropping), Debounce (silence-based emission with timer reset), FixedInterval (queued pacing without drops), and Batch (size/timeout-based grouping) using timer reuse and state machine patterns for zero-allocation optimizations."
+      },
+      {
+        "title": "Context-Aware Concurrency Management",
+        "description": "Every operation implements context.Context cancellation with goroutine leak prevention through drain patterns. Uses double-select idiom for pre/post context checks and WaitGroup coordination for concurrent FlatMap processing ensuring graceful shutdown under any condition."
+      },
+      {
+        "title": "Zero-Dependency Generic Generators",
+        "description": "Pure stdlib implementation supporting Range (numeric sequences with constraint types), Generate (custom generator functions), and Repeat (infinite value streams). Includes functional options pattern for configurable buffering and pre-allocated slice capacities."
+      }
+    ],
+    "technologies": ["golang", "git"],
+    "explain": [
+      "Go's channel operations are inherently imperative, leading to deeply nested function calls, verbose boilerplate, and repetitive patterns for common use cases like rate limiting, debouncing, and data transformation. Developers waste time reimplementing throttle/debounce logic or writing manual goroutine coordination code instead of focusing on business logic. Existing solutions lacked type safety before generics or required external dependencies.",
+      "chankit provides a comprehensive toolkit transforming Go channels into reactive, composable pipelines through a fluent API. It offers 60+ operations across generators (Range, Repeat), transformations (Map, Filter, Reduce), flow control (Throttle, Debounce, Batch), and utilities (Merge, Zip, Tap). The modern Pipeline API enables elegant method chaining while maintaining full type safety, replacing deeply nested code with readable declarative pipelines.",
+      "Architected with Go 1.18+ generics for compile-time type safety across all transformations. Implements context-first design pattern where every operation respects cancellation through select statements, preventing goroutine leaks via automatic channel draining. Flow control uses timer reuse instead of allocations, double-select context checking before/after expensive operations, and WaitGroup-based coordination for concurrent processing. Achieved 4.4:1 test-to-code ratio with race detector validation, 50+ golangci-lint rules, and zero external dependencies (pure stdlib). Deployed via go modules with automated CI/CD for testing, benchmarking, and security scanning."
+    ],
+    "githubLink": "https://github.com/utkarsh5026/chankit",
+    "tags": [
+      "Concurrency",
+      "Reactive Programming",
+      "Golang",
+      "Type Safety",
+      "Pipeline",
+      "Flow Control",
+      "Zero Dependencies",
+      "High Performance"
+    ]
   }
 ]
