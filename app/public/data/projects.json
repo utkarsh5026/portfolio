@@ -143,42 +143,55 @@
     ]
   },
   {
-    "name": "Enigma",
-    "tagline": "End-to-end encrypted messaging with zero-knowledge architecture \ud83d\udd10",
-    "description": "Privacy-focused chat application implementing Signal Protocol for E2EE. Features group chats, file sharing, and disappearing messages with client-side encryption.",
+    "name": "Enigma Language Explorer",
+    "tagline": "Build and debug your own programming language in the browser 🚀",
+    "description": "Full-featured interpreter for Enigma, a custom programming language built from scratch with 240+ TypeScript files implementing lexer, parser, and tree-walking evaluator. Interactive web IDE with Monaco editor featuring real-time AST visualization, step-by-step debugger with execution state tracking, and instant syntax analysis processing 1000+ tokens per second.",
     "keyFeatures": [
       {
-        "title": "Signal Protocol Implementation",
-        "description": "End-to-end encryption using Double Ratchet algorithm with X3DH key agreement and prekey bundles for asynchronous messaging"
+        "title": "Complete Language Implementation Pipeline",
+        "description": "Hand-crafted lexer with multi-line comment support and f-string parsing, Pratt parser with operator precedence and error recovery generating full AST, and tree-walking evaluator supporting closures, first-class functions, OOP with inheritance, and 20+ built-in functions including map, filter, and reduce"
       },
       {
-        "title": "Zero-Knowledge Architecture",
-        "description": "Client-side encryption ensuring server never accesses plaintext messages, implementing perfect forward secrecy with ephemeral keys"
+        "title": "Interactive Step-by-Step Debugger",
+        "description": "Custom execution state tracking system capturing before/during/after evaluation phases, environment snapshots at each step, call stack visualization, and variable inspection allowing developers to navigate forward/backward through program execution with sub-millisecond step transitions"
       },
       {
-        "title": "Secure Group Messaging",
-        "description": "Sender Keys protocol for efficient group chats with member management, admin controls, and encrypted group state synchronization"
+        "title": "Real-Time AST Visualization Engine",
+        "description": "React-based tree renderer displaying Abstract Syntax Tree with 15+ node types, bidirectional code-to-AST highlighting using Monaco decorations API, collapsible node navigation, and live updates processing syntax changes with <100ms latency using memoized parsing"
       },
       {
-        "title": "Media Encryption System",
-        "description": "File chunking with AES-256-GCM encryption, encrypted thumbnails, and secure media downloads with automatic expiration"
+        "title": "Monaco-Powered Code Editor with Custom Language Support",
+        "description": "Integrated Monaco editor with custom Enigma syntax highlighting, intelligent tokenization displaying 30+ token types with color-coding, error underlining with source context extraction, and responsive layout supporting both desktop split-pane and mobile drawer interfaces built with Tailwind and Shadcn UI"
       }
     ],
-    "technologies": ["react", "typescript", "node", "javascript", "mongodb"],
+    "technologies": [
+      "typescript",
+      "react",
+      "monaco",
+      "vite",
+      "tailwind",
+      "shadcn",
+      "framermotion",
+      "jest",
+      "lucideicons"
+    ],
     "explain": [
-      "I built Enigma Language Explorer to make programming language internals accessible and visual. Most developers use languages daily but rarely understand their inner workings. This interactive tool shows each step from source code to execution, demystifying interpreter design by visualizing lexical analysis, parsing, and evaluation in real-time.",
-      "The core is a complete interpreter implementation with clear separation between tokenization, parsing, and evaluation phases. The language supports dynamic typing, first-class functions, and closures. The most technically challenging aspect was the step-by-step execution visualizer, which required redesigning the interpreter to support pausing execution while maintaining state.",
-      "I used React with TypeScript for the frontend, creating an IDE-like experience with Monaco Editor integration and a Tokyo Night-inspired theme. The visualization components dynamically update as code is modified, highlighting the active AST node during execution to show the direct connection between syntax and runtime behavior."
+      "Understanding how programming languages work requires building one from scratch, but most resources focus on toy examples that don't demonstrate real-world complexity. Developers learning about interpreters, compilers, and language design lack an interactive environment to experiment with lexing, parsing, AST manipulation, and evaluation phases while seeing the immediate impact of their code on language semantics.",
+      "I created Enigma Language Explorer, a production-quality interpreter for a custom dynamically-typed language with modern features including closures, OOP with inheritance, higher-order functions, and f-strings. The web-based IDE provides unprecedented visibility into language internals through real-time token streams, interactive AST visualization, and a step-by-step debugger that captures environment snapshots and execution state at every evaluation phase. Developers can write Enigma code and immediately see how it's tokenized into 30+ token types, parsed into a structured AST, and executed instruction-by-instruction with full variable inspection.",
+      "The interpreter follows the classic architecture from 'Writing an Interpreter in Go' with TypeScript implementing a hand-written recursive descent parser using Pratt parsing for operator precedence, a tree-walking evaluator with lexical scoping and environment chains for variable resolution, and a comprehensive object system supporting integers, floats, strings, arrays, hash maps, functions, and class instances. The frontend uses React 19 with Monaco Editor integrated through custom language providers, Framer Motion for smooth AST node transitions, and a custom step storage system tracking 1000+ execution steps per program run. Error handling includes source context extraction showing code snippets with line numbers and column pointers. Testing infrastructure includes 650+ lines of Jest tests validating lexer edge cases, and CI/CD through GitHub Actions automatically builds and tests on every commit. The responsive UI adapts between desktop split-pane layouts and mobile drawer interfaces using Tailwind's utility classes and Shadcn components."
     ],
     "githubLink": "https://github.com/utkarsh5026/enigma",
-    "liveLink": "https://enigma-explorer.vercel.app/",
     "tags": [
-      "interpreter",
-      "react",
-      "language",
-      "visualization",
-      "typescript",
-      "educative"
+      "Programming Language",
+      "Interpreter",
+      "Compiler Design",
+      "TypeScript",
+      "React",
+      "Monaco Editor",
+      "AST Visualization",
+      "Debugger",
+      "Educational",
+      "Language Design"
     ]
   },
   {

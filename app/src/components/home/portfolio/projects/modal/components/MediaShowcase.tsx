@@ -271,7 +271,6 @@ const MediaLightbox: React.FC<MediaLightboxProps> = ({
   isOpen,
   media,
   selectedIndex,
-  theme,
   onClose,
   onNavigate,
 }) => {
