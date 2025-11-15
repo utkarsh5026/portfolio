@@ -5,29 +5,51 @@ import React, {
   useMemo,
   useCallback,
 } from "react";
-import { EditorContext, SectionType } from "./explorer-context";
-
-const sections = [
-  "home",
-  "about",
-  "skills",
-  "projects",
-  "experience",
-  "contact",
-  "learning",
-  "articles",
-] as const;
+import { useLocation, useNavigate } from "react-router-dom";
+import { EditorContext, SectionType, sections } from "./explorer-context";
 
 interface ProviderProps {
   children: ReactNode;
 }
 
 export const EditorProvider: React.FC<ProviderProps> = ({ children }) => {
-  const [activeSection, setActiveSection] =
-    useState<(typeof sections)[number]>("home");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Parse section from URL hash
+  const getSectionFromPath = useCallback((pathname: string): SectionType => {
+    const section = pathname.replace(/^\//, "") || "home";
+    return sections.includes(section as SectionType)
+      ? (section as SectionType)
+      : "home";
+  }, []);
+
+  const [activeSection, setActiveSection] = useState<SectionType>(() =>
+    getSectionFromPath(location.pathname)
+  );
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [explorerOpen, setExplorerOpen] = useState(true);
   const [terminalOpen, setTerminalOpen] = useState(false);
+
+  // Sync URL with active section
+  useEffect(() => {
+    const section = getSectionFromPath(location.pathname);
+    if (section !== activeSection) {
+      setActiveSection(section);
+    }
+  }, [location.pathname, getSectionFromPath, activeSection]);
+
+  // Custom setActiveSection that also updates URL
+  const handleSetActiveSection = useCallback(
+    (section: SectionType) => {
+      setActiveSection(section);
+      const path = section === "home" ? "/" : `/${section}`;
+      if (location.pathname !== path) {
+        navigate(path, { replace: false });
+      }
+    },
+    [navigate, location.pathname]
+  );
 
   const handleKeyyDownEvents = useCallback(() => {
     const toggleExplorer = () => {
@@ -84,7 +106,7 @@ export const EditorProvider: React.FC<ProviderProps> = ({ children }) => {
       files,
       terminalOpen,
       setTerminalOpen,
-      setActiveSection,
+      setActiveSection: handleSetActiveSection,
       setMobileMenuOpen,
       setExplorerOpen,
     }),
@@ -93,7 +115,7 @@ export const EditorProvider: React.FC<ProviderProps> = ({ children }) => {
       mobileMenuOpen,
       explorerOpen,
       files,
-      setActiveSection,
+      handleSetActiveSection,
       setMobileMenuOpen,
       setExplorerOpen,
       terminalOpen,
