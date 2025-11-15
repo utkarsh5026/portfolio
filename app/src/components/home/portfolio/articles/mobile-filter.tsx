@@ -39,10 +39,10 @@ const MobileFilter: React.FC<MobileFilterProps> = ({
         variant="outline"
         size="sm"
         className={cn(
-          "border-ctp-surface0 hover:border-ctp-pink whitespace-nowrap",
+          "border-none whitespace-nowrap transition-all duration-200",
           selectedCategory === null
-            ? "bg-ctp-pink/10 text-ctp-pink border-ctp-pink"
-            : "bg-transparent"
+            ? "bg-ctp-pink/20 text-ctp-pink"
+            : "bg-ctp-surface0/10 hover:bg-ctp-surface0/20"
         )}
         onClick={() => setSelectedCategory(null)}
       >
@@ -54,10 +54,10 @@ const MobileFilter: React.FC<MobileFilterProps> = ({
           variant="outline"
           size="sm"
           className={cn(
-            "border-ctp-surface0 hover:border-ctp-pink whitespace-nowrap",
+            "border-none whitespace-nowrap transition-all duration-200",
             selectedCategory === category
-              ? "bg-ctp-pink/10 text-ctp-pink border-ctp-pink"
-              : "bg-transparent"
+              ? "bg-ctp-pink/20 text-ctp-pink"
+              : "bg-ctp-surface0/10 hover:bg-ctp-surface0/20"
           )}
           onClick={() =>
             setSelectedCategory(selectedCategory === category ? null : category)
