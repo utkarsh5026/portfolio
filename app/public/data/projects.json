@@ -29,8 +29,7 @@
       "pandas",
       "plotly",
       "postgresql",
-      "redis",
-      "celery",
+      "mongodb",
       "docker"
     ],
     "explain": [
@@ -478,11 +477,9 @@
     "technologies": [
       "react",
       "typescript",
-      "nodejs",
-      "express",
+      "node",
       "mongodb",
-      "socketio",
-      "github-api"
+      "rest"
     ],
     "explain": [
       "I built SourceControl to gain a deep understanding of Git's internal architecture and demonstrate how modern TypeScript can be used for systems programming. While Git is implemented in C, I wanted to explore how the same concepts could be expressed using TypeScript's type system and Node.js ecosystem, making the codebase more accessible to web developers.",
@@ -677,11 +674,9 @@
     "technologies": [
       "react",
       "typescript",
-      "nodejs",
-      "websocket",
-      "libsignal",
-      "mongodb",
-      "redis"
+      "node",
+      "javascript",
+      "mongodb"
     ],
     "explain": [
       "I built Enigma Language Explorer to make programming language internals accessible and visual. Most developers use languages daily but rarely understand their inner workings. This interactive tool shows each step from source code to execution, demystifying interpreter design by visualizing lexical analysis, parsing, and evaluation in real-time.",
@@ -915,11 +910,10 @@
     "technologies": [
       "react",
       "typescript",
-      "nextjs",
       "tailwind",
-      "openai",
-      "github-api",
-      "vercel"
+      "python",
+      "rest",
+      "node"
     ],
     "explain": [
       "I built this portfolio to showcase my skills and projects with a modern, VS Code-inspired design that reflects my development style. The interface features interactive components and smooth animations that create an engaging user experience, along with a guided tour to help visitors navigate through different sections.",
@@ -1149,11 +1143,9 @@
     "technologies": [
       "react",
       "typescript",
-      "nodejs",
-      "express",
+      "node",
       "postgresql",
-      "websocket",
-      "redis"
+      "mongodb"
     ],
     "explain": [
       "I created this animation library because I was tired of the options available - either using bare CSS animations which get complex quickly, or heavy libraries that had way more features than I needed. I wanted something in between that would make it easy to create smooth animations with a simple API.",
@@ -1379,10 +1371,7 @@
       "python",
       "typescript",
       "fastapi",
-      "openai",
-      "faiss",
-      "treesitter",
-      "redis"
+      "mongodb"
     ],
     "explain": [
       "I built GEP to solve a frustrating problem I encountered regularly: searching through large codebases where traditional tools like grep fall short when trying to find code by concept rather than exact text matches. Using vector embeddings and LLMs, GEP understands code semantically, allowing developers to search with natural language queries like 'how does the authentication system work?'",
@@ -1611,13 +1600,10 @@
       }
     ],
     "technologies": [
-      "nodejs",
+      "node",
       "typescript",
-      "express",
       "postgresql",
-      "redis",
-      "passport",
-      "saml2"
+      "mongodb"
     ],
     "explain": [
       "I created this after implementing OAuth authentication repeatedly in different projects and realizing I was solving the same problems over and over. I wanted a solution that would handle all the OAuth flows, token storage, refreshing, and provider-specific quirks regardless of which Python framework I was using.",
@@ -1838,10 +1824,9 @@
     "technologies": [
       "react",
       "typescript",
-      "mdx",
-      "elasticsearch",
-      "nodejs",
-      "prismjs"
+      "mongodb",
+      "node",
+      "javascript"
     ],
     "explain": [
       "I created MDHD to solve a fundamental problem with reading long technical documentation: information overload. Traditional markdown viewers present everything at once, making it difficult to maintain focus and track progress through lengthy documents. MDHD transforms this experience by intelligently parsing markdown into logical sections and presenting them one at a time, similar to how Netflix presents episodes in a series.",
@@ -2175,7 +2160,7 @@
       "typescript",
       "react",
       "redux",
-      "chrome-extension"
+      "javascript"
     ],
     "explain": [
       "I built this because I kept running into the same frustrations with Redux in my React projects - too much boilerplate code for common tasks. I wanted to preserve Redux's predictable state updates and debugging capabilities while reducing the amount of repetitive code required.",
@@ -2396,10 +2381,7 @@
     "technologies": [
       "golang",
       "kubernetes",
-      "consul",
-      "prometheus",
-      "grafana",
-      "jaeger"
+      "plotly"
     ],
     "explain": [
       "I built this lightweight container orchestration system to understand how Kubernetes works under the hood. Rather than just using Kubernetes as a black box, I wanted to implement its core concepts from scratch to gain deeper insight into distributed systems principles like scheduling, service discovery, and fault tolerance.",
@@ -2629,7 +2611,6 @@
       "react",
       "typescript",
       "python",
-      "openai",
       "monaco",
       "docker"
     ],
@@ -2855,7 +2836,7 @@
       "typescript",
       "python",
       "docker",
-      "redis",
+      "mongodb",
       "postgresql"
     ],
     "explain": [
@@ -3082,10 +3063,8 @@
     "technologies": [
       "react",
       "typescript",
-      "webrtc",
-      "mediasoup",
-      "websocket",
-      "ffmpeg"
+      "javascript",
+      "node"
     ],
     "explain": [
       "I developed Class Connect to address the growing need for comprehensive, user-friendly e-learning platforms that bridge the gap between educational content management and engaging learning experiences. Traditional learning management systems often feel clunky and unintuitive, so I created a solution combining robust functionality with modern UX principles.",
@@ -3308,8 +3287,7 @@
     "technologies": [
       "react",
       "typescript",
-      "tailwind",
-      "zustand"
+      "tailwind"
     ],
     "explain": [
       "I built Genshin Companion to solve a common pain point for Genshin Impact players: optimizing character progression and resource farming. Players typically need to juggle multiple websites and spreadsheets to track materials needed on specific days. My goal was to create a unified, visually appealing solution that streamlines this process.",
@@ -3542,9 +3520,9 @@
     "technologies": [
       "react",
       "typescript",
-      "figma-api",
+      "rest",
       "tailwind",
-      "ast"
+      "javascript"
     ],
     "explain": [
       "I created Studio as an advanced image analysis toolkit combining web technologies with high-performance computing. The core challenge was processing complex image analysis in real-time within the browser environment, which I solved using a hybrid architecture with Rust compiled to WebAssembly for performance-critical components while maintaining a React frontend.",
@@ -3761,8 +3739,7 @@
     ],
     "technologies": [
       "typescript",
-      "nodejs",
-      "zod"
+      "node"
     ],
     "explain": [
       "I built this HTTP server as part of the CodeCrafters challenge to understand how web servers function under the hood. Instead of using Express or similar frameworks, I implemented the HTTP protocol from scratch to grasp the intricacies of request/response handling and protocol details.",
@@ -3986,9 +3963,8 @@
     ],
     "technologies": [
       "typescript",
-      "treesitter",
-      "ast",
-      "vscode"
+      "python",
+      "javascript"
     ],
     "explain": [
       "This was part of a CodeCrafters challenge where I built my own version of the grep command-line tool. I wanted to understand how text search tools actually work, so I implemented one from scratch rather than just using existing libraries, focusing on making it handle regular expressions efficiently even with large files.",
@@ -4200,9 +4176,8 @@
     "technologies": [
       "react",
       "typescript",
-      "webrtc",
-      "webcrypto",
-      "socketio"
+      "javascript",
+      "node"
     ],
     "explain": [
       "I've always been curious about how BitTorrent works, so I decided to build a torrent client from scratch. It required implementing everything from parsing torrent files to managing connections with peers and downloading file pieces in parallel, becoming a deep dive into networking and distributed systems principles.",
