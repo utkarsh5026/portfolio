@@ -104,42 +104,45 @@
     ]
   },
   {
-    "name": "SourceControl",
-    "tagline": "Advanced code review platform for teams \ud83d\udd0d",
-    "description": "GitHub-integrated code review tool with AI-powered analysis and team collaboration features. Streamlines PR review process with automated code quality checks and inline commenting.",
+    "name": "SourceControl - Git Reimplemented in Go",
+    "tagline": "Production-grade Git implementation from scratch in pure Go 🔧",
+    "description": "Fully-functional version control system reimplementing Git's core internals in Go without wrapping git commands. Implements content-addressable object storage, Merkle tree structures, binary index format, and complete CLI with 16,354 lines of tests achieving 121% test-to-code ratio for production reliability.",
     "keyFeatures": [
       {
-        "title": "GitHub API Integration",
-        "description": "OAuth authentication with GitHub REST API v3 for repository access, PR fetching, and automated webhook event handling"
+        "title": "Content-Addressable Object Store with SHA-1",
+        "description": "Custom implementation of Git's sharded directory structure (.source/objects/ab/cdef...) with type-safe wrappers for ObjectHash, CompressedData, and SerializedObject. Implements DEFLATE compression, lazy hash computation with caching, and atomic write operations using write-rename pattern to prevent corruption during crashes."
       },
       {
-        "title": "AI Code Analysis Engine",
-        "description": "Machine learning-powered static analysis detecting code smells, security vulnerabilities, and style violations with severity scoring"
+        "title": "Concurrent Tree Building with Adaptive Parallelism",
+        "description": "Generic worker pool using Go 1.18+ generics with panic recovery, context cancellation, and smart concurrency threshold (≥3 subdirectories triggers parallel processing via errgroup, otherwise sequential to avoid goroutine overhead). Converts hierarchical file systems to Git's flat tree object model recursively."
       },
       {
-        "title": "Real-Time Collaboration",
-        "description": "WebSocket-based live commenting system with threading, mentions, code suggestion blocks, and resolved comment tracking"
+        "title": "Binary Index Format with O(1) Lookups",
+        "description": "Implements Git's staging area binary format with dual data structure approach - maintains sorted slice for Git compatibility and concurrent hash map (entryMap) for constant-time file lookups during staging operations. Includes SHA-1 checksum validation and atomic serialization to disk."
       },
       {
-        "title": "Review Analytics Dashboard",
-        "description": "Team performance metrics showing average review time, approval rates, comment density, and reviewer workload distribution"
+        "title": "Type-Safe Path System and Config Hierarchy",
+        "description": "Strongly-typed path abstractions (AbsolutePath, RelativePath, RepositoryPath, SourcePath) prevent path mixing bugs. Thread-safe hierarchical config manager with RWMutex supporting 5-level precedence (CLI flags → repo → user → system → defaults) and concurrent config file loading via errgroup."
       }
     ],
-    "technologies": ["react", "typescript", "node", "mongodb", "rest"],
+    "technologies": ["golang", "cli", "cobra", "git"],
     "explain": [
-      "I built SourceControl to gain a deep understanding of Git's internal architecture and demonstrate how modern TypeScript can be used for systems programming. While Git is implemented in C, I wanted to explore how the same concepts could be expressed using TypeScript's type system and Node.js ecosystem, making the codebase more accessible to web developers.",
-      "The most challenging aspect was implementing Git's binary index format and ensuring atomic operations across the entire system. The index format requires precise byte-level manipulation while maintaining cross-platform compatibility. I also implemented a sophisticated change detection system that uses multiple strategies (timestamps, file size, content hashing) to efficiently detect modifications.",
-      "I chose TypeScript for this project because its type system provides excellent documentation and compile-time verification for complex data structures like Git objects and tree hierarchies. The service-oriented architecture allows each component (objects, repository, index, branches, etc.) to be developed and tested independently while maintaining clear interfaces between them."
+      "Most developers use Git daily but treat it as a black box - few understand the content-addressable storage, Merkle trees, and object serialization that make distributed version control possible. Existing Git implementations are tightly coupled to the original C codebase, making it difficult to understand the core algorithms or build custom version control workflows. The Go ecosystem lacked a production-quality, from-scratch Git implementation that could serve both as an educational reference and a foundation for custom VCS tooling.",
+
+      "SourceControl is a complete Git reimplementation in pure Go that provides a fully-functional version control system without wrapping git commands. It implements Git's four object types (blob, tree, commit, tag), content-addressable storage with SHA-1 hashing, binary index format for staging, reference management for branches and HEAD, and a complete CLI (srcc) supporting init, add, commit, branch, checkout, log, and status commands. The system maintains Git object format compatibility while showcasing modern Go patterns like generics, structured concurrency, and type-safe APIs.",
+
+      "Architected with clean separation of concerns - objects package contains pure domain logic with no I/O, store package provides pluggable storage interfaces (currently file-based with future support for remote), and managers orchestrate complex operations like commits and checkouts. The concurrent tree builder uses errgroup for parallel subdirectory processing with adaptive thresholds, while the index maintains dual data structures (sorted slice + hash map) for both Git compatibility and O(1) lookups. All file writes use atomic operations (write to temp → fsync → rename) to prevent corruption. The worker pool implementation leverages Go 1.18+ generics with panic recovery and buffered channels sized to prevent goroutine blocking. Configuration follows hierarchical precedence with concurrent loading and thread-safe access via RWMutex. The 16,354 lines of test code (121% coverage ratio) includes unit tests, integration tests covering full workflows (init → add → commit → branch → checkout), and Git compatibility tests ensuring object format interoperability with real Git installations."
     ],
     "githubLink": "https://github.com/utkarsh5026/SourceControl",
-    "liveLink": "https://www.npmjs.com/package/sourcecontrol",
     "tags": [
-      "TypeScript",
-      "Git",
-      "Version Control",
-      "CLI",
-      "Systems Programming",
-      "Node.js"
+      "Version Control System",
+      "Git Implementation",
+      "Distributed Systems",
+      "CLI Tool",
+      "Concurrent Programming",
+      "Content Addressable Storage",
+      "Merkle Trees",
+      "Systems Programming"
     ]
   },
   {
