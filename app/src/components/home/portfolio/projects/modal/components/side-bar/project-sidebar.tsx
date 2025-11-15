@@ -1,12 +1,12 @@
 import type { Project } from "@/types";
-import { List, FileCode, Images, Info, PlayCircle } from "lucide-react";
+import { List, Images, Info, PlayCircle } from "lucide-react";
 import type { ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
 import Reveal from "@/components/animations/reveal/Reveal";
 import TabButton from "./TabButton";
 import SidebarHeader from "./sidebar-header";
 import ActionButtons from "./action-buttons";
 
-type Tab = "overview" | "features" | "tech" | "media" | "demo";
+type Tab = "overview" | "features" | "media" | "demo";
 
 interface ProjectSidebarProps {
   project: Project;
@@ -27,7 +27,7 @@ const ProjectSidebar: React.FC<ProjectSidebarProps> = ({
   hasMedia,
   hasDemo,
 }) => {
-  const { technologies, media, githubLink, liveLink, projectFeatures } = project;
+  const { media, githubLink, liveLink, keyFeatures } = project;
 
   const tabs = [
     {
@@ -40,15 +40,8 @@ const ProjectSidebar: React.FC<ProjectSidebarProps> = ({
     {
       id: "features",
       icon: List,
-      label: "Features",
-      count: projectFeatures.length,
-      isSpecial: false,
-    },
-    {
-      id: "tech",
-      icon: FileCode,
-      label: "Tech Stack",
-      count: technologies.length,
+      label: "Key Features",
+      count: keyFeatures?.length || 0,
       isSpecial: false,
     },
     ...(hasDemo

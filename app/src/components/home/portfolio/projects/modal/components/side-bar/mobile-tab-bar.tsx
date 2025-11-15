@@ -21,7 +21,6 @@ const MobileTabBar: React.FC<MobileTabBarProps> = ({
   const tabs = [
     { id: "overview", label: "Overview", enabled: true, icon: "📋" },
     { id: "features", label: "Features", enabled: true, icon: "⚡" },
-    { id: "tech", label: "Tech", enabled: true, icon: "🔧" },
     { id: "media", label: "Media", enabled: hasMedia, icon: "🎥" },
     { id: "demo", label: "Demo", enabled: hasDemo, icon: "🚀" },
   ].filter((tab) => tab.enabled);

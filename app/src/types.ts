@@ -68,16 +68,13 @@ export type Project = {
   name: string;
   description: string;
   technologies: TechName[];
-  features: string[];
-  keyFeatures?: KeyFeature[]; // New simplified feature format
-  projectFeatures: MajorFeature[];
+  keyFeatures?: KeyFeature[];
   githubLink: string;
   liveLink?: string;
   tags?: string[];
   media?: {
     gallery?: MediaItem[];
   };
-  techStack?: Record<string, string[]>;
   explain: string[];
   demoVideo?: ProjectDemoVideo;
   tagline?: string;

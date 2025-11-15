@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
+import { Star, Zap } from "lucide-react";
 import type { Project } from "@/types";
 import { type ProjectTheme } from "@/components/home/portfolio/projects/context/ThemeContext";
-import FeatureCard from "./feature-card";
 
 interface ProjectFeaturesProps {
   project: Project;
@@ -14,9 +13,7 @@ const ProjectFeatures: React.FC<ProjectFeaturesProps> = ({
   project,
   theme,
 }) => {
-  const [expandedFeature, setExpandedFeature] = useState<string | null>(null);
-
-  const features = project.projectFeatures || [];
+  const features = project.keyFeatures || [];
 
   if (features.length === 0) {
     return <EmptyState theme={theme} />;
@@ -43,26 +40,51 @@ const ProjectFeatures: React.FC<ProjectFeaturesProps> = ({
             </h2>
           </motion.div>
           <p className="text-ctp-subtext0 text-xs sm:text-sm md:text-base max-w-xs sm:max-w-lg md:max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
-            Discover the powerful capabilities and innovative solutions built
-            into {project.name}
+            Technical highlights and core capabilities of {project.name}
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid gap-6">
+        {/* Features List */}
+        <div className="grid gap-4 sm:gap-5 lg:gap-6">
           {features.map((feature, index) => (
-            <FeatureCard
-              key={feature.id}
-              feature={feature}
-              theme={theme}
-              index={index}
-              isExpanded={expandedFeature === feature.id}
-              onToggle={() =>
-                setExpandedFeature(
-                  expandedFeature === feature.id ? null : feature.id
-                )
-              }
-            />
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className={`group relative p-4 sm:p-5 lg:p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-ctp-surface0/50 border-ctp-surface1 hover:border-ctp-${theme.main}/40`}
+            >
+              {/* Feature number badge */}
+              <div className="absolute -top-3 -left-3">
+                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-ctp-${theme.main}/20 border-2 border-ctp-${theme.main}/50 flex items-center justify-center`}>
+                  <span className={`text-sm sm:text-base font-bold text-ctp-${theme.main}`}>
+                    {index + 1}
+                  </span>
+                </div>
+              </div>
+
+              {/* Icon */}
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className={`p-2 sm:p-2.5 rounded-lg bg-ctp-${theme.main}/10 group-hover:bg-ctp-${theme.main}/20 transition-colors`}>
+                  <Zap className={`w-4 h-4 sm:w-5 sm:h-5 text-ctp-${theme.main}`} />
+                </div>
+
+                <div className="flex-1 space-y-2">
+                  {/* Title */}
+                  <h3 className="text-base sm:text-lg font-bold text-ctp-text group-hover:text-ctp-${theme.main} transition-colors">
+                    {feature.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-xs sm:text-sm text-ctp-subtext0 leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </div>
+
+              {/* Hover accent line */}
+              <div className={`absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full bg-gradient-to-r from-ctp-${theme.main}/50 to-transparent transition-all duration-500`} />
+            </motion.div>
           ))}
         </div>
       </div>

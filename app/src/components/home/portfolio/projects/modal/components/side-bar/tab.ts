@@ -1,1 +1,1 @@
-export type Tab = "overview" | "features" | "tech" | "media" | "demo";
+export type Tab = "overview" | "features" | "media" | "demo";

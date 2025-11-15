@@ -5,7 +5,6 @@ import { type ProjectTheme, useProjectTheme } from "../context/ThemeContext";
 import {
   OverviewContent,
   ProjectFeatures,
-  TechStack,
   MediaShowcase,
   Sidebar,
   DemoVideo,
@@ -15,7 +14,7 @@ import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import ProjectDrawerHeader from "./project-drawer-header";
 import useMobile from "@/hooks/use-mobile";
 
-type Tab = "overview" | "features" | "tech" | "media" | "demo";
+type Tab = "overview" | "features" | "media" | "demo";
 
 /**
  * ProjectModal Component
@@ -157,7 +156,6 @@ const ContentRenderer: React.FC<ContentRendererProps> = ({
       {activeTab === "features" && (
         <ProjectFeatures project={project} theme={theme} />
       )}
-      {activeTab === "tech" && <TechStack project={project} theme={theme} />}
       {activeTab === "media" && project.media && (
         <MediaShowcase media={project.media.gallery || []} theme={theme} />
       )}
