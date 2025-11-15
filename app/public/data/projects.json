@@ -756,5 +756,47 @@
       "Zero Dependencies",
       "High Performance"
     ]
+  },
+  {
+    "name": "InPeace - Behavioral Website Blocker",
+    "tagline": "Psychological friction-based website blocker using multi-stage challenges 🧘‍♂️",
+    "description": "Chrome extension that blocks distracting websites through a progressive 4-stage behavioral challenge system. Reduces mindless browsing by requiring users to complete a flashlight-search mini-game (10 clicks with 2-second timers) and reflection steps before granting 30-minute temporary access, tracking daily visit attempts per site.",
+    "keyFeatures": [
+      {
+        "title": "Interactive Flashlight Challenge System",
+        "description": "Custom-built JavaScript game requiring 10 successful button clicks where the target randomly repositions after each click within a darkened viewport. Implements CSS radial-gradient spotlight tracking mouse position via custom properties (--mouse-x, --mouse-y) updated at 60fps, with viewport-aware constraint calculation preventing off-screen button placement and 2-second countdown timers that decrement progress on expiry."
+      },
+      {
+        "title": "Declarative Net Request Blocking Engine",
+        "description": "Chrome Manifest V3 implementation using declarativeNetRequest API for efficient request interception with dynamic rule generation (2 rules per domain covering base and subdomains). Features atomic rule updates with race condition prevention, automatic 5-minute periodic cleanup via Chrome Alarms API, and sync storage integration for cross-browser blocked site synchronization."
+      },
+      {
+        "title": "Temporal Whitelist Management",
+        "description": "Local storage-based temporary access system granting 30-minute whitelist periods after ritual completion. Implements timestamp-based expiration checking with automatic cleanup of stale entries, real-time countdown display updates in popup UI at 1-second intervals, and manual block-now functionality for immediate whitelist revocation with instant rule regeneration."
+      },
+      {
+        "title": "Multi-Stage Behavioral Flow Manager",
+        "description": "TypeScript state machine orchestrating 4 psychological stages with CSS keyframe animations (500ms transitions). Includes disappointment messaging, progressive button-clicker challenge with penalty system, reflection prompts, and commitment checkbox requiring explicit acknowledgment before 3-second countdown redirect. Tracks daily per-site visit attempts with ISO date-based reset logic stored in Chrome local storage."
+      }
+    ],
+    "technologies": ["typescript", "javascript", "tailwind", "css"],
+    "explain": [
+      "Traditional website blockers fail because they lack psychological deterrence - users can disable them instantly when temptation strikes. Studies show that adding friction and self-awareness to impulsive behaviors significantly reduces their frequency. The challenge was creating enough cognitive load and self-reflection to break the automatic habit loop of mindlessly visiting distracting sites, while avoiding such extreme friction that users would simply uninstall the extension entirely.",
+
+      "InPeace implements a progressive 4-stage 'shame ritual' that forces users to consciously acknowledge their choice to procrastinate. After attempting to visit a blocked site, users face escalating challenges: a disappointment message, a flashlight-search mini-game requiring 10 timed button clicks in a darkened interface, a reflection stage, and finally a checkbox acknowledging 'I choose to waste time.' The system grants 30-minute temporary access after completion, tracks daily visit attempts per site to build awareness, and syncs blocked sites across Chrome browsers. The flashlight challenge adds genuine difficulty through random button repositioning and countdown timers that decrease progress if expired.",
+
+      "Built as a Chrome Manifest V3 extension using TypeScript for type safety across all modules. The blocking system leverages Chrome's Declarative Net Request API for performant request interception without requiring content scripts or webRequest blocking. Webpack bundles three separate entry points (background service worker, popup UI, blocked page) with Tailwind CSS for styling. The flashlight effect uses CSS custom properties updated via mousemove listeners to create a radial-gradient spotlight, while button positioning employs viewport constraint calculations to ensure random placement stays within bounds. Storage architecture separates sync storage (blocked sites, settings) from local storage (temporary whitelist with timestamp expiration, daily visit tracking with ISO date keys). The popup features real-time countdown timers via setInterval, and the background worker uses Chrome Alarms API for periodic whitelist cleanup every 5 minutes to maintain rule accuracy."
+    ],
+    "githubLink": "https://github.com/utkarsh5026/inpeace",
+    "tags": [
+      "Chrome Extension",
+      "Productivity",
+      "TypeScript",
+      "Behavioral Design",
+      "Focus Tool",
+      "Website Blocker",
+      "Manifest V3",
+      "Interactive UI"
+    ]
   }
 ]
