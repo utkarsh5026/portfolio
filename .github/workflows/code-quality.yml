@@ -1,0 +1,64 @@
+name: Code Quality
+
+on:
+  push:
+    branches: ["main", "develop"]
+  pull_request:
+    branches: ["main", "develop"]
+
+jobs:
+  analyze:
+    name: Code Quality Analysis
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: "./app/package-lock.json"
+
+      - name: Install dependencies
+        working-directory: ./app
+        run: npm ci
+
+      - name: Check for unused dependencies
+        working-directory: ./app
+        run: |
+          echo "Checking for unused dependencies..."
+          npx depcheck --ignores="@types/*,eslint-*,@typescript-eslint/*,vite,postcss,autoprefixer,tailwindcss" || true
+
+      - name: Check bundle size
+        working-directory: ./app
+        run: |
+          echo "Building and analyzing bundle size..."
+          npm run build
+          echo "Build complete. Checking dist size..."
+          du -sh dist
+          find dist -name "*.js" -exec du -h {} \; | sort -hr | head -10
+
+  security-audit:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: "./app/package-lock.json"
+
+      - name: Run npm audit
+        working-directory: ./app
+        run: npm audit --audit-level=moderate || true

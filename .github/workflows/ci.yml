@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: ["main", "develop"]
+  pull_request:
+    branches: ["main", "develop"]
+
+jobs:
+  lint-and-typecheck:
+    name: Lint and Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: "./app/package-lock.json"
+
+      - name: Install dependencies
+        working-directory: ./app
+        run: npm ci
+
+      - name: Run ESLint
+        working-directory: ./app
+        run: npm run lint
+
+      - name: Run TypeScript compiler
+        working-directory: ./app
+        run: npx tsc -b --noEmit
+
+  build:
+    name: Build Application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: "./app/package-lock.json"
+
+      - name: Install dependencies
+        working-directory: ./app
+        run: npm ci
+
+      - name: Build
+        working-directory: ./app
+        env:
+          NODE_ENV: "production"
+        run: npm run build
+
+      - name: Check build output
+        run: |
+          if [ ! -d "./app/dist" ]; then
+            echo "Build failed - dist directory not found"
+            exit 1
+          fi
+          echo "Build successful - dist directory created"
+          ls -la ./app/dist
