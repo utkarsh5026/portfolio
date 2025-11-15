@@ -54,16 +54,6 @@ const ProjectFeatures: React.FC<ProjectFeaturesProps> = ({
               transition={{ delay: index * 0.1 }}
               className={`group relative p-4 sm:p-5 lg:p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-ctp-surface0/50 border-ctp-surface1 hover:border-ctp-${theme.main}/40`}
             >
-              {/* Feature number badge */}
-              <div className="absolute -top-3 -left-3">
-                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-ctp-${theme.main}/20 border-2 border-ctp-${theme.main}/50 flex items-center justify-center`}>
-                  <span className={`text-sm sm:text-base font-bold text-ctp-${theme.main}`}>
-                    {index + 1}
-                  </span>
-                </div>
-              </div>
-
-              {/* Icon */}
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className={`p-2 sm:p-2.5 rounded-lg bg-ctp-${theme.main}/10 group-hover:bg-ctp-${theme.main}/20 transition-colors`}>
                   <Zap className={`w-4 h-4 sm:w-5 sm:h-5 text-ctp-${theme.main}`} />
