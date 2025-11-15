@@ -27,21 +27,36 @@ const ProjectContent: React.FC<ProjectContentProps> = ({
         </Reveal>
       ) : (
         <Reveal effect="fade-up" duration={0.4}>
-          <ul className="space-y-3">
-            {featuredProject.features.map((feature, index) => (
-              <Reveal
-                key={feature}
-                effect="slide-in"
-                direction="left"
-                duration={0.3}
-                delay={index * 0.1}
-              >
-                <li className="flex items-start gap-2">
-                  <span className="text-ctp-peach mt-1">•</span>
-                  <span className="text-ctp-text">{feature}</span>
-                </li>
-              </Reveal>
-            ))}
+          <ul className="space-y-4">
+            {featuredProject.keyFeatures && featuredProject.keyFeatures.length > 0 ? (
+              featuredProject.keyFeatures.map((feature, index) => (
+                <Reveal
+                  key={feature.title}
+                  effect="slide-in"
+                  direction="left"
+                  duration={0.3}
+                  delay={index * 0.1}
+                >
+                  <li className="flex flex-col gap-1">
+                    <div className="flex items-start gap-2">
+                      <span className="text-ctp-peach mt-1 text-lg">•</span>
+                      <div className="flex-1">
+                        <h5 className="text-ctp-text font-semibold">
+                          {feature.title}
+                        </h5>
+                        <p className="text-ctp-subtext0 text-sm mt-1">
+                          {feature.description}
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                </Reveal>
+              ))
+            ) : (
+              <li className="text-ctp-subtext0 text-sm">
+                No features documented yet.
+              </li>
+            )}
           </ul>
         </Reveal>
       )}

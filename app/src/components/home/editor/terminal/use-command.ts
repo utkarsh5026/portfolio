@@ -283,8 +283,8 @@ Technologies: ${project.technologies
               .map((t) => technologies[t].name)
               .join(", ")}
 
-Features:
-${project.features.map((f) => `- ${f}`).join("\n")}
+Key Features:
+${project.keyFeatures?.map((f) => `- ${f.title}: ${f.description}`).join("\n") || "No features documented"}
 
 Links:
 - GitHub: ${project.githubLink}

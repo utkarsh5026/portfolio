@@ -10,7 +10,7 @@ const prepareCodeText = (project: Project) => {
   const project = {
     name: "${project.name}",
     technologies: ["${project.tags?.join('", "')}"],
-    highlights: ["${project.features?.join('",\n"')}"],
+    highlights: ["${project.keyFeatures?.map(f => f.title).join('",\n"') || ""}"],
   };
   `;
 };

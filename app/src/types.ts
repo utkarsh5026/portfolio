@@ -59,19 +59,22 @@ export type SubFeature = {
   isHighlight?: boolean;
 };
 
+export type KeyFeature = {
+  title: string;
+  description: string;
+};
+
 export type Project = {
   name: string;
   description: string;
   technologies: TechName[];
-  features: string[];
-  projectFeatures: MajorFeature[];
+  keyFeatures?: KeyFeature[];
   githubLink: string;
   liveLink?: string;
   tags?: string[];
   media?: {
     gallery?: MediaItem[];
   };
-  techStack?: Record<string, string[]>;
   explain: string[];
   demoVideo?: ProjectDemoVideo;
   tagline?: string;
