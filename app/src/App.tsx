@@ -4,6 +4,9 @@ import PortfolioStory from "./components/load/portfolio-story";
 import NotFound from "./components/load/not-found";
 
 function App() {
+  // This message will only appear in development (removed by terser in production)
+  console.log("Please Hire Me 🥺");
+
   return (
     <ThemeProvider>
       <Routes>
