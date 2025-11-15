@@ -22,11 +22,11 @@ const ProjectFeatures: React.FC<ProjectFeaturesProps> = ({
   return (
     <div className="h-full overflow-y-auto">
       <div className="p-3 sm:p-4 md:p-6 lg:p-8 space-y-4 sm:space-y-6 lg:space-y-8">
-        <div className="text-center space-y-2 sm:space-y-3 lg:space-y-4">
+        <div className="text-left space-y-2 sm:space-y-3 lg:space-y-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3"
+            className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3"
           >
             <div
               className={`p-2 sm:p-3 rounded-lg sm:rounded-xl bg-ctp-${theme.main}/20`}
@@ -35,11 +35,11 @@ const ProjectFeatures: React.FC<ProjectFeaturesProps> = ({
                 className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-ctp-${theme.main}`}
               />
             </div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-ctp-text text-center sm:text-left">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-ctp-text">
               Key Features
             </h2>
           </motion.div>
-          <p className="text-ctp-subtext0 text-xs sm:text-sm md:text-base max-w-xs sm:max-w-lg md:max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
+          <p className="text-ctp-subtext0 text-xs sm:text-sm md:text-base max-w-xs sm:max-w-lg md:max-w-2xl leading-relaxed px-2 sm:px-0">
             Technical highlights and core capabilities of {project.name}
           </p>
         </div>
