@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import {
   GraduationCap,
   Calendar,
@@ -9,6 +8,7 @@ import {
 } from "lucide-react";
 import { education } from "../data/data";
 import Reveal from "@/components/animations/reveal/Reveal";
+import SectionHeader from "./about-header";
 
 /**
  * 🎓 Educational background timeline with achievements
@@ -20,28 +20,15 @@ import Reveal from "@/components/animations/reveal/Reveal";
 const Education: React.FC = () => {
   return (
     <div className="relative w-full overflow-hidden">
-      <div className="relative bg-transparent backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-none overflow-hidden w-full">
+      <div className="relative bg-ctp-surface0/10 rounded-2xl sm:rounded-3xl border border-none overflow-hidden w-full">
         <div className="p-3 sm:p-4 md:p-6 lg:p-8">
           {/* Section Header */}
-          <Reveal effect="fade-up" duration={0.6}>
-            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 md:mb-8">
-              <motion.div
-                className="p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl bg-ctp-sapphire/10 text-ctp-sapphire flex-shrink-0"
-                whileHover={{ rotate: 5, scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.div>
-              <div className="min-w-0 flex-1">
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-ctp-text leading-tight">
-                  Education
-                </h3>
-                <p className="text-xs sm:text-sm text-ctp-subtext0">
-                  Academic foundation & achievements
-                </p>
-              </div>
-            </div>
-          </Reveal>
+          <SectionHeader
+            icon={GraduationCap}
+            color="sapphire"
+            title="Education"
+            subtitle="Academic foundation & achievements"
+          />
 
           {/* Education Timeline */}
           <div className="space-y-3 sm:space-y-4 md:space-y-6">
@@ -70,40 +57,24 @@ interface EducationCardProps {
 
 const EducationCard: React.FC<EducationCardProps> = ({ index, item }) => {
   return (
-    <motion.div
-      className="relative group w-full"
-      whileHover={{ y: -3 }}
-      transition={{ type: "spring", stiffness: 300 }}
-    >
+    <div className="relative group w-full">
       {/* Timeline connector - adjusted for mobile */}
       {index < education.length - 1 && (
         <div className="absolute left-4 sm:left-6 top-16 sm:top-20 w-px h-8 sm:h-12 md:h-16 bg-gradient-to-b from-ctp-sapphire/40 to-transparent z-0" />
       )}
 
-      <div className="relative bg-gradient-to-br from-ctp-surface0/30 to-ctp-mantle/30 rounded-xl sm:rounded-2xl border-none hover:border-ctp-sapphire/30 transition-all duration-300 overflow-hidden group-hover:shadow-lg group-hover:shadow-ctp-sapphire/10 w-full">
+      <div className="relative bg-gradient-to-br from-ctp-surface0/30 to-ctp-mantle/30 rounded-xl sm:rounded-2xl border-none hover:border-ctp-sapphire/30 transition-colors duration-300 overflow-hidden w-full">
         <div className="p-3 sm:p-4 md:p-6">
           <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
             <div className="flex-shrink-0 relative">
-              <motion.div
-                className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-ctp-sapphire/20 to-ctp-blue/20 flex items-center justify-center border border-ctp-sapphire/30"
-                whileHover={{ rotate: 5, scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
+              <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-ctp-sapphire/20 to-ctp-blue/20 flex items-center justify-center border-none">
                 <GraduationCap className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-ctp-sapphire" />
-              </motion.div>
+              </div>
 
               {index === 0 && (
-                <motion.div
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{
-                    delay: 0.8 + index * 0.1,
-                    duration: 0.5,
-                  }}
-                  className="absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-ctp-yellow rounded-full flex items-center justify-center border border-ctp-base"
-                >
+                <div className="absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-ctp-yellow rounded-full flex items-center justify-center border border-ctp-base">
                   <Award className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 text-ctp-base" />
-                </motion.div>
+                </div>
               )}
             </div>
 
@@ -127,7 +98,7 @@ const EducationCard: React.FC<EducationCardProps> = ({ index, item }) => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 bg-ctp-sapphire/10 rounded-full border border-ctp-sapphire/20 self-start">
+                <div className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 bg-ctp-sapphire/10 rounded-full border-none self-start">
                   <Calendar className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-ctp-sapphire flex-shrink-0" />
                   <span className="text-xs font-medium text-ctp-sapphire whitespace-nowrap">
                     {item.duration}
@@ -135,35 +106,24 @@ const EducationCard: React.FC<EducationCardProps> = ({ index, item }) => {
                 </div>
               </div>
 
+              {/* Highlights - No nested Reveal */}
               <div className="space-y-1.5 sm:space-y-2">
                 {item.highlights.map((highlight, hIndex) => (
-                  <Reveal
+                  <div
                     key={hIndex}
-                    effect="fade-through"
-                    delay={0.4 + index * 0.1 + hIndex * 0.05}
-                    duration={0.5}
+                    className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg sm:rounded-xl transition-colors duration-200 w-full overflow-hidden border-none"
                   >
-                    <motion.div
-                      className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3  rounded-lg sm:rounded-xl transition-colors duration-200 w-full overflow-hidden border-none"
-                      whileHover={{ x: 2 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                      }}
-                    >
-                      <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-ctp-green mt-1.5 sm:mt-2 flex-shrink-0" />
-                      <p className="text-xs sm:text-sm text-ctp-text leading-relaxed break-words">
-                        {highlight}
-                      </p>
-                    </motion.div>
-                  </Reveal>
+                    <p className="text-xs sm:text-sm text-ctp-text leading-relaxed break-words">
+                      {highlight}
+                    </p>
+                  </div>
                 ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
