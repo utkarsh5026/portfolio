@@ -82,8 +82,8 @@ export type Project = {
 
 export type Article = {
   title: string;
-  description: string;
   link: string;
+  imageUrl: string;
 };
 
 export type WorkExperience = {
