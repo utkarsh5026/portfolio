@@ -10,13 +10,6 @@ import { education } from "../data/data";
 import Reveal from "@/components/animations/reveal/Reveal";
 import SectionHeader from "./about-header";
 
-/**
- * 🎓 Educational background timeline with achievements
- *
- * Showcases my academic journey through an interactive timeline.
- * Each education milestone gets its own beautiful card with institution
- * details, grades, and highlights. Like a digital diploma wall! 🏆📜
- */
 const Education: React.FC = () => {
   return (
     <div className="relative w-full overflow-hidden">
