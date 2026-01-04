@@ -5,7 +5,7 @@ import ProjectContent from "./project-content";
 import Certificate from "./project-certificate";
 import FeaturedHeader from "./featured-project-header";
 import Reveal from "@/components/animations/reveal/Reveal";
-import useMobile from "@/hooks/use-mobile";
+import { useMobileContext } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 
 interface FeaturedProjectProps {
@@ -19,7 +19,7 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
   handleProjectSelect,
 }) => {
   const [activeTab, setActiveTab] = useState<Tab>("overview");
-  const { isMobile } = useMobile();
+  const { isMobile } = useMobileContext();
 
   return (
     <div className="mb-16 max-w-6xl mx-auto relative">

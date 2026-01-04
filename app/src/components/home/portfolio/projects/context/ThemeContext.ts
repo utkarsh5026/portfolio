@@ -11,7 +11,6 @@ export type ProjectTheme = {
 
 type ProjectThemeContextType = {
   getProjectTheme: (project: Project) => ProjectTheme;
-  cachedThemes: Record<string, ProjectTheme>;
 };
 
 export const ProjectThemeContext = createContext<
@@ -27,7 +26,7 @@ export const ProjectThemeContext = createContext<
  * @throws {Error} Throws an error if used outside of a ProjectThemeProvider.
  *
  * @returns {ProjectThemeContextType} The context value containing the
- *          `getProjectTheme` function and `cachedThemes` object.
+ *          `getProjectTheme` function.
  */
 export const useProjectTheme = (): ProjectThemeContextType => {
   const context = useContext(ProjectThemeContext);

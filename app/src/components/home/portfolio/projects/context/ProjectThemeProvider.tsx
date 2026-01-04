@@ -1,5 +1,5 @@
 import { Project } from "@/types";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useRef } from "react";
 import { ProjectTheme, ProjectThemeContext } from "./ThemeContext";
 
 const colorPairs = [
@@ -88,35 +88,25 @@ interface ProjectThemeProviderProps {
 export const ProjectThemeProvider: React.FC<ProjectThemeProviderProps> = ({
   children,
 }) => {
-  const [cachedThemes, setCachedThemes] = useState<
-    Record<string, ProjectTheme>
-  >({});
+  // Use ref instead of state to avoid re-renders when cache updates
+  const cachedThemesRef = useRef<Record<string, ProjectTheme>>({});
 
-  const getProjectTheme = useCallback(
-    (project: Project): ProjectTheme => {
-      if (cachedThemes[project.name]) {
-        return cachedThemes[project.name];
-      }
-      const nameHash = project.name
-        .split("")
-        .reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const getProjectTheme = useCallback((project: Project): ProjectTheme => {
+    if (cachedThemesRef.current[project.name]) {
+      return cachedThemesRef.current[project.name];
+    }
 
-      const theme = colorPairs[nameHash % colorPairs.length];
+    const nameHash = project.name
+      .split("")
+      .reduce((acc, char) => acc + char.charCodeAt(0), 0);
 
-      setCachedThemes((prev) => ({
-        ...prev,
-        [project.name]: theme,
-      }));
+    const theme = colorPairs[nameHash % colorPairs.length];
+    cachedThemesRef.current[project.name] = theme;
 
-      return theme;
-    },
-    [cachedThemes]
-  );
+    return theme;
+  }, []); // No dependencies - stable callback
 
-  const value = useMemo(
-    () => ({ getProjectTheme, cachedThemes }),
-    [getProjectTheme, cachedThemes]
-  );
+  const value = useMemo(() => ({ getProjectTheme }), [getProjectTheme]);
 
   return (
     <ProjectThemeContext.Provider value={value}>

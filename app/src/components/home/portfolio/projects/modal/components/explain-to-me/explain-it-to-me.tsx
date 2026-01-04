@@ -4,7 +4,7 @@ import useTypewriting from "@/components/type-write/hooks/use-type-write";
 import { type Phase, phaseConfig } from "./config";
 import type { Project } from "@/types";
 import PhaseContent from "./phase-content";
-import useMobile from "@/hooks/use-mobile";
+import { useMobileContext } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 
 interface ExplainItToMeProps {
@@ -17,7 +17,7 @@ const ExplainItToMe: React.FC<ExplainItToMeProps> = ({ project }) => {
   const [activeParagraph, setActiveParagraph] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const { isMobile } = useMobile();
+  const { isMobile } = useMobileContext();
   const { explain } = project;
 
   const { displayedText, start, isComplete, reset, progress } = useTypewriting({

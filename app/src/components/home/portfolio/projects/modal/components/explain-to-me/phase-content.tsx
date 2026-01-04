@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { type PhaseConfig } from "./config";
 import { motion } from "framer-motion";
 import { ProgressBar, Cursor } from "@/components/utils";
-import useMobile from "@/hooks/use-mobile";
+import { useMobileContext } from "@/hooks/use-mobile";
 import ProgressIndicator from "./progress-indicator";
 import AnimatedIcon from "./animated-icon";
 
@@ -27,7 +27,7 @@ const PhaseContent: React.FC<PhaseContentProps> = ({
   isComplete,
   index,
 }) => {
-  const { isMobile } = useMobile();
+  const { isMobile } = useMobileContext();
   const IconComponent = config.icon;
 
   const classes = useMemo(() => {

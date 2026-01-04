@@ -12,7 +12,7 @@ import {
 } from "./components";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import ProjectDrawerHeader from "./project-drawer-header";
-import useMobile from "@/hooks/use-mobile";
+import { useMobileContext } from "@/hooks/use-mobile";
 
 type Tab = "overview" | "features" | "media" | "demo";
 
@@ -42,7 +42,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   const [activeTab, setActiveTab] = useState<Tab>("overview");
   const [explainOpen, setExplainOpen] = useState(false);
   const { getProjectTheme } = useProjectTheme();
-  const { isMobile } = useMobile();
+  const { isMobile } = useMobileContext();
 
   useEffect(() => {
     setActiveTab("overview");
