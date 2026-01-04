@@ -266,3 +266,17 @@
   animation: blink 1s infinite;
 }
 
+/* Skeleton shimmer animation for lazy loading */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-shimmer {
+  animation: shimmer 1.5s infinite;
+}
+

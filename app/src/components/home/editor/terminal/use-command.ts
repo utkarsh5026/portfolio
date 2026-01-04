@@ -138,7 +138,10 @@ export const useLinuxCommands = () => {
               return `
 Name: ${project.name}
 Description: ${project.description}
-Tech: ${project.technologies.filter((t) => technologies[t]).map((t) => technologies[t].name).join(", ")}
+Tech: ${project.technologies
+                .filter((t) => technologies[t])
+                .map((t) => technologies[t].name)
+                .join(", ")}
 GitHub: ${project.githubLink}
 ${project.liveLink ? `Live: ${project.liveLink}` : ""}
               `;
@@ -153,7 +156,6 @@ ${project.liveLink ? `Live: ${project.liveLink}` : ""}
             if (article) {
               return `
 Title: ${article.title}
-Description: ${article.description}
 Link: ${article.link}
               `;
             }
@@ -285,7 +287,11 @@ Technologies: ${project.technologies
               .join(", ")}
 
 Key Features:
-${project.keyFeatures?.map((f) => `- ${f.title}: ${f.description}`).join("\n") || "No features documented"}
+${
+  project.keyFeatures
+    ?.map((f) => `- ${f.title}: ${f.description}`)
+    .join("\n") || "No features documented"
+}
 
 Links:
 - GitHub: ${project.githubLink}
@@ -318,7 +324,6 @@ Use "projects [name]" to see details of a specific project.
           return `
 Article: ${article.title}
 ------------------------
-${article.description}
 
 Link: ${article.link}
           `;
@@ -419,8 +424,10 @@ export const useUtilityCommands = () => {
           (p) =>
             p.name.toLowerCase().includes(query) ||
             p.description.toLowerCase().includes(query) ||
-            p.technologies.some((t) =>
-              technologies[t] && technologies[t].name.toLowerCase().includes(query)
+            p.technologies.some(
+              (t) =>
+                technologies[t] &&
+                technologies[t].name.toLowerCase().includes(query)
             )
         );
 
@@ -430,10 +437,8 @@ export const useUtilityCommands = () => {
         }
 
         // Search articles
-        const matchedArticles = articles.filter(
-          (a) =>
-            a.title.toLowerCase().includes(query) ||
-            a.description.toLowerCase().includes(query)
+        const matchedArticles = articles.filter((a) =>
+          a.title.toLowerCase().includes(query)
         );
 
         if (matchedArticles.length) {

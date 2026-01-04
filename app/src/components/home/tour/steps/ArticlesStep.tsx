@@ -26,11 +26,9 @@ const ArticlesStep: React.FC = () => {
   );
   const [typingSteps, setTypingSteps] = useState(0);
   const [expandedArticle, setExpandedArticle] = useState<number | null>(null);
-  const [isExplaining, setIsExplaining] = useState(false);
 
   const handleArticleHighlight = (index: number) => {
     setExpandedArticle(null);
-    setIsExplaining(false);
     setHighlightedArticle(index);
   };
 
@@ -41,10 +39,8 @@ const ArticlesStep: React.FC = () => {
   const toggleArticleExpansion = (index: number) => {
     if (expandedArticle === index) {
       setExpandedArticle(null);
-      setIsExplaining(false);
     } else {
       setExpandedArticle(index);
-      setIsExplaining(true);
     }
   };
 
@@ -191,13 +187,6 @@ const ArticlesStep: React.FC = () => {
                     {expandedArticle === idx && (
                       <div className="px-2 pb-2 pt-0.5">
                         <div className="pl-6 pr-1 border-l border-ctp-surface1">
-                          {isExplaining && (
-                            <TypeWriter
-                              text={article.description}
-                              speed={10}
-                              className="text-xs text-ctp-subtext0"
-                            />
-                          )}
                           <a
                             href={article.link}
                             target="_blank"
