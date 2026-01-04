@@ -39,29 +39,22 @@ export type ProjectDemoVideo = {
   highlights?: string[];
   fileSize?: string;
 };
-
-export type MajorFeature = {
-  id: string;
-  title: string;
-  description: string;
-  icon: React.ElementType;
-  subFeatures: SubFeature[];
-  media: MediaItem[];
-  tags: string[];
-  priority: "high" | "medium" | "low";
-};
-
-export type SubFeature = {
-  id: string;
-  title: string;
-  description?: string;
-  metrics?: string; // e.g., "10,000 users", "99.9% uptime"
-  isHighlight?: boolean;
-};
-
 export type KeyFeature = {
   title: string;
   description: string;
+};
+
+// Flashcard type for Q&A explain section
+export type Flashcard = {
+  q: string; // Question (max ~10 words)
+  a: string; // Answer (max ~10 words)
+};
+
+// Phase-organized flashcard collection
+export type ExplainCards = {
+  problem: Flashcard[];
+  execution: Flashcard[];
+  future: Flashcard[];
 };
 
 export type Project = {
@@ -76,6 +69,7 @@ export type Project = {
     gallery?: MediaItem[];
   };
   explain: string[];
+  explainCards: ExplainCards; // New flashcard format
   demoVideo?: ProjectDemoVideo;
   tagline?: string;
 };
