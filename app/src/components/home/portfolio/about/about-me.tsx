@@ -160,11 +160,7 @@ const MobileAboutSection: React.FC<MobileAboutSectionProps> = ({
     <Reveal effect="fade-up" duration={0.6} delay={section.delay}>
       <Drawer>
         <DrawerTrigger asChild>
-          <motion.button
-            whileHover={{ scale: 1.01 }}
-            whileTap={{ scale: 0.99 }}
-            className="w-full text-left bg-ctp-surface0/20 backdrop-blur-sm hover:bg-ctp-surface0/40 transition-all duration-300 rounded-xl"
-          >
+          <button className="w-full text-left bg-ctp-surface0/20 hover:bg-ctp-surface0/40 transition-all duration-300 rounded-xl">
             <AboutSectionCard
               section={section}
               index={index}
@@ -172,7 +168,7 @@ const MobileAboutSection: React.FC<MobileAboutSectionProps> = ({
               isMobile={isMobile}
               isOpen={isOpen}
             />
-          </motion.button>
+          </button>
         </DrawerTrigger>
         <DrawerContent className="bg-ctp-mantle border-none z-[99999]">
           <div className="py-8 max-h-[90vh] h-[90vh] overflow-y-auto">
@@ -205,11 +201,7 @@ const DesktopAboutSection: React.FC<DesktopAboutSectionProps> = ({
     <Reveal effect="fade-up" duration={0.6} delay={section.delay}>
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleTrigger asChild>
-          <motion.button
-            whileHover={{ scale: 1.005, y: -1 }}
-            whileTap={{ scale: 0.995 }}
-            className="w-full text-left bg-ctp-surface0/20 backdrop-blur-sm hover:bg-ctp-surface0/30 transition-all duration-300 rounded-xl shadow-sm hover:shadow-md hover:shadow-ctp-surface0/20"
-          >
+          <button className="w-full text-left bg-ctp-surface0/20 hover:bg-ctp-surface0/30 transition-all duration-300 rounded-xl shadow-sm hover:shadow-md hover:shadow-ctp-surface0/20">
             <AboutSectionCard
               section={section}
               index={index}
@@ -217,7 +209,7 @@ const DesktopAboutSection: React.FC<DesktopAboutSectionProps> = ({
               isMobile={isMobile}
               isOpen={isOpen}
             />
-          </motion.button>
+          </button>
         </CollapsibleTrigger>
         <CollapsibleContent className="data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up overflow-hidden">
           <motion.div
@@ -261,16 +253,13 @@ const AboutMe: React.FC = () => {
           {/* Footer Call to Action */}
           <Reveal effect="fade-up" duration={0.8} delay={0.7}>
             <div className="mt-12 text-center">
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="max-w-md mx-auto"
-              >
-                <div className="flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-ctp-peach/40 to-ctp-yellow/50 backdrop-blur-sm rounded-xl border-none hover:border-ctp-mauve/30 transition-all duration-300 group">
-                  <span className="text-ctp-text  text-sm group-hover:text-ctp-text transition-colors italic font-bold">
+              <div className="max-w-md mx-auto">
+                <div className="flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-ctp-peach/40 to-ctp-yellow/50 rounded-xl border-none hover:border-ctp-mauve/30 transition-all duration-300 group">
+                  <span className="text-ctp-text text-sm group-hover:text-ctp-text transition-colors italic font-bold">
                     Always eager to connect and collaborate
                   </span>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </Reveal>
         </div>

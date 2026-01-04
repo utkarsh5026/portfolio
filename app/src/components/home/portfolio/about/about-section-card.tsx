@@ -26,7 +26,7 @@ const AboutSectionCard: React.FC<AboutSectionCardProps> = ({
 
   return (
     <div className="relative w-full group">
-      <div className="relative flex items-center gap-4 p-4 bg-gradient-to-r from-ctp-mantle to-ctp-crust backdrop-blur-sm hover:bg-ctp-surface0/30 transition-all duration-300 rounded-xl shadow-sm hover:shadow-md hover:shadow-ctp-surface0/20">
+      <div className="relative flex items-center gap-4 p-4 bg-gradient-to-r from-ctp-mantle to-ctp-crust hover:bg-ctp-surface0/30 transition-all duration-300 rounded-xl shadow-sm hover:shadow-md hover:shadow-ctp-surface0/20">
         <div className="flex items-center gap-3">
           <div className="flex flex-col items-center gap-1">
             <div
