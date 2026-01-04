@@ -27,10 +27,26 @@ export const education = [
 ];
 
 export const background = [
-  "Hi there! I'm Utkarsh Priyadarshi, a Full-Stack Developer and DevOps Engineer who loves solving problems through code.",
-  "My journey began with simple HTML pages during college, and over time I've been fortunate to learn and work with various web technologies and cloud platforms.",
-  "I enjoy working on both front-end interfaces and back-end systems, and I'm always looking to improve my skills while creating useful applications that help people accomplish their goals.",
-  "I'm a quick learner and always eager to take on new challenges. Let's connect and see how we can work together to create something amazing ❤️!",
+  {
+    question: "Who am I?",
+    answer: "Full-Stack Developer & DevOps Engineer passionate about solving problems through code.",
+  },
+  {
+    question: "How did I start?",
+    answer: "Started with simple HTML pages in college, grew into web technologies and cloud platforms.",
+  },
+  {
+    question: "What do I enjoy?",
+    answer: "Building both beautiful front-end interfaces and robust back-end systems.",
+  },
+  {
+    question: "What drives me?",
+    answer: "Creating useful applications that help people accomplish their goals.",
+  },
+  {
+    question: "What's my approach?",
+    answer: "Quick learner, always eager for new challenges. Let's build something amazing together! ❤️",
+  },
 ];
 
 export const focusAreas = [
