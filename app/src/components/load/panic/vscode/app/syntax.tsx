@@ -20,7 +20,7 @@ export const getSyntaxClass = (content: string, language: string): string => {
     if (content.match(/@media|@keyframes|@import|@font-face/))
       return "text-[#c678dd]"; // At-rules
     if (content.match(/\b[a-z-]+:/)) return "text-[#d19a66]"; // Properties
-    if (content.match(/\#[0-9a-f]{3,6}\b|rgba?\([^)]+\)/))
+    if (content.match(/#[0-9a-f]{3,6}\b|rgba?\([^)]+\)/))
       return "text-[#98c379]"; // Colors
     if (content.match(/\d+(%|px|em|rem|vh|vw)/)) return "text-[#d19a66]"; // Units
     if (content.match(/\.[a-zA-Z][\w-]*/)) return "text-[#e06c75]"; // Classes
