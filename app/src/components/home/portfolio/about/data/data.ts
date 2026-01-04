@@ -66,15 +66,7 @@ export const philosophy = [
 export const skills = [
   {
     category: "Frontend",
-    skills: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Styled Components",
-      "Redux",
-      "React Query",
-    ],
+    skills: ["React", "TypeScript", "Tailwind CSS", "Redux", "React Query"],
   },
 
   {
