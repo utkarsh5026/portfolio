@@ -1,13 +1,14 @@
 import { Cog, Lightbulb, Telescope } from "lucide-react";
 import { motion } from "framer-motion";
+import {ElementType, FC} from "react";
 
 interface AnimatedIconProps {
-  IconComponent: React.ElementType;
+  IconComponent: ElementType;
   className?: string;
   isActive?: boolean;
 }
 
-const AnimatedIcon: React.FC<AnimatedIconProps> = ({
+const AnimatedIcon: FC<AnimatedIconProps> = ({
   IconComponent,
   className,
   isActive = false,

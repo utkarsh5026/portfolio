@@ -2,7 +2,7 @@ import React from "react";
 import type { Project } from "@/types";
 import { useProjectTheme } from "../context/ThemeContext";
 import { DrawerTitle, DrawerHeader } from "@/components/ui/drawer";
-import useMobile from "@/hooks/use-mobile";
+import { useMobileContext } from "@/hooks/use-mobile";
 
 interface ProjectDrawerHeaderProps {
   selectedProject: Project;
@@ -11,7 +11,7 @@ interface ProjectDrawerHeaderProps {
 const ProjectDrawerHeader: React.FC<ProjectDrawerHeaderProps> = ({
   selectedProject,
 }) => {
-  const { isMobile } = useMobile();
+  const { isMobile } = useMobileContext();
   const { getProjectTheme } = useProjectTheme();
   const theme = getProjectTheme(selectedProject);
 

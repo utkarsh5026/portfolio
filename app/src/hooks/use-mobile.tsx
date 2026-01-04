@@ -1,4 +1,13 @@
-import { useState, useEffect, useCallback, useRef, useMemo } from "react";
+import {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  useMemo,
+  createContext,
+  useContext,
+  ReactNode,
+} from "react";
 
 interface UseMobileOptions {
   phoneBreakpoint?: number;
@@ -206,6 +215,40 @@ const useMobile = (options: UseMobileOptions = {}) => {
   }, [detectDevice, debounceDelay, detectTouch]);
 
   return deviceInfo;
+};
+
+// Context for sharing mobile state across components
+type MobileState = ReturnType<typeof useMobile>;
+const MobileContext = createContext<MobileState | null>(null);
+
+/**
+ * MobileProvider Component
+ *
+ * Wraps components that need mobile detection with a shared context.
+ * This ensures only ONE set of event listeners is created, preventing
+ * duplicate resize/orientation handlers that cause performance issues.
+ */
+export const MobileProvider = ({ children }: { children: ReactNode }) => {
+  const mobileState = useMobile();
+  return (
+    <MobileContext.Provider value={mobileState}>
+      {children}
+    </MobileContext.Provider>
+  );
+};
+
+/**
+ * useMobileContext Hook
+ *
+ * Use this instead of useMobile() when inside a MobileProvider.
+ * Reads from shared context - no new event listeners created.
+ */
+export const useMobileContext = (): MobileState => {
+  const context = useContext(MobileContext);
+  if (!context) {
+    throw new Error("useMobileContext must be used within a MobileProvider");
+  }
+  return context;
 };
 
 export default useMobile;

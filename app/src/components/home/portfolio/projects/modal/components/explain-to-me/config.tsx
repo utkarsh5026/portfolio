@@ -1,4 +1,5 @@
 import { Lightbulb, Cog, Telescope } from "lucide-react";
+import React from "react";
 
 export type Phase = "problem" | "execution" | "future";
 

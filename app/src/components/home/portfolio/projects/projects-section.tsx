@@ -8,6 +8,7 @@ import ProjectDrawer from "./modal/project-drawer";
 import FeaturedProject from "./featured/featured-project";
 import ProjectSmall from "./project-small";
 import { ProjectThemeProvider } from "./context/ProjectThemeProvider";
+import { MobileProvider } from "@/hooks/use-mobile";
 import { useProject } from "@/hooks/use-project";
 import type { Project } from "@/types";
 import Reveal from "@/components/animations/reveal/Reveal";
@@ -108,8 +109,9 @@ const Projects: React.FC = () => {
       icon="code"
       showHeader={true}
     >
-      <ProjectThemeProvider>
-        <div ref={projectsRef} className="relative max-w-6xl mx-auto px-4 ">
+      <MobileProvider>
+        <ProjectThemeProvider>
+          <div ref={projectsRef} className="relative max-w-6xl mx-auto px-4 ">
           <Reveal effect="fade-up" duration={0.7} delay={0.1}>
             <Tabs defaultValue="featured" className="w-full">
               <div className="w-full flex justify-end">
@@ -139,17 +141,11 @@ const Projects: React.FC = () => {
                   parentId="projects"
                   icon={<Sparkles className="w-3 h-3 text-ctp-yellow" />}
                 >
-                  <Reveal
-                    effect="fade-up"
-                    duration={0.8}
-                    delay={0.1}
-                    className="w-full h-full flex flex-1"
-                  >
                     <FeaturedProject
                       featuredProject={featuredProject}
                       handleProjectSelect={handleProjectSelect}
                     />
-                  </Reveal>
+
                 </OutlineNode>
               </TabsContent>
 
@@ -233,8 +229,9 @@ const Projects: React.FC = () => {
             selectedProject={selectedProject}
             closeModal={handleCloseModal}
           />
-        </div>
-      </ProjectThemeProvider>
+          </div>
+        </ProjectThemeProvider>
+      </MobileProvider>
     </Section>
   );
 };

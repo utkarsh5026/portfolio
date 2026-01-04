@@ -1,104 +1,116 @@
-import React, { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
-import useTypewriting from "@/components/type-write/hooks/use-type-write";
-import { type Phase, phaseConfig } from "./config";
+import React, { useState, useCallback, useMemo } from "react";
+import { type Phase } from "./config";
 import type { Project } from "@/types";
-import PhaseContent from "./phase-content";
-import useMobile from "@/hooks/use-mobile";
+import { useMobileContext } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
+import {
+  FlashcardDeck,
+  FlashcardNavigation,
+  PhaseTabs,
+  useFlashcardNavigation,
+} from "./flashcard";
 
 interface ExplainItToMeProps {
   project: Project;
 }
 
-const phases: Phase[] = ["problem", "execution", "future"];
-
 const ExplainItToMe: React.FC<ExplainItToMeProps> = ({ project }) => {
-  const [activeParagraph, setActiveParagraph] = useState(0);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { isMobile } = useMobile();
-  const { explain } = project;
-
-  const { displayedText, start, isComplete, reset, progress } = useTypewriting({
-    text: activeParagraph < explain.length ? explain[activeParagraph] : "",
-    speed: 25,
-    delay: 150,
-    humanize: true,
-    humanizeFactor: 0.6,
-    autoStart: false,
-    onComplete: () => {
-      if (activeParagraph < explain.length - 1) {
-        setTimeout(() => {
-          setActiveParagraph((prev) => prev + 1);
-        }, 1000);
-      }
-    },
+  const { isMobile } = useMobileContext();
+  const [activePhase, setActivePhase] = useState<Phase>("problem");
+  const [cardIndices, setCardIndices] = useState<Record<Phase, number>>({
+    problem: 0,
+    execution: 0,
+    future: 0,
   });
+  const [direction, setDirection] = useState(0);
 
-  console.debug(displayedText, progress);
+  const cards = useMemo(() => project.explainCards, [project.explainCards]);
 
-  const paragraphRefs = useRef<HTMLDivElement[]>([]);
+  const currentCards = cards[activePhase];
+  const currentIndex = cardIndices[activePhase];
 
-  useEffect(() => {
-    if (containerRef.current) start();
-    return () => {
-      reset();
-      setActiveParagraph(0);
-    };
-  }, [start, reset]);
+  const cardCounts = useMemo(
+    () => ({
+      problem: cards.problem.length,
+      execution: cards.execution.length,
+      future: cards.future.length,
+    }),
+    [cards]
+  );
+
+  const navigateCard = useCallback(
+    (dir: number) => {
+      setDirection(dir);
+      setCardIndices((prev) => ({
+        ...prev,
+        [activePhase]: Math.max(
+          0,
+          Math.min(prev[activePhase] + dir, currentCards.length - 1)
+        ),
+      }));
+    },
+    [activePhase, currentCards.length]
+  );
+
+  const handlePhaseChange = useCallback((phase: Phase) => {
+    setActivePhase(phase);
+    setDirection(0);
+  }, []);
+
+  const { swipeHandlers, canGoNext, canGoPrev } = useFlashcardNavigation({
+    onNext: () => navigateCard(1),
+    onPrev: () => navigateCard(-1),
+    totalCards: currentCards.length,
+    currentIndex,
+    enabled: true,
+  });
 
   return (
     <div
-      className="mt-6 w-full overflow-auto flex flex-col gap-6 h-full"
-      ref={containerRef}
+      className={cn(
+        "mt-4 w-full flex flex-col gap-4",
+        isMobile ? "px-1" : "px-2"
+      )}
+      {...swipeHandlers}
     >
-      <div
-        ref={contentRef}
-        className={cn(
-          "relative border-none rounded-xl overflow-hidden shadow-2xl bg-transparent",
-          !isMobile && "bg-gradient-to-b from-ctp-base to-ctp-crust p-6"
-        )}
-      >
-        <div className="relative z-10  space-y-6 sm:space-y-8  h-auto">
-          {explain.map((paragraph, index) => {
-            const phase = phases[index] || "problem";
-            const config = phaseConfig[phase];
+      {/* Phase Selection Tabs */}
+      <PhaseTabs
+        activePhase={activePhase}
+        onPhaseChange={handlePhaseChange}
+        cardCounts={cardCounts}
+      />
 
-            return (
-              <motion.div
-                key={`${paragraph}-${index}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{
-                  opacity: index <= activeParagraph ? 1 : 0.3,
-                  y: 0,
-                }}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.1 + index * 0.1,
-                }}
-                className={`relative ${
-                  index > activeParagraph ? "opacity-30" : ""
-                }`}
-                ref={(el) =>
-                  (paragraphRefs.current[index] = el as HTMLDivElement)
-                }
-              >
-                <PhaseContent
-                  explanations={explain}
-                  index={index}
-                  activeParagraph={activeParagraph}
-                  phase={phase}
-                  config={config}
-                  progress={progress}
-                  displayedText={displayedText}
-                  isComplete={isComplete}
-                />
-              </motion.div>
-            );
-          })}
+      {/* Single Card View */}
+      <FlashcardDeck
+        cards={currentCards}
+        phase={activePhase}
+        currentIndex={currentIndex}
+        direction={direction}
+      />
+
+      {/* Navigation Controls */}
+      <FlashcardNavigation
+        currentIndex={currentIndex}
+        totalCards={currentCards.length}
+        onNavigate={navigateCard}
+        phase={activePhase}
+        canGoNext={canGoNext}
+        canGoPrev={canGoPrev}
+      />
+
+      {/* Keyboard Hint (desktop only) */}
+      {!isMobile && (
+        <div className="text-center text-ctp-overlay0 text-xs">
+          Use{" "}
+          <kbd className="px-1.5 py-0.5 bg-ctp-surface0 rounded text-ctp-subtext0">
+            ←
+          </kbd>{" "}
+          <kbd className="px-1.5 py-0.5 bg-ctp-surface0 rounded text-ctp-subtext0">
+            →
+          </kbd>{" "}
+          to navigate
         </div>
-      </div>
+      )}
     </div>
   );
 };
