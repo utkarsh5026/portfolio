@@ -39,7 +39,7 @@ const ProjectExplainCollapsible = memo<ProjectExplainCollapsibleProps>(
               <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
                 Why I Built This
               </h3>
-              <p className="text-white/60 text-xs sm:text-sm leading-tight">
+              <p className="text-ctp-subtext0 text-xs sm:text-sm leading-normal">
                 Deep dive into the motivation and technical decisions
               </p>
             </div>

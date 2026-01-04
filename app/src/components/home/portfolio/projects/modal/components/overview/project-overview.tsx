@@ -37,7 +37,7 @@ const ProjectOverview = memo<OverviewContentProps>(function ProjectOverview({
         <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
           Project Overview
         </h2>
-        <p className="text-ctp-text text-sm sm:text-base leading-relaxed">
+        <p className="text-ctp-subtext1 text-sm sm:text-base leading-relaxed sm:leading-7">
           {project.description}
         </p>
 
@@ -93,7 +93,7 @@ const OverViewComponent = memo<OverViewComponentProps>(
   function OverViewComponent({ children, isMobile }) {
     if (isMobile) {
       return (
-        <div className="relative rounded-2xl overflow-hidden bg-ctp-surface0/20 p-4">
+        <div className="relative rounded-2xl overflow-hidden bg-ctp-surface0/40 p-4">
           {children}
         </div>
       );
