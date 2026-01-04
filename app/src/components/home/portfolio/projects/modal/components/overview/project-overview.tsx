@@ -71,7 +71,7 @@ const ProjectOverview = memo<OverviewContentProps>(function ProjectOverview({
         </div>
       </OverViewComponent>
 
-      {project.explain && project.explain.length > 0 && (
+      {project.explainCards && Object.keys(project.explainCards).length > 0 && (
         <OverViewComponent isMobile={isMobile}>
           <ProjectExplainCollapsible project={project} theme={theme} />
         </OverViewComponent>
