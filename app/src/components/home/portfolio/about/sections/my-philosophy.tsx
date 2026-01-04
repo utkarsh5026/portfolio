@@ -1,9 +1,7 @@
 import React from "react";
-import { Brain, Quote, Zap, Target, Heart } from "lucide-react";
-import { philosophy } from "../data/data";
+import { Brain, Quote, Zap, Target } from "lucide-react";
 import Reveal from "@/components/animations/reveal/Reveal";
-
-const philosophyIcons = [Target, Zap, Heart];
+import SectionHeader from "./about-header";
 
 const philosophyPrinciples = [
   {
@@ -25,37 +23,18 @@ const philosophyPrinciples = [
     icon: Zap,
   },
 ];
-/**
- * 🧠 Development philosophy and principles showcase
- *
- * Shares my approach to development and life through elegant quote cards
- * and principle sections. Shows how I think about writing code and
- * building software. It's my coding wisdom in visual form! 💭⚡
- */
+
 const Philosophy: React.FC = () => {
   return (
     <div className="relative w-full overflow-hidden">
-      <div className="relative bg-transparent backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-none overflow-hidden w-full">
+      <div className="relative bg-ctp-surface0/10 rounded-2xl sm:rounded-3xl border border-none overflow-hidden w-full">
         <div className="p-3 sm:p-4 md:p-6 lg:p-8">
-          <Reveal effect="fade-up" duration={0.6}>
-            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 md:mb-8">
-              <div className="p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl bg-ctp-blue/10 text-ctp-blue flex-shrink-0">
-                <Brain className="w-4 h-4 sm:w-5 sm:h-5" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-ctp-text leading-tight">
-                  Philosophy
-                </h3>
-                <p className="text-xs sm:text-sm text-ctp-subtext0">
-                  How I approach development & life
-                </p>
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal effect="fade-up" duration={0.7} delay={0.2}>
-            <PhilosophyCard />
-          </Reveal>
+          <SectionHeader
+            icon={Brain}
+            color="blue"
+            title="Philosophy"
+            subtitle="How I approach development & life"
+          />
 
           <Reveal effect="fade-up" delay={0.8} duration={0.6}>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
@@ -98,61 +77,6 @@ const Philosophy: React.FC = () => {
               </div>
             </div>
           </Reveal>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const PhilosophyCard = () => {
-  return (
-    <div className="relative mb-4 sm:mb-6 md:mb-8">
-      <div className="relative bg-ctp-surface0/20 hover:bg-ctp-surface0/40 rounded-xl sm:rounded-2xl border border-none p-3 sm:p-4 md:p-6 lg:p-8 overflow-hidden">
-        <div className="relative space-y-3 sm:space-y-4 md:space-y-6">
-          {philosophy.map((paragraph, index) => {
-            const Icon = philosophyIcons[index];
-            return (
-              <Reveal
-                key={paragraph}
-                effect="slide-in"
-                direction={index % 2 === 0 ? "left" : "right"}
-                delay={0.3 + index * 0.2}
-                duration={0.7}
-              >
-                <div className="flex gap-2 sm:gap-3 md:gap-4 group w-full overflow-hidden">
-                  {/* Philosophy icon */}
-                  <div className="flex-shrink-0 mt-0.5 sm:mt-1">
-                    <div
-                      className={`w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br ${
-                        index === 0
-                          ? "from-ctp-blue/20 to-ctp-sapphire/20"
-                          : index === 1
-                          ? "from-ctp-mauve/20 to-ctp-pink/20"
-                          : "from-ctp-pink/20 to-ctp-red/20"
-                      } flex items-center justify-center group-hover:scale-105 transition-transform duration-300`}
-                    >
-                      <Icon
-                        className={`w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 ${
-                          index === 0
-                            ? "text-ctp-blue"
-                            : index === 1
-                            ? "text-ctp-mauve"
-                            : "text-ctp-pink"
-                        }`}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Philosophy text */}
-                  <div className="flex-1 min-w-0 overflow-hidden">
-                    <p className="text-ctp-text leading-relaxed text-xs sm:text-sm md:text-base group-hover:text-ctp-subtext1 transition-colors duration-300 break-words">
-                      {paragraph}
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-            );
-          })}
         </div>
       </div>
     </div>
