@@ -18,19 +18,6 @@ const determineCategory = (article: (typeof articles)[0]) => {
   return "Web Development";
 };
 
-/**
- * ArticleCard component displays a single article with its title, description,
- * and category. It also provides functionality to expand/collapse the article
- * description and a button to read the full article.
- *
- * @param {Object} props - The properties for the ArticleCard component.
- * @param {Object} props.article - The article object containing title, description, and link.
- * @param {number} props.index - The index of the article in the list, used for animation delay.
- * @param {boolean} props.isExpanded - Indicates whether the article description is expanded.
- * @param {function} props.toggleExpand - Function to toggle the expanded state of the article.
- *
- * @returns {JSX.Element} The rendered ArticleCard component.
- */
 const ArticleCard: React.FC<ArticleCardProps> = ({
   article,
   index,
@@ -127,7 +114,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
         <div className="mt-auto px-5 py-4">
           <Button
             onClick={() => window.open(article.link, "_blank")}
-            className="w-full bg-ctp-surface1/15 hover:bg-ctp-surface1/30 text-ctp-text border-none group"
+            className="w-full bg-transparent hover:bg-ctp-surface1/30 text-ctp-text border-none group"
             size="sm"
           >
             <span className="group-hover:text-ctp-pink transition-colors">
