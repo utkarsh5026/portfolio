@@ -141,17 +141,11 @@ const Projects: React.FC = () => {
                   parentId="projects"
                   icon={<Sparkles className="w-3 h-3 text-ctp-yellow" />}
                 >
-                  <Reveal
-                    effect="fade-up"
-                    duration={0.8}
-                    delay={0.1}
-                    className="w-full h-full flex flex-1"
-                  >
                     <FeaturedProject
                       featuredProject={featuredProject}
                       handleProjectSelect={handleProjectSelect}
                     />
-                  </Reveal>
+
                 </OutlineNode>
               </TabsContent>
 
