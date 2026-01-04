@@ -3,7 +3,6 @@ import type { ProjectTheme } from "@/components/home/portfolio/projects/context/
 import type { Project } from "@/types";
 import Reveal from "@/components/animations/reveal/Reveal";
 import Technologies from "./technologies-used";
-import ProjectExplainCollapsible from "./project-explain";
 import { Button } from "@/components/ui/button";
 import { FaGithub } from "react-icons/fa";
 import { Lock, ExternalLink } from "lucide-react";
@@ -71,11 +70,11 @@ const ProjectOverview = memo<OverviewContentProps>(function ProjectOverview({
         </div>
       </OverViewComponent>
 
-      {project.explainCards && Object.keys(project.explainCards).length > 0 && (
+      {/* {project.explainCards && Object.keys(project.explainCards).length > 0 && (
         <OverViewComponent isMobile={isMobile}>
           <ProjectExplainCollapsible project={project} theme={theme} />
         </OverViewComponent>
-      )}
+      )} */}
 
       <OverViewComponent isMobile={isMobile}>
         <Technologies project={project} theme={theme} />
