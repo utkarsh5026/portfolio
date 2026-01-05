@@ -38,7 +38,7 @@
     "react-router-dom": "^7.9.6",
     "react-swipeable": "^7.0.2",
     "react-syntax-highlighter": "^15.6.1",
-    "tailwind-merge": "^2.5.5",
+    "tailwind-merge": "^3.4.0",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.174.0",
     "three-stdlib": "^2.35.14",
