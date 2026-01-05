@@ -30,6 +30,7 @@ interface RevealProps {
  *
  * Uses Intersection Observer for triggering CSS animations when elements come into view.
  * Supports a variety of simple transform animations as well as complex keyframe animations.
+ * On mobile, animations are disabled for better performance.
  */
 const Reveal: React.FC<RevealProps> = ({
   children,
@@ -45,8 +46,53 @@ const Reveal: React.FC<RevealProps> = ({
   className = "",
   style = {},
 }) => {
-  const [isVisible, setIsVisible] = useState(false);
   const { isMobile } = useMobile();
+
+  // On mobile, skip all animation logic and render children directly
+  // This avoids creating Intersection Observers which cause performance issues
+  if (isMobile) {
+    return (
+      <div className={className} style={style}>
+        {children}
+      </div>
+    );
+  }
+
+  return (
+    <DesktopReveal
+      effect={effect}
+      direction={direction}
+      duration={duration}
+      delay={delay}
+      threshold={threshold}
+      staggerChildren={staggerChildren}
+      cascade={cascade}
+      damping={damping}
+      once={once}
+      className={className}
+      style={style}
+    >
+      {children}
+    </DesktopReveal>
+  );
+};
+
+// Separate component for desktop to keep hooks unconditional
+const DesktopReveal: React.FC<RevealProps> = ({
+  children,
+  effect = "fade-up",
+  direction = "up",
+  duration = 0.7,
+  delay = 0,
+  threshold = 0.1,
+  staggerChildren = 0.08,
+  cascade = false,
+  damping = 20,
+  once = true,
+  className = "",
+  style = {},
+}) => {
+  const [isVisible, setIsVisible] = useState(false);
 
   const [ref, inView] = useInView({
     triggerOnce: once,
@@ -58,6 +104,21 @@ const Reveal: React.FC<RevealProps> = ({
     if (inView) setIsVisible(true);
     else if (!once) setIsVisible(false);
   }, [inView, once]);
+
+  const isKeyframeAnimation = (effect: RevealEffect): boolean => {
+    return [
+      "fade-through",
+      "ripple-in",
+      "swing-in",
+      "spotlight-in",
+      "bounce-in",
+      "flip-in",
+      "fold-unfold",
+      "split-pieces",
+      "glitch-in",
+      "typewriter",
+    ].includes(effect);
+  };
 
   const getAnimationClasses = () => {
     const classes = [styles.animated];
@@ -76,21 +137,6 @@ const Reveal: React.FC<RevealProps> = ({
     return classes.join(" ");
   };
 
-  const isKeyframeAnimation = (effect: RevealEffect): boolean => {
-    return [
-      "fade-through",
-      "ripple-in",
-      "swing-in",
-      "spotlight-in",
-      "bounce-in",
-      "flip-in",
-      "fold-unfold",
-      "split-pieces",
-      "glitch-in",
-      "typewriter",
-    ].includes(effect);
-  };
-
   const combinedClassName = `${getAnimationClasses()} ${className}`;
 
   const customStyle = {
@@ -100,14 +146,6 @@ const Reveal: React.FC<RevealProps> = ({
     "--random-y": cascade ? "0px" : `${(Math.random() - 0.5) * 20}px`,
     "--random-angle": cascade ? "0deg" : `${(Math.random() - 0.5) * 10}deg`,
   } as React.CSSProperties;
-
-  if (isMobile) {
-    return (
-      <div ref={ref} style={customStyle} className={className}>
-        {children}
-      </div>
-    );
-  }
 
   return (
     <div ref={ref} className={combinedClassName} style={customStyle}>
