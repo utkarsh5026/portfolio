@@ -58,7 +58,7 @@ const ProjectFeatures = memo<ProjectFeaturesProps>(function ProjectFeatures({
 });
 
 interface FeatureCardProps {
-  feature: { title: string; description: string };
+  feature: { title: string; description: string | string[] };
   theme: ProjectTheme;
   isMobile: boolean;
 }
@@ -74,11 +74,26 @@ const FeatureCard = memo<FeatureCardProps>(function FeatureCard({
         className={`relative p-4 rounded-xl bg-ctp-surface0/50 border-l-2 border-ctp-${theme.main}/20`}
       >
         <div className="flex items-start gap-3">
-          <div className="flex-1 space-y-1.5">
+          <div className="flex-1 space-y-3">
             <h3 className="text-base font-bold text-white">{feature.title}</h3>
-            <p className="text-sm text-ctp-subtext1 leading-relaxed">
-              {feature.description}
-            </p>
+            {Array.isArray(feature.description) ? (
+              <ul className="space-y-2.5 ml-0.5">
+                {feature.description.map((point, index) => (
+                  <li key={index} className="flex items-start gap-2.5">
+                    <span
+                      className={`inline-block w-1.5 h-1.5 rounded-full bg-ctp-${theme.main} mt-2 shrink-0`}
+                    />
+                    <span className="text-sm text-ctp-subtext1 leading-relaxed flex-1">
+                      {point}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-sm text-ctp-subtext1 leading-relaxed">
+                {feature.description}
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -87,11 +102,8 @@ const FeatureCard = memo<FeatureCardProps>(function FeatureCard({
 
   return (
     <div
-      className={`group relative p-4 sm:p-5 lg:p-6 rounded-xl border border-ctp-surface1 bg-ctp-surface0/50 hover:bg-ctp-surface0/80 hover:border-ctp-${theme.main}/30 transition-all duration-200`}
+      className={`group relative p-4 sm:p-5 lg:p-6 rounded-xl border-none bg-ctp-surface0/50`}
     >
-      <div
-        className={`absolute inset-0 rounded-xl bg-gradient-to-r from-ctp-${theme.main}/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none`}
-      />
       <div className="relative flex items-start gap-3 sm:gap-4">
         <div
           className={`p-2 sm:p-2.5 rounded-lg bg-ctp-${theme.main}/10 group-hover:bg-ctp-${theme.main}/20 transition-colors shrink-0`}
@@ -99,12 +111,29 @@ const FeatureCard = memo<FeatureCardProps>(function FeatureCard({
           <Zap className={`w-4 h-4 sm:w-5 sm:h-5 text-ctp-${theme.main}`} />
         </div>
         <div className="flex-1 space-y-2">
-          <h3 className={`text-base sm:text-lg font-bold text-white group-hover:text-ctp-${theme.main} transition-colors`}>
+          <h3
+            className={`text-base sm:text-lg font-bold text-white group-hover:text-ctp-${theme.main} transition-colors`}
+          >
             {feature.title}
           </h3>
-          <p className="text-xs sm:text-sm text-ctp-subtext1 leading-relaxed">
-            {feature.description}
-          </p>
+          {Array.isArray(feature.description) ? (
+            <ul className="space-y-2 ml-0.5">
+              {feature.description.map((point, index) => (
+                <li key={index} className="flex items-start gap-2.5">
+                  <span
+                    className={`inline-block w-1.5 h-1.5 rounded-full bg-ctp-${theme.main} mt-1.5 shrink-0`}
+                  />
+                  <span className="text-xs sm:text-sm text-ctp-subtext1 leading-relaxed flex-1">
+                    {point}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-xs sm:text-sm text-ctp-subtext1 leading-relaxed">
+              {feature.description}
+            </p>
+          )}
         </div>
       </div>
     </div>

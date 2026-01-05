@@ -41,7 +41,7 @@ export type ProjectDemoVideo = {
 };
 export type KeyFeature = {
   title: string;
-  description: string;
+  description: string | string[];
 };
 
 // Flashcard type for Q&A explain section
