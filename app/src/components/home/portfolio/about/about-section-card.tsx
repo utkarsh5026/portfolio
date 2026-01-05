@@ -58,12 +58,9 @@ const AboutSectionCard: React.FC<AboutSectionCardProps> = ({
 
         <div className="flex items-center gap-2">
           {isMobile ? (
-            <motion.div
-              whileHover={{ x: 2 }}
-              className="flex items-center gap-1 text-ctp-subtext0 group-hover:text-ctp-subtext1 transition-colors"
-            >
+            <div className="flex items-center gap-1 text-ctp-subtext0 group-hover:text-ctp-subtext1 transition-colors">
               <ArrowRight className="w-4 h-4" />
-            </motion.div>
+            </div>
           ) : (
             <motion.div
               animate={{ rotate: isOpen ? 180 : 0 }}
