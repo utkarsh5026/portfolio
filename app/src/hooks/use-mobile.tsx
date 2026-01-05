@@ -243,6 +243,7 @@ export const MobileProvider = ({ children }: { children: ReactNode }) => {
  * Use this instead of useMobile() when inside a MobileProvider.
  * Reads from shared context - no new event listeners created.
  */
+// eslint-disable-next-line react-refresh/only-export-components
 export const useMobileContext = (): MobileState => {
   const context = useContext(MobileContext);
   if (!context) {
@@ -251,4 +252,5 @@ export const useMobileContext = (): MobileState => {
   return context;
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export default useMobile;

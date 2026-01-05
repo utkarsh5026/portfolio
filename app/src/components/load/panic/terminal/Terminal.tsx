@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useMemo } from "react";
+import React, { useEffect, useState, useRef, useMemo, useCallback } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { commands } from "../content";
@@ -68,31 +68,8 @@ const Terminal: React.FC<TerminalProps> = ({
     };
   }, [totalAnimationTimeMS]);
 
-  // Start animations when terminal becomes active
-  useEffect(() => {
-    if (
-      (activeWindow === "terminal" || panicPhase === "commands") &&
-      animationState === "idle"
-    ) {
-      startAnimations();
-    }
-
-    return () => {
-      // Clean up any pending timeouts on unmount
-      animationTimeoutsRef.current.forEach((timeout) => clearTimeout(timeout));
-    };
-  }, [activeWindow, panicPhase]);
-
-  // Auto-scroll terminal as content is added
-  useEffect(() => {
-    if (terminalContentRef.current) {
-      terminalContentRef.current.scrollTop =
-        terminalContentRef.current.scrollHeight;
-    }
-  }, [commandProgress, outputVisibility, deploymentProgress]);
-
   // Function to animate terminal commands and outputs
-  const startAnimations = () => {
+  const startAnimations = useCallback(() => {
     setAnimationState("running");
     let currentTimeOffset = 0;
 
@@ -157,7 +134,30 @@ const Terminal: React.FC<TerminalProps> = ({
     }, deploymentStartTime + timing.deploymentAnimationTime);
 
     animationTimeoutsRef.current.push(completionTimeout);
-  };
+  }, [timing]);
+
+  // Start animations when terminal becomes active
+  useEffect(() => {
+    if (
+      (activeWindow === "terminal" || panicPhase === "commands") &&
+      animationState === "idle"
+    ) {
+      startAnimations();
+    }
+
+    return () => {
+      // Clean up any pending timeouts on unmount
+      animationTimeoutsRef.current.forEach((timeout) => clearTimeout(timeout));
+    };
+  }, [activeWindow, panicPhase, animationState, startAnimations]);
+
+  // Auto-scroll terminal as content is added
+  useEffect(() => {
+    if (terminalContentRef.current) {
+      terminalContentRef.current.scrollTop =
+        terminalContentRef.current.scrollHeight;
+    }
+  }, [commandProgress, outputVisibility, deploymentProgress]);
 
   return (
     <Card

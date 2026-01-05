@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   X,
@@ -44,14 +44,14 @@ const MediaShowcase: React.FC<MediaShowcaseProps> = ({ media, theme }) => {
     setTimeout(() => setSelectedIndex(null), 300);
   };
 
-  const navigateMedia = (direction: "prev" | "next") => {
+  const navigateMedia = useCallback((direction: "prev" | "next") => {
     if (selectedIndex === null) return;
     const newIndex =
       direction === "prev"
         ? (selectedIndex - 1 + media.length) % media.length
         : (selectedIndex + 1) % media.length;
     setSelectedIndex(newIndex);
-  };
+  }, [selectedIndex, media.length]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -73,7 +73,7 @@ const MediaShowcase: React.FC<MediaShowcaseProps> = ({ media, theme }) => {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isLightboxOpen, selectedIndex]);
+  }, [isLightboxOpen, navigateMedia]);
 
   if (!media.length) {
     return (
