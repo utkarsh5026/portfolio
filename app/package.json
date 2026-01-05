@@ -20,7 +20,7 @@
     "@radix-ui/react-dropdown-menu": "^2.1.14",
     "@radix-ui/react-slot": "^1.2.0",
     "@radix-ui/react-tabs": "^1.1.9",
-    "@radix-ui/react-tooltip": "^1.1.6",
+    "@radix-ui/react-tooltip": "^1.2.8",
     "@types/animejs": "^3.1.12",
     "animejs": "^3.2.2",
     "class-variance-authority": "^0.7.1",
