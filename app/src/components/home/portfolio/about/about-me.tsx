@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import Section from "@/components/section/portfolio-section";
 import {
   User,
@@ -9,14 +9,6 @@ import {
   Heart,
   Target,
 } from "lucide-react";
-import {
-  Background,
-  MyEducation,
-  Skills,
-  Philosophy,
-  Interests,
-  CurrentFocus,
-} from "./sections";
 import Reveal from "@/components/animations/reveal/Reveal";
 import useMobile from "@/hooks/use-mobile";
 import {
@@ -28,13 +20,28 @@ import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { motion } from "framer-motion";
 import AboutSectionCard from "./about-section-card";
 
+// Lazy load section components for better mobile performance
+const Background = lazy(() => import("./sections/my-background"));
+const MyEducation = lazy(() => import("./sections/my-education"));
+const Skills = lazy(() => import("./sections/skills-display"));
+const Philosophy = lazy(() => import("./sections/my-philosophy"));
+const Interests = lazy(() => import("./sections/current-interests"));
+const CurrentFocus = lazy(() => import("./sections/currrent-focus"));
+
 const ABOUT_SECTION = "about";
+
+// Loading fallback for lazy components
+const SectionLoader: React.FC = () => (
+  <div className="flex items-center justify-center p-8">
+    <div className="w-6 h-6 border-2 border-ctp-blue border-t-transparent rounded-full animate-spin" />
+  </div>
+);
 
 interface SectionData {
   id: string;
   title: string;
   description: string;
-  component: React.ReactNode;
+  Component: React.LazyExoticComponent<React.FC>;
   delay?: number;
   icon: React.ComponentType<{ className?: string }>;
   color: string;
@@ -46,7 +53,7 @@ const sections: SectionData[] = [
     id: "background",
     title: "My Story",
     description: "Personal journey and background",
-    component: <Background />,
+    Component: Background,
     delay: 0.1,
     icon: BookOpen,
     color: "blue",
@@ -56,7 +63,7 @@ const sections: SectionData[] = [
     id: "education",
     title: "Education",
     description: "Academic foundation & achievements",
-    component: <MyEducation />,
+    Component: MyEducation,
     delay: 0.2,
     icon: GraduationCap,
     color: "sapphire",
@@ -66,7 +73,7 @@ const sections: SectionData[] = [
     id: "core-skills",
     title: "Core Skills",
     description: "Technologies I work with daily",
-    component: <Skills />,
+    Component: Skills,
     delay: 0.3,
     icon: Code2,
     color: "green",
@@ -76,7 +83,7 @@ const sections: SectionData[] = [
     id: "philosophy",
     title: "Philosophy",
     description: "How I approach development & life",
-    component: <Philosophy />,
+    Component: Philosophy,
     delay: 0.4,
     icon: Brain,
     color: "mauve",
@@ -86,7 +93,7 @@ const sections: SectionData[] = [
     id: "interests",
     title: "Interests & Hobbies",
     description: "What keeps me curious and motivated",
-    component: <Interests />,
+    Component: Interests,
     delay: 0.5,
     icon: Heart,
     color: "pink",
@@ -96,7 +103,7 @@ const sections: SectionData[] = [
     id: "current-focus",
     title: "Current Focus",
     description: "What I'm actively learning and improving",
-    component: <CurrentFocus />,
+    Component: CurrentFocus,
     delay: 0.6,
     icon: Target,
     color: "peach",
@@ -154,33 +161,31 @@ const MobileAboutSection: React.FC<MobileAboutSectionProps> = ({
   isOpen,
   totalSections,
 }) => {
-  const { isMobile } = useMobile();
+  const SectionComponent = section.Component;
 
   return (
-    <Reveal effect="fade-up" duration={0.6} delay={section.delay}>
+    <div className="w-full">
       <Drawer>
         <DrawerTrigger asChild>
-          <motion.button
-            whileHover={{ scale: 1.01 }}
-            whileTap={{ scale: 0.99 }}
-            className="w-full text-left bg-ctp-surface0/20 backdrop-blur-sm hover:bg-ctp-surface0/40 transition-all duration-300 rounded-xl"
-          >
+          <button className="w-full text-left bg-ctp-surface0/20 hover:bg-ctp-surface0/40 transition-all duration-300 rounded-xl">
             <AboutSectionCard
               section={section}
               index={index}
               totalSections={totalSections}
-              isMobile={isMobile}
+              isMobile={true}
               isOpen={isOpen}
             />
-          </motion.button>
+          </button>
         </DrawerTrigger>
         <DrawerContent className="bg-ctp-mantle border-none z-[99999]">
           <div className="py-8 max-h-[90vh] h-[90vh] overflow-y-auto">
-            {section.component}
+            <Suspense fallback={<SectionLoader />}>
+              <SectionComponent />
+            </Suspense>
           </div>
         </DrawerContent>
       </Drawer>
-    </Reveal>
+    </div>
   );
 };
 
@@ -201,15 +206,13 @@ const DesktopAboutSection: React.FC<DesktopAboutSectionProps> = ({
   isOpen,
   setIsOpen,
 }) => {
+  const SectionComponent = section.Component;
+
   return (
     <Reveal effect="fade-up" duration={0.6} delay={section.delay}>
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleTrigger asChild>
-          <motion.button
-            whileHover={{ scale: 1.005, y: -1 }}
-            whileTap={{ scale: 0.995 }}
-            className="w-full text-left bg-ctp-surface0/20 backdrop-blur-sm hover:bg-ctp-surface0/30 transition-all duration-300 rounded-xl shadow-sm hover:shadow-md hover:shadow-ctp-surface0/20"
-          >
+          <button className="w-full text-left bg-ctp-surface0/20 hover:bg-ctp-surface0/30 transition-all duration-300 rounded-xl shadow-sm hover:shadow-md hover:shadow-ctp-surface0/20">
             <AboutSectionCard
               section={section}
               index={index}
@@ -217,7 +220,7 @@ const DesktopAboutSection: React.FC<DesktopAboutSectionProps> = ({
               isMobile={isMobile}
               isOpen={isOpen}
             />
-          </motion.button>
+          </button>
         </CollapsibleTrigger>
         <CollapsibleContent className="data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up overflow-hidden">
           <motion.div
@@ -226,7 +229,9 @@ const DesktopAboutSection: React.FC<DesktopAboutSectionProps> = ({
             transition={{ duration: 0.3, delay: isOpen ? 0.1 : 0 }}
             className="pt-4 pl-11"
           >
-            {section.component}
+            <Suspense fallback={<SectionLoader />}>
+              <SectionComponent />
+            </Suspense>
           </motion.div>
         </CollapsibleContent>
       </Collapsible>
@@ -261,16 +266,13 @@ const AboutMe: React.FC = () => {
           {/* Footer Call to Action */}
           <Reveal effect="fade-up" duration={0.8} delay={0.7}>
             <div className="mt-12 text-center">
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="max-w-md mx-auto"
-              >
-                <div className="flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-ctp-peach/40 to-ctp-yellow/50 backdrop-blur-sm rounded-xl border-none hover:border-ctp-mauve/30 transition-all duration-300 group">
-                  <span className="text-ctp-text  text-sm group-hover:text-ctp-text transition-colors italic font-bold">
+              <div className="max-w-md mx-auto">
+                <div className="flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-ctp-peach/40 to-ctp-yellow/50 rounded-xl border-none hover:border-ctp-mauve/30 transition-all duration-300 group">
+                  <span className="text-ctp-text text-sm group-hover:text-ctp-text transition-colors italic font-bold">
                     Always eager to connect and collaborate
                   </span>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </Reveal>
         </div>
