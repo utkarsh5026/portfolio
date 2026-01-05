@@ -147,7 +147,7 @@ const LayeredCard3D: React.FC<LayeredCard3DProps> = ({
 
       layersRef.current = [];
     };
-  }, [depth, gap, rotateXDeg, rotateYDeg]);
+  }, [depth, gap, rotateXDeg, rotateYDeg, threeDPerspective]);
 
   return (
     <div

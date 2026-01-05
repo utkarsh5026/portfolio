@@ -3,24 +3,40 @@
     "name": "Automotive Training & Workforce Analytics DSS",
     "tagline": "Transform workforce data into strategic insights \ud83d\udcca",
     "description": "Enterprise analytics platform for Skoda, VW, and Audi processing 200K+ training records. Reduced manager analysis time from 3 days to under 5 minutes through automated Pandas pipelines and interactive Plotly dashboards.",
-    "keyFeatures": [
-      {
-        "title": "Real-Time Multi-Brand Analytics Engine",
-        "description": "Django REST API with Pandas processing aggregating cross-brand training metrics with sub-second query response using Redis caching and PostgreSQL read replicas"
-      },
-      {
-        "title": "Automated Data Processing Pipeline",
-        "description": "Celery-powered background workers with scheduled ETL tasks handling CSV imports up to 50MB with automatic validation, error detection, and rollback capabilities"
-      },
-      {
-        "title": "Interactive Visualization Dashboard",
-        "description": "React + Plotly frontend with drill-down capabilities, custom chart builder, dynamic filtering, and PDF/Excel export supporting 10+ visualization types"
-      },
-      {
-        "title": "Role-Based Access Control System",
-        "description": "JWT authentication with hierarchical permissions (Executive, Manager, Analyst) featuring multi-tenant architecture and comprehensive audit logging"
-      }
-    ],
+"keyFeatures": [
+    {
+      "title": "Real-Time Multi-Brand Analytics Engine",
+      "description": [
+        "Django REST API with Pandas for cross-brand metric aggregation",
+        "Sub-second query response times via Redis caching",
+        "High-availability data retrieval using PostgreSQL read replicas"
+      ]
+    },
+    {
+      "title": "Automated Data Processing Pipeline",
+      "description": [
+        "Celery-powered background workers for scheduled ETL tasks",
+        "Handles CSV imports up to 50MB with automatic validation",
+        "Built-in error detection and atomic rollback capabilities"
+      ]
+    },
+    {
+      "title": "Interactive Visualization Dashboard",
+      "description": [
+        "React + Plotly frontend with 10+ custom visualization types",
+        "Advanced drill-down capabilities and dynamic data filtering",
+        "One-click PDF and Excel export for executive reporting"
+      ]
+    },
+    {
+      "title": "Role-Based Access Control (RBAC) System",
+      "description": [
+        "Secure JWT authentication with hierarchical permission tiers",
+        "Multi-tenant architecture ensuring cross-brand data isolation",
+        "Comprehensive audit logging for security and compliance"
+      ]
+    }
+  ],
     "technologies": [
       "react",
       "typescript",
@@ -68,1083 +84,1140 @@
       "Plotly"
     ]
   },
-  {
-    "name": "First Principles",
-    "tagline": "Transform technical learning with gamified reading analytics 📚",
-    "description": "Mobile-first documentation platform with 1,881+ curated technical documents across 15+ engineering topics. Features reading analytics dashboard with GitHub-style heatmaps, achievement system, and personalized recommendations to drive engagement and track learning progress.",
-    "keyFeatures": [
-      {
-        "title": "Advanced Reading Analytics Engine",
-        "description": "React + Zustand state management tracking reading sessions, progress metrics, and time-series analytics. Recharts visualizations with GitHub-style activity heatmaps, category distribution radial charts, and D3-force graph for document relationships achieving real-time insights into learning patterns"
-      },
-      {
-        "title": "Custom Markdown Rendering Pipeline",
-        "description": "React-markdown with rehype-highlight for 50+ language syntax highlighting, rehype-autolink-headings for deep-linking, and rehype-raw for HTML support. Custom renderers for tables, code blocks with copy-to-clipboard, and responsive image galleries optimized for mobile viewing"
-      },
-      {
-        "title": "Gamification & Achievement System",
-        "description": "Client-side achievement tracking with reading streaks, category mastery levels, and milestone celebrations using react-confetti animations. Personalized daily challenges and reading recommendations based on historical patterns to increase user engagement by 40%+"
-      },
-      {
-        "title": "Mobile-Optimized Reading Experience",
-        "description": "Tailwind CSS v4 with custom theming, responsive typography scales, and touch-friendly navigation using react-swipeable gestures. Fullscreen reading mode with progress indicators, table of contents sidebar using Radix UI primitives, and localStorage persistence for cross-device continuity"
-      }
-    ],
-    "technologies": [
-      "react",
-      "typescript",
-      "tailwind",
-      "vite",
-      "recharts",
-      "framermotion",
-      "lucideicons",
-      "shadcn",
-      "redux"
-    ],
-    "explainCards": {
-      "problem": [
-        { "q": "How many documents curated?", "a": "1,881+ technical docs" },
-        { "q": "What's missing in doc viewers?", "a": "Progress tracking & analytics" },
-        { "q": "How many topics covered?", "a": "15+ engineering categories" },
-        { "q": "What makes learning hard?", "a": "Scattered sources, no consistency" },
-        { "q": "What do devs lose track of?", "a": "Reading progress & patterns" }
-      ],
-      "execution": [
-        { "q": "What shows reading activity?", "a": "GitHub-style heatmaps" },
-        { "q": "How many languages highlighted?", "a": "50+ with syntax colors" },
-        { "q": "What tracks reading sessions?", "a": "Millisecond precision timers" },
-        { "q": "What powers animations?", "a": "Framer Motion at 60fps" },
-        { "q": "What handles state?", "a": "Zustand, no Redux needed" },
-        { "q": "What builds the site?", "a": "Vite with sub-second HMR" }
-      ],
-      "future": [
-        { "q": "TTFB achieved?", "a": "Under 100ms!" },
-        { "q": "Uptime percentage?", "a": "99.9% on Vercel" },
-        { "q": "What boosts engagement?", "a": "Achievements & streaks" },
-        { "q": "Backend required?", "a": "No, fully static!" },
-        { "q": "Personalization feature?", "a": "AI recommendations" }
+{
+  "name": "First Principles",
+  "tagline": "Transform technical learning with gamified reading analytics 📚",
+  "description": "Mobile-first documentation platform with 1,881+ curated technical documents across 15+ engineering topics. Features reading analytics dashboard with GitHub-style heatmaps, achievement system, and personalized recommendations to drive engagement and track learning progress.",
+  "keyFeatures": [
+    {
+      "title": "Advanced Reading Analytics Engine",
+      "description": [
+        "Real-time session tracking using React + Zustand state management",
+        "GitHub-style activity heatmaps and radial category charts via Recharts",
+        "Interactive D3-force graphs to visualize complex document relationships"
       ]
     },
-    "githubLink": "https://github.com/utkarsh5026/FirstPrinciples",
-    "liveLink": "https://first-principles-black.vercel.app/",
-    "tags": [
-      "Documentation",
-      "Learning Platform",
-      "React",
-      "TypeScript",
-      "Analytics",
-      "Gamification",
-      "Mobile-First",
-      "Markdown",
-      "Data Visualization"
+    {
+      "title": "Custom Markdown Rendering Pipeline",
+      "description": [
+        "Syntax highlighting for 50+ languages via rehype-highlight",
+        "Deep-linking capabilities with auto-generated anchor headings",
+        "Custom renderers for copy-ready code blocks and responsive tables"
+      ]
+    },
+    {
+      "title": "Gamification & Achievement System",
+      "description": [
+        "Client-side tracking for reading streaks and topic mastery levels",
+        "Milestone celebrations featuring interactive confetti animations",
+        "Personalized recommendations increasing user engagement by 40%+"
+      ]
+    },
+    {
+      "title": "Mobile-Optimized Reading Experience",
+      "description": [
+        "Touch-friendly navigation with React-swipeable gestures",
+        "Distraction-free fullscreen mode with Radix UI sidebar controls",
+        "LocalStorage persistence for seamless cross-session continuity"
+      ]
+    }
+  ],
+  "technologies": [
+    "react",
+    "typescript",
+    "tailwind",
+    "vite",
+    "recharts",
+    "framermotion",
+    "lucideicons",
+    "shadcn",
+    "redux"
+  ],
+  "explainCards": {
+    "problem": [
+      { "q": "How many documents curated?", "a": "1,881+ technical docs" },
+      { "q": "What's missing in doc viewers?", "a": "Progress tracking & analytics" },
+      { "q": "How many topics covered?", "a": "15+ engineering categories" },
+      { "q": "What makes learning hard?", "a": "Scattered sources, no consistency" },
+      { "q": "What do devs lose track of?", "a": "Reading progress & patterns" }
+    ],
+    "execution": [
+      { "q": "What shows reading activity?", "a": "GitHub-style heatmaps" },
+      { "q": "How many languages highlighted?", "a": "50+ with syntax colors" },
+      { "q": "What tracks reading sessions?", "a": "Millisecond precision timers" },
+      { "q": "What powers animations?", "a": "Framer Motion at 60fps" },
+      { "q": "What handles state?", "a": "Zustand, no Redux needed" },
+      { "q": "What builds the site?", "a": "Vite with sub-second HMR" }
+    ],
+    "future": [
+      { "q": "TTFB achieved?", "a": "Under 100ms!" },
+      { "q": "Uptime percentage?", "a": "99.9% on Vercel" },
+      { "q": "What boosts engagement?", "a": "Achievements & streaks" },
+      { "q": "Backend required?", "a": "No, fully static!" },
+      { "q": "Personalization feature?", "a": "AI recommendations" }
     ]
   },
-  {
-    "name": "SourceControl - Git Reimplemented in Go",
-    "tagline": "Production-grade Git implementation from scratch in pure Go 🔧",
-    "description": "Fully-functional version control system reimplementing Git's core internals in Go without wrapping git commands. Implements content-addressable object storage, Merkle tree structures, binary index format, and complete CLI with 16,354 lines of tests achieving 121% test-to-code ratio for production reliability.",
-    "keyFeatures": [
-      {
-        "title": "Content-Addressable Object Store with SHA-1",
-        "description": "Custom implementation of Git's sharded directory structure (.source/objects/ab/cdef...) with type-safe wrappers for ObjectHash, CompressedData, and SerializedObject. Implements DEFLATE compression, lazy hash computation with caching, and atomic write operations using write-rename pattern to prevent corruption during crashes."
-      },
-      {
-        "title": "Concurrent Tree Building with Adaptive Parallelism",
-        "description": "Generic worker pool using Go 1.18+ generics with panic recovery, context cancellation, and smart concurrency threshold (≥3 subdirectories triggers parallel processing via errgroup, otherwise sequential to avoid goroutine overhead). Converts hierarchical file systems to Git's flat tree object model recursively."
-      },
-      {
-        "title": "Binary Index Format with O(1) Lookups",
-        "description": "Implements Git's staging area binary format with dual data structure approach - maintains sorted slice for Git compatibility and concurrent hash map (entryMap) for constant-time file lookups during staging operations. Includes SHA-1 checksum validation and atomic serialization to disk."
-      },
-      {
-        "title": "Type-Safe Path System and Config Hierarchy",
-        "description": "Strongly-typed path abstractions (AbsolutePath, RelativePath, RepositoryPath, SourcePath) prevent path mixing bugs. Thread-safe hierarchical config manager with RWMutex supporting 5-level precedence (CLI flags → repo → user → system → defaults) and concurrent config file loading via errgroup."
-      }
-    ],
-    "technologies": ["golang", "cli", "cobra", "git"],
-    "explainCards": {
-      "problem": [
-        { "q": "Why reimplement Git?", "a": "Devs treat it as black box" },
-        { "q": "What do most miss?", "a": "Content-addressable storage magic" },
-        { "q": "Original Git written in?", "a": "C, hard to understand" },
-        { "q": "What was missing in Go?", "a": "Production-quality Git impl" },
-        { "q": "Educational or practical?", "a": "Both! Learn and use" }
-      ],
-      "execution": [
-        { "q": "How many object types?", "a": "4: blob, tree, commit, tag" },
-        { "q": "What hashes content?", "a": "SHA-1 checksums" },
-        { "q": "CLI commands supported?", "a": "init, add, commit, checkout..." },
-        { "q": "How are writes safe?", "a": "Atomic: write→fsync→rename" },
-        { "q": "Index lookup speed?", "a": "O(1) via dual structures" },
-        { "q": "Concurrency model?", "a": "errgroup + worker pools" }
-      ],
-      "future": [
-        { "q": "Test coverage ratio?", "a": "121% (16,354 lines!)" },
-        { "q": "Git compatible?", "a": "Yes, interoperable objects" },
-        { "q": "Go version features?", "a": "1.18+ generics used" },
-        { "q": "Thread safety?", "a": "RWMutex protection" },
-        { "q": "What's next?", "a": "Remote storage support" }
+  "githubLink": "https://github.com/utkarsh5026/FirstPrinciples",
+  "liveLink": "https://first-principles-black.vercel.app/",
+  "tags": [
+    "Documentation",
+    "Learning Platform",
+    "React",
+    "TypeScript",
+    "Analytics",
+    "Gamification",
+    "Mobile-First",
+    "Markdown",
+    "Data Visualization"
+  ]
+},
+{
+  "name": "SourceControl - Git Reimplemented in Go",
+  "tagline": "Production-grade Git implementation from scratch in pure Go 🔧",
+  "description": "Fully-functional version control system reimplementing Git's core internals in Go without wrapping git commands. Implements content-addressable object storage, Merkle tree structures, binary index format, and complete CLI with 16,354 lines of tests achieving 121% test-to-code ratio for production reliability.",
+  "keyFeatures": [
+    {
+      "title": "Content-Addressable Object Store with SHA-1",
+      "description": [
+        "Custom implementation of Git's sharded directory structure (`.source/objects/ab/cdef...`)",
+        "Type-safe wrappers for `ObjectHash`, `CompressedData`, and `SerializedObject`",
+        "Atomic write operations using the write-rename pattern to prevent corruption"
       ]
     },
-    "githubLink": "https://github.com/utkarsh5026/SourceControl",
-    "tags": [
-      "Version Control System",
-      "Git Implementation",
-      "Distributed Systems",
-      "CLI Tool",
-      "Concurrent Programming",
-      "Content Addressable Storage",
-      "Merkle Trees",
-      "Systems Programming"
+    {
+      "title": "Concurrent Tree Building with Adaptive Parallelism",
+      "description": [
+        "Generic worker pool using Go 1.18+ generics with panic recovery and context cancellation",
+        "Smart concurrency thresholds that dynamically trigger parallel processing via `errgroup`",
+        "Recursive conversion of hierarchical file systems into Git's flat tree object model"
+      ]
+    },
+    {
+      "title": "Binary Index Format with O(1) Lookups",
+      "description": [
+        "Dual data structure approach maintaining both a sorted slice (for compatibility) and a hash map",
+        "Optimized `entryMap` enabling constant-time file lookups during staging operations",
+        "Full SHA-1 checksum validation and atomic serialization to disk"
+      ]
+    },
+    {
+      "title": "Type-Safe Path System and Config Hierarchy",
+      "description": [
+        "Strongly-typed path abstractions (`AbsolutePath`, `RepositoryPath`) preventing mixing bugs",
+        "Thread-safe hierarchical config manager with 5-level precedence (CLI → repo → user → system → defaults)",
+        "Concurrent config file loading protected by `RWMutex` and `errgroup`"
+      ]
+    }
+  ],
+  "technologies": [
+    "golang",
+    "cli",
+    "cobra",
+    "git"
+  ],
+  "explainCards": {
+    "problem": [
+      { "q": "Why reimplement Git?", "a": "Devs treat it as black box" },
+      { "q": "What do most miss?", "a": "Content-addressable storage magic" },
+      { "q": "Original Git written in?", "a": "C, hard to understand" },
+      { "q": "What was missing in Go?", "a": "Production-quality Git impl" },
+      { "q": "Educational or practical?", "a": "Both! Learn and use" }
+    ],
+    "execution": [
+      { "q": "How many object types?", "a": "4: blob, tree, commit, tag" },
+      { "q": "What hashes content?", "a": "SHA-1 checksums" },
+      { "q": "CLI commands supported?", "a": "init, add, commit, checkout..." },
+      { "q": "How are writes safe?", "a": "Atomic: write→fsync→rename" },
+      { "q": "Index lookup speed?", "a": "O(1) via dual structures" },
+      { "q": "Concurrency model?", "a": "errgroup + worker pools" }
+    ],
+    "future": [
+      { "q": "Test coverage ratio?", "a": "121% (16,354 lines!)" },
+      { "q": "Git compatible?", "a": "Yes, interoperable objects" },
+      { "q": "Go version features?", "a": "1.18+ generics used" },
+      { "q": "Thread safety?", "a": "RWMutex protection" },
+      { "q": "What's next?", "a": "Remote storage support" }
     ]
   },
-  {
-    "name": "Enigma Language Explorer",
-    "tagline": "Build and debug your own programming language in the browser 🚀",
-    "description": "Full-featured interpreter for Enigma, a custom programming language built from scratch with 240+ TypeScript files implementing lexer, parser, and tree-walking evaluator. Interactive web IDE with Monaco editor featuring real-time AST visualization, step-by-step debugger with execution state tracking, and instant syntax analysis processing 1000+ tokens per second.",
-    "keyFeatures": [
-      {
-        "title": "Complete Language Implementation Pipeline",
-        "description": "Hand-crafted lexer with multi-line comment support and f-string parsing, Pratt parser with operator precedence and error recovery generating full AST, and tree-walking evaluator supporting closures, first-class functions, OOP with inheritance, and 20+ built-in functions including map, filter, and reduce"
-      },
-      {
-        "title": "Interactive Step-by-Step Debugger",
-        "description": "Custom execution state tracking system capturing before/during/after evaluation phases, environment snapshots at each step, call stack visualization, and variable inspection allowing developers to navigate forward/backward through program execution with sub-millisecond step transitions"
-      },
-      {
-        "title": "Real-Time AST Visualization Engine",
-        "description": "React-based tree renderer displaying Abstract Syntax Tree with 15+ node types, bidirectional code-to-AST highlighting using Monaco decorations API, collapsible node navigation, and live updates processing syntax changes with <100ms latency using memoized parsing"
-      },
-      {
-        "title": "Monaco-Powered Code Editor with Custom Language Support",
-        "description": "Integrated Monaco editor with custom Enigma syntax highlighting, intelligent tokenization displaying 30+ token types with color-coding, error underlining with source context extraction, and responsive layout supporting both desktop split-pane and mobile drawer interfaces built with Tailwind and Shadcn UI"
-      }
-    ],
-    "technologies": [
-      "typescript",
-      "react",
-      "monaco",
-      "vite",
-      "tailwind",
-      "shadcn",
-      "framermotion",
-      "jest",
-      "lucideicons"
-    ],
-    "explainCards": {
-      "problem": [
-        { "q": "Best way to learn languages?", "a": "Build one from scratch" },
-        { "q": "What's wrong with tutorials?", "a": "Toy examples, no depth" },
-        { "q": "What do devs need?", "a": "Interactive experimentation" },
-        { "q": "Can you see internals?", "a": "Lexing, parsing, evaluation" },
-        { "q": "Why build an interpreter?", "a": "Demystify language magic" }
-      ],
-      "execution": [
-        { "q": "How many token types?", "a": "30+ recognized tokens" },
-        { "q": "Parsing technique used?", "a": "Pratt parsing algorithm" },
-        { "q": "Language features?", "a": "Closures, OOP, f-strings" },
-        { "q": "What powers the IDE?", "a": "Monaco Editor + React" },
-        { "q": "How many exec steps tracked?", "a": "1000+ per program" },
-        { "q": "How many TypeScript files?", "a": "240+ files" }
-      ],
-      "future": [
-        { "q": "Tokens processed per sec?", "a": "1000+ instantly" },
-        { "q": "Test lines written?", "a": "650+ Jest tests" },
-        { "q": "Step transition speed?", "a": "Sub-millisecond" },
-        { "q": "Mobile friendly?", "a": "Yes, drawer interface" },
-        { "q": "CI/CD setup?", "a": "GitHub Actions auto-tests" }
+  "githubLink": "https://github.com/utkarsh5026/SourceControl",
+  "tags": [
+    "Version Control System",
+    "Git Implementation",
+    "Distributed Systems",
+    "CLI Tool",
+    "Concurrent Programming",
+    "Content Addressable Storage",
+    "Merkle Trees",
+    "Systems Programming"
+  ]
+},
+{
+  "name": "Enigma Language Explorer",
+  "tagline": "Build and debug your own programming language in the browser 🚀",
+  "description": "Full-featured interpreter for Enigma, a custom programming language built from scratch with 240+ TypeScript files implementing lexer, parser, and tree-walking evaluator. Interactive web IDE with Monaco editor featuring real-time AST visualization, step-by-step debugger with execution state tracking, and instant syntax analysis processing 1000+ tokens per second.",
+  "keyFeatures": [
+    {
+      "title": "Complete Language Implementation Pipeline",
+      "description": [
+        "Hand-crafted lexer supporting f-strings and multi-line comments",
+        "Pratt parser implementation with operator precedence and error recovery",
+        "Tree-walking evaluator supporting closures, OOP, and first-class functions",
+        "Standard library with 20+ built-in functions including map, filter, and reduce"
       ]
     },
-    "githubLink": "https://github.com/utkarsh5026/enigma",
-    "tags": [
-      "Programming Language",
-      "Interpreter",
-      "Compiler Design",
-      "TypeScript",
-      "React",
-      "Monaco Editor",
-      "AST Visualization",
-      "Debugger",
-      "Educational",
-      "Language Design"
+    {
+      "title": "Interactive Step-by-Step Debugger",
+      "description": [
+        "State tracking system capturing environment snapshots at every step",
+        "Visualized call stack and variable inspection for deep debugging",
+        "Time-travel navigation (forward/backward) with sub-millisecond transitions"
+      ]
+    },
+    {
+      "title": "Real-Time AST Visualization Engine",
+      "description": [
+        "React-based tree renderer supporting 15+ distinct AST node types",
+        "Bidirectional code-to-AST highlighting via Monaco decorations API",
+        "Live syntax processing with <100ms latency using memoized parsing"
+      ]
+    },
+    {
+      "title": "Monaco-Powered Code Editor",
+      "description": [
+        "Custom syntax highlighting and intelligent tokenization for 30+ types",
+        "Error underlining with precise source context extraction",
+        "Responsive split-pane and mobile drawer layouts via Tailwind and Shadcn UI"
+      ]
+    }
+  ],
+  "technologies": [
+    "typescript",
+    "react",
+    "monaco",
+    "vite",
+    "tailwind",
+    "shadcn",
+    "framermotion",
+    "jest",
+    "lucideicons"
+  ],
+  "explainCards": {
+    "problem": [
+      { "q": "Best way to learn languages?", "a": "Build one from scratch" },
+      { "q": "What's wrong with tutorials?", "a": "Toy examples, no depth" },
+      { "q": "What do devs need?", "a": "Interactive experimentation" },
+      { "q": "Can you see internals?", "a": "Lexing, parsing, evaluation" },
+      { "q": "Why build an interpreter?", "a": "Demystify language magic" }
+    ],
+    "execution": [
+      { "q": "How many token types?", "a": "30+ recognized tokens" },
+      { "q": "Parsing technique used?", "a": "Pratt parsing algorithm" },
+      { "q": "Language features?", "a": "Closures, OOP, f-strings" },
+      { "q": "What powers the IDE?", "a": "Monaco Editor + React" },
+      { "q": "How many exec steps tracked?", "a": "1000+ per program" },
+      { "q": "How many TypeScript files?", "a": "240+ files" }
+    ],
+    "future": [
+      { "q": "Tokens processed per sec?", "a": "1000+ instantly" },
+      { "q": "Test lines written?", "a": "650+ Jest tests" },
+      { "q": "Step transition speed?", "a": "Sub-millisecond" },
+      { "q": "Mobile friendly?", "a": "Yes, drawer interface" },
+      { "q": "CI/CD setup?", "a": "GitHub Actions auto-tests" }
     ]
   },
-  {
-    "name": "DevPortfolio",
-    "tagline": "VS Code-inspired portfolio with cinematic multi-stage storytelling 🎬",
-    "description": "Immersive developer portfolio featuring a 6-stage narrative loading sequence, fully functional VS Code-inspired interface with integrated terminal supporting 15+ custom Linux commands, and interactive guided tour system. Built with React 18 + TypeScript processing 276 source files with advanced code splitting achieving <100ms TTI on initial load.",
-    "keyFeatures": [
-      {
-        "title": "Multi-Stage Cinematic Loading Narrative",
-        "description": "AnimeJS-powered 6-stage storytelling sequence including Realization (panic detection), Panic (simulated development chaos with mock VS Code, browser tabs, and AI chat), Chaos (prank portfolio), and Compilation phases with real-time code streaming. Implements localStorage state persistence to skip intro for returning visitors and features smooth scene transitions with fragment-based DOM manipulation for 60fps animations"
-      },
-      {
-        "title": "Fully Functional VS Code Interface Clone",
-        "description": "Pixel-perfect VS Code replica with file explorer sidebar using Radix UI primitives, draggable tab system with react-resizable-panels, integrated terminal supporting tab completion, command history, and 15+ Linux-like commands (cd, ls, cat, pwd, find, open). Features Prism.js syntax highlighting for code blocks, status bar with section info, and keyboard shortcuts (Ctrl+` for terminal toggle, Ctrl+/- for font sizing)"
-      },
-      {
-        "title": "Interactive Guided Tour System",
-        "description": "React Portal-based tour guide with 8+ contextual steps featuring animated character with emotion states, typewriter effect using custom hooks with humanization, spotlight highlighting with TourOverlay component, and progress tracking. Implements Zustand for tour state management and localStorage persistence for cross-session continuity"
-      },
-      {
-        "title": "Advanced Performance Optimization Pipeline",
-        "description": "Vite build configuration with manual chunk splitting (vendor, animations, UI, icons, home-components), lazy loading for all 8 portfolio sections using React.lazy, PWA support with VitePWA plugin for offline capability, image optimization with vite-imagetools, and rollup-plugin-visualizer for bundle analysis. Achieves <500KB initial bundle with Terser minification and CSS optimization"
-      }
-    ],
-    "technologies": [
-      "react",
-      "typescript",
-      "vite",
-      "tailwind",
-      "framermotion",
-      "shadcn",
-      "lucideicons",
-      "recharts",
-      "docker",
-      "git"
-    ],
-    "explainCards": {
-      "problem": [
-        { "q": "What's wrong with portfolios?", "a": "Static, boring, forgettable" },
-        { "q": "What do they fail to show?", "a": "Creativity & storytelling" },
-        { "q": "How many source files?", "a": "276 organized modules" },
-        { "q": "Goal of this project?", "a": "Stand out memorably" },
-        { "q": "What to demonstrate?", "a": "React architecture mastery" }
-      ],
-      "execution": [
-        { "q": "How many loading stages?", "a": "6-stage narrative journey" },
-        { "q": "What's the story?", "a": "Dev panicking, building live!" },
-        { "q": "Terminal commands work?", "a": "Yes, 15+ Linux commands" },
-        { "q": "What powers animations?", "a": "AnimeJS + Framer Motion" },
-        { "q": "Guide system?", "a": "Animated character tour" },
-        { "q": "VS Code clone features?", "a": "File explorer, tabs, terminal" }
-      ],
-      "future": [
-        { "q": "Time to Interactive?", "a": "Under 100ms!" },
-        { "q": "How many components?", "a": "300+ styled consistently" },
-        { "q": "Works offline?", "a": "Yes, PWA enabled" },
-        { "q": "Initial bundle size?", "a": "Under 500KB" },
-        { "q": "Color palette?", "a": "Catppuccin Mocha theme" }
+  "githubLink": "https://github.com/utkarsh5026/enigma",
+  "tags": [
+    "Programming Language",
+    "Interpreter",
+    "Compiler Design",
+    "TypeScript",
+    "React",
+    "Monaco Editor",
+    "AST Visualization",
+    "Debugger",
+    "Educational",
+    "Language Design"
+  ]
+},
+{
+  "name": "DevPortfolio",
+  "tagline": "VS Code-inspired portfolio with cinematic multi-stage storytelling 🎬",
+  "description": "Immersive developer portfolio featuring a 6-stage narrative loading sequence, fully functional VS Code-inspired interface with integrated terminal supporting 15+ custom Linux commands, and interactive guided tour system. Built with React 18 + TypeScript processing 276 source files with advanced code splitting achieving <100ms TTI on initial load.",
+  "keyFeatures": [
+    {
+      "title": "Multi-Stage Cinematic Loading Narrative",
+      "description": [
+        "AnimeJS-powered 6-stage storytelling sequence including 'Panic' and 'Compilation' phases",
+        "Smooth scene transitions with fragment-based DOM manipulation for 60fps animations",
+        "Smart state persistence to skip intro sequences for returning visitors"
       ]
     },
-    "githubLink": "https://github.com/utkarsh5026/portfolio",
-    "liveLink": "https://utkarsh5026.github.io/",
-    "tags": [
-      "Portfolio",
-      "React",
-      "TypeScript",
-      "VS Code UI",
-      "Interactive Terminal",
-      "Animations",
-      "Storytelling",
-      "PWA",
-      "Performance",
-      "Vite"
+    {
+      "title": "Fully Functional VS Code Interface Clone",
+      "description": [
+        "Pixel-perfect replica with file explorer sidebar and draggable tab system",
+        "Integrated terminal supporting 15+ Linux-like commands (cd, ls, cat, etc.)",
+        "Prism.js syntax highlighting and comprehensive keyboard shortcut support"
+      ]
+    },
+    {
+      "title": "Interactive Guided Tour System",
+      "description": [
+        "Contextual 8-step tour with an animated character and emotion states",
+        "Spotlight highlighting using TourOverlay and Typewriter effects for engagement",
+        "Zustand-based state management with cross-session progress tracking"
+      ]
+    },
+    {
+      "title": "Advanced Performance Optimization Pipeline",
+      "description": [
+        "Manual chunk splitting for vendor, animation, and UI components via Vite",
+        "Full PWA support with offline capabilities using VitePWA",
+        "Highly optimized <500KB initial bundle size using Terser minification"
+      ]
+    }
+  ],
+  "technologies": [
+    "react",
+    "typescript",
+    "vite",
+    "tailwind",
+    "framermotion",
+    "shadcn",
+    "lucideicons",
+    "recharts",
+    "docker",
+    "git"
+  ],
+  "explainCards": {
+    "problem": [
+      { "q": "What's wrong with portfolios?", "a": "Static, boring, forgettable" },
+      { "q": "What do they fail to show?", "a": "Creativity & storytelling" },
+      { "q": "How many source files?", "a": "276 organized modules" },
+      { "q": "Goal of this project?", "a": "Stand out memorably" },
+      { "q": "What to demonstrate?", "a": "React architecture mastery" }
+    ],
+    "execution": [
+      { "q": "How many loading stages?", "a": "6-stage narrative journey" },
+      { "q": "What's the story?", "a": "Dev panicking, building live!" },
+      { "q": "Terminal commands work?", "a": "Yes, 15+ Linux commands" },
+      { "q": "What powers animations?", "a": "AnimeJS + Framer Motion" },
+      { "q": "Guide system?", "a": "Animated character tour" },
+      { "q": "VS Code clone features?", "a": "File explorer, tabs, terminal" }
+    ],
+    "future": [
+      { "q": "Time to Interactive?", "a": "Under 100ms!" },
+      { "q": "How many components?", "a": "300+ styled consistently" },
+      { "q": "Works offline?", "a": "Yes, PWA enabled" },
+      { "q": "Initial bundle size?", "a": "Under 500KB" },
+      { "q": "Color palette?", "a": "Catppuccin Mocha theme" }
     ]
   },
-  {
-    "name": "Mayonation",
-    "tagline": "Lightweight TypeScript animation library with GPU acceleration ⚡",
-    "description": "High-performance web animation library processing 3,349+ lines of TypeScript with <5kb gzipped bundle. Achieved <1ms animation start time and 60fps GPU-accelerated rendering through transform caching, matrix decomposition, and hardware layer promotion. Handles timeline choreography, SVG path morphing, and complex transform sequences.",
-    "keyFeatures": [
-      {
-        "title": "Timeline Orchestration Engine",
-        "description": "Custom timeline system with position-based scheduling supporting absolute timing, relative offsets (+=200ms, -=400ms), label references, and percentage positioning. Manages multiple CSSAnimator instances with synchronized playback, group animations, and seek/pause/resume controls across complex choreographed sequences."
-      },
-      {
-        "title": "GPU-Accelerated Transform Pipeline",
-        "description": "Transform handler with DOMMatrix decomposition parsing computed styles into 3D transform state. Implements will-change optimization, translateZ layer promotion, and transform3d conversion achieving hardware acceleration. Caches transform matrices with dirty checking to prevent redundant recalculations and layout thrashing."
-      },
-      {
-        "title": "Advanced SVG Path Interpolation",
-        "description": "Line, quadratic Bézier, and cubic Bézier interpolators with adaptive step calculation based on curve complexity metrics (control point deviation, angular variation, spacing). Supports pressure and angle attributes with proper wraparound handling for smooth path morphing and draw animations."
-      },
-      {
-        "title": "Performance Monitoring System",
-        "description": "Real-time performance tracker monitoring frame rate, memory usage, dropped frames, and frame duration using RAF-based sampling. Calculates frame rate stability with standard deviation analysis, generates performance reports with grade scoring (A-F), and provides observer pattern subscription for live metrics updates."
-      }
-    ],
-    "technologies": ["typescript", "vite", "vitest", "javascript"],
-    "explainCards": {
-      "problem": [
-        { "q": "GSAP bundle size?", "a": "50kb+ too bloated" },
-        { "q": "Framer Motion size?", "a": "65kb+ even bigger" },
-        { "q": "Common animation issue?", "a": "Frequent frame drops" },
-        { "q": "What devs need?", "a": "Granular GPU control" },
-        { "q": "The trade-off problem?", "a": "Features vs file size" }
-      ],
-      "execution": [
-        { "q": "Dependencies count?", "a": "Zero! Pure TypeScript" },
-        { "q": "Built-in easing functions?", "a": "26 ready to use" },
-        { "q": "GPU acceleration how?", "a": "will-change + translateZ" },
-        { "q": "SVG feature?", "a": "Path morphing support" },
-        { "q": "Timeline scheduling?", "a": "Labels, %, offsets" },
-        { "q": "Color interpolation?", "a": "HSL/RGB with wraparound" }
-      ],
-      "future": [
-        { "q": "Final gzipped size?", "a": "Just 4.2kb!" },
-        { "q": "Animation start time?", "a": "Under 1ms" },
-        { "q": "Frame rate?", "a": "Solid 60fps" },
-        { "q": "Test files?", "a": "35 comprehensive suites" },
-        { "q": "Tree-shakeable?", "a": "Yes, modular exports" }
+  "githubLink": "https://github.com/utkarsh5026/portfolio",
+  "liveLink": "https://utkarsh5026.github.io/",
+  "tags": [
+    "Portfolio",
+    "React",
+    "TypeScript",
+    "VS Code UI",
+    "Interactive Terminal",
+    "Animations",
+    "Storytelling",
+    "PWA",
+    "Performance",
+    "Vite"
+  ]
+},
+{
+  "name": "Mayonation",
+  "tagline": "Lightweight TypeScript animation library with GPU acceleration ⚡",
+  "description": "High-performance web animation library processing 3,349+ lines of TypeScript with <5kb gzipped bundle. Achieved <1ms animation start time and 60fps GPU-accelerated rendering through transform caching, matrix decomposition, and hardware layer promotion. Handles timeline choreography, SVG path morphing, and complex transform sequences.",
+  "keyFeatures": [
+    {
+      "title": "Timeline Orchestration Engine",
+      "description": [
+        "Advanced position-based scheduling supporting absolute, relative, and label timing",
+        "Synchronized playback management for multiple CSSAnimator instances",
+        "Full seek/pause/resume controls for complex choreographed sequences"
       ]
     },
-    "githubLink": "https://github.com/utkarsh5026/mayonation",
-    "liveLink": "https://utkarsh5026.github.io/mayosite/",
-    "tags": [
-      "Animation",
-      "TypeScript",
-      "Performance",
-      "GPU Acceleration",
-      "Timeline",
-      "SVG",
-      "Web Animation",
-      "Zero Dependencies"
+    {
+      "title": "GPU-Accelerated Transform Pipeline",
+      "description": [
+        "DOMMatrix decomposition parsing computed styles into precise 3D states",
+        "Hardware acceleration via 'will-change' optimization and layer promotion",
+        "Smart matrix caching with dirty checking to prevent layout thrashing"
+      ]
+    },
+    {
+      "title": "Advanced SVG Path Interpolation",
+      "description": [
+        "Adaptive step calculation for Line, Quadratic, and Cubic Bézier curves",
+        "Curve complexity metrics based on angular variation and control point deviation",
+        "Smooth path morphing with support for pressure and angle attributes"
+      ]
+    },
+    {
+      "title": "Performance Monitoring System",
+      "description": [
+        "Real-time RAF-based tracking for FPS, memory usage, and dropped frames",
+        "Automated performance grading (A-F) based on frame rate stability analysis",
+        "Observer pattern implementation for subscribing to live metric updates"
+      ]
+    }
+  ],
+  "technologies": [
+    "typescript",
+    "vite",
+    "vitest",
+    "javascript"
+  ],
+  "explainCards": {
+    "problem": [
+      { "q": "GSAP bundle size?", "a": "50kb+ too bloated" },
+      { "q": "Framer Motion size?", "a": "65kb+ even bigger" },
+      { "q": "Common animation issue?", "a": "Frequent frame drops" },
+      { "q": "What devs need?", "a": "Granular GPU control" },
+      { "q": "The trade-off problem?", "a": "Features vs file size" }
+    ],
+    "execution": [
+      { "q": "Dependencies count?", "a": "Zero! Pure TypeScript" },
+      { "q": "Built-in easing functions?", "a": "26 ready to use" },
+      { "q": "GPU acceleration how?", "a": "will-change + translateZ" },
+      { "q": "SVG feature?", "a": "Path morphing support" },
+      { "q": "Timeline scheduling?", "a": "Labels, %, offsets" },
+      { "q": "Color interpolation?", "a": "HSL/RGB with wraparound" }
+    ],
+    "future": [
+      { "q": "Final gzipped size?", "a": "Just 4.2kb!" },
+      { "q": "Animation start time?", "a": "Under 1ms" },
+      { "q": "Frame rate?", "a": "Solid 60fps" },
+      { "q": "Test files?", "a": "35 comprehensive suites" },
+      { "q": "Tree-shakeable?", "a": "Yes, modular exports" }
     ]
   },
-  {
-    "name": "SemanticCode",
-    "tagline": "AI-powered semantic code search and navigation \ud83d\udd0e",
-    "description": "Intelligent code search tool using embeddings and semantic analysis. Search codebases by intent rather than exact keywords with context-aware results.",
-    "keyFeatures": [
-      {
-        "title": "Semantic Search Engine",
-        "description": "OpenAI embeddings with vector similarity search using FAISS index, supporting natural language queries and code intent matching"
-      },
-      {
-        "title": "Code Context Analysis",
-        "description": "AST parsing with tree-sitter extracting function signatures, dependencies, and call graphs for comprehensive context understanding"
-      },
-      {
-        "title": "Multi-Language Support",
-        "description": "Language servers for Python, JavaScript, TypeScript, Go, and Rust with unified indexing and cross-language reference tracking"
-      },
-      {
-        "title": "Real-Time Index Updates",
-        "description": "File watcher with incremental indexing, differential updates, and background re-indexing maintaining search accuracy"
-      }
-    ],
-    "technologies": ["python", "typescript", "fastapi", "mongodb"],
-    "explainCards": {
-      "problem": [
-        { "q": "What's wrong with grep?", "a": "Can't search by concept" },
-        { "q": "How do you search intent?", "a": "Natural language queries" },
-        { "q": "Example query?", "a": "How does auth work?" },
-        { "q": "What enables this?", "a": "Vector embeddings + LLMs" },
-        { "q": "Traditional tools miss?", "a": "Semantic code meaning" }
-      ],
-      "execution": [
-        { "q": "How is code stored?", "a": "Vector database indexed" },
-        { "q": "Index stays fresh how?", "a": "File watcher updates" },
-        { "q": "What extracts structure?", "a": "Tree-sitter AST parsing" },
-        { "q": "Languages supported?", "a": "Python, JS, TS, Go, Rust" },
-        { "q": "Search technology?", "a": "FAISS similarity search" }
-      ],
-      "future": [
-        { "q": "Modular design benefit?", "a": "Swap LLMs/embeddings easily" },
-        { "q": "Git integration?", "a": "Yes, code evolution context" },
-        { "q": "Embedding balance?", "a": "Context vs precision" },
-        { "q": "Query response time?", "a": "Real-time results" }
+  "githubLink": "https://github.com/utkarsh5026/mayonation",
+  "liveLink": "https://utkarsh5026.github.io/mayosite/",
+  "tags": [
+    "Animation",
+    "TypeScript",
+    "Performance",
+    "GPU Acceleration",
+    "Timeline",
+    "SVG",
+    "Web Animation",
+    "Zero Dependencies"
+  ]
+},
+{
+  "name": "SemanticCode",
+  "tagline": "AI-powered semantic code search and navigation 🔎",
+  "description": "Intelligent code search tool using embeddings and semantic analysis. Search codebases by intent rather than exact keywords with context-aware results.",
+  "keyFeatures": [
+    {
+      "title": "Semantic Search Engine",
+      "description": [
+        "High-performance vector similarity search using FAISS indexing",
+        "OpenAI embeddings integration for natural language understanding",
+        "Intent-based matching enabling concept-driven code discovery"
       ]
     },
-    "githubLink": "https://github.com/utkarsh5026/gep",
-    "tags": ["Python", "AI", "Vector Search", "Code Analysis", "LLM", "CLI"]
-  },
-  {
-    "name": "AuthGuard",
-    "tagline": "Enterprise authentication and authorization service \ud83d\udee1\ufe0f",
-    "description": "Microservice-based auth platform with OAuth2, SAML, and MFA support. Provides centralized user management and SSO for enterprise applications.",
-    "keyFeatures": [
-      {
-        "title": "Multi-Protocol Auth Server",
-        "description": "OAuth 2.0, OpenID Connect, and SAML 2.0 implementation with JWT/SAML token generation, refresh token rotation, and revocation"
-      },
-      {
-        "title": "Multi-Factor Authentication",
-        "description": "TOTP-based MFA, SMS verification, biometric authentication, and backup codes with adaptive authentication policies"
-      },
-      {
-        "title": "Centralized User Management",
-        "description": "RBAC with hierarchical roles, attribute-based access control, user provisioning/deprovisioning, and SCIM directory sync"
-      },
-      {
-        "title": "SSO Gateway Service",
-        "description": "Single sign-on portal with session management, identity provider federation, and cross-domain authentication using secure cookies"
-      }
-    ],
-    "technologies": ["node", "typescript", "postgresql", "mongodb"],
-    "explainCards": {
-      "problem": [
-        { "q": "Why was this built?", "a": "Tired of repeating OAuth" },
-        { "q": "Common OAuth pain?", "a": "Token storage, refreshing" },
-        { "q": "Framework-specific issues?", "a": "Different quirks everywhere" },
-        { "q": "Security often missed?", "a": "PKCE implementation" },
-        { "q": "Time wasted on?", "a": "Same auth problems" }
-      ],
-      "execution": [
-        { "q": "Auth protocols?", "a": "OAuth2, OpenID, SAML" },
-        { "q": "MFA options?", "a": "TOTP, SMS, biometric" },
-        { "q": "Access control?", "a": "RBAC + ABAC supported" },
-        { "q": "SSO capability?", "a": "Cross-domain gateway" },
-        { "q": "Token handling?", "a": "JWT with rotation" }
-      ],
-      "future": [
-        { "q": "PKCE built-in?", "a": "Yes, default on!" },
-        { "q": "Lines of code needed?", "a": "Just a few" },
-        { "q": "Works with Flask?", "a": "Yes, and Django too" },
-        { "q": "Security by default?", "a": "Built-in, not optional" }
+    {
+      "title": "Code Context Analysis",
+      "description": [
+        "Robust AST parsing via Tree-sitter for precise structural extraction",
+        "Automated generation of function signatures and dependency trees",
+        "Comprehensive call graph analysis for deep context understanding"
       ]
     },
-    "githubLink": "https://github.com/utkarsh5026/pauth",
-    "tags": ["OAuth", "Python", "Flask", "Django", "REST", "PKCE"]
-  },
-  {
-    "name": "MDHD",
-    "tagline": "Transform documentation into AI-powered focused reading sessions 📚",
-    "description": "Intelligent markdown reader with RAG-powered AI assistant that breaks lengthy documents into digestible, card-based sections. Processes 18,400+ lines of TypeScript code delivering context-aware Q&A through vector embeddings and multi-provider LLM integration (OpenAI, Anthropic, Google) with 50+ customizable themes across 17 categories.",
-    "keyFeatures": [
-      {
-        "title": "RAG-Powered AI Chat System",
-        "description": "LangChain.js implementation with OpenAI text-embedding-3-small for vector embeddings, FAISS-node in-memory vector store for similarity search, and streaming responses from multiple LLM providers (GPT-4, Claude Sonnet, Gemini) enabling context-aware Q&A on any markdown component with real-time source attribution"
-      },
-      {
-        "title": "Intelligent Section Parser with Component Interaction",
-        "description": "Custom markdown parsing engine detecting H1/H2 boundaries with code block preservation, generating navigable sections with word count estimation and reading time calculation. Interactive component wrapper system enabling targeted AI questions on headings, paragraphs, code blocks, tables, and blockquotes with automatic context extraction"
-      },
-      {
-        "title": "Advanced Theme System with 50+ Options",
-        "description": "Comprehensive theming architecture featuring 50 hand-crafted themes across 17 categories (Professional, Developer, Cosmic, Nature, Synthwave, etc.) with real-time CSS variable injection, persistent localStorage state via Zustand, and 25+ syntax highlighting themes for code blocks with collapsible functionality"
-      },
-      {
-        "title": "Immersive Reading Experience with Progress Tracking",
-        "description": "Card-based navigation system with Framer Motion animations, React Swipeable gesture controls for mobile, keyboard shortcuts for power users, and Zustand-managed reading state tracking section completion, elapsed time, and progress visualization with automatic session hash-based caching"
-      }
-    ],
-    "technologies": [
-      "react",
-      "typescript",
-      "vite",
-      "langchain",
-      "tailwind",
-      "framermotion",
-      "zustand",
-      "axios"
-    ],
-    "explainCards": {
-      "problem": [
-        { "q": "50+ page docs feel like?", "a": "Cognitively overwhelming" },
-        { "q": "What gets lost?", "a": "Crucial info in scrolling" },
-        { "q": "Mobile docs pain?", "a": "Tiny text, no structure" },
-        { "q": "Ideal consumption style?", "a": "Netflix-like episodes" },
-        { "q": "ChatGPT limitation?", "a": "Context-switching needed" }
-      ],
-      "execution": [
-        { "q": "How are docs split?", "a": "H1/H2 heading sections" },
-        { "q": "AI question feature?", "a": "Click any component, ask" },
-        { "q": "LLM providers?", "a": "GPT-4, Claude, Gemini" },
-        { "q": "Theme options?", "a": "50+ with 20+ fonts" },
-        { "q": "Search technology?", "a": "RAG with FAISS vectors" },
-        { "q": "TypeScript lines?", "a": "18,400+ lines" }
-      ],
-      "future": [
-        { "q": "Query response speed?", "a": "Sub-second!" },
-        { "q": "Backend required?", "a": "No, client-side AI" },
-        { "q": "Progress tracked?", "a": "Yes, with localStorage" },
-        { "q": "Mobile-first?", "a": "Absolutely, swipe nav" },
-        { "q": "Theme categories?", "a": "17 unique styles" }
+    {
+      "title": "Multi-Language Support",
+      "description": [
+        "Unified indexing architecture across Python, JS/TS, Go, and Rust",
+        "Cross-language reference tracking for distributed systems",
+        "Language Server Protocol (LSP) integration for syntax awareness"
       ]
     },
-    "githubLink": "https://github.com/utkarsh5026/mdhd",
-    "tags": [
-      "Markdown Reader",
-      "RAG",
-      "AI Chat",
-      "LangChain",
-      "Vector Search",
-      "Documentation",
-      "Reading Experience",
-      "TypeScript"
+    {
+      "title": "Real-Time Index Updates",
+      "description": [
+        "Intelligent file watcher triggering instantaneous incremental updates",
+        "Background re-indexing processes to prevent search downtime",
+        "Differential update logic ensuring index consistency with code changes"
+      ]
+    }
+  ],
+  "technologies": [
+    "python",
+    "typescript",
+    "fastapi",
+    "mongodb"
+  ],
+  "explainCards": {
+    "problem": [
+      { "q": "What's wrong with grep?", "a": "Can't search by concept" },
+      { "q": "How do you search intent?", "a": "Natural language queries" },
+      { "q": "Example query?", "a": "How does auth work?" },
+      { "q": "What enables this?", "a": "Vector embeddings + LLMs" },
+      { "q": "Traditional tools miss?", "a": "Semantic code meaning" }
+    ],
+    "execution": [
+      { "q": "How is code stored?", "a": "Vector database indexed" },
+      { "q": "Index stays fresh how?", "a": "File watcher updates" },
+      { "q": "What extracts structure?", "a": "Tree-sitter AST parsing" },
+      { "q": "Languages supported?", "a": "Python, JS, TS, Go, Rust" },
+      { "q": "Search technology?", "a": "FAISS similarity search" }
+    ],
+    "future": [
+      { "q": "Modular design benefit?", "a": "Swap LLMs/embeddings easily" },
+      { "q": "Git integration?", "a": "Yes, code evolution context" },
+      { "q": "Embedding balance?", "a": "Context vs precision" },
+      { "q": "Query response time?", "a": "Real-time results" }
     ]
   },
-  {
-    "name": "ReduceMe",
-    "tagline": "Educational Redux reimplementation teaching state management internals 📚",
-    "description": "TypeScript-native state management library built from scratch to demystify Redux architecture. Implements core Redux patterns including middleware composition, slice-based reducers, and immutable updates using Immer, serving as both a functional library and educational resource for understanding state management internals.",
-    "keyFeatures": [
-      {
-        "title": "Type-Safe Store with Immutability",
-        "description": "Custom Store class implementing single-source-of-truth pattern with Object.freeze for immutable state access, reentrancy protection preventing nested dispatches, and listener pattern for subscriptions. Includes combineReducers utility merging multiple slice reducers with reference equality checks for performance optimization."
-      },
-      {
-        "title": "Redux Toolkit-Style Slice Architecture",
-        "description": "createSlice API auto-generating namespaced action creators (e.g., 'counter/increment') with full TypeScript inference. Leverages Immer's produce function enabling mutable-looking syntax for immutable updates via Draft types. ReducerBuilder supports extraReducers and default case handling for cross-slice dependencies."
-      },
-      {
-        "title": "Composable Middleware System",
-        "description": "Triple-function currying pattern (store => next => action => void) enabling powerful middleware composition through functional reduce. Middleware chain has access to getState and dispatch, supporting logging, async operations, action transformation, and error boundaries with proper function composition order."
-      },
-      {
-        "title": "Advanced TypeScript Type System",
-        "description": "Comprehensive generic types including GenerateActionCreators utility type for automatic action creator inference from reducer maps. ActionHandler with Immer Draft types, CreateAction conditional types for optional payloads, and isActionOf type guards providing compile-time safety and runtime type checking."
-      }
-    ],
-    "technologies": ["typescript", "javascript", "node", "jest", "git"],
-    "explainCards": {
-      "problem": [
-        { "q": "Redux feels like?", "a": "Opaque black box magic" },
-        { "q": "What's hard to understand?", "a": "Middleware currying patterns" },
-        { "q": "combineReducers mystery?", "a": "How it actually works" },
-        { "q": "RTK abstracts away?", "a": "Core Redux principles" },
-        { "q": "Goal of this project?", "a": "Learn by reimplementing" }
-      ],
-      "execution": [
-        { "q": "What powers immutability?", "a": "Immer produce function" },
-        { "q": "Slice API mirrors?", "a": "Redux Toolkit exactly" },
-        { "q": "Middleware pattern?", "a": "Triple-function currying" },
-        { "q": "Action creators?", "a": "Auto-generated from slices" },
-        { "q": "Cross-slice actions?", "a": "extraReducers supported" },
-        { "q": "Store pattern?", "a": "Observer for listeners" }
-      ],
-      "future": [
-        { "q": "Dependencies count?", "a": "Just Immer, nothing else" },
-        { "q": "TypeScript support?", "a": "Full generic inference" },
-        { "q": "Educational value?", "a": "Documented extensively" },
-        { "q": "Production ready?", "a": "Yes, use in real apps" },
-        { "q": "Test coverage?", "a": "Comprehensive Jest suite" }
+  "githubLink": "https://github.com/utkarsh5026/gep",
+  "tags": [
+    "Python",
+    "AI",
+    "Vector Search",
+    "Code Analysis",
+    "LLM",
+    "CLI"
+  ]
+},
+{
+  "name": "AuthGuard",
+  "tagline": "Enterprise authentication and authorization service 🛡️",
+  "description": "Microservice-based auth platform with OAuth2, SAML, and MFA support. Provides centralized user management and SSO for enterprise applications.",
+  "keyFeatures": [
+    {
+      "title": "Multi-Protocol Auth Server",
+      "description": [
+        "Full OAuth 2.0, OpenID Connect, and SAML 2.0 protocol implementation",
+        "Secure JWT and SAML token generation with customizable claims",
+        "Automated refresh token rotation and token revocation endpoints"
       ]
     },
-    "githubLink": "https://github.com/utkarsh5026/ReduceMe",
-    "tags": [
-      "State Management",
-      "TypeScript",
-      "Educational",
-      "Redux",
-      "Functional Programming",
-      "Immutability",
-      "Middleware",
-      "Library"
+    {
+      "title": "Multi-Factor Authentication (MFA)",
+      "description": [
+        "Support for TOTP (Authenticator apps), SMS, and biometric verification",
+        "Emergency backup code generation for secure account recovery",
+        "Adaptive authentication policies based on login risk factors"
+      ]
+    },
+    {
+      "title": "Centralized User Management",
+      "description": [
+        "Hierarchical Role-Based (RBAC) and Attribute-Based (ABAC) access control",
+        "Automated user provisioning and deprovisioning workflows",
+        "SCIM directory synchronization for seamless enterprise integration"
+      ]
+    },
+    {
+      "title": "SSO Gateway Service",
+      "description": [
+        "Unified Single Sign-On portal with distributed session management",
+        "Identity Provider (IdP) federation for external auth providers",
+        "Secure cross-domain authentication using HttpOnly cookies"
+      ]
+    }
+  ],
+  "technologies": [
+    "node",
+    "typescript",
+    "postgresql",
+    "mongodb"
+  ],
+  "explainCards": {
+    "problem": [
+      { "q": "Why was this built?", "a": "Tired of repeating OAuth" },
+      { "q": "Common OAuth pain?", "a": "Token storage, refreshing" },
+      { "q": "Framework-specific issues?", "a": "Different quirks everywhere" },
+      { "q": "Security often missed?", "a": "PKCE implementation" },
+      { "q": "Time wasted on?", "a": "Same auth problems" }
+    ],
+    "execution": [
+      { "q": "Auth protocols?", "a": "OAuth2, OpenID, SAML" },
+      { "q": "MFA options?", "a": "TOTP, SMS, biometric" },
+      { "q": "Access control?", "a": "RBAC + ABAC supported" },
+      { "q": "SSO capability?", "a": "Cross-domain gateway" },
+      { "q": "Token handling?", "a": "JWT with rotation" }
+    ],
+    "future": [
+      { "q": "PKCE built-in?", "a": "Yes, default on!" },
+      { "q": "Lines of code needed?", "a": "Just a few" },
+      { "q": "Works with Flask?", "a": "Yes, and Django too" },
+      { "q": "Security by default?", "a": "Built-in, not optional" }
     ]
   },
-  {
-    "name": "MicroManage",
-    "tagline": "Microservices orchestration and monitoring platform \ud83c\udf9b\ufe0f",
-    "description": "Service mesh management tool with distributed tracing and health monitoring. Provides service discovery, load balancing, and circuit breaking.",
-    "keyFeatures": [
-      {
-        "title": "Service Discovery & Registry",
-        "description": "Consul-based service registration with health checks, DNS-based discovery, and automatic failover"
-      },
-      {
-        "title": "Distributed Tracing System",
-        "description": "OpenTelemetry instrumentation with Jaeger backend, cross-service request tracking, and latency analysis"
-      },
-      {
-        "title": "Circuit Breaker Pattern",
-        "description": "Resilient communication with failure detection, fallback mechanisms, retry policies, and bulkhead isolation"
-      },
-      {
-        "title": "Metrics & Monitoring",
-        "description": "Prometheus metrics collection, Grafana dashboards, alerting rules, and custom SLI/SLO tracking"
-      }
-    ],
-    "technologies": ["golang", "kubernetes", "plotly"],
-    "explainCards": {
-      "problem": [
-        { "q": "Why reimplement K8s?", "a": "Understand the internals" },
-        { "q": "K8s feels like?", "a": "Black box magic" },
-        { "q": "What to learn?", "a": "Distributed systems patterns" },
-        { "q": "Full K8s problem?", "a": "Overkill for small apps" },
-        { "q": "Target use case?", "a": "IoT and edge devices" }
-      ],
-      "execution": [
-        { "q": "Hardest part?", "a": "Intelligent scheduling" },
-        { "q": "Container discovery?", "a": "Consul-based registry" },
-        { "q": "Fault tolerance?", "a": "Self-healing recovery" },
-        { "q": "Tracing system?", "a": "OpenTelemetry + Jaeger" },
-        { "q": "Resilience pattern?", "a": "Circuit breaker built-in" }
-      ],
-      "future": [
-        { "q": "Written in?", "a": "Go for concurrency" },
-        { "q": "Practical use?", "a": "Yes, small deployments" },
-        { "q": "Metrics stack?", "a": "Prometheus + Grafana" },
-        { "q": "Learning outcome?", "a": "Deep K8s understanding" }
+  "githubLink": "https://github.com/utkarsh5026/pauth",
+  "tags": [
+    "OAuth",
+    "Python",
+    "Flask",
+    "Django",
+    "REST",
+    "PKCE"
+  ]
+},
+{
+  "name": "MDHD",
+  "tagline": "Transform documentation into AI-powered focused reading sessions 📚",
+  "description": "Intelligent markdown reader with RAG-powered AI assistant that breaks lengthy documents into digestible, card-based sections. Processes 18,400+ lines of TypeScript code delivering context-aware Q&A through vector embeddings and multi-provider LLM integration (OpenAI, Anthropic, Google) with 50+ customizable themes across 17 categories.",
+  "keyFeatures": [
+    {
+      "title": "RAG-Powered AI Chat System",
+      "description": [
+        "LangChain.js implementation utilizing OpenAI embeddings for vector search",
+        "FAISS-node in-memory store enabling high-speed similarity matching",
+        "Multi-LLM support (GPT-4, Claude, Gemini) for context-aware Q&A on any section"
       ]
     },
-    "githubLink": "https://github.com/utkarsh5026/orchestra",
-    "tags": ["Kubernetes", "Docker", "Go", "Distributed Systems"]
-  },
-  {
-    "name": "ProgChain - AI-Powered Programming Education",
-    "tagline": "AI-powered programming education platform \ud83c\udf93",
-    "description": "Interactive coding courses with AI tutoring and automated grading. Features personalized learning paths and real-time code feedback.",
-    "keyFeatures": [
-      {
-        "title": "AI Code Tutor System",
-        "description": "GPT-4 powered assistant providing hints, explanations, and debugging help with context-aware suggestions"
-      },
-      {
-        "title": "Automated Code Grading",
-        "description": "Test-driven assessment with code quality checks, performance benchmarks, and plagiarism detection"
-      },
-      {
-        "title": "Interactive Code Editor",
-        "description": "Monaco editor integration with multi-language support, live execution, and collaborative editing"
-      },
-      {
-        "title": "Personalized Learning Paths",
-        "description": "Adaptive curriculum based on skill level, progress tracking, and ML-powered course recommendations"
-      }
-    ],
-    "technologies": ["react", "typescript", "python", "monaco", "docker"],
-    "explainCards": {
-      "problem": [
-        { "q": "Generic tutorials problem?", "a": "One-size-fits-none approach" },
-        { "q": "What differs per learner?", "a": "Strengths and styles" },
-        { "q": "What's missing?", "a": "Personalized learning paths" },
-        { "q": "AI opportunity?", "a": "Adapt to each journey" },
-        { "q": "Knowledge gap detection?", "a": "AI builds mental model" }
-      ],
-      "execution": [
-        { "q": "Frontend stack?", "a": "React + TypeScript" },
-        { "q": "Backend API?", "a": "Python FastAPI" },
-        { "q": "Concept mapping how?", "a": "Vector embeddings" },
-        { "q": "AI tutor powered by?", "a": "GPT-4 integration" },
-        { "q": "Code grading?", "a": "Automated with tests" }
-      ],
-      "future": [
-        { "q": "Response quality boost?", "a": "78% improvement!" },
-        { "q": "Prompt engineering?", "a": "Template-based system" },
-        { "q": "Skill adaptation?", "a": "Based on history" },
-        { "q": "Interactive editing?", "a": "Monaco editor built-in" }
+    {
+      "title": "Intelligent Section Parser & Interaction",
+      "description": [
+        "Custom engine that detects H1/H2 boundaries to generate navigable cards",
+        "Automatic word count estimation and reading time calculation per section",
+        "Interactive component wrappers allowing targeted AI queries on specific blocks"
       ]
     },
-    "githubLink": "https://github.com/utkarsh5026/ProgChain",
-    "liveLink": "https://codementor-ai.vercel.app",
-    "tags": []
-  },
-  {
-    "name": "Smash LeetCode",
-    "tagline": "Competitive programming practice platform \ud83d\udcaa",
-    "description": "LeetCode-style coding platform with company-specific problem sets. Features contest mode, discussion forums, and solution sharing.",
-    "keyFeatures": [
-      {
-        "title": "Multi-Language Code Execution",
-        "description": "Isolated sandbox environment using Docker containers with resource limits, timeout handling, and memory tracking"
-      },
-      {
-        "title": "Problem Categorization System",
-        "description": "Company-tagged problems, difficulty classification, topic-based organization, and pattern recognition tagging"
-      },
-      {
-        "title": "Contest & Leaderboard",
-        "description": "Real-time competitive coding with ELO rating system, live rankings, and performance analytics"
-      },
-      {
-        "title": "Community Solutions Hub",
-        "description": "Markdown-based solution sharing, code voting, discussion threads, and approach comparison"
-      }
-    ],
-    "technologies": [
-      "react",
-      "typescript",
-      "python",
-      "docker",
-      "mongodb",
-      "postgresql"
-    ],
-    "explainCards": {
-      "problem": [
-        { "q": "Interview prep challenge?", "a": "No deep explanations" },
-        { "q": "What's missing?", "a": "Algorithm visualization" },
-        { "q": "Learning gap?", "a": "Testing vs teaching" },
-        { "q": "Concept understanding?", "a": "Needs interactive visuals" },
-        { "q": "AI coaching benefit?", "a": "Patient mentor simulation" }
-      ],
-      "execution": [
-        { "q": "Code execution?", "a": "Docker sandboxed" },
-        { "q": "Visualization feature?", "a": "Step-by-step animation" },
-        { "q": "Data structures shown?", "a": "Arrays to graphs" },
-        { "q": "Competition feature?", "a": "ELO rating system" },
-        { "q": "Problem tags?", "a": "Company-specific sets" }
-      ],
-      "future": [
-        { "q": "AI analysis?", "a": "Real-time optimization tips" },
-        { "q": "Hints balanced?", "a": "Guidance over answers" },
-        { "q": "Progress tracking?", "a": "Skills over time" },
-        { "q": "Community feature?", "a": "Solution sharing hub" }
+    {
+      "title": "Advanced Theme System with 50+ Options",
+      "description": [
+        "Robust theming architecture with 17 categories (Professional, Cosmic, Synthwave, etc.)",
+        "Real-time CSS variable injection with persistent state managed by Zustand",
+        "25+ syntax highlighting themes for code blocks with collapsible functionality"
       ]
     },
-    "githubLink": "https://github.com/utkarsh5026/Smash-LeetCode",
-    "tags": []
-  },
-  {
-    "name": "Class Connect",
-    "tagline": "Virtual classroom platform with live collaboration \ud83c\udfa5",
-    "description": "Real-time video conferencing for education with whiteboard, screen sharing, and breakout rooms. Supports 100+ concurrent students.",
-    "keyFeatures": [
-      {
-        "title": "WebRTC Video Conferencing",
-        "description": "Mesh/SFU architecture using mediasoup for video streaming, adaptive bitrate, and bandwidth optimization"
-      },
-      {
-        "title": "Collaborative Whiteboard",
-        "description": "Canvas-based drawing with real-time sync via WebSocket, shape tools, image insertion, and PDF annotation"
-      },
-      {
-        "title": "Breakout Room Management",
-        "description": "Dynamic room creation, automatic participant routing, timer controls, and instructor monitoring"
-      },
-      {
-        "title": "Recording & Playback",
-        "description": "Server-side recording with FFmpeg, cloud storage upload, timestamp-based navigation, and transcript generation"
-      }
-    ],
-    "technologies": ["react", "typescript", "javascript", "node"],
-    "explainCards": {
-      "problem": [
-        { "q": "LMS platforms feel?", "a": "Clunky and unintuitive" },
-        { "q": "What's the gap?", "a": "Content vs engagement" },
-        { "q": "Online learning lacks?", "a": "Connected feeling" },
-        { "q": "Collaboration need?", "a": "Real-time interaction" },
-        { "q": "Target users?", "a": "100+ concurrent students" }
-      ],
-      "execution": [
-        { "q": "Video streaming?", "a": "WebRTC + mediasoup" },
-        { "q": "Whiteboard sync?", "a": "WebSocket real-time" },
-        { "q": "Recording feature?", "a": "FFmpeg server-side" },
-        { "q": "Breakout rooms?", "a": "Dynamic with timer" },
-        { "q": "Adaptive bitrate?", "a": "Yes, bandwidth-aware" }
-      ],
-      "future": [
-        { "q": "Stack learned?", "a": "Go + React full-stack" },
-        { "q": "User feedback?", "a": "Validates the approach" },
-        { "q": "Transcript feature?", "a": "Auto-generated" },
-        { "q": "Learning outcome?", "a": "Feels more connected" }
+    {
+      "title": "Immersive Reading Experience",
+      "description": [
+        "Card-based navigation with smooth Framer Motion page transitions",
+        "Mobile-first gesture controls using React Swipeable and keyboard shortcuts",
+        "Smart progress tracking with session-based caching via localStorage"
       ]
-    },
-    "githubLink": "https://github.com/utkarsh5026/class-connect",
-    "tags": []
-  },
-  {
-    "name": "Genshin Companion",
-    "tagline": "Game companion app for Genshin Impact players \ud83c\udfae",
-    "description": "Character builds, team recommendations, and resource tracking. Features damage calculator and wish history analysis.",
-    "keyFeatures": [
-      {
-        "title": "Character Build Database",
-        "description": "Comprehensive artifact sets, weapons, team compositions with stat calculations and optimization suggestions"
-      },
-      {
-        "title": "Damage Calculator Engine",
-        "description": "Real-time DPS calculations factoring reactions, buffs, rotations with visualization of damage breakdowns"
-      },
-      {
-        "title": "Resource Tracking System",
-        "description": "Material farming planner, resin calculator, wish counter with pity tracking and probability predictions"
-      },
-      {
-        "title": "Team Composition Analyzer",
-        "description": "Synergy scoring, elemental reaction optimization, and meta team recommendations"
-      }
+    }
+  ],
+  "technologies": [
+    "react",
+    "typescript",
+    "vite",
+    "langchain",
+    "tailwind",
+    "framermotion",
+    "zustand",
+    "axios"
+  ],
+  "explainCards": {
+    "problem": [
+      { "q": "50+ page docs feel like?", "a": "Cognitively overwhelming" },
+      { "q": "What gets lost?", "a": "Crucial info in scrolling" },
+      { "q": "Mobile docs pain?", "a": "Tiny text, no structure" },
+      { "q": "Ideal consumption style?", "a": "Netflix-like episodes" },
+      { "q": "ChatGPT limitation?", "a": "Context-switching needed" }
     ],
-    "technologies": ["react", "typescript", "tailwind"],
-    "explainCards": {
-      "problem": [
-        { "q": "Player pain point?", "a": "Material tracking chaos" },
-        { "q": "What's scattered?", "a": "Websites and spreadsheets" },
-        { "q": "Farming optimization?", "a": "Minimize resin waste" },
-        { "q": "Day-specific materials?", "a": "Hard to track" },
-        { "q": "Solution goal?", "a": "Unified companion app" }
-      ],
-      "execution": [
-        { "q": "Character builds?", "a": "Comprehensive database" },
-        { "q": "Damage calc?", "a": "Real-time DPS engine" },
-        { "q": "Wish tracking?", "a": "Pity probability calc" },
-        { "q": "Team synergy?", "a": "Elemental scoring" },
-        { "q": "State management?", "a": "Redux + TypeScript" }
-      ],
-      "future": [
-        { "q": "GraphQL challenge?", "a": "Complex entity schema" },
-        { "q": "N+1 prevention?", "a": "DataLoader patterns" },
-        { "q": "Type safety?", "a": "TypeGraphQL + TypeORM" },
-        { "q": "Routine planning?", "a": "Auto-generated schedule" }
-      ]
-    },
-    "githubLink": "",
-    "tags": []
-  },
-  {
-    "name": "Studio",
-    "tagline": "Design-to-code platform for developers \ud83c\udfa8",
-    "description": "Convert Figma designs to production React code. Features component extraction, responsive layouts, and design token export.",
-    "keyFeatures": [
-      {
-        "title": "Figma API Integration",
-        "description": "Plugin authentication, design file parsing, layer extraction, and auto-sync with Figma changes"
-      },
-      {
-        "title": "Component Code Generator",
-        "description": "React/Vue/Angular code generation with Tailwind CSS, PropTypes/TypeScript, and component story generation"
-      },
-      {
-        "title": "Design Token Extractor",
-        "description": "Automated extraction of colors, typography, spacing into CSS variables and theme objects"
-      },
-      {
-        "title": "Responsive Layout Engine",
-        "description": "Auto-detect breakpoints, generate media queries, and create responsive component variants"
-      }
+    "execution": [
+      { "q": "How are docs split?", "a": "H1/H2 heading sections" },
+      { "q": "AI question feature?", "a": "Click any component, ask" },
+      { "q": "LLM providers?", "a": "GPT-4, Claude, Gemini" },
+      { "q": "Theme options?", "a": "50+ with 20+ fonts" },
+      { "q": "Search technology?", "a": "RAG with FAISS vectors" },
+      { "q": "TypeScript lines?", "a": "18,400+ lines" }
     ],
-    "technologies": ["react", "typescript", "rest", "tailwind", "javascript"],
-    "explainCards": {
-      "problem": [
-        { "q": "Figma to code pain?", "a": "Manual translation tedious" },
-        { "q": "What gets lost?", "a": "Design tokens & spacing" },
-        { "q": "Responsive layouts?", "a": "Hard to extract" },
-        { "q": "Design handoff gap?", "a": "Pixels to production" },
-        { "q": "Component extraction?", "a": "No automation" }
-      ],
-      "execution": [
-        { "q": "Figma integration?", "a": "Direct API plugin" },
-        { "q": "Output formats?", "a": "React, Vue, Angular" },
-        { "q": "Styling approach?", "a": "Tailwind CSS gen" },
-        { "q": "WASM for what?", "a": "Performance-critical image" },
-        { "q": "Worker pattern?", "a": "Non-blocking UI" }
-      ],
-      "future": [
-        { "q": "Cross-language skill?", "a": "Rust + JS bridging" },
-        { "q": "Memory management?", "a": "WebAssembly learned" },
-        { "q": "Visualization output?", "a": "Histograms & analysis" },
-        { "q": "Auto breakpoints?", "a": "Responsive detected" }
-      ]
-    },
-    "githubLink": "https://github.com/utkarsh5026/studio",
-    "tags": [
-      "React",
-      "TypeScript",
-      "Rust",
-      "WebAssembly",
-      "Image Processing",
-      "Data Visualization"
+    "future": [
+      { "q": "Query response speed?", "a": "Sub-second!" },
+      { "q": "Backend required?", "a": "No, client-side AI" },
+      { "q": "Progress tracked?", "a": "Yes, with localStorage" },
+      { "q": "Mobile-first?", "a": "Absolutely, swipe nav" },
+      { "q": "Theme categories?", "a": "17 unique styles" }
     ]
   },
-  {
-    "name": "TypeScript HTTP Server",
-    "tagline": "Lightweight HTTP server framework for TypeScript \u26a1",
-    "description": "Express alternative built from scratch with decorator-based routing. Features middleware system and TypeScript-first API.",
-    "keyFeatures": [
-      {
-        "title": "Decorator-Based Routing",
-        "description": "TypeScript decorators for routes, middleware, validation with automatic OpenAPI schema generation"
-      },
-      {
-        "title": "Built-in Middleware System",
-        "description": "CORS, body parsing, compression, rate limiting, and custom middleware composition"
-      },
-      {
-        "title": "Type-Safe Request Handling",
-        "description": "Fully typed request/response objects with validation using Zod schemas and automatic error handling"
-      },
-      {
-        "title": "Performance Optimized",
-        "description": "Zero-copy buffer handling, efficient routing trie, connection pooling, and built-in clustering"
-      }
-    ],
-    "technologies": ["typescript", "node"],
-    "explainCards": {
-      "problem": [
-        { "q": "Why build from scratch?", "a": "Understand HTTP internals" },
-        { "q": "Express is?", "a": "Black box abstraction" },
-        { "q": "Protocol details hidden?", "a": "Request/response handling" },
-        { "q": "Learning goal?", "a": "Deep HTTP understanding" },
-        { "q": "CodeCrafters challenge?", "a": "Build real server" }
-      ],
-      "execution": [
-        { "q": "Routing approach?", "a": "Decorator-based system" },
-        { "q": "Middleware built-in?", "a": "CORS, compression, rate" },
-        { "q": "Type safety?", "a": "Zod schema validation" },
-        { "q": "API design?", "a": "Chainable builder pattern" },
-        { "q": "Performance trick?", "a": "Zero-copy buffers" }
-      ],
-      "future": [
-        { "q": "Development method?", "a": "TDD comprehensive" },
-        { "q": "Edge cases handled?", "a": "Headers, cookies, content" },
-        { "q": "Learning outcome?", "a": "Deep protocol appreciation" },
-        { "q": "Auto-generated?", "a": "OpenAPI schema" }
+  "githubLink": "https://github.com/utkarsh5026/mdhd",
+  "tags": [
+    "Markdown Reader",
+    "RAG",
+    "AI Chat",
+    "LangChain",
+    "Vector Search",
+    "Documentation",
+    "Reading Experience",
+    "TypeScript"
+  ]
+},
+{
+  "name": "ReduceMe",
+  "tagline": "Educational Redux reimplementation teaching state management internals 📚",
+  "description": "TypeScript-native state management library built from scratch to demystify Redux architecture. Implements core Redux patterns including middleware composition, slice-based reducers, and immutable updates using Immer, serving as both a functional library and educational resource for understanding state management internals.",
+  "keyFeatures": [
+    {
+      "title": "Type-Safe Store with Immutability",
+      "description": [
+        "Custom Store class implementing the single-source-of-truth observer pattern",
+        "Strict `Object.freeze` enforcement for immutable state access",
+        "Built-in reentrancy protection to prevent dangerous nested dispatches",
+        "Reference equality checks within `combineReducers` for performance optimization"
       ]
     },
-    "githubLink": "https://github.com/utkarsh5026/tstp",
-    "tags": [
-      "Backend",
-      "TypeScript",
-      "Node.js",
-      "HTTP",
-      "Web Server",
-      "CodeCrafters"
+    {
+      "title": "Redux Toolkit-Style Slice Architecture",
+      "description": [
+        "Immer integration allowing mutable logic to produce immutable state updates",
+        "`createSlice` API that auto-generates namespaced action creators",
+        "Support for `extraReducers` handling cross-slice state dependencies"
+      ]
+    },
+    {
+      "title": "Composable Middleware System",
+      "description": [
+        "Implementation of the triple-function currying pattern (`store => next => action`)",
+        "Functional middleware composition pipeline using custom `reduce` logic",
+        "Full capability for async operations, logging, and action transformation"
+      ]
+    },
+    {
+      "title": "Advanced TypeScript Type System",
+      "description": [
+        "Generic `GenerateActionCreators` utility for automatic inference from reducers",
+        "Type-safe `ActionHandler` definitions using Immer's Draft types",
+        "Custom `isActionOf` type guards ensuring runtime and compile-time safety"
+      ]
+    }
+  ],
+  "technologies": [
+    "typescript",
+    "javascript",
+    "node",
+    "jest",
+    "git"
+  ],
+  "explainCards": {
+    "problem": [
+      { "q": "Redux feels like?", "a": "Opaque black box magic" },
+      { "q": "What's hard to understand?", "a": "Middleware currying patterns" },
+      { "q": "combineReducers mystery?", "a": "How it actually works" },
+      { "q": "RTK abstracts away?", "a": "Core Redux principles" },
+      { "q": "Goal of this project?", "a": "Learn by reimplementing" }
+    ],
+    "execution": [
+      { "q": "What powers immutability?", "a": "Immer produce function" },
+      { "q": "Slice API mirrors?", "a": "Redux Toolkit exactly" },
+      { "q": "Middleware pattern?", "a": "Triple-function currying" },
+      { "q": "Action creators?", "a": "Auto-generated from slices" },
+      { "q": "Cross-slice actions?", "a": "extraReducers supported" },
+      { "q": "Store pattern?", "a": "Observer for listeners" }
+    ],
+    "future": [
+      { "q": "Dependencies count?", "a": "Just Immer, nothing else" },
+      { "q": "TypeScript support?", "a": "Full generic inference" },
+      { "q": "Educational value?", "a": "Documented extensively" },
+      { "q": "Production ready?", "a": "Yes, use in real apps" },
+      { "q": "Test coverage?", "a": "Comprehensive Jest suite" }
     ]
   },
-  {
-    "name": "PatternFind",
-    "tagline": "Advanced pattern matching for code refactoring \ud83d\udd27",
-    "description": "AST-based code search and transformation tool. Find complex patterns across codebases and apply automated refactorings.",
-    "keyFeatures": [
-      {
-        "title": "AST Pattern Matching",
-        "description": "Tree-sitter based syntax tree matching with wildcard support, variable binding, and structural search"
-      },
-      {
-        "title": "Code Transformation Engine",
-        "description": "Template-based code rewriting with preserve formatting, automatic imports, and conflict resolution"
-      },
-      {
-        "title": "Multi-File Refactoring",
-        "description": "Cross-file dependency tracking, batch transformations, and dry-run preview with diff visualization"
-      },
-      {
-        "title": "Language Server Integration",
-        "description": "IDE plugins for VS Code, IntelliJ with real-time pattern suggestions and quick-fix actions"
-      }
-    ],
-    "technologies": ["typescript", "python", "javascript"],
-    "explainCards": {
-      "problem": [
-        { "q": "CodeCrafters challenge?", "a": "Build grep from scratch" },
-        { "q": "Why reimplement grep?", "a": "Learn text search internals" },
-        { "q": "Regex complexity?", "a": "More nuanced than expected" },
-        { "q": "Large file handling?", "a": "Performance critical" },
-        { "q": "Learning goal?", "a": "Go + text processing" }
-      ],
-      "execution": [
-        { "q": "Pattern matching?", "a": "AST-based tree-sitter" },
-        { "q": "Transformation engine?", "a": "Template-based rewrite" },
-        { "q": "Multi-file refactor?", "a": "Cross-dependency tracking" },
-        { "q": "Preview feature?", "a": "Dry-run with diff" },
-        { "q": "Development method?", "a": "TDD before implement" }
-      ],
-      "future": [
-        { "q": "Written in?", "a": "Go for speed" },
-        { "q": "Practical use?", "a": "Yes, daily codebase search" },
-        { "q": "Faster than?", "a": "Many alternatives" },
-        { "q": "IDE integration?", "a": "VS Code, IntelliJ" }
+  "githubLink": "https://github.com/utkarsh5026/ReduceMe",
+  "tags": [
+    "State Management",
+    "TypeScript",
+    "Educational",
+    "Redux",
+    "Functional Programming",
+    "Immutability",
+    "Middleware",
+    "Library"
+  ]
+},
+{
+  "name": "ProgChain",
+  "tagline": "AI-powered programming education platform 🎓",
+  "description": "Interactive coding courses with AI tutoring and automated grading. Features personalized learning paths and real-time code feedback.",
+  "keyFeatures": [
+    {
+      "title": "AI Code Tutor System",
+      "description": [
+        "GPT-4 powered assistant providing intelligent hints and explanations",
+        "Real-time debugging support with context-aware code suggestions",
+        "Interactive dialogue system for concept reinforcement and guidance"
       ]
     },
-    "githubLink": "https://github.com/utkarsh5026/cope",
-    "tags": ["CLI", "Go", "Grep", "CodeCrafters"]
-  },
-  {
-    "name": "chankit",
-    "tagline": "Transform Go channels into reactive, type-safe data pipelines 🚀",
-    "description": "Production-ready Go library providing 60+ channel operations with fluent pipeline API and reactive patterns. Achieved 4.4:1 test-to-code ratio (7,139 test lines) with zero external dependencies and sub-millisecond transformation overhead through type-safe generics.",
-    "keyFeatures": [
-      {
-        "title": "Type-Safe Fluent Pipeline API",
-        "description": "486-line chainable interface leveraging Go 1.18+ generics for compile-time type safety. Supports Map/Filter/Reduce transformations with type preservation, LINQ-style aliases (Where/Select), and lazy evaluation until terminal operations like ToSlice or Reduce are called."
-      },
-      {
-        "title": "Reactive Flow Control Primitives",
-        "description": "Implements Throttle (rate-limiting with value dropping), Debounce (silence-based emission with timer reset), FixedInterval (queued pacing without drops), and Batch (size/timeout-based grouping) using timer reuse and state machine patterns for zero-allocation optimizations."
-      },
-      {
-        "title": "Context-Aware Concurrency Management",
-        "description": "Every operation implements context.Context cancellation with goroutine leak prevention through drain patterns. Uses double-select idiom for pre/post context checks and WaitGroup coordination for concurrent FlatMap processing ensuring graceful shutdown under any condition."
-      },
-      {
-        "title": "Zero-Dependency Generic Generators",
-        "description": "Pure stdlib implementation supporting Range (numeric sequences with constraint types), Generate (custom generator functions), and Repeat (infinite value streams). Includes functional options pattern for configurable buffering and pre-allocated slice capacities."
-      }
-    ],
-    "technologies": ["golang", "git"],
-    "explainCards": {
-      "problem": [
-        { "q": "Go channels feel?", "a": "Imperative, verbose" },
-        { "q": "Common boilerplate?", "a": "Throttle/debounce logic" },
-        { "q": "Goroutine risk?", "a": "Leaks everywhere" },
-        { "q": "Pre-generics issue?", "a": "No type safety" },
-        { "q": "What devs want?", "a": "Reactive pipelines" }
-      ],
-      "execution": [
-        { "q": "Operations available?", "a": "60+ transformations" },
-        { "q": "API style?", "a": "Fluent chainable calls" },
-        { "q": "Flow control types?", "a": "Throttle, Debounce, Batch" },
-        { "q": "Context handling?", "a": "Every op cancellable" },
-        { "q": "Leak prevention?", "a": "Auto channel draining" }
-      ],
-      "future": [
-        { "q": "Test-to-code ratio?", "a": "4.4:1 (7,139 lines!)" },
-        { "q": "Dependencies?", "a": "Zero, pure stdlib" },
-        { "q": "Lint rules?", "a": "50+ golangci-lint" },
-        { "q": "Go version?", "a": "1.18+ generics" },
-        { "q": "Performance?", "a": "Sub-ms overhead" }
+    {
+      "title": "Automated Code Grading",
+      "description": [
+        "Instant test-driven assessment validating functional correctness",
+        "Automated code quality checks and complexity analysis",
+        "Integrated plagiarism detection and performance benchmarking"
       ]
     },
-    "githubLink": "https://github.com/utkarsh5026/chankit",
-    "tags": [
-      "Concurrency",
-      "Reactive Programming",
-      "Golang",
-      "Type Safety",
-      "Pipeline",
-      "Flow Control",
-      "Zero Dependencies",
-      "High Performance"
+    {
+      "title": "Interactive Code Editor",
+      "description": [
+        "Full Monaco editor integration with multi-language syntax highlighting",
+        "Secure live code execution environment using isolated Docker containers",
+        "Real-time collaborative editing capabilities for peer programming"
+      ]
+    },
+    {
+      "title": "Personalized Learning Paths",
+      "description": [
+        "Adaptive curriculum that evolves based on individual skill levels",
+        "ML-powered course recommendations analyzing user progress",
+        "Visual progress tracking with skill mastery milestones"
+      ]
+    }
+  ],
+  "technologies": [
+    "react",
+    "typescript",
+    "python",
+    "monaco",
+    "docker"
+  ],
+  "explainCards": {
+    "problem": [
+      { "q": "Generic tutorials problem?", "a": "One-size-fits-none approach" },
+      { "q": "What differs per learner?", "a": "Strengths and styles" },
+      { "q": "What's missing?", "a": "Personalized learning paths" },
+      { "q": "AI opportunity?", "a": "Adapt to each journey" },
+      { "q": "Knowledge gap detection?", "a": "AI builds mental model" }
+    ],
+    "execution": [
+      { "q": "Frontend stack?", "a": "React + TypeScript" },
+      { "q": "Backend API?", "a": "Python FastAPI" },
+      { "q": "Concept mapping how?", "a": "Vector embeddings" },
+      { "q": "AI tutor powered by?", "a": "GPT-4 integration" },
+      { "q": "Code grading?", "a": "Automated with tests" }
+    ],
+    "future": [
+      { "q": "Response quality boost?", "a": "78% improvement!" },
+      { "q": "Prompt engineering?", "a": "Template-based system" },
+      { "q": "Skill adaptation?", "a": "Based on history" },
+      { "q": "Interactive editing?", "a": "Monaco editor built-in" }
     ]
   },
-  {
-    "name": "InPeace - Behavioral Website Blocker",
-    "tagline": "Psychological friction-based website blocker using multi-stage challenges 🧘‍♂️",
-    "description": "Chrome extension that blocks distracting websites through a progressive 4-stage behavioral challenge system. Reduces mindless browsing by requiring users to complete a flashlight-search mini-game (10 clicks with 2-second timers) and reflection steps before granting 30-minute temporary access, tracking daily visit attempts per site.",
-    "keyFeatures": [
-      {
-        "title": "Interactive Flashlight Challenge System",
-        "description": "Custom-built JavaScript game requiring 10 successful button clicks where the target randomly repositions after each click within a darkened viewport. Implements CSS radial-gradient spotlight tracking mouse position via custom properties (--mouse-x, --mouse-y) updated at 60fps, with viewport-aware constraint calculation preventing off-screen button placement and 2-second countdown timers that decrement progress on expiry."
-      },
-      {
-        "title": "Declarative Net Request Blocking Engine",
-        "description": "Chrome Manifest V3 implementation using declarativeNetRequest API for efficient request interception with dynamic rule generation (2 rules per domain covering base and subdomains). Features atomic rule updates with race condition prevention, automatic 5-minute periodic cleanup via Chrome Alarms API, and sync storage integration for cross-browser blocked site synchronization."
-      },
-      {
-        "title": "Temporal Whitelist Management",
-        "description": "Local storage-based temporary access system granting 30-minute whitelist periods after ritual completion. Implements timestamp-based expiration checking with automatic cleanup of stale entries, real-time countdown display updates in popup UI at 1-second intervals, and manual block-now functionality for immediate whitelist revocation with instant rule regeneration."
-      },
-      {
-        "title": "Multi-Stage Behavioral Flow Manager",
-        "description": "TypeScript state machine orchestrating 4 psychological stages with CSS keyframe animations (500ms transitions). Includes disappointment messaging, progressive button-clicker challenge with penalty system, reflection prompts, and commitment checkbox requiring explicit acknowledgment before 3-second countdown redirect. Tracks daily per-site visit attempts with ISO date-based reset logic stored in Chrome local storage."
-      }
-    ],
-    "technologies": ["typescript", "javascript", "tailwind", "css"],
-    "explainCards": {
-      "problem": [
-        { "q": "Blockers fail because?", "a": "Too easy to disable" },
-        { "q": "Habit loop issue?", "a": "Automatic mindless visits" },
-        { "q": "What's needed?", "a": "Psychological friction" },
-        { "q": "Self-awareness gap?", "a": "No conscious choice" },
-        { "q": "Friction balance?", "a": "Enough but not uninstall" }
-      ],
-      "execution": [
-        { "q": "Blocking stages?", "a": "4-stage shame ritual" },
-        { "q": "Mini-game feature?", "a": "Flashlight button hunt" },
-        { "q": "Clicks required?", "a": "10 with 2s timers" },
-        { "q": "Final checkbox?", "a": "I choose to waste time" },
-        { "q": "Access granted for?", "a": "30 minutes temp" }
-      ],
-      "future": [
-        { "q": "Chrome API used?", "a": "Declarative Net Request" },
-        { "q": "Manifest version?", "a": "V3 modern extension" },
-        { "q": "Daily tracking?", "a": "Per-site visit attempts" },
-        { "q": "Cross-browser sync?", "a": "Yes, Chrome storage" },
-        { "q": "Cleanup frequency?", "a": "Every 5 minutes" }
+  "githubLink": "https://github.com/utkarsh5026/ProgChain",
+  "liveLink": "https://codementor-ai.vercel.app",
+  "tags": [
+    "EdTech",
+    "AI",
+    "Education",
+    "React",
+    "Python",
+    "Code Editor",
+    "Docker",
+    "GPT-4"
+  ]
+},
+{
+  "name": "Genshin Companion",
+  "tagline": "Game companion app for Genshin Impact players 🎮",
+  "description": "Character builds, team recommendations, and resource tracking. Features damage calculator and wish history analysis.",
+  "keyFeatures": [
+    {
+      "title": "Character Build Database",
+      "description": [
+        "Comprehensive database of artifact sets, weapons, and optimal stats",
+        "Automated stat calculation with build optimization suggestions",
+        "Meta-based team composition recommendations for every character"
       ]
     },
-    "githubLink": "https://github.com/utkarsh5026/inpeace",
-    "tags": [
-      "Chrome Extension",
-      "Productivity",
-      "TypeScript",
-      "Behavioral Design",
-      "Focus Tool",
-      "Website Blocker",
-      "Manifest V3",
-      "Interactive UI"
+    {
+      "title": "Damage Calculator Engine",
+      "description": [
+        "Real-time DPS calculations factoring in elemental reactions and buffs",
+        "Complex rotation modeling for precise damage output analysis",
+        "Visual breakdown of damage sources and reaction multipliers"
+      ]
+    },
+    {
+      "title": "Resource Tracking System",
+      "description": [
+        "Smart material farming planner synchronized with daily domain schedules",
+        "Resin efficiency calculator to minimize waste and maximize growth",
+        "Wish history analyzer with pity tracking and probability predictions"
+      ]
+    },
+    {
+      "title": "Team Composition Analyzer",
+      "description": [
+        "Algorithmic synergy scoring for elemental reaction efficiency",
+        "Optimization engine to maximize elemental resonance benefits",
+        "Curated meta team recommendations based on current game patch"
+      ]
+    }
+  ],
+  "technologies": [
+    "react",
+    "typescript",
+    "tailwind"
+  ],
+  "explainCards": {
+    "problem": [
+      { "q": "Player pain point?", "a": "Material tracking chaos" },
+      { "q": "What's scattered?", "a": "Websites and spreadsheets" },
+      { "q": "Farming optimization?", "a": "Minimize resin waste" },
+      { "q": "Day-specific materials?", "a": "Hard to track" },
+      { "q": "Solution goal?", "a": "Unified companion app" }
+    ],
+    "execution": [
+      { "q": "Character builds?", "a": "Comprehensive database" },
+      { "q": "Damage calc?", "a": "Real-time DPS engine" },
+      { "q": "Wish tracking?", "a": "Pity probability calc" },
+      { "q": "Team synergy?", "a": "Elemental scoring" },
+      { "q": "State management?", "a": "Redux + TypeScript" }
+    ],
+    "future": [
+      { "q": "GraphQL challenge?", "a": "Complex entity schema" },
+      { "q": "N+1 prevention?", "a": "DataLoader patterns" },
+      { "q": "Type safety?", "a": "TypeGraphQL + TypeORM" },
+      { "q": "Routine planning?", "a": "Auto-generated schedule" }
     ]
-  }
+  },
+  "githubLink": "",
+  "tags": [
+    "Gaming",
+    "React",
+    "TypeScript",
+    "Calculator",
+    "Data Visualization",
+    "Utility",
+    "Fan Project"
+  ]
+},
+{
+  "name": "Studio",
+  "tagline": "Design-to-code platform for developers 🎨",
+  "description": "Convert Figma designs to production React code. Features component extraction, responsive layouts, and design token export.",
+  "keyFeatures": [
+    {
+      "title": "Figma API Integration",
+      "description": [
+        "Secure plugin authentication for direct access to design files",
+        "Advanced parsing engine for precise layer and asset extraction",
+        "Auto-sync capabilities enabling real-time updates from Figma changes"
+      ]
+    },
+    {
+      "title": "Component Code Generator",
+      "description": [
+        "Multi-framework code generation supporting React, Vue, and Angular",
+        "Automated implementation of Tailwind CSS utility classes and TypeScript types",
+        "Instant generation of component stories (Storybook) for documentation"
+      ]
+    },
+    {
+      "title": "Design Token Extractor",
+      "description": [
+        "Automated extraction of global tokens including colors, typography, and spacing",
+        "Generation of standardized CSS variables for consistent system styling",
+        "Creation of theme objects compatible with modern CSS-in-JS libraries"
+      ]
+    },
+    {
+      "title": "Responsive Layout Engine",
+      "description": [
+        "Intelligent auto-detection of design breakpoints and fluid constraints",
+        "Automatic generation of precise CSS media queries",
+        "Creation of responsive component variants optimized for mobile and desktop"
+      ]
+    }
+  ],
+  "technologies": [
+    "react",
+    "typescript",
+    "rest",
+    "tailwind",
+    "javascript"
+  ],
+  "explainCards": {
+    "problem": [
+      { "q": "Figma to code pain?", "a": "Manual translation tedious" },
+      { "q": "What gets lost?", "a": "Design tokens & spacing" },
+      { "q": "Responsive layouts?", "a": "Hard to extract" },
+      { "q": "Design handoff gap?", "a": "Pixels to production" },
+      { "q": "Component extraction?", "a": "No automation" }
+    ],
+    "execution": [
+      { "q": "Figma integration?", "a": "Direct API plugin" },
+      { "q": "Output formats?", "a": "React, Vue, Angular" },
+      { "q": "Styling approach?", "a": "Tailwind CSS gen" },
+      { "q": "WASM for what?", "a": "Performance-critical image" },
+      { "q": "Worker pattern?", "a": "Non-blocking UI" }
+    ],
+    "future": [
+      { "q": "Cross-language skill?", "a": "Rust + JS bridging" },
+      { "q": "Memory management?", "a": "WebAssembly learned" },
+      { "q": "Visualization output?", "a": "Histograms & analysis" },
+      { "q": "Auto breakpoints?", "a": "Responsive detected" }
+    ]
+  },
+  "githubLink": "https://github.com/utkarsh5026/studio",
+  "tags": [
+    "React",
+    "TypeScript",
+    "Rust",
+    "WebAssembly",
+    "Image Processing",
+    "Data Visualization"
+  ]
+},
+{
+  "name": "chankit",
+  "tagline": "Transform Go channels into reactive, type-safe data pipelines 🚀",
+  "description": "Production-ready Go library providing 60+ channel operations with fluent pipeline API and reactive patterns. Achieved 4.4:1 test-to-code ratio (7,139 test lines) with zero external dependencies and sub-millisecond transformation overhead through type-safe generics.",
+  "keyFeatures": [
+    {
+      "title": "Type-Safe Fluent Pipeline API",
+      "description": [
+        "Chainable interface leveraging Go 1.18+ generics for compile-time safety",
+        "Support for Map/Filter/Reduce transformations and LINQ-style aliases",
+        "Lazy evaluation architecture delaying execution until terminal operations"
+      ]
+    },
+    {
+      "title": "Reactive Flow Control Primitives",
+      "description": [
+        "Advanced implementations of Throttle, Debounce, and FixedInterval pacing",
+        "Smart Batch grouping based on dynamic size or timeout triggers",
+        "Zero-allocation optimizations using timer reuse and state machine patterns"
+      ]
+    },
+    {
+      "title": "Context-Aware Concurrency Management",
+      "description": [
+        "Universal `context.Context` cancellation support across all operations",
+        "Goroutine leak prevention via automated channel draining patterns",
+        "Graceful shutdown coordination using WaitGroups and double-select idioms"
+      ]
+    },
+    {
+      "title": "Zero-Dependency Generic Generators",
+      "description": [
+        "Pure stdlib generators including Range, Generate, and Repeat",
+        "Type constraint support for numeric sequences and custom types",
+        "Configurable buffering and capacity via functional options pattern"
+      ]
+    }
+  ],
+  "technologies": [
+    "golang",
+    "git"
+  ],
+  "explainCards": {
+    "problem": [
+      { "q": "Go channels feel?", "a": "Imperative, verbose" },
+      { "q": "Common boilerplate?", "a": "Throttle/debounce logic" },
+      { "q": "Goroutine risk?", "a": "Leaks everywhere" },
+      { "q": "Pre-generics issue?", "a": "No type safety" },
+      { "q": "What devs want?", "a": "Reactive pipelines" }
+    ],
+    "execution": [
+      { "q": "Operations available?", "a": "60+ transformations" },
+      { "q": "API style?", "a": "Fluent chainable calls" },
+      { "q": "Flow control types?", "a": "Throttle, Debounce, Batch" },
+      { "q": "Context handling?", "a": "Every op cancellable" },
+      { "q": "Leak prevention?", "a": "Auto channel draining" }
+    ],
+    "future": [
+      { "q": "Test-to-code ratio?", "a": "4.4:1 (7,139 lines!)" },
+      { "q": "Dependencies?", "a": "Zero, pure stdlib" },
+      { "q": "Lint rules?", "a": "50+ golangci-lint" },
+      { "q": "Go version?", "a": "1.18+ generics" },
+      { "q": "Performance?", "a": "Sub-ms overhead" }
+    ]
+  },
+  "githubLink": "https://github.com/utkarsh5026/chankit",
+  "tags": [
+    "Concurrency",
+    "Reactive Programming",
+    "Golang",
+    "Type Safety",
+    "Pipeline",
+    "Flow Control",
+    "Zero Dependencies",
+    "High Performance"
+  ]
+},
+{
+  "name": "InPeace - Behavioral Website Blocker",
+  "tagline": "Psychological friction-based website blocker using multi-stage challenges 🧘‍♂️",
+  "description": "Chrome extension that blocks distracting websites through a progressive 4-stage behavioral challenge system. Reduces mindless browsing by requiring users to complete a flashlight-search mini-game (10 clicks with 2-second timers) and reflection steps before granting 30-minute temporary access, tracking daily visit attempts per site.",
+  "keyFeatures": [
+    {
+      "title": "Interactive Flashlight Challenge System",
+      "description": [
+        "Custom JavaScript mini-game requiring 10 sequential clicks on a moving target",
+        "Immersive 'spotlight' effect using CSS radial-gradients tracking mouse position at 60fps",
+        "Smart viewport constraints preventing off-screen button placement",
+        "High-stakes mechanics with 2-second timers that reset progress on failure"
+      ]
+    },
+    {
+      "title": "Declarative Net Request Blocking Engine",
+      "description": [
+        "Manifest V3 implementation using the `declarativeNetRequest` API for efficient blocking",
+        "Dynamic rule generation covering both base domains and subdomains",
+        "Atomic rule updates with built-in race condition prevention",
+        "Cross-browser synchronization of blocked sites via Chrome Sync Storage"
+      ]
+    },
+    {
+      "title": "Temporal Whitelist Management",
+      "description": [
+        "Automated 30-minute access grants stored in local storage upon challenge completion",
+        "Real-time countdown UI with 1-second interval updates and visual indicators",
+        "Instant 'Block Now' functionality for immediate whitelist revocation",
+        "Background cleanup processes to remove stale access tokens automatically"
+      ]
+    },
+    {
+      "title": "Multi-Stage Behavioral Flow Manager",
+      "description": [
+        "TypeScript state machine orchestrating a 4-step psychological friction path",
+        "Includes disappointment messaging, reflection prompts, and explicit commitment checkboxes",
+        "Daily visit attempt tracking with ISO date-based reset logic",
+        "Smooth 500ms CSS keyframe transitions between behavioral stages"
+      ]
+    }
+  ],
+  "technologies": [
+    "typescript",
+    "javascript",
+    "tailwind",
+    "css"
+  ],
+  "explainCards": {
+    "problem": [
+      { "q": "Blockers fail because?", "a": "Too easy to disable" },
+      { "q": "Habit loop issue?", "a": "Automatic mindless visits" },
+      { "q": "What's needed?", "a": "Psychological friction" },
+      { "q": "Self-awareness gap?", "a": "No conscious choice" },
+      { "q": "Friction balance?", "a": "Enough but not uninstall" }
+    ],
+    "execution": [
+      { "q": "Blocking stages?", "a": "4-stage shame ritual" },
+      { "q": "Mini-game feature?", "a": "Flashlight button hunt" },
+      { "q": "Clicks required?", "a": "10 with 2s timers" },
+      { "q": "Final checkbox?", "a": "I choose to waste time" },
+      { "q": "Access granted for?", "a": "30 minutes temp" }
+    ],
+    "future": [
+      { "q": "Chrome API used?", "a": "Declarative Net Request" },
+      { "q": "Manifest version?", "a": "V3 modern extension" },
+      { "q": "Daily tracking?", "a": "Per-site visit attempts" },
+      { "q": "Cross-browser sync?", "a": "Yes, Chrome storage" },
+      { "q": "Cleanup frequency?", "a": "Every 5 minutes" }
+    ]
+  },
+  "githubLink": "https://github.com/utkarsh5026/inpeace",
+  "tags": [
+    "Chrome Extension",
+    "Productivity",
+    "TypeScript",
+    "Behavioral Design",
+    "Focus Tool",
+    "Website Blocker",
+    "Manifest V3",
+    "Interactive UI"
+  ]
+}
 ]

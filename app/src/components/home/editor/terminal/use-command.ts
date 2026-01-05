@@ -206,7 +206,7 @@ Type 'about' for more information or 'contact' to get in touch.
     } as const;
 
     return commands;
-  }, [setActiveSection, activeSection]);
+  }, [setActiveSection, activeSection, projects]);
 };
 
 /**
@@ -391,7 +391,7 @@ Type 'projects' to see what I've built, or 'skills' to see my technical expertis
     };
 
     return commands;
-  }, []);
+  }, [projects]);
 };
 
 /**
@@ -527,7 +527,7 @@ export const useUtilityCommands = () => {
     } as const;
 
     return commands;
-  }, []);
+  }, [projects]);
 };
 
 /**

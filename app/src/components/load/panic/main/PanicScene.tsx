@@ -301,10 +301,11 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
     const setupTimeout = setTimeout(() => {
       phaseSequence();
     }, INITIAL_DELAY);
+    const timeouts = timeoutRefs.current;
 
     return () => {
       clearTimeout(setupTimeout);
-      timeoutRefs.current.forEach((timeout) => clearTimeout(timeout));
+      timeouts.forEach((timeout) => clearTimeout(timeout));
     };
   }, [phaseSequence]);
 
