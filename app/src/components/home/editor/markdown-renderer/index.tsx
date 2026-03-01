@@ -64,10 +64,10 @@ const MarkdownImage: React.FC<{ src?: string; alt?: string }> = ({
         </div>
       )}
 
-      <figure className="my-6 group">
+      <figure className="my-4 md:my-6 group">
         {/* Skeleton shown until image loads */}
         {!loaded && !error && (
-          <div className="w-full h-48 rounded-xl bg-ctp-surface0 border border-ctp-surface1 animate-pulse" />
+          <div className="w-full h-32 md:h-48 rounded-xl bg-ctp-surface0 border border-ctp-surface1 animate-pulse" />
         )}
 
         {!error && (
@@ -76,7 +76,7 @@ const MarkdownImage: React.FC<{ src?: string; alt?: string }> = ({
               "relative overflow-hidden rounded-xl border border-ctp-surface1",
               "shadow-lg shadow-black/30 cursor-zoom-in",
               "transition-all duration-300 group-hover:border-ctp-blue/50 group-hover:shadow-ctp-blue/10",
-              !loaded && "sr-only",
+              !loaded ? "sr-only" : "animate-fadeIn [animation-duration:1.5s]",
             )}
             onClick={() => setLightbox(true)}
           >
@@ -85,7 +85,7 @@ const MarkdownImage: React.FC<{ src?: string; alt?: string }> = ({
               alt={alt}
               onLoad={() => setLoaded(true)}
               onError={() => setError(true)}
-              className="w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-[1.02]"
+              className="w-full object-cover rounded-xl transition-transform duration-[1.5s] group-hover:scale-[1.02]"
             />
             {/* Zoom hint overlay */}
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 rounded-xl">
@@ -98,7 +98,7 @@ const MarkdownImage: React.FC<{ src?: string; alt?: string }> = ({
         )}
 
         {error && (
-          <div className="w-full h-32 rounded-xl bg-ctp-surface0 border border-ctp-surface1 flex items-center justify-center">
+          <div className="w-full h-24 md:h-32 rounded-xl bg-ctp-surface0 border border-ctp-surface1 flex items-center justify-center">
             <span className="text-ctp-overlay0 text-xs font-mono">
               ⚠ image unavailable
             </span>
@@ -106,7 +106,7 @@ const MarkdownImage: React.FC<{ src?: string; alt?: string }> = ({
         )}
 
         {alt && loaded && !error && (
-          <figcaption className="mt-2 text-center text-[11px] text-ctp-overlay0 font-mono italic">
+          <figcaption className="mt-1.5 md:mt-2 text-center text-[10px] md:text-[11px] text-ctp-overlay0 font-mono italic">
             {alt}
           </figcaption>
         )}
@@ -125,7 +125,7 @@ const MarkdownYouTube: React.FC<{ id: string; title: string }> = ({
   const thumb = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
 
   return (
-    <figure className="my-6">
+    <figure className="my-4 md:my-6">
       <div className="relative overflow-hidden rounded-xl border border-ctp-surface1 shadow-lg shadow-black/30">
         {!revealed ? (
           /* Thumbnail + play button */
@@ -142,8 +142,8 @@ const MarkdownYouTube: React.FC<{ id: string; title: string }> = ({
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
             {/* Play button */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-16 h-16 rounded-full bg-ctp-red flex items-center justify-center shadow-xl shadow-ctp-red/40 group-hover:scale-110 transition-transform duration-200">
-                <FiPlay className="w-7 h-7 text-white fill-white ml-1" />
+              <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-ctp-red flex items-center justify-center shadow-xl shadow-ctp-red/40 group-hover:scale-110 transition-transform duration-200">
+                <FiPlay className="w-5 h-5 md:w-7 md:h-7 text-white fill-white ml-0.5 md:ml-1" />
               </div>
             </div>
             {/* YouTube badge */}
@@ -162,7 +162,7 @@ const MarkdownYouTube: React.FC<{ id: string; title: string }> = ({
         )}
       </div>
       {title && (
-        <figcaption className="mt-2 text-center text-[11px] text-ctp-overlay0 font-mono italic">
+        <figcaption className="mt-1.5 md:mt-2 text-center text-[10px] md:text-[11px] text-ctp-overlay0 font-mono italic">
           {title}
         </figcaption>
       )}
@@ -176,7 +176,7 @@ const MarkdownVideo: React.FC<{ src: string; alt: string }> = ({
   src,
   alt,
 }) => (
-  <figure className="my-6">
+  <figure className="my-4 md:my-6">
     <div className="overflow-hidden rounded-xl border border-ctp-surface1 shadow-lg shadow-black/30 bg-black">
       <video
         src={src}
@@ -186,7 +186,7 @@ const MarkdownVideo: React.FC<{ src: string; alt: string }> = ({
       />
     </div>
     {alt && (
-      <figcaption className="mt-2 text-center text-[11px] text-ctp-overlay0 font-mono italic">
+      <figcaption className="mt-1.5 md:mt-2 text-center text-[10px] md:text-[11px] text-ctp-overlay0 font-mono italic">
         {alt}
       </figcaption>
     )}
@@ -201,55 +201,59 @@ const markdownComponents: Components = {
 
   // Headings
   h1: ({ children }) => (
-    <h1 className="text-xl font-bold text-ctp-text mt-8 mb-3 leading-tight">
+    <h1 className="text-lg md:text-xl font-bold text-ctp-text mt-6 md:mt-8 mb-2 md:mb-3 leading-tight">
       {children}
     </h1>
   ),
   h2: ({ children }) => (
-    <div className="flex items-center gap-3 mt-8 mb-3">
-      <span className="w-0.5 h-4 rounded-full shrink-0 bg-ctp-mauve" />
-      <h2 className="text-xs font-semibold uppercase tracking-widest text-ctp-subtext0">
+    <div className="flex items-center gap-2 md:gap-3 mt-6 md:mt-8 mb-2 md:mb-3">
+      <span className="w-0.5 h-3 md:h-4 rounded-full shrink-0 bg-ctp-mauve" />
+      <h2 className="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-ctp-subtext0">
         {children}
       </h2>
       <span className="flex-1 border-t border-ctp-surface1" />
     </div>
   ),
   h3: ({ children }) => (
-    <h3 className="text-sm font-semibold text-ctp-blue mt-6 mb-2">
+    <h3 className="text-xs md:text-sm font-semibold text-ctp-blue mt-4 md:mt-6 mb-1 md:mb-2">
       {children}
     </h3>
   ),
   h4: ({ children }) => (
-    <h4 className="text-xs font-semibold text-ctp-teal uppercase tracking-wider mt-4 mb-1">
+    <h4 className="text-[10px] md:text-xs font-semibold text-ctp-teal uppercase tracking-wider mt-3 md:mt-4 mb-1">
       {children}
     </h4>
   ),
 
   // Paragraph
   p: ({ children }) => (
-    <p className="text-ctp-subtext1 leading-7 mb-4">{children}</p>
+    <p className="text-sm md:text-base text-ctp-subtext1 leading-relaxed md:leading-7 mb-3 md:mb-4">
+      {children}
+    </p>
   ),
 
   // Blockquote — styled as a callout / tagline
   blockquote: ({ children }) => (
-    <blockquote className="border-l-2 border-ctp-blue pl-4 my-4 text-ctp-blue italic text-sm">
+    <blockquote className="border-l-2 border-ctp-blue pl-3 md:pl-4 my-3 md:my-4 text-ctp-blue italic text-xs md:text-sm">
       {children}
     </blockquote>
   ),
 
   // Horizontal rule
-  hr: () => <div className="border-t border-ctp-surface1 my-6" />,
+  hr: () => <div className="border-t border-ctp-surface1 my-4 md:my-6" />,
 
   // Lists
-  ul: ({ children }) => <ul className="space-y-1.5 mb-4 pl-1">{children}</ul>,
+  ul: ({ children }) => (
+    <ul className="space-y-1 md:space-y-1.5 mb-3 md:mb-4 pl-1">{children}</ul>
+  ),
   ol: ({ children }) => (
-    <ol className="space-y-1.5 mb-4 pl-1 list-decimal list-inside">
+    <ol className="space-y-1 md:space-y-1.5 mb-3 md:mb-4 pl-1 list-decimal list-inside text-sm md:text-base text-ctp-subtext1">
       {children}
     </ol>
   ),
   li: ({ children }) => (
-    <li className="flex gap-2 text-ctp-subtext1 text-sm leading-6">
-      <span className="text-ctp-mauve shrink-0 mt-0.5">–</span>
+    <li className="flex gap-2 text-ctp-subtext1 text-sm md:text-base leading-relaxed md:leading-6">
+      <span className="text-ctp-mauve shrink-0 mt-0.5 md:mt-1">–</span>
       <span>{children}</span>
     </li>
   ),
@@ -257,35 +261,41 @@ const markdownComponents: Components = {
   code: ({ children, className }) => {
     const isBlock = className?.startsWith("language-");
     if (isBlock) {
-      return <code className={cn("text-xs", className)}>{children}</code>;
+      return (
+        <code className={cn("text-[10px] md:text-xs", className)}>
+          {children}
+        </code>
+      );
     }
     return (
-      <code className="px-1.5 py-0.5 rounded bg-ctp-surface0 text-ctp-peach font-mono text-xs border border-ctp-surface1">
+      <code className="px-1 md:px-1.5 py-0.5 rounded bg-ctp-surface0 text-ctp-peach font-mono text-[10px] md:text-xs border border-ctp-surface1 break-words">
         {children}
       </code>
     );
   },
 
   pre: ({ children }) => (
-    <div className="relative my-5 rounded-lg overflow-hidden border border-ctp-surface1">
-      <div className="flex items-center gap-1.5 px-4 py-2 bg-ctp-crust border-b border-ctp-surface1">
-        <span className="w-2.5 h-2.5 rounded-full bg-ctp-red opacity-70" />
-        <span className="w-2.5 h-2.5 rounded-full bg-ctp-yellow opacity-70" />
-        <span className="w-2.5 h-2.5 rounded-full bg-ctp-green opacity-70" />
+    <div className="relative my-4 md:my-5 rounded-lg overflow-hidden border border-ctp-surface1 w-full max-w-[85vw] md:max-w-none">
+      <div className="flex items-center gap-1.5 px-3 md:px-4 py-1.5 md:py-2 bg-ctp-crust border-b border-ctp-surface1">
+        <span className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-ctp-red opacity-70" />
+        <span className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-ctp-yellow opacity-70" />
+        <span className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-ctp-green opacity-70" />
       </div>
-      <pre className="overflow-x-auto p-4 bg-ctp-mantle text-xs leading-6 font-mono text-ctp-text scrollbar-thin">
+      <pre className="overflow-x-auto p-3 md:p-4 bg-ctp-mantle text-[10px] md:text-xs leading-relaxed md:leading-6 font-mono text-ctp-text scrollbar-thin">
         {children}
       </pre>
     </div>
   ),
 
   table: ({ children }) => (
-    <div className="my-5 overflow-x-auto rounded-lg border border-ctp-surface1">
-      <table className="w-full text-xs font-mono">{children}</table>
+    <div className="my-4 md:my-5 w-full max-w-[85vw] md:max-w-none overflow-x-auto rounded-lg border border-ctp-surface1 scrollbar-thin">
+      <table className="w-full text-[10px] md:text-xs font-mono min-w-[max-content] md:min-w-full">
+        {children}
+      </table>
     </div>
   ),
   thead: ({ children }) => (
-    <thead className="bg-ctp-surface0 text-ctp-subtext0 uppercase text-[10px] tracking-wider">
+    <thead className="bg-ctp-surface0 text-ctp-subtext0 uppercase text-[9px] md:text-[10px] tracking-wider">
       {children}
     </thead>
   ),
@@ -296,12 +306,14 @@ const markdownComponents: Components = {
     <tr className="hover:bg-ctp-surface0/40 transition-colors">{children}</tr>
   ),
   th: ({ children }) => (
-    <th className="px-4 py-2.5 text-left font-semibold text-ctp-subtext0">
+    <th className="px-3 md:px-4 py-2 md:py-2.5 text-left font-semibold text-ctp-subtext0 whitespace-nowrap">
       {children}
     </th>
   ),
   td: ({ children }) => (
-    <td className="px-4 py-2.5 text-ctp-subtext1">{children}</td>
+    <td className="px-3 md:px-4 py-2 md:py-2.5 text-ctp-subtext1 whitespace-nowrap md:whitespace-normal">
+      {children}
+    </td>
   ),
 
   a: ({ href, children }) => (
