@@ -42,11 +42,7 @@ const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
       </div>
 
       <div className="hidden md:block">
-        <DesktopTabs
-          activeSection={activeSection}
-          setActiveSection={setActiveSection}
-          sectionKeys={sectionKeys}
-        />
+        <DesktopTabs />
       </div>
     </div>
   );
