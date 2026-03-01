@@ -1,8 +1,6 @@
 # Utkarsh Priyadarshi
 
 <div align="center">
-  <img src="app/public/personal.jpg" alt="Utkarsh Priyadarshi" width="140" height="140" style="border-radius: 50%; object-fit: cover;" />
-
   <p><em>Software Developer · Open Source Enthusiast</em></p>
 
   <a href="https://utkarsh5026.github.io/">
