@@ -1,8 +1,30 @@
-# 🚀 My Portfolio Website
+# Utkarsh Priyadarshi
 
-Hi there! Welcome to my portfolio website repository. This is where I showcase my skills, projects, and experiences as a developer. I've built this site using React, TypeScript, and Tailwind CSS to create a clean, interactive, and responsive experience.
+<div align="center">
+  <img src="app/public/personal.jpg" alt="Utkarsh Priyadarshi" width="140" height="140" style="border-radius: 50%; object-fit: cover;" />
 
-🔗 **Check it out live:** [utkarsh5026.github.io/Portfolio](https://utkarsh5026.github.io/)
+  <p><em>Software Developer · Open Source Enthusiast</em></p>
+
+  <a href="https://utkarsh5026.github.io/">
+    <img src="https://img.shields.io/badge/Live%20Site-Visit-6c91c3?style=for-the-badge&logo=github&logoColor=white" alt="Live Site" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/utkarsh5026/portfolio">
+    <img src="https://img.shields.io/badge/Source-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  </a>
+  &nbsp;
+  <img src="https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" />
+  &nbsp;
+  <img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  &nbsp;
+  <img src="https://img.shields.io/badge/Vite-5.x-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+</div>
+
+---
+
+A VS Code–inspired developer portfolio built with React, TypeScript, and Tailwind CSS. Features a fully interactive code editor UI, custom terminal, smooth animations, and a 3D scene — all wrapped in the Catppuccin Mocha color palette.
+
+## Preview
 
 ![Profile Header](./images/profile_header.png)
 
@@ -14,141 +36,105 @@ Hi there! Welcome to my portfolio website repository. This is where I showcase m
 
 ![Projects](./images/projects.png)
 
-## ✨ Features
+## Features
 
-- **VS Code-inspired UI**: I've designed the interface to resemble a code editor, complete with syntax highlighting, tabs, and a file explorer
-- **Interactive Components**: The site includes animated sections, a terminal with custom commands, and dynamic project cards
-- **Responsive Design**: Works smoothly on devices of all sizes
-- **Dark Mode**: Built with the Catppuccin Mocha color palette for a sleek, modern look
-- **Performance Optimized**: Lazy loading, code splitting, and memoization for a snappy experience
-- **Custom Animations**: Used Framer Motion and AnimeJS for smooth, engaging transitions
+- **VS Code UI** — File explorer, draggable tabs, status bar, and a toggleable terminal (`` Ctrl+` ``)
+- **Interactive Terminal** — Custom commands: `help`, `about`, `projects`, `skills`, `contact`
+- **3D Visuals** — Three.js scene integrated into the portfolio
+- **Data Visualizations** — D3-powered charts for skills and tech journey sections
+- **Rich Animations** — Framer Motion, GSAP, and AnimeJS for fluid, layered transitions
+- **Project Showcase** — Cards with descriptions, tech tags, GitHub links, and live demos
+- **Articles Section** — Highlights technical writing and blog posts
+- **Responsive & Accessible** — Works across all screen sizes; built on Radix UI primitives
+- **Dark Theme** — Catppuccin Mocha palette throughout
+- **PWA Ready** — Configured with `vite-plugin-pwa` for installability and offline support
 
-## 🛠️ Technology Stack
+## Tech Stack
 
 ### Core
-- **React 18.3**: For building a component-based UI
-- **TypeScript**: For type safety and better development experience
-- **Vite**: For fast development and optimized builds
-- **Tailwind CSS**: For utility-first styling
 
-### UI Components
-- **shadcn/ui**: For accessible and customizable UI components
-- **Radix UI**: For headless UI primitives
-- **Lucide Icons & React Icons**: For a comprehensive icon library
+| Layer | Technology |
+| --- | --- |
+| UI Framework | React 18.3 + TypeScript |
+| Build Tool | Vite 5 |
+| Styling | Tailwind CSS 3 |
+| Routing | React Router DOM 7 |
+| State | Zustand |
 
-### Animations
-- **Framer Motion**: For declarative animations and gestures
-- **AnimeJS**: For complex timeline-based animations
+### UI & Components
 
-### State Management
-- **React Context API**: For global state management
-- **Custom Hooks**: For reusable state logic
+| Purpose | Library |
+| --- | --- |
+| Headless Primitives | Radix UI (Dialog, Tabs, Tooltip, Dropdown, …) |
+| Component System | shadcn/ui |
+| Icons | Lucide React + React Icons |
+| Drawer | Vaul |
+| Resizable Panels | react-resizable-panels |
 
-## 🏗️ Project Structure
+### Animations & 3D
 
-```
-src/
-├── components/         # UI components
-│   ├── base/           # Base components like ThemeProvider
-│   ├── home/           # Main section components
+| Purpose | Library |
+| --- | --- |
+| Declarative Animations | Framer Motion 12 |
+| Timeline Animations | AnimeJS 3 |
+| DOM Animations | GSAP 3 |
+| 3D Rendering | Three.js + three-stdlib |
+| Data Visualization | D3 7 |
+
+## Project Structure
+
+```text
+app/src/
+├── components/
+│   ├── base/           # ThemeProvider, global wrappers
+│   ├── home/
 │   │   ├── about/      # About me section
-│   │   ├── articles/   # Articles section
-│   │   ├── contact/    # Contact section
-│   │   ├── editor/     # Code editor components
-│   │   ├── intro/      # Introduction section
+│   │   ├── articles/   # Technical articles
+│   │   ├── contact/    # Contact form & links
+│   │   ├── editor/     # VS Code editor chrome (tabs, explorer, terminal)
+│   │   ├── intro/      # Hero / introduction
 │   │   ├── learning/   # Current learning section
-│   │   ├── projects/   # Projects showcase
-│   │   ├── skills/     # Skills section
-│   │   └── work/       # Work experience section
-│   ├── section/        # Section layout components
+│   │   ├── projects/   # Project cards & modals
+│   │   ├── skills/     # Skills & D3 visualizations
+│   │   └── work/       # Work experience timeline
+│   ├── section/        # Shared section layout components
 │   ├── ui/             # shadcn/ui components
-│   └── utils/          # Utility components
-├── lib/                # Utility functions
-├── types/              # TypeScript type definitions
-└── App.tsx             # Main application component
+│   └── utils/          # Shared utility components
+├── lib/                # Helper functions
+├── types/              # Global TypeScript types
+└── App.tsx
 ```
 
-## 🚀 Getting Started
-
-To run this project locally:
-
-1. Clone the repository
-   ```bash
-   git clone https://github.com/yourusername/portfolio.git
-   cd portfolio
-   ```
-
-2. Install dependencies
-   ```bash
-   npm install
-   ```
-
-3. Start the development server
-   ```bash
-   npm run dev
-   ```
-
-4. Open your browser and visit `http://localhost:5173`
-
-## 📱 Features
-
-### Terminal Integration
-I've built a custom terminal that supports various commands to navigate through the portfolio. Try these commands:
-- `help` - Show available commands
-- `about` - Learn more about me
-- `projects` - View my projects
-- `skills` - See my technical skills
-- `contact` - Get my contact information
-
-### Interactive Project Cards
-Each project card includes:
-- Project description
-- Technologies used
-- Key features
-- Links to GitHub and live demos
-
-### Editor Experience
-The VS Code-inspired interface includes:
-- File explorer
-- Tabs for different sections
-- Draggable tabs for rearranging content
-- Status bar with section information
-- Terminal toggling with Ctrl+`
-
-## 🌐 Deployment
-
-The site is deployed on GitHub Pages and can be accessed at [utkarsh5026.github.io](https://utkarsh5026.github.io/).
-
-## 🛠️ Building for Production
-
-To build the project for production:
+## Getting Started
 
 ```bash
+# Clone
+git clone https://github.com/utkarsh5026/portfolio.git
+cd portfolio/app
+
+# Install
+npm install
+
+# Dev server → http://localhost:5173
+npm run dev
+
+# Production build
 npm run build
 ```
 
-This will generate optimized files in the `dist` directory ready for deployment.
+## Deployment
 
-## 🧪 Future Improvements
+Deployed on **GitHub Pages** at [utkarsh5026.github.io](https://utkarsh5026.github.io/).
 
-- Add more interactive features to the terminal
-- Integrate a blog section with my technical articles
-- Add light/dark theme toggle
-- Implement i18n for multiple languages
-- Add more projects and case studies
+## Contact
 
-## 📝 License
+| Platform | Link |
+| --- | --- |
+| Email | [utkarshpriyadarshi5026@gmail.com](mailto:utkarshpriyadarshi5026@gmail.com) |
+| GitHub | [@utkarsh5026](https://github.com/utkarsh5026) |
+| LinkedIn | [Utkarsh Priyadarshi](https://www.linkedin.com/in/utkarsh-priyadarshi-8b5a731b9/) |
+| Twitter / X | [@UtkarshPriyad10](https://x.com/UtkarshPriyad10) |
 
-This project is open source and available under the MIT License.
+## License
 
-## 📞 Contact
-
-Feel free to reach out to me:
-- Email: utkarshpriyadarshi5026@gmail.com
-- GitHub: [utkarsh5026](https://github.com/utkarsh5026)
-- LinkedIn: [Utkarsh Priyadarshi](https://www.linkedin.com/in/utkarsh-priyadarshi-8b5a731b9/)
-- Twitter: [@UtkarshPriyad10](https://x.com/UtkarshPriyad10)
-
----
-
-Thank you for checking out my portfolio! I'm constantly working to improve it and add new features. If you have any suggestions or feedback, please don't hesitate to reach out. 😊
+MIT — open source and free to use.
