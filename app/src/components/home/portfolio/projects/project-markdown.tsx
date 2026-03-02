@@ -7,13 +7,30 @@ import { technologies } from "@/components/base/technologies";
 import type { TechName } from "@/components/base/technologies";
 import { MarkdownRender } from "@/components/home/editor/markdown-renderer";
 
-/** Convert a project name into a URL-friendly slug for the .md filename */
 function nameToSlug(name: string): string {
   return name
     .toLowerCase()
     .replace(/[^a-z0-9\s-]/g, "")
     .trim()
     .replace(/\s+/g, "-");
+}
+
+const COVER_GRADIENTS = [
+  "from-ctp-mauve/40 via-ctp-mantle to-ctp-base",
+  "from-ctp-blue/40 via-ctp-mantle to-ctp-base",
+  "from-ctp-green/40 via-ctp-mantle to-ctp-base",
+  "from-ctp-peach/40 via-ctp-mantle to-ctp-base",
+  "from-ctp-pink/40 via-ctp-mantle to-ctp-base",
+  "from-ctp-teal/40 via-ctp-mantle to-ctp-base",
+  "from-ctp-yellow/40 via-ctp-mantle to-ctp-base",
+  "from-ctp-red/40 via-ctp-mantle to-ctp-base",
+] as const;
+
+function pickGradient(name: string): string {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++)
+    hash = (hash * 31 + name.charCodeAt(i)) >>> 0;
+  return COVER_GRADIENTS[hash % COVER_GRADIENTS.length];
 }
 
 const TechChip: React.FC<{ tech: TechName }> = ({ tech }) => {
@@ -46,6 +63,72 @@ const SectionHeading: React.FC<{
   </div>
 );
 
+const CoverBand: React.FC<{ coverImage?: string; name: string }> = ({
+  coverImage,
+  name,
+}) => {
+  const gradient = pickGradient(name);
+
+  if (coverImage) {
+    return (
+      <div className="relative w-full h-44 overflow-hidden rounded-t-xl">
+        <img
+          src={coverImage}
+          alt={`${name} cover`}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Gradient overlay for legibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ctp-base/40 to-ctp-base/90" />
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className={cn(
+        "relative w-full h-36 rounded-t-xl bg-gradient-to-b",
+        gradient,
+      )}
+    >
+      {/* Subtle noise texture via repeating tiny radial */}
+      <div className="absolute inset-0 opacity-10 [background-image:radial-gradient(circle,_hsl(var(--ctp-overlay2))_1px,_transparent_1px)] [background-size:20px_20px]" />
+    </div>
+  );
+};
+
+const PageIcon: React.FC<{ icon?: string; name: string }> = ({
+  icon,
+  name,
+}) => {
+  const label = icon ?? name.charAt(0).toUpperCase();
+  const isEmoji = icon !== undefined;
+
+  return (
+    <div
+      className={cn(
+        "relative -mt-14 ml-6 flex items-center justify-center z-10",
+        "w-24 h-24 rounded-2xl shadow-md ring-[6px] ring-ctp-base",
+        "bg-ctp-base text-5xl select-none",
+        !isEmoji && "bg-ctp-surface0 text-ctp-mauve font-bold text-4xl",
+      )}
+    >
+      {label}
+    </div>
+  );
+};
+
+const LoadingSkeleton: React.FC = () => (
+  <div className="mt-8 space-y-3 animate-pulse px-6">
+    {[80, 60, 90, 50, 70].map((w, i) => (
+      <div
+        key={i}
+        className="h-3 rounded bg-ctp-surface1"
+        style={{ width: `${w}%` }}
+      />
+    ))}
+  </div>
+);
+
 type LoadState = "loading" | "loaded" | "error";
 
 interface ProjectMarkdownProps {
@@ -64,7 +147,6 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
     if (!project) return;
 
     const slug = nameToSlug(project.name);
-    console.log(slug);
     const url = `/data/projects/${slug}.md`;
 
     setLoadState("loading");
@@ -82,7 +164,6 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
       .catch(() => setLoadState("error"));
   }, [project]);
 
-  // ── Project not in store yet ─────────────────────────────────────────────
   if (!project) {
     return (
       <div className="flex items-center justify-center h-full text-ctp-overlay0 font-mono text-sm">
@@ -92,21 +173,22 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
   }
 
   return (
-    <article className="max-w-2xl mx-auto px-6 py-10 font-mono text-sm text-ctp-text leading-relaxed">
-      {/* ── Title block ───────────────────────────────────────────────────── */}
-      <div className="mb-2">
-        <h1 className="text-[22px] font-bold text-ctp-text leading-tight">
+    <article className="max-w-4xl mx-auto font-mono text-sm text-ctp-text leading-relaxed mt-4">
+      <CoverBand coverImage={project.coverImage} name={project.name} />
+      <PageIcon icon={project.icon} name={project.name} />
+
+      <div className="px-6 mt-6 mb-4">
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-ctp-text leading-tight">
           {project.name}
         </h1>
         {project.tagline && (
-          <p className="mt-1 text-ctp-blue italic text-sm">
-            &gt;&nbsp;{project.tagline}
+          <p className="mt-3 text-ctp-subtext0 text-lg md:text-xl font-medium leading-relaxed">
+            {project.tagline}
           </p>
         )}
       </div>
 
-      {/* action links */}
-      <div className="flex items-center gap-3 mt-4">
+      <div className="flex items-center gap-3 px-6 mt-3">
         {project.githubLink && project.githubLink !== "private-repository" && (
           <a
             href={project.githubLink}
@@ -134,35 +216,29 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
         )}
       </div>
 
-      {/* ── Tech stack (always from JSON) ─────────────────────────────────── */}
       {project.technologies.length > 0 && (
-        <>
+        <div className="px-6">
           <SectionHeading color="bg-ctp-yellow">Tech Stack</SectionHeading>
           <div className="flex flex-wrap gap-2">
             {project.technologies.map((tech) => (
               <TechChip key={tech} tech={tech as TechName} />
             ))}
           </div>
-        </>
-      )}
-
-      {/* ── Markdown body ─────────────────────────────────────────────────── */}
-      {loadState === "loading" && (
-        <div className="mt-8 space-y-3 animate-pulse">
-          {[80, 60, 90, 50, 70].map((w, i) => (
-            <div
-              key={i}
-              className="h-3 rounded bg-ctp-surface1"
-              style={{ width: `${w}%` }}
-            />
-          ))}
         </div>
       )}
+
+      {loadState === "loading" && <LoadingSkeleton />}
 
       {loadState === "loaded" && markdown && (
-        <div className="mt-8">
+        <div className="mt-8 px-6 pb-10">
           <MarkdownRender markdown={markdown} />
         </div>
+      )}
+
+      {loadState === "error" && (
+        <p className="px-6 mt-8 text-ctp-red text-xs font-mono">
+          ⚠ Could not load project notes.
+        </p>
       )}
     </article>
   );
