@@ -23,16 +23,16 @@ const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
 
   const sectionKeys = useMemo(
     () => Object.keys(sections) as SectionType[],
-    [sections]
+    [sections],
   );
 
   useEffect(
     () => setCurrentSection(activeSection),
-    [activeSection, setCurrentSection]
+    [activeSection, setCurrentSection],
   );
 
   return (
-    <div className="sticky top-0 bg-ctp-mantle border-b border-ctp-surface0 z-10">
+    <div className="sticky top-0 bg-ctp-mantle border-b border-ctp-surface0 z-10 w-full min-w-0">
       <div className="md:hidden">
         <MobileEditorDropdown
           sectionKeys={sectionKeys}
@@ -41,7 +41,7 @@ const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
         />
       </div>
 
-      <div className="hidden md:block">
+      <div className="hidden md:block w-full overflow-hidden">
         <DesktopTabs />
       </div>
     </div>

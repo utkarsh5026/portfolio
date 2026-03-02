@@ -11,28 +11,28 @@ import Terminal from "./terminal/Terminal";
 import useMobile from "@/hooks/use-mobile";
 
 const TerminalHeader = lazy(
-  () => import("@/components/home/portfolio/intro/personal-intro")
+  () => import("@/components/home/portfolio/intro/personal-intro"),
 );
 const AboutMe = lazy(
-  () => import("@/components/home/portfolio/about/about-me")
+  () => import("@/components/home/portfolio/about/about-me"),
 );
 const Skills = lazy(
-  () => import("@/components/home/portfolio/skills/skills-section")
+  () => import("@/components/home/portfolio/skills/skills-section"),
 );
 const Projects = lazy(
-  () => import("@/components/home/portfolio/projects/projects-section")
+  () => import("@/components/home/portfolio/projects/projects-section"),
 );
 const Experience = lazy(
-  () => import("@/components/home/portfolio/work/work-experience")
+  () => import("@/components/home/portfolio/work/work-experience"),
 );
 const ContactMe = lazy(
-  () => import("@/components/home/portfolio/contact/contact-me")
+  () => import("@/components/home/portfolio/contact/contact-me"),
 );
 const Learning = lazy(
-  () => import("@/components/home/portfolio/learning/learning-section")
+  () => import("@/components/home/portfolio/learning/learning-section"),
 );
 const Articles = lazy(
-  () => import("@/components/home/portfolio/articles/articles-section")
+  () => import("@/components/home/portfolio/articles/articles-section"),
 );
 
 /**
@@ -57,7 +57,7 @@ const CodeEditor: React.FC = () => {
       learning: <Learning />,
       articles: <Articles />,
     }),
-    []
+    [],
   );
 
   return (
@@ -66,7 +66,7 @@ const CodeEditor: React.FC = () => {
         <div className="flex h-screen w-screen max-w-screen overflow-hidden">
           {!isMobile && <SideBar />}
           {!isMobile && explorerOpen && <Explorer />}
-          <div className="flex-1 flex flex-col flex-grow">
+          <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
             <EditorTabs sections={sections} />
             <CodeContent sections={sections} />
             <StatusBar />
