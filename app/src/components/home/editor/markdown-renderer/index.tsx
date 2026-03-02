@@ -12,59 +12,65 @@ const markdownComponents: Components = {
   img: ({ src, alt }) => <MarkdownImage src={src} alt={alt} />,
 
   h1: ({ children }) => (
-    <h1 className="text-2xl md:text-3xl font-bold text-ctp-text tracking-tight mt-8 md:mt-10 mb-5 leading-snug">
+    <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mt-14 mb-8 leading-tight text-transparent bg-clip-text bg-gradient-to-br from-ctp-text via-ctp-text to-ctp-subtext0">
       {children}
     </h1>
   ),
   h2: ({ children }) => (
-    <div className="flex items-center gap-2 md:gap-3 mt-10 md:mt-12 mb-5">
-      <span className="w-1 h-5 rounded-full shrink-0 bg-ctp-mauve" />
-      <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-ctp-text">
+    <div className="group flex items-center gap-4 mt-14 mb-8">
+      <span className="w-1.5 h-8 rounded-full shrink-0 bg-gradient-to-b from-ctp-mauve to-ctp-blue shadow-lg shadow-ctp-mauve/20" />
+      <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-ctp-text transition-colors duration-300">
         {children}
       </h2>
-      <span className="flex-1 border-t border-ctp-surface1 ml-3" />
+      <span className="flex-1 border-t border-ctp-surface1/60 ml-4 hidden md:block" />
     </div>
   ),
   h3: ({ children }) => (
-    <h3 className="text-lg md:text-xl font-semibold text-ctp-text mt-8 mb-4 tracking-tight">
+    <h3 className="text-xl md:text-2xl font-bold text-ctp-text mt-10 mb-5 tracking-tight flex items-center gap-2 before:content-['#'] before:text-ctp-surface2 hover:before:text-ctp-mauve before:transition-colors before:duration-300">
       {children}
     </h3>
   ),
   h4: ({ children }) => (
-    <h4 className="text-base md:text-lg font-medium text-ctp-subtext0 mt-6 mb-3">
+    <h4 className="text-sm md:text-base font-bold text-ctp-mauve tracking-widest uppercase mt-8 mb-4">
       {children}
     </h4>
   ),
 
   // Paragraph
   p: ({ children }) => (
-    <p className="text-sm md:text-base text-ctp-subtext1 leading-7 mb-5">
+    <p className="text-base md:text-lg text-ctp-subtext0 leading-relaxed md:leading-loose mb-7 font-medium">
       {children}
     </p>
   ),
 
-  // Blockquote — styled as a callout / tagline
+  // Blockquote
   blockquote: ({ children }) => (
-    <blockquote className="border-l-4 border-ctp-blue pl-4 my-5 md:my-7 bg-ctp-surface0/30 py-3 pr-4 rounded-r-lg text-ctp-subtext1 italic text-sm md:text-base">
-      {children}
+    <blockquote className="relative flex border-l-[4px] border-ctp-mauve pl-6 my-10 bg-gradient-to-r from-ctp-surface0/50 to-transparent py-5 pr-6 rounded-r-2xl text-ctp-subtext0 italic text-lg shadow-sm">
+      <div className="relative z-10">{children}</div>
     </blockquote>
   ),
 
   // Horizontal rule
-  hr: () => <div className="border-t border-ctp-surface1 my-8 md:my-10" />,
+  hr: () => (
+    <div className="my-14 flex items-center justify-center gap-3 opacity-80">
+      <span className="w-16 h-[1px] bg-gradient-to-r from-transparent to-ctp-surface2" />
+      <span className="w-2 h-2 rounded-full bg-ctp-surface2" />
+      <span className="w-16 h-[1px] bg-gradient-to-l from-transparent to-ctp-surface2" />
+    </div>
+  ),
 
   // Lists
   ul: ({ children }) => (
-    <ul className="list-disc list-outside space-y-2 mb-5 ml-5 text-ctp-subtext1 text-sm md:text-base marker:text-ctp-mauve">
+    <ul className="list-disc list-outside space-y-3 mb-8 ml-8 text-ctp-subtext0 text-base md:text-lg font-medium marker:text-ctp-mauve">
       {children}
     </ul>
   ),
   ol: ({ children }) => (
-    <ol className="list-decimal list-outside space-y-2 mb-5 ml-5 text-ctp-subtext1 text-sm md:text-base marker:text-ctp-blue">
+    <ol className="list-decimal list-outside space-y-3 mb-8 ml-8 text-ctp-subtext0 text-base md:text-lg font-medium marker:text-ctp-blue marker:font-bold">
       {children}
     </ol>
   ),
-  li: ({ children }) => <li className="leading-7">{children}</li>,
+  li: ({ children }) => <li className="leading-relaxed pl-2">{children}</li>,
 
   // Intercept <pre> so react-markdown doesn't double-wrap the code block
   pre: ({ children }) => <>{children}</>,
@@ -82,7 +88,7 @@ const markdownComponents: Components = {
 
     return (
       <code
-        className="px-1.5 py-1 rounded-md bg-ctp-surface0/80 text-ctp-mauve/80 font-mono text-sm border border-none whitespace-pre-wrap break-words"
+        className="px-2 py-0.5 rounded-md bg-ctp-surface0/80 text-ctp-pink border border-ctp-surface0 font-mono text-[0.9em] whitespace-pre-wrap break-words font-semibold"
         {...rest}
       >
         {children}
@@ -91,30 +97,32 @@ const markdownComponents: Components = {
   },
 
   table: ({ children }) => (
-    <div className="my-4 md:my-6 w-full max-w-[85vw] md:max-w-none overflow-x-auto rounded-lg border border-ctp-surface1 shadow-sm scrollbar-thin">
-      <table className="w-full text-sm min-w-[max-content] md:min-w-full">
+    <div className="my-10 w-full max-w-[85vw] md:max-w-none overflow-x-auto rounded-xl border border-ctp-surface1 shadow-lg bg-ctp-mantle/50 scrollbar-thin">
+      <table className="w-full text-base min-w-[max-content] md:min-w-full border-collapse">
         {children}
       </table>
     </div>
   ),
   thead: ({ children }) => (
-    <thead className="bg-ctp-surface0 text-ctp-subtext1 uppercase text-[11px] font-semibold tracking-wider">
+    <thead className="bg-ctp-surface0 text-ctp-subtext0 uppercase text-xs font-bold tracking-wider">
       {children}
     </thead>
   ),
   tbody: ({ children }) => (
-    <tbody className="divide-y divide-ctp-surface1">{children}</tbody>
+    <tbody className="divide-y divide-ctp-surface1/60">{children}</tbody>
   ),
   tr: ({ children }) => (
-    <tr className="hover:bg-ctp-surface0/40 transition-colors">{children}</tr>
+    <tr className="hover:bg-ctp-surface0/40 transition-colors duration-200">
+      {children}
+    </tr>
   ),
   th: ({ children }) => (
-    <th className="px-3 md:px-4 py-2 md:py-3 text-left font-bold text-ctp-text whitespace-nowrap border-b border-ctp-surface1">
+    <th className="px-6 py-4 text-left font-bold text-ctp-text whitespace-nowrap border-b border-ctp-surface1/60">
       {children}
     </th>
   ),
   td: ({ children }) => (
-    <td className="px-3 md:px-4 py-2 md:py-3 text-ctp-subtext0 whitespace-nowrap md:whitespace-normal">
+    <td className="px-6 py-4 text-ctp-subtext0 whitespace-nowrap md:whitespace-normal font-medium leading-relaxed">
       {children}
     </td>
   ),
@@ -124,14 +132,15 @@ const markdownComponents: Components = {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-ctp-blue hover:text-ctp-sky font-medium underline underline-offset-4 decoration-ctp-blue/30 hover:decoration-ctp-sky transition-all"
+      className="relative text-ctp-blue hover:text-ctp-sky font-semibold transition-colors duration-300 group inline-flex items-center gap-1"
     >
-      {children}
+      <span>{children}</span>
+      <span className="absolute -bottom-0.5 left-0 w-full h-[2px] bg-ctp-sky/60 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full" />
     </a>
   ),
 
   strong: ({ children }) => (
-    <strong className="font-semibold text-ctp-text">{children}</strong>
+    <strong className="font-bold text-ctp-text px-0.5">{children}</strong>
   ),
   em: ({ children }) => (
     <em className="italic text-ctp-subtext1">{children}</em>

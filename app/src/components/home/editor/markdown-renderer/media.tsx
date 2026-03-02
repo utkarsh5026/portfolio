@@ -69,7 +69,7 @@ export const MarkdownImage: React.FC<{ src?: string; alt?: string }> = ({
         {!error && (
           <div
             className={cn(
-              "relative overflow-hidden rounded-xl border border-ctp-surface1",
+              "relative overflow-hidden rounded-xl border border-none",
               "shadow-lg shadow-black/30 cursor-zoom-in",
               "transition-all duration-300 group-hover:border-ctp-blue/50 group-hover:shadow-ctp-blue/10",
               !loaded ? "sr-only" : "animate-fadeIn [animation-duration:1.5s]",
