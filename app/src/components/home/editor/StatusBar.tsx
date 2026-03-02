@@ -13,6 +13,7 @@ import {
   FaHome,
   FaLaptopCode,
 } from "react-icons/fa";
+import { VscMarkdown } from "react-icons/vsc";
 
 // Type definitions for status bar configuration
 interface StatusConfig {
@@ -28,28 +29,15 @@ interface StatusConfig {
   branchColor: string;
 }
 
-/**
- * StatusBarComponent renders a dynamic status bar that changes based on the current section.
- *
- * Key Features:
- * - Dynamic content based on active section
- * - Mobile-optimized responsive design
- * - Section-specific file information
- * - Git branch simulation per section
- * - Clean, VS Code-inspired interface
- *
- * The component uses the editor context to determine the current section and displays
- * relevant file information, language types, and section-specific metadata.
- */
 const StatusBarComponent: React.FC = () => {
-  const { activeSection } = useEditorContext();
+  const { activeSection, activeProjectId, openTabs } = useEditorContext();
 
   // Configuration for each section's status bar appearance
   const sectionConfigs: Record<SectionType, StatusConfig> = useMemo(
     () => ({
       home: {
-        fileName: "home.tsx",
-        language: "TypeScript React",
+        fileName: "home.md",
+        language: "Markdown",
         encoding: "UTF-8",
         branch: "main",
         icon: <FaHome className="w-3 h-3" />,
@@ -72,8 +60,8 @@ const StatusBarComponent: React.FC = () => {
         branchColor: "text-ctp-blue",
       },
       skills: {
-        fileName: "skills.json",
-        language: "JSON",
+        fileName: "skills.md",
+        language: "Markdown",
         encoding: "UTF-8",
         branch: "feature/skills",
         icon: <FaStar className="w-3 h-3" />,
@@ -84,8 +72,8 @@ const StatusBarComponent: React.FC = () => {
         branchColor: "text-ctp-yellow",
       },
       projects: {
-        fileName: "projects.jsx",
-        language: "JavaScript React",
+        fileName: "projects.md",
+        language: "Markdown",
         encoding: "UTF-8",
         branch: "feature/projects",
         icon: <FaLaptopCode className="w-3 h-3" />,
@@ -96,8 +84,8 @@ const StatusBarComponent: React.FC = () => {
         branchColor: "text-ctp-green",
       },
       experience: {
-        fileName: "experience.log",
-        language: "Log File",
+        fileName: "experience.md",
+        language: "Markdown",
         encoding: "UTF-8",
         branch: "feature/experience",
         icon: <FaBriefcase className="w-3 h-3" />,
@@ -108,8 +96,8 @@ const StatusBarComponent: React.FC = () => {
         branchColor: "text-ctp-mauve",
       },
       contact: {
-        fileName: "contact.ts",
-        language: "TypeScript",
+        fileName: "contact.md",
+        language: "Markdown",
         encoding: "UTF-8",
         branch: "feature/contact",
         icon: <FaEnvelope className="w-3 h-3" />,
@@ -120,8 +108,8 @@ const StatusBarComponent: React.FC = () => {
         branchColor: "text-ctp-pink",
       },
       learning: {
-        fileName: "learning.tsx",
-        language: "TypeScript React",
+        fileName: "learning.md",
+        language: "Markdown",
         encoding: "UTF-8",
         branch: "feature/learning",
         icon: <FaGraduationCap className="w-3 h-3" />,
@@ -147,7 +135,28 @@ const StatusBarComponent: React.FC = () => {
     []
   );
 
-  const currentConfig = sectionConfigs[activeSection];
+  // Derive current config — project file takes precedence
+  const currentConfig: StatusConfig = useMemo(() => {
+    if (activeProjectId !== null) {
+      const tab = openTabs.find(
+        (t) => t.type === "project" && t.id === activeProjectId
+      );
+      const slug = tab?.fileName ?? `${activeProjectId}.md`;
+      return {
+        fileName: slug,
+        language: "Markdown",
+        encoding: "UTF-8",
+        branch: `projects/${slug.replace(".md", "")}`,
+        icon: <VscMarkdown className="w-3 h-3" />,
+        lineCount: "—",
+        fileSize: "—",
+        status: "Clean",
+        statusColor: "bg-ctp-green",
+        branchColor: "text-ctp-green",
+      };
+    }
+    return sectionConfigs[activeSection];
+  }, [activeProjectId, openTabs, activeSection, sectionConfigs]);
 
   return (
     <div className="bg-ctp-base border-t border-ctp-surface0 text-ctp-text text-xs flex items-center justify-between min-h-[28px] px-2 md:px-4 py-1">
@@ -169,7 +178,7 @@ const StatusBarComponent: React.FC = () => {
           </span>
         </div>
 
-        {/* Language - Truncated on mobile */}
+        {/* Language */}
         <div className="flex items-center gap-1 flex-shrink-0">
           <FaCode className="w-3 h-3 text-ctp-lavender" />
           <span className="text-ctp-subtext0 truncate">
@@ -204,7 +213,7 @@ const StatusBarComponent: React.FC = () => {
           </span>
         </div>
 
-        {/* Version - Hidden on mobile, shown on larger screens */}
+        {/* Version - Hidden on mobile */}
         <span className="hidden lg:inline text-ctp-subtext1 flex-shrink-0">
           v1.0.0
         </span>

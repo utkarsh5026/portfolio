@@ -28,25 +28,19 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 
   return (
     <Reveal effect="fade-up" duration={0.8}>
-      <div className="text-center mb-6 sm:mb-8 md:mb-12 lg:mb-16">
-        <div className="flex flex-col items-center justify-center gap-2 mb-3 sm:mb-4">
+      <div className="flex flex-col items-center text-center mb-6 sm:mb-8 md:mb-10">
+        <div className="flex flex-row items-center justify-center gap-2 sm:gap-2.5 mb-2 sm:mb-3">
           {HeaderIcon && (
-            <motion.div
-              className={`p-2 sm:p-2.5 md:p-3 rounded-xl sm:rounded-2xl bg-gradient-to-r from-${colorScheme.primary}/20 to-${colorScheme.secondary}/20 backdrop-blur-sm flex-shrink-0`}
-              whileHover={{ rotate: 5, scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <HeaderIcon
-                className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-${colorScheme.primary}`}
-              />
-            </motion.div>
+            <HeaderIcon
+              className={`w-5 h-5 sm:w-6 sm:h-6 text-${colorScheme.primary}`}
+            />
           )}
 
           <motion.h2
-            className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r ${colorScheme.gradient} bg-clip-text text-transparent text-center leading-tight`}
-            initial={{ opacity: 0, y: 20 }}
+            className={`text-xl sm:text-2xl md:text-3xl font-semibold bg-gradient-to-r ${colorScheme.gradient} bg-clip-text text-transparent`}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            transition={{ delay: 0.2, duration: 0.4 }}
           >
             {title}
           </motion.h2>
@@ -56,22 +50,14 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="flex flex-col items-center justify-center gap-1 mb-4 sm:mb-6 px-1"
+            transition={{ delay: 0.3, duration: 0.4 }}
+            className="px-4"
           >
-            <p className="text-ctp-subtext0 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto px-2 leading-relaxed text-center">
+            <p className="text-ctp-subtext1 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
               {description}
             </p>
           </motion.div>
         )}
-
-        {/* Animated decorative line */}
-        <motion.div
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className={`h-px bg-gradient-to-r from-transparent via-${colorScheme.primary}/50 to-transparent mx-auto w-24 sm:w-32 md:w-48 lg:w-64`}
-        />
       </div>
     </Reveal>
   );
