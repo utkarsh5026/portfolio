@@ -5,7 +5,6 @@ import {
   VscFolder,
   VscFolderOpened,
   VscChevronRight,
-  VscChevronDown,
 } from "react-icons/vsc";
 import { useEditorContext, SectionType } from "../context/explorer-context";
 import Logo from "@/components/home/appbar/Logo";
@@ -13,15 +12,11 @@ import OutlinePanel from "../outline/outline-panel";
 import useProjectStore from "@/store/projects/projects-store";
 import type { Project } from "@/types";
 
-// ─── helpers ────────────────────────────────────────────────────────────────
-
 const getProjectFileName = (name: string): string =>
   name
     .toLowerCase()
     .replace(/\s+/g, "-")
     .replace(/[^a-z0-9-]/g, "") + ".md";
-
-// ─── tree primitives ─────────────────────────────────────────────────────────
 
 interface TreeFileProps {
   name: string;
@@ -38,21 +33,23 @@ const TreeFile: React.FC<TreeFileProps> = ({
 }) => (
   <button
     onClick={onClick}
-    style={{ paddingLeft: `${12 + depth * 12}px` }}
+    style={{ paddingLeft: `${16 + depth * 12}px` }}
     className={cn(
-      "w-full text-left py-0.5 pr-2 text-sm flex items-center gap-1.5 rounded-sm transition-colors",
+      "w-full text-left py-[3px] pr-3 text-[13px] flex items-center gap-1.5 transition-colors duration-75 font-roboto-mono",
       isActive
-        ? "bg-ctp-surface1 text-ctp-text"
-        : "text-ctp-subtext0 hover:text-ctp-text hover:bg-ctp-surface0/60",
+        ? "bg-ctp-surface1/60 text-ctp-text border-l-2 border-ctp-mauve shadow-[inset_1px_0_0_rgba(203,166,247,0.3)] font-medium"
+        : "text-ctp-subtext0 hover:text-ctp-text hover:bg-ctp-surface0/40 border-l-2 border-transparent",
     )}
   >
     <VscMarkdown
       className={cn(
-        "w-3.5 h-3.5 flex-shrink-0",
-        isActive ? "text-ctp-blue" : "text-ctp-overlay0",
+        "w-[15px] h-[15px] flex-shrink-0 transition-colors duration-75",
+        isActive
+          ? "text-ctp-blue drop-shadow-sm"
+          : "text-ctp-overlay0 group-hover:text-ctp-overlay1",
       )}
     />
-    <span className="truncate font-mono text-xs">{name}</span>
+    <span className="truncate tracking-tight leading-none">{name}</span>
   </button>
 );
 
@@ -71,29 +68,32 @@ const TreeFolder: React.FC<TreeFolderProps> = ({
   onToggle,
   children,
 }) => (
-  <div>
+  <div className="mb-0">
     <button
       onClick={onToggle}
-      style={{ paddingLeft: `${depth * 12}px` }}
-      className="w-full text-left py-0.5 pr-2 text-sm flex items-center gap-1 rounded-sm text-ctp-subtext1 hover:text-ctp-text hover:bg-ctp-surface0/60 transition-colors"
+      style={{ paddingLeft: `${4 + depth * 12}px` }}
+      className="group w-full text-left py-[3px] pr-3 text-[13px] flex items-center gap-1 text-ctp-subtext1 hover:text-ctp-text hover:bg-ctp-surface0/40 transition-colors duration-75 border-l-2 border-transparent font-source"
     >
+      <VscChevronRight
+        className={cn(
+          "w-[15px] h-[15px] flex-shrink-0 transition-transform duration-75",
+          isOpen
+            ? "rotate-90 text-ctp-overlay1"
+            : "text-ctp-overlay0 group-hover:text-ctp-overlay1",
+        )}
+      />
       {isOpen ? (
-        <VscChevronDown className="w-3.5 h-3.5 flex-shrink-0 text-ctp-overlay1" />
+        <VscFolderOpened className="w-[15px] h-[15px] flex-shrink-0 text-ctp-yellow ml-0.5 transition-colors duration-75" />
       ) : (
-        <VscChevronRight className="w-3.5 h-3.5 flex-shrink-0 text-ctp-overlay1" />
+        <VscFolder className="w-[15px] h-[15px] flex-shrink-0 text-ctp-yellow/80 group-hover:text-ctp-yellow ml-0.5 transition-colors duration-75" />
       )}
-      {isOpen ? (
-        <VscFolderOpened className="w-3.5 h-3.5 flex-shrink-0 text-ctp-yellow" />
-      ) : (
-        <VscFolder className="w-3.5 h-3.5 flex-shrink-0 text-ctp-yellow" />
-      )}
-      <span className="font-mono text-xs">{name}</span>
+      <span className="font-medium tracking-tight ml-1 leading-none">
+        {name}
+      </span>
     </button>
-    {isOpen && <div>{children}</div>}
+    {isOpen && <div className="mt-0">{children}</div>}
   </div>
 );
-
-// ─── main explorer ────────────────────────────────────────────────────────────
 
 const Explorer: React.FC = () => {
   const {
@@ -114,8 +114,6 @@ const Explorer: React.FC = () => {
     fetchProjects();
   }, [fetchProjects]);
 
-  const sectionFiles = files.filter((f) => f.section !== "projects");
-
   const handleProjectClick = (project: Project) => {
     openProject(project);
   };
@@ -123,29 +121,32 @@ const Explorer: React.FC = () => {
   return (
     <div
       className={cn(
-        "editor-explorer w-56 bg-ctp-crust border-r border-ctp-surface1 py-4 overflow-y-auto z-40 h-screen max-h-screen flex flex-col",
-        mobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
+        "editor-explorer w-64 bg-ctp-crust/95 shadow-[8px_0_30px_rgba(0,0,0,0.25)] border-r border-ctp-surface1/50 py-3 overflow-y-auto z-40 h-screen max-h-screen flex flex-col backdrop-blur-xl transition-transform duration-300",
+        mobileMenuOpen
+          ? "translate-x-0"
+          : "-translate-x-full lg:translate-x-0 ",
       )}
     >
       {/* Logo */}
-      <div className="px-4 text-ctp-text text-sm mb-3">
+      <div className="px-4 text-ctp-text text-sm mb-4 drop-shadow-sm">
         <Logo />
       </div>
 
       {/* Section label */}
-      <div className="text-ctp-subtext0 text-[10px] font-semibold uppercase tracking-widest px-4 pb-1">
-        Explorer
+      <div className="flex items-center px-4 pb-1 mb-0">
+        <div className="text-[11px] font-bold uppercase tracking-widest text-ctp-subtext0">
+          Explorer
+        </div>
       </div>
 
       {/* File tree */}
-      <div className="flex-1 overflow-y-auto px-2 space-y-0.5">
+      <div className="flex-1 overflow-y-auto px-0 pb-4 space-y-0 scrollbar-thin scrollbar-thumb-ctp-surface1 hover:scrollbar-thumb-ctp-surface2 scrollbar-track-transparent mt-1">
         <TreeFolder
           name="portfolio"
           isOpen={rootOpen}
           onToggle={() => setRootOpen((o) => !o)}
         >
-          {/* Section .md files */}
-          {sectionFiles.map((file) => (
+          {files.map((file) => (
             <TreeFile
               key={file.section}
               name={file.name}
@@ -166,8 +167,8 @@ const Explorer: React.FC = () => {
           >
             {isLoading && (
               <p
-                style={{ paddingLeft: "36px" }}
-                className="text-[10px] text-ctp-overlay0 py-1 font-mono"
+                style={{ paddingLeft: "46px" }}
+                className="text-[11px] text-ctp-overlay0 py-1.5 font-mono animate-pulse"
               >
                 loading…
               </p>
@@ -186,7 +187,7 @@ const Explorer: React.FC = () => {
       </div>
 
       {/* Outline panel */}
-      <div className="mt-2 border-t border-ctp-surface1 pt-2">
+      <div className="mt-2 border-t border-ctp-surface1/60 pt-2 px-0">
         <OutlinePanel />
       </div>
     </div>
