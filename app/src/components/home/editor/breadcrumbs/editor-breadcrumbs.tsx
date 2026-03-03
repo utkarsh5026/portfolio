@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { VscMarkdown, VscChevronRight, VscChevronDown } from "react-icons/vsc";
+import { VscChevronRight, VscChevronDown } from "react-icons/vsc";
 import { FaFolder, FaFolderOpen } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 import {
@@ -22,16 +22,7 @@ import {
 } from "../context/editor-store";
 import { sectionIconMap, getIconColor } from "../tabs/tab-style";
 import useProjectStore from "@/store/projects/projects-store";
-
-type DropdownItem =
-  | { kind: "section"; section: SectionType; fileName: string }
-  | {
-      kind: "project";
-      projectId: string;
-      projectName: string;
-      fileName: string;
-    }
-  | { kind: "folder"; label: string; color: string };
+import { TreeFile, TreeFolder } from "../shared/editor-tree";
 
 interface BreadcrumbSegment {
   label: string;
@@ -39,7 +30,6 @@ interface BreadcrumbSegment {
   iconColor: string;
   isActive: boolean;
   isFolder: boolean;
-  dropdownItems?: DropdownItem[];
 }
 
 const FolderIcon: React.FC<{ isOpen: boolean }> = ({ isOpen }) =>
@@ -50,25 +40,30 @@ interface DropdownRect {
   left: number;
 }
 
-interface DropdownProps {
+interface TreeDropdownProps {
   anchor: DropdownRect;
-  items: DropdownItem[];
-  openTabIds: Set<string>;
+  activeSection: SectionType;
+  activeProjectId: string | null;
+  variant: "portfolio" | "projects";
   onSelectSection: (section: SectionType) => void;
   onSelectProject: (projectId: string) => void;
   onClose: () => void;
 }
 
-const BreadcrumbDropdown: React.FC<DropdownProps> = ({
+const BreadcrumbTreeDropdown: React.FC<TreeDropdownProps> = ({
   anchor,
-  items,
-  openTabIds,
+  activeSection,
+  activeProjectId,
+  variant,
   onSelectSection,
   onSelectProject,
   onClose,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [projectsOpen, setProjectsOpen] = useState(true);
+  const projects = useProjectStore((s) => s.projects);
 
+  // Close on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) onClose();
@@ -85,6 +80,23 @@ const BreadcrumbDropdown: React.FC<DropdownProps> = ({
     return () => document.removeEventListener("keydown", handler);
   }, [onClose]);
 
+  const projectFiles = (
+    <>
+      {projects.map((p) => (
+        <TreeFile
+          key={p.name}
+          name={getProjectFileName(p.name)}
+          depth={variant === "projects" ? 1 : 2}
+          isActive={activeProjectId === p.name}
+          onClick={() => {
+            onSelectProject(p.name);
+            onClose();
+          }}
+        />
+      ))}
+    </>
+  );
+
   const panel = (
     <motion.div
       ref={ref}
@@ -98,76 +110,43 @@ const BreadcrumbDropdown: React.FC<DropdownProps> = ({
         left: anchor.left,
         zIndex: 9999,
       }}
-      className="min-w-[200px] max-w-[280px] rounded-md border border-none bg-ctp-mantle shadow-2xl shadow-black/60 py-1 overflow-hidden"
+      className="min-w-[220px] max-w-[300px] rounded-md bg-ctp-mantle border border-ctp-surface0/60 shadow-2xl shadow-black/60 py-1.5 overflow-hidden"
     >
-      {items.map((item, i) => {
-        if (item.kind === "folder") {
-          return (
-            <div
-              key={`folder-${i}`}
-              className="flex items-center gap-2 px-3 py-1.5 text-xs font-source text-ctp-subtext0 cursor-default select-none border-b border-ctp-surface0/50"
-            >
-              <FaFolder
-                className={cn("text-[11px] flex-shrink-0", item.color)}
-              />
-              <span>{item.label}/</span>
-            </div>
-          );
-        }
-
-        if (item.kind === "section") {
-          const isOpen = openTabIds.has(item.section);
-          return (
-            <button
-              key={item.section}
+      {variant === "portfolio" ? (
+        /* Full portfolio tree */
+        <TreeFolder
+          name="portfolio"
+          isOpen={true}
+          depth={0}
+          onToggle={() => {}}
+        >
+          {editorFiles.map((f) => (
+            <TreeFile
+              key={f.section}
+              name={f.name}
+              depth={1}
+              isActive={activeProjectId === null && activeSection === f.section}
               onClick={() => {
-                onSelectSection(item.section);
+                onSelectSection(f.section);
                 onClose();
               }}
-              className="w-full flex items-center gap-2.5 px-3 py-1.5 text-xs font-source text-left transition-colors hover:bg-ctp-surface0"
-            >
-              <span
-                className={cn(
-                  "flex-shrink-0 text-[11px]",
-                  getIconColor(item.section),
-                )}
-              >
-                {sectionIconMap[item.section]}
-              </span>
-              <span className="flex-1 truncate text-ctp-text">
-                {item.fileName}
-              </span>
-              {isOpen && (
-                <span className="w-1.5 h-1.5 rounded-full bg-ctp-blue flex-shrink-0" />
-              )}
-            </button>
-          );
-        }
-
-        if (item.kind === "project") {
-          const isOpen = openTabIds.has(item.projectId);
-          return (
-            <button
-              key={item.projectId}
-              onClick={() => {
-                onSelectProject(item.projectId);
-                onClose();
-              }}
-              className="w-full flex items-center gap-2.5 px-3 py-1.5 text-xs font-source text-left transition-colors hover:bg-ctp-surface0"
-            >
-              <VscMarkdown className="w-3.5 h-3.5 text-ctp-blue flex-shrink-0" />
-              <span className="flex-1 truncate text-ctp-text">
-                {item.fileName}
-              </span>
-              {isOpen && (
-                <span className="w-1.5 h-1.5 rounded-full bg-ctp-green flex-shrink-0" />
-              )}
-            </button>
-          );
-        }
-
-        return null;
-      })}
+            />
+          ))}
+          <TreeFolder
+            name="projects"
+            isOpen={projectsOpen}
+            depth={1}
+            onToggle={() => setProjectsOpen((v) => !v)}
+          >
+            {projectFiles}
+          </TreeFolder>
+        </TreeFolder>
+      ) : (
+        /* Projects-only tree */
+        <TreeFolder name="projects" isOpen={true} depth={0} onToggle={() => {}}>
+          {projectFiles}
+        </TreeFolder>
+      )}
     </motion.div>
   );
 
@@ -176,14 +155,20 @@ const BreadcrumbDropdown: React.FC<DropdownProps> = ({
 
 interface SegmentProps {
   seg: BreadcrumbSegment;
-  openTabIds: Set<string>;
+  activeSection: SectionType;
+  activeProjectId: string | null;
+  canOpenTree: boolean;
+  treeVariant: "portfolio" | "projects";
   onSelectSection: (section: SectionType) => void;
   onSelectProject: (projectId: string) => void;
 }
 
 const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
   seg,
-  openTabIds,
+  activeSection,
+  activeProjectId,
+  canOpenTree,
+  treeVariant,
   onSelectSection,
   onSelectProject,
 }) => {
@@ -191,11 +176,10 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
   const btnRef = useRef<HTMLButtonElement>(null);
   const [rect, setRect] = useState<DropdownRect>({ top: 0, left: 0 });
 
-  const canOpen = !seg.isActive && !!seg.dropdownItems?.length;
   const close = useCallback(() => setOpen(false), []);
 
   const handleClick = () => {
-    if (!canOpen || !btnRef.current) return;
+    if (!canOpenTree || !btnRef.current) return;
     const r = btnRef.current.getBoundingClientRect();
     setRect({ top: r.bottom + 4, left: r.left });
     setOpen((v) => !v);
@@ -214,7 +198,7 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
       >
         {seg.label}
       </span>
-      {canOpen && (
+      {canOpenTree && (
         <VscChevronDown
           className={cn(
             "w-3 h-3 flex-shrink-0 text-ctp-overlay0/70 transition-transform duration-150",
@@ -225,7 +209,7 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
     </>
   );
 
-  if (!canOpen) {
+  if (!canOpenTree) {
     return (
       <span
         className={cn(
@@ -256,10 +240,11 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
 
       <AnimatePresence>
         {open && (
-          <BreadcrumbDropdown
+          <BreadcrumbTreeDropdown
             anchor={rect}
-            items={seg.dropdownItems!}
-            openTabIds={openTabIds}
+            activeSection={activeSection}
+            activeProjectId={activeProjectId}
+            variant={treeVariant}
             onSelectSection={onSelectSection}
             onSelectProject={onSelectProject}
             onClose={close}
@@ -271,33 +256,18 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
 };
 
 export const EditorBreadcrumbs: React.FC = () => {
-  const { activeTabId, openTabs, setActiveSection, openProject } =
-    useEditorContext();
+  const {
+    activeTabId,
+    openTabs,
+    setActiveSection,
+    openProject,
+    activeSection,
+    activeProjectId,
+  } = useEditorContext();
   const projects = useProjectStore((s) => s.projects);
 
   const activeTab: Tab | null =
     openTabs.find((t) => t.id === activeTabId) ?? null;
-
-  const openTabIds = new Set(openTabs.map((t) => t.id));
-
-  const sectionItems: DropdownItem[] = editorFiles.map((f) => ({
-    kind: "section",
-    section: f.section,
-    fileName: f.name,
-  }));
-
-  const projectItems: DropdownItem[] = projects.map((p) => ({
-    kind: "project",
-    projectId: p.name,
-    projectName: p.name,
-    fileName: getProjectFileName(p.name),
-  }));
-
-  const rootItems: DropdownItem[] = [
-    { kind: "folder", label: "src", color: "text-ctp-peach" },
-    ...sectionItems,
-    { kind: "folder", label: "projects", color: "text-ctp-green" },
-  ];
 
   const segments: BreadcrumbSegment[] = React.useMemo(() => {
     if (!activeTab) return [];
@@ -308,21 +278,12 @@ export const EditorBreadcrumbs: React.FC = () => {
       iconColor: "text-ctp-yellow",
       isActive: false,
       isFolder: true,
-      dropdownItems: rootItems,
     };
 
     if (activeTab.type === "section") {
       const sectionId = (activeTab as SectionTab).id as SectionType;
       return [
         root,
-        {
-          label: "src",
-          icon: null,
-          iconColor: "text-ctp-peach",
-          isActive: false,
-          isFolder: true,
-          dropdownItems: sectionItems,
-        },
         {
           label: activeTab.fileName,
           icon: sectionIconMap[sectionId],
@@ -342,11 +303,10 @@ export const EditorBreadcrumbs: React.FC = () => {
           iconColor: "text-ctp-green",
           isActive: false,
           isFolder: true,
-          dropdownItems: projectItems,
         },
         {
           label: activeTab.fileName,
-          icon: <VscMarkdown />,
+          icon: null,
           iconColor: "text-ctp-blue",
           isActive: true,
           isFolder: false,
@@ -389,7 +349,12 @@ export const EditorBreadcrumbs: React.FC = () => {
               )}
               <BreadcrumbSegmentItem
                 seg={seg}
-                openTabIds={openTabIds}
+                activeSection={activeSection}
+                activeProjectId={activeProjectId}
+                canOpenTree={seg.isFolder}
+                treeVariant={
+                  seg.label === "projects" ? "projects" : "portfolio"
+                }
                 onSelectSection={handleSelectSection}
                 onSelectProject={handleSelectProject}
               />
