@@ -1,75 +1,76 @@
-import { createContext, useContext } from "react";
+/**
+ * explorer-context.ts
+ *
+ * Backward-compat shim — all types and store logic now live in editor-store.ts.
+ * Consumers that import from this file need zero changes.
+ */
+
+import { useLocation, useNavigate } from "react-router-dom";
 import type { Project } from "@/types";
+import {
+  useEditorStore,
+  editorFiles,
+  selectActiveSection,
+  selectActiveProjectId,
+  type SectionType,
+  type Tab,
+} from "./editor-store";
 
-export const sections = [
-  "home",
-  "about",
-  "skills",
-  "projects",
-  "experience",
-  "contact",
-  "learning",
-  "articles",
-] as const;
+// Re-export types for consumers that import them from here
+export {
+  sections,
+  type SectionType,
+  type SectionTab,
+  type ProjectTab,
+  type Tab,
+  type OpenProjectTab,
+} from "./editor-store";
 
-export type SectionType = (typeof sections)[number];
-
-// Unified tab types
-export type SectionTab = {
-  type: "section";
-  id: SectionType;
-  fileName: string;
-};
-
-export type ProjectTab = {
-  type: "project";
-  id: string; // project.name (unique key)
-  fileName: string; // e.g. "stash-it.md"
-  project: Project;
-};
-
-export type Tab = SectionTab | ProjectTab;
-
-// Kept for backward compat
-export type OpenProjectTab = {
-  projectId: string;
-  fileName: string;
-  project: Project;
-};
-
-interface UseEditorReturnType {
-  // Unified tab system
-  openTabs: Tab[];
-  activeTabId: string;
-  openTab: (tab: Tab) => void;
-  closeTab: (id: string) => void;
-
-  // Derived (backward compat — other components stay unchanged)
-  activeSection: SectionType;
-  activeProjectId: string | null;
-  setActiveSection: (section: SectionType) => void;
-  openProject: (project: Project) => void;
-  closeProject: (projectId: string) => void;
-  setActiveProjectId: (id: string | null) => void;
-
-  // Other editor state
-  mobileMenuOpen: boolean;
-  setMobileMenuOpen: (open: boolean) => void;
-  explorerOpen: boolean;
-  setExplorerOpen: (open: boolean) => void;
-  terminalOpen: boolean;
-  setTerminalOpen: (open: boolean) => void;
-  files: { name: string; section: SectionType }[];
-}
-
-export const EditorContext = createContext<UseEditorReturnType | undefined>(
-  undefined
-);
+// ── useEditorContext — identical return shape as before ───────────────────────
 
 export function useEditorContext() {
-  const context = useContext(EditorContext);
-  if (context === undefined) {
-    throw new Error("useEditorContext must be used within an EditorProvider");
-  }
-  return context;
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const openTabs = useEditorStore((s) => s.openTabs);
+  const activeTabId = useEditorStore((s) => s.activeTabId);
+  const mobileMenuOpen = useEditorStore((s) => s.mobileMenuOpen);
+  const explorerOpen = useEditorStore((s) => s.explorerOpen);
+  const terminalOpen = useEditorStore((s) => s.terminalOpen);
+  const activeSection = useEditorStore(selectActiveSection);
+  const activeProjectId = useEditorStore(selectActiveProjectId);
+
+  const _openTab = useEditorStore((s) => s.openTab);
+  const _closeTab = useEditorStore((s) => s.closeTab);
+  const _setActiveSection = useEditorStore((s) => s.setActiveSection);
+  const _openProject = useEditorStore((s) => s.openProject);
+  const _closeProject = useEditorStore((s) => s.closeProject);
+  const setActiveProjectId = useEditorStore((s) => s.setActiveProjectId);
+  const setMobileMenuOpen = useEditorStore((s) => s.setMobileMenuOpen);
+  const setExplorerOpen = useEditorStore((s) => s.setExplorerOpen);
+  const setTerminalOpen = useEditorStore((s) => s.setTerminalOpen);
+
+  return {
+    openTabs,
+    activeTabId,
+    openTab: (tab: Tab) => _openTab(tab, navigate, location.pathname),
+    closeTab: (id: string) => _closeTab(id, navigate),
+
+    activeSection,
+    activeProjectId,
+    setActiveSection: (section: SectionType) =>
+      _setActiveSection(section, navigate, location.pathname),
+    openProject: (project: Project) =>
+      _openProject(project, navigate, location.pathname),
+    closeProject: (projectId: string) => _closeProject(projectId, navigate),
+    setActiveProjectId,
+
+    mobileMenuOpen,
+    setMobileMenuOpen,
+    explorerOpen,
+    setExplorerOpen,
+    terminalOpen,
+    setTerminalOpen,
+    files: editorFiles,
+  };
 }
