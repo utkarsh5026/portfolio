@@ -1,8 +1,7 @@
 import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 import type { NavigateFunction } from "react-router-dom";
 import type { Project } from "@/types";
-
-// ── Types (single source of truth) ───────────────────────────────────────────
 
 export const sections = [
   "home",
@@ -39,8 +38,6 @@ export type OpenProjectTab = {
   project: Project;
 };
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
-
 export const getProjectFileName = (name: string): string =>
   name
     .toLowerCase()
@@ -55,8 +52,6 @@ export const getSectionFromPath = (pathname: string): SectionType => {
   return sections.includes(s as SectionType) ? (s as SectionType) : "home";
 };
 
-// ── Static data ───────────────────────────────────────────────────────────────
-
 export const editorFiles: { name: string; section: SectionType }[] = [
   { name: "home.md", section: "home" },
   { name: "about.md", section: "about" },
@@ -67,8 +62,6 @@ export const editorFiles: { name: string; section: SectionType }[] = [
   { name: "learning.md", section: "learning" },
   { name: "articles.md", section: "articles" },
 ];
-
-// ── Store interface ───────────────────────────────────────────────────────────
 
 export interface EditorState {
   openTabs: Tab[];
@@ -84,7 +77,6 @@ export interface EditorActions {
   /** Call on location.pathname change to keep URL ↔ tabs in sync. */
   syncRoute: (pathname: string) => void;
 
-  // ── Backward-compat helpers ───────────────────────────────────────────────
   setActiveSection: (
     section: SectionType,
     navigate: NavigateFunction,
@@ -98,7 +90,6 @@ export interface EditorActions {
   closeProject: (projectId: string, navigate: NavigateFunction) => void;
   setActiveProjectId: (id: string | null) => void;
 
-  // ── UI toggles ────────────────────────────────────────────────────────────
   setMobileMenuOpen: (open: boolean) => void;
   setExplorerOpen: (open: boolean) => void;
   setTerminalOpen: (open: boolean) => void;
@@ -106,118 +97,147 @@ export interface EditorActions {
 
 export type EditorStore = EditorState & EditorActions;
 
-// ── Initial state ─────────────────────────────────────────────────────────────
-
 const initialSection: SectionType =
   typeof window !== "undefined"
     ? getSectionFromPath(window.location.pathname)
     : "home";
 
-// ── Store ─────────────────────────────────────────────────────────────────────
+export const useEditorStore = create<EditorStore>()(
+  persist(
+    (set, get) => ({
+      openTabs: [
+        {
+          type: "section",
+          id: initialSection,
+          fileName: `${initialSection}.md`,
+        },
+      ],
+      activeTabId: initialSection,
+      mobileMenuOpen: false,
+      explorerOpen: true,
+      terminalOpen: false,
 
-export const useEditorStore = create<EditorStore>((set, get) => ({
-  // ── Initial state ─────────────────────────────────────────────────────────
-  openTabs: [
-    {
-      type: "section",
-      id: initialSection,
-      fileName: `${initialSection}.md`,
-    },
-  ],
-  activeTabId: initialSection,
-  mobileMenuOpen: false,
-  explorerOpen: true,
-  terminalOpen: false,
-
-  // ── Tab actions ───────────────────────────────────────────────────────────
-
-  openTab: (tab, navigate, currentPath) => {
-    set((state) => ({
-      openTabs: state.openTabs.some((t) => t.id === tab.id)
-        ? state.openTabs
-        : [...state.openTabs, tab],
-      activeTabId: tab.id,
-    }));
-    if (tab.type === "section") {
-      const path = getSectionPath(tab.id);
-      if (currentPath !== path) navigate(path, { replace: false });
-    }
-  },
-
-  closeTab: (id, navigate) => {
-    set((state) => {
-      const idx = state.openTabs.findIndex((t) => t.id === id);
-      if (idx === -1) return state;
-
-      const next = state.openTabs.filter((t) => t.id !== id);
-      let nextActiveId = state.activeTabId;
-
-      if (state.activeTabId === id) {
-        const nextTab = next[idx] ?? next[idx - 1] ?? next[0] ?? null;
-        if (nextTab) {
-          nextActiveId = nextTab.id;
-          if (nextTab.type === "section") {
-            navigate(getSectionPath(nextTab.id), { replace: false });
-          }
+      openTab: (tab, navigate, currentPath) => {
+        set((state) => ({
+          openTabs: state.openTabs.some((t) => t.id === tab.id)
+            ? state.openTabs
+            : [...state.openTabs, tab],
+          activeTabId: tab.id,
+        }));
+        if (tab.type === "section") {
+          const path = getSectionPath(tab.id);
+          if (currentPath !== path) navigate(path, { replace: false });
         }
-      }
+      },
 
-      return { openTabs: next, activeTabId: nextActiveId };
-    });
-  },
+      closeTab: (id, navigate) => {
+        set((state) => {
+          const idx = state.openTabs.findIndex((t) => t.id === id);
+          if (idx === -1) return state;
 
-  syncRoute: (pathname) => {
-    const section = getSectionFromPath(pathname);
-    set((state) => ({
-      openTabs: state.openTabs.some((t) => t.id === section)
-        ? state.openTabs
-        : [
-            ...state.openTabs,
-            {
-              type: "section" as const,
-              id: section,
-              fileName: `${section}.md`,
-            },
-          ],
-      activeTabId: section,
-    }));
-  },
+          const next = state.openTabs.filter((t) => t.id !== id);
+          let nextActiveId = state.activeTabId;
 
-  // ── Backward-compat helpers ───────────────────────────────────────────────
+          if (state.activeTabId === id) {
+            const nextTab = next[idx] ?? next[idx - 1] ?? next[0] ?? null;
+            if (nextTab) {
+              nextActiveId = nextTab.id;
+              if (nextTab.type === "section") {
+                navigate(getSectionPath(nextTab.id), { replace: false });
+              }
+            }
+          }
 
-  setActiveSection: (section, navigate, currentPath) => {
-    get().openTab(
-      { type: "section", id: section, fileName: `${section}.md` },
-      navigate,
-      currentPath,
-    );
-  },
+          return { openTabs: next, activeTabId: nextActiveId };
+        });
+      },
 
-  openProject: (project, navigate, currentPath) => {
-    const fileName = getProjectFileName(project.name);
-    get().openTab(
-      { type: "project", id: project.name, fileName, project },
-      navigate,
-      currentPath,
-    );
-  },
+      syncRoute: (pathname) => {
+        const section = getSectionFromPath(pathname);
+        set((state) => ({
+          openTabs: state.openTabs.some((t) => t.id === section)
+            ? state.openTabs
+            : [
+                ...state.openTabs,
+                {
+                  type: "section" as const,
+                  id: section,
+                  fileName: `${section}.md`,
+                },
+              ],
+          activeTabId: section,
+        }));
+      },
 
-  closeProject: (projectId, navigate) => {
-    get().closeTab(projectId, navigate);
-  },
+      setActiveSection: (section, navigate, currentPath) => {
+        get().openTab(
+          { type: "section", id: section, fileName: `${section}.md` },
+          navigate,
+          currentPath,
+        );
+      },
 
-  setActiveProjectId: (id) => {
-    if (id !== null) set({ activeTabId: id });
-  },
+      openProject: (project, navigate, currentPath) => {
+        const fileName = getProjectFileName(project.name);
+        get().openTab(
+          { type: "project", id: project.name, fileName, project },
+          navigate,
+          currentPath,
+        );
+      },
 
-  // ── UI toggles ────────────────────────────────────────────────────────────
+      closeProject: (projectId, navigate) => {
+        get().closeTab(projectId, navigate);
+      },
 
-  setMobileMenuOpen: (open) => set({ mobileMenuOpen: open }),
-  setExplorerOpen: (open) => set({ explorerOpen: open }),
-  setTerminalOpen: (open) => set({ terminalOpen: open }),
-}));
+      setActiveProjectId: (id) => {
+        if (id !== null) set({ activeTabId: id });
+      },
 
-// ── Derived selectors ─────────────────────────────────────────────────────────
+      setMobileMenuOpen: (open) => set({ mobileMenuOpen: open }),
+      setExplorerOpen: (open) => set({ explorerOpen: open }),
+      setTerminalOpen: (open) => set({ terminalOpen: open }),
+    }),
+    {
+      name: "portfolio-editor-v1", // localStorage key
+      storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({
+        openTabs: state.openTabs,
+        activeTabId: state.activeTabId,
+        explorerOpen: state.explorerOpen,
+        terminalOpen: state.terminalOpen,
+      }),
+      merge: (persistedState, currentState) => {
+        const persisted = persistedState as Partial<EditorStore>;
+        const validTabs = Array.isArray(persisted.openTabs)
+          ? persisted.openTabs.filter(
+              (t) =>
+                t &&
+                typeof t === "object" &&
+                "id" in t &&
+                "type" in t &&
+                "fileName" in t,
+            )
+          : null;
+
+        return {
+          ...currentState,
+          ...(validTabs && validTabs.length > 0
+            ? {
+                openTabs: validTabs,
+                activeTabId:
+                  persisted.activeTabId ??
+                  validTabs[0]?.id ??
+                  currentState.activeTabId,
+              }
+            : {}),
+          explorerOpen: persisted.explorerOpen ?? currentState.explorerOpen,
+          terminalOpen: persisted.terminalOpen ?? currentState.terminalOpen,
+        };
+      },
+    },
+  ),
+);
 
 export const selectActiveTab = (state: EditorStore): Tab | null =>
   state.openTabs.find((t) => t.id === state.activeTabId) ?? null;
