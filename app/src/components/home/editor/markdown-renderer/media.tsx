@@ -37,7 +37,7 @@ export const MarkdownImage: React.FC<{ src?: string; alt?: string }> = ({
       {/* Lightbox overlay */}
       {lightbox && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-transparent backdrop-blur-sm"
           onClick={() => setLightbox(false)}
         >
           <button
@@ -69,8 +69,8 @@ export const MarkdownImage: React.FC<{ src?: string; alt?: string }> = ({
         {!error && (
           <div
             className={cn(
-              "flex justify-center rounded-xl border border-none",
-              "shadow-lg shadow-black/30 cursor-zoom-in bg-ctp-surface0/30",
+              "flex justify-center rounded-xl border border-none p-2",
+              "shadow-lg shadow-black/30 cursor-zoom-in bg-transparent",
               !loaded ? "sr-only" : "animate-fadeIn [animation-duration:1.5s]",
             )}
             onClick={() => setLightbox(true)}
