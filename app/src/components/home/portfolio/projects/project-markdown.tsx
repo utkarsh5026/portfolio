@@ -114,52 +114,7 @@ const LoadingSkeleton: React.FC = () => (
 
 const FeatureCard: React.FC<{ feature: string; index: number }> = ({
   feature,
-  index,
 }) => {
-  const accentColors = [
-    {
-      bg: "bg-ctp-blue",
-      text: "text-ctp-blue",
-      border: "border-ctp-blue/20 hover:border-ctp-blue/50",
-    },
-    {
-      bg: "bg-ctp-mauve",
-      text: "text-ctp-mauve",
-      border: "border-ctp-mauve/20 hover:border-ctp-mauve/50",
-    },
-    {
-      bg: "bg-ctp-green",
-      text: "text-ctp-green",
-      border: "border-ctp-green/20 hover:border-ctp-green/50",
-    },
-    {
-      bg: "bg-ctp-peach",
-      text: "text-ctp-peach",
-      border: "border-ctp-peach/20 hover:border-ctp-peach/50",
-    },
-    {
-      bg: "bg-ctp-pink",
-      text: "text-ctp-pink",
-      border: "border-ctp-pink/20 hover:border-ctp-pink/50",
-    },
-    {
-      bg: "bg-ctp-teal",
-      text: "text-ctp-teal",
-      border: "border-ctp-teal/20 hover:border-ctp-teal/50",
-    },
-    {
-      bg: "bg-ctp-yellow",
-      text: "text-ctp-yellow",
-      border: "border-ctp-yellow/20 hover:border-ctp-yellow/50",
-    },
-    {
-      bg: "bg-ctp-red",
-      text: "text-ctp-red",
-      border: "border-ctp-red/20 hover:border-ctp-red/50",
-    },
-  ];
-  const accent = accentColors[index % accentColors.length];
-
   let title = feature;
   let description = "";
   const splitIndex = feature.indexOf(": ");
@@ -169,27 +124,15 @@ const FeatureCard: React.FC<{ feature: string; index: number }> = ({
   }
 
   return (
-    <div
-      className={cn(
-        "flex flex-col gap-3 p-4 rounded-xl transition-colors duration-200",
-        "bg-ctp-surface0/20 border",
-        accent.border,
-      )}
-    >
-      <div className="flex items-center gap-2">
-        <span className={cn("w-1.5 h-1.5 rounded-full shrink-0", accent.bg)} />
-        <Heading as="h3" className="text-sm font-semibold text-ctp-text">
-          {title}
-        </Heading>
-      </div>
+    <li className="relative pl-5 py-0.5">
+      <div className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-ctp-surface2" />
+      <span className="text-sm font-medium text-ctp-text">{title}</span>
       {description && (
-        <ul className="space-y-1.5 mt-1 ml-3.5">
-          <li className="text-[13px] text-ctp-subtext0 leading-relaxed list-disc list-outside ml-2 marker:text-ctp-surface2">
-            <span>{description}</span>
-          </li>
-        </ul>
+        <span className="text-[13px] text-ctp-subtext0 block mt-1 leading-relaxed">
+          {description}
+        </span>
       )}
-    </div>
+    </li>
   );
 };
 
@@ -212,11 +155,11 @@ const OverviewTab: React.FC<{
     {keyFeatures && keyFeatures.length > 0 && (
       <div className="space-y-6">
         <SectionHeading color="bg-ctp-green">Key Features</SectionHeading>
-        <div className="grid grid-cols-1 sm:grid-cols-1 gap-4">
+        <ul className="grid grid-cols-1 sm:grid-cols-1 gap-y-4">
           {keyFeatures.map((feature, i) => (
             <FeatureCard key={i} feature={feature} index={i} />
           ))}
-        </div>
+        </ul>
       </div>
     )}
   </div>
@@ -243,13 +186,13 @@ const TabBar: React.FC<{
   ];
 
   return (
-    <div className="flex items-center gap-1 px-6 mt-6 border-b border-ctp-surface1">
+    <div className="flex items-center gap-1 px-6 mt-6 border-b border-ctp-surface1 font-source">
       {tabs.map((tab) => (
         <button
           key={tab.id}
           onClick={() => onChange(tab.id)}
           className={cn(
-            "inline-flex items-center gap-1.5 px-3 py-2 text-xs font-mono border-b-2 transition-colors -mb-px",
+            "inline-flex items-center gap-1.5 px-3 py-2 text-xs border-b-2 transition-colors -mb-px",
             active === tab.id
               ? "border-ctp-blue text-ctp-blue"
               : "border-transparent text-ctp-subtext0 hover:text-ctp-text",
