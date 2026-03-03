@@ -1,6 +1,16 @@
 import { create } from "zustand";
 import type { Project } from "@/types";
 
+function nameToSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+}
+
+type MarkdownLoadState = "loading" | "loaded" | "error";
+
 /**
  * Interface defining the state and actions for the project store
  */
@@ -13,6 +23,9 @@ interface ProjectState {
   selectedProject: Project | null;
   downloaded: boolean;
 
+  markdownCache: Record<string, string>;
+  markdownStates: Record<string, MarkdownLoadState>;
+
   // Actions
   fetchProjects: () => Promise<void>;
   selectProject: (project: Project | null) => void;
@@ -20,6 +33,7 @@ interface ProjectState {
   filterProjectsByTag: (tag: string) => Project[];
   filterProjectsByTech: (tech: string) => Project[];
   resetFilters: () => void;
+  prefetchMarkdown: (projectName: string) => void;
 }
 
 /**
@@ -37,6 +51,8 @@ const useProjectStore = create<ProjectState>((set, get) => ({
   error: null,
   selectedProject: null,
   downloaded: false,
+  markdownCache: {},
+  markdownStates: {},
 
   fetchProjects: async () => {
     if (get().downloaded) return;
@@ -122,6 +138,33 @@ const useProjectStore = create<ProjectState>((set, get) => ({
       featuredProject: projects[0],
       otherProjects: projects.slice(1),
     });
+  },
+
+  prefetchMarkdown: (projectName) => {
+    const slug = nameToSlug(projectName);
+    const existing = get().markdownStates[slug];
+    if (existing === "loading" || existing === "loaded") return;
+
+    set((s) => ({
+      markdownStates: { ...s.markdownStates, [slug]: "loading" },
+    }));
+
+    fetch(`/data/projects/${slug}.md`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`${res.status}`);
+        return res.text();
+      })
+      .then((text) => {
+        set((s) => ({
+          markdownCache: { ...s.markdownCache, [slug]: text },
+          markdownStates: { ...s.markdownStates, [slug]: "loaded" },
+        }));
+      })
+      .catch(() => {
+        set((s) => ({
+          markdownStates: { ...s.markdownStates, [slug]: "error" },
+        }));
+      });
   },
 }));
 

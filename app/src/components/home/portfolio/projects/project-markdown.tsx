@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { cn } from "@/lib/utils";
 import useProjectStore from "@/store/projects/projects-store";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
@@ -218,30 +218,13 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
     state.projects.find((p) => p.name === projectId),
   );
 
-  const [markdown, setMarkdown] = useState<string>("");
-  const [loadState, setLoadState] = useState<LoadState>("loading");
-  const [activeTab, setActiveTab] = useState<Tab>("overview");
+  const slug = project ? nameToSlug(project.name) : "";
+  const markdown = useProjectStore((s) => s.markdownCache[slug] ?? "");
+  const loadState = useProjectStore(
+    (s) => (s.markdownStates[slug] as LoadState) ?? "loading",
+  );
 
-  useEffect(() => {
-    if (!project) return;
-
-    const slug = nameToSlug(project.name);
-    const url = `/data/projects/${slug}.md`;
-
-    setLoadState("loading");
-    setMarkdown("");
-
-    fetch(url)
-      .then((res) => {
-        if (!res.ok) throw new Error(`${res.status}`);
-        return res.text();
-      })
-      .then((text) => {
-        setMarkdown(text);
-        setLoadState("loaded");
-      })
-      .catch(() => setLoadState("error"));
-  }, [project]);
+  const [activeTab, setActiveTab] = React.useState<Tab>("overview");
 
   if (!project) {
     return (

@@ -7,6 +7,7 @@
 
 import { useLocation, useNavigate } from "react-router-dom";
 import type { Project } from "@/types";
+import useProjectStore from "@/store/projects/projects-store";
 import {
   useEditorStore,
   editorFiles,
@@ -68,8 +69,10 @@ export function useEditorContext() {
     activeProjectId,
     setActiveSection: (section: SectionType) =>
       _setActiveSection(section, navigate, location.pathname),
-    openProject: (project: Project) =>
-      _openProject(project, navigate, location.pathname),
+    openProject: (project: Project) => {
+      _openProject(project, navigate, location.pathname);
+      useProjectStore.getState().prefetchMarkdown(project.name);
+    },
     closeProject: (projectId: string) => _closeProject(projectId, navigate),
     setActiveProjectId,
 
