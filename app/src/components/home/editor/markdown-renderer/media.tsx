@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { cn } from "@/lib/utils";
-import { FiPlay, FiX, FiZoomIn } from "react-icons/fi";
+import { FiPlay, FiX } from "react-icons/fi";
 
 /** Extract a YouTube video ID from common YouTube URL formats */
 function getYouTubeId(url: string): string | null {
@@ -60,7 +60,7 @@ export const MarkdownImage: React.FC<{ src?: string; alt?: string }> = ({
         </div>
       )}
 
-      <figure className="my-4 md:my-6 group">
+      <figure className="my-4 md:my-6">
         {/* Skeleton shown until image loads */}
         {!loaded && !error && (
           <div className="w-full h-32 md:h-48 rounded-xl bg-ctp-surface0 border border-ctp-surface1 animate-pulse" />
@@ -69,9 +69,8 @@ export const MarkdownImage: React.FC<{ src?: string; alt?: string }> = ({
         {!error && (
           <div
             className={cn(
-              "relative overflow-hidden rounded-xl border border-none",
-              "shadow-lg shadow-black/30 cursor-zoom-in",
-              "transition-all duration-300 group-hover:border-ctp-blue/50 group-hover:shadow-ctp-blue/10",
+              "flex justify-center rounded-xl border border-none",
+              "shadow-lg shadow-black/30 cursor-zoom-in bg-ctp-surface0/30",
               !loaded ? "sr-only" : "animate-fadeIn [animation-duration:1.5s]",
             )}
             onClick={() => setLightbox(true)}
@@ -81,15 +80,8 @@ export const MarkdownImage: React.FC<{ src?: string; alt?: string }> = ({
               alt={alt}
               onLoad={() => setLoaded(true)}
               onError={() => setError(true)}
-              className="w-full object-cover rounded-xl transition-transform duration-[1.5s] group-hover:scale-[1.02]"
+              className="max-w-full h-auto block object-contain rounded-xl"
             />
-            {/* Zoom hint overlay */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 rounded-xl">
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 text-white text-xs font-mono backdrop-blur-sm">
-                <FiZoomIn className="w-3.5 h-3.5" />
-                click to zoom
-              </div>
-            </div>
           </div>
         )}
 

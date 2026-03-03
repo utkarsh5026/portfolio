@@ -7,40 +7,42 @@ import type { Components } from "react-markdown";
 
 import { CodeBlock } from "./code-bock";
 import { MarkdownImage } from "./media";
+import { Heading, Text } from "@/components/ui/text";
 
 const markdownComponents: Components = {
   img: ({ src, alt }) => <MarkdownImage src={src} alt={alt} />,
 
   h1: ({ children }) => (
-    <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mt-14 mb-8 leading-tight text-transparent bg-clip-text bg-gradient-to-br from-ctp-text via-ctp-text to-ctp-subtext0">
+    <Heading as="h1" className="mt-14 mb-8">
       {children}
-    </h1>
+    </Heading>
   ),
   h2: ({ children }) => (
     <div className="group flex items-center gap-4 mt-14 mb-8">
       <span className="w-1.5 h-8 rounded-full shrink-0 bg-gradient-to-b from-ctp-mauve to-ctp-blue shadow-lg shadow-ctp-mauve/20" />
-      <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-ctp-text transition-colors duration-300">
-        {children}
-      </h2>
+      <Heading as="h2">{children}</Heading>
       <span className="flex-1 border-t border-ctp-surface1/60 ml-4 hidden md:block" />
     </div>
   ),
   h3: ({ children }) => (
-    <h3 className="text-xl md:text-2xl font-bold text-ctp-text mt-10 mb-5 tracking-tight flex items-center gap-2 before:content-['#'] before:text-ctp-surface2 hover:before:text-ctp-mauve before:transition-colors before:duration-300">
+    <Heading
+      as="h3"
+      className="mt-10 mb-5 before:text-ctp-surface2 hover:before:text-ctp-mauve before:transition-colors before:duration-300"
+    >
       {children}
-    </h3>
+    </Heading>
   ),
   h4: ({ children }) => (
-    <h4 className="text-sm md:text-base font-bold text-ctp-mauve tracking-widest uppercase mt-8 mb-4">
+    <Heading as="h4" className="mt-8 mb-4">
       {children}
-    </h4>
+    </Heading>
   ),
 
   // Paragraph
   p: ({ children }) => (
-    <p className="text-base md:text-lg text-ctp-subtext0 leading-relaxed md:leading-loose mb-7 font-medium">
+    <Text as="p" className="mb-7">
       {children}
-    </p>
+    </Text>
   ),
 
   // Blockquote
