@@ -193,7 +193,9 @@
       "jest",
       "lucideicons"
     ],
-    "githubLink": "https://github.com/utkarsh5026/enigma"
+    "githubLink": "https://github.com/utkarsh5026/enigma",
+    "icon": "👨‍💻",
+    "coverImage": "https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/enigma/luca-bravo-XJXWbfSo2f0-unsplash%20(1).jpg"
   },
   {
     "name": "DevPortfolio",
@@ -246,7 +248,9 @@
       "git"
     ],
     "githubLink": "https://github.com/utkarsh5026/portfolio",
-    "liveLink": "https://utkarsh5026.github.io/"
+    "liveLink": "https://utkarsh5026.github.io/",
+    "icon": "🙅",
+    "coverImage": "https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/portfolio/anas-alshanti-feXpdV001o4-unsplash%20(2).jpg"
   },
   {
     "name": "Mayonation",
@@ -683,7 +687,9 @@
       }
     ],
     "technologies": ["typescript", "javascript", "tailwind", "css"],
-    "githubLink": "https://github.com/utkarsh5026/inpeace"
+    "githubLink": "https://github.com/utkarsh5026/inpeace",
+    "icon": "🦹",
+    "coverImage": "https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/inpeace/jpeg-optimizer_tobias-tullius-Beth63PcJOw-unsplash.jpg"
   },
   {
     "name": "gopool",
@@ -724,6 +730,8 @@
       }
     ],
     "technologies": ["golang", "docker", "git"],
-    "githubLink": "https://github.com/utkarsh5026/gopool"
+    "githubLink": "https://github.com/utkarsh5026/gopool",
+    "icon": "🏊‍♂️",
+    "coverImage": "https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/gopool/raphael-biscaldi-7RQf2X6aXXI-unsplash.jpg"
   }
 ]
