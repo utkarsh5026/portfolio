@@ -42,6 +42,10 @@ export function useEditorContext() {
 
   const _openTab = useEditorStore((s) => s.openTab);
   const _closeTab = useEditorStore((s) => s.closeTab);
+  const _closeAllTabs = useEditorStore((s) => s.closeAllTabs);
+  const _closeTabsToLeft = useEditorStore((s) => s.closeTabsToLeft);
+  const _closeTabsToRight = useEditorStore((s) => s.closeTabsToRight);
+  const _closeAllProjects = useEditorStore((s) => s.closeAllProjects);
   const _setActiveSection = useEditorStore((s) => s.setActiveSection);
   const _openProject = useEditorStore((s) => s.openProject);
   const _closeProject = useEditorStore((s) => s.closeProject);
@@ -55,6 +59,10 @@ export function useEditorContext() {
     activeTabId,
     openTab: (tab: Tab) => _openTab(tab, navigate, location.pathname),
     closeTab: (id: string) => _closeTab(id, navigate),
+    closeAllTabs: () => _closeAllTabs(navigate),
+    closeTabsToLeft: (id: string) => _closeTabsToLeft(id, navigate),
+    closeTabsToRight: (id: string) => _closeTabsToRight(id, navigate),
+    closeAllProjects: () => _closeAllProjects(navigate),
 
     activeSection,
     activeProjectId,

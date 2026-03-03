@@ -74,6 +74,14 @@ export interface EditorState {
 export interface EditorActions {
   openTab: (tab: Tab, navigate: NavigateFunction, currentPath: string) => void;
   closeTab: (id: string, navigate: NavigateFunction) => void;
+  /** Close every open tab and navigate home. */
+  closeAllTabs: (navigate: NavigateFunction) => void;
+  /** Close all tabs to the left of the given tab id. */
+  closeTabsToLeft: (id: string, navigate: NavigateFunction) => void;
+  /** Close all tabs to the right of the given tab id. */
+  closeTabsToRight: (id: string, navigate: NavigateFunction) => void;
+  /** Close all project (non-section) tabs. */
+  closeAllProjects: (navigate: NavigateFunction) => void;
   /** Call on location.pathname change to keep URL ↔ tabs in sync. */
   syncRoute: (pathname: string) => void;
 
@@ -188,6 +196,71 @@ export const useEditorStore = create<EditorStore>()(
 
       closeProject: (projectId, navigate) => {
         get().closeTab(projectId, navigate);
+      },
+
+      closeAllTabs: (navigate) => {
+        navigate("/", { replace: false });
+        set({
+          openTabs: [{ type: "section", id: "home", fileName: "home.ts" }],
+          activeTabId: "home",
+        });
+      },
+
+      closeTabsToLeft: (id, navigate) => {
+        set((state) => {
+          const idx = state.openTabs.findIndex((t) => t.id === id);
+          if (idx <= 0) return state;
+          const next = state.openTabs.slice(idx);
+
+          const activeStillOpen = next.some((t) => t.id === state.activeTabId);
+          let nextActiveId = state.activeTabId;
+          if (!activeStillOpen) {
+            nextActiveId = next[0].id;
+            const pivotTab = next[0];
+            if (pivotTab.type === "section")
+              navigate(getSectionPath(pivotTab.id), { replace: false });
+          }
+          return { openTabs: next, activeTabId: nextActiveId };
+        });
+      },
+
+      closeTabsToRight: (id, navigate) => {
+        set((state) => {
+          const idx = state.openTabs.findIndex((t) => t.id === id);
+          if (idx === -1 || idx === state.openTabs.length - 1) return state;
+          const next = state.openTabs.slice(0, idx + 1);
+          const activeStillOpen = next.some((t) => t.id === state.activeTabId);
+          let nextActiveId = state.activeTabId;
+          if (!activeStillOpen) {
+            nextActiveId = next[next.length - 1].id;
+            const lastTab = next[next.length - 1];
+            if (lastTab.type === "section")
+              navigate(getSectionPath(lastTab.id), { replace: false });
+          }
+          return { openTabs: next, activeTabId: nextActiveId };
+        });
+      },
+
+      closeAllProjects: (navigate) => {
+        set((state) => {
+          const next = state.openTabs.filter((t) => t.type !== "project");
+          if (next.length === state.openTabs.length) return state;
+          const activeStillOpen = next.some((t) => t.id === state.activeTabId);
+          let nextActiveId = state.activeTabId;
+          if (!activeStillOpen) {
+            nextActiveId = next[0]?.id ?? "home";
+            const fallback = next[0];
+            if (fallback?.type === "section")
+              navigate(getSectionPath(fallback.id), { replace: false });
+          }
+          return {
+            openTabs:
+              next.length > 0
+                ? next
+                : [{ type: "section", id: "home", fileName: "home.ts" }],
+            activeTabId: nextActiveId,
+          };
+        });
       },
 
       setActiveProjectId: (id) => {
