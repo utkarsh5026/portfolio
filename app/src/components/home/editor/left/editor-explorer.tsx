@@ -6,6 +6,7 @@ import {
   VscFolderOpened,
   VscChevronRight,
 } from "react-icons/vsc";
+import { SiTypescript } from "react-icons/si";
 import { useEditorContext, SectionType } from "../context/explorer-context";
 import Logo from "@/components/home/appbar/Logo";
 import OutlinePanel from "../outline/outline-panel";
@@ -41,14 +42,25 @@ const TreeFile: React.FC<TreeFileProps> = ({
         : "text-ctp-subtext0 hover:text-ctp-text hover:bg-ctp-surface0/40 border-l-2 border-transparent",
     )}
   >
-    <VscMarkdown
-      className={cn(
-        "w-[15px] h-[15px] flex-shrink-0 transition-colors duration-75",
-        isActive
-          ? "text-ctp-blue drop-shadow-sm"
-          : "text-ctp-overlay0 group-hover:text-ctp-overlay1",
-      )}
-    />
+    {name.endsWith(".ts") ? (
+      <SiTypescript
+        className={cn(
+          "w-[14px] h-[14px] flex-shrink-0 transition-colors duration-75",
+          isActive
+            ? "text-[#3178c6] drop-shadow-sm" // Standard TS blue
+            : "text-ctp-overlay0 group-hover:text-ctp-overlay1",
+        )}
+      />
+    ) : (
+      <VscMarkdown
+        className={cn(
+          "w-[15px] h-[15px] flex-shrink-0 transition-colors duration-75",
+          isActive
+            ? "text-ctp-blue drop-shadow-sm"
+            : "text-ctp-overlay0 group-hover:text-ctp-overlay1",
+        )}
+      />
+    )}
     <span className="truncate tracking-tight leading-none">{name}</span>
   </button>
 );

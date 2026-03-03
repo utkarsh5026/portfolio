@@ -28,14 +28,27 @@ const SectionContent = forwardRef<HTMLDivElement, SectionContentProps>(
       children,
       isInView,
     },
-    ref
+    ref,
   ) => {
     return (
-      <div className="relative w-full">
+      <div className="relative w-full flex font-source">
+        {/* Line Numbers Column */}
+        <div className="hidden sm:flex flex-col shrink-0 w-12 items-end pr-4 py-6 sm:py-8 md:py-10 lg:py-12 xl:py-14 text-ctp-surface2 text-sm select-none border-r border-ctp-surface0/50">
+          {Array.from({ length: 40 }).map((_, i) => (
+            <div
+              key={i}
+              className="leading-relaxed sm:leading-relaxed lg:leading-loose h-[min-content]"
+            >
+              {i + 1}
+            </div>
+          ))}
+        </div>
+
         {/* Mobile-optimized content wrapper */}
         <motion.div
           ref={ref}
           className={`
+                flex-1
                 px-4 py-6
                 sm:px-6 sm:py-8
                 md:px-8 md:py-10
@@ -84,7 +97,30 @@ const SectionContent = forwardRef<HTMLDivElement, SectionContentProps>(
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
             transition={{ duration: 0.6, delay: showHeader ? 0.6 : 0.3 }}
           >
-            {children}
+            {/* Mock React Code Start */}
+            <div className="font-source text-sm sm:text-base mb-4 sm:mb-6">
+              <span className="text-ctp-mauve">export default function</span>{" "}
+              <span className={`text-${colorScheme.primary}`}>
+                {title ? title.replace(/\s+/g, "") : "Section"}
+              </span>
+              <span className="text-ctp-text">()</span>{" "}
+              <span className="text-ctp-text">{"{"}</span>
+              <br />
+              <span className="text-ctp-mauve ml-4 sm:ml-8">return</span>{" "}
+              <span className="text-ctp-text">(</span>
+            </div>
+
+            {/* Actual Content Wrapper with Editor Indentation */}
+            <div className="pl-4 sm:pl-8 border-l border-ctp-surface0/50 ml-2 sm:ml-4">
+              {children}
+            </div>
+
+            {/* Mock React Code End */}
+            <div className="font-source text-sm sm:text-base mt-4 sm:mb-6">
+              <span className="text-ctp-text ml-4 sm:ml-8">);</span>
+              <br />
+              <span className="text-ctp-text">{"}"}</span>
+            </div>
           </motion.div>
 
           {/* Mobile-friendly bottom spacing */}
@@ -92,7 +128,7 @@ const SectionContent = forwardRef<HTMLDivElement, SectionContentProps>(
         </motion.div>
       </div>
     );
-  }
+  },
 );
 
 export default SectionContent;

@@ -53,14 +53,14 @@ export const getSectionFromPath = (pathname: string): SectionType => {
 };
 
 export const editorFiles: { name: string; section: SectionType }[] = [
-  { name: "home.md", section: "home" },
-  { name: "about.md", section: "about" },
-  { name: "skills.md", section: "skills" },
-  { name: "projects.md", section: "projects" },
-  { name: "experience.md", section: "experience" },
-  { name: "contact.md", section: "contact" },
-  { name: "learning.md", section: "learning" },
-  { name: "articles.md", section: "articles" },
+  { name: "home.ts", section: "home" },
+  { name: "about.ts", section: "about" },
+  { name: "skills.ts", section: "skills" },
+  { name: "projects.ts", section: "projects" },
+  { name: "experience.ts", section: "experience" },
+  { name: "contact.ts", section: "contact" },
+  { name: "learning.ts", section: "learning" },
+  { name: "articles.ts", section: "articles" },
 ];
 
 export interface EditorState {
@@ -109,7 +109,7 @@ export const useEditorStore = create<EditorStore>()(
         {
           type: "section",
           id: initialSection,
-          fileName: `${initialSection}.md`,
+          fileName: `${initialSection}.ts`,
         },
       ],
       activeTabId: initialSection,
@@ -162,7 +162,7 @@ export const useEditorStore = create<EditorStore>()(
                 {
                   type: "section" as const,
                   id: section,
-                  fileName: `${section}.md`,
+                  fileName: `${section}.ts`,
                 },
               ],
           activeTabId: section,
@@ -171,7 +171,7 @@ export const useEditorStore = create<EditorStore>()(
 
       setActiveSection: (section, navigate, currentPath) => {
         get().openTab(
-          { type: "section", id: section, fileName: `${section}.md` },
+          { type: "section", id: section, fileName: `${section}.ts` },
           navigate,
           currentPath,
         );
