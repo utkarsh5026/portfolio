@@ -1,0 +1,101 @@
+{
+  "generatedAt": "2026-03-03T10:13:47.337Z",
+  "sections": {
+    "home": {
+      "lastCommitHash": "a049394",
+      "lastCommitDate": "2025-07-03 18:46:46 +0530",
+      "lastCommitMessage": "Add editor index file and update import paths for improved organization",
+      "lastAuthor": "Utkarsh Priyadarshi",
+      "commitCount": 21,
+      "linesAdded": 1,
+      "linesDeleted": 1,
+      "totalAdded": 2654,
+      "totalDeleted": 1376,
+      "fileCount": 14
+    },
+    "about": {
+      "lastCommitHash": "e33a044",
+      "lastCommitDate": "2026-01-05 05:36:24 +0530",
+      "lastCommitMessage": "refactor: implement lazy loading for section components to enhance mobile performance",
+      "lastAuthor": "Utkarsh Priyadarshi",
+      "commitCount": 18,
+      "linesAdded": 37,
+      "linesDeleted": 27,
+      "totalAdded": 2760,
+      "totalDeleted": 1502,
+      "fileCount": 12
+    },
+    "skills": {
+      "lastCommitHash": "59b2637",
+      "lastCommitDate": "2026-03-03 10:15:18 +0530",
+      "lastCommitMessage": "refactor: simplify SkillItem by removing isHovered prop and using whileHover animation",
+      "lastAuthor": "Utkarsh Priyadarshi",
+      "commitCount": 16,
+      "linesAdded": 12,
+      "linesDeleted": 42,
+      "totalAdded": 1886,
+      "totalDeleted": 947,
+      "fileCount": 9
+    },
+    "projects": {
+      "lastCommitHash": "baa76a3",
+      "lastCommitDate": "2026-03-03 14:17:41 +0530",
+      "lastCommitMessage": "refactor: simplify FeatureCard to plain list items and clean up tab bar styles",
+      "lastAuthor": "Utkarsh Priyadarshi",
+      "commitCount": 60,
+      "linesAdded": 11,
+      "linesDeleted": 68,
+      "totalAdded": 9699,
+      "totalDeleted": 8402,
+      "fileCount": 10
+    },
+    "experience": {
+      "lastCommitHash": "15b8fc6",
+      "lastCommitDate": "2025-07-04 05:11:29 +0530",
+      "lastCommitMessage": "Refactor ExperienceDetails and ExperienceHeader components for improved styling and functionality",
+      "lastAuthor": "Utkarsh Priyadarshi",
+      "commitCount": 11,
+      "linesAdded": 16,
+      "linesDeleted": 28,
+      "totalAdded": 1844,
+      "totalDeleted": 1033,
+      "fileCount": 6
+    },
+    "contact": {
+      "lastCommitHash": "5ba2625",
+      "lastCommitDate": "2025-07-04 05:12:47 +0530",
+      "lastCommitMessage": "Update ContactMe component layout for improved responsiveness",
+      "lastAuthor": "Utkarsh Priyadarshi",
+      "commitCount": 8,
+      "linesAdded": 1,
+      "linesDeleted": 1,
+      "totalAdded": 539,
+      "totalDeleted": 192,
+      "fileCount": 3
+    },
+    "learning": {
+      "lastCommitHash": "8cd63d5",
+      "lastCommitDate": "2025-07-03 03:35:19 +0530",
+      "lastCommitMessage": "Refactor MobilePersonalIntro and LearningCard components for improved styling",
+      "lastAuthor": "Utkarsh Priyadarshi",
+      "commitCount": 6,
+      "linesAdded": 0,
+      "linesDeleted": 1,
+      "totalAdded": 971,
+      "totalDeleted": 56,
+      "fileCount": 7
+    },
+    "articles": {
+      "lastCommitHash": "f347b2c",
+      "lastCommitDate": "2026-01-04 20:24:13 +0530",
+      "lastCommitMessage": "Add skeleton shimmer animation for lazy loading in ArticleCard",
+      "lastAuthor": "Utkarsh Priyadarshi",
+      "commitCount": 9,
+      "linesAdded": 28,
+      "linesDeleted": 2,
+      "totalAdded": 716,
+      "totalDeleted": 508,
+      "fileCount": 3
+    }
+  }
+}

@@ -1,0 +1,12 @@
+#!/bin/sh
+# .git/hooks/pre-commit
+# Regenerates git-stats.json before every commit so the StatusBar
+# always reflects real, current data.
+
+echo "⚙  Regenerating git-stats.json…"
+node scripts/generate-git-stats.js
+
+# Stage the updated file so it's included in this commit
+git add app/public/git-stats.json
+
+echo "✓  git-stats.json updated and staged"

@@ -12,210 +12,206 @@ import {
   FaUser,
   FaHome,
   FaLaptopCode,
+  FaCodeBranch,
 } from "react-icons/fa";
-import { VscMarkdown } from "react-icons/vsc";
+import { VscMarkdown, VscGitCommit } from "react-icons/vsc";
+import { GoFileCode } from "react-icons/go";
+import {
+  useGitStats,
+  relativeTime,
+  stalenessColor,
+  type SectionGitStats,
+} from "./use-git-stats";
 
-// Type definitions for status bar configuration
-interface StatusConfig {
-  fileName: string;
-  language: string;
-  encoding: string;
-  branch: string;
+// ─── Static section config (icon, branch label) ───────────────────────────
+interface SectionMeta {
   icon: React.ReactNode;
-  lineCount: string;
-  fileSize: string;
-  status: string;
-  statusColor: string;
-  branchColor: string;
+  branchLabel: string;
+  fileLabel: string;
 }
+
+const SECTION_META: Record<SectionType, SectionMeta> = {
+  home: {
+    icon: <FaHome className="w-3 h-3" />,
+    branchLabel: "main",
+    fileLabel: "home.tsx",
+  },
+  about: {
+    icon: <FaUser className="w-3 h-3" />,
+    branchLabel: "about",
+    fileLabel: "about.tsx",
+  },
+  skills: {
+    icon: <FaStar className="w-3 h-3" />,
+    branchLabel: "skills",
+    fileLabel: "skills.tsx",
+  },
+  projects: {
+    icon: <FaLaptopCode className="w-3 h-3" />,
+    branchLabel: "projects",
+    fileLabel: "projects.tsx",
+  },
+  experience: {
+    icon: <FaBriefcase className="w-3 h-3" />,
+    branchLabel: "experience",
+    fileLabel: "work.tsx",
+  },
+  contact: {
+    icon: <FaEnvelope className="w-3 h-3" />,
+    branchLabel: "contact",
+    fileLabel: "contact.tsx",
+  },
+  learning: {
+    icon: <FaGraduationCap className="w-3 h-3" />,
+    branchLabel: "learning",
+    fileLabel: "learning.tsx",
+  },
+  articles: {
+    icon: <FaNewspaper className="w-3 h-3" />,
+    branchLabel: "articles",
+    fileLabel: "articles.tsx",
+  },
+};
+
+// ─── Helpers ─────────────────────────────────────────────────────────────────
+
+function truncate(str: string, maxLen: number): string {
+  if (!str) return "—";
+  return str.length <= maxLen ? str : str.slice(0, maxLen - 1) + "…";
+}
+
+function diffLabel(added: number, deleted: number): string {
+  if (!added && !deleted) return "no changes";
+  return `+${added} / -${deleted}`;
+}
+
+// ─── Component ────────────────────────────────────────────────────────────────
 
 const StatusBarComponent: React.FC = () => {
   const { activeSection, activeProjectId, openTabs } = useEditorContext();
+  const { getSectionStats, loading } = useGitStats();
 
-  // Configuration for each section's status bar appearance
-  const sectionConfigs: Record<SectionType, StatusConfig> = useMemo(
-    () => ({
-      home: {
-        fileName: "home.md",
-        language: "Markdown",
-        encoding: "UTF-8",
-        branch: "main",
-        icon: <FaHome className="w-3 h-3" />,
-        lineCount: "125 lines",
-        fileSize: "4.2 KB",
-        status: "Ready",
-        statusColor: "bg-ctp-green",
-        branchColor: "text-ctp-green",
-      },
-      about: {
-        fileName: "about.md",
-        language: "Markdown",
-        encoding: "UTF-8",
-        branch: "feature/about",
-        icon: <FaUser className="w-3 h-3" />,
-        lineCount: "89 lines",
-        fileSize: "3.1 KB",
-        status: "Modified",
-        statusColor: "bg-ctp-yellow",
-        branchColor: "text-ctp-blue",
-      },
-      skills: {
-        fileName: "skills.md",
-        language: "Markdown",
-        encoding: "UTF-8",
-        branch: "feature/skills",
-        icon: <FaStar className="w-3 h-3" />,
-        lineCount: "156 lines",
-        fileSize: "2.8 KB",
-        status: "Staged",
-        statusColor: "bg-ctp-peach",
-        branchColor: "text-ctp-yellow",
-      },
-      projects: {
-        fileName: "projects.md",
-        language: "Markdown",
-        encoding: "UTF-8",
-        branch: "feature/projects",
-        icon: <FaLaptopCode className="w-3 h-3" />,
-        lineCount: "312 lines",
-        fileSize: "8.7 KB",
-        status: "Clean",
-        statusColor: "bg-ctp-green",
-        branchColor: "text-ctp-green",
-      },
-      experience: {
-        fileName: "experience.md",
-        language: "Markdown",
-        encoding: "UTF-8",
-        branch: "feature/experience",
-        icon: <FaBriefcase className="w-3 h-3" />,
-        lineCount: "204 lines",
-        fileSize: "5.3 KB",
-        status: "Updated",
-        statusColor: "bg-ctp-mauve",
-        branchColor: "text-ctp-mauve",
-      },
-      contact: {
-        fileName: "contact.md",
-        language: "Markdown",
-        encoding: "UTF-8",
-        branch: "feature/contact",
-        icon: <FaEnvelope className="w-3 h-3" />,
-        lineCount: "67 lines",
-        fileSize: "1.9 KB",
-        status: "Ready",
-        statusColor: "bg-ctp-green",
-        branchColor: "text-ctp-pink",
-      },
-      learning: {
-        fileName: "learning.md",
-        language: "Markdown",
-        encoding: "UTF-8",
-        branch: "feature/learning",
-        icon: <FaGraduationCap className="w-3 h-3" />,
-        lineCount: "178 lines",
-        fileSize: "6.1 KB",
-        status: "In Progress",
-        statusColor: "bg-ctp-blue",
-        branchColor: "text-ctp-sapphire",
-      },
-      articles: {
-        fileName: "articles.md",
-        language: "Markdown",
-        encoding: "UTF-8",
-        branch: "feature/articles",
-        icon: <FaNewspaper className="w-3 h-3" />,
-        lineCount: "243 lines",
-        fileSize: "7.4 KB",
-        status: "Published",
-        statusColor: "bg-ctp-teal",
-        branchColor: "text-ctp-teal",
-      },
-    }),
-    []
-  );
+  // Resolve which section's stats to show
+  const currentSection: SectionType = activeSection;
 
-  // Derive current config — project file takes precedence
-  const currentConfig: StatusConfig = useMemo(() => {
+  const meta: SectionMeta = useMemo(() => {
     if (activeProjectId !== null) {
       const tab = openTabs.find(
-        (t) => t.type === "project" && t.id === activeProjectId
+        (t) => t.type === "project" && t.id === activeProjectId,
       );
-      const slug = tab?.fileName ?? `${activeProjectId}.md`;
+      const slug = tab?.fileName ?? `${activeProjectId}.tsx`;
       return {
-        fileName: slug,
-        language: "Markdown",
-        encoding: "UTF-8",
-        branch: `projects/${slug.replace(".md", "")}`,
         icon: <VscMarkdown className="w-3 h-3" />,
-        lineCount: "—",
-        fileSize: "—",
-        status: "Clean",
-        statusColor: "bg-ctp-green",
-        branchColor: "text-ctp-green",
+        branchLabel: `projects/${slug.replace(".md", "")}`,
+        fileLabel: slug,
       };
     }
-    return sectionConfigs[activeSection];
-  }, [activeProjectId, openTabs, activeSection, sectionConfigs]);
+    return SECTION_META[currentSection];
+  }, [activeProjectId, openTabs, currentSection]);
+
+  const gitStats: SectionGitStats | null = useMemo(() => {
+    if (activeProjectId !== null) return getSectionStats("projects");
+    return getSectionStats(currentSection);
+  }, [activeProjectId, currentSection, getSectionStats]);
+
+  // Derived display values
+  const branchDisplay = meta.branchLabel;
+  const hashDisplay = gitStats?.lastCommitHash ?? "";
+  const commitMsg = truncate(gitStats?.lastCommitMessage ?? "", 42);
+  const commitCount = gitStats?.commitCount ?? null;
+  const fileCount = gitStats?.fileCount ?? null;
+  const recentDiff = gitStats
+    ? diffLabel(gitStats.linesAdded, gitStats.linesDeleted)
+    : null;
+  const timeAgo = gitStats ? relativeTime(gitStats.lastCommitDate) : null;
+  const colors = gitStats
+    ? stalenessColor(gitStats.lastCommitDate)
+    : { dot: "bg-ctp-overlay0", text: "text-ctp-subtext0" };
 
   return (
-    <div className="bg-ctp-base border-t border-ctp-surface0 text-ctp-text text-xs flex items-center justify-between min-h-[28px] px-2 md:px-4 py-1">
-      {/* Left Section - Git and File Info */}
-      <div className="flex items-center gap-2 md:gap-4 flex-1 min-w-0">
-        {/* Git Branch */}
+    <div className="bg-ctp-base border-t border-ctp-surface0 text-ctp-text text-xs flex items-center justify-between min-h-[28px] px-2 md:px-4 py-1 font-source">
+      {/* ── Left: branch + commit message ──────────────────────────────── */}
+      <div className="flex items-center gap-2 md:gap-4 flex-1 min-w-0 overflow-hidden">
+        {/* Branch + hash */}
         <div className="flex items-center gap-1 flex-shrink-0">
           <FaGitAlt className="w-3 h-3 text-ctp-peach" />
-          <span className={cn("font-medium", currentConfig.branchColor)}>
-            {currentConfig.branch}
-          </span>
+          <span className="font-medium text-ctp-peach">{branchDisplay}</span>
+          {hashDisplay && (
+            <span className="text-ctp-overlay1 font-mono hidden sm:inline">
+              #{hashDisplay}
+            </span>
+          )}
         </div>
 
-        {/* File Info - Hidden on very small screens */}
+        {/* Last commit message — hidden on small screens */}
+        {!loading && commitMsg && (
+          <div className="hidden md:flex items-center gap-1 min-w-0">
+            <VscGitCommit className="w-3 h-3 text-ctp-lavender flex-shrink-0" />
+            <span className="text-ctp-subtext1 truncate italic">
+              {commitMsg}
+            </span>
+          </div>
+        )}
+
+        {/* File icon + filename */}
         <div className="hidden sm:flex items-center gap-1 flex-shrink-0">
-          {currentConfig.icon}
-          <span className="text-ctp-subtext0 truncate">
-            {currentConfig.fileName}
-          </span>
+          {meta.icon}
+          <span className="text-ctp-subtext0">{meta.fileLabel}</span>
         </div>
 
         {/* Language */}
         <div className="flex items-center gap-1 flex-shrink-0">
           <FaCode className="w-3 h-3 text-ctp-lavender" />
-          <span className="text-ctp-subtext0 truncate">
-            {currentConfig.language}
-          </span>
+          <span className="text-ctp-subtext0">TSX</span>
         </div>
-
-        {/* Encoding - Hidden on mobile */}
-        <span className="hidden md:inline text-ctp-subtext1 flex-shrink-0">
-          {currentConfig.encoding}
-        </span>
       </div>
 
-      {/* Right Section - File Stats and Status */}
+      {/* ── Right: stats + status ──────────────────────────────────────── */}
       <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
-        {/* File Stats - Hidden on very small screens */}
-        <div className="hidden md:flex items-center gap-3 text-ctp-subtext1">
-          <span>{currentConfig.lineCount}</span>
-          <span>{currentConfig.fileSize}</span>
-        </div>
+        {/* Commit count */}
+        {!loading && commitCount !== null && (
+          <div className="hidden lg:flex items-center gap-1 text-ctp-subtext1">
+            <FaCodeBranch className="w-3 h-3" />
+            <span>{commitCount} commits</span>
+          </div>
+        )}
 
-        {/* Status Indicator */}
+        {/* Diff stats from last commit */}
+        {!loading && recentDiff && (
+          <div className="hidden md:flex items-center gap-1 text-ctp-subtext1">
+            <span className="font-mono">{recentDiff}</span>
+          </div>
+        )}
+
+        {/* File count */}
+        {!loading && fileCount !== null && (
+          <div className="hidden lg:flex items-center gap-1 text-ctp-subtext1">
+            <GoFileCode className="w-3 h-3" />
+            <span>{fileCount} files</span>
+          </div>
+        )}
+
+        {/* Staleness dot + relative time */}
         <div className="flex items-center gap-1.5">
           <span
             className={cn(
-              "w-2 h-2 rounded-full flex-shrink-0",
-              currentConfig.statusColor
+              "w-2 h-2 rounded-full flex-shrink-0 transition-colors duration-500",
+              colors.dot,
             )}
           />
-          <span className="text-ctp-subtext0 font-medium">
-            {currentConfig.status}
+          <span
+            className={cn(
+              "font-medium transition-colors duration-500",
+              colors.text,
+            )}
+          >
+            {loading ? "…" : (timeAgo ?? "Ready")}
           </span>
         </div>
 
-        {/* Version - Hidden on mobile */}
-        <span className="hidden lg:inline text-ctp-subtext1 flex-shrink-0">
-          v1.0.0
+        {/* UTF-8 encoding — hidden on mobile */}
+        <span className="hidden md:inline text-ctp-subtext1 flex-shrink-0">
+          UTF-8
         </span>
       </div>
     </div>
