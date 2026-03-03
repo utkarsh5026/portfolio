@@ -23,6 +23,21 @@ const DesktopTabs: React.FC = () => {
     return () => el.removeEventListener("wheel", onWheel);
   }, []);
 
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el || !activeTabId) return;
+    const activeTab = el.querySelector<HTMLElement>(
+      `[data-tab-id="${activeTabId}"]`,
+    );
+    if (activeTab) {
+      activeTab.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "nearest",
+      });
+    }
+  }, [activeTabId]);
+
   return (
     <div
       ref={scrollRef}
@@ -36,6 +51,7 @@ const DesktopTabs: React.FC = () => {
           return (
             <button
               key={tab.id}
+              data-tab-id={tab.id}
               onClick={() => openTab(tab)}
               className={cn(
                 "relative h-10 px-3 flex-shrink-0 min-w-[140px] max-w-[220px] border-r border-ctp-surface0/50 text-xs transition-colors flex items-center gap-2 group",
