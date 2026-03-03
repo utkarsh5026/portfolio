@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-03T11:35:25.975Z",
+  "generatedAt": "2026-03-03T11:54:37.383Z",
   "sections": {
     "home": {
       "lastCommitHash": "a049394",
@@ -38,15 +38,15 @@
       "fileCount": 9
     },
     "projects": {
-      "lastCommitHash": "baa76a3",
-      "lastCommitDate": "2026-03-03 14:17:41 +0530",
-      "lastCommitMessage": "refactor: simplify FeatureCard to plain list items and clean up tab bar styles",
+      "lastCommitHash": "1d0b78e",
+      "lastCommitDate": "2026-03-03 17:05:19 +0530",
+      "lastCommitMessage": "perf: prefetch project markdown on open and cache in Zustand store",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 60,
-      "linesAdded": 11,
-      "linesDeleted": 68,
-      "totalAdded": 9699,
-      "totalDeleted": 8402,
+      "commitCount": 61,
+      "linesAdded": 8,
+      "linesDeleted": 25,
+      "totalAdded": 9707,
+      "totalDeleted": 8427,
       "fileCount": 10
     },
     "experience": {

@@ -28,6 +28,15 @@ export const MarkdownImage: React.FC<{ src?: string; alt?: string }> = ({
   const [error, setError] = useState(false);
   const [lightbox, setLightbox] = useState(false);
 
+  // Hide placeholder images
+  if (
+    src.includes("placehold.co") ||
+    src.includes("via.placeholder.com") ||
+    src.includes("dummyimage.com")
+  ) {
+    return null;
+  }
+
   const ytId = getYouTubeId(src);
   if (ytId) return <MarkdownYouTube id={ytId} title={alt} />;
   if (isVideoUrl(src)) return <MarkdownVideo src={src} alt={alt} />;
