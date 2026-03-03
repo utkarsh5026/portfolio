@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import useProjectStore from "@/store/projects/projects-store";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { HiOutlineBookOpen, HiOutlineCode } from "react-icons/hi";
 
 import { technologies } from "@/components/base/technologies";
-import type { TechName } from "@/components/base/technologies";
+
 import { MarkdownRender } from "@/components/home/editor/markdown-renderer";
+import { Heading, Text } from "@/components/ui/text";
 
 function nameToSlug(name: string): string {
   return name
@@ -33,32 +35,13 @@ function pickGradient(name: string): string {
   return COVER_GRADIENTS[hash % COVER_GRADIENTS.length];
 }
 
-const TechChip: React.FC<{ tech: TechName }> = ({ tech }) => {
-  const info = technologies[tech];
-  return (
-    <a
-      href={info?.aboutLink}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md
-        bg-ctp-surface0 border border-ctp-surface1 text-ctp-subtext1 text-xs font-mono
-        hover:border-ctp-blue hover:text-ctp-text transition-colors"
-    >
-      {info?.icon && <span className="text-sm leading-none">{info.icon}</span>}
-      <span>{info?.name ?? tech}</span>
-    </a>
-  );
-};
-
 const SectionHeading: React.FC<{
   children: React.ReactNode;
   color?: string;
 }> = ({ children, color = "bg-ctp-blue" }) => (
   <div className="flex items-center gap-3 mt-10 mb-4">
     <span className={cn("w-0.5 h-4 rounded-full shrink-0", color)} />
-    <h2 className="text-xs font-semibold uppercase tracking-widest text-ctp-subtext0">
-      {children}
-    </h2>
+    <Heading as="h6">{children}</Heading>
     <span className="flex-1 border-t border-ctp-surface1" />
   </div>
 );
@@ -129,6 +112,158 @@ const LoadingSkeleton: React.FC = () => (
   </div>
 );
 
+const FeatureCard: React.FC<{ feature: string; index: number }> = ({
+  feature,
+  index,
+}) => {
+  const accentColors = [
+    {
+      bg: "bg-ctp-blue",
+      text: "text-ctp-blue",
+      border: "border-ctp-blue/20 hover:border-ctp-blue/50",
+    },
+    {
+      bg: "bg-ctp-mauve",
+      text: "text-ctp-mauve",
+      border: "border-ctp-mauve/20 hover:border-ctp-mauve/50",
+    },
+    {
+      bg: "bg-ctp-green",
+      text: "text-ctp-green",
+      border: "border-ctp-green/20 hover:border-ctp-green/50",
+    },
+    {
+      bg: "bg-ctp-peach",
+      text: "text-ctp-peach",
+      border: "border-ctp-peach/20 hover:border-ctp-peach/50",
+    },
+    {
+      bg: "bg-ctp-pink",
+      text: "text-ctp-pink",
+      border: "border-ctp-pink/20 hover:border-ctp-pink/50",
+    },
+    {
+      bg: "bg-ctp-teal",
+      text: "text-ctp-teal",
+      border: "border-ctp-teal/20 hover:border-ctp-teal/50",
+    },
+    {
+      bg: "bg-ctp-yellow",
+      text: "text-ctp-yellow",
+      border: "border-ctp-yellow/20 hover:border-ctp-yellow/50",
+    },
+    {
+      bg: "bg-ctp-red",
+      text: "text-ctp-red",
+      border: "border-ctp-red/20 hover:border-ctp-red/50",
+    },
+  ];
+  const accent = accentColors[index % accentColors.length];
+
+  let title = feature;
+  let description = "";
+  const splitIndex = feature.indexOf(": ");
+  if (splitIndex !== -1) {
+    title = feature.substring(0, splitIndex);
+    description = feature.substring(splitIndex + 2);
+  }
+
+  return (
+    <div
+      className={cn(
+        "flex flex-col gap-3 p-4 rounded-xl transition-colors duration-200",
+        "bg-ctp-surface0/20 border",
+        accent.border,
+      )}
+    >
+      <div className="flex items-center gap-2">
+        <span className={cn("w-1.5 h-1.5 rounded-full shrink-0", accent.bg)} />
+        <Heading as="h3" className="text-sm font-semibold text-ctp-text">
+          {title}
+        </Heading>
+      </div>
+      {description && (
+        <ul className="space-y-1.5 mt-1 ml-3.5">
+          <li className="text-[13px] text-ctp-subtext0 leading-relaxed list-disc list-outside ml-2 marker:text-ctp-surface2">
+            <span>{description}</span>
+          </li>
+        </ul>
+      )}
+    </div>
+  );
+};
+
+const OverviewTab: React.FC<{
+  description: string;
+  keyFeatures: string[];
+}> = ({ description, keyFeatures }) => (
+  <div className="px-6 pb-12 space-y-10 font-source">
+    {/* Description */}
+    <div className="space-y-4">
+      <SectionHeading color="bg-ctp-mauve">Project Overview</SectionHeading>
+      <div className="p-6 rounded-2xl bg-gradient-to-br from-ctp-surface0/20 to-transparent border border-ctp-surface0/50">
+        <Text variant="subtitle" className="leading-relaxed text-ctp-subtext1">
+          {description}
+        </Text>
+      </div>
+    </div>
+
+    {/* Features */}
+    {keyFeatures && keyFeatures.length > 0 && (
+      <div className="space-y-6">
+        <SectionHeading color="bg-ctp-green">Key Features</SectionHeading>
+        <div className="grid grid-cols-1 sm:grid-cols-1 gap-4">
+          {keyFeatures.map((feature, i) => (
+            <FeatureCard key={i} feature={feature} index={i} />
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+);
+
+// ─── Tab bar ─────────────────────────────────────────────────────
+type Tab = "overview" | "deepdive";
+
+const TabBar: React.FC<{
+  active: Tab;
+  onChange: (t: Tab) => void;
+}> = ({ active, onChange }) => {
+  const tabs: { id: Tab; label: string; icon: React.ReactNode }[] = [
+    {
+      id: "overview",
+      label: "Overview",
+      icon: <HiOutlineBookOpen className="w-3.5 h-3.5" />,
+    },
+    {
+      id: "deepdive",
+      label: "Deep Dive",
+      icon: <HiOutlineCode className="w-3.5 h-3.5" />,
+    },
+  ];
+
+  return (
+    <div className="flex items-center gap-1 px-6 mt-6 border-b border-ctp-surface1">
+      {tabs.map((tab) => (
+        <button
+          key={tab.id}
+          onClick={() => onChange(tab.id)}
+          className={cn(
+            "inline-flex items-center gap-1.5 px-3 py-2 text-xs font-mono border-b-2 transition-colors -mb-px",
+            active === tab.id
+              ? "border-ctp-blue text-ctp-blue"
+              : "border-transparent text-ctp-subtext0 hover:text-ctp-text",
+          )}
+        >
+          {tab.icon}
+          {tab.label}
+        </button>
+      ))}
+    </div>
+  );
+};
+
+// ─── Types ───────────────────────────────────────────────────────
 type LoadState = "loading" | "loaded" | "error";
 
 interface ProjectMarkdownProps {
@@ -142,6 +277,7 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
 
   const [markdown, setMarkdown] = useState<string>("");
   const [loadState, setLoadState] = useState<LoadState>("loading");
+  const [activeTab, setActiveTab] = useState<Tab>("overview");
 
   useEffect(() => {
     if (!project) return;
@@ -177,18 +313,16 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
       <CoverBand coverImage={project.coverImage} name={project.name} />
       <PageIcon icon={project.icon} name={project.name} />
 
-      <div className="px-6 mt-6 mb-4">
-        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-ctp-text leading-tight">
-          {project.name}
-        </h1>
+      <div className="px-6 mt-6 mb-4 font-source">
+        <Heading as="h1">{project.name}</Heading>
         {project.tagline && (
-          <p className="mt-3 text-ctp-subtext0 text-lg md:text-xl font-medium leading-relaxed">
+          <Text variant="lead" className="mt-3">
             {project.tagline}
-          </p>
+          </Text>
         )}
       </div>
 
-      <div className="flex items-center gap-3 px-6 mt-3">
+      <div className="flex items-center gap-3 px-6 mt-3 font-source">
         {project.githubLink && project.githubLink !== "private-repository" && (
           <a
             href={project.githubLink}
@@ -219,26 +353,58 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
       {project.technologies.length > 0 && (
         <div className="px-6">
           <SectionHeading color="bg-ctp-yellow">Tech Stack</SectionHeading>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 font-source">
             {project.technologies.map((tech) => (
-              <TechChip key={tech} tech={tech as TechName} />
+              <div
+                key={tech}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 bg-ctp-surface1/15 hover:bg-ctp-surface1/30 rounded-md transition-all duration-200 group/tech"
+              >
+                <div className="flex-shrink-0 flex items-center justify-center group-hover/tech:scale-110 transition-transform duration-200">
+                  <div className="w-3.5 h-3.5 flex items-center justify-center">
+                    {technologies[tech].icon}
+                  </div>
+                </div>
+                <span className="text-[11px] sm:text-sm text-ctp-subtext1 group-hover/tech:text-ctp-text font-medium transition-colors duration-200 -mt-[1px]">
+                  {technologies[tech].name}
+                </span>
+              </div>
             ))}
           </div>
         </div>
       )}
 
-      {loadState === "loading" && <LoadingSkeleton />}
+      {/* Tab bar */}
+      <TabBar active={activeTab} onChange={setActiveTab} />
 
-      {loadState === "loaded" && markdown && (
-        <div className="mt-8 px-6 pb-10">
-          <MarkdownRender markdown={markdown} />
+      {/* Tab panels */}
+      {activeTab === "overview" && (
+        <div className="mt-6">
+          <OverviewTab
+            description={project.description ?? ""}
+            keyFeatures={(project.keyFeatures as string[]) ?? []}
+          />
         </div>
       )}
 
-      {loadState === "error" && (
-        <p className="px-6 mt-8 text-ctp-red text-xs font-mono">
-          ⚠ Could not load project notes.
-        </p>
+      {activeTab === "deepdive" && (
+        <div className="mt-6">
+          {loadState === "loading" && <LoadingSkeleton />}
+
+          {loadState === "loaded" && markdown && (
+            <div className="px-6 pb-10">
+              <MarkdownRender markdown={markdown} />
+            </div>
+          )}
+
+          {loadState === "error" && (
+            <Text
+              variant="caption"
+              className="px-6 mt-8 text-ctp-red font-mono"
+            >
+              ⚠ Could not load project notes.
+            </Text>
+          )}
+        </div>
       )}
     </article>
   );
