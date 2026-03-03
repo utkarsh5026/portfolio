@@ -5,6 +5,7 @@ import SideBar from "./left/side-bar";
 import StatusBar from "./StatusBar";
 import CodeContent from "./CodeContent";
 import EditorTabs from "./tabs/editor-tabs";
+import EditorBreadcrumbs from "./breadcrumbs/editor-breadcrumbs";
 import { OutlineProvider } from "./outline";
 import { useEditorContext } from "./context/explorer-context";
 import Terminal from "./terminal/Terminal";
@@ -68,6 +69,7 @@ const CodeEditor: React.FC = () => {
           {!isMobile && explorerOpen && <Explorer />}
           <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
             <EditorTabs sections={sections} />
+            <EditorBreadcrumbs />
             <CodeContent sections={sections} />
             <StatusBar />
             {terminalOpen && <Terminal />}
