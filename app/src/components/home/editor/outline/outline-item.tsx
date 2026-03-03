@@ -1,6 +1,8 @@
 import React from "react";
 import type { OutlineItem } from "./context/outline-context";
-import { ChevronRight } from "lucide-react";
+import { useOutline } from "./context/outline-context";
+import { VscChevronRight } from "react-icons/vsc";
+import { cn } from "@/lib/utils";
 
 interface Props {
   item: OutlineItem;
@@ -19,51 +21,57 @@ const OutlineItemComponent: React.FC<Props> = ({
   onClick,
   getChildren,
 }) => {
+  const { activeHighlightId } = useOutline();
   const children = getChildren(item.id);
   const hasChildren = children.length > 0;
   const isOpen = openItems.has(item.id);
-  const indent = depth * 16;
+  const indent = depth * 12; // Standard VS Code indentation step
+  const isActive = activeHighlightId === item.id;
 
   return (
     <div>
       <div
-        className="relative flex items-center h-[22px] text-[13px] cursor-pointer select-none
-          hover:bg-ctp-surface0/60 text-ctp-subtext0 hover:text-ctp-text pr-2"
+        className={cn(
+          "relative flex items-center h-[22px] text-[13px] cursor-pointer select-none pr-2 font-source outline-none",
+          isActive
+            ? "bg-ctp-surface1/60 text-ctp-text"
+            : "text-ctp-subtext0 hover:text-ctp-text hover:bg-ctp-surface0/50",
+        )}
         style={{ paddingLeft: `${indent + 4}px` }}
-        onClick={() => {
+        onClick={(e) => {
+          e.stopPropagation();
           if (hasChildren) onToggle(item.id);
           onClick(item);
         }}
       >
-        {/* Tree guide lines for each ancestor level */}
+        {/* Tree guide lines for each ancestor level (optional, kept for clarity but made subtler) */}
         {Array.from({ length: depth }).map((_, i) => (
           <span
             key={i}
-            className="absolute top-0 bottom-0 border-l border-ctp-surface1/40"
-            style={{ left: `${i * 16 + 12}px` }}
+            className="absolute top-0 bottom-0 border-l border-ctp-surface1/30"
+            style={{ left: `${i * 12 + 10}px` }}
           />
         ))}
 
         {/* Chevron or leaf spacer */}
         <span className="w-4 h-4 flex items-center justify-center shrink-0 mr-0.5">
           {hasChildren && (
-            <ChevronRight
-              className={`w-3.5 h-3.5 text-ctp-subtext1 transition-transform duration-150 ${
-                isOpen ? "rotate-90" : ""
-              }`}
+            <VscChevronRight
+              className={cn(
+                "w-[14px] h-[14px] transition-transform duration-150",
+                isOpen ? "rotate-90 text-ctp-text" : "text-ctp-overlay0",
+              )}
             />
           )}
         </span>
 
         {/* Optional icon */}
         {item.icon && (
-          <span className="mr-1.5 flex items-center text-ctp-subtext1">
-            {item.icon}
-          </span>
+          <span className="mr-1.5 flex items-center shrink-0">{item.icon}</span>
         )}
 
         {/* Label */}
-        <span className="truncate">{item.label}</span>
+        <span className="truncate whitespace-nowrap">{item.label}</span>
       </div>
 
       {/* Children */}

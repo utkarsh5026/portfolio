@@ -8,7 +8,7 @@ const OutlinePanel: React.FC = () => {
 
   useEffect(() => {
     setOpenItems(
-      new Set([currentSection, ...outlineItems.map((item) => item.id)])
+      new Set([currentSection, ...outlineItems.map((item) => item.id)]),
     );
   }, [outlineItems, currentSection]);
 
@@ -26,17 +26,17 @@ const OutlinePanel: React.FC = () => {
       outlineItems
         .filter((item) => item.parentId === itemId)
         .sort((a, b) => outlineItems.indexOf(a) - outlineItems.indexOf(b)),
-    [outlineItems]
+    [outlineItems],
   );
 
   const rootItems = useMemo(
     () =>
       outlineItems
         .filter(
-          (item) => item.id.startsWith(currentSection) && item.level === 0
+          (item) => item.id.startsWith(currentSection) && item.level === 0,
         )
         .sort((a, b) => outlineItems.indexOf(a) - outlineItems.indexOf(b)),
-    [outlineItems, currentSection]
+    [outlineItems, currentSection],
   );
 
   const handleItemClick = useCallback(
@@ -47,29 +47,29 @@ const OutlinePanel: React.FC = () => {
         highlightNode(item.id);
       }
     },
-    [highlightNode]
+    [highlightNode],
   );
 
   if (!currentSection || rootItems.length === 0) {
     return (
-      <div className="h-full flex flex-col bg-ctp-mantle border-r border-ctp-surface0">
-        <div className="px-4 py-1.5 text-[11px] uppercase tracking-widest text-ctp-subtext0 font-semibold border-b border-ctp-surface0">
+      <div className="h-full flex flex-col bg-ctp-mantle border-r border-ctp-surface0 w-64">
+        <div className="flex items-center px-4 h-6 text-[11px] uppercase tracking-wider text-ctp-subtext0 font-semibold hover:text-ctp-text cursor-pointer transition-colors duration-200">
           OUTLINE
         </div>
-        <div className="flex items-center justify-center h-full text-xs text-ctp-subtext0 italic">
-          No outline available
+        <div className="flex items-center justify-center h-full text-[13px] text-ctp-subtext0 px-4 text-center">
+          No outline information available.
         </div>
       </div>
     );
   }
 
   return (
-    <div className="h-full flex flex-col bg-ctp-mantle border-r border-ctp-surface0 w-64">
-      <div className="px-4 py-1.5 text-[11px] uppercase tracking-widest text-ctp-subtext0 font-semibold border-b border-ctp-surface0">
+    <div className="h-full flex flex-col bg-ctp-mantle border-r border-ctp-surface0 w-64 select-none">
+      <div className="flex items-center px-4 h-6 text-[11px] uppercase tracking-wider text-ctp-subtext0 font-semibold hover:text-ctp-text cursor-pointer transition-colors duration-200">
         OUTLINE
       </div>
 
-      <div className="overflow-y-auto flex-1 py-1">
+      <div className="overflow-y-auto flex-1 pb-2">
         {rootItems.map((item) => (
           <OutlineItemComponent
             key={item.id}
