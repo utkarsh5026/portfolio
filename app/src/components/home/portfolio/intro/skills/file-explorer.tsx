@@ -5,6 +5,7 @@ import {
   SiJavascript,
   SiPython,
   SiGo,
+  SiRust,
   SiCss3,
   SiDocker,
   SiKubernetes,
@@ -19,29 +20,31 @@ const getFileIcon = (extension?: string) => {
 
   switch (extension) {
     case "tsx":
-      return <SiReact {...iconProps} className="text-[#61dafb]" />;
+      return <SiReact {...iconProps} className="text-ctp-sky" />;
     case "js":
-      return <SiJavascript {...iconProps} className="text-[#f7df1e]" />;
+      return <SiJavascript {...iconProps} className="text-ctp-yellow" />;
     case "py":
-      return <SiPython {...iconProps} className="text-[#3776ab]" />;
+      return <SiPython {...iconProps} className="text-ctp-sapphire" />;
     case "go":
-      return <SiGo {...iconProps} className="text-[#00add8]" />;
+      return <SiGo {...iconProps} className="text-ctp-teal" />;
+    case "rs":
+      return <SiRust {...iconProps} className="text-ctp-peach" />;
     case "css":
-      return <SiCss3 {...iconProps} className="text-[#1572b6]" />;
+      return <SiCss3 {...iconProps} className="text-ctp-blue" />;
     case "docker":
-      return <SiDocker {...iconProps} className="text-[#2496ed]" />;
+      return <SiDocker {...iconProps} className="text-ctp-blue" />;
     case "yaml":
-      return <SiKubernetes {...iconProps} className="text-[#326ce5]" />;
+      return <SiKubernetes {...iconProps} className="text-ctp-lavender" />;
     case "git":
-      return <SiGit {...iconProps} className="text-[#f05032]" />;
+      return <SiGit {...iconProps} className="text-ctp-red" />;
     case "tf":
-      return <SiTerraform {...iconProps} className="text-[#7b42bc]" />;
+      return <SiTerraform {...iconProps} className="text-ctp-mauve" />;
     case "json":
-      return <SiJson {...iconProps} className="text-[#f9e2af]" />;
+      return <SiJson {...iconProps} className="text-ctp-yellow" />;
     case "txt":
-      return <FaFileAlt {...iconProps} className="text-[#6c7086]" />;
+      return <FaFileAlt {...iconProps} className="text-ctp-overlay0" />;
     default:
-      return <FaFileAlt {...iconProps} className="text-[#6c7086]" />;
+      return <FaFileAlt {...iconProps} className="text-ctp-overlay0" />;
   }
 };
 
@@ -96,8 +99,7 @@ export const FileExplorerItem: React.FC<FileExplorerItemProps> = ({
         </span>
 
         <span
-          className={`text-sm font-mono flex-shrink-0`}
-          style={{ color: item.color }}
+          className={`text-sm font-source flex-shrink-0 ${item.color}`}
         >
           {item.name}
         </span>
