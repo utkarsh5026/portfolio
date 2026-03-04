@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-03-04T03:59:28.980Z",
+  "generatedAt": "2026-03-04T04:03:58.016Z",
   "sections": {
     "home": {
-      "lastCommitHash": "9a09fc3",
-      "lastCommitDate": "2026-03-04 08:39:00 +0530",
-      "lastCommitMessage": "feat: redesign profile avatar with organic shape borders and hover effects",
+      "lastCommitHash": "cd56933",
+      "lastCommitDate": "2026-03-04 09:29:19 +0530",
+      "lastCommitMessage": "refactor: simplify terminal component and inline typewriter animation logic",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 22,
-      "linesAdded": 37,
-      "linesDeleted": 23,
-      "totalAdded": 2691,
-      "totalDeleted": 1399,
-      "fileCount": 15
+      "commitCount": 23,
+      "linesAdded": 192,
+      "linesDeleted": 179,
+      "totalAdded": 2883,
+      "totalDeleted": 1578,
+      "fileCount": 16
     },
     "about": {
       "lastCommitHash": "e33a044",

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiOutlineDocumentDownload } from "react-icons/hi";
 import { useEditorContext } from "@/components/home/editor";
@@ -11,6 +10,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import styles from "./profile.module.css";
 
 /**
  * Minimal ProfileButtons component with clean coding theme.
@@ -28,16 +28,15 @@ const ProfileButtons: React.FC = () => {
           <div className="flex gap-3">
             <Tooltip>
               <TooltipTrigger asChild>
-                <motion.button
+                <button
                   onClick={() => setActiveSection("contact")}
                   className={cn(
                     "flex-1 group relative overflow-hidden rounded-lg",
                     "bg-gradient-to-r from-ctp-crust  to-ctp-green/10 border border-none shadow-xl shadow-ctp-crust",
-                    "hover:border-ctp-green hover:bg-ctp-green/10 hover:scale-105 hover:shadow-md hover:shadow-ctp-crust transition-colors duration-200",
-                    isPhone ? "p-3" : "p-4"
+                    "hover:border-ctp-green hover:bg-ctp-green/10 hover:shadow-md hover:shadow-ctp-crust",
+                    isPhone ? "p-3" : "p-4",
+                    styles.buttonAction,
                   )}
-                  whileHover={{ y: -1 }}
-                  whileTap={{ scale: 0.98 }}
                 >
                   <div className="flex items-center gap-2">
                     <span className="text-ctp-green font-mono text-sm">$</span>
@@ -48,7 +47,7 @@ const ProfileButtons: React.FC = () => {
                       --me
                     </span>
                   </div>
-                </motion.button>
+                </button>
               </TooltipTrigger>
               <TooltipContent
                 side="top"
@@ -63,16 +62,15 @@ const ProfileButtons: React.FC = () => {
 
             <Tooltip>
               <TooltipTrigger asChild>
-                <motion.button
+                <button
                   onClick={() => setActiveSection("projects")}
                   className={cn(
                     "flex-1 group relative overflow-hidden rounded-lg",
                     "bg-gradient-to-r from-ctp-crust  to-ctp-pink/10 border border-none shadow-xl shadow-ctp-crust",
-                    "hover:border-ctp-pink hover:bg-ctp-pink/10 hover:scale-105 hover:shadow-md hover:shadow-ctp-crust transition-colors duration-200",
-                    isPhone ? "p-3" : "p-4"
+                    "hover:border-ctp-pink hover:bg-ctp-pink/10 hover:shadow-md hover:shadow-ctp-crust",
+                    isPhone ? "p-3" : "p-4",
+                    styles.buttonAction,
                   )}
-                  whileHover={{ y: -1 }}
-                  whileTap={{ scale: 0.98 }}
                 >
                   <div className="flex items-center gap-2">
                     <span className="text-ctp-mauve font-mono text-sm">./</span>
@@ -80,7 +78,7 @@ const ProfileButtons: React.FC = () => {
                       projects
                     </span>
                   </div>
-                </motion.button>
+                </button>
               </TooltipTrigger>
               <TooltipContent
                 side="top"
@@ -98,7 +96,7 @@ const ProfileButtons: React.FC = () => {
           <div
             className={cn(
               "flex items-center justify-center gap-4",
-              "py-3 rounded-lg bg-gradient-to-r from-ctp-crust  to-ctp-base border border-none shadow-xl shadow-ctp-crust"
+              "py-3 rounded-lg bg-gradient-to-r from-ctp-crust  to-ctp-base border border-none shadow-xl shadow-ctp-crust",
             )}
           >
             {[
@@ -138,20 +136,15 @@ const ProfileButtons: React.FC = () => {
             ].map(({ icon: Icon, href, label, color, tooltip }) => (
               <Tooltip key={href}>
                 <TooltipTrigger asChild>
-                  <motion.a
+                  <a
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className={cn(
-                      "p-2 rounded-lg transition-colors duration-200",
-                      color
-                    )}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
+                    className={cn("p-2 rounded-lg", color, styles.socialIcon)}
                   >
                     <Icon className="w-5 h-5" />
-                  </motion.a>
+                  </a>
                 </TooltipTrigger>
                 <TooltipContent
                   side="top"

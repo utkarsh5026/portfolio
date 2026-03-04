@@ -1,0 +1,101 @@
+/* Profile Picture Animations */
+.pictureContainer {
+  transition: transform 0.3s ease-in-out;
+}
+
+.pictureContainer:hover {
+  transform: scale(1.05);
+}
+
+.avatarWrapper {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.avatarWrapper:hover {
+  transform: rotate(5deg);
+}
+
+.statusIndicator {
+  animation: pulseShadow 2s infinite ease-in-out;
+}
+
+@keyframes pulseShadow {
+  0%,
+  100% {
+    box-shadow: 0 0 0px rgba(166, 227, 161, 0);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(166, 227, 161, 0.5);
+  }
+}
+
+.statusDot {
+  animation: pulseScale 6s infinite ease-in-out;
+}
+
+@keyframes pulseScale {
+  0%,
+  100% {
+    transform: scale(0.1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Profile Buttons Animations */
+.buttonAction {
+  transition:
+    transform 0.2s cubic-bezier(0.2, 0, 0, 1),
+    background-color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.buttonAction:hover {
+  transform: translateY(-1px) scale(1.05);
+}
+
+.buttonAction:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.socialIcon {
+  transition:
+    transform 0.2s cubic-bezier(0.2, 0, 0, 1),
+    color 0.2s;
+}
+
+.socialIcon:hover {
+  transform: scale(1.1);
+}
+
+.socialIcon:active {
+  transform: scale(0.95);
+}
+
+/* Personal Title Animations */
+.textFadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.textFadeInDelay1 {
+  animation: fadeIn 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.textFadeInDelay2 {
+  animation: fadeIn 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
