@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-04T22:21:11.958Z",
+  "generatedAt": "2026-03-04T22:58:39.644Z",
   "sections": {
     "home": {
       "lastCommitHash": "72093fb",
@@ -50,15 +50,15 @@
       "fileCount": 10
     },
     "experience": {
-      "lastCommitHash": "15b8fc6",
-      "lastCommitDate": "2025-07-04 05:11:29 +0530",
-      "lastCommitMessage": "Refactor ExperienceDetails and ExperienceHeader components for improved styling and functionality",
+      "lastCommitHash": "1530ac2",
+      "lastCommitDate": "2026-03-05 03:51:02 +0530",
+      "lastCommitMessage": "style: reduce font sizes in work section experience header and achievements",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 11,
-      "linesAdded": 16,
-      "linesDeleted": 28,
-      "totalAdded": 1844,
-      "totalDeleted": 1033,
+      "commitCount": 12,
+      "linesAdded": 7,
+      "linesDeleted": 9,
+      "totalAdded": 1851,
+      "totalDeleted": 1042,
       "fileCount": 6
     },
     "contact": {
