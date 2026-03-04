@@ -10,6 +10,7 @@ import {
   DrawerOverlay,
 } from "@/components/ui/drawer";
 import { FaGithub } from "react-icons/fa";
+import Reveal from "@/components/animations/reveal/Reveal";
 
 interface LearningModalProps {
   selectedTech: TechnologyLearning | null;
@@ -39,7 +40,7 @@ const LearningModal: React.FC<LearningModalProps> = ({
 
   return (
     <Drawer open={isModalOpen} onOpenChange={closeModal}>
-      <DrawerContent className="max-h-[90vh] bg-gradient-to-b from-ctp-base to-ctp-crust border-none rounded-2xl z-[999999] w-full">
+      <DrawerContent className="max-h-[90vh] bg-gradient-to-b from-ctp-base to-ctp-crust border-none rounded-2xl z-[999999] font-source w-full">
         {/* Header */}
         <DrawerHeader className="border-b border-ctp-surface1/50 p-2 sm:p-4">
           <div className="max-w-4xl mx-auto px-6 sm:px-8">
@@ -62,43 +63,47 @@ const LearningModal: React.FC<LearningModalProps> = ({
         <div className="overflow-y-auto flex-1">
           <div className="max-w-4xl mx-auto px-6 sm:px-8 py-6 space-y-6">
             {/* Description */}
-            <section className="space-y-3">
-              <div className="flex items-center gap-2">
-                <Code2 className="w-4 h-4 md:w-5 md:h-5 text-ctp-blue" />
-                <h3 className="font-semibold text-base md:text-lg lg:text-xl text-ctp-text">
-                  Overview
-                </h3>
-              </div>
-              <p className="text-sm md:text-base lg:text-lg text-ctp-subtext0 leading-relaxed">
-                {selectedTech.description}
-              </p>
-            </section>
+            <Reveal effect="fade-up" delay={0.1} duration={0.5}>
+              <section className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <Code2 className="w-4 h-4 md:w-5 md:h-5 text-ctp-blue" />
+                  <h3 className="font-semibold text-base md:text-lg lg:text-xl text-ctp-text">
+                    Overview
+                  </h3>
+                </div>
+                <p className="text-sm md:text-base lg:text-lg text-ctp-subtext0 leading-relaxed">
+                  {selectedTech.description}
+                </p>
+              </section>
+            </Reveal>
 
             {/* Learning Goals */}
-            <section className="space-y-4">
-              <div className="flex items-center gap-2">
-                <Target className="w-4 h-4 md:w-5 md:h-5 text-ctp-green" />
-                <h3 className="font-semibold text-base md:text-lg lg:text-xl text-ctp-text">
-                  Learning Goals
-                </h3>
-              </div>
+            <Reveal effect="fade-up" delay={0.2} duration={0.5}>
+              <section className="space-y-4">
+                <div className="flex items-center gap-2">
+                  <Target className="w-4 h-4 md:w-5 md:h-5 text-ctp-green" />
+                  <h3 className="font-semibold text-base md:text-lg lg:text-xl text-ctp-text">
+                    Learning Goals
+                  </h3>
+                </div>
 
-              <div className="space-y-3">
-                {selectedTech.learningGoals.map((goal, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start gap-3 p-4 bg-ctp-mantle/80 rounded-2xl border-none hover:bg-ctp-surface0/50 transition-colors duration-200"
-                  >
+                <div className="space-y-3">
+                  {selectedTech.learningGoals.map((goal, index) => (
                     <div
-                      className={`w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-ctp-${categoryColor} mt-2 flex-shrink-0`}
-                    />
-                    <p className="text-sm md:text-base lg:text-lg text-ctp-subtext0 leading-relaxed">
-                      {goal}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
+                      key={index}
+                      className="flex items-start gap-3 p-4 bg-ctp-mantle/80 rounded-2xl border-none hover:bg-ctp-surface0/50 transition-colors duration-200"
+                    >
+                      <div
+                        className={`w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-ctp-${categoryColor} mt-2 flex-shrink-0`}
+                      />
+                      <p className="text-sm md:text-base lg:text-lg text-ctp-subtext0 leading-relaxed">
+                        {goal}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </Reveal>
           </div>
         </div>
 

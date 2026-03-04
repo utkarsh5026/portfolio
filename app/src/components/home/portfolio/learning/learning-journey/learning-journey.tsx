@@ -85,15 +85,15 @@ const LearningJourney: React.FC<LearningJourneyProps> = ({
 
   return (
     <Drawer open={isOpen} onOpenChange={onClose}>
-      <DrawerContent className="h-[85vh] bg-gradient-to-b from-ctp-mantle to-ctp-crust border-none rounded-2xl z-[999999] w-full">
+      <DrawerContent className="h-[85vh] bg-gradient-to-b from-ctp-mantle to-ctp-crust border-none rounded-2xl z-[999999] w-full font-source">
         <DrawerHeader className="border-b border-ctp-surface1/50 pb-4">
           <div className="flex items-center justify-between max-w-4xl mx-auto px-6 sm:px-8">
             <div className="flex items-center gap-4">
-              <div className="p-3 rounded-2xl bg-gradient-to-r from-ctp-blue/20 to-ctp-mauve/20">
+              <div className="p-3 rounded-2xl bg-ctp-mantle">
                 <Book className="w-6 h-6 text-ctp-blue" />
               </div>
               <div className="text-left">
-                <DrawerTitle className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-ctp-blue via-ctp-mauve to-ctp-blue bg-clip-text text-transparent">
+                <DrawerTitle className="text-2xl sm:text-3xl font-bold text-ctp-green">
                   Learning Journey
                 </DrawerTitle>
                 <DrawerDescription className="text-ctp-subtext0 text-sm sm:text-base">

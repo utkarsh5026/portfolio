@@ -6,21 +6,25 @@ import { currentLearningTechnologies } from "./data";
 import LearningModal from "./learning-project-drawer";
 import LearningJourney from "./learning-journey/learning-journey";
 import type { TechnologyLearning } from "@/types";
+import Reveal from "@/components/animations/reveal/Reveal";
 import LearningCard from "./learning-card";
 
 type Category = (typeof currentLearningTechnologies)[number]["category"];
 
-const categorizedTech = currentLearningTechnologies.reduce((acc, tech) => {
-  if (!acc[tech.category]) {
-    acc[tech.category] = [];
-  }
-  acc[tech.category].push(tech);
-  return acc;
-}, {} as Record<Category, TechnologyLearning[]>);
+const categorizedTech = currentLearningTechnologies.reduce(
+  (acc, tech) => {
+    if (!acc[tech.category]) {
+      acc[tech.category] = [];
+    }
+    acc[tech.category].push(tech);
+    return acc;
+  },
+  {} as Record<Category, TechnologyLearning[]>,
+);
 
 const CurrentLearning: React.FC = () => {
   const [selectedTech, setSelectedTech] = useState<TechnologyLearning | null>(
-    null
+    null,
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isJourneyOpen, setIsJourneyOpen] = useState(false);
@@ -54,10 +58,10 @@ const CurrentLearning: React.FC = () => {
       showHeader={true}
     >
       <div className="w-full max-w-6xl mx-auto px-4 py-12">
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+        <Reveal
+          effect="blur-in"
+          duration={0.6}
+          delay={0.2}
           className="text-center mb-8"
         >
           <motion.button
@@ -69,17 +73,17 @@ const CurrentLearning: React.FC = () => {
             <Lightbulb className="w-4 h-4" />
             <span>Learning Journey</span>
           </motion.button>
-        </motion.div>
+        </Reveal>
 
         {/* Category Sections */}
         <div className="space-y-12">
           {Object.entries(categorizedTech).map(
             ([category, techs], categoryIndex) => (
-              <motion.div
+              <Reveal
                 key={category}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: categoryIndex * 0.1, duration: 0.6 }}
+                effect="rise"
+                delay={categoryIndex * 0.15}
+                duration={0.7}
                 className="space-y-6"
               >
                 {/* Category Header */}
@@ -88,7 +92,7 @@ const CurrentLearning: React.FC = () => {
                   <div className="flex items-center gap-2 px-4 py-2 bg-ctp-surface0/50 rounded-full border border-ctp-surface1/50">
                     <div
                       className={`w-2 h-2 rounded-full bg-ctp-${getCategoryColor(
-                        category
+                        category,
                       )}`}
                     />
                     <span className="text-sm font-medium text-ctp-text">
@@ -114,8 +118,8 @@ const CurrentLearning: React.FC = () => {
                     />
                   ))}
                 </div>
-              </motion.div>
-            )
+              </Reveal>
+            ),
           )}
         </div>
 
