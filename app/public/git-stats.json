@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-04T02:03:54.183Z",
+  "generatedAt": "2026-03-04T02:04:46.614Z",
   "sections": {
     "home": {
       "lastCommitHash": "a049394",
@@ -62,15 +62,15 @@
       "fileCount": 6
     },
     "contact": {
-      "lastCommitHash": "5ba2625",
-      "lastCommitDate": "2025-07-04 05:12:47 +0530",
-      "lastCommitMessage": "Update ContactMe component layout for improved responsiveness",
+      "lastCommitHash": "5bc3261",
+      "lastCommitDate": "2026-03-04 07:33:37 +0530",
+      "lastCommitMessage": "refactor: redesign contact section UI with compact card layout and CSS module animations",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 8,
-      "linesAdded": 1,
-      "linesDeleted": 1,
-      "totalAdded": 539,
-      "totalDeleted": 192,
+      "commitCount": 9,
+      "linesAdded": 341,
+      "linesDeleted": 240,
+      "totalAdded": 880,
+      "totalDeleted": 432,
       "fileCount": 4
     },
     "learning": {
