@@ -66,7 +66,7 @@ const AiMessage: React.FC<AiMessageProps> = ({
                       </span>
                     </div>
                     <pre className="!bg-[#1e1e2e] !m-0 !p-4 overflow-x-auto text-sm">
-                      <div className="font-mono">
+                      <div className="font-source">
                         {codeLines
                           .slice(0, visibleCodeLines)
                           .map((line, index) => (
