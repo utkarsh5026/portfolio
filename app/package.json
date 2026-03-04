@@ -7,7 +7,6 @@
   "scripts": {
     "postinstall": "git config core.hooksPath ../.githooks || true",
     "gen:git-stats": "node ../scripts/generate-git-stats.js",
-    "prebuild": "node ../scripts/generate-git-stats.js",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "force-build": "npx tsc --build --force && vite build --force",
