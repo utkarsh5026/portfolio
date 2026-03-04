@@ -1,7 +1,3 @@
-# gopool — A High-Performance Worker Pool for Go
-
-![gopool hero — a sleek dark dashboard showing concurrent task throughput across scheduling strategies](https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/gopool/gopool-main.svg)
-
 > A type-safe, production-ready worker pool for Go — built for the workloads where performance actually matters.
 
 ## The Problem
@@ -21,6 +17,27 @@ Existing third-party pools offered generic worker dispatch, but none provided th
 The library is designed to be dropped into any Go service with a single `go get`, with zero `interface{}` conversions required.
 
 ![gopool system architecture — task submission flows through a configurable scheduler into a managed worker pool and back to the caller](https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/gopool/gopool-architectue.svg)
+
+### Generic, Type-Safe API
+
+The pool is parameterized over two types: `T` (the task input) and `R` (the result). The compiler enforces correctness at every call site — no type assertions, no runtime panics from mismatched types.
+
+Three processing modes are available out of the box: `Process` returns ordered results for a slice of tasks, `ProcessMap` handles keyed input/output pairs, and `ProcessStream` produces a live result channel for unbounded streaming workloads.
+
+### Scheduling Strategies
+
+- **`Channel`** — The default strategy. Uses per-worker buffered channels with round-robin dispatch and FNV-1a affinity hashing. Covers the majority of general-purpose workloads with minimal overhead.
+- **`WorkStealing`** — Implements the **Chase-Lev deque algorithm** for CPU-intensive pipelines. Idle workers steal tasks from the back of busy workers' queues, achieving automatic load balancing without a central dispatcher.
+- **`MPMC`** — A lock-free ring buffer for high-throughput scenarios with many concurrent submitters.
+- **`Priority Queue`** / **`Skip List`** — SLA-driven processing where critical work must jump the queue.
+- **`Bitmask`** — Dispatches directly to idle workers in a single atomic instruction. Limited to 64 workers, but with ultra-low latency overhead.
+- **`LMAX Disruptor`** — Targets financial-grade, sub-microsecond latency at millions of operations per second. The full technical details are covered in the deep dive below.
+
+### Resilience Features
+
+Automatic retry with **exponential backoff** handles transient errors without manual retry loops. Built-in **rate limiting** uses a token bucket to prevent gopool from overwhelming downstream services. Every worker includes **panic recovery** so a crashing task never kills the entire pool.
+
+**Thread-safe lifecycle hooks** (`WithBeforeTaskStart`, `WithOnTaskEnd`, `WithOnEachAttempt`) give callers full observability into task execution without any additional instrumentation infrastructure.
 
 ## Code Savings at a Glance
 
@@ -146,24 +163,6 @@ pool.New[Request, Response](ctx, workers,
     // pool.WithStrategy(scheduler.PriorityQueue), // SLA-driven tasks
 )
 ```
-
-### Generic, Type-Safe API
-
-The pool is parameterised over two types: `T` (the task input) and `R` (the result). The compiler enforces correctness at every call site — no type assertions, no runtime panics from mismatched types.
-
-Three processing modes are available out of the box: `Process` returns ordered results for a slice of tasks, `ProcessMap` handles keyed input/output pairs, and `ProcessStream` produces a live result channel for unbounded streaming workloads.
-
-### Scheduling Strategies
-
-The default `Channel` strategy uses per-worker buffered channels with round-robin dispatch and FNV-1a affinity hashing. It covers the majority of general-purpose workloads with minimal overhead.
-
-For CPU-intensive pipelines, `WorkStealing` implements the **Chase-Lev deque algorithm** — idle workers steal tasks from the back of busy workers' queues, achieving automatic load balancing without a central dispatcher. `MPMC` provides a lock-free ring buffer for high-throughput scenarios with many concurrent submitters. `Priority Queue` and `Skip List` strategies enable SLA-driven processing where critical work must jump the queue. The `Bitmask` strategy dispatches directly to idle workers in a single atomic instruction — limited to 64 workers, but with ultra-low latency overhead. Finally, the `LMAX Disruptor` strategy (described in depth below) targets financial-grade, sub-microsecond latency at millions of operations per second.
-
-### Resilience Features
-
-Automatic retry with **exponential backoff** handles transient errors without manual retry loops. Built-in **rate limiting** uses a token bucket to prevent gopool from overwhelming downstream services. Every worker includes **panic recovery** so a crashing task never kills the entire pool.
-
-**Thread-safe lifecycle hooks** (`WithBeforeTaskStart`, `WithOnTaskEnd`, `WithOnEachAttempt`) give callers full observability into task execution without any additional instrumentation infrastructure.
 
 ## Key Features
 

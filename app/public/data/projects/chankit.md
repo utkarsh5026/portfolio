@@ -1,143 +1,139 @@
-<div align="center">
+# ⚡ Chankit
 
-<img src="icons/icon128.png" alt="Image Favicon Preview" width="100">
+![Chankit — reactive channel operators for Go, showing a pipeline composing throttle, map, filter, and batch](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Chankit)
 
-# Image Favicon Preview
+> Reactive pipelines for Go channels — 50+ operators, zero dependencies, fully type-safe.
 
-**Preview any image as your browser favicon on hover**
+## ⚠️ The Problem
 
-[![Version](https://img.shields.io/badge/version-2.0.0-blue?style=flat-square)](https://github.com/prtk-87/favorite)
-[![Manifest](https://img.shields.io/badge/manifest-v3-green?style=flat-square)](https://developer.chrome.com/docs/extensions/mv3/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![License](https://img.shields.io/badge/license-Apache%202.0-orange?style=flat-square)](LICENSE)
+Go's native channels are powerful, but composing them into real pipelines is painful. Debouncing user input, batching database writes, or rate-limiting API calls all require the same 30-line scaffolding every single time.
 
-<br>
+Goroutine leaks are silent killers. Forgetting to `close()` a channel, or not propagating a cancelled context, can leave dozens of goroutines blocked indefinitely — and Go's runtime won't warn you.
 
-[Features](#features) · [Installation](#installation) · [How It Works](#how-it-works) · [Development](#development)
+The result is Go developers reinventing the wheel across every project. A `batchWorker` here, a `throttleLoop` there — none of it reusable, all of it fragile.
 
-</div>
+![Diagram showing typical Go boilerplate for a simple debounce-filter-batch pipeline versus the equivalent Chankit pipeline](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Add+Image+Here)
 
-<br>
+## ✨ The Solution
 
-## About
+Chankit is a pure-Go library that brings functional, reactive operators to Go channels. It wraps any `<-chan T` in a typed `Pipeline[T]`, then exposes a fluent API for composing operators declaratively.
 
-A lightweight Chrome extension that lets you preview any image on any website as your browser's favicon simply by hovering over it. Perfect for designers, developers, and anyone curious about how an image would look in their browser tab.
+Every operator handles its own goroutine lifecycle. Context cancellation propagates automatically. Channels are closed deterministically. The library has **zero external dependencies** and passes the Go race detector on its full test suite.
 
-<br>
+![High-level architecture: a source channel enters a Pipeline, passes through operator stages (each in its own goroutine), and exits as a transformed channel](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Add+Image+Here)
 
-## Features
+### 🔧 Pipeline API
 
-|     | Feature               | Description                                                         |
-| :-: | :-------------------- | :------------------------------------------------------------------ |
-| 🌐  | **Universal Support** | Works on any website                                                |
-| 🖼️  | **Multiple Formats**  | Supports `<img>`, `<svg>`, `<picture>`, `<canvas>`, CSS backgrounds |
-| ⚡  | **Instant Preview**   | See the favicon change in real-time                                 |
-| 🔄  | **Auto Restore**      | Original favicon returns when you move away                         |
-| 🔒  | **Lock & Download**   | Lock favicons with keyboard shortcuts and download as ZIP           |
-| 🎯  | **Smart Filtering**   | Ignores tiny images like tracking pixels                            |
-| 📦  | **Zero Config**       | Just install and start browsing                                     |
+The `Pipeline[T]` type is the core abstraction. It wraps a read-only channel alongside a `context.Context`, and every method returns a new `Pipeline[T]` — making operator chains composable and readable at a glance.
 
-<br>
-
-## Supported Image Types
-
-| Type                   | Status | Notes                             |
-| :--------------------- | :----: | :-------------------------------- |
-| `<img>`                |   ✅   | Including srcset and lazy-loaded  |
-| `<svg>`                |   ✅   | Inline SVGs converted to data URL |
-| `<picture>`            |   ✅   | Respects source selection         |
-| `<canvas>`             |   ⚠️   | Fails on cross-origin canvases    |
-| CSS `background-image` |   ✅   | Excludes gradients                |
-
-<br>
-
-## How It Works
-
-```
-1. Browse any website
-2. Hover over any image (≥16x16 pixels)
-3. Watch your browser tab favicon change
+```go
+// Debounce search input, filter empty queries, batch into groups of 10
+results, _ := chankit.From(ctx, searchEvents).
+    Debounce(300 * time.Millisecond).
+    Filter(func(q string) bool { return len(q) > 0 }).
+    Batch(10, time.Second).
+    ToSlice()
 ```
 
-### Keyboard Shortcuts
+Resource lifecycle is automatic. When the context is cancelled, every goroutine in the chain tears itself down in order, draining upstream channels to unblock producers before exiting.
 
-| Shortcut       | Action                                    |
-| :------------- | :---------------------------------------- |
-| `Ctrl+Shift+.` | Lock the current hovered image as favicon |
-| `Ctrl+Shift+,` | Unlock and restore the original favicon   |
+### 🌊 Flow Control
 
-**Note:** On Mac, use `Cmd` instead of `Ctrl`. These punctuation-based shortcuts are highly unique and won't conflict with browser or website shortcuts.
+The flow-control operators are the library's most technically sophisticated piece. **Throttle** keeps only the latest value per interval (ideal for high-frequency sensor streams). **Debounce** waits for a silence window before emitting (ideal for search-as-you-type). **FixedInterval** paces values without dropping any (ideal for rate-limited API calls).
 
-<br>
+**Batch** is a dual-trigger operator: it flushes when either a size threshold or a time window is crossed — whichever comes first. Partial batches are sent on context cancellation so no data is silently discarded.
 
-## Installation
+```go
+// Throttle: keep only the latest value per 100ms window (drops intermediates)
+out := chankit.Throttle(ctx, sensorStream, 100*time.Millisecond)
 
-```bash
-# Clone the repository
-git clone https://github.com/prtk-87/favorite.git
-cd favorite
+// Debounce: emit only after 300ms of silence (resets timer on every new value)
+out := chankit.Debounce(ctx, searchInput, 300*time.Millisecond)
 
-# Install dependencies and build
-npm install
-npm run build
+// FixedInterval: pace every value at 50ms apart — no drops, just queued
+out := chankit.FixedInterval(ctx, apiRequests, 50*time.Millisecond)
+
+// Batch: flush at 100 items OR after 1 second, whichever comes first
+out := chankit.Batch(ctx, events, 100, time.Second)
+// => each value on `out` is a []Event slice
 ```
 
-Then in Chrome:
+![Timing diagram comparing Throttle, Debounce, and FixedInterval behaviour on the same bursty input stream](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Add+Image+Here)
 
-1. Navigate to `chrome://extensions/`
-2. Enable **Developer mode**
-3. Click **Load unpacked** → select the `dist` folder
+### 🔄 Transformations & Selection
 
-<br>
+The transformation layer covers the full functional primitives: **Map**, **Filter**, **Reduce**, **FlatMap**, and **Tap**. All are generic — no `interface{}` casting, no runtime type assertions.
 
-## Development
+Selection operators (**Take**, **Skip**, **TakeWhile**, **SkipWhile**, **First**, **Last**) and logical predicates (**Any**, **All**) allow precise control over how many values flow through a pipeline and when it terminates.
 
-```bash
-npm install      # Install dependencies
-npm run build    # Build the extension
-npm run watch    # Watch for changes
-npm run clean    # Clean build files
-npm run dev      # Full dev workflow
-```
+### 🔀 Generators & Combiners
 
-<br>
+Source generators — **Range**, **Repeat**, **Generate**, **FromSlice**, **From** — let you bootstrap pipelines without an existing channel. Combiner operators — **Merge**, **ZipWith**, **ZipN** — join multiple streams into one, enabling fan-in patterns with a single method call.
 
-## Technical Details
+## 🌟 Key Features
 
-<details>
-<summary><b>Cross-Origin Behavior</b></summary>
-<br>
+- Fluent `Pipeline[T]` API with full method chaining
+- **Throttle**, **Debounce**, **FixedInterval**, and **Delay** for precise timing control
+- **Batch** operator with dual size/time-window flush triggers
+- Type-safe **Map**, **Filter**, **Reduce**, **FlatMap** using Go generics
+- **Merge** and **Zip** combiners for multi-stream fan-in
+- **Range**, **Repeat**, **Generate** generators to create sources from scratch
+- Automatic goroutine lifecycle — no manual `close()` or leak risk
+- `context.Context` propagation throughout the entire chain
+- Zero external dependencies — pure Go stdlib
+- Race-detector clean on the full test suite
+- Benchmark suite included for performance validation
+- VitePress documentation site with API reference and real-world examples
 
-- Same-origin images work fully
-- Cross-origin `<img>` elements work if server allows
-- Cross-origin `<canvas>` may throw SecurityError
-- Inline SVGs always work
+## 📊 Results & Impact
 
-</details>
+| Metric                                       | Vanilla Go           | Chankit          | Delta          |
+| -------------------------------------------- | -------------------- | ---------------- | -------------- |
+| Lines for debounce + filter + batch pipeline | ~90                  | ~10              | **-89%**       |
+| Runtime type casting (`interface{}`)         | Required             | None             | **Eliminated** |
+| Goroutine leak surface area                  | Every operator       | Zero (automated) | **Eliminated** |
+| Context cancellation wiring                  | Manual per goroutine | Built-in         | **Automated**  |
+| Reusable across projects                     | No (copy-paste)      | Drop-in package  | **Yes**        |
 
-<details>
-<summary><b>Performance</b></summary>
-<br>
+Chankit cuts pipeline boilerplate by roughly **89%** on real-world examples from the documentation — debounce + filter + batch went from ~90 lines to ~10.
 
-- Event delegation (single document listener)
-- Debounced hover detection (100ms)
-- Minimum size filter for tiny elements
+The shift from imperative goroutine management to declarative operator composition also makes pipelines dramatically easier to test. Each operator is independently mockable via a channel input, removing the need for complex synchronisation harness code in tests.
 
-</details>
+## 🔬 Under the Hood — Technical Deep Dive
 
-<br>
+The hardest engineering problems in Chankit are not the functional operators — those are straightforward. The hard problems are **goroutine lifecycle**, **non-blocking teardown**, and **type-safe composition** without sacrificing ergonomics.
 
-## Tech Stack
+### 🧬 Generic Type System
 
-- **Language:** TypeScript
-- **Platform:** Chrome Extension Manifest V3
+Chankit targets Go 1.18+ and uses type parameters throughout. The `Pipeline[T any]` struct, every operator function, and every option type are all parameterised. This eliminates the `interface{}` escape hatch that plagued pre-generics channel libraries.
 
-<br>
+Numeric-specific constraints (`constraints.Ordered`, custom `Number`) are used for operators like **Range** that only make sense on numeric types — catching misuse at compile time rather than panicking at runtime.
 
----
+![Diagram showing how the generic type parameter T flows unchanged through a Pipeline[T] operator chain, with type inference at the call site](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Add+Image+Here)
 
-<div align="center">
+### ♻️ Context-Driven Lifecycle
 
-**[Apache 2.0 License](LICENSE)**
+Every operator goroutine uses a `select` loop with a `ctx.Done()` arm. Cancellation is checked at two points: **on receive** (before processing a value) and **on send** (before writing to the output channel). This two-point check prevents a goroutine from processing a value that will never be consumed.
 
-</div>
+When a downstream operator stops reading (because its own context was cancelled), the upstream producer would normally block on a channel send. Chankit spawns a **drain goroutine** — a lightweight goroutine whose only job is to read and discard values from an abandoned channel until it closes. This guarantees that producers always unblock and exit cleanly.
+
+![Sequence diagram showing context cancellation propagating from a downstream operator through drain goroutines to clean up upstream producers](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Add+Image+Here)
+
+### ⏱️ Flow Control Algorithms
+
+**Debounce** uses a single resettable `time.Timer`. On each incoming value, the timer is reset. Only when the timer fires without interruption is the last-seen value emitted. This is a faithful implementation of the classic debounce pattern, with correct handling of `timer.Stop()` / drain semantics to avoid spurious fires.
+
+**Throttle** uses a ticker to define the emission window. Within each window, only the most recently received value is stored; on each tick, that value (if any) is emitted and the slot is cleared. **FixedInterval** instead queues every value and releases them one-per-tick, trading latency for data completeness.
+
+![State machine diagram for Debounce, Throttle, and FixedInterval showing how each handles the same bursty input sequence differently](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Add+Image+Here)
+
+### 📦 Buffering Strategy
+
+By default, all operator output channels are **unbuffered** — providing natural backpressure. If a downstream consumer is slow, the upstream operator blocks, which in turn blocks its upstream, all the way to the source. This is the correct behaviour for most pipelines.
+
+Two opt-in mechanisms override this: `WithBuffer[T](n)` sets an explicit buffer size; `WithBufferAuto[T]()` infers a sensible size for slice-backed operations. Both are passed as functional options, keeping the default API zero-config.
+
+## 🔗 Links
+
+- [GitHub — utkarsh5026/chankit](https://github.com/utkarsh5026/chankit)
+- [Documentation Site](https://utkarsh5026.github.io/chankit)
