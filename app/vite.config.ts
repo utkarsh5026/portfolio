@@ -49,21 +49,14 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ["react", "react-dom"],
-          animations: ["animejs"],
-          ui: ["@radix-ui/react-avatar", "@radix-ui/react-slot"],
-          icons: ["lucide-react", "react-icons"],
-          "home-components": [
-            "./src/components/home/portfolio/intro/personal-intro",
-            "./src/components/home/portfolio/skills/skills-section",
-            "./src/components/home/portfolio/projects/projects-section",
-            "./src/components/home/portfolio/articles/articles-section",
-            "./src/components/home/portfolio/work/work-experience",
-            "./src/components/home/portfolio/contact/contact-me",
-            "./src/components/home/portfolio/learning/learning-section",
-            "./src/components/home/portfolio/about/about-me",
-          ],
+        manualChunks(id) {
+          if (id.includes("node_modules/react/") || id.includes("node_modules/react-dom/")) {
+            return "vendor";
+          }
+          if (id.includes("node_modules/animejs")) return "animations";
+          if (id.includes("node_modules/@radix-ui") || id.includes("node_modules/lucide-react") || id.includes("node_modules/react-icons")) {
+            return "ui";
+          }
         },
       },
     },
