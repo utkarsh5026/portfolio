@@ -108,7 +108,6 @@ const ProfileButtons: React.FC = () => {
     <TooltipProvider delayDuration={300}>
       <div className="w-full">
         <div className="mt-6 flex flex-col gap-4">
-          {/* Primary Actions */}
           <div className="flex gap-3">
             {primaryButtons.map(
               ({
@@ -130,7 +129,7 @@ const ProfileButtons: React.FC = () => {
                     "bg-ctp-surface0/60 backdrop-blur-md border border-ctp-surface1/60",
                     "hover:bg-ctp-surface1/80 transition-all duration-300",
                     borderHover,
-                    "shadow-lg shadow-ctp-crust/10",
+                    "shadow-lg shadow-ctp-crust/10 font-source",
                     shadowHover,
                     isPhone ? "py-3 px-4" : "py-3 px-5",
                     styles.buttonAction,
@@ -159,7 +158,6 @@ const ProfileButtons: React.FC = () => {
             )}
           </div>
 
-          {/* Social Links & Resume */}
           <div
             className={cn(
               "flex items-center justify-center gap-3",
@@ -167,7 +165,15 @@ const ProfileButtons: React.FC = () => {
             )}
           >
             {socialLinks.map(
-              ({ icon: Icon, href, label, color, hoverBg, linkClass, tooltip }) => (
+              ({
+                icon: Icon,
+                href,
+                label,
+                color,
+                hoverBg,
+                linkClass,
+                tooltip,
+              }) => (
                 <Tooltip key={href}>
                   <TooltipTrigger asChild>
                     <a
@@ -189,7 +195,7 @@ const ProfileButtons: React.FC = () => {
                   </TooltipTrigger>
                   <TooltipContent
                     side="top"
-                    className="bg-ctp-surface0/95 backdrop-blur-md border border-ctp-surface1/50 text-ctp-text px-3 py-2.5 rounded-xl shadow-xl z-[100]"
+                    className="bg-ctp-surface0/95 backdrop-blur-md border border-ctp-surface1/50 text-ctp-text px-3 py-2.5 rounded-xl shadow-xl z-[100] font-source"
                   >
                     <div className="flex items-center gap-2.5">
                       <span className="text-base">{tooltip.emoji}</span>
@@ -206,17 +212,6 @@ const ProfileButtons: React.FC = () => {
                 </Tooltip>
               ),
             )}
-          </div>
-
-          {/* Simple status indicator */}
-          <div className="flex items-center justify-center gap-2.5 mt-2 text-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-ctp-green opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-ctp-green"></span>
-            </span>
-            <span className="text-ctp-overlay1 text-[11px] font-medium tracking-widest uppercase">
-              available for work
-            </span>
           </div>
         </div>
       </div>

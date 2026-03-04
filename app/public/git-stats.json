@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-04T05:12:09.215Z",
+  "generatedAt": "2026-03-04T05:19:05.787Z",
   "sections": {
     "home": {
-      "lastCommitHash": "ba54a0e",
-      "lastCommitDate": "2026-03-04 09:33:29 +0530",
-      "lastCommitMessage": "refactor: replace Framer Motion with CSS animations in profile components",
+      "lastCommitHash": "4bc8062",
+      "lastCommitDate": "2026-03-04 10:41:48 +0530",
+      "lastCommitMessage": "refactor: DRY profile buttons and add characteristic icon animations",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 24,
-      "linesAdded": 141,
-      "linesDeleted": 91,
-      "totalAdded": 3024,
-      "totalDeleted": 1669,
+      "commitCount": 25,
+      "linesAdded": 290,
+      "linesDeleted": 135,
+      "totalAdded": 3314,
+      "totalDeleted": 1804,
       "fileCount": 16
     },
     "about": {
