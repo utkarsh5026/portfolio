@@ -75,41 +75,44 @@ const SketchBorder: React.FC<SketchBorderProps> = ({
         className,
       )}
     >
-      {/* Layer 1 — outermost, negative rotation */}
-      <div
-        className={cn(
-          "absolute inset-[-5px] border-[2px] transition-all duration-500 pointer-events-none z-0",
-          `border-ctp-${primaryColor}/${primaryOpacity}`,
-        )}
-        style={{
-          borderRadius: borderRadiusVariants[0],
-          transform: `rotate(-${r}deg)`,
-        }}
-      />
+      {/* Border layers — desktop only */}
+      <div className="hidden md:contents">
+        {/* Layer 1 — outermost, negative rotation */}
+        <div
+          className={cn(
+            "absolute inset-[-5px] border-[2px] transition-all duration-500 pointer-events-none z-0",
+            `border-ctp-${primaryColor}/${primaryOpacity}`,
+          )}
+          style={{
+            borderRadius: borderRadiusVariants[0],
+            transform: `rotate(-${r}deg)`,
+          }}
+        />
 
-      {/* Layer 2 — middle, positive rotation (slightly larger magnitude) */}
-      <div
-        className={cn(
-          "absolute inset-[-2px] border-[2px] transition-all duration-500 pointer-events-none z-0",
-          `border-ctp-${secondaryColor}/${secondaryOpacity}`,
-        )}
-        style={{
-          borderRadius: borderRadiusVariants[1],
-          transform: `rotate(${r * 1.4}deg)`,
-        }}
-      />
+        {/* Layer 2 — middle, positive rotation (slightly larger magnitude) */}
+        <div
+          className={cn(
+            "absolute inset-[-2px] border-[2px] transition-all duration-500 pointer-events-none z-0",
+            `border-ctp-${secondaryColor}/${secondaryOpacity}`,
+          )}
+          style={{
+            borderRadius: borderRadiusVariants[1],
+            transform: `rotate(${r * 1.4}deg)`,
+          }}
+        />
 
-      {/* Layer 3 — innermost, slight negative rotation */}
-      <div
-        className={cn(
-          "absolute inset-[1px] border-[1.5px] transition-all duration-500 pointer-events-none z-0",
-          `border-ctp-${tertiaryColor ?? primaryColor}/${tertiaryOpacity}`,
-        )}
-        style={{
-          borderRadius: borderRadiusVariants[2],
-          transform: `rotate(-${r * 0.6}deg)`,
-        }}
-      />
+        {/* Layer 3 — innermost, slight negative rotation */}
+        <div
+          className={cn(
+            "absolute inset-[1px] border-[1.5px] transition-all duration-500 pointer-events-none z-0",
+            `border-ctp-${tertiaryColor ?? primaryColor}/${tertiaryOpacity}`,
+          )}
+          style={{
+            borderRadius: borderRadiusVariants[2],
+            transform: `rotate(-${r * 0.6}deg)`,
+          }}
+        />
+      </div>
 
       {/* Content */}
       <div className="relative z-10">{children}</div>
