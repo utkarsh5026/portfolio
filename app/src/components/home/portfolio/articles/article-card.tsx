@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { articles } from "./articles-dump";
 import Reveal from "@/components/animations/reveal/Reveal";
@@ -19,35 +19,36 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, index }) => {
         href={article.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="group block"
+        className="group flex h-full flex-col"
       >
         <div
           className={cn(
-            "relative rounded-lg sm:rounded-xl p-[1px] transition-all duration-300",
-            "bg-gradient-to-b from-ctp-surface1/60 via-ctp-surface0/30 to-ctp-surface1/60",
-            "sm:hover:from-ctp-pink/50 sm:hover:via-ctp-mauve/30 sm:hover:to-ctp-pink/50",
-            "sm:hover:shadow-xl sm:hover:shadow-ctp-pink/10",
-            "sm:hover:-translate-y-2",
-            "active:scale-[0.98] sm:active:scale-100"
+            "relative flex flex-col h-full rounded-2xl sm:rounded-[24px] transition-all duration-300 p-2 sm:p-2.5",
+            "bg-gradient-to-b from-ctp-surface1/40 to-ctp-surface0/20",
+            "border border-ctp-surface1/60",
+            "overflow-hidden",
+            "sm:hover:border-ctp-pink/40 sm:hover:shadow-lg sm:hover:shadow-ctp-pink/10",
+            "sm:hover:-translate-y-1.5",
+            "active:scale-[0.98] sm:active:scale-100",
           )}
         >
-          {/* Fixed aspect ratio container for consistent card heights */}
-          <div className="relative aspect-[3/4] sm:aspect-[3/4] overflow-hidden rounded-[7px] sm:rounded-[11px] bg-ctp-base">
+          {/* Image Header wrapper - 16:9 aspect ratio */}
+          <div className="relative aspect-video w-full overflow-hidden rounded-xl sm:rounded-[16px] bg-ctp-surface0">
             {!isLoaded && !hasError && (
-              <div className="absolute inset-0 bg-ctp-surface0/50 animate-pulse">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-ctp-surface1/30 to-transparent skeleton-shimmer" />
+              <div className="absolute inset-0 bg-ctp-surface0/80 animate-pulse">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-ctp-surface1/20 to-transparent skeleton-shimmer" />
               </div>
             )}
 
             {hasError && (
               <div className="absolute inset-0 flex items-center justify-center bg-ctp-surface0/50">
-                <span className="text-ctp-subtext0 text-xs">
-                  Failed to load
+                <span className="text-ctp-subtext0 text-xs text-center px-4">
+                  Failed to load image
                 </span>
               </div>
             )}
 
-            {/* Image with lazy loading and fade-in */}
+            {/* Image */}
             <img
               src={article.imageUrl}
               alt={article.title}
@@ -55,64 +56,48 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, index }) => {
               onLoad={() => setIsLoaded(true)}
               onError={() => setHasError(true)}
               className={cn(
-                "absolute inset-0 w-full h-full object-cover object-top transition-all duration-500",
-                "brightness-[0.8] contrast-[0.95] saturate-[0.85]",
-                "sm:group-hover:brightness-[0.85] sm:group-hover:scale-105",
-                isLoaded ? "opacity-100" : "opacity-0"
+                "absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out",
+                "saturate-[0.85] brightness-[0.85]",
+                "sm:group-hover:scale-105 sm:group-hover:saturate-100 sm:group-hover:brightness-100",
+                isLoaded ? "opacity-90" : "opacity-0",
               )}
             />
 
-            {/* Vignette effect */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.5) 100%)",
-              }}
-            />
+            {/* Persistent subtle dark wash to soften the image */}
+            <div className="absolute inset-0 bg-ctp-crust/20 pointer-events-none transition-opacity duration-500 sm:group-hover:opacity-0" />
 
-            {/* Bottom gradient - transparent to dark */}
-            <div
-              className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
-              style={{
-                background:
-                  "linear-gradient(to bottom, transparent 0%, rgba(17, 17, 27, 0.7) 50%, rgba(17, 17, 27, 0.95) 100%)",
-              }}
-            />
+            {/* Overlay for premium vibe on hover */}
+            <div className="absolute inset-0 bg-gradient-to-t from-ctp-base/70 via-ctp-base/10 to-transparent opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-            {/* Netflix-style title overlay at bottom */}
-            <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-4">
-              <div
-                className={cn(
-                  "bg-ctp-base/85 backdrop-blur-md rounded-md sm:rounded-lg p-2 sm:p-3",
-                  "border border-ctp-surface1/40",
-                  "transition-all duration-300",
-                  "sm:group-hover:bg-ctp-base/90 sm:group-hover:border-ctp-pink/40"
-                )}
-              >
-                <h3
-                  className={cn(
-                    "text-xs sm:text-sm font-semibold text-ctp-text line-clamp-2",
-                    "sm:group-hover:text-ctp-pink transition-colors duration-300"
-                  )}
-                >
-                  {article.title}
-                </h3>
-                {/* Always visible on mobile, hover on desktop */}
-                <div
-                  className={cn(
-                    "flex items-center gap-1 sm:gap-1.5 mt-1.5 sm:mt-2 text-[10px] sm:text-xs text-ctp-subtext0",
-                    "opacity-100 sm:opacity-0 sm:max-h-0 sm:overflow-hidden",
-                    "sm:group-hover:opacity-100 sm:group-hover:max-h-10",
-                    "transition-all duration-300"
-                  )}
-                >
-                  <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
-                  <span>Read on Medium</span>
-                </div>
+            <div className="absolute top-3 right-3 sm:top-4 sm:right-4">
+              <div className="bg-ctp-base/90 p-1.5 sm:p-2 rounded-full text-ctp-text opacity-0 sm:group-hover:opacity-100 transform translate-y-2 sm:group-hover:translate-y-0 shadow-lg transition-all duration-300 backdrop-blur-sm border border-ctp-surface1/50">
+                <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 text-ctp-pink" />
               </div>
             </div>
           </div>
+
+          {/* Content Body */}
+          <div className="flex flex-col flex-grow pt-4 sm:pt-5 px-2 sm:px-3 pb-2 sm:pb-3 bg-transparent relative z-10">
+            <h3
+              className={cn(
+                "text-sm sm:text-[15px] font-semibold text-ctp-text line-clamp-3 leading-snug",
+                "transition-colors duration-300",
+                "sm:group-hover:text-ctp-pink",
+              )}
+              title={article.title}
+            >
+              {article.title}
+            </h3>
+
+            <div className="mt-auto pt-4 sm:pt-6 flex items-center justify-between">
+              <span className="text-xs font-medium text-ctp-subtext0 flex items-center gap-1.5 transition-colors sm:group-hover:text-ctp-text">
+                Read Article
+              </span>
+            </div>
+          </div>
+
+          {/* Animated decorative line at the bottom */}
+          <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-ctp-pink to-ctp-mauve transition-all duration-500 sm:group-hover:w-full z-20" />
         </div>
       </a>
     </Reveal>
