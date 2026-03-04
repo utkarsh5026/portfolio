@@ -106,6 +106,12 @@ def target_preview():
     _app_cmd(["npm", "run", "preview"])
 
 
+def target_gen_git_stats():
+    print_header("Generating Git Statistics")
+    _app_cmd(["npm", "run", "gen:git-stats"])
+    print_success("Git stats generated!")
+
+
 def target_build():
     print_header("Building for Production")
     _app_cmd(["npm", "run", "build"])
@@ -292,6 +298,7 @@ TARGETS = {
     "start": (target_start, "Alias for dev", "Development"),
     "preview": (target_preview, "Preview production build locally", "Development"),
     # Build
+    "gen-git-stats": (target_gen_git_stats, "Generate git statistics", "Build"),
     "build": (target_build, "Build for production", "Build"),
     "build-force": (
         target_build_force,
