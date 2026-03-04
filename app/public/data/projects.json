@@ -20,7 +20,27 @@
       "mongodb",
       "docker"
     ],
-    "githubLink": "private-repository"
+    "githubLink": "private-repository",
+    "icon": "🚗"
+  },
+  {
+    "name": "StoreMy",
+    "tagline": "A production-grade relational database built from scratch in Go 🗄️",
+
+    "description": "Most developers use databases as black boxes — StoreMy tears the box open. It implements the complete RDBMS stack without any external database libraries: a slotted-page storage engine, Two-Phase Locking with deadlock detection, Write-Ahead Logging for crash recovery, a cost-based query optimizer, and a terminal UI — all across ~100,000 lines of Go organized into 13 strict architectural layers.",
+
+    "keyFeatures": [
+      "Storage Engine: 4KB slotted-page heap files with a 4MB LRU buffer pool (O(1) eviction via HashMap + doubly-linked list), a B+Tree index with doubly-linked leaf pages for O(log n + k) range scans, and a Hash index for O(1) equality lookups.",
+      "ACID Transaction Engine: Two-Phase Locking at page granularity with a wait-for dependency graph that gates deadlock prevention before a transaction ever blocks — combined with NO-STEAL/FORCE buffer policies that eliminate the undo phase of crash recovery.",
+      "SQL Query Engine: Recursive-descent SQL parser building a full AST, a cost-based optimizer using catalog statistics (selectivity, cardinality, distinct values) to select among Hash Join O(n+m), Sort-Merge Join O(n log n), and Block Nested Loop — all executing via a streaming DbIterator chain.",
+      "Self-Describing System Catalog: All metadata (table schemas, indexes, statistics) stored as ordinary heap files in 6 catalog tables — the same 4KB slotted-page format as user tables — with a background goroutine refreshing cost estimates every 30 seconds."
+    ],
+
+    "technologies": ["golang", "docker"],
+
+    "githubLink": "https://github.com/utkarsh-pro/storemy",
+    "liveLink": "",
+    "icon": "🗄️"
   },
   {
     "name": "First Principles",
@@ -44,7 +64,8 @@
       "redux"
     ],
     "githubLink": "https://github.com/utkarsh5026/FirstPrinciples",
-    "liveLink": "https://first-principles-black.vercel.app/"
+    "liveLink": "https://first-principles-black.vercel.app/",
+    "icon": "📚"
   },
   {
     "name": "SourceControl",
@@ -57,7 +78,8 @@
       "Type-Safe Path System and Config Hierarchy: Strongly-typed path abstractions (`AbsolutePath`, `RepositoryPath`) preventing mixing bugs. Thread-safe hierarchical config manager with 5-level precedence (CLI → repo → user → system → defaults). Concurrent config file loading protected by `RWMutex` and `errgroup`."
     ],
     "technologies": ["golang", "cli", "cobra", "git"],
-    "githubLink": "https://github.com/utkarsh5026/SourceControl"
+    "githubLink": "https://github.com/utkarsh5026/SourceControl",
+    "icon": "🔧"
   },
   {
     "name": "Enigma",
@@ -108,7 +130,7 @@
     ],
     "githubLink": "https://github.com/utkarsh5026/portfolio",
     "liveLink": "https://utkarsh5026.github.io/",
-    "icon": "🙅",
+    "icon": "🎬",
     "coverImage": "https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/portfolio/anas-alshanti-feXpdV001o4-unsplash%20(2).jpg"
   },
   {
@@ -123,7 +145,8 @@
     ],
     "technologies": ["typescript", "vite", "vitest", "javascript"],
     "githubLink": "https://github.com/utkarsh5026/mayonation",
-    "liveLink": "https://utkarsh5026.github.io/mayosite/"
+    "liveLink": "https://utkarsh5026.github.io/mayosite/",
+    "icon": "⚡"
   },
   {
     "name": "SemanticCode",
@@ -136,7 +159,8 @@
       "Real-Time Index Updates: Intelligent file watcher triggering instantaneous incremental updates. Background re-indexing processes to prevent search downtime. Differential update logic ensuring index consistency with code changes."
     ],
     "technologies": ["python", "typescript", "fastapi", "mongodb"],
-    "githubLink": "https://github.com/utkarsh5026/gep"
+    "githubLink": "https://github.com/utkarsh5026/gep",
+    "icon": "🔎"
   },
   {
     "name": "AuthGuard",
@@ -149,7 +173,8 @@
       "SSO Gateway Service: Unified Single Sign-On portal with distributed session management. Identity Provider (IdP) federation for external auth providers. Secure cross-domain authentication using HttpOnly cookies."
     ],
     "technologies": ["node", "typescript", "postgresql", "mongodb"],
-    "githubLink": "https://github.com/utkarsh5026/pauth"
+    "githubLink": "https://github.com/utkarsh5026/pauth",
+    "icon": "🛡️"
   },
   {
     "name": "MDHD",
@@ -187,7 +212,8 @@
       "Advanced TypeScript Type System: Generic `GenerateActionCreators` utility for automatic inference from reducers. Type-safe `ActionHandler` definitions using Immer's Draft types. Custom `isActionOf` type guards ensuring runtime and compile-time safety."
     ],
     "technologies": ["typescript", "javascript", "node", "jest", "git"],
-    "githubLink": "https://github.com/utkarsh5026/ReduceMe"
+    "githubLink": "https://github.com/utkarsh5026/ReduceMe",
+    "icon": "📦"
   },
   {
     "name": "ProgChain",
@@ -201,7 +227,9 @@
     ],
     "technologies": ["react", "typescript", "python", "monaco", "docker"],
     "githubLink": "https://github.com/utkarsh5026/ProgChain",
-    "liveLink": "https://codementor-ai.vercel.app"
+    "liveLink": "https://codementor-ai.vercel.app",
+    "icon": "💡",
+    "coverImage": "https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/progchain/mark-tegethoff-NbgQfUvKFE0-unsplash.jpg"
   },
   {
     "name": "Genshin Companion",
@@ -230,7 +258,8 @@
       "Responsive Layout Engine: Intelligent auto-detection of design breakpoints and fluid constraints. Automatic generation of precise CSS media queries. Creation of responsive component variants optimized for mobile and desktop."
     ],
     "technologies": ["react", "typescript", "rest", "tailwind", "javascript"],
-    "githubLink": "https://github.com/utkarsh5026/studio"
+    "githubLink": "https://github.com/utkarsh5026/studio",
+    "icon": "🎨"
   },
   {
     "name": "chankit",
@@ -253,7 +282,8 @@
       "Flow Control",
       "Zero Dependencies",
       "High Performance"
-    ]
+    ],
+    "icon": "🔀"
   },
   {
     "name": "InPeace",
@@ -267,7 +297,7 @@
     ],
     "technologies": ["typescript", "javascript", "tailwind", "css"],
     "githubLink": "https://github.com/utkarsh5026/inpeace",
-    "icon": "🦹",
+    "icon": "�‍♂️",
     "coverImage": "https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/inpeace/jpeg-optimizer_tobias-tullius-Beth63PcJOw-unsplash.jpg"
   },
   {
