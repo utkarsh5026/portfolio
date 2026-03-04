@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-04T04:03:58.016Z",
+  "generatedAt": "2026-03-04T05:12:09.215Z",
   "sections": {
     "home": {
-      "lastCommitHash": "cd56933",
-      "lastCommitDate": "2026-03-04 09:29:19 +0530",
-      "lastCommitMessage": "refactor: simplify terminal component and inline typewriter animation logic",
+      "lastCommitHash": "ba54a0e",
+      "lastCommitDate": "2026-03-04 09:33:29 +0530",
+      "lastCommitMessage": "refactor: replace Framer Motion with CSS animations in profile components",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 23,
-      "linesAdded": 192,
-      "linesDeleted": 179,
-      "totalAdded": 2883,
-      "totalDeleted": 1578,
+      "commitCount": 24,
+      "linesAdded": 141,
+      "linesDeleted": 91,
+      "totalAdded": 3024,
+      "totalDeleted": 1669,
       "fileCount": 16
     },
     "about": {
