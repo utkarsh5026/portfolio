@@ -108,7 +108,7 @@ const ProfileButtons: React.FC = () => {
     <TooltipProvider delayDuration={300}>
       <div className="w-full">
         <div className="mt-6 flex flex-col gap-4">
-          <div className="flex gap-3">
+          <div className="flex gap-3 min-w-0">
             {primaryButtons.map(
               ({
                 label,
@@ -125,7 +125,7 @@ const ProfileButtons: React.FC = () => {
                   key={section}
                   onClick={() => setActiveSection(section)}
                   className={cn(
-                    "flex-1 group relative flex items-center justify-center gap-2 overflow-hidden rounded-xl",
+                    "flex-1 min-w-0 group relative flex items-center justify-center gap-2 overflow-hidden rounded-xl",
                     "bg-ctp-surface0/60 backdrop-blur-md border border-ctp-surface1/60",
                     "hover:bg-ctp-surface1/80 transition-all duration-300",
                     borderHover,
