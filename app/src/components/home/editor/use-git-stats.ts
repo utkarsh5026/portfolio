@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import type { SectionType } from "../context/explorer-context";
+import type { SectionType } from "./context/explorer-context";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
@@ -29,8 +29,6 @@ interface UseGitStatsResult {
   loading: boolean;
   getSectionStats: (section: SectionType) => SectionGitStats | null;
 }
-
-// ─── Relative time helper ────────────────────────────────────────────────────
 
 export function relativeTime(isoDate: string): string {
   if (!isoDate) return "—";
