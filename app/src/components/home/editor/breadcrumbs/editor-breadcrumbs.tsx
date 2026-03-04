@@ -80,6 +80,16 @@ const BreadcrumbTreeDropdown: React.FC<TreeDropdownProps> = ({
     return () => document.removeEventListener("keydown", handler);
   }, [onClose]);
 
+  // Auto-scroll slightly when opened to indicate scrollability
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (ref.current && ref.current.scrollHeight > ref.current.clientHeight) {
+        ref.current.scrollBy({ top: 40, behavior: "smooth" });
+      }
+    }, 200);
+    return () => clearTimeout(timer);
+  }, [projectsOpen]);
+
   const projectFiles = (
     <>
       {projects.map((p) => (
@@ -110,7 +120,7 @@ const BreadcrumbTreeDropdown: React.FC<TreeDropdownProps> = ({
         left: anchor.left,
         zIndex: 9999,
       }}
-      className="min-w-[220px] max-w-[300px] rounded-md bg-ctp-mantle border border-ctp-surface0/60 shadow-2xl shadow-black/60 py-1.5 overflow-hidden"
+      className="w-[260px] h-[300px] rounded-md bg-ctp-mantle/75 backdrop-blur-md border border-ctp-surface0/60 shadow-2xl shadow-black/60 py-1.5 overflow-y-auto overflow-x-hidden"
     >
       {variant === "portfolio" ? (
         /* Full portfolio tree */

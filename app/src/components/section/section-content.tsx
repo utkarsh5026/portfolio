@@ -111,7 +111,7 @@ const SectionContent = forwardRef<HTMLDivElement, SectionContentProps>(
             </div>
 
             {/* Actual Content Wrapper with Editor Indentation */}
-            <div className="pl-4 sm:pl-8 border-l border-ctp-surface0/50 ml-2 sm:ml-4">
+            <div className=" sm:pl-8  border-ctp-surface0/50 ml-2 sm:ml-4">
               {children}
             </div>
 
