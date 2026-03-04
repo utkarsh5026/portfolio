@@ -21,7 +21,7 @@ const CodeContent: React.FC<CodeContentProps> = ({ sections }) => {
       <main className="flex-1 overflow-y-auto bg-ctp-crust">
         <Suspense
           fallback={
-            <div className="flex items-center justify-center h-full text-ctp-overlay0 font-mono text-sm">
+            <div className="flex items-center justify-center h-full text-ctp-overlay0 font-source text-sm">
               Opening file…
             </div>
           }

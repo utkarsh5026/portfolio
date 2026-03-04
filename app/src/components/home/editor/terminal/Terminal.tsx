@@ -69,7 +69,7 @@ const Terminal: React.FC = () => {
             stiffness: 300,
             duration: 0.4,
           }}
-          className="w-full rounded-xl flex flex-col overflow-hidden font-mono text-sm shadow-2xl relative group bg-ctp-crust"
+          className="w-full rounded-xl flex flex-col overflow-hidden font-source text-sm shadow-2xl relative group bg-ctp-crust"
           style={{
             height: isMaximized ? "100vh" : "min(60vh, 600px)",
             fontSize: `${fontSize}px`,

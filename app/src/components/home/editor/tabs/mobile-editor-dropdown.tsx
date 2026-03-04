@@ -96,7 +96,7 @@ const MobileEditorDropdown: React.FC<MobileEditorDropdownProps> = ({
               <DropdownMenuItem
                 key={section}
                 className={cn(
-                  "group flex items-center gap-3  text-left cursor-pointer font-mono text-sm rounded-lg transition-all duration-200 text-ctp-text"
+                  "group flex items-center gap-3  text-left cursor-pointer font-source text-sm rounded-lg transition-all duration-200 text-ctp-text",
                 )}
                 onClick={() => setActiveSection(section)}
               >
@@ -106,18 +106,18 @@ const MobileEditorDropdown: React.FC<MobileEditorDropdownProps> = ({
                     activeSection === section
                       ? `bg-gradient-to-br ${getIconColor(section).replace(
                           "text-",
-                          "from-"
+                          "from-",
                         )}/20 ${getIconColor(section).replace(
                           "text-",
-                          "to-"
+                          "to-",
                         )}/10 shadow-sm`
-                      : "group-hover:bg-ctp-surface1/30"
+                      : "group-hover:bg-ctp-surface1/30",
                   )}
                 >
                   <span
                     className={cn(
                       "transition-all duration-200",
-                      getIconColor(section)
+                      getIconColor(section),
                     )}
                   >
                     {sectionIconMap[section]}
@@ -148,22 +148,22 @@ const MobileEditorDropdown: React.FC<MobileEditorDropdownProps> = ({
               <DropdownMenuItem
                 key={link.label}
                 className={cn(
-                  "group flex items-center gap-3 py-3 px-3 text-left cursor-pointer font-mono text-sm rounded-lg transition-all duration-200",
+                  "group flex items-center gap-3 py-3 px-3 text-left cursor-pointer font-source text-sm rounded-lg transition-all duration-200",
                   "text-ctp-subtext0 hover:text-ctp-text hover:shadow-sm",
-                  link.hoverClass
+                  link.hoverClass,
                 )}
                 onClick={() => handleExternalLinkClick(link.url)}
               >
                 <div
                   className={cn(
                     "w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:scale-105",
-                    "bg-gradient-to-br from-ctp-surface1/30 to-ctp-surface0/20 group-hover:shadow-sm"
+                    "bg-gradient-to-br from-ctp-surface1/30 to-ctp-surface0/20 group-hover:shadow-sm",
                   )}
                 >
                   <span
                     className={cn(
                       "transition-all duration-200",
-                      link.colorClass
+                      link.colorClass,
                     )}
                   >
                     {link.icon}

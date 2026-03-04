@@ -3,7 +3,6 @@ import { useEditorContext, type SectionType } from "./context/explorer-context";
 import { cn } from "@/lib/utils";
 import {
   FaGitAlt,
-  FaCode,
   FaNewspaper,
   FaGraduationCap,
   FaEnvelope,
@@ -23,7 +22,6 @@ import {
   type SectionGitStats,
 } from "./use-git-stats";
 
-// ─── Static section config (icon, branch label) ───────────────────────────
 interface SectionMeta {
   icon: React.ReactNode;
   branchLabel: string;
@@ -73,8 +71,6 @@ const SECTION_META: Record<SectionType, SectionMeta> = {
   },
 };
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
 function truncate(str: string, maxLen: number): string {
   if (!str) return "—";
   return str.length <= maxLen ? str : str.slice(0, maxLen - 1) + "…";
@@ -85,13 +81,10 @@ function diffLabel(added: number, deleted: number): string {
   return `+${added} / -${deleted}`;
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
-
 const StatusBarComponent: React.FC = () => {
   const { activeSection, activeProjectId, openTabs } = useEditorContext();
   const { getSectionStats, loading } = useGitStats();
 
-  // Resolve which section's stats to show
   const currentSection: SectionType = activeSection;
 
   const meta: SectionMeta = useMemo(() => {
@@ -114,7 +107,6 @@ const StatusBarComponent: React.FC = () => {
     return getSectionStats(currentSection);
   }, [activeProjectId, currentSection, getSectionStats]);
 
-  // Derived display values
   const branchDisplay = meta.branchLabel;
   const hashDisplay = gitStats?.lastCommitHash ?? "";
   const commitMsg = truncate(gitStats?.lastCommitMessage ?? "", 42);
@@ -137,7 +129,7 @@ const StatusBarComponent: React.FC = () => {
           <FaGitAlt className="w-3 h-3 text-ctp-peach" />
           <span className="font-medium text-ctp-peach">{branchDisplay}</span>
           {hashDisplay && (
-            <span className="text-ctp-overlay1 font-mono hidden sm:inline">
+            <span className="text-ctp-overlay1 font-source hidden sm:inline">
               #{hashDisplay}
             </span>
           )}
@@ -158,12 +150,6 @@ const StatusBarComponent: React.FC = () => {
           {meta.icon}
           <span className="text-ctp-subtext0">{meta.fileLabel}</span>
         </div>
-
-        {/* Language */}
-        <div className="flex items-center gap-1 flex-shrink-0">
-          <FaCode className="w-3 h-3 text-ctp-lavender" />
-          <span className="text-ctp-subtext0">TSX</span>
-        </div>
       </div>
 
       {/* ── Right: stats + status ──────────────────────────────────────── */}
@@ -179,7 +165,7 @@ const StatusBarComponent: React.FC = () => {
         {/* Diff stats from last commit */}
         {!loading && recentDiff && (
           <div className="hidden md:flex items-center gap-1 text-ctp-subtext1">
-            <span className="font-mono">{recentDiff}</span>
+            <span className="font-source">{recentDiff}</span>
           </div>
         )}
 

@@ -86,7 +86,7 @@ const Explorer: React.FC = () => {
             {isLoading && (
               <p
                 style={{ paddingLeft: "46px" }}
-                className="text-[11px] text-ctp-overlay0 py-1.5 font-mono animate-pulse"
+                className="text-[11px] text-ctp-overlay0 py-1.5 font-source animate-pulse"
               >
                 loading…
               </p>

@@ -228,14 +228,14 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
 
   if (!project) {
     return (
-      <div className="flex items-center justify-center h-full text-ctp-overlay0 font-mono text-sm">
+      <div className="flex items-center justify-center h-full text-ctp-overlay0 font-source text-sm">
         Loading project…
       </div>
     );
   }
 
   return (
-    <article className="max-w-4xl mx-auto font-mono text-sm text-ctp-text leading-relaxed mt-4">
+    <article className="max-w-4xl mx-auto font-source text-sm text-ctp-text leading-relaxed mt-4">
       <CoverBand coverImage={project.coverImage} name={project.name} />
       <PageIcon icon={project.icon} name={project.name} />
 
@@ -325,7 +325,7 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
           {loadState === "error" && (
             <Text
               variant="caption"
-              className="px-6 mt-8 text-ctp-red font-mono"
+              className="px-6 mt-8 text-ctp-red font-source"
             >
               ⚠ Could not load project notes.
             </Text>

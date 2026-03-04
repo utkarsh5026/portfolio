@@ -28,12 +28,12 @@ const ContactLoading = () => {
               <div className="w-3 h-3 rounded-full bg-ctp-yellow"></div>
               <div className="w-3 h-3 rounded-full bg-ctp-green"></div>
             </div>
-            <span className="text-ctp-subtext0 text-sm font-mono ml-4">
+            <span className="text-ctp-subtext0 text-sm font-source ml-4">
               network.sh
             </span>
           </div>
 
-          <div className="space-y-3 font-mono text-sm">
+          <div className="space-y-3 font-source text-sm">
             {connections.slice(0, currentConn + 1).map((conn, index) => (
               <motion.div
                 key={index}

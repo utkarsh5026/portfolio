@@ -42,7 +42,7 @@ const EmailHighlight = () => {
           </h3>
           <p className="text-sm sm:text-base text-ctp-subtext0">
             Reach out directly at{" "}
-            <span className="text-ctp-pink font-mono select-all relative inline-block group/email cursor-pointer">
+            <span className="text-ctp-pink font-source select-all relative inline-block group/email cursor-pointer">
               utkarshpriyadarshi5026@gmail.com
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-ctp-pink transition-all duration-300 group-hover/email:w-full" />
             </span>
