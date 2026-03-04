@@ -3,6 +3,7 @@ import { LucideIcon } from "lucide-react";
 import { forwardRef, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import SectionHeader from "./section-header";
+import SectionFooter from "./section-footer";
 import styles from "./section-content.module.css";
 
 type SectionColorScheme =
@@ -126,6 +127,12 @@ const SectionContent = forwardRef<HTMLDivElement, SectionContentProps>(
               <br />
               <span className="text-ctp-text">{"}"}</span>
             </div>
+
+            <SectionFooter
+              title={title}
+              colorScheme={colorScheme}
+              showHeader={showHeader}
+            />
           </div>
 
           {/* Mobile-friendly bottom spacing */}
