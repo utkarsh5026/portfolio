@@ -4,6 +4,20 @@
 
 > A from-scratch programming language and interactive educational playground that makes the compilation pipeline tangible — write code, then watch it transform into tokens, trees, and execution steps in real time.
 
+## Why I Built This
+
+I've been writing code for years, but for a long time I treated the compiler as magic. You type something, press run, and it works — or it doesn't, and you get a cryptic error message you paste into Google. I never really understood what was happening between my fingers and the result.
+
+That started to bother me more and more. I was using TypeScript every day, leaning on ESLint, Babel, and Prettier, but I couldn't explain what any of them were actually doing. When a parser error showed up, I'd guess. When I tried reading the TypeScript source code, it felt impenetrable. The concepts existed in textbooks, but reading about parsers is completely different from understanding them.
+
+So I picked up _Writing An Interpreter In Go_ by Thorsten Ball, and then _Crafting Interpreters_ by Robert Nystrom. Both books are phenomenal. Both made me feel like I understood things. And then I closed them, sat down to build something myself, and realized I understood almost nothing.
+
+The gap between reading about how a Pratt parser works and actually writing one is humbling. Same with closures, same with classes. You think you get it until you have to make it work.
+
+That's what Enigma is — my attempt to close that gap. Build the whole thing myself, in TypeScript, with no parser generators or grammar files, and then build a UI that makes every internal stage visible. If I could see the token stream update as I typed, watch the AST rebuild in real time, and step through execution statement by statement, maybe I'd finally understand what I was building.
+
+I did. And it changed how I think about code.
+
 ## The Problem
 
 Every developer writes code that passes through a lexer, a parser, and an interpreter — yet most of us have no mental model of what actually happens inside. TypeScript, Babel, and ESLint all rely on these same fundamental mechanisms, but they remain invisible behind abstraction layers.
@@ -71,7 +85,64 @@ The Execution Stepper records a snapshot of the environment state at every state
 
 Building Enigma produced a working language that runs real programs — recursive algorithms, closure-based counters, class hierarchies — entirely inside the browser. The playground has been used as a hands-on reference for understanding how TypeScript's own parser handles operator precedence and scope.
 
-The project is the direct result of reading _Writing An Interpreter In Go_ by Thorsten Ball and _Crafting Interpreters_ by Robert Nystrom, then rebuilding every concept in TypeScript with a visual layer on top. The gap between reading about parsers and implementing one is where most of the learning happened.
+## The Hard Parts
+
+This is the section I'd have wanted to read before starting.
+
+### Getting Closures Right
+
+Closures were the first thing that made me genuinely stuck. The idea sounds simple enough: a function should remember the variables from the scope it was created in, even after that scope is gone. But turning that into working code is a different problem.
+
+My first attempt was naive. I stored the environment at function definition time and used it directly during the call. That worked for simple cases — a function closing over a single outer variable — but broke immediately when I tried anything more interesting. Mutation didn't propagate. A counter that should have incremented just kept returning the initial value. Functions created in a loop all shared the same environment snapshot instead of each capturing their own.
+
+The fix was to stop thinking of the environment as a value to be copied and start thinking of it as a linked structure. When a function is defined, it stores a _reference_ to the current environment, not a copy of it. When it's called, a new child environment is created with the stored one as its parent. Variable lookup then walks up the chain until the name is found.
+
+Once that clicked, closures became almost elegant. A counter that returns three methods — increment, decrement, reset — all closing over the same `count` variable, all reading and writing to the same environment node, just worked. The environment chain is the closure.
+
+```js
+let makeCounter = fn(initial) {
+  let count = initial;
+  return {
+    "increment": fn() { count = count + 1; return count; },
+    "decrement": fn() { count = count - 1; return count; },
+    "get":       fn() { return count; },
+    "reset":     fn() { count = initial; }
+  };
+};
+
+let counter = makeCounter(10);
+counter["increment"]();   # 11
+counter["increment"]();   # 12
+print(f"Current: {counter["get"]()}");   # 12
+counter["reset"]();
+print(f"After reset: {counter["get"]()}");  # 10
+```
+
+### Classes Were a Different Kind of Hard
+
+Closures had one sharp edge. Classes had about a dozen.
+
+The first decision was how to represent instances. I went with a `ClassInstance` object that holds a property map and a reference to its class. Simple enough. Then came `this`.
+
+My first instinct was to make `this` a keyword with special handling in the evaluator — something the parser would recognize and the evaluator would look up differently. That turned out to be completely unnecessary. `this` is just a variable. When a method is called, the evaluator creates a new environment, injects `this = <the instance>` into it, and runs the method body in that environment. `this.name` resolves `this` by walking the scope chain, then does a property lookup on the instance. No magic.
+
+`super` was harder. When a subclass method calls `super.init(...)`, the evaluator needs to know: which class is currently executing? And it needs to find the method one level up in the inheritance chain, run it with the same `this` (so mutations affect the same instance), but with the parent's context — so that if _that_ method also calls `super`, it goes one level further up, not into an infinite loop.
+
+The solution was a hidden context variable — `__class_context__` — injected alongside `this` into every method environment. It tracks which class the currently-executing method belongs to. `super.method()` reads that variable, looks one level up the prototype chain, and runs the method with `this` unchanged but `__class_context__` updated to the parent class. It's a small thing, but getting it wrong produced some of the most confusing bugs I've ever debugged.
+
+The other surprise was circular inheritance detection. If class A extends B and class B extends A, the evaluator would recurse forever trying to resolve the inheritance chain. I added a check at class-definition time that walks the parent chain and rejects any cycle immediately. Simple fix, but it's the kind of edge case you don't think of until you accidentally write a test that hangs.
+
+### Pratt Parsing Was the Conceptual Shift
+
+Parsing expressions correctly — specifically operator precedence — was the problem that sent me down the Pratt parser rabbit hole.
+
+Writing parsers for statements is straightforward. You look at the current token, dispatch to a handler, parse the pieces, return a node. But expressions like `1 + 2 * 3` require the parser to know that `*` binds tighter than `+`, so the tree should be `1 + (2 * 3)`, not `(1 + 2) * 3`. And `a = b = c` needs right associativity. And prefix `-` is different from infix `-`.
+
+A naive recursive descent parser handles this with hardcoded layers of functions — `parseAddition` calls `parseMultiplication` calls `parseUnary` and so on. That works, but adding a new operator means rearranging the entire call hierarchy.
+
+Pratt parsing solves this differently. Every token type is assigned a binding power — a number that represents how tightly it holds onto what's on its right. The main parsing loop keeps consuming tokens as long as the next token's binding power is high enough. `*` has a higher binding power than `+`, so when parsing `1 + 2 * 3`, after parsing `2`, the loop sees that `*` binds tighter than `+` did, and continues rightward before returning. The precedence is encoded in data, not in the call graph.
+
+Once I had a working Pratt parser, adding new operators — bitwise ops, comparison chains, f-string interpolation — was just a matter of adding an entry to the binding power table and writing a parse function. No restructuring. That extensibility is what made the language feel tractable to grow.
 
 ## Language Showcase
 
@@ -113,30 +184,6 @@ let multiply = fn(factor) {
 let double = multiply(2);
 let triple = multiply(3);
 print(f"double(5) = {double(5)}, triple(5) = {triple(5)}");
-```
-
-### Closures
-
-Each function captures the environment it was created in. Variables from outer scopes remain alive as long as the inner function holds a reference.
-
-```js
-let makeCounter = fn(initial) {
-  let count = initial;
-
-  return {
-    "increment": fn() { count = count + 1; return count; },
-    "decrement": fn() { count = count - 1; return count; },
-    "get":       fn() { return count; },
-    "reset":     fn() { count = initial; }
-  };
-};
-
-let counter = makeCounter(10);
-counter["increment"]();   # 11
-counter["increment"]();   # 12
-print(f"Current: {counter["get"]()}");   # 12
-counter["reset"]();
-print(f"After reset: {counter["get"]()}");  # 10
 ```
 
 ### Control Flow
