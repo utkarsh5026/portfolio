@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-04T23:03:06.294Z",
+  "generatedAt": "2026-03-04T23:09:00.876Z",
   "sections": {
     "home": {
       "lastCommitHash": "72093fb",
@@ -86,15 +86,15 @@
       "fileCount": 7
     },
     "articles": {
-      "lastCommitHash": "f347b2c",
-      "lastCommitDate": "2026-01-04 20:24:13 +0530",
-      "lastCommitMessage": "Add skeleton shimmer animation for lazy loading in ArticleCard",
+      "lastCommitHash": "deddb5b",
+      "lastCommitDate": "2026-03-05 04:32:52 +0530",
+      "lastCommitMessage": "style: redesign article cards with 16:9 image layout and cleaner hover effects",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 9,
-      "linesAdded": 28,
-      "linesDeleted": 2,
-      "totalAdded": 716,
-      "totalDeleted": 508,
+      "commitCount": 10,
+      "linesAdded": 51,
+      "linesDeleted": 66,
+      "totalAdded": 767,
+      "totalDeleted": 574,
       "fileCount": 3
     }
   }
