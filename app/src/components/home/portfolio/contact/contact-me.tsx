@@ -1,11 +1,11 @@
 import React from "react";
 import Section from "@/components/section/portfolio-section";
 import Reveal from "@/components/animations/reveal/Reveal";
-import { motion } from "framer-motion";
 import { Heart, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SocialMediaLinks from "./social-media-links";
 import AvailableForOpportunities from "./available-for-opportunities";
+import styles from "./contact.module.css";
 
 const ContactMe: React.FC = () => {
   return (
@@ -17,13 +17,16 @@ const ContactMe: React.FC = () => {
       headerIcon={Heart}
       showHeader={true}
     >
-      <div className="w-full max-w-6xl mx-auto ">
-        <EmailHighlight />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12">
-          <SocialMediaLinks />
-          <AvailableForOpportunities />
+      <div className="w-full max-w-5xl mx-auto flex flex-col gap-4 sm:gap-4 md:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 sm:gap-4 md:gap-5">
+          <div className="md:col-span-3">
+            <AvailableForOpportunities />
+          </div>
+          <div className="md:col-span-2">
+            <SocialMediaLinks />
+          </div>
         </div>
+        <EmailHighlight />
       </div>
     </Section>
   );
@@ -31,28 +34,36 @@ const ContactMe: React.FC = () => {
 
 const EmailHighlight = () => {
   return (
-    <Reveal effect="fade-through" duration={0.9} delay={0.2}>
-      <div className="mb-8 sm:mb-10 md:mb-12 bg-ctp-surface0/30 border border-ctp-surface1/30 overflow-hidden backdrop-blur-sm group transition-all duration-500 hover:border-ctp-pink/50 hover:shadow-lg hover:shadow-ctp-pink/20 hover:ring-2 hover:ring-ctp-pink/20 rounded-xl sm:rounded-2xl">
-        <div className="p-6 sm:p-6 md:p-8 text-center">
-          <p className="text-ctp-subtext0 mb-6 sm:mb-6 md:mb-8 text-sm sm:text-base break-words">
-            Have a question or want to discuss a project?
+    <Reveal effect="slide-in" direction="up" duration={0.6} delay={0.3}>
+      <div className="relative overflow-hidden bg-ctp-surface0/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 md:p-10 border border-ctp-surface0/50 hover:border-ctp-pink/30 transition-all duration-300 group flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 text-center md:text-left shadow-lg shadow-black/5">
+        <div className="relative z-10 flex-1">
+          <h3 className="text-xl sm:text-2xl font-bold text-ctp-text mb-2">
+            Have a project in mind?
+          </h3>
+          <p className="text-sm sm:text-base text-ctp-subtext0">
+            Reach out directly at{" "}
+            <span className="text-ctp-pink font-mono select-all relative inline-block group/email cursor-pointer">
+              utkarshpriyadarshi5026@gmail.com
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-ctp-pink transition-all duration-300 group-hover/email:w-full" />
+            </span>
           </p>
-          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-            <Button
-              variant="outline"
-              className="bg-ctp-pink/10 text-ctp-pink border-none hover:bg-ctp-pink/20 hover:border-ctp-pink/50 hover:text-ctp-pink/80 hover:shadow-ctp-pink/20 hover:shadow-lg hover:scale-105 hover:rotate-1 hover:translate-y-[-2px] px-4 sm:px-6 md:px-8 py-6 sm:py-6 md:py-8 rounded-lg sm:rounded-xl font-medium transition-all duration-300 group-hover:shadow-ctp-pink/30 group-hover:shadow-xl w-full max-w-sm sm:max-w-md mx-auto"
-              onClick={() =>
-                window.open("mailto:utkarshpriyadarshi5026@gmail.com", "_blank")
-              }
-            >
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 min-w-0 w-full">
-                <Mail className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 hidden sm:block" />
-                <span className="text-sm sm:text-base md:text-lg font-mono break-all leading-tight min-w-0 text-center sm:text-left">
-                  utkarshpriyadarshi5026@gmail.com
-                </span>
-              </div>
-            </Button>
-          </motion.div>
+        </div>
+
+        <div className="relative z-10 w-full md:w-auto">
+          <Button
+            variant="default"
+            className="group/btn relative overflow-hidden bg-ctp-pink text-ctp-crust hover:bg-ctp-pink/90 hover:text-ctp-crust font-semibold px-8 py-6 rounded-xl transition-all duration-300 shadow-lg shadow-ctp-pink/20 hover:shadow-ctp-pink/40 hover:-translate-y-1 hover:scale-[1.02] active:scale-[0.98] w-full md:w-auto text-sm sm:text-base border-none"
+            onClick={() =>
+              window.open("mailto:utkarshpriyadarshi5026@gmail.com", "_blank")
+            }
+          >
+            <div className="flex items-center justify-center gap-2">
+              <span className="font-bold">Say Hello</span>
+              <span className={styles.mailBob}>
+                <Mail className="w-4 h-4" />
+              </span>
+            </div>
+          </Button>
         </div>
       </div>
     </Reveal>
