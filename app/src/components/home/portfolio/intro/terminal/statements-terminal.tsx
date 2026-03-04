@@ -3,6 +3,7 @@ import AnimatedText from "./animated-text";
 import { cn } from "@/lib/utils";
 import { HiBookOpen, HiSparkles, HiFire } from "react-icons/hi2";
 import { TbBrandVscode, TbTerminal2 } from "react-icons/tb";
+import SketchBorder from "@/components/ui/sketch-border";
 
 import styles from "./statements-terminal.module.css";
 
@@ -45,31 +46,38 @@ const qaPairs = [
 
 const Terminal: React.FC = () => {
   return (
-    <div
-      className={cn(
-        "group relative overflow-hidden w-full",
-        "bg-gradient-to-br from-ctp-crust to-ctp-mantle border-none",
-        "rounded-2xl shadow-xl shadow-black/20 font-source",
-        styles.terminalContainer,
-      )}
+    <SketchBorder
+      primaryColor="green"
+      secondaryColor="blue"
+      className="w-full"
+      tertiaryColor="sky"
     >
-      {/* Terminal Bar */}
-      <div className="flex items-center px-4 py-3 border-b border-ctp-surface0 bg-ctp-crust relative z-10">
-        <div className="flex gap-2 relative z-20">
-          <div className="w-3 h-3 rounded-full bg-ctp-red border border-ctp-maroon" />
-          <div className="w-3 h-3 rounded-full bg-ctp-yellow border border-ctp-peach" />
-          <div className="w-3 h-3 rounded-full bg-ctp-green border border-ctp-teal" />
+      <div
+        className={cn(
+          "overflow-hidden w-full",
+          "bg-gradient-to-br from-ctp-crust to-ctp-mantle",
+          "rounded-2xl shadow-xl shadow-black/20 font-source",
+          styles.terminalContainer,
+        )}
+      >
+        {/* Terminal Bar */}
+        <div className="flex items-center px-4 py-3 border-b border-ctp-surface0 bg-ctp-crust relative z-10">
+          <div className="flex gap-2 relative z-20">
+            <div className="w-3 h-3 rounded-full bg-ctp-red border border-ctp-maroon" />
+            <div className="w-3 h-3 rounded-full bg-ctp-yellow border border-ctp-peach" />
+            <div className="w-3 h-3 rounded-full bg-ctp-green border border-ctp-teal" />
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center font-source text-[11px] sm:text-xs text-ctp-overlay0 font-medium tracking-wider pointer-events-none">
+            utkarsh — bash
+          </div>
         </div>
-        <div className="absolute inset-0 flex items-center justify-center font-source text-[11px] sm:text-xs text-ctp-overlay0 font-medium tracking-wider pointer-events-none">
-          utkarsh — bash
-        </div>
-      </div>
 
-      {/* Terminal Body */}
-      <div className="relative h-[220px] sm:h-[180px] p-5 md:p-6 flex flex-col font-source text-sm sm:text-base selection:bg-ctp-surface2">
-        <AnimatedText qaPairs={qaPairs} />
+        {/* Terminal Body */}
+        <div className="relative h-[220px] sm:h-[180px] p-5 md:p-6 flex flex-col font-source text-sm sm:text-base selection:bg-ctp-surface2">
+          <AnimatedText qaPairs={qaPairs} />
+        </div>
       </div>
-    </div>
+    </SketchBorder>
   );
 };
 

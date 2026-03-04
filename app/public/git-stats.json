@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-04T21:50:50.558Z",
+  "generatedAt": "2026-03-04T21:53:43.137Z",
   "sections": {
     "home": {
-      "lastCommitHash": "e76968a",
-      "lastCommitDate": "2026-03-05 03:12:26 +0530",
-      "lastCommitMessage": "fix: prevent profile buttons from overflowing their container on small viewports",
+      "lastCommitHash": "8693699",
+      "lastCommitDate": "2026-03-05 03:20:33 +0530",
+      "lastCommitMessage": "feat: add MiniProjects component to profile intro section",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 28,
-      "linesAdded": 2,
-      "linesDeleted": 2,
-      "totalAdded": 3388,
-      "totalDeleted": 1877,
+      "commitCount": 29,
+      "linesAdded": 153,
+      "linesDeleted": 1,
+      "totalAdded": 3541,
+      "totalDeleted": 1878,
       "fileCount": 17
     },
     "about": {
