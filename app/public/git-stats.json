@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-04T21:54:36.336Z",
+  "generatedAt": "2026-03-04T22:21:11.958Z",
   "sections": {
     "home": {
-      "lastCommitHash": "7fbc226",
-      "lastCommitDate": "2026-03-05 03:23:15 +0530",
-      "lastCommitMessage": "style: wrap terminal component in SketchBorder with green/blue/sky colors",
+      "lastCommitHash": "72093fb",
+      "lastCommitDate": "2026-03-05 03:24:20 +0530",
+      "lastCommitMessage": "style: wrap intro section cards in SketchBorder and add MiniProjects to desktop layout",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 30,
-      "linesAdded": 29,
-      "linesDeleted": 21,
-      "totalAdded": 3570,
-      "totalDeleted": 1899,
+      "commitCount": 31,
+      "linesAdded": 129,
+      "linesDeleted": 116,
+      "totalAdded": 3699,
+      "totalDeleted": 2015,
       "fileCount": 17
     },
     "about": {

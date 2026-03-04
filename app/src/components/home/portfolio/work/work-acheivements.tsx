@@ -40,7 +40,7 @@ const Achievements: React.FC<AchievementsProps> = ({ selectedExp }) => {
           <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-lg bg-ctp-green/20 flex items-center justify-center flex-shrink-0">
             <FaRocket className="w-3 h-3 sm:w-4 sm:h-4 text-ctp-green" />
           </div>
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-ctp-text">
+          <h3 className="text-base sm:text-lg md:text-xl font-bold text-ctp-text">
             Achievements & Impact
           </h3>
           <div className="flex-1 h-px bg-gradient-to-r from-ctp-surface1/50 to-transparent" />
@@ -93,7 +93,7 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
           )}
 
           <div className="flex-1 min-w-0">
-            <h4 className="font-bold text-base sm:text-lg md:text-xl lg:text-2xl text-ctp-text mb-3 sm:mb-4 group-hover:text-ctp-mauve transition-colors duration-300 leading-tight break-words">
+            <h4 className="font-bold text-sm sm:text-base md:text-lg text-ctp-text mb-2 sm:mb-3 group-hover:text-ctp-mauve transition-colors duration-300 leading-tight break-words">
               {achievement.title}
             </h4>
 
@@ -109,7 +109,7 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
                   className="flex items-start gap-3 sm:gap-4 group/item"
                 >
                   <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-ctp-green mt-2 sm:mt-2.5 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200" />
-                  <p className="text-sm sm:text-base md:text-lg text-ctp-subtext0 leading-relaxed group-hover/item:text-ctp-subtext1 transition-colors duration-200 break-words">
+                  <p className="text-xs sm:text-sm md:text-base text-ctp-subtext0 leading-relaxed group-hover/item:text-ctp-subtext1 transition-colors duration-200 break-words">
                     {desc}
                   </p>
                 </motion.div>

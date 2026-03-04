@@ -73,7 +73,7 @@ const ExperienceHeader: React.FC<ExperienceHeaderProps> = ({ selectedExp }) => {
                   className={
                     isMobile
                       ? "text-lg font-bold text-ctp-text mb-2 leading-tight break-words"
-                      : "text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-ctp-text mb-2 sm:mb-3 leading-tight break-words"
+                      : "text-base sm:text-xl md:text-2xl font-bold text-ctp-text mb-2 sm:mb-3 leading-tight break-words"
                   }
                 >
                   {experience.position}
@@ -95,9 +95,7 @@ const ExperienceHeader: React.FC<ExperienceHeaderProps> = ({ selectedExp }) => {
                       }
                     />
                     <span
-                      className={
-                        isMobile ? "text-sm" : "text-sm sm:text-base md:text-lg"
-                      }
+                      className={isMobile ? "text-sm" : "text-xs sm:text-sm"}
                     >
                       at
                     </span>
@@ -109,7 +107,7 @@ const ExperienceHeader: React.FC<ExperienceHeaderProps> = ({ selectedExp }) => {
                     className={
                       isMobile
                         ? "text-ctp-blue hover:text-ctp-lavender transition-colors flex items-center gap-1 font-medium text-sm break-words active:text-ctp-lavender"
-                        : "text-ctp-blue hover:text-ctp-lavender transition-colors flex items-center gap-1 font-medium text-base sm:text-lg md:text-xl break-words"
+                        : "text-ctp-blue hover:text-ctp-lavender transition-colors flex items-center gap-1 font-medium text-sm sm:text-base md:text-lg break-words"
                     }
                   >
                     {experience.company}
@@ -138,7 +136,7 @@ const ExperienceHeader: React.FC<ExperienceHeaderProps> = ({ selectedExp }) => {
                 className={
                   isMobile
                     ? "bg-ctp-surface0/50 text-ctp-blue border-none px-3 py-2 hover:bg-ctp-surface1/50 text-xs self-start"
-                    : "bg-ctp-surface0/50 text-ctp-blue border-none px-3 sm:px-4 py-2 sm:py-2.5 hover:bg-ctp-surface1/50 text-xs sm:text-sm md:text-base self-start"
+                    : "bg-ctp-surface0/50 text-ctp-blue border-none px-3 sm:px-4 py-2 sm:py-2.5 hover:bg-ctp-surface1/50 text-xs sm:text-sm self-start"
                 }
               >
                 <FaCalendarAlt
