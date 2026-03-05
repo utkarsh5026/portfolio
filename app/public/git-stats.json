@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-05T22:47:58.554Z",
+  "generatedAt": "2026-03-05T22:48:44.699Z",
   "sections": {
     "home": {
       "lastCommitHash": "049b164",
@@ -38,14 +38,14 @@
       "fileCount": 5
     },
     "projects": {
-      "lastCommitHash": "dff6d01",
-      "lastCommitDate": "2026-03-06 04:04:56 +0530",
-      "lastCommitMessage": "feat: add outline nodes with icons to about, contact, work, and projects sections",
+      "lastCommitHash": "8d2d8c7",
+      "lastCommitDate": "2026-03-06 04:17:49 +0530",
+      "lastCommitMessage": "feat: bridge markdown headings into outline panel during Deep Dive",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 68,
-      "linesAdded": 1,
+      "commitCount": 69,
+      "linesAdded": 2,
       "linesDeleted": 0,
-      "totalAdded": 9769,
+      "totalAdded": 9771,
       "totalDeleted": 8478,
       "fileCount": 10
     },

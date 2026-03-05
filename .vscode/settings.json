@@ -95,6 +95,7 @@
 
   // --- Spell Check ---
   "cSpell.words": [
+    "acheivements",
     "aiosqlite",
     "animejs",
     "appbar",
@@ -105,6 +106,7 @@
     "elif",
     "Errorf",
     "FAISS",
+    "Fastapi",
     "gopool",
     "goroutines",
     "imagetools",
@@ -112,9 +114,12 @@
     "marocchino",
     "MPMC",
     "neighbouring",
+    "Nextdotjs",
+    "Nodedotjs",
     "numfmt",
     "numstat",
     "oneline",
+    "partialize",
     "Priyadarshi",
     "Pydantic",
     "Sched",
