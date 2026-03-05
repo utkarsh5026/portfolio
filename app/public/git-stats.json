@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-05T22:35:08.501Z",
+  "generatedAt": "2026-03-05T22:47:58.554Z",
   "sections": {
     "home": {
       "lastCommitHash": "049b164",
@@ -14,15 +14,15 @@
       "fileCount": 17
     },
     "about": {
-      "lastCommitHash": "049b164",
-      "lastCommitDate": "2026-03-05 08:01:37 +0530",
-      "lastCommitMessage": "refactor: enforce consistent import ordering across all source files",
+      "lastCommitHash": "dff6d01",
+      "lastCommitDate": "2026-03-06 04:04:56 +0530",
+      "lastCommitMessage": "feat: add outline nodes with icons to about, contact, work, and projects sections",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 19,
-      "linesAdded": 64,
-      "linesDeleted": 49,
-      "totalAdded": 2824,
-      "totalDeleted": 1551,
+      "commitCount": 20,
+      "linesAdded": 14,
+      "linesDeleted": 5,
+      "totalAdded": 2838,
+      "totalDeleted": 1556,
       "fileCount": 12
     },
     "skills": {
@@ -38,39 +38,39 @@
       "fileCount": 5
     },
     "projects": {
-      "lastCommitHash": "7547db3",
-      "lastCommitDate": "2026-03-05 21:03:11 +0530",
-      "lastCommitMessage": "refactor: migrate outline state from React Context to Zustand store",
+      "lastCommitHash": "dff6d01",
+      "lastCommitDate": "2026-03-06 04:04:56 +0530",
+      "lastCommitMessage": "feat: add outline nodes with icons to about, contact, work, and projects sections",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 67,
-      "linesAdded": 0,
-      "linesDeleted": 9,
-      "totalAdded": 9768,
+      "commitCount": 68,
+      "linesAdded": 1,
+      "linesDeleted": 0,
+      "totalAdded": 9769,
       "totalDeleted": 8478,
       "fileCount": 10
     },
     "experience": {
-      "lastCommitHash": "7547db3",
-      "lastCommitDate": "2026-03-05 21:03:11 +0530",
-      "lastCommitMessage": "refactor: migrate outline state from React Context to Zustand store",
+      "lastCommitHash": "dff6d01",
+      "lastCommitDate": "2026-03-06 04:04:56 +0530",
+      "lastCommitMessage": "feat: add outline nodes with icons to about, contact, work, and projects sections",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 14,
-      "linesAdded": 3,
-      "linesDeleted": 16,
-      "totalAdded": 1888,
-      "totalDeleted": 1082,
+      "commitCount": 15,
+      "linesAdded": 7,
+      "linesDeleted": 1,
+      "totalAdded": 1895,
+      "totalDeleted": 1083,
       "fileCount": 6
     },
     "contact": {
-      "lastCommitHash": "7547db3",
-      "lastCommitDate": "2026-03-05 21:03:11 +0530",
-      "lastCommitMessage": "refactor: migrate outline state from React Context to Zustand store",
+      "lastCommitHash": "dff6d01",
+      "lastCommitDate": "2026-03-06 04:04:56 +0530",
+      "lastCommitMessage": "feat: add outline nodes with icons to about, contact, work, and projects sections",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 13,
-      "linesAdded": 65,
-      "linesDeleted": 49,
-      "totalAdded": 973,
-      "totalDeleted": 501,
+      "commitCount": 14,
+      "linesAdded": 7,
+      "linesDeleted": 3,
+      "totalAdded": 980,
+      "totalDeleted": 504,
       "fileCount": 4
     },
     "learning": {

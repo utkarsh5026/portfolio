@@ -5,6 +5,7 @@ import { HiOutlineBookOpen, HiOutlineCode } from "react-icons/hi";
 import { technologies } from "@/components/base/technologies";
 import { MarkdownRender } from "@/components/home/editor/markdown-renderer";
 import { Heading, Text } from "@/components/ui/text";
+import { useMarkdownOutlineBridge } from "@/hooks/use-markdown-outline-bridge";
 import { cn } from "@/lib/utils";
 import { useMarkdownHeadingStore } from "@/store";
 import useProjectStore from "@/store/projects/projects-store";
@@ -217,6 +218,7 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
   );
 
   const [activeTab, setActiveTab] = React.useState<Tab>("overview");
+  useMarkdownOutlineBridge(project?.name ?? projectId);
   const setIsDeepDive = useMarkdownHeadingStore((s) => s.setIsDeepDive);
   const setActiveHeadings = useMarkdownHeadingStore((s) => s.setActiveHeadings);
 
