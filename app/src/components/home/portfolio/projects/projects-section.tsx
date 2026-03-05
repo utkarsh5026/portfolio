@@ -148,6 +148,7 @@ const Projects: React.FC = () => {
                           <OutlineNode
                             key={project.name}
                             label={project.name}
+                            icon={project.icon ? <span className="text-[10px]">{project.icon}</span> : undefined}
                           >
                             <Reveal
                               effect="fade-up"

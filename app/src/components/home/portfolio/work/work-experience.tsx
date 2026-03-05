@@ -3,6 +3,7 @@ import { Building } from "lucide-react";
 import React, { useState } from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
+import { OutlineNode } from "@/components/home/editor/outline";
 import Section from "@/components/section/portfolio-section";
 
 import ExperienceDetails from "./experience-details";
@@ -104,7 +105,12 @@ const WorkExperience: React.FC = () => {
             )}
 
             {/* Experience Details */}
-            <ExperienceDetails selectedExp={selectedExp} />
+            <OutlineNode
+              label={experiences[selectedExp].company}
+              icon={<Building className="w-3 h-3 text-ctp-blue" />}
+            >
+              <ExperienceDetails selectedExp={selectedExp} />
+            </OutlineNode>
           </div>
         </div>
       </div>

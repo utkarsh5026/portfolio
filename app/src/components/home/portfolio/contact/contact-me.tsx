@@ -1,4 +1,4 @@
-import { Heart, Mail } from "lucide-react";
+import { Briefcase, Heart, Mail, Share2 } from "lucide-react";
 import React from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
@@ -23,10 +23,14 @@ const ContactMe: React.FC = () => {
       <div className="w-full max-w-5xl mx-auto flex flex-col gap-4 sm:gap-4 md:gap-5">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4 sm:gap-4 md:gap-5">
           <div className="md:col-span-3">
-            <AvailableForOpportunities />
+            <OutlineNode label="Availability" icon={<Briefcase className="w-3 h-3 text-ctp-green" />}>
+              <AvailableForOpportunities />
+            </OutlineNode>
           </div>
           <div className="md:col-span-2">
-            <SocialMediaLinks />
+            <OutlineNode label="Social Links" icon={<Share2 className="w-3 h-3 text-ctp-blue" />}>
+              <SocialMediaLinks />
+            </OutlineNode>
           </div>
         </div>
         <EmailHighlight />

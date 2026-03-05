@@ -11,7 +11,9 @@ import {
 import React, { lazy, Suspense,useState } from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
+import { OutlineNode } from "@/components/home/editor/outline";
 import Section from "@/components/section/portfolio-section";
+import type { AppColor } from "@/utils/ctp-colors";
 import {
   Collapsible,
   CollapsibleContent,
@@ -256,12 +258,19 @@ const AboutMe: React.FC = () => {
         <div className="w-full max-w-4xl mx-auto px-4 py-6">
           <div className="space-y-4 relative">
             {sections.map((section, index) => (
-              <ResponsiveAboutSection
+              <OutlineNode
                 key={section.id}
-                section={section}
-                index={index}
-                totalSections={sections.length}
-              />
+                id={section.id}
+                label={section.title}
+                icon={<section.icon className="w-3 h-3" />}
+                iconColor={section.color as AppColor}
+              >
+                <ResponsiveAboutSection
+                  section={section}
+                  index={index}
+                  totalSections={sections.length}
+                />
+              </OutlineNode>
             ))}
           </div>
 
