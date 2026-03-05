@@ -1,6 +1,30 @@
 {
-  "generatedAt": "2026-03-05T11:13:12.997Z",
+  "generatedAt": "2026-03-05T12:26:49.761Z",
   "commits": [
+    {
+      "hash": "68880acbeee4d03cde6668f7c9bbee533f50f60a",
+      "shortHash": "68880ac",
+      "message": "feat: add heading navigation dropdowns to editor breadcrumbs",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T17:47:44+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 599,
+      "deletions": 191,
+      "filesChanged": 12
+    },
+    {
+      "hash": "21f5818ce240d99a9104701b57da19d85e007ec9",
+      "shortHash": "21f5818",
+      "message": "refactor: replace custom portal dropdown with Radix DropdownMenu in breadcrumbs",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T16:42:51+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 167,
+      "deletions": 256,
+      "filesChanged": 4
+    },
     {
       "hash": "d65ac8e1897108b7f48a9a42eebdcc8107bbe7ac",
       "shortHash": "d65ac8e",
@@ -8,7 +32,7 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T16:28:53+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 151,
       "deletions": 35,
       "filesChanged": 6
@@ -20,7 +44,7 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T16:24:35+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 362,
       "deletions": 140,
       "filesChanged": 11
@@ -32,7 +56,7 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T16:01:43+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 147,
       "deletions": 84,
       "filesChanged": 7
@@ -44,7 +68,7 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T15:20:06+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 123,
       "deletions": 32,
       "filesChanged": 4
@@ -56,7 +80,7 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T10:20:04+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 136,
       "deletions": 81,
       "filesChanged": 5
@@ -68,7 +92,7 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T08:48:29+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 92,
       "deletions": 45,
       "filesChanged": 3
@@ -80,7 +104,7 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T08:34:37+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 5,
       "deletions": 5,
       "filesChanged": 2
@@ -92,7 +116,7 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T08:33:34+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 67,
       "deletions": 55,
       "filesChanged": 2
@@ -104,7 +128,7 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T08:30:23+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 12744,
       "deletions": 8011,
       "filesChanged": 257
@@ -116,7 +140,7 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T08:24:04+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 38,
       "deletions": 34,
       "filesChanged": 3
@@ -128,7 +152,7 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T08:18:30+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 113,
       "deletions": 112,
       "filesChanged": 8
@@ -140,7 +164,7 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T08:07:05+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 353,
       "deletions": 79,
       "filesChanged": 5
@@ -152,7 +176,7 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T08:01:37+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 887,
       "deletions": 673,
       "filesChanged": 178
@@ -164,7 +188,7 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T07:58:06+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 537,
       "deletions": 113,
       "filesChanged": 8
@@ -176,7 +200,7 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T07:38:12+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 361,
       "deletions": 12,
       "filesChanged": 3
@@ -188,7 +212,7 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T07:21:15+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 30,
       "deletions": 35,
       "filesChanged": 10
@@ -200,7 +224,7 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T07:08:29+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 376,
       "deletions": 76,
       "filesChanged": 5
@@ -212,38 +236,14 @@
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T05:50:20+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
       "insertions": 529,
       "deletions": 15,
       "filesChanged": 12
-    },
-    {
-      "hash": "465c61a66f58d44d63de98d1a471b0f5f00a209e",
-      "shortHash": "465c61a",
-      "message": "feat: add section footer with JSDoc-style thank-you message",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T05:13:50+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
-      "insertions": 68,
-      "deletions": 9,
-      "filesChanged": 3
-    },
-    {
-      "hash": "a09ff2cc7a5113b353f97e74f22168540c81e454",
-      "shortHash": "a09ff2c",
-      "message": "refactor: replace framer-motion entry animations with Reveal component in learning section",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T05:09:21+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/0?v=4",
-      "insertions": 252,
-      "deletions": 223,
-      "filesChanged": 6
     }
   ],
   "commitsByDate": {
-    "2026-03-05": 34,
+    "2026-03-05": 36,
     "2026-03-04": 17,
     "2026-03-03": 28,
     "2026-03-02": 17,
@@ -262,7 +262,7 @@
   "languageStats": [
     {
       "language": "TypeScript",
-      "count": 231,
+      "count": 233,
       "color": "#89b4fa"
     },
     {

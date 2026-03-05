@@ -3,10 +3,10 @@ import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { HiOutlineBookOpen, HiOutlineCode } from "react-icons/hi";
 
 import { technologies } from "@/components/base/technologies";
-import { useMarkdownHeading } from "@/components/home/editor/context/markdown-heading-context";
 import { MarkdownRender } from "@/components/home/editor/markdown-renderer";
 import { Heading, Text } from "@/components/ui/text";
 import { cn } from "@/lib/utils";
+import { useMarkdownHeadingStore } from "@/store";
 import useProjectStore from "@/store/projects/projects-store";
 import { getProjectSlug } from "@/utils/project-slug";
 
@@ -217,7 +217,8 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
   );
 
   const [activeTab, setActiveTab] = React.useState<Tab>("overview");
-  const { setIsDeepDive, setActiveHeadings } = useMarkdownHeading();
+  const setIsDeepDive = useMarkdownHeadingStore((s) => s.setIsDeepDive);
+  const setActiveHeadings = useMarkdownHeadingStore((s) => s.setActiveHeadings);
 
   useEffect(() => {
     setIsDeepDive(activeTab === "deepdive");

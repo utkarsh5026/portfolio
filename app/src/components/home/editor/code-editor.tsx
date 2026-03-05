@@ -7,7 +7,6 @@ import EditorBreadcrumbs from "./breadcrumbs/editor-breadcrumbs";
 import CodeContent from "./code-content";
 import type { SectionType } from "./context/explorer-context";
 import { useEditorContext } from "./context/explorer-context";
-import { MarkdownHeadingProvider } from "./context/markdown-heading-context";
 import Explorer from "./left/editor-explorer";
 import SideBar from "./left/side-bar";
 import { OutlineProvider } from "./outline";
@@ -66,26 +65,24 @@ const CodeEditor: React.FC = () => {
 
   return (
     <OutlineProvider>
-      <MarkdownHeadingProvider>
-        <div className="min-h-screen bg-ctp-base flex">
-          <div
-            className={cn(
-              "flex h-screen w-screen max-w-screen overflow-hidden",
-              !isMobile && "ml-14",
-            )}
-          >
-            {!isMobile && <SideBar />}
-            {!isMobile && explorerOpen && <Explorer />}
-            <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-              <EditorTabs sections={sections} />
-              <EditorBreadcrumbs />
-              <CodeContent sections={sections} />
-              <StatusBar />
-              {terminalOpen && <Terminal />}
-            </div>
+      <div className="min-h-screen bg-ctp-base flex">
+        <div
+          className={cn(
+            "flex h-screen w-screen max-w-screen overflow-hidden",
+            !isMobile && "ml-14",
+          )}
+        >
+          {!isMobile && <SideBar />}
+          {!isMobile && explorerOpen && <Explorer />}
+          <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+            <EditorTabs sections={sections} />
+            <EditorBreadcrumbs />
+            <CodeContent sections={sections} />
+            <StatusBar />
+            {terminalOpen && <Terminal />}
           </div>
         </div>
-      </MarkdownHeadingProvider>
+      </div>
     </OutlineProvider>
   );
 };

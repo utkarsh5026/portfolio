@@ -1,4 +1,12 @@
-import React, { type ReactNode, useCallback, useEffect, useRef } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import React, {
+  type ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { FaFolder, FaFolderOpen } from "react-icons/fa";
 import {
   VscChevronDown,
@@ -8,23 +16,24 @@ import {
   VscSymbolProperty,
 } from "react-icons/vsc";
 
-import { useMarkdownHeading } from "@/components/home/editor/context/markdown-heading-context";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import type { HeadingNode } from "@/store";
+import { useMarkdownHeadingStore } from "@/store";
 import useProjectStore from "@/store/projects/projects-store";
 
-import { type SectionType } from "../context/editor-store";
+import {
+  editorFiles,
+  getProjectFileName,
+  type SectionType,
+} from "../context/editor-store";
 import {
   type SectionTab,
   type Tab,
   useEditorContext,
 } from "../context/explorer-context";
+import { TreeFile, TreeFolder } from "../shared/editor-tree";
 import { getIconColor, sectionIconMap } from "../tabs/tab-style";
-import BreadcrumbTreeDropdown from "./breadcrumb-tree-dropdown";
+import TreeDropdown from "./tree-dropdown";
 
 interface BreadcrumbSegment {
   label: string;
@@ -32,10 +41,72 @@ interface BreadcrumbSegment {
   iconColor: string;
   isActive: boolean;
   isFolder: boolean;
+  /**
+   * When set, this segment represents a heading at the given level.
+   * The dropdown will show sibling headings (or the full tree for the file).
+   */
+  headingLevel?: 1 | 2 | 3 | "file";
+  /** Heading id (slug) for this segment — used to highlight it in the dropdown. */
+  headingId?: string;
 }
 
 const FolderIcon: React.FC<{ isOpen: boolean }> = ({ isOpen }) =>
   isOpen ? <FaFolderOpen /> : <FaFolder />;
+
+const LEVEL_META: Record<1 | 2 | 3, { icon: React.ReactNode; color: string }> =
+  {
+    1: { icon: <VscSymbolClass />, color: "text-ctp-mauve" },
+    2: { icon: <VscSymbolMethod />, color: "text-ctp-green" },
+    3: { icon: <VscSymbolProperty />, color: "text-ctp-peach" },
+  };
+
+interface HeadingRowProps {
+  node: HeadingNode;
+  depth: number;
+  activeId: string | null;
+  onNavigate: (id: string) => void;
+}
+
+const HeadingRow: React.FC<HeadingRowProps> = ({
+  node,
+  depth,
+  activeId,
+  onNavigate,
+}) => {
+  const meta = LEVEL_META[node.level];
+  const isActive = node.id === activeId;
+
+  return (
+    <>
+      <button
+        onClick={() => onNavigate(node.id)}
+        style={{ paddingLeft: `${16 + depth * 14}px` }}
+        className={cn(
+          "group w-full text-left py-[5px] pr-3 text-[13px] flex items-center gap-1.5 cursor-pointer outline-none font-source",
+          isActive
+            ? "bg-ctp-surface1/60 text-ctp-text"
+            : "text-ctp-subtext0 hover:text-ctp-text hover:bg-ctp-surface0/50",
+        )}
+      >
+        <span className={cn("w-[14px] h-[14px] flex-shrink-0", meta.color)}>
+          {meta.icon}
+        </span>
+        <span className="truncate whitespace-nowrap">{node.text}</span>
+      </button>
+
+      {node.children.length > 0 &&
+        node.children.map((child) => (
+          <HeadingRow
+            key={child.id}
+            node={child}
+            depth={depth + 1}
+            activeId={activeId}
+            onNavigate={onNavigate}
+          />
+        ))}
+    </>
+  );
+};
 
 interface SegmentProps {
   seg: BreadcrumbSegment;
@@ -45,6 +116,10 @@ interface SegmentProps {
   treeVariant: "portfolio" | "projects";
   onSelectSection: (section: SectionType) => void;
   onSelectProject: (projectId: string) => void;
+  /** Heading nodes to show when this segment's dropdown is a heading tree. */
+  headingDropdownNodes?: HeadingNode[];
+  /** Currently active heading id (for highlighting inside the heading dropdown). */
+  activeHeadingId?: string | null;
 }
 
 const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
@@ -55,11 +130,22 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
   treeVariant,
   onSelectSection,
   onSelectProject,
+  headingDropdownNodes,
+  activeHeadingId,
 }) => {
+  const [open, setOpen] = useState(false);
+  const [projectsOpen, setProjectsOpen] = useState(true);
+  const projects = useProjectStore((s) => s.projects);
+
+  const isHeading = !!seg.headingLevel;
+  const hasDropdown =
+    canOpenTree ||
+    (isHeading && headingDropdownNodes && headingDropdownNodes.length > 0);
+
   const inner = (
     <>
       <span className={cn("flex-shrink-0 text-[11px]", seg.iconColor)}>
-        {seg.isFolder ? <FolderIcon isOpen={false} /> : seg.icon}
+        {seg.isFolder ? <FolderIcon isOpen={open} /> : seg.icon}
       </span>
       <span
         className={cn(
@@ -69,13 +155,18 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
       >
         {seg.label}
       </span>
-      {canOpenTree && (
-        <VscChevronDown className="w-3 h-3 flex-shrink-0 text-ctp-overlay0/70 transition-transform duration-150 data-[state=open]:rotate-180" />
+      {hasDropdown && (
+        <VscChevronDown
+          className={cn(
+            "w-3 h-3 flex-shrink-0 text-ctp-overlay0/70 transition-transform duration-150",
+            open && "rotate-180",
+          )}
+        />
       )}
     </>
   );
 
-  if (!canOpenTree) {
+  if (!hasDropdown) {
     return (
       <span
         className={cn(
@@ -90,34 +181,129 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
     );
   }
 
+  const projectFiles = projects.map((p) => (
+    <TreeFile
+      key={p.name}
+      name={getProjectFileName(p.name)}
+      depth={treeVariant === "projects" ? 1 : 2}
+      isActive={activeProjectId === p.name}
+      onClick={() => {
+        onSelectProject(p.name);
+        setOpen(false);
+      }}
+    />
+  ));
+
+  const treeContent = isHeading ? (
+    <>
+      {headingDropdownNodes?.map((node) => (
+        <HeadingRow
+          key={node.id}
+          node={node}
+          depth={0}
+          activeId={activeHeadingId ?? null}
+          onNavigate={(id) => {
+            document.getElementById(id)?.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            setOpen(false);
+          }}
+        />
+      ))}
+      {(!headingDropdownNodes || headingDropdownNodes.length === 0) && (
+        <span className="block px-4 py-3 text-xs text-ctp-overlay0 italic">
+          No headings found
+        </span>
+      )}
+    </>
+  ) : treeVariant === "portfolio" ? (
+    <TreeFolder name="portfolio" isOpen={true} depth={0} onToggle={() => {}}>
+      {editorFiles.map((f) => (
+        <TreeFile
+          key={f.section}
+          name={f.name}
+          depth={1}
+          isActive={activeProjectId === null && activeSection === f.section}
+          onClick={() => {
+            onSelectSection(f.section);
+            setOpen(false);
+          }}
+        />
+      ))}
+      <TreeFolder
+        name="projects"
+        isOpen={projectsOpen}
+        depth={1}
+        onToggle={() => setProjectsOpen((v) => !v)}
+      >
+        {projectFiles}
+      </TreeFolder>
+    </TreeFolder>
+  ) : (
+    <TreeFolder name="projects" isOpen={true} depth={0} onToggle={() => {}}>
+      {projectFiles}
+    </TreeFolder>
+  );
+
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+    <TreeDropdown
+      open={open}
+      onOpenChange={setOpen}
+      trigger={
         <button
           className={cn(
             "flex items-center gap-1.5 px-1.5 py-0.5 rounded-sm transition-colors duration-150 cursor-pointer",
             "text-ctp-subtext0 hover:text-ctp-text hover:bg-ctp-surface0/40",
-            "data-[state=open]:bg-ctp-surface0/60 data-[state=open]:text-ctp-text",
+            open && "bg-ctp-surface0/60 text-ctp-text",
           )}
         >
           {inner}
         </button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent
-        align="start"
-        className="w-[260px] max-h-[300px] bg-ctp-mantle/75 backdrop-blur-md border-ctp-surface0/60 shadow-2xl shadow-black/60 py-1.5 overflow-y-auto overflow-x-hidden"
-      >
-        <BreadcrumbTreeDropdown
-          activeSection={activeSection}
-          activeProjectId={activeProjectId}
-          variant={treeVariant}
-          onSelectSection={onSelectSection}
-          onSelectProject={onSelectProject}
-        />
-      </DropdownMenuContent>
-    </DropdownMenu>
+      }
+    >
+      {treeContent}
+    </TreeDropdown>
   );
 };
+
+/**
+ * Given the full heading tree and the currently active heading ids,
+ * return the sibling nodes that should appear for a specific heading level.
+ */
+function getSiblingNodes(
+  tree: HeadingNode[],
+  level: 1 | 2 | 3 | "file",
+  activeH1Id: string | null,
+  activeH2Id: string | null,
+): HeadingNode[] {
+  if (level === "file") return tree;
+
+  if (level === 1) return tree;
+
+  if (level === 2) {
+    if (!activeH1Id) return [];
+    const parent = tree.find((n) => n.id === activeH1Id);
+    return parent?.children.filter((c) => c.level === 2) ?? [];
+  }
+
+  if (level === 3) {
+    if (!activeH1Id || !activeH2Id) return [];
+    const h1 = tree.find((n) => n.id === activeH1Id);
+    const h2 = h1?.children.find((c) => c.id === activeH2Id);
+    return h2?.children.filter((c) => c.level === 3) ?? [];
+  }
+
+  return [];
+}
+
+/** Build the slug id that matches how the renderer generates heading ids. */
+const labelToSlug = (label: string): string =>
+  label
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
 
 export const EditorBreadcrumbs: React.FC = () => {
   const {
@@ -129,12 +315,20 @@ export const EditorBreadcrumbs: React.FC = () => {
     activeProjectId,
   } = useEditorContext();
   const projects = useProjectStore((s) => s.projects);
-  const { isDeepDive, activeHeadings } = useMarkdownHeading();
+  const isDeepDive = useMarkdownHeadingStore((s) => s.isDeepDive);
+  const activeHeadings = useMarkdownHeadingStore((s) => s.activeHeadings);
+  const headingTree = useMarkdownHeadingStore((s) => s.headingTree);
 
   const activeTab: Tab | null =
     openTabs.find((t) => t.id === activeTabId) ?? null;
 
-  const segments: BreadcrumbSegment[] = React.useMemo(() => {
+  const activeH1Id = activeHeadings.h1 ? labelToSlug(activeHeadings.h1) : null;
+  const activeH2Id = activeHeadings.h2 ? labelToSlug(activeHeadings.h2) : null;
+  const activeH3Id = activeHeadings.h3 ? labelToSlug(activeHeadings.h3) : null;
+
+  const deepestActiveId = activeH3Id ?? activeH2Id ?? activeH1Id;
+
+  const segments: BreadcrumbSegment[] = useMemo(() => {
     if (!activeTab) return [];
 
     const root: BreadcrumbSegment = {
@@ -160,6 +354,8 @@ export const EditorBreadcrumbs: React.FC = () => {
     }
 
     if (activeTab.type === "project") {
+      const hasHeadings = isDeepDive && headingTree.length > 0;
+
       const base: BreadcrumbSegment[] = [
         root,
         {
@@ -177,6 +373,8 @@ export const EditorBreadcrumbs: React.FC = () => {
             !isDeepDive ||
             (!activeHeadings.h1 && !activeHeadings.h2 && !activeHeadings.h3),
           isFolder: false,
+          // The file segment shows the full heading tree when clicked.
+          headingLevel: hasHeadings ? "file" : undefined,
         },
       ];
 
@@ -188,6 +386,8 @@ export const EditorBreadcrumbs: React.FC = () => {
             iconColor: "text-ctp-mauve",
             isActive: !activeHeadings.h2 && !activeHeadings.h3,
             isFolder: false,
+            headingLevel: 1,
+            headingId: activeH1Id ?? undefined,
           });
         }
         if (activeHeadings.h2) {
@@ -197,6 +397,8 @@ export const EditorBreadcrumbs: React.FC = () => {
             iconColor: "text-ctp-green",
             isActive: !activeHeadings.h3,
             isFolder: false,
+            headingLevel: 2,
+            headingId: activeH2Id ?? undefined,
           });
         }
         if (activeHeadings.h3) {
@@ -206,6 +408,8 @@ export const EditorBreadcrumbs: React.FC = () => {
             iconColor: "text-ctp-peach",
             isActive: true,
             isFolder: false,
+            headingLevel: 3,
+            headingId: activeH3Id ?? undefined,
           });
         }
       }
@@ -214,7 +418,15 @@ export const EditorBreadcrumbs: React.FC = () => {
     }
 
     return [root];
-  }, [activeTab, isDeepDive, activeHeadings]);
+  }, [
+    activeTab,
+    isDeepDive,
+    activeHeadings,
+    headingTree,
+    activeH1Id,
+    activeH2Id,
+    activeH3Id,
+  ]);
 
   const handleSelectSection = useCallback(
     (section: SectionType) => setActiveSection(section),
@@ -239,28 +451,49 @@ export const EditorBreadcrumbs: React.FC = () => {
   }, [segments]);
 
   return (
-    <div
-      ref={barRef}
-      className="flex items-center gap-0 px-3 py-1 bg-ctp-mantle border-none text-xs font-source select-none overflow-x-auto whitespace-nowrap [&::-webkit-scrollbar]:hidden"
-    >
-      {activeTab &&
-        segments.map((seg, i) => (
-          <React.Fragment key={`${seg.label}-${i}`}>
-            {i > 0 && (
-              <VscChevronRight className="w-3 h-3 text-ctp-overlay0/50 flex-shrink-0 mx-0.5" />
-            )}
-            <BreadcrumbSegmentItem
-              seg={seg}
-              activeSection={activeSection}
-              activeProjectId={activeProjectId}
-              canOpenTree={seg.isFolder}
-              treeVariant={seg.label === "projects" ? "projects" : "portfolio"}
-              onSelectSection={handleSelectSection}
-              onSelectProject={handleSelectProject}
-            />
-          </React.Fragment>
-        ))}
-    </div>
+    <AnimatePresence mode="wait">
+      {activeTab && (
+        <motion.div
+          ref={barRef}
+          key={`${activeTabId}-bar`}
+          initial={{ opacity: 0, y: -4 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -4 }}
+          transition={{ duration: 0.15, ease: "easeOut" }}
+          className="flex items-center gap-0 px-3 py-1 bg-ctp-mantle border-none text-xs font-source select-none overflow-x-auto whitespace-nowrap [&::-webkit-scrollbar]:hidden"
+        >
+          {segments.map((seg, i) => (
+            <React.Fragment key={`${seg.label}-${i}`}>
+              {i > 0 && (
+                <VscChevronRight className="w-3 h-3 text-ctp-overlay0/50 flex-shrink-0 mx-0.5" />
+              )}
+              <BreadcrumbSegmentItem
+                seg={seg}
+                activeSection={activeSection}
+                activeProjectId={activeProjectId}
+                canOpenTree={seg.isFolder}
+                treeVariant={
+                  seg.label === "projects" ? "projects" : "portfolio"
+                }
+                onSelectSection={handleSelectSection}
+                onSelectProject={handleSelectProject}
+                headingDropdownNodes={
+                  seg.headingLevel
+                    ? getSiblingNodes(
+                        headingTree,
+                        seg.headingLevel,
+                        activeH1Id,
+                        activeH2Id,
+                      )
+                    : undefined
+                }
+                activeHeadingId={deepestActiveId}
+              />
+            </React.Fragment>
+          ))}
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

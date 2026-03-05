@@ -6,6 +6,8 @@ import React, {
   useState,
 } from "react";
 
+import type { HeadingNode } from "../markdown-renderer/parse-markdown-headings";
+
 export type MarkdownHeading = {
   h1: string | null;
   h2: string | null;
@@ -15,8 +17,10 @@ export type MarkdownHeading = {
 type MarkdownHeadingContextType = {
   isDeepDive: boolean;
   activeHeadings: MarkdownHeading;
+  headingTree: HeadingNode[];
   setIsDeepDive: (v: boolean) => void;
   setActiveHeadings: (h: MarkdownHeading) => void;
+  setHeadingTree: (tree: HeadingNode[]) => void;
 };
 
 const MarkdownHeadingContext = createContext<
@@ -32,14 +36,33 @@ export const MarkdownHeadingProvider: React.FC<{
     h2: null,
     h3: null,
   });
+  const [headingTree, setHeadingTreeState] = useState<HeadingNode[]>([]);
 
   const setActiveHeadings = useCallback((h: MarkdownHeading) => {
     setActiveHeadingsState(h);
   }, []);
 
+  const setHeadingTree = useCallback((tree: HeadingNode[]) => {
+    setHeadingTreeState(tree);
+  }, []);
+
   const value = useMemo(
-    () => ({ isDeepDive, activeHeadings, setIsDeepDive, setActiveHeadings }),
-    [isDeepDive, activeHeadings, setIsDeepDive, setActiveHeadings],
+    () => ({
+      isDeepDive,
+      activeHeadings,
+      headingTree,
+      setIsDeepDive,
+      setActiveHeadings,
+      setHeadingTree,
+    }),
+    [
+      isDeepDive,
+      activeHeadings,
+      headingTree,
+      setIsDeepDive,
+      setActiveHeadings,
+      setHeadingTree,
+    ],
   );
 
   return (

@@ -5,8 +5,8 @@ import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 
 import { Heading, Text } from "@/components/ui/text";
+import { parseMarkdownHeadings, useMarkdownHeadingStore } from "@/store";
 
-import { useMarkdownHeading } from "../context/markdown-heading-context";
 import { CodeBlock } from "./code-bock";
 import { MarkdownImage } from "./media";
 
@@ -186,7 +186,13 @@ interface MarkdownRenderProps {
 
 export const MarkdownRender: React.FC<MarkdownRenderProps> = ({ markdown }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { setActiveHeadings } = useMarkdownHeading();
+  const setActiveHeadings = useMarkdownHeadingStore((s) => s.setActiveHeadings);
+  const setHeadingTree = useMarkdownHeadingStore((s) => s.setHeadingTree);
+
+  useEffect(() => {
+    setHeadingTree(parseMarkdownHeadings(markdown));
+    return () => setHeadingTree([]);
+  }, [markdown, setHeadingTree]);
 
   useEffect(() => {
     const container = containerRef.current;

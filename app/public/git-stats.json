@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-05T11:12:59.468Z",
+  "generatedAt": "2026-03-05T12:26:45.842Z",
   "sections": {
     "home": {
       "lastCommitHash": "049b164",
@@ -38,15 +38,15 @@
       "fileCount": 5
     },
     "projects": {
-      "lastCommitHash": "a4fb4c0",
-      "lastCommitDate": "2026-03-05 16:24:35 +0530",
-      "lastCommitMessage": "feat: add scroll-tracked heading breadcrumbs for project deep dive",
+      "lastCommitHash": "68880ac",
+      "lastCommitDate": "2026-03-05 17:47:44 +0530",
+      "lastCommitMessage": "feat: add heading navigation dropdowns to editor breadcrumbs",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 65,
-      "linesAdded": 19,
-      "linesDeleted": 11,
-      "totalAdded": 9765,
-      "totalDeleted": 8467,
+      "commitCount": 66,
+      "linesAdded": 3,
+      "linesDeleted": 2,
+      "totalAdded": 9768,
+      "totalDeleted": 8469,
       "fileCount": 10
     },
     "experience": {
