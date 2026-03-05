@@ -38,21 +38,18 @@ const markdownComponents: Components = {
     </Heading>
   ),
 
-  // Paragraph
   p: ({ children }) => (
     <Text as="p" className="mb-7">
       {children}
     </Text>
   ),
 
-  // Blockquote
   blockquote: ({ children }) => (
-    <blockquote className="relative flex border-l-[4px] border-ctp-mauve pl-6 my-10 bg-gradient-to-r from-ctp-surface0/50 to-transparent py-5 pr-6 rounded-r-2xl text-ctp-subtext0 italic text-lg shadow-sm">
+    <blockquote className="relative flex border-l-[4px] border-ctp-mauve pl-6 my-10 bg-gradient-to-r from-ctp-surface0/50 to-transparent py-5 pr-6 rounded-2xl text-ctp-subtext0 italic text-lg shadow-sm">
       <div className="relative z-10">{children}</div>
     </blockquote>
   ),
 
-  // Horizontal rule
   hr: () => (
     <div className="my-14 flex items-center justify-center gap-3 opacity-80">
       <span className="w-16 h-[1px] bg-gradient-to-r from-transparent to-ctp-surface2" />
@@ -61,20 +58,18 @@ const markdownComponents: Components = {
     </div>
   ),
 
-  // Lists
   ul: ({ children }) => (
-    <ul className="list-disc list-outside space-y-3 mb-8 ml-8 text-ctp-subtext0 text-base md:text-lg font-medium marker:text-ctp-mauve">
+    <ul className="list-disc list-outside space-y-3 mb-8 ml-8 text-ctp-subtext0 text-base md:text-lg font-medium marker:text-ctp-lavender">
       {children}
     </ul>
   ),
   ol: ({ children }) => (
-    <ol className="list-decimal list-outside space-y-3 mb-8 ml-8 text-ctp-subtext0 text-base md:text-lg font-medium marker:text-ctp-blue marker:font-bold">
+    <ol className="list-decimal list-outside space-y-3 mb-8 ml-8 text-ctp-subtext0 text-base md:text-lg font-medium marker:text-ctp-lavender marker:font-bold">
       {children}
     </ol>
   ),
   li: ({ children }) => <li className="leading-relaxed pl-2">{children}</li>,
 
-  // Intercept <pre> so react-markdown doesn't double-wrap the code block
   pre: ({ children }) => <>{children}</>,
 
   code: ({ children, className, ...rest }) => {
@@ -90,7 +85,7 @@ const markdownComponents: Components = {
 
     return (
       <code
-        className="px-2 py-0.5 rounded-md bg-ctp-surface0/80 text-ctp-pink border border-ctp-surface0 font-mono text-[0.9em] whitespace-pre-wrap break-words font-semibold"
+        className="px-2 py-0.5 rounded-md bg-ctp-surface0/80 text-ctp-lavender border border-ctp-surface0 font-mono text-[0.9em] whitespace-pre-wrap break-words font-semibold"
         {...rest}
       >
         {children}
@@ -142,7 +137,7 @@ const markdownComponents: Components = {
   ),
 
   strong: ({ children }) => (
-    <strong className="font-bold text-ctp-text px-0.5">{children}</strong>
+    <strong className="font-medium text-ctp-text px-0.5">{children}</strong>
   ),
   em: ({ children }) => (
     <em className="italic text-ctp-subtext1">{children}</em>

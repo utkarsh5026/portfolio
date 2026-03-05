@@ -1,5 +1,5 @@
 import React from "react";
-import { FaExternalLinkAlt,FaGithub } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { HiOutlineBookOpen, HiOutlineCode } from "react-icons/hi";
 
 import { technologies } from "@/components/base/technologies";
@@ -316,7 +316,7 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
           {loadState === "loading" && <LoadingSkeleton />}
 
           {loadState === "loaded" && markdown && (
-            <div className="px-6 pb-10">
+            <div className="px-6 pb-10 font-sans">
               <MarkdownRender markdown={markdown} />
             </div>
           )}
