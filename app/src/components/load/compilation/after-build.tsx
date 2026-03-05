@@ -1,4 +1,5 @@
 import React from "react";
+
 import Logo from "@/components/home/appbar/Logo";
 
 const AfterBuild: React.FC = () => {
@@ -59,7 +60,7 @@ const AfterBuild: React.FC = () => {
         <div className="scale-125 sm:scale-2 mb-6 sm:mb-12 transition-all duration-1000 filter drop-shadow-[0_0_30px_rgba(137,180,250,0.8)]">
           <Logo />
         </div>
-        <div className="text-lg sm:text-xl font-mono mt-4 sm:mt-8 w-full max-w-sm sm:max-w-none">
+        <div className="text-lg sm:text-xl font-source mt-4 sm:mt-8 w-full max-w-sm sm:max-w-none">
           <div className="px-4 py-3 sm:px-8 sm:py-4 rounded-lg backdrop-blur-sm bg-black/20 border border-[#89b4fa]/30 text-center">
             <span className="bg-gradient-to-r from-white via-[#89b4fa] to-[#cba6f7] bg-clip-text text-transparent font-semibold">
               Welcome to my portfolio ❤️

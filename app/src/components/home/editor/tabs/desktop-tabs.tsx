@@ -1,70 +1,162 @@
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { SectionType } from "../context/explorer-context";
-import { cn } from "@/lib/utils";
-import { getIconColor, sectionIconMap, getActiveTabColor } from "./tab-style";
 import { motion } from "framer-motion";
+import React, { useEffect,useRef } from "react";
+import { VscClose,VscMarkdown } from "react-icons/vsc";
 
-interface DesktopTabsProps {
-  activeSection: SectionType;
-  setActiveSection: (section: SectionType) => void;
-  sectionKeys: SectionType[];
-}
+import { cn } from "@/lib/utils";
 
-const DesktopTabs: React.FC<DesktopTabsProps> = ({
-  activeSection,
-  setActiveSection,
-  sectionKeys,
-}) => {
+import type { SectionTab,Tab } from "../context/explorer-context";
+import { useEditorContext } from "../context/explorer-context";
+import { TabActions } from "./tab-actions";
+import { getActiveTabColor,getIconColor, sectionIconMap } from "./tab-style";
+
+const DesktopTabs: React.FC = () => {
+  const {
+    openTabs,
+    activeTabId,
+    openTab,
+    closeTab,
+    closeAllTabs,
+    closeTabsToLeft,
+    closeTabsToRight,
+    closeAllProjects,
+  } = useEditorContext();
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const activeIdx = openTabs.findIndex((t) => t.id === activeTabId);
+  const hasLeft = activeIdx > 0;
+  const hasRight = activeIdx !== -1 && activeIdx < openTabs.length - 1;
+  const hasProjects = openTabs.some((t) => t.type === "project");
+
+  // Horizontal scroll with mouse wheel
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const onWheel = (e: WheelEvent) => {
+      if (e.deltaY !== 0 && !e.shiftKey) {
+        e.preventDefault();
+        el.scrollLeft += e.deltaY;
+      }
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, []);
+
+  // Scroll active tab into view when it changes
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el || !activeTabId) return;
+    const activeTabEl = el.querySelector<HTMLElement>(
+      `[data-tab-id="${activeTabId}"]`,
+    );
+    if (activeTabEl) {
+      activeTabEl.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "nearest",
+      });
+    }
+  }, [activeTabId]);
+
   return (
-    <Tabs
-      value={activeSection}
-      onValueChange={(value) => setActiveSection(value as SectionType)}
-      className="w-full"
-    >
-      <div className="w-full overflow-x-auto scrollbar-hide">
-        <TabsList className="h-10 bg-transparent px-2 py-0 w-max min-w-full flex items-center rounded-none justify-start">
-          {sectionKeys.map((section) => {
-            const iconColor = getIconColor(section);
+    <div className="flex items-stretch w-full font-source">
+      {/* ── Scrollable tab strip ── */}
+      <div
+        ref={scrollRef}
+        className="flex-1 overflow-x-auto [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-thumb]:bg-ctp-surface2/50 [&::-webkit-scrollbar-track]:bg-transparent min-w-0"
+      >
+        <div className="flex h-10 w-max min-w-full bg-ctp-mantle items-end">
+          {openTabs.map((tab: Tab) => {
+            const isActive = activeTabId === tab.id;
+            const isSectionTab = tab.type === "section";
+
             return (
-              <TabsTrigger
-                key={section}
-                value={section}
+              <button
+                key={tab.id}
+                data-tab-id={tab.id}
+                onClick={() => openTab(tab)}
                 className={cn(
-                  "relative h-9 px-4 rounded-none font-mono text-xs transition-all duration-200",
-                  "data-[state=inactive]:bg-ctp-surface0/50 data-[state=inactive]:text-ctp-subtext0",
-                  "data-[state=active]:bg-ctp-base data-[state=active]:text-ctp-text",
-                  "hover:bg-ctp-surface0 hover:text-ctp-text",
-                  "focus-visible:ring-ctp-lavender focus-visible:ring-opacity-50"
+                  "relative h-10 px-3 flex-shrink-0 min-w-[140px] max-w-[220px] border-r border-ctp-surface0/50 text-xs transition-colors flex items-center gap-2 group",
+                  isActive
+                    ? "bg-ctp-base text-ctp-text font-medium"
+                    : "bg-ctp-mantle text-ctp-subtext0 hover:bg-ctp-surface0 hover:text-ctp-text",
                 )}
               >
-                <div className="flex items-center gap-4">
-                  <span className={cn("w-3 h-3", iconColor)}>
-                    {sectionIconMap[section]}
+                {isSectionTab ? (
+                  <span
+                    className={cn(
+                      "w-3 h-3 flex-shrink-0",
+                      getIconColor((tab as SectionTab).id),
+                    )}
+                  >
+                    {sectionIconMap[(tab as SectionTab).id]}
                   </span>
-                  <span className="text-sm font-medium text-ctp-text capitalize">
-                    {section}
-                  </span>
-                </div>
+                ) : (
+                  <VscMarkdown className="w-3.5 h-3.5 text-ctp-blue flex-shrink-0" />
+                )}
 
-                {/* Animated active indicator */}
-                {activeSection === section && (
+                <span className="text-sm tracking-wide truncate flex-1 text-left select-none">
+                  {isSectionTab ? (tab as SectionTab).id : tab.fileName}
+                </span>
+
+                {/* Per-tab close button */}
+                <span
+                  role="button"
+                  tabIndex={0}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    closeTab(tab.id);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.stopPropagation();
+                      closeTab(tab.id);
+                    }
+                  }}
+                  className={cn(
+                    "w-4 h-4 rounded-sm flex items-center justify-center ml-1 flex-shrink-0 transition-colors",
+                    isActive
+                      ? "opacity-70 hover:opacity-100 hover:bg-ctp-surface1"
+                      : "opacity-0 group-hover:opacity-70 hover:!opacity-100 hover:bg-ctp-surface1",
+                  )}
+                >
+                  <VscClose className="w-3 h-3" />
+                </span>
+
+                {/* Active top-border indicator */}
+                {isActive && (
                   <motion.div
                     layoutId="activeTabIndicator"
                     className={cn(
-                      "absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r",
-                      getActiveTabColor(section)
+                      "absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r",
+                      isSectionTab
+                        ? getActiveTabColor((tab as SectionTab).id)
+                        : "from-ctp-green to-ctp-teal",
                     )}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.2 }}
                   />
                 )}
-              </TabsTrigger>
+              </button>
             );
           })}
-        </TabsList>
+        </div>
       </div>
-    </Tabs>
+
+      {/* ── Tab actions menu (far right) ── */}
+      <TabActions
+        openTabsCount={openTabs.length}
+        hasLeft={hasLeft}
+        hasRight={hasRight}
+        hasProjects={hasProjects}
+        activeTabId={activeTabId}
+        closeAllTabs={closeAllTabs}
+        closeTabsToLeft={closeTabsToLeft}
+        closeTabsToRight={closeTabsToRight}
+        closeAllProjects={closeAllProjects}
+      />
+    </div>
   );
 };
 

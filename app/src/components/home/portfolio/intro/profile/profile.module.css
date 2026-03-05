@@ -1,0 +1,211 @@
+/* Profile Picture Animations */
+.pictureContainer {
+  transition: transform 0.3s ease-in-out;
+}
+
+.pictureContainer:hover {
+  transform: scale(1.05);
+}
+
+.avatarWrapper {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.avatarWrapper:hover {
+  transform: rotate(5deg);
+}
+
+.statusIndicator {
+  animation: pulseShadow 2s infinite ease-in-out;
+}
+
+@keyframes pulseShadow {
+  0%,
+  100% {
+    box-shadow: 0 0 0px rgba(166, 227, 161, 0);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(166, 227, 161, 0.5);
+  }
+}
+
+.statusDot {
+  animation: pulseScale 6s infinite ease-in-out;
+}
+
+@keyframes pulseScale {
+  0%,
+  100% {
+    transform: scale(0.1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Profile Buttons Animations */
+.buttonAction {
+  transition:
+    transform 0.2s cubic-bezier(0.2, 0, 0, 1),
+    background-color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.buttonAction:hover {
+  transform: translateY(-1px) scale(1.05);
+}
+
+.buttonAction:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.socialIcon {
+  transition:
+    transform 0.2s cubic-bezier(0.2, 0, 0, 1),
+    color 0.2s;
+}
+
+.socialIcon:active {
+  transform: scale(0.95);
+}
+
+/* Icon-specific keyframes */
+
+/* Mail: idle, then quick notification shake */
+@keyframes mailShake {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0deg);
+  }
+  67% {
+    transform: rotate(-14deg);
+  }
+  74% {
+    transform: rotate(14deg);
+  }
+  81% {
+    transform: rotate(-9deg);
+  }
+  88% {
+    transform: rotate(9deg);
+  }
+  95% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Code: idle, then brackets snap outward */
+@keyframes codeExpand {
+  0%,
+  55%,
+  100% {
+    transform: scaleX(1);
+  }
+  65% {
+    transform: scaleX(1.22);
+  }
+  75% {
+    transform: scaleX(0.88);
+  }
+  85% {
+    transform: scaleX(1.1);
+  }
+  92% {
+    transform: scaleX(1);
+  }
+}
+
+/* GitHub: idle, then full spin */
+@keyframes githubSpin {
+  0%,
+  55%,
+  100% {
+    transform: rotate(0deg);
+  }
+  85% {
+    transform: rotate(360deg);
+  }
+}
+
+/* LinkedIn: gentle continuous float upward */
+@keyframes riseUp {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Resume: idle, then download-drop bounce */
+@keyframes downloadBounce {
+  0%,
+  55%,
+  100% {
+    transform: translateY(0);
+  }
+  65% {
+    transform: translateY(4px);
+  }
+  75% {
+    transform: translateY(0);
+  }
+  83% {
+    transform: translateY(2px);
+  }
+  91% {
+    transform: translateY(0);
+  }
+}
+
+/* Continuous icon animations — staggered so they don't all fire together */
+.contactButton svg {
+  animation: mailShake 3.5s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.projectsButton svg {
+  animation: codeExpand 4s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+.githubLink:hover svg {
+  animation: githubSpin 0.5s ease-in-out;
+}
+
+.linkedinLink:hover svg {
+  animation: riseUp 0.35s ease-out;
+}
+
+.resumeLink:hover svg {
+  animation: downloadBounce 0.4s ease-in-out;
+}
+
+/* Personal Title Animations */
+.textFadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.textFadeInDelay1 {
+  animation: fadeIn 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.textFadeInDelay2 {
+  animation: fadeIn 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

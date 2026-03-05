@@ -1,22 +1,25 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import "./panic.css";
+import "./PanicAnimations.css";
+
+import React, { useCallback,useEffect, useRef, useState } from "react";
+
+import { useWindowContext } from "@/components/load/panic/context/windowContext";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
+import MacOSContainer from "../../macos/macos-container";
 import BrowserWindow from "../browser/BrowserWindow";
-import CodeEditors from "../vscode/CodeEditors";
 import ChatWindow from "../llm/ChatWindow";
 import Terminal from "../terminal/Terminal";
-import MacOSContainer from "../../macos/macos-container";
-import "./panic.css";
-import usePanic from "../use-panic";
 import {
-  CHAT_TIMING,
   BROWSER_TIMING,
+  CHAT_TIMING,
   CODING_TIMING,
   INITIAL_DELAY,
   TERMINAL_TIMING,
 } from "../timings";
-import { useWindowContext } from "@/components/load/panic/context/windowContext";
-import "./PanicAnimations.css";
+import usePanic from "../use-panic";
+import CodeEditors from "../vscode/CodeEditors";
 
 const INIT_MESSAGE_TIME = 1000;
 
@@ -178,7 +181,7 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
         }, 100);
       });
     },
-    []
+    [],
   );
 
   const phaseSequence = useCallback(async () => {
@@ -194,7 +197,7 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
         setTimeout(async () => {
           await showNarrative("research", true);
           resolve(null);
-        }, BROWSER_TIMING * 0.7)
+        }, BROWSER_TIMING * 0.7),
       );
 
       await browserAnimation;
@@ -212,7 +215,7 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
         setTimeout(async () => {
           await showNarrative("assistance", true);
           resolve(null);
-        }, CHAT_TIMING * 0.2)
+        }, CHAT_TIMING * 0.2),
       );
 
       await chatAnimation;
@@ -230,7 +233,7 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
         setTimeout(async () => {
           await showNarrative("coding", true);
           resolve(null);
-        }, CODING_TIMING * 0.85)
+        }, CODING_TIMING * 0.85),
       );
 
       // Ensure coding animation completes
@@ -252,7 +255,7 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
         setTimeout(async () => {
           await showNarrative("commands", true);
           resolve(null);
-        }, TERMINAL_TIMING * 0.85)
+        }, TERMINAL_TIMING * 0.85),
       );
 
       // Ensure terminal animation completes
@@ -270,7 +273,7 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
             () => {
               onComplete();
             },
-            { once: true }
+            { once: true },
           );
         }
       }, 1000);
@@ -348,7 +351,7 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
             ref={narrativeRef}
             className={cn(
               "fixed top-[70%] left-[10%] z-[90]",
-              "narrative-bubble"
+              "narrative-bubble",
             )}
           >
             <div
@@ -356,7 +359,7 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
                 "max-w-md rounded-2xl text-white shadow-2xl overflow-hidden transition-all duration-300 backdrop-blur-md",
                 narrativePhase === "intro" || narrativePhase === "complete"
                   ? "bg-black/75 border-2 border-yellow-400"
-                  : "bg-black/60 border border-purple-500"
+                  : "bg-black/60 border border-purple-500",
               )}
             >
               {/* Title bar with emoji */}
@@ -368,7 +371,7 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
                     ref={emojiRef}
                     className={cn(
                       "text-2xl transition-all",
-                      emojiAnimating ? "emoji-bounce" : ""
+                      emojiAnimating ? "emoji-bounce" : "",
                     )}
                   >
                     {narrativeContent.emoji}
@@ -388,7 +391,7 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
                       narrativePhase === "intro" ||
                         narrativePhase === "complete"
                         ? "text-white font-medium"
-                        : "text-pink-100"
+                        : "text-pink-100",
                     )}
                   >
                     {narrativeContent.content.substring(0, narrativeProgress)}
@@ -403,7 +406,7 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
                       <div
                         className={cn(
                           "text-2xl ml-2 transition-all",
-                          emojiAnimating ? "emoji-bounce" : ""
+                          emojiAnimating ? "emoji-bounce" : "",
                         )}
                       >
                         {narrativeContent.emoji}
@@ -423,7 +426,7 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
 
         <div
           className={cn(
-            "relative w-full h-[calc(100%-7px-64px)] mt-7 transition-all duration-300 ease-in-out"
+            "relative w-full h-[calc(100%-7px-64px)] mt-7 transition-all duration-300 ease-in-out",
           )}
         >
           {loadedWindows.has("browser") && (
@@ -494,8 +497,8 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
           <div className="text-base animate-pulse">⏱️</div>
           <div
             className={cn(
-              "font-mono text-sm font-bold countdown",
-              timeLeftClass
+              "font-source text-sm font-bold countdown",
+              timeLeftClass,
             )}
           >
             {timeLeft}
@@ -511,7 +514,7 @@ const PanicScene: React.FC<PanicSceneProps> = ({ onComplete }) => {
             className={cn(
               "h-2 bg-gradient-to-r from-green-400 via-yellow-400 to-red-500 rounded-full transition-all duration-500",
               stressLevelClass,
-              "w-32"
+              "w-32",
             )}
           ></div>
         </div>

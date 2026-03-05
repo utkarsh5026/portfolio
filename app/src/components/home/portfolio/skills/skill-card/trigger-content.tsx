@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
+
 import { skillCategories } from "../data";
 
 interface TriggerContentProps {

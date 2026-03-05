@@ -8,18 +8,11 @@ const texts = [
   "With expertise spanning front-end aesthetics to back-end architecture, I bridge the gap between user needs and technical implementation.",
 ];
 
-/**
- * PersonalDescription Component
- *
- * This component displays a personal description in a styled motion div.
- * It utilizes Framer Motion for animations and is designed to be visually appealing
- * with a responsive layout.
- */
 const PersonalDescription: React.FC = () => {
   return (
     <div
       className={cn(
-        "mb-8 text-ctp-text p-6  bg-gradient-to-br from-ctp-mantle to-ctp-crust rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-2xl"
+        "mb-8 text-ctp-text p-6  bg-gradient-to-br from-ctp-mantle to-ctp-crust rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-2xl font-source",
       )}
     >
       {texts.map((text, index) => (

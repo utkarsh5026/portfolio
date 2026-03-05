@@ -1,5 +1,5 @@
-import Reveal from "./reveal/Reveal";
 import FloatingElement from "./floating-element";
 import type { RevealEffect } from "./reveal/effects";
+import Reveal from "./reveal/Reveal";
 
-export { Reveal, FloatingElement, type RevealEffect };
+export { FloatingElement, Reveal, type RevealEffect };

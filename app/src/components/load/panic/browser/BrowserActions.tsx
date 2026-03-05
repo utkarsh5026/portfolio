@@ -1,7 +1,8 @@
 import React from "react";
-import { cn } from "@/lib/utils";
 import { FiMoreVertical, FiStar } from "react-icons/fi";
-import { VscRefresh, VscChevronRight, VscChevronLeft } from "react-icons/vsc";
+import { VscChevronLeft,VscChevronRight, VscRefresh } from "react-icons/vsc";
+
+import { cn } from "@/lib/utils";
 
 interface BrowserActionsProps {
   isPageLoading: boolean;

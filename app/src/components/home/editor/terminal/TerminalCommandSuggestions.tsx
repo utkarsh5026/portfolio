@@ -1,4 +1,5 @@
 import React from "react";
+
 import type { Suggestion } from "./use-terminal";
 
 interface TerminalCommandSuggestionsProps {

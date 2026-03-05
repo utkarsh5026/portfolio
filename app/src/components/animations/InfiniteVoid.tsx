@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, memo, useState } from "react";
 import anime from "animejs";
+import React, { memo, useEffect, useRef, useState } from "react";
+
 import Logo from "../home/appbar/Logo";
 
 interface DomainExpansionProps {

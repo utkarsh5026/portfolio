@@ -1,4 +1,5 @@
-import { SiReact, SiCss3, SiJavascript } from "react-icons/si";
+import { SiCss3, SiJavascript,SiReact } from "react-icons/si";
+
 import { type CodeType } from "../code";
 
 interface VsCodeTabsProps {

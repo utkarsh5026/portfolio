@@ -20,6 +20,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Full history needed so generate-git-commits.js can read all 20 commits.
+          # Without this, GitHub Actions only clones the latest commit (depth=1).
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -31,6 +35,12 @@ jobs:
       - name: Install dependencies
         working-directory: ./app
         run: npm ci
+
+      - name: Regenerate git-stats.json
+        run: node scripts/generate-git-stats.js
+
+      - name: Regenerate git-commits.json
+        run: node scripts/generate-git-commits.js
 
       - name: Build
         working-directory: ./app

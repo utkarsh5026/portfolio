@@ -1,0 +1,171 @@
+/* ──────────────────────────────────────────────
+   Social icon continuous animations
+   Each icon gets its own keyframe so they all
+   feel distinct rather than identical.
+────────────────────────────────────────────── */
+
+/* Email – gentle float */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* GitHub – slow heartbeat pulse */
+@keyframes pulse-scale {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+/* LinkedIn – pendulum swing */
+@keyframes swing {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-8deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+}
+
+/* Twitter – hop & scale */
+@keyframes hop {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-6px) scale(1.08);
+  }
+  60% {
+    transform: translateY(-4px) scale(1.05);
+  }
+}
+
+.iconFloat {
+  animation: float 3s ease-in-out infinite;
+}
+.iconPulse {
+  animation: pulse-scale 2.5s ease-in-out infinite;
+}
+.iconSwing {
+  animation: swing 4s ease-in-out infinite;
+}
+.iconHop {
+  animation: hop 2s ease-in-out infinite;
+}
+
+/* ──────────────────────────────────────────────
+   Available-for-opportunities
+────────────────────────────────────────────── */
+
+/* Heartbeat for the FaHeart icon */
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.2);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.15);
+  }
+  56% {
+    transform: scale(1);
+  }
+}
+.heartbeat {
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+/* Rocket bob */
+@keyframes rocketBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+.rocketBob {
+  animation: rocketBob 2s ease-in-out infinite;
+}
+
+/* Animated underline fill for "amazing together." */
+@keyframes underlineFill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+.underlineFill {
+  animation: underlineFill 1s ease-out 0.5s both;
+}
+
+/* Badge fade-in scale */
+@keyframes badgePop {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.badgePop {
+  animation: badgePop 0.5s ease-out 0.2s both;
+}
+
+/* Staggered chip fade-up */
+@keyframes chipIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.chipIn0 {
+  animation: chipIn 0.4s ease-out 0.3s both;
+}
+.chipIn1 {
+  animation: chipIn 0.4s ease-out 0.4s both;
+}
+
+/* ──────────────────────────────────────────────
+   Contact banner – mail icon bob
+────────────────────────────────────────────── */
+@keyframes mailBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+.mailBob {
+  animation: mailBob 1.5s ease-in-out infinite;
+}

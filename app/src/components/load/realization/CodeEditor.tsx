@@ -1,6 +1,7 @@
 import React from "react";
-import { codeLines } from "./content";
+
 import ReactCodeLine from "../utls/ReactCodeLine";
+import { codeLines } from "./content";
 
 interface CodeEditorProps {
   codeProgress: number;
@@ -17,11 +18,11 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
           <span className="window-control yellow w-3 h-3 rounded-full bg-ctp-yellow"></span>
           <span className="window-control green w-3 h-3 rounded-full bg-ctp-green"></span>
         </div>
-        <div className="file-title text-sm text-ctp-text font-mono flex items-center">
+        <div className="file-title text-sm text-ctp-text font-source flex items-center">
           <span className="text-ctp-red mr-1">*</span>Portfolio.jsx
         </div>
       </div>
-      <div className="code-content flex h-[calc(100%-36px)] font-mono text-sm leading-relaxed overflow-y-auto">
+      <div className="code-content flex h-[calc(100%-36px)] font-source text-sm leading-relaxed overflow-y-auto">
         <div className="line-numbers w-[40px] flex-shrink-0 py-3 text-right bg-ctp-mantle text-ctp-overlay0 select-none">
           {codeLines.map((line, i) => (
             <div key={line} className="line-number px-2 py-0">

@@ -1,4 +1,5 @@
-import { SiReact, SiCss3, SiJavascript } from "react-icons/si";
+import { SiCss3, SiJavascript,SiReact } from "react-icons/si";
+
 import { CodeType } from "../code";
 
 export const getSyntaxClass = (content: string, language: string): string => {

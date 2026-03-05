@@ -1,0 +1,299 @@
+{
+  "generatedAt": "2026-03-05T02:56:03.201Z",
+  "commits": [
+    {
+      "hash": "9b0eb3ca6c8169e2c5c5b026a0cd83a30f98d60f",
+      "shortHash": "9b0eb3c",
+      "message": "Check failure on line 34 in app/src/components/home/editor/markdown-renderer/media.tsx",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T08:24:04+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 26,
+      "deletions": 22,
+      "filesChanged": 3
+    },
+    {
+      "hash": "5dcc31778dd55393dc4e6cf3234c3f6a8469b61c",
+      "shortHash": "5dcc317",
+      "message": "docs: revamp README with emojis, improved formatting, and remove unused preview images",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T08:18:30+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 113,
+      "deletions": 112,
+      "filesChanged": 8
+    },
+    {
+      "hash": "8acf0e649fe0392ac2cb14d4132e4224a98cec0a",
+      "shortHash": "8acf0e6",
+      "message": "build: add vite-plugin-checker and vite-plugin-compression",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T08:07:05+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 353,
+      "deletions": 79,
+      "filesChanged": 5
+    },
+    {
+      "hash": "049b16409eeaebf1b2d8547279a45a4d058bd6bb",
+      "shortHash": "049b164",
+      "message": "refactor: enforce consistent import ordering across all source files",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T08:01:37+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 887,
+      "deletions": 673,
+      "filesChanged": 178
+    },
+    {
+      "hash": "65149d014b52fa183475ea1447fb424a97a14852",
+      "shortHash": "65149d0",
+      "message": "feat: enhance Source Control panel with heatmap, language stats, and commit grouping",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T07:58:06+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 537,
+      "deletions": 113,
+      "filesChanged": 8
+    },
+    {
+      "hash": "e6e729c6208da3adff815bf09f9dfd5917b450e8",
+      "shortHash": "e6e729c",
+      "message": "ci: add PR comparison workflow with bundle size and Lighthouse analysis",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T07:38:12+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 361,
+      "deletions": 12,
+      "filesChanged": 3
+    },
+    {
+      "hash": "e9a9d5cae685a47b06ecb6a73fbe0cc628b91e3b",
+      "shortHash": "e9a9d5c",
+      "message": "fix: resolve explorer and content overlapping fixed sidebar",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T07:21:15+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 30,
+      "deletions": 35,
+      "filesChanged": 10
+    },
+    {
+      "hash": "9e0bc8fe61ada0141588e7aef1f8281fcab66aa3",
+      "shortHash": "9e0bc8f",
+      "message": "feat: add Source Control panel showing recent git commits in sidebar",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T07:08:29+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 376,
+      "deletions": 76,
+      "filesChanged": 5
+    },
+    {
+      "hash": "702408d2c630eae9039e09d5c34c0a2b670ca034",
+      "shortHash": "702408d",
+      "message": "build: add git-commits generation script and migrate hooks to husky",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T05:50:20+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 529,
+      "deletions": 15,
+      "filesChanged": 12
+    },
+    {
+      "hash": "465c61a66f58d44d63de98d1a471b0f5f00a209e",
+      "shortHash": "465c61a",
+      "message": "feat: add section footer with JSDoc-style thank-you message",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T05:13:50+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 68,
+      "deletions": 9,
+      "filesChanged": 3
+    },
+    {
+      "hash": "a09ff2cc7a5113b353f97e74f22168540c81e454",
+      "shortHash": "a09ff2c",
+      "message": "refactor: replace framer-motion entry animations with Reveal component in learning section",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T05:09:21+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 252,
+      "deletions": 223,
+      "filesChanged": 6
+    },
+    {
+      "hash": "def85197c396f4d25a971ff71efaa02abfcb31e6",
+      "shortHash": "def8519",
+      "message": "feat: add gen-git-stats target to build system",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T04:44:10+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 11,
+      "deletions": 2,
+      "filesChanged": 3
+    },
+    {
+      "hash": "b84f33b83a7668012f68e891eaec2c98ae28d6c2",
+      "shortHash": "b84f33b",
+      "message": "refactor: replace Makefile logic with cross-platform Python build script",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T04:38:54+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 517,
+      "deletions": 231,
+      "filesChanged": 3
+    },
+    {
+      "hash": "deddb5bb5f677e933400d20b017b22c617f64226",
+      "shortHash": "deddb5b",
+      "message": "style: redesign article cards with 16:9 image layout and cleaner hover effects",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T04:32:52+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 52,
+      "deletions": 67,
+      "filesChanged": 3
+    },
+    {
+      "hash": "f4f6f245b909b2a52ed0bc1985b3c1419f235bb5",
+      "shortHash": "f4f6f24",
+      "message": "refactor: replace framer-motion with CSS module animations in section-content and fix line numbers sizing",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T04:28:30+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 99,
+      "deletions": 65,
+      "filesChanged": 3
+    },
+    {
+      "hash": "1530ac218b0b4cbd0c4a530261957bc742b463d6",
+      "shortHash": "1530ac2",
+      "message": "style: reduce font sizes in work section experience header and achievements",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T03:51:02+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 16,
+      "deletions": 18,
+      "filesChanged": 3
+    },
+    {
+      "hash": "72093fb490a18f0650cf15eea73f14770ddf0f56",
+      "shortHash": "72093fb",
+      "message": "style: wrap intro section cards in SketchBorder and add MiniProjects to desktop layout",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T03:24:20+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 138,
+      "deletions": 125,
+      "filesChanged": 2
+    },
+    {
+      "hash": "7fbc226d3918f575c5aa07d6a3268de28d7504f2",
+      "shortHash": "7fbc226",
+      "message": "style: wrap terminal component in SketchBorder with green/blue/sky colors",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T03:23:15+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 38,
+      "deletions": 30,
+      "filesChanged": 2
+    },
+    {
+      "hash": "8693699ae0f093dd21c7757e65cc3e3b4f12a791",
+      "shortHash": "8693699",
+      "message": "feat: add MiniProjects component to profile intro section",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T03:20:33+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 163,
+      "deletions": 11,
+      "filesChanged": 3
+    },
+    {
+      "hash": "e76968a0fa198c6a3fb2ea8493a96dbea24ba851",
+      "shortHash": "e76968a",
+      "message": "fix: prevent profile buttons from overflowing their container on small viewports",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T03:12:26+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 19,
+      "deletions": 19,
+      "filesChanged": 2
+    }
+  ],
+  "commitsByDate": {
+    "2026-03-05": 25,
+    "2026-03-04": 17,
+    "2026-03-03": 28,
+    "2026-03-02": 15,
+    "2026-03-01": 8,
+    "2026-02-27": 2,
+    "2026-02-26": 1,
+    "2026-02-23": 1,
+    "2026-01-28": 5,
+    "2026-01-24": 3,
+    "2026-01-25": 5,
+    "2026-01-23": 2,
+    "2026-01-09": 1,
+    "2026-01-05": 29,
+    "2026-01-04": 30
+  },
+  "languageStats": [
+    {
+      "language": "TypeScript",
+      "count": 228,
+      "color": "#89b4fa"
+    },
+    {
+      "language": "Other",
+      "count": 52,
+      "color": "#6c7086"
+    },
+    {
+      "language": "CSS",
+      "count": 24,
+      "color": "#cba6f7"
+    },
+    {
+      "language": "Markdown",
+      "count": 13,
+      "color": "#89dceb"
+    },
+    {
+      "language": "JSON",
+      "count": 12,
+      "color": "#f9e2af"
+    },
+    {
+      "language": "JavaScript",
+      "count": 4,
+      "color": "#a6e3a1"
+    },
+    {
+      "language": "Other",
+      "count": 2,
+      "color": "#6c7086"
+    }
+  ]
+}

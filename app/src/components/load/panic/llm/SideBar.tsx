@@ -1,14 +1,16 @@
 import React, { useState } from "react";
+import { BsChatLeft,BsChatLeftDots } from "react-icons/bs";
 import {
-  FiChevronRight,
   FiChevronLeft,
-  FiPlus,
+  FiChevronRight,
   FiEdit,
+  FiPlus,
   FiTrash2,
 } from "react-icons/fi";
-import { BsChatLeftDots, BsChatLeft } from "react-icons/bs";
 import { IoMdPerson } from "react-icons/io";
+
 import { cn } from "@/lib/utils";
+
 import { conversationHistory } from "./content";
 
 /**

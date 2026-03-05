@@ -1,5 +1,7 @@
-import { Project } from "@/types";
 import React, { useCallback, useMemo, useRef } from "react";
+
+import { Project } from "@/types";
+
 import { ProjectTheme, ProjectThemeContext } from "./ThemeContext";
 
 const colorPairs = [

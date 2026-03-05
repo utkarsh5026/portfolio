@@ -1,7 +1,9 @@
+import { Code,Heart } from "lucide-react";
 import React from "react";
-import { Heart, Code } from "lucide-react";
-import { interests } from "../data/data";
+
 import Reveal from "@/components/animations/reveal/Reveal";
+
+import { interests } from "../data/data";
 import SectionHeader from "./about-header";
 
 const categoryData = {

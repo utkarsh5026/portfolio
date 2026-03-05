@@ -1,7 +1,7 @@
-import { FaTerminal, FaDatabase, FaServer, FaMagic } from "react-icons/fa";
+import { FaDatabase, FaMagic,FaServer, FaTerminal } from "react-icons/fa";
 import { RiCodeSSlashLine } from "react-icons/ri";
-import { VscDebugConsole, VscSymbolClass } from "react-icons/vsc";
 import { SiGraphql } from "react-icons/si";
+import { VscDebugConsole, VscSymbolClass } from "react-icons/vsc";
 
 const iconMap = {
   terminal: <FaTerminal className="text-ctp-red" />,

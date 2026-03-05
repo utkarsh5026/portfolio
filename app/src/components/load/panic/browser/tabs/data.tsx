@@ -1,4 +1,8 @@
 import {
+  AlertTriangle,
+  ArrowRight,
+  Award,
+  Briefcase,
   Code,
   Compass,
   Layers,
@@ -8,21 +12,17 @@ import {
   Smartphone,
   Sparkles,
   Square,
+  Star,
   TrendingUp,
   Zap,
-  ArrowRight,
-  Award,
-  Briefcase,
-  AlertTriangle,
-  Star,
 } from "lucide-react";
 import { FaJs, FaReact } from "react-icons/fa";
 import {
-  SiTailwindcss,
-  SiTypescript,
+  SiGithub,
   SiNextdotjs,
   SiNodedotjs,
-  SiGithub,
+  SiTailwindcss,
+  SiTypescript,
   SiVercel,
 } from "react-icons/si";
 

@@ -1,8 +1,10 @@
+import { Cloud, Code2, Monitor, Server, Wrench } from "lucide-react";
 import { FC } from "react";
-import { Code2, Monitor, Server, Cloud, Wrench } from "lucide-react";
-import { skills } from "../data/data";
-import { skillIcons, skillColors } from "../data/icon-map";
+
 import Reveal from "@/components/animations/reveal/Reveal";
+
+import { skills } from "../data/data";
+import { skillColors,skillIcons } from "../data/icon-map";
 import SectionHeader from "./about-header";
 
 const categoryColors = {

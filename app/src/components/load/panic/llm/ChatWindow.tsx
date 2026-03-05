@@ -1,22 +1,25 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useMemo,
-  useCallback,
-} from "react";
-import { Card } from "@/components/ui/card";
-import { AiFillOpenAI } from "react-icons/ai";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { FiSend } from "react-icons/fi";
-import MacosTrafficController from "../../macos/macos-traffic-controller";
-import { humanMessage, aiNormalResponse, aiCodeResponse } from "./content";
-import UserMessage from "./message/UserMessage";
-import AiMessage from "./message/AiMessage";
-import SideBar from "./SideBar";
 import "./ChatWindowAnimations.css";
+
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { AiFillOpenAI } from "react-icons/ai";
+import { FiSend } from "react-icons/fi";
+
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+
+import MacosTrafficController from "../../macos/macos-traffic-controller";
 import ChatHeader from "./ChatHeader";
+import { aiCodeResponse,aiNormalResponse, humanMessage } from "./content";
+import AiMessage from "./message/AiMessage";
+import UserMessage from "./message/UserMessage";
+import SideBar from "./SideBar";
 
 type AiResponseStage = "thinking" | "typing" | "complete" | "waiting";
 type UserInputStage = "typing" | "sent" | "waiting";

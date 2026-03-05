@@ -1,27 +1,29 @@
+import React, { useRef, useState } from "react";
+import { FaHeart } from "react-icons/fa";
 import {
-  FiRepeat,
-  FiMessageCircle,
-  FiHeart,
-  FiShare2,
-  FiMoreHorizontal,
-  FiBookmark,
-  FiSearch,
-  FiHash,
   FiBell,
-  FiMail,
-  FiHome,
-  FiUser,
-  FiImage,
-  FiSmile,
+  FiBookmark,
   FiCalendar,
+  FiHash,
+  FiHeart,
+  FiHome,
+  FiImage,
+  FiMail,
   FiMapPin,
+  FiMessageCircle,
+  FiMoreHorizontal,
+  FiRepeat,
+  FiSearch,
+  FiShare2,
+  FiSmile,
   FiStar,
+  FiUser,
 } from "react-icons/fi";
 import { SiGithub, SiVercel } from "react-icons/si";
-import { FaHeart } from "react-icons/fa";
+
 import { Avatar } from "@/components/ui/avatar";
+
 import { twitterData } from "./data";
-import React, { useRef, useState } from "react";
 
 type TweetType = (typeof twitterData.tweets)[number];
 type TweetActionType = Record<number, boolean>;

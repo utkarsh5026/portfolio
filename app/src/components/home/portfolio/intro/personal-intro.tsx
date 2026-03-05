@@ -1,15 +1,19 @@
 import React from "react";
+
 import Reveal from "@/components/animations/reveal/Reveal";
-import { Terminal } from "./terminal";
-import { TechSkills } from "./skills";
-import {
-  PersonalTitle,
-  PersonalDescription,
-  ProfilePicture,
-  ProfileButtons,
-} from "./profile";
-import { cn } from "@/lib/utils";
+import SketchBorder from "@/components/ui/sketch-border";
 import useMobile from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
+
+import {
+  MiniProjects,
+  PersonalDescription,
+  PersonalTitle,
+  ProfileButtons,
+  ProfilePicture,
+} from "./profile";
+import { TechSkills } from "./skills";
+import { Terminal } from "./terminal";
 
 const DesktopPersonalIntro: React.FC = () => {
   return (
@@ -27,76 +31,83 @@ const DesktopPersonalIntro: React.FC = () => {
       </div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-6 md:py-12">
-        <Reveal
-          effect="emerge"
-          duration={0.9}
-          delay={0.2}
-          className={cn(
-            "relative",
-            "backdrop-blur-lg bg-gradient-to-b from-ctp-mantle to-ctp-crust rounded-2xl",
-            "p-6 md:p-10 shadow-2xl mb-10 overflow-hidden"
-          )}
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start relative z-10">
-            {/* Left Column - Main Content (3 columns) */}
-            <div className="lg:col-span-3">
-              <Reveal
-                effect="assemble"
-                cascade={true}
-                staggerChildren={0.09}
-                className="space-y-6"
-              >
-                <Reveal effect="slide-in" direction="left">
-                  <PersonalTitle />
-                </Reveal>
+        <Reveal effect="emerge" duration={0.9} delay={0.2} className="mb-10">
+          <SketchBorder
+            primaryColor="mauve"
+            secondaryColor="blue"
+            tertiaryColor="green"
+          >
+            <div
+              className={cn(
+                "backdrop-blur-lg bg-gradient-to-b from-ctp-mantle to-ctp-crust rounded-2xl",
+                "p-6 md:p-10 shadow-2xl overflow-hidden",
+              )}
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start relative z-10">
+                {/* Left Column - Main Content (3 columns) */}
+                <div className="lg:col-span-3">
+                  <Reveal
+                    effect="assemble"
+                    cascade={true}
+                    staggerChildren={0.09}
+                    className="space-y-6"
+                  >
+                    <Reveal effect="slide-in" direction="left">
+                      <PersonalTitle />
+                    </Reveal>
 
-                <Reveal effect="spotlight-in" delay={1}>
-                  <PersonalDescription />
-                </Reveal>
+                    <Reveal effect="spotlight-in" delay={1}>
+                      <PersonalDescription />
+                    </Reveal>
 
-                <Reveal effect="fade-up" delay={0.7}>
-                  <ProfileButtons />
-                </Reveal>
-              </Reveal>
-            </div>
+                    <Reveal effect="fade-up" delay={0.7}>
+                      <ProfileButtons />
+                    </Reveal>
 
-            {/* Right Column - Visual Content (2 columns) */}
-            <div className="lg:col-span-2 h-full">
-              <div className="flex flex-col justify-center h-full gap-8">
-                {/* Profile Picture */}
-                <Reveal
-                  effect="ripple-in"
-                  direction="right"
-                  duration={1}
-                  delay={0.5}
-                >
-                  <ProfilePicture />
-                </Reveal>
+                    {/* Empty Space Filler - Mini Projects */}
+                    <Reveal effect="fade-up" delay={0.9}>
+                      <MiniProjects />
+                    </Reveal>
+                  </Reveal>
+                </div>
 
-                {/* Terminal */}
-                <Reveal effect="fold-unfold" delay={1.2}>
-                  <Terminal />
-                </Reveal>
+                {/* Right Column - Visual Content (2 columns) */}
+                <div className="lg:col-span-2 h-full">
+                  <div className="flex flex-col justify-start h-full gap-8">
+                    {/* Profile Picture */}
+                    <Reveal
+                      effect="ripple-in"
+                      direction="right"
+                      duration={1}
+                      delay={0.5}
+                    >
+                      <ProfilePicture />
+                    </Reveal>
+
+                    {/* Terminal */}
+                    <Reveal effect="fold-unfold" delay={1.2}>
+                      <Terminal />
+                    </Reveal>
+
+                    {/* Tech Skills */}
+                    <Reveal effect="fade-up" delay={1.4}>
+                      <SketchBorder
+                        primaryColor="teal"
+                        secondaryColor="blue"
+                        primaryOpacity={30}
+                        secondaryOpacity={20}
+                        className="h-full"
+                      >
+                        <div className="border-t border-ctp-surface1/20 pt-6 mt-2">
+                          <TechSkills />
+                        </div>
+                      </SketchBorder>
+                    </Reveal>
+                  </div>
+                </div>
               </div>
             </div>
-
-            {/* Tech Skills - Full width spanning all columns */}
-            <div className="lg:col-span-5 mt-8">
-              <Reveal effect="fade-up" delay={1.4}>
-                <div className="border-t border-ctp-surface1/20 pt-8">
-                  <div className="text-center mb-6">
-                    <h3 className="text-xl font-semibold text-ctp-text mb-2">
-                      Tech Stack
-                    </h3>
-                    <p className="text-ctp-subtext1 text-sm">
-                      Tools & technologies I work with
-                    </p>
-                  </div>
-                  <TechSkills />
-                </div>
-              </Reveal>
-            </div>
-          </div>
+          </SketchBorder>
         </Reveal>
       </div>
     </>
@@ -118,67 +129,71 @@ const MobilePersonalIntro: React.FC = () => {
       </div>
 
       <div className="mx-auto max-w-2xl px-4 py-6">
-        <Reveal
-          duration={0.8}
-          delay={0.1}
-          className={cn(
-            "relative",
-            "bg-transparent rounded-xl",
-            "p-4  mb-8 overflow-hidden"
-          )}
-        >
-          {/* Mobile-first vertical layout */}
-          <div className="space-y-8">
-            {/* Header Section */}
-            <div className="text-center space-y-6">
-              <Reveal effect="zoom-in" delay={0.3}>
-                <div className="inline-block">
-                  <ProfilePicture />
+        <Reveal duration={0.8} delay={0.1} className="mb-8">
+          <SketchBorder primaryColor="mauve" secondaryColor="pink" rotation={1}>
+            <div
+              className={cn("bg-transparent rounded-xl", "p-4 overflow-hidden")}
+            >
+              {/* Mobile-first vertical layout */}
+              <div className="space-y-8">
+                {/* Header Section */}
+                <div className="text-center space-y-6">
+                  <Reveal effect="zoom-in" delay={0.3}>
+                    <div className="inline-block">
+                      <ProfilePicture />
+                    </div>
+                  </Reveal>
+
+                  <Reveal delay={0.5}>
+                    <PersonalTitle />
+                  </Reveal>
                 </div>
-              </Reveal>
 
-              <Reveal delay={0.5}>
-                <PersonalTitle />
-              </Reveal>
-            </div>
+                {/* Description */}
+                <Reveal effect="fade-up" delay={0.7}>
+                  <PersonalDescription />
+                </Reveal>
 
-            {/* Description */}
-            <Reveal effect="fade-up" delay={0.7}>
-              <PersonalDescription />
-            </Reveal>
+                {/* Action Buttons */}
+                <Reveal delay={0.9}>
+                  <ProfileButtons />
+                </Reveal>
 
-            {/* Action Buttons */}
-            <Reveal delay={0.9}>
-              <div className="flex justify-center">
-                <ProfileButtons />
+                {/* Mobile Terminal - Compact Version */}
+                <Reveal delay={1.1}>
+                  <Terminal />
+                </Reveal>
               </div>
-            </Reveal>
-
-            {/* Mobile Terminal - Compact Version */}
-            <Reveal delay={1.1}>
-              <Terminal />
-            </Reveal>
-          </div>
+            </div>
+          </SketchBorder>
         </Reveal>
 
         {/* Tech Skills integrated into mobile layout */}
         <Reveal delay={1.3} className="mt-8">
-          <div
-            className={cn(
-              "backdrop-blur-md bg-gradient-to-b from-ctp-mantle/80 to-ctp-crust/60 rounded-xl",
-              "p-4 shadow-xl border-t border-ctp-surface1/20"
-            )}
+          <SketchBorder
+            primaryColor="teal"
+            secondaryColor="blue"
+            primaryOpacity={30}
+            secondaryOpacity={20}
+            rotation={1}
           >
-            <div className="text-center mb-4">
-              <h3 className="text-lg font-semibold text-ctp-text mb-1">
-                Tech Stack
-              </h3>
-              <p className="text-ctp-subtext1 text-xs">
-                Technologies I work with
-              </p>
+            <div
+              className={cn(
+                "backdrop-blur-md bg-gradient-to-b from-ctp-mantle/80 to-ctp-crust/60 rounded-xl",
+                "p-4 shadow-xl border-t border-ctp-surface1/20",
+              )}
+            >
+              <div className="text-center mb-4">
+                <h3 className="text-lg font-semibold text-ctp-text mb-1">
+                  Tech Stack
+                </h3>
+                <p className="text-ctp-subtext1 text-xs">
+                  Technologies I work with
+                </p>
+              </div>
+              <TechSkills />
             </div>
-            <TechSkills />
-          </div>
+          </SketchBorder>
         </Reveal>
       </div>
     </>

@@ -1,41 +1,55 @@
-import React, { useState, useEffect } from "react";
-import { Skeleton } from "@/components/ui/skeleton";
+import React, { useEffect,useState } from "react";
 
-/**
- * ProfileAvatar component displays the user's profile picture.
- * It utilizes a high-quality image for better user experience.
- *
- * @returns {JSX.Element} The rendered ProfileAvatar component.
- */
 const ProfileAvatar: React.FC = () => {
-  const [imageSrc, setImageSrc] = useState("./personal-min.jpg");
-  const [isLoading, setIsLoading] = useState(true);
+  const [highResLoaded, setHighResLoaded] = useState(false);
 
   useEffect(() => {
     const highQualityImage = new Image();
     highQualityImage.src = "./personal.jpg";
 
     highQualityImage.onload = () => {
-      setImageSrc("./personal.jpg");
-      setIsLoading(false);
+      setHighResLoaded(true);
     };
   }, []);
 
   return (
-    <div className="relative h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64">
-      <div className="absolute inset-0 rounded-full p-[3px] bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500" />
-      <div className="absolute inset-[3px] rounded-full bg-slate-950">
-        <div className="h-full w-full rounded-full overflow-hidden relative">
-          <Skeleton
-            className="h-full w-full rounded-full absolute inset-0 transition-opacity duration-300 ease-in-out"
-            style={{ opacity: isLoading ? 1 : 0 }}
-          />
+    <div className="group relative h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64 transition-all duration-500 hover:scale-[1.03] cursor-pointer">
+      <div
+        className="absolute inset-[-4px] border-2 border-ctp-mauve/80 -rotate-3 transition-all duration-500 group-hover:rotate-0"
+        style={{ borderRadius: "45% 55% 40% 60% / 60% 40% 55% 45%" }}
+      />
+      <div
+        className="absolute inset-[-8px] border-[3px] border-ctp-pink/60 rotate-6 transition-all duration-500 group-hover:rotate-[2deg]"
+        style={{ borderRadius: "50% 40% 60% 45% / 45% 60% 40% 55%" }}
+      />
+      <div
+        className="absolute inset-[-1px] border-2 border-ctp-lavender/90 rotate-1 transition-all duration-500 group-hover:-rotate-1"
+        style={{ borderRadius: "48% 52% 45% 55% / 55% 45% 50% 48%" }}
+      />
+
+      <div
+        className="absolute inset-[2px] bg-ctp-base p-[2px] transition-colors duration-500 group-hover:bg-ctp-mantle overflow-hidden z-10"
+        style={{ borderRadius: "48% 49% 51% 47% / 49% 50% 48% 52%" }}
+      >
+        <div
+          className="h-full w-full overflow-hidden relative"
+          style={{ borderRadius: "48% 49% 51% 47% / 49% 50% 48% 52%" }}
+        >
+          <div className="h-full w-full absolute inset-0 bg-ctp-crust flex flex-col items-center justify-center text-center p-4">
+            <span className="text-ctp-text text-sm sm:text-base font-medium font-source animate-pulse">
+              Wait I am coming
+              <br className="sm:hidden" /> 🏃‍♂️💨
+            </span>
+          </div>
+
+          {/* High Res Image */}
           <img
-            className="h-full w-full object-cover transition-opacity duration-300 ease-in-out"
-            style={{ opacity: isLoading ? 0 : 1 }}
-            src={imageSrc}
+            className={`h-full w-full object-cover transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-105 absolute inset-0 z-10 ${highResLoaded ? "opacity-100" : "opacity-0"}`}
+            src={highResLoaded ? "./personal.jpg" : undefined}
             alt="Utkarsh Priyadarshi"
           />
+
+          <div className="absolute inset-0 bg-ctp-mantle/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20" />
         </div>
       </div>
     </div>

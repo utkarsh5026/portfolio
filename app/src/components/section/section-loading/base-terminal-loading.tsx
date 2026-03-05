@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useEffect,useState } from "react";
 
 interface TerminalCommand {
   cmd: string;
@@ -43,13 +43,13 @@ const BaseTerminalLoading: React.FC<BaseTerminalLoadingProps> = ({
               <div className="w-3 h-3 rounded-full bg-ctp-yellow"></div>
               <div className="w-3 h-3 rounded-full bg-ctp-green"></div>
             </div>
-            <span className="text-ctp-subtext0 text-sm font-mono ml-4">
+            <span className="text-ctp-subtext0 text-sm font-source ml-4">
               {terminalTitle}
             </span>
           </div>
 
           {/* Terminal Content */}
-          <div className="space-y-3 font-mono text-sm">
+          <div className="space-y-3 font-source text-sm">
             {commands.slice(0, currentCmd + 1).map((command, index) => (
               <motion.div
                 key={index}

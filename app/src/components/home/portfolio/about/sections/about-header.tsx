@@ -1,5 +1,6 @@
-import React from "react";
 import { LucideIcon } from "lucide-react";
+import React from "react";
+
 import Reveal from "@/components/animations/reveal/Reveal";
 
 interface SectionHeaderProps {

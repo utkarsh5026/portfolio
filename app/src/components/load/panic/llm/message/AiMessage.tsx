@@ -1,6 +1,7 @@
 import React from "react";
-import { FaRegThumbsDown, FaRegThumbsUp, FaRegCopy } from "react-icons/fa";
+import { FaRegCopy,FaRegThumbsDown, FaRegThumbsUp } from "react-icons/fa";
 import { RxChatBubble } from "react-icons/rx";
+
 import ReactCodeLine from "@/components/load/utls/ReactCodeLine";
 
 interface AiMessageProps {
@@ -66,7 +67,7 @@ const AiMessage: React.FC<AiMessageProps> = ({
                       </span>
                     </div>
                     <pre className="!bg-[#1e1e2e] !m-0 !p-4 overflow-x-auto text-sm">
-                      <div className="font-mono">
+                      <div className="font-source">
                         {codeLines
                           .slice(0, visibleCodeLines)
                           .map((line, index) => (

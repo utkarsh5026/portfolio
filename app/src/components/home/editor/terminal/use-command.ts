@@ -1,19 +1,20 @@
 import { useMemo } from "react";
+
+import { technologies } from "@/components/base/technologies";
 import {
   sections,
   type SectionType,
   useEditorContext,
 } from "@/components/home/editor/context/explorer-context";
-import { useProject } from "@/hooks/use-project";
 import { articles } from "@/components/home/portfolio/articles/articles-dump";
-import { experiences } from "@/components/home/portfolio/work/experienceDump";
-import { technologies } from "@/components/base/technologies";
 import {
   databases,
   frameworks,
   languages,
   tools,
 } from "@/components/home/portfolio/skills/data";
+import { experiences } from "@/components/home/portfolio/work/experienceDump";
+import { useProject } from "@/hooks/use-project";
 
 export type Command = {
   /** The name of the command */
@@ -132,7 +133,7 @@ export const useLinuxCommands = () => {
         switch (type) {
           case "project": {
             const project = projects.find(
-              (p) => p.name.toLowerCase() === name.toLowerCase()
+              (p) => p.name.toLowerCase() === name.toLowerCase(),
             );
             if (project) {
               return `
@@ -151,7 +152,7 @@ ${project.liveLink ? `Live: ${project.liveLink}` : ""}
 
           case "article": {
             const article = articles.find((a) =>
-              a.title.toLowerCase().includes(name.toLowerCase())
+              a.title.toLowerCase().includes(name.toLowerCase()),
             );
             if (article) {
               return `
@@ -272,7 +273,7 @@ Use "skills [category]" to see specific skills.
 
         if (name) {
           const project = projects.find(
-            (p) => p.name.toLowerCase() === name.toLowerCase()
+            (p) => p.name.toLowerCase() === name.toLowerCase(),
           );
 
           if (project) {
@@ -288,9 +289,8 @@ Technologies: ${project.technologies
 
 Key Features:
 ${
-  project.keyFeatures
-    ?.map((f) => `- ${f.title}: ${f.description}`)
-    .join("\n") || "No features documented"
+  project.keyFeatures?.map((f) => `- ${f}`).join("\n") ||
+  "No features documented"
 }
 
 Links:
@@ -427,8 +427,8 @@ export const useUtilityCommands = () => {
             p.technologies.some(
               (t) =>
                 technologies[t] &&
-                technologies[t].name.toLowerCase().includes(query)
-            )
+                technologies[t].name.toLowerCase().includes(query),
+            ),
         );
 
         if (matchedProjects.length) {
@@ -438,7 +438,7 @@ export const useUtilityCommands = () => {
 
         // Search articles
         const matchedArticles = articles.filter((a) =>
-          a.title.toLowerCase().includes(query)
+          a.title.toLowerCase().includes(query),
         );
 
         if (matchedArticles.length) {
@@ -448,7 +448,7 @@ export const useUtilityCommands = () => {
 
         // Search skills
         const matchedSkills = Object.keys(technologies).filter((t) =>
-          t.toLowerCase().includes(query)
+          t.toLowerCase().includes(query),
         );
 
         if (matchedSkills.length) {
@@ -486,7 +486,7 @@ export const useUtilityCommands = () => {
           case "linkedin":
             window.open(
               "https://www.linkedin.com/in/utkarsh-priyadarshi-8b5a731b9/",
-              "_blank"
+              "_blank",
             );
             return "Opening LinkedIn profile...";
 
@@ -496,7 +496,7 @@ export const useUtilityCommands = () => {
 
           case "project": {
             const project = projects.find(
-              (p) => p.name.toLowerCase() === name.toLowerCase()
+              (p) => p.name.toLowerCase() === name.toLowerCase(),
             );
             if (project) {
               window.open(project.githubLink, "_blank");
@@ -507,7 +507,7 @@ export const useUtilityCommands = () => {
 
           case "article": {
             const article = articles.find((a) =>
-              a.title.toLowerCase().includes(name.toLowerCase())
+              a.title.toLowerCase().includes(name.toLowerCase()),
             );
             if (article) {
               window.open(article.link, "_blank");

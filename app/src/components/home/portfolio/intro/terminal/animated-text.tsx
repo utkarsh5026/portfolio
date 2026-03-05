@@ -1,13 +1,12 @@
-import React, { useState, memo } from "react";
-import Cursor from "@/components/utils/Cursor";
-import { useTypewriting } from "@/components/type-write/hooks/use-type-write";
-import { motion } from "framer-motion";
+import React, { useEffect,useState } from "react";
+
 import { cn } from "@/lib/utils";
-import useMobile from "@/hooks/use-mobile";
+
+import styles from "./statements-terminal.module.css";
 
 const TYPING_SPEED = 50;
-const ERASING_SPEED = 30;
-const PAUSE_BEFORE_ERASE = 2500;
+const DELETE_SPEED = 30;
+const PAUSE_DURATION = 3000;
 
 interface QAPair {
   question: string;
@@ -20,100 +19,112 @@ interface AnimatedTextProps {
   qaPairs: QAPair[];
 }
 
-const AnimatedText: React.FC<AnimatedTextProps> = memo(({ qaPairs }) => {
+const AnimatedText: React.FC<AnimatedTextProps> = ({ qaPairs }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { isPhone } = useMobile();
+  const [typedQuestion, setTypedQuestion] = useState("");
+  const [step, setStep] = useState<"typing" | "answered" | "deleting">(
+    "typing",
+  );
+  const [isDeletingFadeOut, setIsDeletingFadeOut] = useState(false);
 
   const currentPair = qaPairs[currentIndex];
 
-  const { displayedText } = useTypewriting({
-    text: currentPair.answer,
-    speed: TYPING_SPEED,
-    deleteSpeed: ERASING_SPEED,
-    deleteDelay: PAUSE_BEFORE_ERASE,
-    repeat: true,
-    onCycle: () => {
-      setCurrentIndex((prev) => (prev + 1) % qaPairs.length);
-    },
-  });
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
+    if (step === "typing") {
+      if (typedQuestion.length < currentPair.question.length) {
+        timeout = setTimeout(() => {
+          setTypedQuestion(
+            currentPair.question.slice(0, typedQuestion.length + 1),
+          );
+        }, TYPING_SPEED);
+      } else {
+        timeout = setTimeout(() => {
+          setStep("answered");
+        }, 300);
+      }
+    } else if (step === "answered") {
+      timeout = setTimeout(() => {
+        setIsDeletingFadeOut(true);
+        setTimeout(() => {
+          setStep("deleting");
+          setIsDeletingFadeOut(false);
+        }, 150); // Give fadeOut animation time to finish before actually un-rendering/deleting
+      }, PAUSE_DURATION);
+    } else if (step === "deleting") {
+      if (typedQuestion.length > 0) {
+        timeout = setTimeout(() => {
+          setTypedQuestion(typedQuestion.slice(0, -1));
+        }, DELETE_SPEED);
+      } else {
+        setStep("typing");
+        setCurrentIndex((prev) => (prev + 1) % qaPairs.length);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [typedQuestion, step, currentIndex, currentPair.question, qaPairs.length]);
+
+  // Prevent answer from showing when we transition quickly
+  const showAnswer = step === "answered" || isDeletingFadeOut;
 
   return (
-    <motion.div
-      className={cn(
-        "font-mono relative overflow-hidden bg-transparent",
-        isPhone ? "p-3" : "p-4"
-      )}
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      {/* Question/Command */}
-      <div className="flex items-center gap-2 mb-3">
-        <span className="text-ctp-green text-sm">❯</span>
-        <span className="text-ctp-mauve text-sm font-mono">
-          {currentPair.question}
+    <div className="flex flex-col h-full z-10">
+      {/* Command Line */}
+      <div className="flex items-center flex-wrap gap-2 text-ctp-subtext1">
+        <span className="text-ctp-green font-bold">➜</span>
+        <span className="text-ctp-sky font-bold">~</span>
+        <span className="text-ctp-text">
+          {typedQuestion}
+          <span
+            className={cn(
+              "inline-block w-[8px] h-[16px] ml-1 bg-ctp-overlay0 align-middle transition-opacity duration-300",
+              step === "answered" ? "opacity-0" : styles.cursorBlink,
+            )}
+          />
         </span>
       </div>
 
-      {/* Answer/Response */}
-      <div
-        className={cn(
-          "flex items-center gap-3 ml-4",
-          isPhone ? "text-sm" : "text-base"
-        )}
-      >
-        <motion.div
-          className={cn("flex-shrink-0", isPhone ? "text-lg" : "text-xl")}
-          animate={{
-            scale: [1, 1.1, 1],
-            rotate: [0, 5, -5, 0],
-          }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          {currentPair.icon}
-        </motion.div>
-
-        <div className="flex items-center gap-1 min-w-0 flex-1">
-          <span className={cn(currentPair.syntaxClass, "font-medium")}>
-            {displayedText}
-          </span>
-          <Cursor color={currentPair.syntaxClass.split("-")[2]} />
-        </div>
-      </div>
-
-      {/* Status indicator */}
-      <div className="flex items-center gap-2 mt-3 ml-4">
-        {displayedText.length === currentPair.answer.length && (
-          <motion.span
-            className="text-ctp-green text-xs font-mono opacity-70"
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 0.7, x: 0 }}
-            transition={{ delay: 0.5 }}
+      {/* Output */}
+      <div className="mt-4 sm:mt-5 flex-1 w-full max-w-full overflow-hidden">
+        {showAnswer && (
+          <div
+            key={currentPair.answer}
+            className={cn(
+              "flex items-start gap-3 w-full",
+              isDeletingFadeOut ? styles.answerFadeOut : styles.answerFadeIn,
+            )}
           >
-            ✓ response complete
-          </motion.span>
+            <div className="mt-0.5 opacity-90">{currentPair.icon}</div>
+            <p
+              className={cn(
+                "leading-relaxed break-words",
+                currentPair.syntaxClass,
+              )}
+            >
+              {currentPair.answer}
+            </p>
+          </div>
         )}
       </div>
 
-      {/* Progress indicator */}
-      <div className="flex items-center justify-between mt-4 pt-3 border-t border-ctp-surface1/20">
-        <div className="flex gap-1">
-          {qaPairs.map((_, index) => (
-            <div
-              key={index}
-              className={cn(
-                "w-2 h-1 rounded-full transition-colors duration-300",
-                index === currentIndex ? "bg-ctp-green" : "bg-ctp-surface1"
-              )}
-            />
-          ))}
-        </div>
-        <span className="text-ctp-overlay1 text-xs font-mono">
-          {currentIndex + 1}/{qaPairs.length}
-        </span>
+      {/* Navigation Indicators */}
+      <div className="flex justify-start gap-1.5 mt-auto pb-1.5 pt-4">
+        {qaPairs.map((_, idx) => (
+          <div
+            key={idx}
+            className={cn(
+              "h-1 rounded-full transition-all duration-300",
+              idx === currentIndex
+                ? "bg-ctp-overlay0 w-4"
+                : "bg-ctp-surface0 w-1.5",
+            )}
+          />
+        ))}
       </div>
-    </motion.div>
+    </div>
   );
-});
+};
 
 export default AnimatedText;

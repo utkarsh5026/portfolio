@@ -1,4 +1,5 @@
 import React from "react";
+
 import { CodeType } from "../code";
 import { getSyntaxClass } from "./syntax";
 
@@ -17,7 +18,7 @@ const VsCodeEditor = React.forwardRef<HTMLDivElement, VsCodeEditorProps>(
         ref={ref}
         className="code-editor flex-1 overflow-auto bg-[#1e1e1e] vscode-content-appear"
       >
-        <div className="flex font-mono text-sm leading-relaxed h-full">
+        <div className="flex font-source text-sm leading-relaxed h-full">
           {/* Line numbers */}
           <div className="w-12 flex-shrink-0 py-2.5 text-right bg-[#1e1e1e] text-[#6e7681] select-none border-r border-[#323233]">
             {codeContent[filename].map((_, i) => (
@@ -54,7 +55,7 @@ const VsCodeEditor = React.forwardRef<HTMLDivElement, VsCodeEditorProps>(
                       {/* Simple token parsing for syntax highlighting */}
                       {line
                         .split(
-                          /(\s+|[{}();,=><]|\/\/.*$|(['"])(?:(?=(\\?))\3.)*?\2)/
+                          /(\s+|[{}();,=><]|\/\/.*$|(['"])(?:(?=(\\?))\3.)*?\2)/,
                         )
                         .filter(Boolean)
                         .map((token, j) => (
@@ -77,7 +78,7 @@ const VsCodeEditor = React.forwardRef<HTMLDivElement, VsCodeEditorProps>(
                 style={{
                   top: `${Math.min(
                     (typingProgress[filename] || 0) * 24,
-                    codeContent[filename].length * 24
+                    codeContent[filename].length * 24,
                   )}px`,
                   left: "0px",
                 }}
@@ -105,7 +106,7 @@ const VsCodeEditor = React.forwardRef<HTMLDivElement, VsCodeEditorProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 
 export default VsCodeEditor;

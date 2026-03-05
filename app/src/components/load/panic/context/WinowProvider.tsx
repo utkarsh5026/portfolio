@@ -1,7 +1,8 @@
 import { useCallback, useMemo, useState } from "react";
+
 import {
-  WindowContext,
   type ActiveWindow,
+  WindowContext,
 } from "@/components/load/panic/context/windowContext";
 
 /**

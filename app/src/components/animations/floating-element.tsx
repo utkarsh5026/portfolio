@@ -1,16 +1,18 @@
-import React, { useEffect, useRef } from "react";
 import anime from "animejs";
+import React, { useEffect, useRef } from "react";
 
 interface FloatingElementProps {
   children: React.ReactNode;
   intensity?: "low" | "medium" | "high";
   delay?: number;
+  className?: string;
 }
 
 const FloatingElementComponent: React.FC<FloatingElementProps> = ({
   children,
   intensity = "medium",
   delay = 0,
+  className,
 }) => {
   const elementRef = useRef<HTMLDivElement>(null);
 
@@ -56,7 +58,7 @@ const FloatingElementComponent: React.FC<FloatingElementProps> = ({
   }, [intensity, delay]);
 
   return (
-    <div ref={elementRef} className="inline-block w-full">
+    <div ref={elementRef} className={`inline-block w-full${className ? ` ${className}` : ""}`}>
       {children}
     </div>
   );

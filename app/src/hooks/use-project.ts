@@ -1,5 +1,6 @@
-import { useProjectStore } from "@/store";
 import { useEffect } from "react";
+
+import { useProjectStore } from "@/store";
 
 export const useProject = () => {
   const projects = useProjectStore((state) => state.projects);

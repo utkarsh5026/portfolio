@@ -87,8 +87,13 @@ export default {
         "smoke-1": "smoke-1 20s ease-in-out infinite",
         "smoke-2": "smoke-2 25s ease-in-out infinite",
         "smoke-3": "smoke-3 30s ease-in-out infinite",
+        marquee: "marquee 40s linear infinite",
       },
       keyframes: {
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
         "gradient-x": {
           "0%": {
             "background-position": "0% 50%",
@@ -122,11 +127,11 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Source Code Pro", "sans-serif"],
-        serif: ["Source Code Pro", "serif"],
-        mono: ["Cascadia Code", "monospace"],
-        source: ["Source Code Pro", "monospace"],
-        "roboto-mono": ["Cascadia Code", "monospace"],
+        sans: ["Noto Sans", "sans-serif"],
+        serif: ["Noto Sans", "serif"],
+        mono: ["Noto Sans", "monospace"],
+        source: ["Cascadia Code", "monospace"],
+        "roboto-mono": ["Noto Sans Mono", "monospace"],
       },
     },
   },

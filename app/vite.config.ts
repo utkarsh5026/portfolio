@@ -1,8 +1,10 @@
-import path from "path";
 import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
+import path from "path";
 import { visualizer } from "rollup-plugin-visualizer";
+import { defineConfig } from "vite";
 import { imagetools } from "vite-imagetools";
+import checker from "vite-plugin-checker";
+import compression from "vite-plugin-compression";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
@@ -23,6 +25,9 @@ export default defineConfig({
       brotliSize: true,
     }),
     imagetools(),
+    checker({ typescript: true }),
+    compression({ algorithm: "gzip", ext: ".gz" }),
+    compression({ algorithm: "brotliCompress", ext: ".br" }),
     VitePWA({
       registerType: "autoUpdate",
       workbox: {
@@ -49,21 +54,21 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ["react", "react-dom"],
-          animations: ["animejs"],
-          ui: ["@radix-ui/react-avatar", "@radix-ui/react-slot"],
-          icons: ["lucide-react", "react-icons"],
-          "home-components": [
-            "./src/components/home/portfolio/intro/personal-intro",
-            "./src/components/home/portfolio/skills/skills-section",
-            "./src/components/home/portfolio/projects/projects-section",
-            "./src/components/home/portfolio/articles/articles-section",
-            "./src/components/home/portfolio/work/work-experience",
-            "./src/components/home/portfolio/contact/contact-me",
-            "./src/components/home/portfolio/learning/learning-section",
-            "./src/components/home/portfolio/about/about-me",
-          ],
+        manualChunks(id) {
+          if (
+            id.includes("node_modules/react/") ||
+            id.includes("node_modules/react-dom/")
+          ) {
+            return "vendor";
+          }
+          if (id.includes("node_modules/animejs")) return "animations";
+          if (
+            id.includes("node_modules/@radix-ui") ||
+            id.includes("node_modules/lucide-react") ||
+            id.includes("node_modules/react-icons")
+          ) {
+            return "ui";
+          }
         },
       },
     },

@@ -1,6 +1,7 @@
-import { Routes, Route } from "react-router-dom";
+import { Route,Routes } from "react-router-dom";
+
 import { ThemeProvider } from "./components/base/ThemeProvider";
-import PortfolioStory from "./components/load/portfolio-story";
+import MainPortfolio from "./components/load/main-portfolio";
 import NotFound from "./components/load/not-found";
 
 function App() {
@@ -11,15 +12,15 @@ function App() {
     <ThemeProvider>
       <Routes>
         {/* Valid portfolio routes */}
-        <Route path="/" element={<PortfolioStory />} />
-        <Route path="/home" element={<PortfolioStory />} />
-        <Route path="/about" element={<PortfolioStory />} />
-        <Route path="/skills" element={<PortfolioStory />} />
-        <Route path="/projects" element={<PortfolioStory />} />
-        <Route path="/experience" element={<PortfolioStory />} />
-        <Route path="/contact" element={<PortfolioStory />} />
-        <Route path="/learning" element={<PortfolioStory />} />
-        <Route path="/articles" element={<PortfolioStory />} />
+        <Route path="/" element={<MainPortfolio />} />
+        <Route path="/home" element={<MainPortfolio />} />
+        <Route path="/about" element={<MainPortfolio />} />
+        <Route path="/skills" element={<MainPortfolio />} />
+        <Route path="/projects" element={<MainPortfolio />} />
+        <Route path="/experience" element={<MainPortfolio />} />
+        <Route path="/contact" element={<MainPortfolio />} />
+        <Route path="/learning" element={<MainPortfolio />} />
+        <Route path="/articles" element={<MainPortfolio />} />
 
         {/* Catch-all route for 404 */}
         <Route path="*" element={<NotFound />} />

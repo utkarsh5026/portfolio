@@ -1,4 +1,5 @@
 import React from "react";
+
 import type { TechName } from "./components/base/technologies";
 
 export type TechnologyLearning = {
@@ -39,11 +40,6 @@ export type ProjectDemoVideo = {
   highlights?: string[];
   fileSize?: string;
 };
-export type KeyFeature = {
-  title: string;
-  description: string | string[];
-};
-
 // Flashcard type for Q&A explain section
 export type Flashcard = {
   q: string; // Question (max ~10 words)
@@ -61,7 +57,7 @@ export type Project = {
   name: string;
   description: string;
   technologies: TechName[];
-  keyFeatures?: KeyFeature[];
+  keyFeatures?: string[];
   githubLink: string;
   liveLink?: string;
   tags?: string[];
@@ -72,6 +68,10 @@ export type Project = {
   explainCards: ExplainCards; // New flashcard format
   demoVideo?: ProjectDemoVideo;
   tagline?: string;
+  /** Emoji or short string shown as the page icon, e.g. "🏊" */
+  icon?: string;
+  /** Relative URL for the cover image, e.g. "/data/projects/covers/gopool.jpg" */
+  coverImage?: string;
 };
 
 export type Article = {

@@ -1,14 +1,17 @@
 import "./style.css";
+
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Realization from "./realization/Realization";
-import Panic from "./panic/main/Panic";
+
+import useMobile from "@/hooks/use-mobile";
+
+import CompilationLoading from "./bridge/compile/CompilationLoading";
+import FakePortfolioLoading from "./bridge/portfolio/FakePortfolioLoading";
 import CodeCompilation from "./compilation/code-compilation";
 import MainPortfolio from "./main-portfolio";
+import Panic from "./panic/main/Panic";
+import Realization from "./realization/Realization";
 import PrankPortfolio from "./simple-portfolio/PrankPortfolio";
-import FakePortfolioLoading from "./bridge/portfolio/FakePortfolioLoading";
-import CompilationLoading from "./bridge/compile/CompilationLoading";
-import useMobile from "@/hooks/use-mobile";
 
 const IMAGES_TO_PRELOAD = [
   "macos-color-optimized.jpg",

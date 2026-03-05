@@ -28,7 +28,7 @@ interface ConsoleProps {
  */
 const Console: React.FC<ConsoleProps> = React.memo(({ errors }) => {
   return (
-    <div className="fixed bottom-5 left-5 w-1/2 h-52 bg-black bg-opacity-90 rounded-md overflow-hidden font-mono text-gray-100 shadow-lg z-50">
+    <div className="fixed bottom-5 left-5 w-1/2 h-52 bg-black bg-opacity-90 rounded-md overflow-hidden font-source text-gray-100 shadow-lg z-50">
       <div className="flex justify-between items-center bg-gray-800 p-2">
         <div className="text-xs text-gray-400">Developer Console</div>
         <div className="flex gap-1.5">

@@ -1,17 +1,20 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import {
-  thoughtSequence,
-  errorMessages,
-  errors,
-  type Thought,
-  type Priority,
-  type Position,
-} from "./content";
 import "./PrankAnimations.css";
+
+import React, { useCallback,useEffect, useRef, useState } from "react";
+
+import { cn } from "@/lib/utils";
+
 import BasicPortfolio from "./BasicPortfolio";
 import Console from "./Console";
+import {
+  errorMessages,
+  errors,
+  type Position,
+  type Priority,
+  type Thought,
+  thoughtSequence,
+} from "./content";
 import FatalError from "./fatal/FatalError";
-import { cn } from "@/lib/utils";
 
 interface ChaoticPortfolioProps {
   onComplete: () => void;

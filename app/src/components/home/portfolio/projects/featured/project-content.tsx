@@ -1,10 +1,11 @@
+import { ArrowRight,ExternalLink } from "lucide-react";
 import React from "react";
-import { ExternalLink, ArrowRight } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+
+import Reveal from "@/components/animations/reveal/Reveal";
 import TechBadge from "@/components/base/TechBadge";
 import { Button } from "@/components/ui/button";
 import { Project } from "@/types";
-import { FaGithub } from "react-icons/fa";
-import Reveal from "@/components/animations/reveal/Reveal";
 
 interface ProjectContentProps {
   activeTab: "overview" | "features";
@@ -28,30 +29,43 @@ const ProjectContent: React.FC<ProjectContentProps> = ({
       ) : (
         <Reveal effect="fade-up" duration={0.4}>
           <ul className="space-y-4">
-            {featuredProject.keyFeatures && featuredProject.keyFeatures.length > 0 ? (
-              featuredProject.keyFeatures.map((feature, index) => (
-                <Reveal
-                  key={feature.title}
-                  effect="slide-in"
-                  direction="left"
-                  duration={0.3}
-                  delay={index * 0.1}
-                >
-                  <li className="flex flex-col gap-1">
-                    <div className="flex items-start gap-2">
-                      <span className="text-ctp-peach mt-1 text-lg">•</span>
-                      <div className="flex-1">
-                        <h5 className="text-ctp-text font-semibold">
-                          {feature.title}
-                        </h5>
-                        <p className="text-ctp-subtext0 text-sm mt-1">
-                          {feature.description}
-                        </p>
+            {featuredProject.keyFeatures &&
+            featuredProject.keyFeatures.length > 0 ? (
+              featuredProject.keyFeatures.map((feature, index) => {
+                let title = feature;
+                let description = "";
+                const splitIndex = feature.indexOf(": ");
+                if (splitIndex !== -1) {
+                  title = feature.substring(0, splitIndex);
+                  description = feature.substring(splitIndex + 2);
+                }
+
+                return (
+                  <Reveal
+                    key={title}
+                    effect="slide-in"
+                    direction="left"
+                    duration={0.3}
+                    delay={index * 0.1}
+                  >
+                    <li className="flex flex-col gap-1">
+                      <div className="flex items-start gap-2">
+                        <span className="text-ctp-peach mt-1 text-lg">•</span>
+                        <div className="flex-1">
+                          <h5 className="text-ctp-text font-semibold">
+                            {title}
+                          </h5>
+                          {description && (
+                            <p className="text-ctp-subtext0 text-sm mt-1">
+                              {description}
+                            </p>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                </Reveal>
-              ))
+                    </li>
+                  </Reveal>
+                );
+              })
             ) : (
               <li className="text-ctp-subtext0 text-sm">
                 No features documented yet.

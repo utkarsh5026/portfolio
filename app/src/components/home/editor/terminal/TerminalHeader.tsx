@@ -1,6 +1,7 @@
-import GhostButton from "@/components/utils/GhostButton";
 import { Maximize2, Minimize2, TerminalIcon, Trash2, X } from "lucide-react";
 import React from "react";
+
+import GhostButton from "@/components/ui/ghost-button";
 
 interface TerminalHeaderProps {
   clearOutput: () => void;

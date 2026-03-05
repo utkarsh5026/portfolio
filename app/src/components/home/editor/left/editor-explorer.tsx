@@ -1,85 +1,115 @@
-import React from "react";
-import { cn } from "@/lib/utils";
-import { FaCode } from "react-icons/fa";
-import { IoSettingsSharp } from "react-icons/io5";
-import { useEditorContext, SectionType } from "../context/explorer-context";
+import React, { useEffect,useState } from "react";
+
 import Logo from "@/components/home/appbar/Logo";
+import { cn } from "@/lib/utils";
+import useProjectStore from "@/store/projects/projects-store";
+import type { Project } from "@/types";
+
+import { SectionType,useEditorContext } from "../context/explorer-context";
 import OutlinePanel from "../outline/outline-panel";
+import { TreeFile, TreeFolder } from "../shared/editor-tree";
+
+const getProjectFileName = (name: string): string =>
+  name
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "") + ".md";
 
 const Explorer: React.FC = () => {
-  const { activeSection, setActiveSection, files, mobileMenuOpen } =
-    useEditorContext();
+  const {
+    activeSection,
+    setActiveSection,
+    files,
+    mobileMenuOpen,
+    activeProjectId,
+    openProject,
+  } = useEditorContext();
+
+  const [rootOpen, setRootOpen] = useState(true);
+  const [projectsOpen, setProjectsOpen] = useState(true);
+
+  const { projects, fetchProjects, isLoading } = useProjectStore();
+
+  useEffect(() => {
+    fetchProjects();
+  }, [fetchProjects]);
+
+  const handleProjectClick = (project: Project) => {
+    openProject(project);
+  };
+
   return (
     <div
       className={cn(
-        "editor-explorer w-52 bg-ctp-crust border-r border-ctp-surface1 py-4 overflow-y-auto z-40 h-screen max-h-screen",
-        mobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+        "editor-explorer w-64 bg-ctp-crust/95 shadow-[8px_0_30px_rgba(0,0,0,0.25)] border-r border-ctp-surface1/50 py-3 overflow-y-auto z-40 h-screen max-h-screen flex flex-col backdrop-blur-xl transition-transform duration-300",
+        mobileMenuOpen
+          ? "translate-x-0"
+          : "-translate-x-full lg:translate-x-0 ",
       )}
     >
-      <div className="px-4 text-ctp-text text-sm mb-2">
+      {/* Logo */}
+      <div className="px-4 text-ctp-text text-sm mb-4 drop-shadow-sm">
         <Logo />
       </div>
-      <div className="text-ctp-subtext0 text-xs px-4 pt-2 pb-1">PORTFOLIO</div>
 
-      <PortfolioFiles
-        files={files}
-        activeSection={activeSection}
-        setActiveSection={setActiveSection}
-      />
-
-      <div className="mt-6 px-4 text-ctp-text text-sm">EXTENSIONS</div>
-      <div className="mt-2 px-2 space-y-1">
-        <div className="flex items-center text-ctp-subtext0 px-2 py-1 text-xs hover:text-ctp-text">
-          <IoSettingsSharp className="w-3 h-3 mr-2" />
-          Theme
-        </div>
-        <div className="flex items-center text-ctp-subtext0 px-2 py-1 text-xs hover:text-ctp-text">
-          <IoSettingsSharp className="w-3 h-3 mr-2" />
-          Preferences
+      {/* Section label */}
+      <div className="flex items-center px-4 pb-1 mb-0">
+        <div className="text-[11px] font-bold uppercase tracking-widest text-ctp-subtext0">
+          Explorer
         </div>
       </div>
-    </div>
-  );
-};
 
-interface PortfolioFilesProps {
-  files: {
-    name: string;
-    section: SectionType;
-  }[];
-  activeSection: SectionType;
-  setActiveSection: (section: SectionType) => void;
-}
-const PortfolioFiles: React.FC<PortfolioFilesProps> = ({
-  files,
-  activeSection,
-  setActiveSection,
-}) => {
-  return (
-    <div className="space-y-1 px-2">
-      <div className="mt-2">
-        <div className="px-2 py-1 text-[#6c7086] text-xs font-semibold">
-          SRC
-        </div>
+      {/* File tree */}
+      <div className="flex-1 overflow-y-auto px-0 pb-4 space-y-0 scrollbar-thin scrollbar-thumb-ctp-surface1 hover:scrollbar-thumb-ctp-surface2 scrollbar-track-transparent mt-1">
+        <TreeFolder
+          name="portfolio"
+          isOpen={rootOpen}
+          onToggle={() => setRootOpen((o) => !o)}
+        >
+          {files.map((file) => (
+            <TreeFile
+              key={file.section}
+              name={file.name}
+              depth={1}
+              isActive={
+                activeProjectId === null && activeSection === file.section
+              }
+              onClick={() => setActiveSection(file.section as SectionType)}
+            />
+          ))}
 
-        {files.map((file) => (
-          <button
-            key={file.name}
-            className={cn(
-              "w-full text-left px-2 py-1 text-sm rounded-sm flex items-center relative",
-              activeSection === file.section
-                ? "bg-[#313244] text-[#cdd6f4]"
-                : "text-[#6c7086] hover:text-[#cdd6f4]"
-            )}
-            onClick={() => setActiveSection(file.section)}
+          {/* projects/ folder */}
+          <TreeFolder
+            name="projects"
+            isOpen={projectsOpen}
+            depth={1}
+            onToggle={() => setProjectsOpen((o) => !o)}
           >
-            <FaCode className="w-3 h-3 mr-2" />
-            <span>{file.name}</span>
-          </button>
-        ))}
+            {isLoading && (
+              <p
+                style={{ paddingLeft: "46px" }}
+                className="text-[11px] text-ctp-overlay0 py-1.5 font-source animate-pulse"
+              >
+                loading…
+              </p>
+            )}
+            {projects.map((project) => (
+              <TreeFile
+                key={project.name}
+                name={getProjectFileName(project.name)}
+                depth={2}
+                isActive={activeProjectId === project.name}
+                onClick={() => handleProjectClick(project)}
+              />
+            ))}
+          </TreeFolder>
+        </TreeFolder>
       </div>
 
-      <OutlinePanel />
+      {/* Outline panel */}
+      <div className="mt-2 border-t border-ctp-surface1/60 pt-2 px-0">
+        <OutlinePanel />
+      </div>
     </div>
   );
 };

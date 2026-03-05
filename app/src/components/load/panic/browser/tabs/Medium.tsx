@@ -1,31 +1,32 @@
-import React, { useState } from "react";
 import {
-  BookOpen,
-  Heart,
-  Share2,
-  MessageSquare,
   Bookmark,
-  MoreHorizontal,
-  Coffee,
-  Code,
-  Monitor,
-  Briefcase,
-  Server,
-  Zap,
-  Clock,
-  Calendar,
-  Star,
-  Check,
-  Layout,
-  Globe,
-  Image,
-  FileText,
-  Link,
+  BookOpen,
   Box,
+  Briefcase,
+  Calendar,
+  Check,
+  Clock,
+  Code,
+  Coffee,
+  FileText,
+  Globe,
+  Heart,
+  Image,
+  Layout,
+  Link,
+  MessageSquare,
+  Monitor,
+  MoreHorizontal,
+  Server,
+  Share2,
+  Star,
   Users,
+  Zap,
 } from "lucide-react";
-import { mediumData } from "./data";
+import React, { useState } from "react";
 import { FaFigma, FaGithub } from "react-icons/fa";
+
+import { mediumData } from "./data";
 
 const { relatedArticles } = mediumData;
 
@@ -262,11 +263,11 @@ const MediumPortfolio: React.FC = () => {
             isExpanded={expandedSection === "structure"}
             onToggle={() =>
               setExpandedSection(
-                expandedSection === "structure" ? null : "structure"
+                expandedSection === "structure" ? null : "structure",
               )
             }
           >
-            <div className="font-mono text-sm text-gray-300 overflow-x-auto">
+            <div className="font-source text-sm text-gray-300 overflow-x-auto">
               <div className="flex items-center mb-2">
                 <Folder size={16} className="mr-2 text-gray-400" />
                 <span className="text-blue-400">src/</span>
@@ -467,7 +468,7 @@ const MediumPortfolio: React.FC = () => {
                   <span className="w-2 h-2 rounded-full bg-green-500 mr-2"></span>
                   {tag}
                 </span>
-              )
+              ),
             )}
           </div>
 

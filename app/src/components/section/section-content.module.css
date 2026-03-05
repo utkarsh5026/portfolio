@@ -1,0 +1,29 @@
+.contentWrapper {
+  opacity: 0;
+  transition: opacity 0.4s ease-out 0.2s;
+}
+
+.contentWrapper.visible {
+  opacity: 1;
+}
+
+.innerContent {
+  opacity: 0;
+  transform: translateY(15px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+}
+
+.innerContent.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.innerContent.withHeader {
+  transition-delay: 0.6s;
+}
+
+.innerContent.withoutHeader {
+  transition-delay: 0.3s;
+}

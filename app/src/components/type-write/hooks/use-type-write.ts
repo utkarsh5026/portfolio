@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useCallback,useEffect, useRef, useState } from "react";
 
 /**
  * TypewriterState represents the possible states of the typewriter animation

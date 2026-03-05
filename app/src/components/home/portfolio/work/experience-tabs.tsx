@@ -1,7 +1,9 @@
-import { experiences } from "./experienceDump";
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
 import { FaChevronRight } from "react-icons/fa";
+
+import { Badge } from "@/components/ui/badge";
+
+import { experiences } from "./experienceDump";
 
 interface ExperienceTabsProps {
   selectedExp: number;

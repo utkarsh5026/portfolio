@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
-import { distributeTime } from "@/components/load/utls/time";
 import "./CountDownAnimations.css";
+
+import React, { useEffect, useMemo,useRef, useState } from "react";
+
+import { distributeTime } from "@/components/load/utls/time";
 
 interface CountdownTransitionProps {
   onComplete: () => void;

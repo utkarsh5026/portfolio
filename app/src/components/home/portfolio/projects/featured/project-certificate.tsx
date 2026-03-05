@@ -1,5 +1,6 @@
-import { FaStar } from "react-icons/fa";
 import React, { memo } from "react";
+import { FaStar } from "react-icons/fa";
+
 import Reveal from "@/components/animations/reveal/Reveal";
 
 interface CertificateProps {

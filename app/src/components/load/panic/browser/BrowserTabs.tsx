@@ -1,6 +1,8 @@
 import React from "react";
 import { VscChromeClose } from "react-icons/vsc";
+
 import { cn } from "@/lib/utils";
+
 import { browserTabs } from "./tabs";
 
 interface BrowserTabsProps {

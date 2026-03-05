@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import CountDownTransition from "./CountDownTransition";
 import "./CompilteTransition.css";
-import { wordSequence } from "./wordSeq";
+
+import React, { useCallback,useEffect, useRef, useState } from "react";
+
 import { cn } from "@/lib/utils";
+
+import CountDownTransition from "./CountDownTransition";
+import { wordSequence } from "./wordSeq";
 
 interface CompilationLoadingProps {
   onComplete: () => void;

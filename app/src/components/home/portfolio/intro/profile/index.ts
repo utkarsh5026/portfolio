@@ -1,6 +1,13 @@
-import PersonalTitle from "./personal-title";
+import MiniProjects from "./mini-projects";
 import PersonalDescription from "./personal-description";
-import ProfilePicture from "./profile-picture";
+import PersonalTitle from "./personal-title";
 import ProfileButtons from "./profile-buttons";
+import ProfilePicture from "./profile-picture";
 
-export { PersonalTitle, PersonalDescription, ProfilePicture, ProfileButtons };
+export {
+  MiniProjects,
+  PersonalDescription,
+  PersonalTitle,
+  ProfileButtons,
+  ProfilePicture,
+};

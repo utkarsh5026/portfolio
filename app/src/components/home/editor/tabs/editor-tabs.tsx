@@ -1,11 +1,13 @@
-import React, { useMemo, useEffect } from "react";
-import { useOutline } from "@/components/home/editor/outline/";
+import React, { useEffect,useMemo } from "react";
+
 import {
-  useEditorContext,
   type SectionType,
+  useEditorContext,
 } from "@/components/home/editor/context/explorer-context";
-import MobileEditorDropdown from "./mobile-editor-dropdown";
+import { useOutline } from "@/components/home/editor/outline/";
+
 import DesktopTabs from "./desktop-tabs";
+import MobileEditorDropdown from "./mobile-editor-dropdown";
 
 interface EditorTabsProps {
   sections: Record<SectionType, React.ReactNode>;
@@ -23,16 +25,16 @@ const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
 
   const sectionKeys = useMemo(
     () => Object.keys(sections) as SectionType[],
-    [sections]
+    [sections],
   );
 
   useEffect(
     () => setCurrentSection(activeSection),
-    [activeSection, setCurrentSection]
+    [activeSection, setCurrentSection],
   );
 
   return (
-    <div className="sticky top-0 bg-ctp-mantle border-b border-ctp-surface0 z-10">
+    <div className="sticky top-0 bg-ctp-mantle border-b border-ctp-surface0 z-10 w-full min-w-0">
       <div className="md:hidden">
         <MobileEditorDropdown
           sectionKeys={sectionKeys}
@@ -41,12 +43,8 @@ const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
         />
       </div>
 
-      <div className="hidden md:block">
-        <DesktopTabs
-          activeSection={activeSection}
-          setActiveSection={setActiveSection}
-          sectionKeys={sectionKeys}
-        />
+      <div className="hidden md:block w-full overflow-hidden">
+        <DesktopTabs />
       </div>
     </div>
   );

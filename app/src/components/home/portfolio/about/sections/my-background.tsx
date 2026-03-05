@@ -1,7 +1,9 @@
-import React from "react";
 import { User } from "lucide-react";
-import { background } from "../data/data";
+import React from "react";
+
 import Reveal from "@/components/animations/reveal/Reveal";
+
+import { background } from "../data/data";
 import SectionHeader from "./about-header";
 
 const Background: React.FC = () => {

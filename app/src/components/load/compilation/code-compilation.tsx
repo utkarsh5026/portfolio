@@ -1,11 +1,12 @@
+import "./style.css";
+
 import React from "react";
-import { codeSnippets, COMPILE_STAGES } from "./content";
 
 import MatrixEffect from "../../animations/MatrixEffect";
-import Code from "./loading-code";
 import AfterBuild from "./after-build";
+import { codeSnippets, COMPILE_STAGES } from "./content";
+import Code from "./loading-code";
 import { useTerminalAnimation } from "./use-compilation";
-import "./style.css";
 
 interface CodeCompilationProps {
   onLoadComplete: () => void;
@@ -55,14 +56,14 @@ const CodeCompilation: React.FC<CodeCompilationProps> = ({
               <div className="w-3 h-3 rounded-full bg-[#f9e2af]"></div>
               <div className="w-3 h-3 rounded-full bg-[#a6e3a1]"></div>
             </div>
-            <div className="mx-auto text-[#cdd6f4] text-sm font-mono tracking-wide">
+            <div className="mx-auto text-[#cdd6f4] text-sm font-source tracking-wide">
               utkarsh.me | portfolio build
             </div>
           </div>
 
           <div
             ref={terminalRef}
-            className="terminal border border-t-0 border-[#313244] bg-[#181825] rounded-b-lg p-6 font-mono text-sm shadow-[0_0_10px_rgba(139,233,253,0.3)]"
+            className="terminal border border-t-0 border-[#313244] bg-[#181825] rounded-b-lg p-6 font-source text-sm shadow-[0_0_10px_rgba(139,233,253,0.3)]"
           >
             <div className="mb-6 flex items-center">
               <span className="text-[#cba6f7] font-bold">$</span>

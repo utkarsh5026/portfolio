@@ -1,6 +1,8 @@
+import { Brain, Quote, Target,Zap } from "lucide-react";
 import React from "react";
-import { Brain, Quote, Zap, Target } from "lucide-react";
+
 import Reveal from "@/components/animations/reveal/Reveal";
+
 import SectionHeader from "./about-header";
 
 const philosophyPrinciples = [

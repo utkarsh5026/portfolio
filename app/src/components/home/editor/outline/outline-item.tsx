@@ -1,175 +1,94 @@
 import React from "react";
-import type { OutlineItem } from "./context/outline-context";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { ChevronRight, File } from "lucide-react";
+import { VscChevronRight } from "react-icons/vsc";
 
-interface OutlineItemComponentProps {
+import { cn } from "@/lib/utils";
+
+import type { OutlineItem } from "./context/outline-context";
+import { useOutline } from "./context/outline-context";
+
+interface Props {
   item: OutlineItem;
+  depth: number;
   openItems: Set<string>;
-  toggleItem: (itemId: string) => void;
-  getChildren: (itemId: string) => OutlineItem[];
-  handleItemClick: (item: OutlineItem) => void;
+  onToggle: (id: string) => void;
+  onClick: (item: OutlineItem) => void;
+  getChildren: (id: string) => OutlineItem[];
 }
 
-const handleLevelColor = (level: number) => {
-  if (level === 0) return "text-ctp-mauve/80";
-  if (level === 1) return "text-ctp-green/80";
-  return "text-ctp-peach/80";
-};
-
-const handleLevelIcon = (level: number) => {
-  if (level === 0) return <File className="w-3.5 h-3.5" />;
-  if (level === 1) return <ChevronRight className="w-3.5 h-3.5" />;
-  return <span className="w-2 h-2 rounded-full bg-ctp-teal/70"></span>;
-};
-
-/**
- * OutlineItemComponent is a React component that represents a single item in the outline structure.
- * It is designed to be used within the OutlinePanel component and is responsible for rendering the item's details,
- * including its label, icon, and any child items it may have.
- *
- * @param {OutlineItemComponentProps} props - The properties passed to the component.
- * @param {OutlineItem} props.item - The outline item to be rendered.
- * @param {Set<string>} props.openItems - A set of IDs of items that are currently open.
- * @param {(itemId: string) => void} props.toggleItem - A function to toggle the open state of an item.
- * @param {(itemId: string) => OutlineItem[]} props.getChildren - A function to retrieve the children of an item.
- * @param {(item: OutlineItem) => void} props.handleItemClick - A function to handle the click event on an item.
- *
- * @returns A React component that represents the outline item.
- */
-const OutlineItemComponent: React.FC<OutlineItemComponentProps> = ({
+const OutlineItemComponent: React.FC<Props> = ({
   item,
+  depth,
   openItems,
-  toggleItem,
+  onToggle,
+  onClick,
   getChildren,
-  handleItemClick,
-}: OutlineItemComponentProps) => {
-  /**
-   * Retrieves the children of the current item and checks if there are any.
-   * This is used to determine if the item should be rendered as a collapsible section.
-   */
+}) => {
+  const { activeHighlightId } = useOutline();
   const children = getChildren(item.id);
-  const hasChildItems = children.length > 0;
+  const hasChildren = children.length > 0;
+  const isOpen = openItems.has(item.id);
+  const indent = depth * 12; // Standard VS Code indentation step
+  const isActive = activeHighlightId === item.id;
 
   return (
-    <div className="w-full">
-      {hasChildItems ? (
-        <Collapsible
-          open={openItems.has(item.id)}
-          onOpenChange={() => toggleItem(item.id)}
-          className="w-full"
-        >
-          <div
-            className={`
-                flex items-center px-2 py-1.5 text-xs
-                hover:bg-ctp-surface0/70 transition-all duration-200 rounded mx-1 my-0.5
-                relative group text-ctp-subtext0 hover:text-ctp-text
-              `}
-            style={{ paddingLeft: `${item.level * 12 + 8}px` }}
-          >
-            {item.level > 0 && (
-              <div
-                className="absolute left-0 h-full border-l-2 border-ctp-surface0 opacity-50"
-                style={{
-                  left: `${item.level * 12 - 4}px`,
-                  top: "0",
-                  height: "100%",
-                }}
-              />
-            )}
+    <div>
+      <div
+        className={cn(
+          "relative flex items-center h-[22px] text-[13px] cursor-pointer select-none pr-2 font-source outline-none",
+          isActive
+            ? "bg-ctp-surface1/60 text-ctp-text"
+            : "text-ctp-subtext0 hover:text-ctp-text hover:bg-ctp-surface0/50",
+        )}
+        style={{ paddingLeft: `${indent + 4}px` }}
+        onClick={(e) => {
+          e.stopPropagation();
+          if (hasChildren) onToggle(item.id);
+          onClick(item);
+        }}
+      >
+        {/* Tree guide lines for each ancestor level (optional, kept for clarity but made subtler) */}
+        {Array.from({ length: depth }).map((_, i) => (
+          <span
+            key={i}
+            className="absolute top-0 bottom-0 border-l border-ctp-surface1/30"
+            style={{ left: `${i * 12 + 10}px` }}
+          />
+        ))}
 
-            <CollapsibleTrigger asChild>
-              <div
-                className={`
-                  mr-2 w-5 h-5 flex items-center justify-center rounded
-                  ${handleLevelColor(item.level)}
-                  group-hover:text-ctp-lavender transition-colors duration-200
-                  cursor-pointer
-                `}
-              >
-                <ChevronRight
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    openItems.has(item.id) ? "rotate-90" : ""
-                  }`}
-                />
-              </div>
-            </CollapsibleTrigger>
-
-            <div
-              className={`
-                mr-2 w-5 h-5 flex items-center justify-center rounded
-                ${handleLevelColor(item.level)}
-                group-hover:text-ctp-lavender transition-colors duration-200
-              `}
-            >
-              {item.icon || handleLevelIcon(item.level)}
-            </div>
-
-            <span
-              role="button"
-              tabIndex={0}
-              className="truncate text-xs font-medium cursor-pointer flex-1"
-              onClick={() => handleItemClick(item)}
-            >
-              {item.label}
-            </span>
-          </div>
-
-          <CollapsibleContent>
-            <div className="w-full">
-              {children.map((child) => (
-                <OutlineItemComponent
-                  key={child.id}
-                  item={child}
-                  openItems={openItems}
-                  toggleItem={toggleItem}
-                  getChildren={getChildren}
-                  handleItemClick={handleItemClick}
-                />
-              ))}
-            </div>
-          </CollapsibleContent>
-        </Collapsible>
-      ) : (
-        <div
-          className={`
-              flex items-center px-2 py-1.5 text-xs cursor-pointer
-              hover:bg-ctp-surface0/70 transition-all duration-200 rounded mx-1 my-0.5
-              relative group text-ctp-subtext0 hover:text-ctp-text
-            `}
-          style={{ paddingLeft: `${item.level * 12 + 8}px` }}
-          onClick={() => handleItemClick(item)}
-        >
-          {/* Connection lines for hierarchy */}
-          {item.level > 0 && (
-            <div
-              className="absolute left-0 h-full border-l-2 border-ctp-surface0 opacity-50 top-0"
-              style={{
-                left: `${item.level * 12 - 4}px`,
-                top: "0",
-                height: "100%",
-              }}
+        {/* Chevron or leaf spacer */}
+        <span className="w-4 h-4 flex items-center justify-center shrink-0 mr-0.5">
+          {hasChildren && (
+            <VscChevronRight
+              className={cn(
+                "w-[14px] h-[14px] transition-transform duration-150",
+                isOpen ? "rotate-90 text-ctp-text" : "text-ctp-overlay0",
+              )}
             />
           )}
+        </span>
 
-          {/* Node icon based on level */}
-          <div
-            className={`
-              mr-2 w-5 h-5 flex items-center justify-center rounded
-              ${handleLevelColor(item.level)}
-              group-hover:text-ctp-lavender transition-colors duration-200
-            `}
-          >
-            {item.icon || handleLevelIcon(item.level)}
-          </div>
+        {/* Optional icon */}
+        {item.icon && (
+          <span className="mr-1.5 flex items-center shrink-0">{item.icon}</span>
+        )}
 
-          <span className="truncate text-xs font-medium">{item.label}</span>
-        </div>
-      )}
+        {/* Label */}
+        <span className="truncate whitespace-nowrap">{item.label}</span>
+      </div>
+
+      {/* Children */}
+      {isOpen &&
+        children.map((child) => (
+          <OutlineItemComponent
+            key={child.id}
+            item={child}
+            depth={depth + 1}
+            openItems={openItems}
+            onToggle={onToggle}
+            onClick={onClick}
+            getChildren={getChildren}
+          />
+        ))}
     </div>
   );
 };

@@ -1,15 +1,17 @@
-import React from "react";
 import {
-  Target,
-  TrendingUp,
-  Rocket,
+  Cloud,
+  Code,
   Database,
   Globe,
-  Code,
-  Cloud,
+  Rocket,
+  Target,
+  TrendingUp,
 } from "lucide-react";
-import { focusAreas } from "../data/data";
+import React from "react";
+
 import Reveal from "@/components/animations/reveal/Reveal";
+
+import { focusAreas } from "../data/data";
 import SectionHeader from "./about-header";
 
 const focusIcons = [Cloud, Database, TrendingUp, Code, Globe];

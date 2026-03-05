@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
 import anime from "animejs";
-import { cn } from "@/lib/utils";
-import { Card, CardContent } from "@/components/ui/card";
+import React, { useCallback,useEffect, useRef, useState } from "react";
+
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+
 import { messages } from "./content";
 import {
-  MESSAGE_APPEAR_INTERVAL,
   CURTAIN_DURATION,
+  MESSAGE_APPEAR_INTERVAL,
   VISITOR_INIT_DELAY,
 } from "./timings";
 
@@ -115,7 +117,7 @@ const VisitorAlert: React.FC<VisitorAlertProps> = ({
           stage === "alarm" &&
             "bg-[rgba(30,30,46,0.9)] backdrop-blur-md border-[rgba(243,139,168,0.4)]",
           stage === "panic" &&
-            "bg-[rgba(30,30,46,0.95)] backdrop-blur-md border-[rgba(235,50,80,0.6)]"
+            "bg-[rgba(30,30,46,0.95)] backdrop-blur-md border-[rgba(235,50,80,0.6)]",
         )}
       >
         <div
@@ -126,7 +128,7 @@ const VisitorAlert: React.FC<VisitorAlertProps> = ({
             stage === "alarm" &&
               "border-[rgba(243,139,168,0.4)] bg-[rgba(243,139,168,0.1)]",
             stage === "panic" &&
-              "border-[rgba(235,50,80,0.6)] bg-[rgba(235,50,80,0.2)]"
+              "border-[rgba(235,50,80,0.6)] bg-[rgba(235,50,80,0.2)]",
           )}
         >
           <div className="flex items-center justify-between px-4 py-2">
@@ -136,7 +138,7 @@ const VisitorAlert: React.FC<VisitorAlertProps> = ({
                   "h-3 w-3 rounded-full",
                   stage === "notice" && "bg-[#89b4fa] animate-pulse",
                   stage === "alarm" && "bg-[#f38ba8] animate-pulse",
-                  stage === "panic" && "bg-[#eb3250] animate-ping"
+                  stage === "panic" && "bg-[#eb3250] animate-ping",
                 )}
               />
               <div
@@ -144,7 +146,7 @@ const VisitorAlert: React.FC<VisitorAlertProps> = ({
                   "font-bold text-sm uppercase tracking-wide",
                   stage === "notice" && "text-[#89b4fa]",
                   stage === "alarm" && "text-[#f38ba8]",
-                  stage === "panic" && "text-[#eb3250]"
+                  stage === "panic" && "text-[#eb3250]",
                 )}
               >
                 {stage === "notice" && "Visitor Detected"}
@@ -155,13 +157,13 @@ const VisitorAlert: React.FC<VisitorAlertProps> = ({
             <div className="flex items-center gap-2">
               <span
                 className={cn(
-                  "text-xs font-mono px-2 py-0.5 rounded",
+                  "text-xs font-source px-2 py-0.5 rounded",
                   stage === "notice" &&
                     "bg-[rgba(137,180,250,0.2)] text-[#89b4fa]",
                   stage === "alarm" &&
                     "bg-[rgba(243,139,168,0.2)] text-[#f38ba8]",
                   stage === "panic" &&
-                    "bg-[rgba(235,50,80,0.3)] text-[#eb3250] animate-pulse"
+                    "bg-[rgba(235,50,80,0.3)] text-[#eb3250] animate-pulse",
                 )}
               >
                 LIVE
@@ -182,7 +184,7 @@ const VisitorAlert: React.FC<VisitorAlertProps> = ({
                   "message-bubble p-4 rounded-lg animate-fadeIn border border-opacity-30 transition-all duration-500",
                   index % 2 === 0
                     ? "bg-[rgba(137,180,250,0.1)] border-[#89b4fa] border-opacity-30"
-                    : "bg-[rgba(243,139,168,0.1)] border-[#f38ba8] border-opacity-30 ml-auto max-w-[85%]"
+                    : "bg-[rgba(243,139,168,0.1)] border-[#f38ba8] border-opacity-30 ml-auto max-w-[85%]",
                 )}
                 style={{
                   animationDelay: `${index * 0.15}s`,
@@ -194,7 +196,7 @@ const VisitorAlert: React.FC<VisitorAlertProps> = ({
                     index % 2 === 0 ? "text-[#cdd6f4]" : "text-[#f5c2e7]",
                     stage === "panic" &&
                       index === messages.length - 1 &&
-                      "font-bold animate-pulse"
+                      "font-bold animate-pulse",
                   )}
                 >
                   {message}
@@ -211,7 +213,7 @@ const VisitorAlert: React.FC<VisitorAlertProps> = ({
                   "py-2 px-4 text-sm font-semibold",
                   stage === "alarm"
                     ? "bg-[rgba(243,139,168,0.1)] border-b border-[rgba(243,139,168,0.2)]"
-                    : "bg-[rgba(235,50,80,0.2)] border-b border-[rgba(235,50,80,0.3)]"
+                    : "bg-[rgba(235,50,80,0.2)] border-b border-[rgba(235,50,80,0.3)]",
                 )}
               >
                 <div className="flex justify-between items-center">
@@ -221,7 +223,7 @@ const VisitorAlert: React.FC<VisitorAlertProps> = ({
                       "text-xs px-2 py-0.5 rounded-full",
                       stage === "alarm"
                         ? "bg-[rgba(243,139,168,0.2)] text-[#f38ba8]"
-                        : "bg-[rgba(235,50,80,0.3)] text-[#eb3250] animate-pulse"
+                        : "bg-[rgba(235,50,80,0.3)] text-[#eb3250] animate-pulse",
                     )}
                   >
                     {stage === "alarm" ? "Watching" : "Active"}
@@ -232,7 +234,7 @@ const VisitorAlert: React.FC<VisitorAlertProps> = ({
               <div className="bg-[rgba(30,30,46,0.5)] p-4 grid grid-cols-2 gap-4">
                 <div className="visitor-stat">
                   <div className="text-xs text-[#a6adc8]">IP Address</div>
-                  <div className="text-sm text-[#cdd6f4] font-mono">
+                  <div className="text-sm text-[#cdd6f4] font-source">
                     {visitorData.ip}
                   </div>
                 </div>
@@ -284,10 +286,10 @@ const VisitorAlert: React.FC<VisitorAlertProps> = ({
                       <div className="text-xs text-[#a6adc8]">Time Spent</div>
                       <div
                         className={cn(
-                          "text-sm font-mono",
+                          "text-sm font-source",
                           stage === "panic"
                             ? "text-[#eb3250]"
-                            : "text-[#f38ba8]"
+                            : "text-[#f38ba8]",
                         )}
                       >
                         {visitorData.timeSpent}
@@ -297,10 +299,10 @@ const VisitorAlert: React.FC<VisitorAlertProps> = ({
                       <div className="text-xs text-[#a6adc8]">Page Views</div>
                       <div
                         className={cn(
-                          "text-sm font-mono",
+                          "text-sm font-source",
                           stage === "panic"
                             ? "text-[#eb3250]"
-                            : "text-[#f38ba8]"
+                            : "text-[#f38ba8]",
                         )}
                       >
                         {visitorData.visits}
@@ -313,13 +315,13 @@ const VisitorAlert: React.FC<VisitorAlertProps> = ({
                     <div
                       className={cn(
                         "h-full transition-all duration-300 ease-out rounded-full",
-                        stage === "alarm" ? "bg-[#f38ba8]" : "bg-[#eb3250]"
+                        stage === "alarm" ? "bg-[#f38ba8]" : "bg-[#eb3250]",
                       )}
                       style={{
                         width: `${Math.min(
                           (parseInt(visitorData.timeSpent.split(":")[1]) / 60) *
                             100,
-                          100
+                          100,
                         )}%`,
                       }}
                     />

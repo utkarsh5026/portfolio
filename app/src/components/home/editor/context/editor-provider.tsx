@@ -1,131 +1,51 @@
-import React, {
-  ReactNode,
-  useState,
-  useEffect,
-  useMemo,
-  useCallback,
-} from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { EditorContext, SectionType, sections } from "./explorer-context";
+import React, { type ReactNode, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
+import { useEditorStore } from "./editor-store";
 
 interface ProviderProps {
   children: ReactNode;
 }
 
+/**
+ * EditorProvider
+ *
+ * Thin shell — the Zustand store owns all state.
+ * This component only handles:
+ *   1. URL ↔ tab synchronisation (browser back/forward)
+ *   2. Global keyboard shortcuts
+ */
 export const EditorProvider: React.FC<ProviderProps> = ({ children }) => {
   const location = useLocation();
-  const navigate = useNavigate();
 
-  // Parse section from URL hash
-  const getSectionFromPath = useCallback((pathname: string): SectionType => {
-    const section = pathname.replace(/^\//, "") || "home";
-    return sections.includes(section as SectionType)
-      ? (section as SectionType)
-      : "home";
-  }, []);
+  const syncRoute = useEditorStore((s) => s.syncRoute);
+  const setExplorerOpen = useEditorStore((s) => s.setExplorerOpen);
+  const explorerOpen = useEditorStore((s) => s.explorerOpen);
+  const setTerminalOpen = useEditorStore((s) => s.setTerminalOpen);
+  const terminalOpen = useEditorStore((s) => s.terminalOpen);
 
-  const [activeSection, setActiveSection] = useState<SectionType>(() =>
-    getSectionFromPath(location.pathname)
-  );
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [explorerOpen, setExplorerOpen] = useState(true);
-  const [terminalOpen, setTerminalOpen] = useState(false);
-
-  // Sync URL with active section
+  // Sync URL → tabs on browser back/forward
   useEffect(() => {
-    const section = getSectionFromPath(location.pathname);
-    if (section !== activeSection) {
-      setActiveSection(section);
-    }
-  }, [location.pathname, getSectionFromPath, activeSection]);
+    syncRoute(location.pathname);
+  }, [location.pathname, syncRoute]);
 
-  // Custom setActiveSection that also updates URL
-  const handleSetActiveSection = useCallback(
-    (section: SectionType) => {
-      setActiveSection(section);
-      const path = section === "home" ? "/" : `/${section}`;
-      if (location.pathname !== path) {
-        navigate(path, { replace: false });
-      }
-    },
-    [navigate, location.pathname]
-  );
-
-  const handleKeyyDownEvents = useCallback(() => {
-    const toggleExplorer = () => {
-      setExplorerOpen((prev) => !prev);
-    };
-
-    const toggleTerminal = () => {
-      setTerminalOpen((prev) => !prev);
-    };
-
+  // Global keyboard shortcuts
+  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (
         e.key === "\\" ||
         (e.key.toLowerCase() === "e" && (e.ctrlKey || e.metaKey))
       ) {
         e.preventDefault();
-        toggleExplorer();
-      } else if (e.key.toLowerCase() === "`" && (e.ctrlKey || e.metaKey)) {
+        setExplorerOpen(!explorerOpen);
+      } else if (e.key === "`" && (e.ctrlKey || e.metaKey)) {
         e.preventDefault();
-        toggleTerminal();
+        setTerminalOpen(!terminalOpen);
       }
     };
-
     window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [explorerOpen, terminalOpen, setExplorerOpen, setTerminalOpen]);
 
-  useEffect(() => {
-    const cleanup = handleKeyyDownEvents();
-    return () => cleanup();
-  }, [handleKeyyDownEvents]);
-
-  const files = useMemo(
-    () => [
-      { name: "home.tsx", section: "home" as SectionType },
-      { name: "about.md", section: "about" as SectionType },
-      { name: "skills.json", section: "skills" as SectionType },
-      { name: "projects.jsx", section: "projects" as SectionType },
-      { name: "experience.log", section: "experience" as SectionType },
-      { name: "contact.ts", section: "contact" as SectionType },
-      { name: "learning.tsx", section: "learning" as SectionType },
-      { name: "articles.md", section: "articles" as SectionType },
-    ],
-    []
-  );
-
-  const editorValue = useMemo(
-    () => ({
-      activeSection,
-      mobileMenuOpen,
-      explorerOpen,
-      files,
-      terminalOpen,
-      setTerminalOpen,
-      setActiveSection: handleSetActiveSection,
-      setMobileMenuOpen,
-      setExplorerOpen,
-    }),
-    [
-      activeSection,
-      mobileMenuOpen,
-      explorerOpen,
-      files,
-      handleSetActiveSection,
-      setMobileMenuOpen,
-      setExplorerOpen,
-      terminalOpen,
-      setTerminalOpen,
-    ]
-  );
-
-  return (
-    <EditorContext.Provider value={editorValue}>
-      {children}
-    </EditorContext.Provider>
-  );
+  return <>{children}</>;
 };

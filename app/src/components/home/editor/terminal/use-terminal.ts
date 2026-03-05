@@ -1,9 +1,10 @@
-import { useState, useRef, useEffect, useMemo, useCallback } from "react";
+import { useCallback,useEffect, useMemo, useRef, useState } from "react";
+
 import {
+  type Command,
   useLinuxCommands,
   useSectionCommands,
   useUtilityCommands,
-  type Command,
 } from "./use-command";
 
 export type TerminalOutput = {

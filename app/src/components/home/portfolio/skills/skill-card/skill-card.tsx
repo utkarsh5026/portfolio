@@ -1,6 +1,7 @@
+import { Reveal, type RevealEffect } from "@/components/animations";
+
 import { skillCategories } from "../data";
 import ExpandedSkillsContent from "./expanded-content";
-import { Reveal, type RevealEffect } from "@/components/animations";
 
 interface SkillCardProps {
   category: (typeof skillCategories)[number];
@@ -19,7 +20,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
       duration={0.5}
       className="group w-full"
     >
-      <div className="bg-ctp-surface0/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border-none w-full overflow-hidden">
+      <div className="bg-ctp-surface0/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 border-none w-full overflow-hidden">
         {/* Category Header */}
         <div className="flex items-center gap-3 sm:gap-4 mb-6">
           <div
@@ -30,10 +31,10 @@ const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
             </div>
           </div>
           <div className="min-w-0 flex-1">
-            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-ctp-text leading-tight break-words">
+            <h2 className="text-base sm:text-lg font-bold text-ctp-text leading-tight break-words">
               {category.title}
             </h2>
-            <p className="text-xs sm:text-base text-ctp-subtext0 mt-1 break-words font-medium leading-relaxed">
+            <p className="text-xs sm:text-sm text-ctp-subtext0 mt-0.5 break-words font-medium leading-relaxed">
               {category.description}
             </p>
           </div>

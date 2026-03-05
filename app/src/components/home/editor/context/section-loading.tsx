@@ -1,16 +1,17 @@
-import React from "react";
 import { motion } from "framer-motion";
-import { SectionType } from "./explorer-context";
+import React from "react";
+
 import {
-  HomeLoading,
   AboutLoading,
-  ProjectsLoading,
-  ExperienceLoading,
-  ContactLoading,
-  LearningLoading,
   ArticlesLoading,
+  ContactLoading,
+  ExperienceLoading,
+  HomeLoading,
+  LearningLoading,
+  ProjectsLoading,
   SkillsLoading,
 } from "../../../section/section-loading";
+import { SectionType } from "./explorer-context";
 
 interface SectionLoadingScreenProps {
   section: SectionType;

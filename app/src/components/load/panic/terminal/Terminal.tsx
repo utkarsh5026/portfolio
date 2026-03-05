@@ -1,8 +1,17 @@
-import React, { useEffect, useState, useRef, useMemo, useCallback } from "react";
+import "./TerminalAnimations.css";
+
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+
 import { commands } from "../content";
-import "./TerminalAnimations.css";
 
 interface TerminalProps {
   activeWindow: string | null;
@@ -86,29 +95,35 @@ const Terminal: React.FC<TerminalProps> = ({
     commands.forEach((command, cmdIndex) => {
       // Start typing each character of the command
       for (let charIndex = 1; charIndex <= command.length; charIndex++) {
-        const timeout = setTimeout(() => {
-          setCommandProgress((prev) => ({
-            ...prev,
-            [`cmd${cmdIndex}`]: charIndex,
-          }));
+        const timeout = setTimeout(
+          () => {
+            setCommandProgress((prev) => ({
+              ...prev,
+              [`cmd${cmdIndex}`]: charIndex,
+            }));
 
-          // Auto-scroll as we type
-          if (terminalContentRef.current) {
-            terminalContentRef.current.scrollTop =
-              terminalContentRef.current.scrollHeight;
-          }
-        }, currentTimeOffset + timing.typingSpeeds[cmdIndex] * charIndex);
+            // Auto-scroll as we type
+            if (terminalContentRef.current) {
+              terminalContentRef.current.scrollTop =
+                terminalContentRef.current.scrollHeight;
+            }
+          },
+          currentTimeOffset + timing.typingSpeeds[cmdIndex] * charIndex,
+        );
 
         animationTimeoutsRef.current.push(timeout);
       }
 
       // Show command output after typing is complete
-      const outputTimeout = setTimeout(() => {
-        setOutputVisibility((prev) => ({
-          ...prev,
-          [`output${cmdIndex}`]: true,
-        }));
-      }, currentTimeOffset + timing.timePerCommand + 100);
+      const outputTimeout = setTimeout(
+        () => {
+          setOutputVisibility((prev) => ({
+            ...prev,
+            [`output${cmdIndex}`]: true,
+          }));
+        },
+        currentTimeOffset + timing.timePerCommand + 100,
+      );
 
       animationTimeoutsRef.current.push(outputTimeout);
 
@@ -121,9 +136,13 @@ const Terminal: React.FC<TerminalProps> = ({
     const deploymentAnimationSteps = 50; // Divide animation into steps for smoother progress
 
     for (let step = 1; step <= deploymentAnimationSteps; step++) {
-      const progressTimeout = setTimeout(() => {
-        setDeploymentProgress((step / deploymentAnimationSteps) * 100);
-      }, deploymentStartTime + (timing.deploymentAnimationTime * step) / deploymentAnimationSteps);
+      const progressTimeout = setTimeout(
+        () => {
+          setDeploymentProgress((step / deploymentAnimationSteps) * 100);
+        },
+        deploymentStartTime +
+          (timing.deploymentAnimationTime * step) / deploymentAnimationSteps,
+      );
 
       animationTimeoutsRef.current.push(progressTimeout);
     }
@@ -164,7 +183,7 @@ const Terminal: React.FC<TerminalProps> = ({
       className={cn(
         "terminal-window absolute bottom-[10%] left-[15%] w-[70%] h-[50%] shadow-xl transition-all duration-300 z-50 rounded-lg overflow-hidden border-0 terminal-appear",
         activeWindow === "terminal" ? "opacity-100" : "opacity-0",
-        panicPhase === "commands" && "opacity-100"
+        panicPhase === "commands" && "opacity-100",
       )}
       style={{
         transform:
@@ -213,7 +232,7 @@ const Terminal: React.FC<TerminalProps> = ({
       {/* Terminal Content */}
       <CardContent
         ref={terminalContentRef}
-        className="h-[calc(100%-36px)] bg-[#1e1e1e] p-3 overflow-y-auto font-mono text-sm leading-relaxed terminal-content"
+        className="h-[calc(100%-36px)] bg-[#1e1e1e] p-3 overflow-y-auto font-source text-sm leading-relaxed terminal-content"
       >
         <div className="terminal-lines">
           {/* Initial directory navigation */}
