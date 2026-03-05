@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-05T10:54:48.177Z",
+  "generatedAt": "2026-03-05T10:59:02.600Z",
   "sections": {
     "home": {
       "lastCommitHash": "049b164",
@@ -38,15 +38,15 @@
       "fileCount": 5
     },
     "projects": {
-      "lastCommitHash": "288e817",
-      "lastCommitDate": "2026-03-05 10:20:04 +0530",
-      "lastCommitMessage": "feat: upgrade code block theme to VS Code Dark+ with language icons",
+      "lastCommitHash": "a4fb4c0",
+      "lastCommitDate": "2026-03-05 16:24:35 +0530",
+      "lastCommitMessage": "feat: add scroll-tracked heading breadcrumbs for project deep dive",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 64,
-      "linesAdded": 2,
-      "linesDeleted": 2,
-      "totalAdded": 9746,
-      "totalDeleted": 8456,
+      "commitCount": 65,
+      "linesAdded": 19,
+      "linesDeleted": 11,
+      "totalAdded": 9765,
+      "totalDeleted": 8467,
       "fileCount": 10
     },
     "experience": {

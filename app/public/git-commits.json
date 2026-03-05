@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-03-05T10:54:53.533Z",
+  "generatedAt": "2026-03-05T10:59:05.684Z",
   "commits": [
+    {
+      "hash": "a4fb4c06f7f4e9c024abfd6356f7847c869d3fc1",
+      "shortHash": "a4fb4c0",
+      "message": "feat: add scroll-tracked heading breadcrumbs for project deep dive",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T16:24:35+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 362,
+      "deletions": 140,
+      "filesChanged": 11
+    },
     {
       "hash": "ff1dbf15db28f883fd3969fe0e492f5bd0769460",
       "shortHash": "ff1dbf1",
@@ -228,22 +240,10 @@
       "insertions": 11,
       "deletions": 2,
       "filesChanged": 3
-    },
-    {
-      "hash": "b84f33b83a7668012f68e891eaec2c98ae28d6c2",
-      "shortHash": "b84f33b",
-      "message": "refactor: replace Makefile logic with cross-platform Python build script",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T04:38:54+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 517,
-      "deletions": 231,
-      "filesChanged": 3
     }
   ],
   "commitsByDate": {
-    "2026-03-05": 32,
+    "2026-03-05": 33,
     "2026-03-04": 17,
     "2026-03-03": 28,
     "2026-03-02": 17,
