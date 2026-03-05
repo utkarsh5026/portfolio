@@ -1,16 +1,52 @@
 {
-  "generatedAt": "2026-03-05T02:56:03.201Z",
+  "generatedAt": "2026-03-05T03:18:41.081Z",
   "commits": [
     {
-      "hash": "9b0eb3ca6c8169e2c5c5b026a0cd83a30f98d60f",
-      "shortHash": "9b0eb3c",
-      "message": "Check failure on line 34 in app/src/components/home/editor/markdown-renderer/media.tsx",
+      "hash": "66736d457eb4499d26bcd4265705e1bd8935e071",
+      "shortHash": "66736d4",
+      "message": "Merge pull request #62 from utkarsh5026/dependabot/npm_and_yarn/app/lucide-react-0.576.0",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T08:34:37+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 5,
+      "deletions": 5,
+      "filesChanged": 2
+    },
+    {
+      "hash": "47dfe16b1bc071054dd25a4dba9ddc0cc9c9b25d",
+      "shortHash": "47dfe16",
+      "message": "Merge pull request #61 from utkarsh5026/dependabot/npm_and_yarn/app/vitejs/plugin-react-5.1.4",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T08:33:34+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 67,
+      "deletions": 55,
+      "filesChanged": 2
+    },
+    {
+      "hash": "35bd2f015b400240757b506371eca3fcaedaa567",
+      "shortHash": "35bd2f0",
+      "message": "Merge pull request #69 from utkarsh5026/simplify",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T08:30:23+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 12744,
+      "deletions": 8011,
+      "filesChanged": 257
+    },
+    {
+      "hash": "e45009997b8af7d232f4169e0d4fa0256c1fdb0d",
+      "shortHash": "e450099",
+      "message": "fix: prevent incomplete URL substring sanitization in MarkdownImage",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T08:24:04+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 26,
-      "deletions": 22,
+      "insertions": 38,
+      "deletions": 34,
       "filesChanged": 3
     },
     {
@@ -204,49 +240,13 @@
       "insertions": 138,
       "deletions": 125,
       "filesChanged": 2
-    },
-    {
-      "hash": "7fbc226d3918f575c5aa07d6a3268de28d7504f2",
-      "shortHash": "7fbc226",
-      "message": "style: wrap terminal component in SketchBorder with green/blue/sky colors",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T03:23:15+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 38,
-      "deletions": 30,
-      "filesChanged": 2
-    },
-    {
-      "hash": "8693699ae0f093dd21c7757e65cc3e3b4f12a791",
-      "shortHash": "8693699",
-      "message": "feat: add MiniProjects component to profile intro section",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T03:20:33+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 163,
-      "deletions": 11,
-      "filesChanged": 3
-    },
-    {
-      "hash": "e76968a0fa198c6a3fb2ea8493a96dbea24ba851",
-      "shortHash": "e76968a",
-      "message": "fix: prevent profile buttons from overflowing their container on small viewports",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T03:12:26+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 19,
-      "deletions": 19,
-      "filesChanged": 2
     }
   ],
   "commitsByDate": {
-    "2026-03-05": 25,
+    "2026-03-05": 28,
     "2026-03-04": 17,
     "2026-03-03": 28,
-    "2026-03-02": 15,
+    "2026-03-02": 17,
     "2026-03-01": 8,
     "2026-02-27": 2,
     "2026-02-26": 1,

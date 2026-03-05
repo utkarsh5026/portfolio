@@ -1,19 +1,66 @@
 {
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "editor.tabSize": 2,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/dist": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/*.lock": true
+  },
   "cSpell.words": [
+    "aiosqlite",
+    "animejs",
     "appbar",
     "atrule",
     "catppuccin",
     "deepdive",
     "deque",
+    "elif",
     "Errorf",
+    "FAISS",
     "gopool",
     "goroutines",
+    "imagetools",
     "LMAX",
+    "marocchino",
     "MPMC",
     "neighbouring",
+    "numfmt",
+    "numstat",
+    "oneline",
+    "Priyadarshi",
+    "Pydantic",
     "Sched",
+    "shortlog",
+    "shortstat",
+    "swipeable",
     "syscall",
+    "treemap",
+    "Utkarsh",
     "visualisation",
+    "vite",
     "youtu"
   ]
 }
