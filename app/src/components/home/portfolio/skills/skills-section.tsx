@@ -2,6 +2,7 @@ import { Sparkles } from "lucide-react";
 
 import { OutlineNode } from "@/components/home/editor/outline";
 import Section from "@/components/section/portfolio-section";
+import type { AppColor } from "@/utils/ctp-colors";
 
 import { skillCategories } from "./data";
 import SkillCard from "./skill-card/skill-card";
@@ -24,9 +25,9 @@ const SkillsSection: React.FC = () => {
             <OutlineNode
               key={category.id}
               id={category.id}
-              level={1}
               label={category.title}
-              parentId="skills"
+              icon={category.icon}
+              iconColor={category.color as AppColor}
             >
               <SkillCard key={category.id} category={category} index={index} />
             </OutlineNode>

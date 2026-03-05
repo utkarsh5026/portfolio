@@ -9,7 +9,18 @@ import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
   plugins: [
-    react(),
+    react({
+      babel: {
+        plugins: [
+          [
+            "babel-plugin-react-compiler",
+            {
+              target: "18", // React 18 compatibility via react-compiler-runtime shim
+            },
+          ],
+        ],
+      },
+    }),
     visualizer({
       filename: "stats.html",
       template: "treemap",

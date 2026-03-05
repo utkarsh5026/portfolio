@@ -1,7 +1,16 @@
-import React, { useCallback, useEffect,useMemo } from "react";
+import { ChevronRight } from "lucide-react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
-import { type OutlineItem,useOutline } from "./context/outline-context";
-import OutlineItemComponent from "./outline-item";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { Tree } from "@/components/ui/tree";
+import useOutlineStore, {
+  type OutlineItem,
+} from "@/store/outline/outline-store";
+import { ctpColorClass } from "@/utils/ctp-colors";
 
 const messages = [
   { icon: "🎯", text: "Found it!" },
@@ -17,48 +26,85 @@ const messages = [
   { icon: "🪄", text: "Abracadabra!" },
 ];
 
+function wrapIcon(icon?: React.ReactNode) {
+  if (!icon) return undefined;
+  return (
+    <span className="w-3 h-3 flex items-center justify-center">{icon}</span>
+  );
+}
+
+function renderOutlineTree(
+  parentId: string,
+  items: OutlineItem[],
+  depth: number,
+  onClick: (item: OutlineItem) => void,
+) {
+  const children = items.filter((item) => item.parentId === parentId);
+
+  return children.map((item) => {
+    const hasChildren = items.some((i) => i.parentId === item.id);
+    const wrappedIcon = wrapIcon(item.icon);
+    if (hasChildren) {
+      return (
+        <Tree.Group
+          key={item.id}
+          id={item.id}
+          depth={depth}
+          label={item.label}
+          icon={wrappedIcon}
+          iconOpen={wrappedIcon}
+          iconColor={
+            item.iconColor ? ctpColorClass("text", item.iconColor) : undefined
+          }
+          onClick={() => onClick(item)}
+        >
+          {renderOutlineTree(item.id, items, depth + 1, onClick)}
+        </Tree.Group>
+      );
+    }
+    return (
+      <Tree.Item
+        key={item.id}
+        id={item.id}
+        depth={depth}
+        label={item.label}
+        icon={wrappedIcon}
+        iconColor={
+          item.iconColor ? ctpColorClass("text", item.iconColor) : undefined
+        }
+        onClick={() => onClick(item)}
+      />
+    );
+  });
+}
+
 const OutlinePanel: React.FC = () => {
-  const { outlineItems, currentSection, highlightNode } = useOutline();
+  const itemsMap = useOutlineStore((s) => s.items);
+  const activeSection = useOutlineStore((s) => s.activeSection);
+  const activeHighlightId = useOutlineStore((s) => s.activeHighlightId);
+  const highlightNode = useOutlineStore((s) => s.highlightNode);
+
   const [openItems, setOpenItems] = React.useState<Set<string>>(new Set());
+  const [isOpen, setIsOpen] = useState(true);
+
+  const items = useMemo(() => [...itemsMap.values()], [itemsMap]);
+
+  const sectionRoot = useMemo(
+    () => items.find((i) => i.parentId === null && i.id === activeSection),
+    [items, activeSection],
+  );
 
   useEffect(() => {
-    setOpenItems(
-      new Set([currentSection, ...outlineItems.map((item) => item.id)]),
-    );
-  }, [outlineItems, currentSection]);
-
-  const toggleItem = (itemId: string) => {
-    setOpenItems((prev) => {
-      const next = new Set(prev);
-      if (next.has(itemId)) next.delete(itemId);
-      else next.add(itemId);
-      return next;
-    });
-  };
-
-  const getChildren = useCallback(
-    (itemId: string) =>
-      outlineItems
-        .filter((item) => item.parentId === itemId)
-        .sort((a, b) => outlineItems.indexOf(a) - outlineItems.indexOf(b)),
-    [outlineItems],
-  );
-
-  const rootItems = useMemo(
-    () =>
-      outlineItems
-        .filter(
-          (item) => item.id.startsWith(currentSection) && item.level === 0,
-        )
-        .sort((a, b) => outlineItems.indexOf(a) - outlineItems.indexOf(b)),
-    [outlineItems, currentSection],
-  );
+    if (!activeSection) return;
+    setOpenItems(new Set([activeSection, ...items.map((i) => i.id)]));
+  }, [items, activeSection]);
 
   const handleItemClick = useCallback(
     (item: OutlineItem) => {
       const element = document.getElementById(item.id);
       if (element) {
         element.scrollIntoView({ behavior: "smooth", block: "center" });
+        if (item.parentId === null) return;
         highlightNode(item.id);
 
         const msg = messages[Math.floor(Math.random() * messages.length)];
@@ -87,9 +133,7 @@ const OutlinePanel: React.FC = () => {
           element.style.backgroundColor = originalBg;
 
           setTimeout(() => {
-            if (element.contains(popup)) {
-              element.removeChild(popup);
-            }
+            if (element.contains(popup)) element.removeChild(popup);
             element.style.transition = originalTransition;
             element.style.borderRadius = originalBorderRadius;
           }, 400);
@@ -99,39 +143,89 @@ const OutlinePanel: React.FC = () => {
     [highlightNode],
   );
 
-  if (!currentSection || rootItems.length === 0) {
+  const header = (
+    <CollapsibleTrigger className="flex items-center gap-1 px-4 h-6 w-full text-[11px] uppercase tracking-wider text-ctp-subtext0 font-semibold hover:text-ctp-text cursor-pointer transition-colors duration-200">
+      <ChevronRight
+        className="w-3 h-3 transition-transform duration-150 shrink-0"
+        style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)" }}
+      />
+      OUTLINE
+    </CollapsibleTrigger>
+  );
+
+  if (!activeSection || !sectionRoot) {
     return (
-      <div className="h-full flex flex-col bg-ctp-mantle border-r border-ctp-surface0 w-64">
-        <div className="flex items-center px-4 h-6 text-[11px] uppercase tracking-wider text-ctp-subtext0 font-semibold hover:text-ctp-text cursor-pointer transition-colors duration-200">
-          OUTLINE
-        </div>
-        <div className="flex items-center justify-center h-full text-[13px] text-ctp-subtext0 px-4 text-center">
+      <Collapsible
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        className="h-full flex flex-col bg-ctp-mantle border-r border-ctp-surface0 w-64"
+      >
+        {header}
+        <CollapsibleContent className="flex items-center justify-center flex-1 text-[13px] text-ctp-subtext0 px-4 text-center">
           No outline information available.
-        </div>
-      </div>
+        </CollapsibleContent>
+      </Collapsible>
     );
   }
 
-  return (
-    <div className="h-full flex flex-col bg-ctp-mantle border-r border-ctp-surface0 w-64 select-none">
-      <div className="flex items-center px-4 h-6 text-[11px] uppercase tracking-wider text-ctp-subtext0 font-semibold hover:text-ctp-text cursor-pointer transition-colors duration-200">
-        OUTLINE
-      </div>
+  const treeChildren = renderOutlineTree(
+    sectionRoot.id,
+    items,
+    1,
+    handleItemClick,
+  );
 
-      <div className="overflow-y-auto flex-1 pb-2">
-        {rootItems.map((item) => (
-          <OutlineItemComponent
-            key={item.id}
-            item={item}
-            depth={0}
-            openItems={openItems}
-            onToggle={toggleItem}
-            onClick={handleItemClick}
-            getChildren={getChildren}
-          />
-        ))}
-      </div>
-    </div>
+  return (
+    <Collapsible
+      open={isOpen}
+      onOpenChange={setIsOpen}
+      className="h-full flex flex-col bg-ctp-mantle border-r border-ctp-surface0 w-64 select-none"
+    >
+      {header}
+
+      <CollapsibleContent className="overflow-y-auto flex-1 pb-2">
+        <Tree
+          activeId={activeHighlightId}
+          expanded={openItems}
+          onExpandedChange={setOpenItems}
+          guideLines
+          rowHeight={22}
+        >
+          {treeChildren.length > 0 ? (
+            <Tree.Group
+              key={sectionRoot.id}
+              id={sectionRoot.id}
+              depth={0}
+              label={sectionRoot.label}
+              icon={wrapIcon(sectionRoot.icon)}
+              iconOpen={wrapIcon(sectionRoot.icon)}
+              iconColor={
+                sectionRoot.iconColor
+                  ? ctpColorClass("text", sectionRoot.iconColor)
+                  : undefined
+              }
+              onClick={() => handleItemClick(sectionRoot)}
+            >
+              {treeChildren}
+            </Tree.Group>
+          ) : (
+            <Tree.Item
+              key={sectionRoot.id}
+              id={sectionRoot.id}
+              depth={0}
+              label={sectionRoot.label}
+              icon={wrapIcon(sectionRoot.icon)}
+              iconColor={
+                sectionRoot.iconColor
+                  ? ctpColorClass("text", sectionRoot.iconColor)
+                  : undefined
+              }
+              onClick={() => handleItemClick(sectionRoot)}
+            />
+          )}
+        </Tree>
+      </CollapsibleContent>
+    </Collapsible>
   );
 };
 

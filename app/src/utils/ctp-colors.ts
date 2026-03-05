@@ -16,3 +16,30 @@ export type CtpColor =
   | "ctp-surface3"
   | "ctp-surface4"
   | "ctp-surface5";
+
+/** Accent color names matching the Catppuccin Mocha palette in tailwind.config.js */
+export type AppColor =
+  | "rosewater"
+  | "flamingo"
+  | "pink"
+  | "mauve"
+  | "red"
+  | "maroon"
+  | "peach"
+  | "yellow"
+  | "green"
+  | "teal"
+  | "sky"
+  | "sapphire"
+  | "blue"
+  | "lavender";
+
+type ColorPrefix = "text" | "bg" | "border" | "from" | "to" | "shadow";
+
+/** Generate a Catppuccin Tailwind class like `text-ctp-blue` or `bg-ctp-peach` */
+export function ctpColorClass(
+  prefix: ColorPrefix,
+  color: AppColor,
+): string {
+  return `${prefix}-ctp-${color}`;
+}

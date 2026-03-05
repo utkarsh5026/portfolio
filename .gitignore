@@ -135,3 +135,6 @@ dist
 stats.html
 stats.json
 
+/.agent
+/.claude
+/.agents

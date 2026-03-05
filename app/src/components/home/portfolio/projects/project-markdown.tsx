@@ -1,20 +1,15 @@
-import React from "react";
-import { FaExternalLinkAlt,FaGithub } from "react-icons/fa";
+import React, { useEffect } from "react";
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { HiOutlineBookOpen, HiOutlineCode } from "react-icons/hi";
 
 import { technologies } from "@/components/base/technologies";
 import { MarkdownRender } from "@/components/home/editor/markdown-renderer";
 import { Heading, Text } from "@/components/ui/text";
+import { useMarkdownOutlineBridge } from "@/hooks/use-markdown-outline-bridge";
 import { cn } from "@/lib/utils";
+import { useMarkdownHeadingStore } from "@/store";
 import useProjectStore from "@/store/projects/projects-store";
-
-function nameToSlug(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, "")
-    .trim()
-    .replace(/\s+/g, "-");
-}
+import { getProjectSlug } from "@/utils/project-slug";
 
 const COVER_GRADIENTS = [
   "from-ctp-mauve/40 via-ctp-mantle to-ctp-base",
@@ -59,7 +54,6 @@ const CoverBand: React.FC<{ coverImage?: string; name: string }> = ({
           alt={`${name} cover`}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        {/* Gradient overlay for legibility */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ctp-base/40 to-ctp-base/90" />
       </div>
     );
@@ -217,13 +211,30 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
     state.projects.find((p) => p.name === projectId),
   );
 
-  const slug = project ? nameToSlug(project.name) : "";
+  const slug = project ? getProjectSlug(project.name) : "";
   const markdown = useProjectStore((s) => s.markdownCache[slug] ?? "");
   const loadState = useProjectStore(
     (s) => (s.markdownStates[slug] as LoadState) ?? "loading",
   );
 
   const [activeTab, setActiveTab] = React.useState<Tab>("overview");
+  useMarkdownOutlineBridge(project?.name ?? projectId);
+  const setIsDeepDive = useMarkdownHeadingStore((s) => s.setIsDeepDive);
+  const setActiveHeadings = useMarkdownHeadingStore((s) => s.setActiveHeadings);
+
+  useEffect(() => {
+    setIsDeepDive(activeTab === "deepdive");
+    if (activeTab !== "deepdive") {
+      setActiveHeadings({ h1: null, h2: null, h3: null });
+    }
+  }, [activeTab, setIsDeepDive, setActiveHeadings]);
+
+  useEffect(() => {
+    return () => {
+      setIsDeepDive(false);
+      setActiveHeadings({ h1: null, h2: null, h3: null });
+    };
+  }, [setIsDeepDive, setActiveHeadings]);
 
   if (!project) {
     return (
@@ -316,7 +327,7 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
           {loadState === "loading" && <LoadingSkeleton />}
 
           {loadState === "loaded" && markdown && (
-            <div className="px-6 pb-10">
+            <div className="px-6 pb-10 font-sans">
               <MarkdownRender markdown={markdown} />
             </div>
           )}

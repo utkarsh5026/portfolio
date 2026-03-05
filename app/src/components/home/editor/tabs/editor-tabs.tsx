@@ -4,7 +4,7 @@ import {
   type SectionType,
   useEditorContext,
 } from "@/components/home/editor/context/explorer-context";
-import { useOutline } from "@/components/home/editor/outline/";
+import useOutlineStore from "@/store/outline/outline-store";
 
 import DesktopTabs from "./desktop-tabs";
 import MobileEditorDropdown from "./mobile-editor-dropdown";
@@ -20,7 +20,7 @@ interface EditorTabsProps {
  * Uses the project's Catppuccin color theme for visual consistency
  */
 const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
-  const { setCurrentSection } = useOutline();
+  const setOutlineActiveSection = useOutlineStore((s) => s.setActiveSection);
   const { activeSection, setActiveSection } = useEditorContext();
 
   const sectionKeys = useMemo(
@@ -29,8 +29,8 @@ const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
   );
 
   useEffect(
-    () => setCurrentSection(activeSection),
-    [activeSection, setCurrentSection],
+    () => setOutlineActiveSection(activeSection),
+    [activeSection, setOutlineActiveSection],
   );
 
   return (

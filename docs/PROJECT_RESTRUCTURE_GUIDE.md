@@ -1,245 +1,98 @@
-# 📝 Projects.json Restructuring Guide
+# Project Page Content Guide
 
-## 🎯 Goal
-Transform verbose project descriptions into scannable, impactful content that hooks readers immediately.
+You are an expert technical storyteller writing for a developer's personal portfolio. I will provide you with the directory structure, code context, or rough notes for a software project. Your task is to write a highly visual, engaging, and premium `project-name.md` file.
 
----
-
-## ✨ New Cleaner Structure
-
-```json
-{
-  "name": "Project Name",
-  "tagline": "One punchy sentence (max 15 words) 🚀",
-  "description": "2-3 sentences max. Focus on: Problem → Solution → Impact with specific metrics.",
-
-  "keyFeatures": [
-    {
-      "title": "Feature Name (Technical & Clear)",
-      "description": "HOW it works technically. Mention specific tech/architecture."
-    },
-    {
-      "title": "Another Feature",
-      "description": "Another technical implementation detail."
-    },
-    {
-      "title": "Third Feature",
-      "description": "Keep it to EXACTLY 4 features max."
-    },
-    {
-      "title": "Fourth Feature",
-      "description": "Last one - make it count!"
-    }
-  ],
-
-  "technologies": ["tech1", "tech2", "tech3"],
-
-  "explain": [
-    "Paragraph 1: Context - What was the problem? Who was affected?",
-    "Paragraph 2: Solution - What did you build? How does it solve the problem?",
-    "Paragraph 3: Technical details - Architecture, tech stack, interesting challenges."
-  ],
-
-  "githubLink": "link",
-  "liveLink": "link",
-  "tags": ["tag1", "tag2"],
-
-  // Keep existing fields for backward compatibility
-  "features": [],
-  "techStack": {},
-  "projectFeatures": []
-}
-```
+My portfolio uses a custom React markdown renderer with beautiful built-in styles for standard markdown — zoomable images with captions, responsive tables, styled blockquotes, and YouTube embeds.
 
 ---
 
-## 📋 Field-by-Field Guidelines
+## Voice & Tone — Read This First
 
-### 1. **tagline** (Required)
-- **Length**: Max 15 words
-- **Goal**: Hook the reader in one sentence
-- **Formula**: [What it does] + [For whom] + [Key benefit]
-- **Examples**:
-  - ✅ "Transform workforce data into strategic insights 📊"
-  - ✅ "AI-powered code review for faster PR merges 🤖"
-  - ❌ "A comprehensive platform that helps..." (too wordy)
+This is not a product brochure or a technical manual. It is a **personal story** — written in first person, from the perspective of the developer who built it. From the very first word to the very last, it should feel like sitting across from someone who is genuinely excited to tell you about a thing they made.
 
-### 2. **description** (Required)
-- **Length**: 2-3 sentences (max 50 words)
-- **Structure**:
-  - Sentence 1: Problem + Who
-  - Sentence 2: Solution + Key metric
-  - Sentence 3 (optional): Additional impact
-- **Include**: Specific numbers, brands, or scale
-- **Example**:
-  ```
-  Enterprise analytics platform for Skoda, VW, and Audi processing 200K+ training records.
-  Reduced manager analysis time from 3 days to under 5 minutes through automated data
-  pipelines and interactive dashboards.
-  ```
-
-### 3. **keyFeatures** (4 items exactly)
-Each feature object has:
-- **title**: Technical name (4-6 words)
-- **description**: HOW it works technically (mention specific tech)
-
-**Example**:
-```json
-{
-  "title": "Real-Time Multi-Brand Analytics",
-  "description": "Django REST API with Pandas processing engine aggregating cross-brand training metrics with sub-second query response times"
-}
-```
-
-**Tips**:
-- Mention specific technologies (Django, Redis, React)
-- Include architecture details (REST API, WebSocket, GraphQL)
-- Add performance metrics when relevant (sub-second, 10K+ concurrent users)
-- Keep descriptions to 1-2 sentences
-
-### 4. **technologies** (Array)
-- **Length**: 8-12 main technologies
-- **Order**: Backend → Frontend → Database → Infrastructure
-- **Format**: Lowercase, no spaces (e.g., "react", "nodejs", "postgresql")
-- **Example**:
-  ```json
-  ["react", "typescript", "python", "django", "pandas", "plotly", "postgresql", "redis", "celery", "docker"]
-  ```
-
-### 5. **explain** (3 paragraphs)
-- **Paragraph 1**: The Problem & Context
-  - Who needed this?
-  - What was broken/missing?
-  - Why did it matter?
-
-- **Paragraph 2**: Your Solution
-  - What did you build?
-  - How does it solve the problem?
-  - What's the measurable impact?
-
-- **Paragraph 3**: Technical Implementation
-  - Architecture overview
-  - Key technical decisions
-  - Interesting challenges solved
-
-**Example**:
-```json
-"explain": [
-  "Skoda, VW, and Audi had 200,000+ training records scattered across Excel files with no way to track trainer performance, employee retention, or training ROI. Managers spent 3+ days manually analyzing spreadsheets to answer basic questions about training effectiveness.",
-
-  "I built a full-stack analytics platform that automatically ingests training data, processes it through custom analytics pipelines, and generates interactive dashboards. The system provides real-time insights on trainer success rates, employee development patterns, and cross-brand comparisons, reducing analysis time from days to minutes.",
-
-  "Architected with Django backend for data processing, Celery workers for async tasks, and Redis for caching. React frontend with Plotly for interactive visualizations. Implemented role-based access allowing executives to see strategic metrics while team managers drill into department-specific insights. Deployed in Docker containers with automated CI/CD pipelines."
-]
-```
+- Write as "I", not "the system" or "the app". Own the decisions. Own the failures.
+- Be honest about **why** this project was built. Was it frustration? Curiosity? A late-night itch? That context matters more than any feature list.
+- Talk about **what was hard**. Not just what you built, but what broke, what you got wrong the first time, what took three rewrites to get right. That's what makes a project real.
+- Keep the tone **gentle and natural** — like a well-written dev blog post, not a conference talk. Technical depth is essential, but it should feel earned through the story, not announced.
+- Never use passive voice when active voice is possible. Never say "the component renders" when you can say "I built a component that renders".
 
 ---
 
-## 🔥 Before/After Example
+**CRITICAL RULES:**
 
-### ❌ BEFORE (Too Wordy)
-
-```json
-{
-  "name": "Automotive Training & Workforce Analytics DSS",
-  "description": "A comprehensive analytics platform developed for Skoda Auto, Volkswagen, and Audi that transforms workforce development through data-driven insights. Processing over 200,000 training records, this system delivers actionable analytics on training effectiveness, employee development, and workforce trends through intuitive interactive dashboards, reducing analysis time from days to minutes.",
-  "features": [
-    "Multi-brand workforce analytics (Skoda, VW, Audi)",
-    "Training success rate analysis by trainer/location",
-    "Employee aging and retention tracking",
-    "Customizable trend analysis with date ranges",
-    "Zone and dealer-wise performance metrics",
-    "Data visualization with interactive charts",
-    "Automated data processing pipelines",
-    "Role-based access control",
-    "Export functionality for reports"
-  ]
-}
-```
-
-### ✅ AFTER (Clean & Scannable)
-
-```json
-{
-  "name": "Automotive Training & Workforce Analytics DSS",
-  "tagline": "Transform workforce data into strategic insights 📊",
-
-  "description": "Enterprise analytics platform for Skoda, VW, and Audi processing 200K+ training records. Reduced manager analysis time from 3 days to under 5 minutes through automated data pipelines and interactive dashboards.",
-
-  "keyFeatures": [
-    {
-      "title": "Real-Time Multi-Brand Analytics Engine",
-      "description": "Django REST API with Pandas processing engine aggregating cross-brand training metrics. Processes 200K+ records with sub-second query response times using Redis caching layer."
-    },
-    {
-      "title": "Automated Data Processing Pipeline",
-      "description": "Celery-powered background workers with scheduled tasks for bulk data ingestion, validation, and ETL operations. Handles CSV imports up to 50MB with automatic error detection and rollback."
-    },
-    {
-      "title": "Interactive Visualization Dashboard",
-      "description": "React + Plotly frontend with drill-down capabilities, custom chart builder, and dynamic filtering. Supports 10+ visualization types with PDF/Excel export functionality."
-    },
-    {
-      "title": "Role-Based Access Control System",
-      "description": "JWT authentication with hierarchical permissions (Executive, Manager, Analyst). Multi-tenant architecture with department-level data isolation and audit logging."
-    }
-  ],
-
-  "technologies": ["react", "typescript", "python", "django", "pandas", "plotly", "postgresql", "redis", "celery", "docker"],
-
-  "explain": [
-    "Skoda, VW, and Audi had 200,000+ training records scattered across Excel files with no way to track trainer performance, employee retention, or training ROI. Managers spent 3+ days manually analyzing spreadsheets to answer basic questions about training effectiveness.",
-
-    "I built a full-stack analytics platform that automatically ingests training data, processes it through custom analytics pipelines, and generates interactive dashboards. The system provides real-time insights on trainer success rates, employee development patterns, and cross-brand comparisons.",
-
-    "Architected with Django backend for data processing, Celery workers for async tasks, and Redis for caching. React frontend with Plotly for interactive visualizations. Implemented role-based access allowing executives to see strategic metrics while team managers drill into department-specific insights. Deployed in Docker containers with CI/CD pipelines."
-  ]
-}
-```
+- Use **100% pure Markdown syntax only**. Zero HTML tags. No `<div>`, `<img>`, `<br>`, nothing. The renderer handles all styling automatically.
+- **No code snippets.** Do not include fenced code blocks — unless the project is a library intended for use by other developers, in which case concise usage examples are allowed.
+- Use **very few emojis.** One or two in the entire document at most. Only where they add genuine clarity.
+- **Write short paragraphs.** Maximum 2–3 sentences per paragraph. Break any longer thought into two separate paragraphs. Readers have short attention spans.
+- **No walls of text.** Every 1–2 paragraphs, there should be an image, a list, or a table to break the flow visually.
 
 ---
 
-## 🚀 Quick Checklist
+### Image Rules:
 
-Before you save each project, verify:
+The renderer automatically adds lightbox zoom, hover effects, and smooth fade-in to every image. The `alt` text is rendered as a stylish italic caption below the image. Always write descriptive alt text.
 
-- [ ] **Tagline**: Under 15 words, has emoji
-- [ ] **Description**: 2-3 sentences, includes metrics
-- [ ] **keyFeatures**: Exactly 4 features
-- [ ] **Feature titles**: Technical and specific
-- [ ] **Feature descriptions**: Mention actual tech used
-- [ ] **Technologies**: 8-12 main tech items
-- [ ] **Explain**: 3 paragraphs (Problem → Solution → Technical)
-- [ ] **No fluff**: Every word adds value
+**If no real image is available for a section but one is needed, add this exact placeholder:**
+`![Add image here — description of what this image should show](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Add+Image+Here)`
 
----
+The placeholder will appear as a visible grey box so the image can be swapped in the future.
 
-## 📝 Action Items
+For architectural diagrams, use placeholder images with a descriptive caption explaining what the diagram should illustrate. For example:
+`![System architecture showing how the data flows from ingestion to the dashboard](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Add+Image+Here)`
 
-1. ✅ **TypeScript types updated** - `KeyFeature` type added to types.ts
-2. ⏳ **Update projects.json** - Follow this guide for all 19 projects
-3. ⏳ **Test display** - Verify projects render correctly on /projects page
+For demo videos and YouTube walkthroughs, use standard markdown image syntax with a YouTube URL — the renderer will render it as a native video player automatically:
+`![Project Walkthrough](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)`
 
 ---
 
-## 💡 Pro Tips
+### Typography & Hierarchy:
 
-1. **Use metrics everywhere**: "10K+ users", "3 days → 5 minutes", "99.9% uptime"
-2. **Be specific about tech**: Don't say "database" - say "PostgreSQL with read replicas"
-3. **Show architecture**: Mention REST API, WebSocket, microservices, etc.
-4. **Quantify impact**: Numbers > adjectives always
-5. **Keep existing fields**: Don't delete `features`, `techStack`, or `projectFeatures` - they're used elsewhere
+- `# H1` — Document title only. One per file.
+- `## H2` — Primary sections (e.g., `## The Problem`, `## Architecture`, `## Results`).
+- `### H3` — Subsections inside a primary section.
+- **Bold text** — key metrics, technologies, and important outcomes.
+- `Inline code` — file names, package names, technical terms only.
+- Blockquotes `>` — taglines, key insights, or standout callouts.
 
 ---
 
-## 🔧 How to Use This Guide
+## Required Document Structure
 
-1. Open `/app/public/data/projects.json`
-2. For each project:
-   - Copy the "New Cleaner Structure" template above
-   - Fill in each field following the guidelines
-   - Use the before/after example as reference
-   - Run the checklist
-3. Save and test on localhost
+Follow this structure exactly. Do not skip any section. Every section should flow naturally into the next — the reader should feel like they're moving through a story, not scanning a checklist.
 
-Need help? The "AFTER" example above is production-ready - copy that structure!
+**1. Title & Hero Image**
+The H1 title, immediately followed by a wide hero image of the app UI or an abstract representation of the domain. Then a one-line tagline as a blockquote. The tagline should capture the spirit of the project in plain language — not a marketing slogan.
+
+**2. Why I Built This**
+This is the most personal section. 2–3 short paragraphs explaining the real motivation. What were you doing when the idea hit? What was frustrating you, or what were you curious about? Be honest — "I built this because I wanted to learn X" is a perfectly valid answer. This section sets the emotional context for everything that follows. Do not make it sound like a problem statement in a product spec.
+
+**3. The Problem**
+2–3 short paragraphs (2–3 sentences each) describing the real-world pain this project solves. Be specific. Use numbers where possible. This is the objective case for why the project exists — complement the personal "why" above with concrete, external evidence. Add a relevant placeholder or actual image after this section if useful.
+
+**4. The Solution**
+A short, punchy description of what you built and why it works. Write this as "here's what I decided to do and why" — not as a feature announcement. Follow with an architectural overview image (or placeholder). Then drill into the key components using H3 subsections — keep each subsection to 2–3 short paragraphs max, with images where relevant.
+
+**5. Key Features**
+A flat bullet list (`-`) of the most impressive features. Keep each point to one sentence. No sub-bullets.
+
+**6. Results & Impact**
+A Markdown table comparing before/after metrics (or showing key outcomes). Add 1–2 short paragraphs of narrative context around the table.
+
+**7. Challenges & What I Learned**
+This is mandatory and must be honest. Describe the hardest parts of building this — the things that broke, the assumptions that turned out to be wrong, the approach you had to abandon and rebuild. Write in first person: "I spent three days debugging X before realizing Y." Structure it as H3 subsections, one per major challenge. Each subsection should end with what you actually learned or how you solved it. A challenge without a resolution is just a complaint — show the growth.
+
+**8. Under the Hood — Technical Deep Dive** _(second-to-last section)_
+This is a mandatory section. It must go deep on the most technically interesting parts of the project. Structure it as:
+
+- A short intro paragraph explaining the technical challenge.
+- Use H3 subsections for each major technical concept (e.g., `### Data Pipeline`, `### Caching Strategy`, `### Access Control`).
+- Each subsection must include an architectural diagram — use a placeholder if needed, with a caption clearly describing what the diagram illustrates.
+- Keep the text in each subsection to 2–3 short paragraphs only.
+- Write from your perspective — "I chose X over Y because…", not "X was used because…".
+
+**9. Links** _(last section)_
+Live Demo, GitHub, etc. as plain markdown links.
+
+---
+
+**Once you have generated the markdown content, create a new file named `project-name.md` (replace `project-name` with the actual project slug) and write the entire generated content into it.**

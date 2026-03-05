@@ -1,7 +1,5 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
+  // --- Formatting ---
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -9,15 +7,80 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "editor.tabSize": 2,
+
+  // --- Linting & Code Actions ---
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.run": "onType",
+
+  // --- TypeScript ---
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.suggest.autoImports": true,
+  "typescript.inlayHints.parameterNames.enabled": "literals",
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "editor.inlayHints.enabled": "on",
+
+  // --- Editor Quality-of-Life ---
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.linkedEditing": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "boundary",
+  "editor.smoothScrolling": true,
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
   "editor.quickSuggestions": {
-    "strings": true
+    "strings": true,
+    "comments": false,
+    "other": true
   },
+
+  // --- Tailwind CSS ---
+  "tailwindCSS.validate": true,
+  "tailwindCSS.lint.cssConflict": "warning",
+  "tailwindCSS.lint.invalidApply": "error",
+  "tailwindCSS.lint.recommendedVariantOrder": "warning",
+  "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.experimental.classRegex": [
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
+
+  // --- Path Alias ---
+  "path-intellisense.mappings": {
+    "@": "${workspaceRoot}/app/src"
+  },
+
+  // --- File Explorer ---
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.tsx": "${capture}.test.tsx, ${capture}.stories.tsx",
+    "tailwind.config.*": "tailwind.config.*, postcss.config.*",
+    "vite.config.*": "vite.config.*, vitest.config.*",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, .npmrc",
+    "tsconfig.json": "tsconfig.*.json"
+  },
+  "explorer.sortOrder": "foldersNestsFiles",
+
+  // --- Git ---
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+
+  // --- File Exclusions ---
   "files.exclude": {
     "**/.git": true,
     "**/.DS_Store": true,
@@ -29,7 +92,10 @@
     "**/dist": true,
     "**/*.lock": true
   },
+
+  // --- Spell Check ---
   "cSpell.words": [
+    "acheivements",
     "aiosqlite",
     "animejs",
     "appbar",
@@ -40,6 +106,7 @@
     "elif",
     "Errorf",
     "FAISS",
+    "Fastapi",
     "gopool",
     "goroutines",
     "imagetools",
@@ -47,9 +114,12 @@
     "marocchino",
     "MPMC",
     "neighbouring",
+    "Nextdotjs",
+    "Nodedotjs",
     "numfmt",
     "numstat",
     "oneline",
+    "partialize",
     "Priyadarshi",
     "Pydantic",
     "Sched",

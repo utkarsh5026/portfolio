@@ -1,19 +1,25 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect } from "react";
+import { SiTypescript } from "react-icons/si";
+import { VscFolder, VscFolderOpened, VscMarkdown } from "react-icons/vsc";
 
 import Logo from "@/components/home/appbar/Logo";
+import { Tree } from "@/components/ui/tree";
 import { cn } from "@/lib/utils";
 import useProjectStore from "@/store/projects/projects-store";
 import type { Project } from "@/types";
+import { getProjectFileName } from "@/utils/project-slug";
 
-import { SectionType,useEditorContext } from "../context/explorer-context";
+import { SectionType, useEditorContext } from "../context/explorer-context";
 import OutlinePanel from "../outline/outline-panel";
-import { TreeFile, TreeFolder } from "../shared/editor-tree";
 
-const getProjectFileName = (name: string): string =>
-  name
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-]/g, "") + ".md";
+const folderIcon = <VscFolder className="w-[14px] h-[14px]" />;
+const folderOpenIcon = <VscFolderOpened className="w-[14px] h-[14px]" />;
+const tsIcon = <SiTypescript className="w-[14px] h-[14px]" />;
+const mdIcon = <VscMarkdown className="w-[14px] h-[14px]" />;
+
+function fileIcon(name: string) {
+  return name.endsWith(".ts") || name.endsWith(".tsx") ? tsIcon : mdIcon;
+}
 
 const Explorer: React.FC = () => {
   const {
@@ -25,9 +31,6 @@ const Explorer: React.FC = () => {
     openProject,
   } = useEditorContext();
 
-  const [rootOpen, setRootOpen] = useState(true);
-  const [projectsOpen, setProjectsOpen] = useState(true);
-
   const { projects, fetchProjects, isLoading } = useProjectStore();
 
   useEffect(() => {
@@ -37,6 +40,9 @@ const Explorer: React.FC = () => {
   const handleProjectClick = (project: Project) => {
     openProject(project);
   };
+
+  const activeId =
+    activeProjectId ?? (activeProjectId === null ? activeSection : null);
 
   return (
     <div
@@ -61,49 +67,47 @@ const Explorer: React.FC = () => {
 
       {/* File tree */}
       <div className="flex-1 overflow-y-auto px-0 pb-4 space-y-0 scrollbar-thin scrollbar-thumb-ctp-surface1 hover:scrollbar-thumb-ctp-surface2 scrollbar-track-transparent mt-1">
-        <TreeFolder
-          name="portfolio"
-          isOpen={rootOpen}
-          onToggle={() => setRootOpen((o) => !o)}
+        <Tree
+          activeId={activeId}
+          defaultExpanded={new Set(["portfolio", "projects"])}
         >
-          {files.map((file) => (
-            <TreeFile
-              key={file.section}
-              name={file.name}
-              depth={1}
-              isActive={
-                activeProjectId === null && activeSection === file.section
-              }
-              onClick={() => setActiveSection(file.section as SectionType)}
-            />
-          ))}
-
-          {/* projects/ folder */}
-          <TreeFolder
-            name="projects"
-            isOpen={projectsOpen}
-            depth={1}
-            onToggle={() => setProjectsOpen((o) => !o)}
-          >
-            {isLoading && (
-              <p
-                style={{ paddingLeft: "46px" }}
-                className="text-[11px] text-ctp-overlay0 py-1.5 font-source animate-pulse"
-              >
-                loading…
-              </p>
-            )}
-            {projects.map((project) => (
-              <TreeFile
-                key={project.name}
-                name={getProjectFileName(project.name)}
-                depth={2}
-                isActive={activeProjectId === project.name}
-                onClick={() => handleProjectClick(project)}
+          <Tree.Group id="portfolio" label="portfolio" depth={0} icon={folderIcon} iconOpen={folderOpenIcon} iconColor="text-ctp-blue">
+            {files.map((file) => (
+              <Tree.Item
+                key={file.section}
+                id={file.section}
+                depth={1}
+                label={file.name}
+                icon={fileIcon(file.name)}
+                iconColor="text-ctp-blue"
+                onClick={() => setActiveSection(file.section as SectionType)}
               />
             ))}
-          </TreeFolder>
-        </TreeFolder>
+
+            {/* projects/ folder */}
+            <Tree.Group id="projects" label="projects" depth={1} icon={folderIcon} iconOpen={folderOpenIcon} iconColor="text-ctp-blue">
+              {isLoading && (
+                <p
+                  style={{ paddingLeft: "46px" }}
+                  className="text-[11px] text-ctp-overlay0 py-1.5 font-source animate-pulse"
+                >
+                  loading…
+                </p>
+              )}
+              {projects.map((project) => (
+                <Tree.Item
+                  key={project.name}
+                  id={project.name}
+                  depth={2}
+                  label={getProjectFileName(project.name)}
+                  icon={mdIcon}
+                  iconColor="text-ctp-blue"
+                  onClick={() => handleProjectClick(project)}
+                />
+              ))}
+            </Tree.Group>
+          </Tree.Group>
+        </Tree>
       </div>
 
       {/* Outline panel */}

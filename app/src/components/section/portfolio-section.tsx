@@ -56,7 +56,7 @@ const Section: React.FC<SectionProps> = ({
   });
 
   return (
-    <OutlineNode id={id} label={label} level={0} icon={getIcon(icon)}>
+    <OutlineNode id={id} label={label} icon={getIcon(icon)}>
       <motion.div
         ref={sectionRef}
         id={id}
