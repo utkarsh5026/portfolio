@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-05T16:26:50.198Z",
+  "generatedAt": "2026-03-05T16:35:32.127Z",
   "sections": {
     "home": {
       "lastCommitHash": "049b164",
@@ -26,15 +26,15 @@
       "fileCount": 12
     },
     "skills": {
-      "lastCommitHash": "739cf2f",
-      "lastCommitDate": "2026-03-05 21:46:51 +0530",
-      "lastCommitMessage": "chore: remove unused usage data from skill categories",
+      "lastCommitHash": "a51da40",
+      "lastCommitDate": "2026-03-05 21:56:36 +0530",
+      "lastCommitMessage": "chore: remove unused journeySteps data and dead imports from skills/data.tsx",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 19,
-      "linesAdded": 3,
-      "linesDeleted": 107,
-      "totalAdded": 1912,
-      "totalDeleted": 1363,
+      "commitCount": 20,
+      "linesAdded": 1,
+      "linesDeleted": 63,
+      "totalAdded": 1913,
+      "totalDeleted": 1426,
       "fileCount": 5
     },
     "projects": {

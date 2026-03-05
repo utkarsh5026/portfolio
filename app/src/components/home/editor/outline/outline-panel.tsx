@@ -1,5 +1,11 @@
-import React, { useCallback, useEffect, useMemo } from "react";
+import { ChevronRight } from "lucide-react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { Tree } from "@/components/ui/tree";
 import useOutlineStore, {
   type OutlineItem,
@@ -47,7 +53,9 @@ function renderOutlineTree(
           label={item.label}
           icon={wrappedIcon}
           iconOpen={wrappedIcon}
-          iconColor={item.iconColor ? ctpColorClass("text", item.iconColor) : undefined}
+          iconColor={
+            item.iconColor ? ctpColorClass("text", item.iconColor) : undefined
+          }
           onClick={() => onClick(item)}
         >
           {renderOutlineTree(item.id, items, depth + 1, onClick)}
@@ -61,7 +69,9 @@ function renderOutlineTree(
         depth={depth}
         label={item.label}
         icon={wrappedIcon}
-        iconColor={item.iconColor ? ctpColorClass("text", item.iconColor) : undefined}
+        iconColor={
+          item.iconColor ? ctpColorClass("text", item.iconColor) : undefined
+        }
         onClick={() => onClick(item)}
       />
     );
@@ -75,6 +85,7 @@ const OutlinePanel: React.FC = () => {
   const highlightNode = useOutlineStore((s) => s.highlightNode);
 
   const [openItems, setOpenItems] = React.useState<Set<string>>(new Set());
+  const [isOpen, setIsOpen] = useState(true);
 
   const items = useMemo(() => [...itemsMap.values()], [itemsMap]);
 
@@ -93,6 +104,7 @@ const OutlinePanel: React.FC = () => {
       const element = document.getElementById(item.id);
       if (element) {
         element.scrollIntoView({ behavior: "smooth", block: "center" });
+        if (item.parentId === null) return;
         highlightNode(item.id);
 
         const msg = messages[Math.floor(Math.random() * messages.length)];
@@ -131,16 +143,28 @@ const OutlinePanel: React.FC = () => {
     [highlightNode],
   );
 
+  const header = (
+    <CollapsibleTrigger className="flex items-center gap-1 px-4 h-6 w-full text-[11px] uppercase tracking-wider text-ctp-subtext0 font-semibold hover:text-ctp-text cursor-pointer transition-colors duration-200">
+      <ChevronRight
+        className="w-3 h-3 transition-transform duration-150 shrink-0"
+        style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)" }}
+      />
+      OUTLINE
+    </CollapsibleTrigger>
+  );
+
   if (!activeSection || !sectionRoot) {
     return (
-      <div className="h-full flex flex-col bg-ctp-mantle border-r border-ctp-surface0 w-64">
-        <div className="flex items-center px-4 h-6 text-[11px] uppercase tracking-wider text-ctp-subtext0 font-semibold hover:text-ctp-text cursor-pointer transition-colors duration-200">
-          OUTLINE
-        </div>
-        <div className="flex items-center justify-center h-full text-[13px] text-ctp-subtext0 px-4 text-center">
+      <Collapsible
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        className="h-full flex flex-col bg-ctp-mantle border-r border-ctp-surface0 w-64"
+      >
+        {header}
+        <CollapsibleContent className="flex items-center justify-center flex-1 text-[13px] text-ctp-subtext0 px-4 text-center">
           No outline information available.
-        </div>
-      </div>
+        </CollapsibleContent>
+      </Collapsible>
     );
   }
 
@@ -152,12 +176,14 @@ const OutlinePanel: React.FC = () => {
   );
 
   return (
-    <div className="h-full flex flex-col bg-ctp-mantle border-r border-ctp-surface0 w-64 select-none">
-      <div className="flex items-center px-4 h-6 text-[11px] uppercase tracking-wider text-ctp-subtext0 font-semibold hover:text-ctp-text cursor-pointer transition-colors duration-200">
-        OUTLINE
-      </div>
+    <Collapsible
+      open={isOpen}
+      onOpenChange={setIsOpen}
+      className="h-full flex flex-col bg-ctp-mantle border-r border-ctp-surface0 w-64 select-none"
+    >
+      {header}
 
-      <div className="overflow-y-auto flex-1 pb-2">
+      <CollapsibleContent className="overflow-y-auto flex-1 pb-2">
         <Tree
           activeId={activeHighlightId}
           expanded={openItems}
@@ -173,7 +199,11 @@ const OutlinePanel: React.FC = () => {
               label={sectionRoot.label}
               icon={wrapIcon(sectionRoot.icon)}
               iconOpen={wrapIcon(sectionRoot.icon)}
-              iconColor={sectionRoot.iconColor ? ctpColorClass("text", sectionRoot.iconColor) : undefined}
+              iconColor={
+                sectionRoot.iconColor
+                  ? ctpColorClass("text", sectionRoot.iconColor)
+                  : undefined
+              }
               onClick={() => handleItemClick(sectionRoot)}
             >
               {treeChildren}
@@ -185,13 +215,17 @@ const OutlinePanel: React.FC = () => {
               depth={0}
               label={sectionRoot.label}
               icon={wrapIcon(sectionRoot.icon)}
-              iconColor={sectionRoot.iconColor ? ctpColorClass("text", sectionRoot.iconColor) : undefined}
+              iconColor={
+                sectionRoot.iconColor
+                  ? ctpColorClass("text", sectionRoot.iconColor)
+                  : undefined
+              }
               onClick={() => handleItemClick(sectionRoot)}
             />
           )}
         </Tree>
-      </div>
-    </div>
+      </CollapsibleContent>
+    </Collapsible>
   );
 };
 
