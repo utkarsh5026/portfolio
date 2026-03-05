@@ -3,6 +3,8 @@ import path from "path";
 import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
 import { imagetools } from "vite-imagetools";
+import checker from "vite-plugin-checker";
+import compression from "vite-plugin-compression";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
@@ -23,6 +25,9 @@ export default defineConfig({
       brotliSize: true,
     }),
     imagetools(),
+    checker({ typescript: true }),
+    compression({ algorithm: "gzip", ext: ".gz" }),
+    compression({ algorithm: "brotliCompress", ext: ".br" }),
     VitePWA({
       registerType: "autoUpdate",
       workbox: {
