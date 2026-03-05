@@ -8,14 +8,19 @@ import React, {
   useState,
 } from "react";
 import { FaFolder, FaFolderOpen } from "react-icons/fa";
+import { SiTypescript } from "react-icons/si";
 import {
   VscChevronDown,
   VscChevronRight,
+  VscFolder,
+  VscFolderOpened,
+  VscMarkdown,
   VscSymbolClass,
   VscSymbolMethod,
   VscSymbolProperty,
 } from "react-icons/vsc";
 
+import { Tree } from "@/components/ui/tree";
 import { cn } from "@/lib/utils";
 import type { HeadingNode } from "@/store";
 import { useMarkdownHeadingStore } from "@/store";
@@ -31,9 +36,11 @@ import {
   type Tab,
   useEditorContext,
 } from "../context/explorer-context";
-import { TreeFile, TreeFolder } from "../shared/editor-tree";
 import { getIconColor, sectionIconMap } from "../tabs/tab-style";
 import TreeDropdown from "./tree-dropdown";
+
+const folderIcon = <VscFolder className="w-[14px] h-[14px]" />;
+const folderOpenIcon = <VscFolderOpened className="w-[14px] h-[14px]" />;
 
 interface BreadcrumbSegment {
   label: string;
@@ -60,53 +67,26 @@ const LEVEL_META: Record<1 | 2 | 3, { icon: React.ReactNode; color: string }> =
     3: { icon: <VscSymbolProperty />, color: "text-ctp-peach" },
   };
 
-interface HeadingRowProps {
-  node: HeadingNode;
-  depth: number;
-  activeId: string | null;
-  onNavigate: (id: string) => void;
-}
-
-const HeadingRow: React.FC<HeadingRowProps> = ({
-  node,
-  depth,
-  activeId,
-  onNavigate,
-}) => {
-  const meta = LEVEL_META[node.level];
-  const isActive = node.id === activeId;
-
-  return (
-    <>
-      <button
+function renderHeadingTree(
+  nodes: HeadingNode[],
+  depth: number,
+  onNavigate: (id: string) => void,
+): React.ReactNode[] {
+  return nodes.map((node) => (
+    <React.Fragment key={node.id}>
+      <Tree.Item
+        id={node.id}
+        depth={depth}
+        label={node.text}
+        icon={LEVEL_META[node.level].icon}
+        iconColor={LEVEL_META[node.level].color}
         onClick={() => onNavigate(node.id)}
-        style={{ paddingLeft: `${16 + depth * 14}px` }}
-        className={cn(
-          "group w-full text-left py-[5px] pr-3 text-[13px] flex items-center gap-1.5 cursor-pointer outline-none font-source",
-          isActive
-            ? "bg-ctp-surface1/60 text-ctp-text"
-            : "text-ctp-subtext0 hover:text-ctp-text hover:bg-ctp-surface0/50",
-        )}
-      >
-        <span className={cn("w-[14px] h-[14px] flex-shrink-0", meta.color)}>
-          {meta.icon}
-        </span>
-        <span className="truncate whitespace-nowrap">{node.text}</span>
-      </button>
-
+      />
       {node.children.length > 0 &&
-        node.children.map((child) => (
-          <HeadingRow
-            key={child.id}
-            node={child}
-            depth={depth + 1}
-            activeId={activeId}
-            onNavigate={onNavigate}
-          />
-        ))}
-    </>
-  );
-};
+        renderHeadingTree(node.children, depth + 1, onNavigate)}
+    </React.Fragment>
+  ));
+}
 
 interface SegmentProps {
   seg: BreadcrumbSegment;
@@ -134,7 +114,6 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
   activeHeadingId,
 }) => {
   const [open, setOpen] = useState(false);
-  const [projectsOpen, setProjectsOpen] = useState(true);
   const projects = useProjectStore((s) => s.projects);
 
   const isHeading = !!seg.headingLevel;
@@ -181,12 +160,17 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
     );
   }
 
-  const projectFiles = projects.map((p) => (
-    <TreeFile
+  const tsIcon = <SiTypescript className="w-[14px] h-[14px]" />;
+  const mdIcon = <VscMarkdown className="w-[14px] h-[14px]" />;
+
+  const projectFileItems = projects.map((p) => (
+    <Tree.Item
       key={p.name}
-      name={getProjectFileName(p.name)}
+      id={p.name}
       depth={treeVariant === "projects" ? 1 : 2}
-      isActive={activeProjectId === p.name}
+      label={getProjectFileName(p.name)}
+      icon={mdIcon}
+      iconColor="text-ctp-blue"
       onClick={() => {
         onSelectProject(p.name);
         setOpen(false);
@@ -196,54 +180,61 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
 
   const treeContent = isHeading ? (
     <>
-      {headingDropdownNodes?.map((node) => (
-        <HeadingRow
-          key={node.id}
-          node={node}
-          depth={0}
+      {headingDropdownNodes && headingDropdownNodes.length > 0 ? (
+        <Tree
           activeId={activeHeadingId ?? null}
-          onNavigate={(id) => {
+          expandMode="all-open"
+          indentStep={14}
+          indentBase={16}
+        >
+          {renderHeadingTree(headingDropdownNodes, 0, (id: string) => {
             document.getElementById(id)?.scrollIntoView({
               behavior: "smooth",
               block: "start",
             });
             setOpen(false);
-          }}
-        />
-      ))}
-      {(!headingDropdownNodes || headingDropdownNodes.length === 0) && (
+          })}
+        </Tree>
+      ) : (
         <span className="block px-4 py-3 text-xs text-ctp-overlay0 italic">
           No headings found
         </span>
       )}
     </>
   ) : treeVariant === "portfolio" ? (
-    <TreeFolder name="portfolio" isOpen={true} depth={0} onToggle={() => {}}>
-      {editorFiles.map((f) => (
-        <TreeFile
-          key={f.section}
-          name={f.name}
-          depth={1}
-          isActive={activeProjectId === null && activeSection === f.section}
-          onClick={() => {
-            onSelectSection(f.section);
-            setOpen(false);
-          }}
-        />
-      ))}
-      <TreeFolder
-        name="projects"
-        isOpen={projectsOpen}
-        depth={1}
-        onToggle={() => setProjectsOpen((v) => !v)}
-      >
-        {projectFiles}
-      </TreeFolder>
-    </TreeFolder>
+    <Tree
+      activeId={activeProjectId ?? (activeProjectId === null ? activeSection : null)}
+      defaultExpanded={new Set(["portfolio", "projects"])}
+    >
+      <Tree.Group id="portfolio" label="portfolio" depth={0} icon={folderIcon} iconOpen={folderOpenIcon} iconColor="text-ctp-blue" collapsible={false}>
+        {editorFiles.map((f) => (
+          <Tree.Item
+            key={f.section}
+            id={f.section}
+            depth={1}
+            label={f.name}
+            icon={f.name.endsWith(".ts") || f.name.endsWith(".tsx") ? tsIcon : mdIcon}
+            iconColor="text-ctp-blue"
+            onClick={() => {
+              onSelectSection(f.section);
+              setOpen(false);
+            }}
+          />
+        ))}
+        <Tree.Group id="projects" label="projects" depth={1} icon={folderIcon} iconOpen={folderOpenIcon} iconColor="text-ctp-blue">
+          {projectFileItems}
+        </Tree.Group>
+      </Tree.Group>
+    </Tree>
   ) : (
-    <TreeFolder name="projects" isOpen={true} depth={0} onToggle={() => {}}>
-      {projectFiles}
-    </TreeFolder>
+    <Tree
+      activeId={activeProjectId}
+      defaultExpanded={new Set(["projects"])}
+    >
+      <Tree.Group id="projects" label="projects" depth={0} icon={folderIcon} iconOpen={folderOpenIcon} iconColor="text-ctp-blue" collapsible={false}>
+        {projectFileItems}
+      </Tree.Group>
+    </Tree>
   );
 
   return (

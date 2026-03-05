@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-05T12:26:49.761Z",
+  "generatedAt": "2026-03-05T13:07:54.584Z",
   "commits": [
     {
-      "hash": "68880acbeee4d03cde6668f7c9bbee533f50f60a",
-      "shortHash": "68880ac",
+      "hash": "c64d44ff26e7487fb9a9c3908c3df2992a5058e5",
+      "shortHash": "c64d44f",
       "message": "feat: add heading navigation dropdowns to editor breadcrumbs",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-05T17:47:44+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 599,
-      "deletions": 191,
+      "insertions": 618,
+      "deletions": 210,
       "filesChanged": 12
     },
     {
@@ -262,7 +262,7 @@
   "languageStats": [
     {
       "language": "TypeScript",
-      "count": 233,
+      "count": 231,
       "color": "#89b4fa"
     },
     {

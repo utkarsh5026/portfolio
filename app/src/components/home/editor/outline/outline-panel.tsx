@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect,useMemo } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 
-import { type OutlineItem,useOutline } from "./context/outline-context";
-import OutlineItemComponent from "./outline-item";
+import { Tree } from "@/components/ui/tree";
+
+import { type OutlineItem, useOutline } from "./context/outline-context";
 
 const messages = [
   { icon: "🎯", text: "Found it!" },
@@ -17,8 +18,50 @@ const messages = [
   { icon: "🪄", text: "Abracadabra!" },
 ];
 
+function renderOutlineTree(
+  parentId: string,
+  items: OutlineItem[],
+  depth: number,
+  onClick: (item: OutlineItem) => void,
+) {
+  const children = items
+    .filter((item) => item.parentId === parentId)
+    .sort((a, b) => items.indexOf(a) - items.indexOf(b));
+
+  return children.map((item) => {
+    const subChildren = items.filter((i) => i.parentId === item.id);
+    if (subChildren.length > 0) {
+      return (
+        <Tree.Group
+          key={item.id}
+          id={item.id}
+          depth={depth}
+          label={item.label}
+          icon={item.icon}
+          iconOpen={item.icon}
+          iconColor=""
+          onClick={() => onClick(item)}
+        >
+          {renderOutlineTree(item.id, items, depth + 1, onClick)}
+        </Tree.Group>
+      );
+    }
+    return (
+      <Tree.Item
+        key={item.id}
+        id={item.id}
+        depth={depth}
+        label={item.label}
+        icon={item.icon}
+        onClick={() => onClick(item)}
+      />
+    );
+  });
+}
+
 const OutlinePanel: React.FC = () => {
-  const { outlineItems, currentSection, highlightNode } = useOutline();
+  const { outlineItems, currentSection, highlightNode, activeHighlightId } =
+    useOutline();
   const [openItems, setOpenItems] = React.useState<Set<string>>(new Set());
 
   useEffect(() => {
@@ -26,23 +69,6 @@ const OutlinePanel: React.FC = () => {
       new Set([currentSection, ...outlineItems.map((item) => item.id)]),
     );
   }, [outlineItems, currentSection]);
-
-  const toggleItem = (itemId: string) => {
-    setOpenItems((prev) => {
-      const next = new Set(prev);
-      if (next.has(itemId)) next.delete(itemId);
-      else next.add(itemId);
-      return next;
-    });
-  };
-
-  const getChildren = useCallback(
-    (itemId: string) =>
-      outlineItems
-        .filter((item) => item.parentId === itemId)
-        .sort((a, b) => outlineItems.indexOf(a) - outlineItems.indexOf(b)),
-    [outlineItems],
-  );
 
   const rootItems = useMemo(
     () =>
@@ -119,17 +145,48 @@ const OutlinePanel: React.FC = () => {
       </div>
 
       <div className="overflow-y-auto flex-1 pb-2">
-        {rootItems.map((item) => (
-          <OutlineItemComponent
-            key={item.id}
-            item={item}
-            depth={0}
-            openItems={openItems}
-            onToggle={toggleItem}
-            onClick={handleItemClick}
-            getChildren={getChildren}
-          />
-        ))}
+        <Tree
+          activeId={activeHighlightId}
+          expanded={openItems}
+          onExpandedChange={setOpenItems}
+          guideLines
+          rowHeight={22}
+        >
+          {rootItems.map((item) => {
+            const children = renderOutlineTree(
+              item.id,
+              outlineItems,
+              1,
+              handleItemClick,
+            );
+            if (children.length > 0) {
+              return (
+                <Tree.Group
+                  key={item.id}
+                  id={item.id}
+                  depth={0}
+                  label={item.label}
+                  icon={item.icon}
+                  iconOpen={item.icon}
+                  iconColor=""
+                  onClick={() => handleItemClick(item)}
+                >
+                  {children}
+                </Tree.Group>
+              );
+            }
+            return (
+              <Tree.Item
+                key={item.id}
+                id={item.id}
+                depth={0}
+                label={item.label}
+                icon={item.icon}
+                onClick={() => handleItemClick(item)}
+              />
+            );
+          })}
+        </Tree>
       </div>
     </div>
   );
