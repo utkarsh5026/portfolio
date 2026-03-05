@@ -1,85 +1,80 @@
-# Utkarsh Priyadarshi
-
 <div align="center">
-  <p><em>Software Developer · Open Source Enthusiast</em></p>
+  <h1 align="center">Utkarsh Priyadarshi</h1>
+  
+  <p align="center">
+    <em>Software Developer · Open Source Enthusiast</em>
+  </p>
 
-  <a href="https://utkarsh5026.github.io/">
-    <img src="https://img.shields.io/badge/Live%20Site-Visit-6c91c3?style=for-the-badge&logo=github&logoColor=white" alt="Live Site" />
-  </a>
-  &nbsp;
-  <a href="https://github.com/utkarsh5026/portfolio">
-    <img src="https://img.shields.io/badge/Source-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
-  </a>
-  &nbsp;
-  <img src="https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" />
-  &nbsp;
-  <img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-  &nbsp;
-  <img src="https://img.shields.io/badge/Vite-5.x-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  <p align="center">
+    <a href="https://utkarsh5026.github.io/">
+      <img src="https://img.shields.io/badge/Live%20Site-Visit-6c91c3?style=for-the-badge&logo=github&logoColor=white" alt="Live Site" />
+    </a>
+    &nbsp;
+    <a href="https://github.com/utkarsh5026/portfolio">
+      <img src="https://img.shields.io/badge/Source-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+    </a>
+    &nbsp;
+    <img src="https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" />
+    &nbsp;
+    <img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+    &nbsp;
+    <img src="https://img.shields.io/badge/Vite-5.x-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  </p>
 </div>
 
 ---
 
-A VS Code–inspired developer portfolio built with React, TypeScript, and Tailwind CSS. Features a fully interactive code editor UI, custom terminal, smooth animations, and a 3D scene — all wrapped in the Catppuccin Mocha color palette.
+<p align="center">
+  <strong>A VS Code–inspired developer portfolio built with React, TypeScript, and Tailwind CSS.</strong><br>
+  Features a fully interactive code editor UI, custom terminal, smooth animations, and a 3D scene — all wrapped in the beautiful Catppuccin Mocha color palette.
+</p>
 
-## Preview
+## ✨ Features
 
-![Profile Header](./images/profile_header.png)
+- 💻 **VS Code UI** — Authentic file explorer, draggable tabs, status bar, and a toggleable terminal (<code>Ctrl + \`</code>)
+- ⌨️ **Interactive Terminal** — Custom commands supported: `help`, `about`, `projects`, `skills`, `contact`
+- 🌌 **3D Visuals** — Immersive Three.js scene integrated seamlessly into the portfolio
+- 📊 **Data Visualizations** — Powerful D3-powered charts for skills and tech journey sections
+- 💫 **Rich Animations** — Framer Motion, GSAP, and AnimeJS for fluid, layered, and performant transitions
+- 🚀 **Project Showcase** — Detailed project cards with descriptions, tech tags, GitHub links, and live demos
+- 📝 **Articles Section** — Highlights technical writing, blog posts, and thought leadership
+- 📱 **Responsive & Accessible** — Polished experience across all screen sizes, built on Radix UI primitives
+- 🎨 **Dark Theme** — Aesthetically pleasing Catppuccin Mocha palette applied throughout
+- ⚡ **PWA Ready** — Configured for installability, offline support, and lightning-fast loads
 
-![Skills](./images/skills.png)
+## 🛠️ Tech Stack
 
-![Tech Journey](./images/tech_joourney.png)
+### 🏗️ Core Layers
 
-![Featured Project](./images/featured.png)
+| Layer            | Technology              |
+| :--------------- | :---------------------- |
+| **UI Framework** | React 18.3 + TypeScript |
+| **Build Tool**   | Vite 5                  |
+| **Styling**      | Tailwind CSS 3          |
+| **Routing**      | React Router DOM 7      |
+| **State Mgt**    | Zustand                 |
 
-![Projects](./images/projects.png)
+### 🧩 UI & Components
 
-## Features
+| Purpose                 | Library                                         |
+| :---------------------- | :---------------------------------------------- |
+| **Headless Primitives** | Radix UI _(Dialog, Tabs, Tooltip, Dropdown, …)_ |
+| **Component System**    | shadcn/ui                                       |
+| **Icons**               | Lucide React + React Icons                      |
+| **Drawer**              | Vaul                                            |
+| **Layouts**             | react-resizable-panels                          |
 
-- **VS Code UI** — File explorer, draggable tabs, status bar, and a toggleable terminal (`` Ctrl+` ``)
-- **Interactive Terminal** — Custom commands: `help`, `about`, `projects`, `skills`, `contact`
-- **3D Visuals** — Three.js scene integrated into the portfolio
-- **Data Visualizations** — D3-powered charts for skills and tech journey sections
-- **Rich Animations** — Framer Motion, GSAP, and AnimeJS for fluid, layered transitions
-- **Project Showcase** — Cards with descriptions, tech tags, GitHub links, and live demos
-- **Articles Section** — Highlights technical writing and blog posts
-- **Responsive & Accessible** — Works across all screen sizes; built on Radix UI primitives
-- **Dark Theme** — Catppuccin Mocha palette throughout
-- **PWA Ready** — Configured with `vite-plugin-pwa` for installability and offline support
+### 🎬 Animations & 3D
 
-## Tech Stack
+| Purpose                    | Library                 |
+| :------------------------- | :---------------------- |
+| **Declarative Animations** | Framer Motion 12        |
+| **Timeline Animations**    | AnimeJS 3               |
+| **DOM Animations**         | GSAP 3                  |
+| **3D Rendering**           | Three.js + three-stdlib |
+| **Data Viz**               | D3 7                    |
 
-### Core
-
-| Layer | Technology |
-| --- | --- |
-| UI Framework | React 18.3 + TypeScript |
-| Build Tool | Vite 5 |
-| Styling | Tailwind CSS 3 |
-| Routing | React Router DOM 7 |
-| State | Zustand |
-
-### UI & Components
-
-| Purpose | Library |
-| --- | --- |
-| Headless Primitives | Radix UI (Dialog, Tabs, Tooltip, Dropdown, …) |
-| Component System | shadcn/ui |
-| Icons | Lucide React + React Icons |
-| Drawer | Vaul |
-| Resizable Panels | react-resizable-panels |
-
-### Animations & 3D
-
-| Purpose | Library |
-| --- | --- |
-| Declarative Animations | Framer Motion 12 |
-| Timeline Animations | AnimeJS 3 |
-| DOM Animations | GSAP 3 |
-| 3D Rendering | Three.js + three-stdlib |
-| Data Visualization | D3 7 |
-
-## Project Structure
+## 📁 Project Structure
 
 ```text
 app/src/
@@ -98,41 +93,47 @@ app/src/
 │   ├── section/        # Shared section layout components
 │   ├── ui/             # shadcn/ui components
 │   └── utils/          # Shared utility components
-├── lib/                # Helper functions
-├── types/              # Global TypeScript types
-└── App.tsx
+├── lib/                # Helper functions, utilities
+├── types/              # Global TypeScript interfaces and types
+└── App.tsx             # Main entry point
 ```
 
-## Getting Started
+## 🚀 Getting Started
+
+To get a local copy up and running, follow these simple steps:
 
 ```bash
-# Clone
+# 1. Clone the repository
 git clone https://github.com/utkarsh5026/portfolio.git
 cd portfolio/app
 
-# Install
+# 2. Install dependencies
 npm install
 
-# Dev server → http://localhost:5173
+# 3. Start the development server
 npm run dev
 
-# Production build
+# 4. Build for production
 npm run build
 ```
 
-## Deployment
+_The app will be running at `http://localhost:5173`._
 
-Deployed on **GitHub Pages** at [utkarsh5026.github.io](https://utkarsh5026.github.io/).
+## 🌍 Deployment
 
-## Contact
+The portfolio is automatically deployed on **GitHub Pages** and is live at [utkarsh5026.github.io](https://utkarsh5026.github.io/).
 
-| Platform | Link |
-| --- | --- |
-| Email | [utkarshpriyadarshi5026@gmail.com](mailto:utkarshpriyadarshi5026@gmail.com) |
-| GitHub | [@utkarsh5026](https://github.com/utkarsh5026) |
-| LinkedIn | [Utkarsh Priyadarshi](https://www.linkedin.com/in/utkarsh-priyadarshi-8b5a731b9/) |
-| Twitter / X | [@UtkarshPriyad10](https://x.com/UtkarshPriyad10) |
+## 📫 Contact & Links
 
-## License
+Let's connect! Feel free to reach out through any of these platforms:
 
-MIT — open source and free to use.
+| Platform           | Link                                                                              |
+| :----------------- | :-------------------------------------------------------------------------------- |
+| 📧 **Email**       | [utkarshpriyadarshi5026@gmail.com](mailto:utkarshpriyadarshi5026@gmail.com)       |
+| 🐙 **GitHub**      | [@utkarsh5026](https://github.com/utkarsh5026)                                    |
+| 💼 **LinkedIn**    | [Utkarsh Priyadarshi](https://www.linkedin.com/in/utkarsh-priyadarshi-8b5a731b9/) |
+| 🐦 **Twitter / X** | [@UtkarshPriyad10](https://x.com/UtkarshPriyad10)                                 |
+
+## 📄 License
+
+Distributed under the **MIT License**. Open source and free to use or learn from!
