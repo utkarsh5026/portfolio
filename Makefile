@@ -37,9 +37,11 @@ preview:
 	@$(PY) makefile.py preview
 
 # Build
-.PHONY: build build-force analyze analyze-verbose gen-git-stats
+.PHONY: build build-force analyze analyze-verbose gen-git-stats gen-git-commits
 gen-git-stats:
 	@$(PY) makefile.py gen-git-stats
+gen-git-commits:
+	@$(PY) makefile.py gen-git-commits
 build:
 	@$(PY) makefile.py build
 build-force:

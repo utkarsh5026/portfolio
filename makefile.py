@@ -112,6 +112,12 @@ def target_gen_git_stats():
     print_success("Git stats generated!")
 
 
+def target_gen_git_commits():
+    print_header("Generating Git Commits")
+    _app_cmd(["npm", "run", "gen:git-commits"])
+    print_success("Git commits generated!")
+
+
 def target_build():
     print_header("Building for Production")
     _app_cmd(["npm", "run", "build"])
@@ -299,6 +305,7 @@ TARGETS = {
     "preview": (target_preview, "Preview production build locally", "Development"),
     # Build
     "gen-git-stats": (target_gen_git_stats, "Generate git statistics", "Build"),
+    "gen-git-commits": (target_gen_git_commits, "Generate git commits JSON", "Build"),
     "build": (target_build, "Build for production", "Build"),
     "build-force": (
         target_build_force,

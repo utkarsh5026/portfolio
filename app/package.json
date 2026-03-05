@@ -5,8 +5,9 @@
   "type": "module",
   "homepage": "https://utkarsh5026.github.io/",
   "scripts": {
-    "postinstall": "git config core.hooksPath ../.githooks || true",
+    "prepare": "cd .. && husky",
     "gen:git-stats": "node ../scripts/generate-git-stats.js",
+    "gen:git-commits": "node ../scripts/generate-git-commits.js",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "force-build": "npx tsc --build --force && vite build --force",
@@ -65,6 +66,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.26",
+    "husky": "^9.1.7",
     "postcss": "^8.5.6",
     "rollup-plugin-visualizer": "^5.13.1",
     "sharp": "^0.34.5",
