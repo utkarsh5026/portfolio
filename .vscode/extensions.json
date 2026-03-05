@@ -1,0 +1,26 @@
+{
+  "recommendations": [
+    // Core tooling
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss",
+
+    // TypeScript & path navigation
+    "christian-kohler.path-intellisense",
+
+    // Error visibility
+    "usernamehw.errorlens",
+
+    // Git
+    "eamodio.gitlens",
+
+    // Spell check
+    "streetsidesoftware.code-spell-checker",
+
+    // Icons (Iconify — used in this project)
+    "antfu.iconify",
+
+    // Env files
+    "mikestead.dotenv"
+  ]
+}

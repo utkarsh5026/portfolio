@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-03-05T04:50:22.934Z",
+  "generatedAt": "2026-03-05T09:50:17.829Z",
   "commits": [
+    {
+      "hash": "288e817d6be6d98dae9e58286bd6890de1ae1f57",
+      "shortHash": "288e817",
+      "message": "feat: upgrade code block theme to VS Code Dark+ with language icons",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T10:20:04+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 136,
+      "deletions": 81,
+      "filesChanged": 5
+    },
     {
       "hash": "8d8bdc57633d30479023283f893f6639eaf5506c",
       "shortHash": "8d8bdc5",
@@ -228,22 +240,10 @@
       "insertions": 99,
       "deletions": 65,
       "filesChanged": 3
-    },
-    {
-      "hash": "1530ac218b0b4cbd0c4a530261957bc742b463d6",
-      "shortHash": "1530ac2",
-      "message": "style: reduce font sizes in work section experience header and achievements",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T03:51:02+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 16,
-      "deletions": 18,
-      "filesChanged": 3
     }
   ],
   "commitsByDate": {
-    "2026-03-05": 29,
+    "2026-03-05": 30,
     "2026-03-04": 17,
     "2026-03-03": 28,
     "2026-03-02": 17,
@@ -276,14 +276,14 @@
       "color": "#cba6f7"
     },
     {
+      "language": "JSON",
+      "count": 13,
+      "color": "#f9e2af"
+    },
+    {
       "language": "Markdown",
       "count": 13,
       "color": "#89dceb"
-    },
-    {
-      "language": "JSON",
-      "count": 12,
-      "color": "#f9e2af"
     },
     {
       "language": "JavaScript",
