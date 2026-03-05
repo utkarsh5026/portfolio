@@ -201,9 +201,75 @@ async function main() {
     );
   }
 
+  // ── commitsByDate: bucket all commits from last 3 months by YYYY-MM-DD ──
+  console.log("\n📅 Generating commit-by-date heatmap data…");
+  const rawDates = run(
+    'git log --format="%aI" --since="3 months ago"',
+    repoRoot,
+  );
+  const commitsByDate = {};
+  if (rawDates) {
+    for (const line of rawDates.split("\n").filter(Boolean)) {
+      const day = line.trim().slice(0, 10); // YYYY-MM-DD
+      commitsByDate[day] = (commitsByDate[day] || 0) + 1;
+    }
+  }
+  console.log(`  ${Object.keys(commitsByDate).length} active days`);
+
+  // ── languageStats: count tracked files by extension ──
+  console.log("\n📊 Generating language stats…");
+  const EXT_MAP = {
+    ".ts": "TypeScript",
+    ".tsx": "TypeScript",
+    ".js": "JavaScript",
+    ".jsx": "JavaScript",
+    ".css": "CSS",
+    ".scss": "CSS",
+    ".html": "HTML",
+    ".json": "JSON",
+    ".md": "Markdown",
+    ".svg": "SVG",
+  };
+  const LANG_COLORS = {
+    TypeScript: "#89b4fa",
+    JavaScript: "#a6e3a1",
+    CSS: "#cba6f7",
+    HTML: "#fab387",
+    JSON: "#f9e2af",
+    Markdown: "#89dceb",
+    SVG: "#f5c2e7",
+    Other: "#6c7086",
+  };
+
+  const rawFiles = run("git ls-files", repoRoot);
+  const langCounts = {};
+  if (rawFiles) {
+    for (const f of rawFiles.split("\n").filter(Boolean)) {
+      const ext = path.extname(f).toLowerCase();
+      const lang = EXT_MAP[ext] || "Other";
+      langCounts[lang] = (langCounts[lang] || 0) + 1;
+    }
+  }
+
+  const sorted = Object.entries(langCounts)
+    .sort((a, b) => b[1] - a[1]);
+  const top = sorted.slice(0, 6);
+  const otherCount = sorted.slice(6).reduce((sum, [, c]) => sum + c, 0);
+  const languageStats = top.map(([language, count]) => ({
+    language,
+    count,
+    color: LANG_COLORS[language] || LANG_COLORS.Other,
+  }));
+  if (otherCount > 0) {
+    languageStats.push({ language: "Other", count: otherCount, color: LANG_COLORS.Other });
+  }
+  console.log(`  ${languageStats.length} language groups`);
+
   const output = {
     generatedAt: new Date().toISOString(),
     commits,
+    commitsByDate,
+    languageStats,
   };
 
   const outPath = path.join(repoRoot, "app/public/git-commits.json");

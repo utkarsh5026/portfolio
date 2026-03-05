@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
-import type { SectionType } from "./context/explorer-context";
+import { useEffect, useState } from "react";
 
-// ─── Types ──────────────────────────────────────────────────────────────────
+import type { SectionType } from "./context/explorer-context";
 
 export interface SectionGitStats {
   lastCommitHash: string;
