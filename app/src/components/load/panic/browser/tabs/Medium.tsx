@@ -1,31 +1,32 @@
-import React, { useState } from "react";
 import {
-  BookOpen,
-  Heart,
-  Share2,
-  MessageSquare,
   Bookmark,
-  MoreHorizontal,
-  Coffee,
-  Code,
-  Monitor,
-  Briefcase,
-  Server,
-  Zap,
-  Clock,
-  Calendar,
-  Star,
-  Check,
-  Layout,
-  Globe,
-  Image,
-  FileText,
-  Link,
+  BookOpen,
   Box,
+  Briefcase,
+  Calendar,
+  Check,
+  Clock,
+  Code,
+  Coffee,
+  FileText,
+  Globe,
+  Heart,
+  Image,
+  Layout,
+  Link,
+  MessageSquare,
+  Monitor,
+  MoreHorizontal,
+  Server,
+  Share2,
+  Star,
   Users,
+  Zap,
 } from "lucide-react";
-import { mediumData } from "./data";
+import React, { useState } from "react";
 import { FaFigma, FaGithub } from "react-icons/fa";
+
+import { mediumData } from "./data";
 
 const { relatedArticles } = mediumData;
 

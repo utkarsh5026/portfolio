@@ -12,9 +12,10 @@
  * Uses anime.js for those smooth spring animations.
  */
 
-import React, { useEffect, useRef } from "react";
-import anime from "animejs";
 import "./logo.css";
+
+import anime from "animejs";
+import React, { useEffect, useRef } from "react";
 
 interface LogoProps {
   centerDot?: boolean;

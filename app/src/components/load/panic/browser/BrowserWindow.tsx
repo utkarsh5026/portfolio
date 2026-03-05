@@ -1,17 +1,20 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { browserTabs } from "./tabs";
-import { cn } from "@/lib/utils";
-import { useEffect, useState, useCallback, useMemo, useRef } from "react";
-import { SiGooglechrome } from "react-icons/si";
 import "./BrowserWindow.css";
-import Twitter from "./tabs/Twitter";
+
+import { useCallback, useEffect, useMemo, useRef,useState } from "react";
+import { SiGooglechrome } from "react-icons/si";
+
+import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+
 import MacosTrafficController from "../../macos/macos-traffic-controller";
 import BrowserActions from "./BrowserActions";
 import BrowserTabs from "./BrowserTabs";
-import MediumPortfolio from "./tabs/Medium";
-import RedditWebDev from "./tabs/Reddit";
+import { browserTabs } from "./tabs";
 import { AwwwardsPortfolios } from "./tabs/AwwardsPortfolios";
 import { GitHubPortfolios } from "./tabs/Github";
+import MediumPortfolio from "./tabs/Medium";
+import RedditWebDev from "./tabs/Reddit";
+import Twitter from "./tabs/Twitter";
 
 interface BrowserWindowProps {
   activeWindow: string | null;

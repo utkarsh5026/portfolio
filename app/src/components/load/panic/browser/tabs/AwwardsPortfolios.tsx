@@ -1,18 +1,19 @@
-import React, { useState } from "react";
 import {
-  Globe,
   Award,
-  Star,
-  Code,
-  Users,
-  Eye,
-  Heart,
-  ExternalLink,
-  TrendingUp,
-  Square,
-  Triangle,
   Circle,
+  Code,
+  ExternalLink,
+  Eye,
+  Globe,
+  Heart,
+  Square,
+  Star,
+  TrendingUp,
+  Triangle,
+  Users,
 } from "lucide-react";
+import React, { useState } from "react";
+
 import { awaardssData, type AwwwardsPortfoliosProject } from "./data";
 
 const { portfolioProjects, trendingElements } = awaardssData;

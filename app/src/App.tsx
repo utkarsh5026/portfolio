@@ -1,8 +1,8 @@
-import { Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "./components/base/ThemeProvider";
+import { Route,Routes } from "react-router-dom";
 
-import NotFound from "./components/load/not-found";
+import { ThemeProvider } from "./components/base/ThemeProvider";
 import MainPortfolio from "./components/load/main-portfolio";
+import NotFound from "./components/load/not-found";
 
 function App() {
   // This message will only appear in development (removed by terser in production)

@@ -1,6 +1,7 @@
 import React from "react";
-import ProfileAvatar from "./profile-avatar";
+
 import styles from "./profile.module.css";
+import ProfileAvatar from "./profile-avatar";
 
 /**
  * ProfilePicture component displays a profile picture with animations.

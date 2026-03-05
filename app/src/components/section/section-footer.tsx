@@ -1,6 +1,7 @@
 import React from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
+
 import { sectionColorSchemes } from "./sec-utils";
 
 type SectionColorScheme =

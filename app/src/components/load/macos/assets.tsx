@@ -1,13 +1,13 @@
+import { FileText, Folder, ListTodo,User } from "lucide-react";
+import { BiLogoVisualStudio } from "react-icons/bi";
 import { FaChrome, FaTerminal } from "react-icons/fa";
 import {
   SiGithub,
-  SiSlack,
-  SiSpotify,
   SiNotion,
   SiOpenai,
+  SiSlack,
+  SiSpotify,
 } from "react-icons/si";
-import { BiLogoVisualStudio } from "react-icons/bi";
-import { User, Folder, FileText, ListTodo } from "lucide-react";
 
 export const dockApps = [
   { icon: <FaChrome size={28} />, name: "Chrome" },

@@ -1,10 +1,11 @@
+import { ArrowRight,ExternalLink } from "lucide-react";
 import React from "react";
-import { ExternalLink, ArrowRight } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+
+import Reveal from "@/components/animations/reveal/Reveal";
 import TechBadge from "@/components/base/TechBadge";
 import { Button } from "@/components/ui/button";
 import { Project } from "@/types";
-import { FaGithub } from "react-icons/fa";
-import Reveal from "@/components/animations/reveal/Reveal";
 
 interface ProjectContentProps {
   activeTab: "overview" | "features";

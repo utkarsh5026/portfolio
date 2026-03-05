@@ -1,23 +1,25 @@
-import React, { useState, lazy, Suspense } from "react";
-import Section from "@/components/section/portfolio-section";
+import { motion } from "framer-motion";
 import {
-  User,
   BookOpen,
-  GraduationCap,
-  Code2,
   Brain,
+  Code2,
+  GraduationCap,
   Heart,
   Target,
+  User,
 } from "lucide-react";
+import React, { lazy, Suspense,useState } from "react";
+
 import Reveal from "@/components/animations/reveal/Reveal";
-import useMobile from "@/hooks/use-mobile";
+import Section from "@/components/section/portfolio-section";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import { motion } from "framer-motion";
+import useMobile from "@/hooks/use-mobile";
+
 import AboutSectionCard from "./about-section-card";
 
 // Lazy load section components for better mobile performance

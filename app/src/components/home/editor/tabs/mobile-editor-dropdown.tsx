@@ -1,7 +1,10 @@
+import { ExternalLink,Menu } from "lucide-react";
 import React from "react";
-import { cn } from "@/lib/utils";
+import { FaCode,FaFilePdf, FaGithub, FaLinkedin } from "react-icons/fa";
+
+import Logo from "@/components/home/appbar/Logo";
 import type { SectionType } from "@/components/home/editor/context/explorer-context";
-import { sectionIconMap, getIconColor } from "./tab-style";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,10 +12,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { Menu, ExternalLink } from "lucide-react";
-import { FaGithub, FaLinkedin, FaFilePdf, FaCode } from "react-icons/fa";
-import Logo from "@/components/home/appbar/Logo";
+import { cn } from "@/lib/utils";
+
+import { getIconColor,sectionIconMap } from "./tab-style";
 
 interface MobileEditorDropdownProps {
   sectionKeys: SectionType[];

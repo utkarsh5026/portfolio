@@ -1,5 +1,7 @@
 import React from "react";
+
 import Reveal from "@/components/animations/reveal/Reveal";
+
 import styles from "./profile.module.css";
 
 /**

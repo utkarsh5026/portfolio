@@ -1,8 +1,8 @@
 import {
-  FaTwitter,
   FaGithub,
-  FaReddit,
   FaMedium,
+  FaReddit,
+  FaTwitter,
 } from "react-icons/fa";
 import { SiAwwwards } from "react-icons/si";
 export const browserTabs = [

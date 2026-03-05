@@ -1,7 +1,9 @@
-import Reveal from "@/components/animations/reveal/Reveal";
-import { MdWork, MdTrendingUp } from "react-icons/md";
 import { FaHeart, FaRocket } from "react-icons/fa";
+import { MdTrendingUp,MdWork } from "react-icons/md";
+
+import Reveal from "@/components/animations/reveal/Reveal";
 import { Button } from "@/components/ui/button";
+
 import styles from "./contact.module.css";
 
 const opportunities = [

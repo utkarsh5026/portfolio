@@ -1,5 +1,7 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useEffect, useMemo,useState } from "react";
+
 import { cn } from "@/lib/utils";
+
 import styles from "./FakePortfolio.module.css";
 
 const loadingMessages = [

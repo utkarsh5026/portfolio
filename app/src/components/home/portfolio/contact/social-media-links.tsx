@@ -1,8 +1,10 @@
-import Reveal from "@/components/animations/reveal/Reveal";
-import { MdEmail } from "react-icons/md";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { ArrowUpRight } from "lucide-react";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+
+import Reveal from "@/components/animations/reveal/Reveal";
 import { OutlineNode } from "@/components/home/editor/outline";
+
 import styles from "./contact.module.css";
 
 const socialLinks = [

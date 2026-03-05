@@ -11,54 +11,54 @@
  * just import the technologies object and grab what you need!
  */
 
+import { FaAws, FaChartBar, FaDatabase,FaLinux, FaNode } from "react-icons/fa";
+import { GiCobra } from "react-icons/gi";
+import { GoCommandPalette } from "react-icons/go";
+import { MdHttp } from "react-icons/md";
 import {
-  SiGo,
-  SiReact,
-  SiFastapi,
-  SiPython,
-  SiMongodb,
-  SiKubernetes,
-  SiTypescript,
-  SiDocker,
-  SiPostgresql,
-  SiSqlite,
-  SiJavascript,
-  SiDjango,
-  SiFlask,
-  SiBittorrent,
+  SiApollographql,
   SiAxios,
+  SiBittorrent,
+  SiCss3,
+  SiDjango,
+  SiDocker,
+  SiFastapi,
+  SiFirebase,
+  SiFlask,
+  SiFramer,
+  SiGin,
+  SiGit,
+  SiGo,
+  SiGraphql,
+  SiJavascript,
+  SiJest,
+  SiKubernetes,
+  SiLangchain,
+  SiLucide,
+  SiMongodb,
   SiMui,
   SiMysql,
-  SiPlotly,
   SiPandas,
-  SiCss3,
-  SiSvg,
-  SiLangchain,
-  SiSqlalchemy,
+  SiPlotly,
   SiPoetry,
-  SiRich,
-  SiShadcnui,
-  SiLucide,
-  SiFramer,
-  SiVite,
-  SiTailwindcss,
+  SiPostgresql,
+  SiPython,
+  SiReact,
   SiRedux,
-  SiGin,
-  SiFirebase,
-  SiGit,
-  SiGraphql,
-  SiApollographql,
+  SiRich,
   SiRust,
-  SiWebassembly,
-  SiJest,
+  SiShadcnui,
+  SiSqlalchemy,
+  SiSqlite,
+  SiSvg,
+  SiTailwindcss,
+  SiTypescript,
+  SiVite,
   SiVitest,
+  SiWebassembly,
 } from "react-icons/si";
-import { FaAws, FaLinux, FaNode, FaChartBar, FaDatabase } from "react-icons/fa";
-import { VscTerminalPowershell, VscEditorLayout } from "react-icons/vsc";
 import { TbApi } from "react-icons/tb";
-import { GoCommandPalette } from "react-icons/go";
-import { GiCobra } from "react-icons/gi";
-import { MdHttp } from "react-icons/md";
+import { VscEditorLayout,VscTerminalPowershell } from "react-icons/vsc";
 
 export const technologies = {
   golang: {

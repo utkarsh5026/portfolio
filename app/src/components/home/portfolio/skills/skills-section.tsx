@@ -1,8 +1,10 @@
 import { Sparkles } from "lucide-react";
+
+import { OutlineNode } from "@/components/home/editor/outline";
+import Section from "@/components/section/portfolio-section";
+
 import { skillCategories } from "./data";
 import SkillCard from "./skill-card/skill-card";
-import Section from "@/components/section/portfolio-section";
-import { OutlineNode } from "@/components/home/editor/outline";
 
 const SkillsSection: React.FC = () => {
   return (

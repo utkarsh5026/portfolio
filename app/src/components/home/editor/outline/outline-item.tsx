@@ -1,8 +1,10 @@
 import React from "react";
+import { VscChevronRight } from "react-icons/vsc";
+
+import { cn } from "@/lib/utils";
+
 import type { OutlineItem } from "./context/outline-context";
 import { useOutline } from "./context/outline-context";
-import { VscChevronRight } from "react-icons/vsc";
-import { cn } from "@/lib/utils";
 
 interface Props {
   item: OutlineItem;

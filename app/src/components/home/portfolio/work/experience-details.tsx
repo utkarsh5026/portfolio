@@ -1,10 +1,10 @@
+import { AnimatePresence,motion } from "framer-motion";
 import React, { useState } from "react";
-import { experiences } from "./experienceDump";
-import { motion, AnimatePresence } from "framer-motion";
+import { FaCode, FaHandPointer } from "react-icons/fa";
+
+import Reveal from "@/components/animations/reveal/Reveal";
 import TechBadge from "@/components/base/TechBadge";
 import { OutlineNode } from "@/components/home/editor/outline";
-import Reveal from "@/components/animations/reveal/Reveal";
-import { FaCode, FaHandPointer } from "react-icons/fa";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Drawer,
@@ -13,9 +13,11 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import ExperienceHeader from "./experience-header";
-import Achievements from "./work-acheivements";
 import useMobile from "@/hooks/use-mobile";
+
+import ExperienceHeader from "./experience-header";
+import { experiences } from "./experienceDump";
+import Achievements from "./work-acheivements";
 
 interface ExperienceDetailsProps {
   selectedExp: number;

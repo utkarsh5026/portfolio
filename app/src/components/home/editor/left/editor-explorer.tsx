@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { cn } from "@/lib/utils";
-import { useEditorContext, SectionType } from "../context/explorer-context";
+import React, { useEffect,useState } from "react";
+
 import Logo from "@/components/home/appbar/Logo";
-import OutlinePanel from "../outline/outline-panel";
+import { cn } from "@/lib/utils";
 import useProjectStore from "@/store/projects/projects-store";
 import type { Project } from "@/types";
+
+import { SectionType,useEditorContext } from "../context/explorer-context";
+import OutlinePanel from "../outline/outline-panel";
 import { TreeFile, TreeFolder } from "../shared/editor-tree";
 
 const getProjectFileName = (name: string): string =>

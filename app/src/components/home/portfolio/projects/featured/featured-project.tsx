@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import type { Project } from "@/types";
 import { FaStar } from "react-icons/fa";
-import ProjectContent from "./project-content";
-import Certificate from "./project-certificate";
-import FeaturedHeader from "./featured-project-header";
+
 import Reveal from "@/components/animations/reveal/Reveal";
 import { useMobileContext } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
+import type { Project } from "@/types";
+
+import FeaturedHeader from "./featured-project-header";
+import Certificate from "./project-certificate";
+import ProjectContent from "./project-content";
 
 interface FeaturedProjectProps {
   featuredProject: Project;

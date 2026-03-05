@@ -1,30 +1,30 @@
 import React from "react";
+import { GrTest } from "react-icons/gr";
+import { MdApi,MdAutoGraph } from "react-icons/md";
 import {
-  SiReact,
-  SiTypescript,
-  SiTailwindcss,
-  SiRedux,
-  SiReactquery,
-  SiNodedotjs,
-  SiExpress,
-  SiPython,
-  SiGo,
-  SiMongodb,
-  SiPostgresql,
-  SiRedis,
-  SiMysql,
-  SiGraphql,
   SiAmazon,
-  SiGooglecloud,
   SiDocker,
-  SiKubernetes,
-  SiGithubactions,
+  SiExpress,
   SiGit,
   SiGithub,
+  SiGithubactions,
+  SiGo,
+  SiGooglecloud,
+  SiGraphql,
+  SiKubernetes,
+  SiMongodb,
+  SiMysql,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiReactquery,
+  SiRedis,
+  SiRedux,
+  SiTailwindcss,
+  SiTypescript,
 } from "react-icons/si";
-import { MdAutoGraph, MdApi } from "react-icons/md";
 import { VscSymbolMethod } from "react-icons/vsc";
-import { GrTest } from "react-icons/gr";
 
 export const skillIcons: Record<string, React.ElementType> = {
   React: SiReact,

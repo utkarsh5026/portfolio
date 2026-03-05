@@ -1,6 +1,7 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
 import { SiOpenai } from "react-icons/si";
+
+import { Button } from "@/components/ui/button";
 
 /**
  * ChatHeader is a React component that displays the header section of a chat interface.

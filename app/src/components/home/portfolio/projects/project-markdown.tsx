@@ -1,13 +1,12 @@
 import React from "react";
-import { cn } from "@/lib/utils";
-import useProjectStore from "@/store/projects/projects-store";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { FaExternalLinkAlt,FaGithub } from "react-icons/fa";
 import { HiOutlineBookOpen, HiOutlineCode } from "react-icons/hi";
 
 import { technologies } from "@/components/base/technologies";
-
 import { MarkdownRender } from "@/components/home/editor/markdown-renderer";
 import { Heading, Text } from "@/components/ui/text";
+import { cn } from "@/lib/utils";
+import useProjectStore from "@/store/projects/projects-store";
 
 function nameToSlug(name: string): string {
   return name

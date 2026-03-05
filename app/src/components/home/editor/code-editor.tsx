@@ -1,16 +1,18 @@
 import React, { lazy, useMemo } from "react";
-import Explorer from "./left/editor-explorer";
-import type { SectionType } from "./context/explorer-context";
-import SideBar from "./left/side-bar";
-import StatusBar from "./status-bar";
-import CodeContent from "./code-content";
-import EditorTabs from "./tabs/editor-tabs";
-import EditorBreadcrumbs from "./breadcrumbs/editor-breadcrumbs";
-import { OutlineProvider } from "./outline";
-import { cn } from "@/lib/utils";
-import { useEditorContext } from "./context/explorer-context";
-import Terminal from "./terminal/Terminal";
+
 import useMobile from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
+
+import EditorBreadcrumbs from "./breadcrumbs/editor-breadcrumbs";
+import CodeContent from "./code-content";
+import type { SectionType } from "./context/explorer-context";
+import { useEditorContext } from "./context/explorer-context";
+import Explorer from "./left/editor-explorer";
+import SideBar from "./left/side-bar";
+import { OutlineProvider } from "./outline";
+import StatusBar from "./status-bar";
+import EditorTabs from "./tabs/editor-tabs";
+import Terminal from "./terminal/Terminal";
 
 const TerminalHeader = lazy(
   () => import("@/components/home/portfolio/intro/personal-intro"),

@@ -1,10 +1,13 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import "./macos.css";
+
+import React, { useCallback,useEffect, useRef, useState } from "react";
+
 import { cn } from "@/lib/utils";
-import { formatDate, formatTime } from "./utils";
+
 import { desktopIcons } from "./assets";
 import DesktopIcon from "./desktop-icon";
-import "./macos.css";
 import MacOsDock from "./macos-dock";
+import { formatDate, formatTime } from "./utils";
 
 type MacosAppOptions = {
   wallpaper?: string;

@@ -1,19 +1,21 @@
+import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import {
+  HiOutlineCode,
   HiOutlineDocumentDownload,
   HiOutlineMail,
-  HiOutlineCode,
 } from "react-icons/hi";
+
 import { useEditorContext } from "@/components/home/editor";
-import React from "react";
-import { cn } from "@/lib/utils";
-import useMobile from "@/hooks/use-mobile";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import useMobile from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
+
 import styles from "./profile.module.css";
 
 type Section = "contact" | "projects";

@@ -1,28 +1,28 @@
+import { Code2, Database, Heart,Layers, Server, Zap } from "lucide-react";
+import { FaJava, FaTools } from "react-icons/fa";
 import {
-  SiJavascript,
-  SiTypescript,
-  SiPython,
-  SiGo,
-  SiReact,
-  SiNextdotjs,
-  SiTailwindcss,
+  SiDjango,
+  SiDocker,
   SiExpress,
   SiFastapi,
-  SiDjango,
   SiFlask,
   SiGin,
-  SiPostgresql,
+  SiGit,
+  SiGo,
+  SiJavascript,
+  SiJenkins,
+  SiKubernetes,
   SiMongodb,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPython,
+  SiReact,
   SiRedis,
   SiSqlite,
-  SiDocker,
-  SiKubernetes,
-  SiGit,
-  SiJenkins,
-  SiNodedotjs,
+  SiTailwindcss,
+  SiTypescript,
 } from "react-icons/si";
-import { FaJava, FaTools } from "react-icons/fa";
-import { Code2, Database, Layers, Server, Zap, Heart } from "lucide-react";
 
 export const skillCategories = [
   {

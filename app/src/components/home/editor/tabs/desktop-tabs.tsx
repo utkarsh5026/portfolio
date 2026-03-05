@@ -1,11 +1,13 @@
-import React, { useRef, useEffect } from "react";
-import { cn } from "@/lib/utils";
-import { getIconColor, sectionIconMap, getActiveTabColor } from "./tab-style";
 import { motion } from "framer-motion";
-import { VscMarkdown, VscClose } from "react-icons/vsc";
+import React, { useEffect,useRef } from "react";
+import { VscClose,VscMarkdown } from "react-icons/vsc";
+
+import { cn } from "@/lib/utils";
+
+import type { SectionTab,Tab } from "../context/explorer-context";
 import { useEditorContext } from "../context/explorer-context";
-import type { Tab, SectionTab } from "../context/explorer-context";
 import { TabActions } from "./tab-actions";
+import { getActiveTabColor,getIconColor, sectionIconMap } from "./tab-style";
 
 const DesktopTabs: React.FC = () => {
   const {

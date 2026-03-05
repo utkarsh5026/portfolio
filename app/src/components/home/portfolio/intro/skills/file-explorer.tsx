@@ -1,19 +1,20 @@
 import { ChevronDown, ChevronRight, Folder, FolderOpen } from "lucide-react";
-import { FileItem } from "./project-structure";
+import { FaFileAlt } from "react-icons/fa";
 import {
-  SiReact,
-  SiJavascript,
-  SiPython,
-  SiGo,
-  SiRust,
   SiCss3,
   SiDocker,
-  SiKubernetes,
   SiGit,
-  SiTerraform,
+  SiGo,
+  SiJavascript,
   SiJson,
+  SiKubernetes,
+  SiPython,
+  SiReact,
+  SiRust,
+  SiTerraform,
 } from "react-icons/si";
-import { FaFileAlt } from "react-icons/fa";
+
+import { FileItem } from "./project-structure";
 
 const getFileIcon = (extension?: string) => {
   const iconProps = { size: 16, className: "text-current" };

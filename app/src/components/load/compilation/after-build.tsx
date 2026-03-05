@@ -1,4 +1,5 @@
 import React from "react";
+
 import Logo from "@/components/home/appbar/Logo";
 
 const AfterBuild: React.FC = () => {

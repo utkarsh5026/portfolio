@@ -1,6 +1,7 @@
+import { Reveal, type RevealEffect } from "@/components/animations";
+
 import { skillCategories } from "../data";
 import ExpandedSkillsContent from "./expanded-content";
-import { Reveal, type RevealEffect } from "@/components/animations";
 
 interface SkillCardProps {
   category: (typeof skillCategories)[number];

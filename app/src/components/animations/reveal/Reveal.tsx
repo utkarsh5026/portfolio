@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import styles from "./Reveal.module.css";
-import {
-  type RevealEffect,
-  type Direction,
-  getDurationClass,
-  getDelayClass,
-  getClassForEffect,
-} from "./effects";
+
 import useMobile from "@/hooks/use-mobile";
+
+import {
+  type Direction,
+  getClassForEffect,
+  getDelayClass,
+  getDurationClass,
+  type RevealEffect,
+} from "./effects";
+import styles from "./Reveal.module.css";
 
 interface RevealProps {
   children: React.ReactNode;

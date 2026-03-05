@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import { cn } from "@/lib/utils";
-import SketchBorder from "@/components/ui/sketch-border";
-import { HiOutlineExternalLink } from "react-icons/hi";
 import { FaGithub } from "react-icons/fa";
-import useProjectStore from "@/store/projects/projects-store";
+import { HiOutlineExternalLink } from "react-icons/hi";
+import { useLocation,useNavigate } from "react-router-dom";
+
 import { useEditorStore } from "@/components/home/editor/context/editor-store";
-import { useNavigate, useLocation } from "react-router-dom";
+import SketchBorder from "@/components/ui/sketch-border";
+import { cn } from "@/lib/utils";
+import useProjectStore from "@/store/projects/projects-store";
 
 const cardColors = ["mauve", "green", "blue", "peach"] as const;
 

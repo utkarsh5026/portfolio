@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { BookOpen, Lightbulb } from "lucide-react";
-import Section from "@/components/section/portfolio-section";
-import { currentLearningTechnologies } from "./data";
-import LearningModal from "./learning-project-drawer";
-import LearningJourney from "./learning-journey/learning-journey";
-import type { TechnologyLearning } from "@/types";
+import React, { useEffect,useState } from "react";
+
 import Reveal from "@/components/animations/reveal/Reveal";
+import Section from "@/components/section/portfolio-section";
+import type { TechnologyLearning } from "@/types";
+
+import { currentLearningTechnologies } from "./data";
 import LearningCard from "./learning-card";
+import LearningJourney from "./learning-journey/learning-journey";
+import LearningModal from "./learning-project-drawer";
 
 type Category = (typeof currentLearningTechnologies)[number]["category"];
 

@@ -1,16 +1,17 @@
-import { TechnologyLearning } from "@/types";
+import { ArrowRight, Code2,Target } from "lucide-react";
 import React from "react";
-import { ArrowRight, Target, Code2 } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+
+import Reveal from "@/components/animations/reveal/Reveal";
 import {
   Drawer,
   DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
   DrawerFooter,
+  DrawerHeader,
   DrawerOverlay,
+  DrawerTitle,
 } from "@/components/ui/drawer";
-import { FaGithub } from "react-icons/fa";
-import Reveal from "@/components/animations/reveal/Reveal";
+import { TechnologyLearning } from "@/types";
 
 interface LearningModalProps {
   selectedTech: TechnologyLearning | null;

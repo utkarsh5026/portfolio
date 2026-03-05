@@ -1,4 +1,4 @@
-import { SiJavascript, SiCss3, SiReact } from "react-icons/si";
+import { SiCss3, SiJavascript, SiReact } from "react-icons/si";
 
 interface SideBarProps {
   file: string;

@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import Section from "@/components/section/portfolio-section";
-import { experiences } from "./experienceDump";
 import { motion } from "framer-motion";
-import Reveal from "@/components/animations/reveal/Reveal";
 import { Building } from "lucide-react";
-import ExperienceTabs from "./experience-tabs";
+import React, { useState } from "react";
+
+import Reveal from "@/components/animations/reveal/Reveal";
+import Section from "@/components/section/portfolio-section";
+
 import ExperienceDetails from "./experience-details";
+import ExperienceTabs from "./experience-tabs";
+import { experiences } from "./experienceDump";
 
 const EXPERIENCE_ID = "experience";
 

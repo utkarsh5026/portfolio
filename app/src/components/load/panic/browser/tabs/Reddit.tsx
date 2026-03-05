@@ -1,26 +1,27 @@
-import React, { useRef, useState } from "react";
 import {
-  MessageSquare,
-  ThumbsUp,
-  Share2,
-  Bookmark,
+  ArrowUp,
   Award,
-  Eye,
-  User,
-  ChevronUp,
+  BarChart2,
+  Bell,
+  Bookmark,
+  Check,
   ChevronDown,
+  ChevronUp,
+  Code,
+  ExternalLink,
+  Eye,
+  Filter,
+  HelpCircle,
+  MessageSquare,
   MoreHorizontal,
   Search,
-  Bell,
-  ExternalLink,
-  Code,
+  Share2,
+  ThumbsUp,
+  User,
   Zap,
-  Check,
-  HelpCircle,
-  ArrowUp,
-  Filter,
-  BarChart2,
 } from "lucide-react";
+import React, { useRef, useState } from "react";
+
 import { redditData } from "./data";
 
 // Define interfaces for our data structures

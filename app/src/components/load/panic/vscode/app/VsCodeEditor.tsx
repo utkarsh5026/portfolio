@@ -1,4 +1,5 @@
 import React from "react";
+
 import { CodeType } from "../code";
 import { getSyntaxClass } from "./syntax";
 

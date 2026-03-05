@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
 import anime from "animejs";
-import { cn } from "@/lib/utils";
-import { Card, CardContent } from "@/components/ui/card";
+import React, { useCallback,useEffect, useRef, useState } from "react";
+
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+
 import { messages } from "./content";
 import {
-  MESSAGE_APPEAR_INTERVAL,
   CURTAIN_DURATION,
+  MESSAGE_APPEAR_INTERVAL,
   VISITOR_INIT_DELAY,
 } from "./timings";
 

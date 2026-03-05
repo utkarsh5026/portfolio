@@ -1,11 +1,13 @@
-import React, { useMemo, useEffect } from "react";
-import { useOutline } from "@/components/home/editor/outline/";
+import React, { useEffect,useMemo } from "react";
+
 import {
-  useEditorContext,
   type SectionType,
+  useEditorContext,
 } from "@/components/home/editor/context/explorer-context";
-import MobileEditorDropdown from "./mobile-editor-dropdown";
+import { useOutline } from "@/components/home/editor/outline/";
+
 import DesktopTabs from "./desktop-tabs";
+import MobileEditorDropdown from "./mobile-editor-dropdown";
 
 interface EditorTabsProps {
   sections: Record<SectionType, React.ReactNode>;

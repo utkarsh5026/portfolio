@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { FiPlay, FiX } from "react-icons/fi";
 
 import { cn } from "@/lib/utils";
-import { FiPlay, FiX } from "react-icons/fi";
 
 /** Extract a YouTube video ID from common YouTube URL formats */
 function getYouTubeId(url: string): string | null {

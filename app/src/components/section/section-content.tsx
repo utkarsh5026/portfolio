@@ -1,10 +1,12 @@
-import { sectionColorSchemes } from "./sec-utils";
 import { LucideIcon } from "lucide-react";
 import { forwardRef, useCallback } from "react";
+
 import { cn } from "@/lib/utils";
-import SectionHeader from "./section-header";
-import SectionFooter from "./section-footer";
+
+import { sectionColorSchemes } from "./sec-utils";
 import styles from "./section-content.module.css";
+import SectionFooter from "./section-footer";
+import SectionHeader from "./section-header";
 
 type SectionColorScheme =
   (typeof sectionColorSchemes)[keyof typeof sectionColorSchemes];

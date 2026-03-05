@@ -1,25 +1,27 @@
 import React, { useMemo } from "react";
-import { useEditorContext, type SectionType } from "./context/explorer-context";
-import { cn } from "@/lib/utils";
 import {
-  FaGitAlt,
-  FaNewspaper,
-  FaGraduationCap,
-  FaEnvelope,
   FaBriefcase,
-  FaStar,
-  FaUser,
+  FaCodeBranch,
+  FaEnvelope,
+  FaGitAlt,
+  FaGraduationCap,
   FaHome,
   FaLaptopCode,
-  FaCodeBranch,
+  FaNewspaper,
+  FaStar,
+  FaUser,
 } from "react-icons/fa";
-import { VscMarkdown, VscGitCommit } from "react-icons/vsc";
 import { GoFileCode } from "react-icons/go";
+import { VscGitCommit,VscMarkdown } from "react-icons/vsc";
+
+import { cn } from "@/lib/utils";
+
+import { type SectionType,useEditorContext } from "./context/explorer-context";
 import {
-  useGitStats,
   relativeTime,
-  stalenessColor,
   type SectionGitStats,
+  stalenessColor,
+  useGitStats,
 } from "./use-git-stats";
 
 interface SectionMeta {

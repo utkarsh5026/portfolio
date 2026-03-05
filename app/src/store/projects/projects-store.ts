@@ -1,4 +1,5 @@
 import { create } from "zustand";
+
 import type { Project } from "@/types";
 
 function nameToSlug(name: string): string {

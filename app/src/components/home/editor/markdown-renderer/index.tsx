@@ -1,13 +1,13 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
-
 import type { Components } from "react-markdown";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
+
+import { Heading, Text } from "@/components/ui/text";
 
 import { CodeBlock } from "./code-bock";
 import { MarkdownImage } from "./media";
-import { Heading, Text } from "@/components/ui/text";
 
 const markdownComponents: Components = {
   img: ({ src, alt }) => <MarkdownImage src={src} alt={alt} />,

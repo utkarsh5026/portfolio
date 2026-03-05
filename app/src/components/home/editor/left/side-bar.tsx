@@ -1,18 +1,20 @@
 import React, { useState } from "react";
+import { BsLayoutSidebarInset } from "react-icons/bs";
 import {
   FaCode,
+  FaEye,
   FaFolder,
   FaFolderOpen,
   FaGithub,
-  FaTerminal,
   FaLinkedin,
-  FaEye,
+  FaTerminal,
 } from "react-icons/fa";
 import { VscSourceControl } from "react-icons/vsc";
-import { BsLayoutSidebarInset } from "react-icons/bs";
-import { cn } from "@/lib/utils";
-import { useEditorContext } from "../context/explorer-context";
+
 import GhostButton from "@/components/ui/ghost-button";
+import { cn } from "@/lib/utils";
+
+import { useEditorContext } from "../context/explorer-context";
 import GitCommitsPanel from "../git-commits/git-commits-panel";
 
 const SideBar: React.FC = () => {

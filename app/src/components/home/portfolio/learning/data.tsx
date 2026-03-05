@@ -1,17 +1,18 @@
-import type { TechnologyLearning } from "@/types";
 import {
-  Database,
-  Cpu,
-  Code,
-  Cloud,
   Brain,
+  Cloud,
+  Code,
+  Code2,
+  Cpu,
+  Database,
+  Lightbulb,
+  Server,
+  Smartphone,
   Terminal,
   Video,
-  Smartphone,
-  Server,
-  Lightbulb,
-  Code2,
 } from "lucide-react";
+
+import type { TechnologyLearning } from "@/types";
 
 export const currentLearningTechnologies: TechnologyLearning[] = [
   {

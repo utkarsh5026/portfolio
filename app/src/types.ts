@@ -1,4 +1,5 @@
 import React from "react";
+
 import type { TechName } from "./components/base/technologies";
 
 export type TechnologyLearning = {

@@ -1,63 +1,63 @@
 import {
-  Layers,
-  // Frontend & UI
-  Globe,
-  Palette,
-  Smartphone,
-  Layout,
-  Eye,
-  // Backend & APIs
-  Server,
-  Database,
-  Cloud,
-  Zap,
-  Shield,
-  // Languages & Frameworks
-  Code2,
-  Terminal,
-  FileCode,
-  Cpu,
-  // Tools & DevOps
-  Wrench,
-  Settings,
-  Package,
-  GitBranch,
-  // Analytics & Data
-  BarChart3,
-  TrendingUp,
-  PieChart,
-  // Storage & Cache
-  HardDrive,
-  Archive,
-  // Testing & Quality
-  TestTube,
-  CheckCircle,
-  Bug,
-  // Mobile & Native
-  Monitor,
-  TabletSmartphone,
-  // Machine Learning & AI
-  Brain,
-  Bot,
-  // Communication & Real-time
-  MessageSquare,
-  Radio,
-  Wifi,
-  // Payment & Commerce
-  CreditCard,
-  ShoppingCart,
-  // Media & Content
-  Image,
-  Video,
-  Music,
-  // Security & Auth
-  Lock,
-  Key,
-  UserCheck,
   // Monitoring & Logging
   Activity,
-  Search,
   AlertCircle,
+  Archive,
+  // Analytics & Data
+  BarChart3,
+  Bot,
+  // Machine Learning & AI
+  Brain,
+  Bug,
+  CheckCircle,
+  Cloud,
+  // Languages & Frameworks
+  Code2,
+  Cpu,
+  // Payment & Commerce
+  CreditCard,
+  Database,
+  Eye,
+  FileCode,
+  GitBranch,
+  // Frontend & UI
+  Globe,
+  // Storage & Cache
+  HardDrive,
+  // Media & Content
+  Image,
+  Key,
+  Layers,
+  Layout,
+  // Security & Auth
+  Lock,
+  // Communication & Real-time
+  MessageSquare,
+  // Mobile & Native
+  Monitor,
+  Music,
+  Package,
+  Palette,
+  PieChart,
+  Radio,
+  Search,
+  // Backend & APIs
+  Server,
+  Settings,
+  Shield,
+  ShoppingCart,
+  Smartphone,
+  TabletSmartphone,
+  Terminal,
+  // Testing & Quality
+  TestTube,
+  TrendingUp,
+  UserCheck,
+  Video,
+  Wifi,
+  // Tools & DevOps
+  Wrench,
+  Zap,
 } from "lucide-react";
 
 const getCategoryIcon = (category: string) => {

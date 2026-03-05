@@ -1,15 +1,17 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import {
   FaBuilding,
-  FaExternalLinkAlt,
   FaCalendarAlt,
-  FaFileAlt,
   FaChevronRight,
+  FaExternalLinkAlt,
+  FaFileAlt,
 } from "react-icons/fa";
-import { experiences } from "./experienceDump";
+
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import useMobile from "@/hooks/use-mobile";
+
+import { experiences } from "./experienceDump";
 
 interface ExperienceHeaderProps {
   selectedExp: number;

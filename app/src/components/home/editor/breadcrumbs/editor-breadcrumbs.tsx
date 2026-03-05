@@ -1,28 +1,30 @@
+import { AnimatePresence,motion } from "framer-motion";
 import React, {
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
   type ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
 } from "react";
 import { createPortal } from "react-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { VscChevronRight, VscChevronDown } from "react-icons/vsc";
 import { FaFolder, FaFolderOpen } from "react-icons/fa";
+import { VscChevronDown,VscChevronRight } from "react-icons/vsc";
+
 import { cn } from "@/lib/utils";
-import {
-  useEditorContext,
-  type SectionTab,
-  type Tab,
-} from "../context/explorer-context";
+import useProjectStore from "@/store/projects/projects-store";
+
 import {
   editorFiles,
   getProjectFileName,
   type SectionType,
 } from "../context/editor-store";
-import { sectionIconMap, getIconColor } from "../tabs/tab-style";
-import useProjectStore from "@/store/projects/projects-store";
+import {
+  type SectionTab,
+  type Tab,
+  useEditorContext,
+} from "../context/explorer-context";
 import { TreeFile, TreeFolder } from "../shared/editor-tree";
+import { getIconColor,sectionIconMap } from "../tabs/tab-style";
 
 interface BreadcrumbSegment {
   label: string;

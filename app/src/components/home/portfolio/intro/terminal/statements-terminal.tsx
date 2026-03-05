@@ -1,10 +1,11 @@
 import React from "react";
-import AnimatedText from "./animated-text";
-import { cn } from "@/lib/utils";
-import { HiBookOpen, HiSparkles, HiFire } from "react-icons/hi2";
+import { HiBookOpen, HiFire,HiSparkles } from "react-icons/hi2";
 import { TbBrandVscode, TbTerminal2 } from "react-icons/tb";
-import SketchBorder from "@/components/ui/sketch-border";
 
+import SketchBorder from "@/components/ui/sketch-border";
+import { cn } from "@/lib/utils";
+
+import AnimatedText from "./animated-text";
 import styles from "./statements-terminal.module.css";
 
 const qaPairs = [

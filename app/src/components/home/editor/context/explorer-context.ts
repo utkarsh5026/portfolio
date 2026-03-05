@@ -6,25 +6,27 @@
  */
 
 import { useLocation, useNavigate } from "react-router-dom";
-import type { Project } from "@/types";
+
 import useProjectStore from "@/store/projects/projects-store";
+import type { Project } from "@/types";
+
 import {
-  useEditorStore,
   editorFiles,
-  selectActiveSection,
-  selectActiveProjectId,
   type SectionType,
+  selectActiveProjectId,
+  selectActiveSection,
   type Tab,
+  useEditorStore,
 } from "./editor-store";
 
 // Re-export types for consumers that import them from here
 export {
-  sections,
-  type SectionType,
-  type SectionTab,
-  type ProjectTab,
-  type Tab,
   type OpenProjectTab,
+  type ProjectTab,
+  sections,
+  type SectionTab,
+  type SectionType,
+  type Tab,
 } from "./editor-store";
 
 // ── useEditorContext — identical return shape as before ───────────────────────

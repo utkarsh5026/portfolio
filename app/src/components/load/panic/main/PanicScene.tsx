@@ -1,22 +1,25 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import "./panic.css";
+import "./PanicAnimations.css";
+
+import React, { useCallback,useEffect, useRef, useState } from "react";
+
+import { useWindowContext } from "@/components/load/panic/context/windowContext";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
+import MacOSContainer from "../../macos/macos-container";
 import BrowserWindow from "../browser/BrowserWindow";
-import CodeEditors from "../vscode/CodeEditors";
 import ChatWindow from "../llm/ChatWindow";
 import Terminal from "../terminal/Terminal";
-import MacOSContainer from "../../macos/macos-container";
-import "./panic.css";
-import usePanic from "../use-panic";
 import {
-  CHAT_TIMING,
   BROWSER_TIMING,
+  CHAT_TIMING,
   CODING_TIMING,
   INITIAL_DELAY,
   TERMINAL_TIMING,
 } from "../timings";
-import { useWindowContext } from "@/components/load/panic/context/windowContext";
-import "./PanicAnimations.css";
+import usePanic from "../use-panic";
+import CodeEditors from "../vscode/CodeEditors";
 
 const INIT_MESSAGE_TIME = 1000;
 

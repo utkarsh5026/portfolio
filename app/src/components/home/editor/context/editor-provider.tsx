@@ -1,5 +1,6 @@
 import React, { type ReactNode, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+
 import { useEditorStore } from "./editor-store";
 
 interface ProviderProps {

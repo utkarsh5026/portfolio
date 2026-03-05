@@ -13,7 +13,8 @@
  */
 
 import React from "react";
-import { technologies, type TechName } from "./technologies";
+
+import { type TechName,technologies } from "./technologies";
 
 type TechBadgeProps = {
   tech: TechName;

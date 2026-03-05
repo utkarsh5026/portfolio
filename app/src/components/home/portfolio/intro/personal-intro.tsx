@@ -1,17 +1,19 @@
 import React from "react";
+
 import Reveal from "@/components/animations/reveal/Reveal";
-import { Terminal } from "./terminal";
-import { TechSkills } from "./skills";
-import {
-  PersonalTitle,
-  PersonalDescription,
-  ProfilePicture,
-  ProfileButtons,
-  MiniProjects,
-} from "./profile";
-import { cn } from "@/lib/utils";
-import useMobile from "@/hooks/use-mobile";
 import SketchBorder from "@/components/ui/sketch-border";
+import useMobile from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
+
+import {
+  MiniProjects,
+  PersonalDescription,
+  PersonalTitle,
+  ProfileButtons,
+  ProfilePicture,
+} from "./profile";
+import { TechSkills } from "./skills";
+import { Terminal } from "./terminal";
 
 const DesktopPersonalIntro: React.FC = () => {
   return (

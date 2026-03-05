@@ -1,14 +1,17 @@
+import "./TerminalAnimations.css";
+
 import React, {
-  useEffect,
-  useState,
-  useRef,
-  useMemo,
   useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
 } from "react";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+
 import { commands } from "../content";
-import "./TerminalAnimations.css";
 
 interface TerminalProps {
   activeWindow: string | null;

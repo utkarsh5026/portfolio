@@ -1,12 +1,13 @@
 import React from "react";
-import { cn } from "@/lib/utils";
+import { SiTypescript } from "react-icons/si";
 import {
-  VscMarkdown,
+  VscChevronRight,
   VscFolder,
   VscFolderOpened,
-  VscChevronRight,
+  VscMarkdown,
 } from "react-icons/vsc";
-import { SiTypescript } from "react-icons/si";
+
+import { cn } from "@/lib/utils";
 
 export interface TreeFileProps {
   name: string;

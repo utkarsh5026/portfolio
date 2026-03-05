@@ -1,6 +1,7 @@
 import React from "react";
-import { codeLines } from "./content";
+
 import ReactCodeLine from "../utls/ReactCodeLine";
+import { codeLines } from "./content";
 
 interface CodeEditorProps {
   codeProgress: number;

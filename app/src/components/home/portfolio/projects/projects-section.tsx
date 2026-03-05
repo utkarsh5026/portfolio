@@ -1,17 +1,19 @@
+import { Code, Folder,Sparkles } from "lucide-react";
 import React, { useCallback, useRef, useState } from "react";
-import Section from "@/components/section/portfolio-section";
+
+import Reveal from "@/components/animations/reveal/Reveal";
+import { useEditorContext } from "@/components/home/editor/context/explorer-context";
 import { OutlineNode } from "@/components/home/editor/outline";
-import { Sparkles, Code, Folder } from "lucide-react";
+import Section from "@/components/section/portfolio-section";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import FeaturedProject from "./featured/featured-project";
-import ProjectSmall from "./project-small";
-import { ProjectThemeProvider } from "./context/ProjectThemeProvider";
 import { MobileProvider } from "@/hooks/use-mobile";
 import { useProject } from "@/hooks/use-project";
-import { useEditorContext } from "@/components/home/editor/context/explorer-context";
 import type { Project } from "@/types";
-import Reveal from "@/components/animations/reveal/Reveal";
+
+import { ProjectThemeProvider } from "./context/ProjectThemeProvider";
+import FeaturedProject from "./featured/featured-project";
+import ProjectSmall from "./project-small";
 
 const Projects: React.FC = () => {
   const { featuredProject, otherProjects, isLoading, error } = useProject();

@@ -1,6 +1,7 @@
-import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
 import type { NavigateFunction } from "react-router-dom";
+import { create } from "zustand";
+import { createJSONStorage,persist } from "zustand/middleware";
+
 import type { Project } from "@/types";
 
 export const sections = [

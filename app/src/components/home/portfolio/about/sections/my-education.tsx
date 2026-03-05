@@ -1,13 +1,15 @@
-import React from "react";
 import {
-  GraduationCap,
+  Award,
   Calendar,
   ExternalLink,
-  Award,
+  GraduationCap,
   MapPin,
 } from "lucide-react";
-import { education } from "../data/data";
+import React from "react";
+
 import Reveal from "@/components/animations/reveal/Reveal";
+
+import { education } from "../data/data";
 import SectionHeader from "./about-header";
 
 const Education: React.FC = () => {

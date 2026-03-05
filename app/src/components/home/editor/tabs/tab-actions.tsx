@@ -1,16 +1,17 @@
 import {
-  VscEllipsis,
-  VscClearAll,
-  VscFolderOpened,
   VscArrowLeft,
   VscArrowRight,
+  VscClearAll,
+  VscEllipsis,
+  VscFolderOpened,
 } from "react-icons/vsc";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuGroup,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 

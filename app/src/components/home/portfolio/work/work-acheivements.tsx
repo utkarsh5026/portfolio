@@ -1,17 +1,19 @@
-import React from "react";
-import { experiences } from "./experienceDump";
 import { motion } from "framer-motion";
-import { OutlineNode } from "@/components/home/editor/outline";
-import Reveal from "@/components/animations/reveal/Reveal";
+import React from "react";
 import {
   FaCode,
-  FaTerminal,
-  FaDocker,
   FaDatabase,
-  FaSearch,
+  FaDocker,
   FaRocket,
+  FaSearch,
+  FaTerminal,
 } from "react-icons/fa";
+
+import Reveal from "@/components/animations/reveal/Reveal";
+import { OutlineNode } from "@/components/home/editor/outline";
 import { Card, CardContent } from "@/components/ui/card";
+
+import { experiences } from "./experienceDump";
 
 interface AchievementsProps {
   selectedExp: number;

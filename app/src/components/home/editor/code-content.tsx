@@ -1,6 +1,7 @@
-import { Suspense, lazy, useRef } from "react";
+import { AnimatePresence,motion } from "framer-motion";
+import { lazy, Suspense, useRef } from "react";
+
 import { useEditorContext } from "./context/explorer-context";
-import { motion, AnimatePresence } from "framer-motion";
 import SectionLoadingScreen from "./context/section-loading";
 
 const ProjectMarkdown = lazy(

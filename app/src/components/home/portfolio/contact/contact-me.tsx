@@ -1,11 +1,13 @@
-import React from "react";
-import Section from "@/components/section/portfolio-section";
-import Reveal from "@/components/animations/reveal/Reveal";
 import { Heart, Mail } from "lucide-react";
+import React from "react";
+
+import Reveal from "@/components/animations/reveal/Reveal";
+import Section from "@/components/section/portfolio-section";
 import { Button } from "@/components/ui/button";
-import SocialMediaLinks from "./social-media-links";
+
 import AvailableForOpportunities from "./available-for-opportunities";
 import styles from "./contact.module.css";
+import SocialMediaLinks from "./social-media-links";
 
 const ContactMe: React.FC = () => {
   return (

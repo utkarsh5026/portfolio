@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
-import { learningJourneyItems } from "../data";
+
 import Reveal from "@/components/animations/reveal/Reveal";
+
+import { learningJourneyItems } from "../data";
 
 interface JourneyItemProps {
   item: (typeof learningJourneyItems)[0];

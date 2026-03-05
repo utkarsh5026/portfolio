@@ -1,7 +1,8 @@
-import { TechnologyLearning } from "@/types";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+
 import Reveal from "@/components/animations/reveal/Reveal";
+import { TechnologyLearning } from "@/types";
 
 interface LearningCardProps {
   tech: TechnologyLearning;

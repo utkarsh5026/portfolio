@@ -1,6 +1,7 @@
-import React from "react";
-import { TerminalOutput } from "./use-terminal";
 import { motion } from "framer-motion";
+import React from "react";
+
+import { TerminalOutput } from "./use-terminal";
 
 interface TerminalCommandOutputProps {
   outputBlocks: TerminalOutput[][];

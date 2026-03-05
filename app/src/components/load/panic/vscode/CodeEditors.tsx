@@ -5,11 +5,13 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { cn } from "@/lib/utils";
-import { Card } from "@/components/ui/card";
-import { codeContent, type CodeType } from "./code";
-import VsCode from "./app/VsCode";
+
 import { useWindowContext } from "@/components/load/panic/context/windowContext";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+
+import VsCode from "./app/VsCode";
+import { codeContent, type CodeType } from "./code";
 
 interface CodeEditorsProps {
   totalTimeForCodeInMS: number;

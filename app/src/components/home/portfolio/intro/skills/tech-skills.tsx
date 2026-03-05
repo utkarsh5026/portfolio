@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect,useState } from "react";
 
-import { FileItem, projectStructure } from "./project-structure";
 import FileExplorer from "./file-explorer";
+import { FileItem, projectStructure } from "./project-structure";
 
 const getAllItems = (
   items: FileItem[],

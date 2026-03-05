@@ -1,21 +1,23 @@
+import "./VsCodeAnimation.css";
+
 import React, { useEffect, useRef } from "react";
-import MacosTrafficController from "../../../macos/macos-traffic-controller";
 import { BiLogoVisualStudio } from "react-icons/bi";
 import {
+  VscAccount,
+  VscDebug,
+  VscExtensions,
   VscFiles,
   VscSearch,
   VscSourceControl,
-  VscDebug,
-  VscExtensions,
-  VscAccount,
 } from "react-icons/vsc";
+
+import MacosTrafficController from "../../../macos/macos-traffic-controller";
 import { codeContent, type CodeType } from "../code";
-import StatusBar from "./StatusBar";
 import SideBar from "./SideBar";
-import VsCodeTabs from "./VsCodeTabs";
+import StatusBar from "./StatusBar";
 import { getFileInfo } from "./syntax";
-import "./VsCodeAnimation.css";
 import VsCodeEditor from "./VsCodeEditor";
+import VsCodeTabs from "./VsCodeTabs";
 
 interface VsCodeProps {
   filename: CodeType;

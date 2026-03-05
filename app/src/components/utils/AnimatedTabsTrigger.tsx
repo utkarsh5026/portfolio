@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { TabsTrigger } from "@/components/ui/tabs";
 import { ReactNode } from "react";
+
+import { TabsTrigger } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
 
 interface AnimatedTabsTriggerProps {
   value: string;

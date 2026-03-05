@@ -1,19 +1,22 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import "./visitor.css";
+import "./style.css";
+
 import anime from "animejs";
+import React, { useCallback,useEffect, useRef, useState } from "react";
+
 import { cn } from "@/lib/utils";
-import VisitorAlert from "./VisitorAlert";
-import useRealization from "./use-realization";
-import { codeLines } from "./content";
+
 import CodeEditor from "./CodeEditor";
+import { codeLines } from "./content";
 import {
   CODE_TYPING_INTERVAL,
   GLITCH_INTERVAL,
-  SWITCH_TO_NOTICE_STAGE,
   SWITCH_TO_ALARM_STAGE,
+  SWITCH_TO_NOTICE_STAGE,
   SWITCH_TO_PANIC_STAGE,
 } from "./timings";
-import "./visitor.css";
-import "./style.css";
+import useRealization from "./use-realization";
+import VisitorAlert from "./VisitorAlert";
 
 interface RealizationSceneProps {
   onComplete: () => void;

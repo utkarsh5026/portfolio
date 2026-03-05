@@ -1,7 +1,9 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { LucideIcon } from "lucide-react";
+import React from "react";
+
 import Reveal from "@/components/animations/reveal/Reveal";
+
 import { sectionColorSchemes } from "./sec-utils";
 
 type SectionColorScheme =

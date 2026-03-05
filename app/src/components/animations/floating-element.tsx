@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
 import anime from "animejs";
+import React, { useEffect, useRef } from "react";
 
 interface FloatingElementProps {
   children: React.ReactNode;

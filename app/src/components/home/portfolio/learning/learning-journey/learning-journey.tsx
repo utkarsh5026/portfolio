@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Book, Play, Pause, RotateCcw } from "lucide-react";
+import { Book, Pause, Play, RotateCcw } from "lucide-react";
+import React, { useEffect, useRef,useState } from "react";
+
 import useTypewriting from "@/components/type-write/hooks/use-type-write";
-import { learningJourneyItems } from "../data";
-import JourneyItem from "./journey-item";
-import ProgressIndicator from "./progress-indicator";
 import {
   Drawer,
   DrawerContent,
@@ -11,6 +9,10 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/drawer";
+
+import { learningJourneyItems } from "../data";
+import JourneyItem from "./journey-item";
+import ProgressIndicator from "./progress-indicator";
 
 interface LearningJourneyProps {
   isOpen: boolean;

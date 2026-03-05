@@ -1,9 +1,11 @@
-import React from "react";
-import Section from "@/components/section/portfolio-section";
-import { articles } from "./articles-dump";
-import { OutlineNode } from "@/components/home/editor/outline";
 import { Book } from "lucide-react";
+import React from "react";
+
+import { OutlineNode } from "@/components/home/editor/outline";
+import Section from "@/components/section/portfolio-section";
+
 import ArticleCard from "./article-card";
+import { articles } from "./articles-dump";
 
 const ArticlesComponent: React.FC = () => {
   return (

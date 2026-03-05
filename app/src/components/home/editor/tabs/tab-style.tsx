@@ -1,14 +1,15 @@
-import { SectionType } from "../context/explorer-context";
 import {
-  FaHome,
-  FaLaptopCode,
-  FaStar,
-  FaUser,
   FaBriefcase,
   FaEnvelope,
   FaGraduationCap,
+  FaHome,
+  FaLaptopCode,
   FaNewspaper,
+  FaStar,
+  FaUser,
 } from "react-icons/fa";
+
+import { SectionType } from "../context/explorer-context";
 
 export const sectionIconMap: Record<SectionType, React.ReactNode> = {
   home: <FaHome />,

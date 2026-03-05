@@ -1,9 +1,11 @@
-import { memo, useMemo, useCallback } from "react";
-import { Project } from "@/types";
-import { Folder, ExternalLink } from "lucide-react";
+import { ExternalLink,Folder } from "lucide-react";
+import { memo, useCallback,useMemo } from "react";
 import { FaGithub } from "react-icons/fa";
-import { useProjectTheme } from "./context/ThemeContext";
+
 import { technologies } from "@/components/base/technologies";
+import { Project } from "@/types";
+
+import { useProjectTheme } from "./context/ThemeContext";
 
 interface ProjectSmallProps {
   project: Project;

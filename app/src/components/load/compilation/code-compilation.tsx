@@ -1,11 +1,12 @@
+import "./style.css";
+
 import React from "react";
-import { codeSnippets, COMPILE_STAGES } from "./content";
 
 import MatrixEffect from "../../animations/MatrixEffect";
-import Code from "./loading-code";
 import AfterBuild from "./after-build";
+import { codeSnippets, COMPILE_STAGES } from "./content";
+import Code from "./loading-code";
 import { useTerminalAnimation } from "./use-compilation";
-import "./style.css";
 
 interface CodeCompilationProps {
   onLoadComplete: () => void;

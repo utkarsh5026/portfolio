@@ -1,8 +1,10 @@
-import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { articles } from "./articles-dump";
+import { useState } from "react";
+
 import Reveal from "@/components/animations/reveal/Reveal";
+import { cn } from "@/lib/utils";
+
+import { articles } from "./articles-dump";
 
 interface ArticleCardProps {
   article: (typeof articles)[0];
