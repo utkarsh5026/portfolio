@@ -3,6 +3,19 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 import type { Project } from "@/types";
+import {
+  getProjectFileName,
+  getProjectPath,
+  getProjectSlug,
+  getProjectSlugFromPath,
+} from "@/utils/project-slug";
+
+export {
+  getProjectFileName,
+  getProjectPath,
+  getProjectSlug,
+  getProjectSlugFromPath,
+};
 
 export const sections = [
   "home",
@@ -39,39 +52,12 @@ export type OpenProjectTab = {
   project: Project;
 };
 
-export const getProjectFileName = (name: string): string =>
-  name
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-]/g, "") + ".md";
-
-/** Slugify a project name the same way the markdown files are named. */
-export const getProjectSlug = (name: string): string =>
-  name
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, "")
-    .trim()
-    .replace(/\s+/g, "-");
-
-/** Build the shareable deep-link URL for a project. */
-export const getProjectPath = (name: string): string =>
-  `/projects/${getProjectSlug(name)}`;
-
 export const getSectionPath = (section: SectionType) =>
   section === "home" ? "/" : `/${section}`;
 
 export const getSectionFromPath = (pathname: string): SectionType => {
   const s = pathname.replace(/^\//, "") || "home";
   return sections.includes(s as SectionType) ? (s as SectionType) : "home";
-};
-
-/**
- * If the pathname looks like /projects/:slug return the slug, else null.
- * Handles both /projects/mdhd and /projects/source-control.
- */
-export const getProjectSlugFromPath = (pathname: string): string | null => {
-  const m = pathname.match(/^\/projects\/([^/]+)$/);
-  return m ? m[1] : null;
 };
 
 export const editorFiles: { name: string; section: SectionType }[] = [

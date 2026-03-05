@@ -1,4 +1,4 @@
-import { Route,Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import { ThemeProvider } from "./components/base/ThemeProvider";
 import MainPortfolio from "./components/load/main-portfolio";
@@ -21,6 +21,9 @@ function App() {
         <Route path="/contact" element={<MainPortfolio />} />
         <Route path="/learning" element={<MainPortfolio />} />
         <Route path="/articles" element={<MainPortfolio />} />
+
+        {/* Individual project deep-link — editor loads with that project tab active */}
+        <Route path="/projects/:slug" element={<MainPortfolio />} />
 
         {/* Catch-all route for 404 */}
         <Route path="*" element={<NotFound />} />

@@ -1,4 +1,4 @@
-import { AnimatePresence,motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import React, {
   type ReactNode,
   useCallback,
@@ -8,8 +8,15 @@ import React, {
 } from "react";
 import { createPortal } from "react-dom";
 import { FaFolder, FaFolderOpen } from "react-icons/fa";
-import { VscChevronDown,VscChevronRight } from "react-icons/vsc";
+import {
+  VscChevronDown,
+  VscChevronRight,
+  VscSymbolClass,
+  VscSymbolMethod,
+  VscSymbolProperty,
+} from "react-icons/vsc";
 
+import { useMarkdownHeading } from "@/components/home/editor/context/markdown-heading-context";
 import { cn } from "@/lib/utils";
 import useProjectStore from "@/store/projects/projects-store";
 
@@ -24,7 +31,7 @@ import {
   useEditorContext,
 } from "../context/explorer-context";
 import { TreeFile, TreeFolder } from "../shared/editor-tree";
-import { getIconColor,sectionIconMap } from "../tabs/tab-style";
+import { getIconColor, sectionIconMap } from "../tabs/tab-style";
 
 interface BreadcrumbSegment {
   label: string;
@@ -65,7 +72,6 @@ const BreadcrumbTreeDropdown: React.FC<TreeDropdownProps> = ({
   const [projectsOpen, setProjectsOpen] = useState(true);
   const projects = useProjectStore((s) => s.projects);
 
-  // Close on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) onClose();
@@ -82,7 +88,6 @@ const BreadcrumbTreeDropdown: React.FC<TreeDropdownProps> = ({
     return () => document.removeEventListener("keydown", handler);
   }, [onClose]);
 
-  // Auto-scroll slightly when opened to indicate scrollability
   useEffect(() => {
     const timer = setTimeout(() => {
       if (ref.current && ref.current.scrollHeight > ref.current.clientHeight) {
@@ -277,6 +282,7 @@ export const EditorBreadcrumbs: React.FC = () => {
     activeProjectId,
   } = useEditorContext();
   const projects = useProjectStore((s) => s.projects);
+  const { isDeepDive, activeHeadings } = useMarkdownHeading();
 
   const activeTab: Tab | null =
     openTabs.find((t) => t.id === activeTabId) ?? null;
@@ -307,7 +313,7 @@ export const EditorBreadcrumbs: React.FC = () => {
     }
 
     if (activeTab.type === "project") {
-      return [
+      const base: BreadcrumbSegment[] = [
         root,
         {
           label: "projects",
@@ -320,15 +326,49 @@ export const EditorBreadcrumbs: React.FC = () => {
           label: activeTab.fileName,
           icon: null,
           iconColor: "text-ctp-blue",
-          isActive: true,
+          isActive:
+            !isDeepDive ||
+            (!activeHeadings.h1 && !activeHeadings.h2 && !activeHeadings.h3),
           isFolder: false,
         },
       ];
+
+      if (isDeepDive) {
+        if (activeHeadings.h1) {
+          base.push({
+            label: activeHeadings.h1,
+            icon: <VscSymbolClass />,
+            iconColor: "text-ctp-mauve",
+            isActive: !activeHeadings.h2 && !activeHeadings.h3,
+            isFolder: false,
+          });
+        }
+        if (activeHeadings.h2) {
+          base.push({
+            label: activeHeadings.h2,
+            icon: <VscSymbolMethod />,
+            iconColor: "text-ctp-green",
+            isActive: !activeHeadings.h3,
+            isFolder: false,
+          });
+        }
+        if (activeHeadings.h3) {
+          base.push({
+            label: activeHeadings.h3,
+            icon: <VscSymbolProperty />,
+            iconColor: "text-ctp-peach",
+            isActive: true,
+            isFolder: false,
+          });
+        }
+      }
+
+      return base;
     }
 
     return [root];
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeTab, openTabs, projects]);
+  }, [activeTab, openTabs, projects, isDeepDive, activeHeadings]);
 
   const handleSelectSection = useCallback(
     (section: SectionType) => setActiveSection(section),
@@ -343,10 +383,20 @@ export const EditorBreadcrumbs: React.FC = () => {
     [projects, openProject],
   );
 
+  // Scroll the bar to reveal the rightmost (latest) heading segment whenever
+  // segments change — needed on small screens where the bar overflows.
+  const barRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = barRef.current;
+    if (!el) return;
+    el.scrollTo({ left: el.scrollWidth, behavior: "smooth" });
+  }, [segments]);
+
   return (
     <AnimatePresence mode="wait">
       {activeTab && (
         <motion.div
+          ref={barRef}
           key={`${activeTabId}-bar`}
           initial={{ opacity: 0, y: -4 }}
           animate={{ opacity: 1, y: 0 }}
