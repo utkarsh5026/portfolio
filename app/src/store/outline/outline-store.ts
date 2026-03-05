@@ -1,11 +1,14 @@
 import type React from "react";
 import { create } from "zustand";
 
+import type { AppColor } from "@/utils/ctp-colors";
+
 export interface OutlineItem {
   id: string;
   label: string;
   level: number;
   icon?: React.ReactNode;
+  iconColor?: AppColor;
   parentId: string | null;
 }
 

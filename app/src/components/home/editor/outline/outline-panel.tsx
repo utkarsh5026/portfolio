@@ -4,6 +4,7 @@ import { Tree } from "@/components/ui/tree";
 import useOutlineStore, {
   type OutlineItem,
 } from "@/store/outline/outline-store";
+import { ctpColorClass } from "@/utils/ctp-colors";
 
 const messages = [
   { icon: "🎯", text: "Found it!" },
@@ -19,6 +20,13 @@ const messages = [
   { icon: "🪄", text: "Abracadabra!" },
 ];
 
+function wrapIcon(icon?: React.ReactNode) {
+  if (!icon) return undefined;
+  return (
+    <span className="w-3 h-3 flex items-center justify-center">{icon}</span>
+  );
+}
+
 function renderOutlineTree(
   parentId: string,
   items: OutlineItem[],
@@ -29,6 +37,7 @@ function renderOutlineTree(
 
   return children.map((item) => {
     const hasChildren = items.some((i) => i.parentId === item.id);
+    const wrappedIcon = wrapIcon(item.icon);
     if (hasChildren) {
       return (
         <Tree.Group
@@ -36,9 +45,9 @@ function renderOutlineTree(
           id={item.id}
           depth={depth}
           label={item.label}
-          icon={item.icon}
-          iconOpen={item.icon}
-          iconColor=""
+          icon={wrappedIcon}
+          iconOpen={wrappedIcon}
+          iconColor={item.iconColor ? ctpColorClass("text", item.iconColor) : undefined}
           onClick={() => onClick(item)}
         >
           {renderOutlineTree(item.id, items, depth + 1, onClick)}
@@ -51,7 +60,8 @@ function renderOutlineTree(
         id={item.id}
         depth={depth}
         label={item.label}
-        icon={item.icon}
+        icon={wrappedIcon}
+        iconColor={item.iconColor ? ctpColorClass("text", item.iconColor) : undefined}
         onClick={() => onClick(item)}
       />
     );
@@ -161,9 +171,9 @@ const OutlinePanel: React.FC = () => {
               id={sectionRoot.id}
               depth={0}
               label={sectionRoot.label}
-              icon={sectionRoot.icon}
-              iconOpen={sectionRoot.icon}
-              iconColor=""
+              icon={wrapIcon(sectionRoot.icon)}
+              iconOpen={wrapIcon(sectionRoot.icon)}
+              iconColor={sectionRoot.iconColor ? ctpColorClass("text", sectionRoot.iconColor) : undefined}
               onClick={() => handleItemClick(sectionRoot)}
             >
               {treeChildren}
@@ -174,7 +184,8 @@ const OutlinePanel: React.FC = () => {
               id={sectionRoot.id}
               depth={0}
               label={sectionRoot.label}
-              icon={sectionRoot.icon}
+              icon={wrapIcon(sectionRoot.icon)}
+              iconColor={sectionRoot.iconColor ? ctpColorClass("text", sectionRoot.iconColor) : undefined}
               onClick={() => handleItemClick(sectionRoot)}
             />
           )}

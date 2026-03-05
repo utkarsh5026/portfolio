@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 import useOutlineStore from "@/store/outline/outline-store";
+import type { AppColor } from "@/utils/ctp-colors";
 import { toOutlineId } from "@/utils/outline-id";
 
 import { OutlineNodeContext, useOutlinePosition } from "./outline-node-context";
@@ -9,6 +10,7 @@ interface OutlineNodeProps {
   id?: string;
   label: string;
   icon?: React.ReactNode;
+  iconColor?: AppColor;
   children: React.ReactNode;
   className?: string;
 }
@@ -17,6 +19,7 @@ const OutlineNode: React.FC<OutlineNodeProps> = ({
   id: explicitId,
   label,
   icon,
+  iconColor,
   children,
   className = "",
 }) => {
@@ -28,9 +31,9 @@ const OutlineNode: React.FC<OutlineNodeProps> = ({
   const unregister = useOutlineStore((s) => s.unregister);
 
   useEffect(() => {
-    register({ id, label, level: depth, icon, parentId });
+    register({ id, label, level: depth, icon, iconColor, parentId });
     return () => unregister(id);
-  }, [id, label, depth, icon, parentId, register, unregister]);
+  }, [id, label, depth, icon, iconColor, parentId, register, unregister]);
 
   return (
     <OutlineNodeContext.Provider value={{ parentId: id, depth: depth + 1 }}>
