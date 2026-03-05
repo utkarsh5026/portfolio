@@ -28,13 +28,17 @@ export const MarkdownImage: React.FC<{ src?: string; alt?: string }> = ({
   const [error, setError] = useState(false);
   const [lightbox, setLightbox] = useState(false);
 
-  // Hide placeholder images
-  if (
-    src.includes("placehold.co") ||
-    src.includes("via.placeholder.com") ||
-    src.includes("dummyimage.com")
-  ) {
-    return null;
+  // Hide placeholder images — check hostname exactly to avoid substring spoofing
+  const PLACEHOLDER_HOSTS = new Set([
+    "placehold.co",
+    "via.placeholder.com",
+    "dummyimage.com",
+  ]);
+  try {
+    const { hostname } = new URL(src);
+    if (PLACEHOLDER_HOSTS.has(hostname)) return null;
+  } catch {
+    // relative or invalid URL — not a placeholder
   }
 
   const ytId = getYouTubeId(src);
