@@ -1,19 +1,14 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Logo from "@/components/home/appbar/Logo";
 import { cn } from "@/lib/utils";
 import useProjectStore from "@/store/projects/projects-store";
 import type { Project } from "@/types";
+import { getProjectFileName } from "@/utils/project-slug";
 
-import { SectionType,useEditorContext } from "../context/explorer-context";
+import { SectionType, useEditorContext } from "../context/explorer-context";
 import OutlinePanel from "../outline/outline-panel";
 import { TreeFile, TreeFolder } from "../shared/editor-tree";
-
-const getProjectFileName = (name: string): string =>
-  name
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-]/g, "") + ".md";
 
 const Explorer: React.FC = () => {
   const {

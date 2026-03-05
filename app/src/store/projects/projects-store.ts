@@ -1,14 +1,7 @@
 import { create } from "zustand";
 
 import type { Project } from "@/types";
-
-function nameToSlug(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, "")
-    .trim()
-    .replace(/\s+/g, "-");
-}
+import { getProjectSlug } from "@/utils/project-slug";
 
 type MarkdownLoadState = "loading" | "loaded" | "error";
 
@@ -30,10 +23,6 @@ interface ProjectState {
   // Actions
   fetchProjects: () => Promise<void>;
   selectProject: (project: Project | null) => void;
-  searchProjects: (query: string) => Project[];
-  filterProjectsByTag: (tag: string) => Project[];
-  filterProjectsByTech: (tech: string) => Project[];
-  resetFilters: () => void;
   prefetchMarkdown: (projectName: string) => void;
 }
 
@@ -96,53 +85,8 @@ const useProjectStore = create<ProjectState>((set, get) => ({
     set({ selectedProject: project });
   },
 
-  // Search projects by name or description
-  searchProjects: (query) => {
-    const { projects } = get();
-    const searchTerm = query.toLowerCase();
-
-    return projects.filter(
-      (project) =>
-        project.name.toLowerCase().includes(searchTerm) ||
-        project.description.toLowerCase().includes(searchTerm)
-    );
-  },
-
-  // Filter projects by tag
-  filterProjectsByTag: (tag) => {
-    const { projects } = get();
-    const searchTerm = tag.toLowerCase();
-
-    return projects.filter((project) =>
-      project.tags?.some((projectTag) =>
-        projectTag.toLowerCase().includes(searchTerm)
-      )
-    );
-  },
-
-  // Filter projects by technology
-  filterProjectsByTech: (tech) => {
-    const { projects } = get();
-    const searchTerm = tech.toLowerCase();
-
-    return projects.filter((project) =>
-      project.technologies.some((projectTech) =>
-        projectTech.toLowerCase().includes(searchTerm)
-      )
-    );
-  },
-
-  // Reset to default projects list
-  resetFilters: () => {
-    const { projects } = get();
-    set({
-      featuredProject: projects[0],
-      otherProjects: projects.slice(1),
-    });
-  },
-
   prefetchMarkdown: (projectName) => {
-    const slug = nameToSlug(projectName);
+    const slug = getProjectSlug(projectName);
     const existing = get().markdownStates[slug];
     if (existing === "loading" || existing === "loaded") return;
 

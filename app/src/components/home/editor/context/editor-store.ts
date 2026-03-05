@@ -1,6 +1,6 @@
 import type { NavigateFunction } from "react-router-dom";
 import { create } from "zustand";
-import { createJSONStorage,persist } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 import type { Project } from "@/types";
 
@@ -45,12 +45,33 @@ export const getProjectFileName = (name: string): string =>
     .replace(/\s+/g, "-")
     .replace(/[^a-z0-9-]/g, "") + ".md";
 
+/** Slugify a project name the same way the markdown files are named. */
+export const getProjectSlug = (name: string): string =>
+  name
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+
+/** Build the shareable deep-link URL for a project. */
+export const getProjectPath = (name: string): string =>
+  `/projects/${getProjectSlug(name)}`;
+
 export const getSectionPath = (section: SectionType) =>
   section === "home" ? "/" : `/${section}`;
 
 export const getSectionFromPath = (pathname: string): SectionType => {
   const s = pathname.replace(/^\//, "") || "home";
   return sections.includes(s as SectionType) ? (s as SectionType) : "home";
+};
+
+/**
+ * If the pathname looks like /projects/:slug return the slug, else null.
+ * Handles both /projects/mdhd and /projects/source-control.
+ */
+export const getProjectSlugFromPath = (pathname: string): string | null => {
+  const m = pathname.match(/^\/projects\/([^/]+)$/);
+  return m ? m[1] : null;
 };
 
 export const editorFiles: { name: string; section: SectionType }[] = [
@@ -70,6 +91,8 @@ export interface EditorState {
   mobileMenuOpen: boolean;
   explorerOpen: boolean;
   terminalOpen: boolean;
+  /** Slug from /projects/:slug that needs to be resolved once projects load. */
+  pendingProjectSlug: string | null;
 }
 
 export interface EditorActions {
@@ -102,6 +125,11 @@ export interface EditorActions {
   setMobileMenuOpen: (open: boolean) => void;
   setExplorerOpen: (open: boolean) => void;
   setTerminalOpen: (open: boolean) => void;
+  /**
+   * Called by EditorProvider once projects have loaded.
+   * Resolves any pendingProjectSlug into an open project tab.
+   */
+  resolveProjectSlug: (projects: Project[]) => void;
 }
 
 export type EditorStore = EditorState & EditorActions;
@@ -125,6 +153,9 @@ export const useEditorStore = create<EditorStore>()(
       mobileMenuOpen: false,
       explorerOpen: true,
       terminalOpen: false,
+      pendingProjectSlug: getProjectSlugFromPath(
+        typeof window !== "undefined" ? window.location.pathname : "/",
+      ),
 
       openTab: (tab, navigate, currentPath) => {
         set((state) => ({
@@ -135,6 +166,9 @@ export const useEditorStore = create<EditorStore>()(
         }));
         if (tab.type === "section") {
           const path = getSectionPath(tab.id);
+          if (currentPath !== path) navigate(path, { replace: false });
+        } else if (tab.type === "project") {
+          const path = getProjectPath(tab.id);
           if (currentPath !== path) navigate(path, { replace: false });
         }
       },
@@ -162,6 +196,15 @@ export const useEditorStore = create<EditorStore>()(
       },
 
       syncRoute: (pathname) => {
+        const projectSlug = getProjectSlugFromPath(pathname);
+
+        if (projectSlug) {
+          set({ pendingProjectSlug: projectSlug });
+          return;
+        }
+
+        set({ pendingProjectSlug: null });
+
         const section = getSectionFromPath(pathname);
         set((state) => ({
           openTabs: state.openTabs.some((t) => t.id === section)
@@ -229,6 +272,7 @@ export const useEditorStore = create<EditorStore>()(
         set((state) => {
           const idx = state.openTabs.findIndex((t) => t.id === id);
           if (idx === -1 || idx === state.openTabs.length - 1) return state;
+
           const next = state.openTabs.slice(0, idx + 1);
           const activeStillOpen = next.some((t) => t.id === state.activeTabId);
           let nextActiveId = state.activeTabId;
@@ -246,6 +290,7 @@ export const useEditorStore = create<EditorStore>()(
         set((state) => {
           const next = state.openTabs.filter((t) => t.type !== "project");
           if (next.length === state.openTabs.length) return state;
+
           const activeStillOpen = next.some((t) => t.id === state.activeTabId);
           let nextActiveId = state.activeTabId;
           if (!activeStillOpen) {
@@ -254,6 +299,7 @@ export const useEditorStore = create<EditorStore>()(
             if (fallback?.type === "section")
               navigate(getSectionPath(fallback.id), { replace: false });
           }
+
           return {
             openTabs:
               next.length > 0
@@ -271,6 +317,31 @@ export const useEditorStore = create<EditorStore>()(
       setMobileMenuOpen: (open) => set({ mobileMenuOpen: open }),
       setExplorerOpen: (open) => set({ explorerOpen: open }),
       setTerminalOpen: (open) => set({ terminalOpen: open }),
+
+      resolveProjectSlug: (projects) => {
+        const { pendingProjectSlug } = get();
+        if (!pendingProjectSlug) return;
+        const match = projects.find(
+          (p) => getProjectSlug(p.name) === pendingProjectSlug,
+        );
+        if (!match) return;
+        const fileName = getProjectFileName(match.name);
+        set((state) => ({
+          openTabs: state.openTabs.some((t) => t.id === match.name)
+            ? state.openTabs
+            : [
+                ...state.openTabs,
+                {
+                  type: "project" as const,
+                  id: match.name,
+                  fileName,
+                  project: match,
+                },
+              ],
+          activeTabId: match.name,
+          pendingProjectSlug: null,
+        }));
+      },
     }),
     {
       name: "portfolio-editor-v1", // localStorage key
