@@ -1,0 +1,295 @@
+name: PR Comparison
+
+on:
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  compare:
+    name: Compare PR vs Main
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: "./app/package-lock.json"
+
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      - name: Install dependencies
+        working-directory: ./app
+        run: npm ci
+
+      - name: Generate git data (PR)
+        run: |
+          node scripts/generate-git-stats.js
+          node scripts/generate-git-commits.js
+
+      - name: Build PR branch
+        working-directory: ./app
+        env:
+          NODE_ENV: production
+        run: npm run build
+
+      - name: Capture PR build stats
+        run: |
+          mkdir -p /tmp/pr-stats
+          du -sb app/dist | awk '{print $1}' > /tmp/pr-stats/total-size.txt
+          find app/dist -type f -printf '%s %P\n' | sort -k2 > /tmp/pr-stats/manifest.txt
+          # Save PR dist for Lighthouse later
+          cp -r app/dist /tmp/pr-stats/dist
+
+      - name: Checkout main branch
+        run: git checkout origin/main -- .
+
+      - name: Install dependencies (main)
+        working-directory: ./app
+        run: npm ci
+
+      - name: Generate git data (main)
+        run: |
+          node scripts/generate-git-stats.js
+          node scripts/generate-git-commits.js
+
+      - name: Build main branch
+        working-directory: ./app
+        env:
+          NODE_ENV: production
+        run: npm run build
+
+      - name: Capture main build stats
+        run: |
+          mkdir -p /tmp/main-stats
+          du -sb app/dist | awk '{print $1}' > /tmp/main-stats/total-size.txt
+          find app/dist -type f -printf '%s %P\n' | sort -k2 > /tmp/main-stats/manifest.txt
+          cp -r app/dist /tmp/main-stats/dist
+
+      - name: Compare builds
+        id: compare
+        run: |
+          PR_SIZE=$(cat /tmp/pr-stats/total-size.txt)
+          MAIN_SIZE=$(cat /tmp/main-stats/total-size.txt)
+          DIFF=$((PR_SIZE - MAIN_SIZE))
+
+          fmt() { numfmt --to=iec-i --suffix=B "$1"; }
+          PR_H=$(fmt "$PR_SIZE")
+          MAIN_H=$(fmt "$MAIN_SIZE")
+
+          if [ "$MAIN_SIZE" -gt 0 ]; then
+            PCT=$(awk "BEGIN {printf \"%.1f\", ($DIFF / $MAIN_SIZE) * 100}")
+          else
+            PCT="N/A"
+          fi
+
+          if [ "$DIFF" -gt 0 ]; then
+            DIFF_H="+$(fmt "$DIFF") (+${PCT}%)"
+            ICON="🔺"
+          elif [ "$DIFF" -lt 0 ]; then
+            ABS_DIFF=$((-DIFF))
+            DIFF_H="-$(fmt "$ABS_DIFF") (${PCT}%)"
+            ICON="🔽"
+          else
+            DIFF_H="0 B (0%)"
+            ICON="✅"
+          fi
+
+          # ── Chunk-level comparison from manifests ──
+          CHUNK_TABLE="| File | main | PR | Diff |\n|------|------|-----|------|\n"
+
+          declare -A MAIN_FILES PR_FILES ALL_FILES
+
+          while IFS=' ' read -r size filepath; do
+            if [[ "$filepath" == assets/* ]]; then
+              base=$(echo "$filepath" | sed -E 's/[-\.][a-f0-9]{8,}\./\./g')
+              MAIN_FILES["$base"]=$size
+              ALL_FILES["$base"]=1
+            fi
+          done < /tmp/main-stats/manifest.txt
+
+          while IFS=' ' read -r size filepath; do
+            if [[ "$filepath" == assets/* ]]; then
+              base=$(echo "$filepath" | sed -E 's/[-\.][a-f0-9]{8,}\./\./g')
+              PR_FILES["$base"]=$size
+              ALL_FILES["$base"]=1
+            fi
+          done < /tmp/pr-stats/manifest.txt
+
+          for f in $(echo "${!ALL_FILES[@]}" | tr ' ' '\n' | sort); do
+            m_size=${MAIN_FILES[$f]:-0}
+            p_size=${PR_FILES[$f]:-0}
+            chunk_diff=$((p_size - m_size))
+
+            m_h=$(fmt "$m_size")
+            p_h=$(fmt "$p_size")
+
+            if [ "$m_size" -eq 0 ]; then
+              d_h="➕ new"
+            elif [ "$p_size" -eq 0 ]; then
+              d_h="➖ removed"
+            elif [ "$chunk_diff" -gt 0 ]; then
+              d_h="+$(fmt "$chunk_diff") 🔺"
+            elif [ "$chunk_diff" -lt 0 ]; then
+              abs_cd=$((-chunk_diff))
+              d_h="-$(fmt "$abs_cd") 🔽"
+            else
+              d_h="—"
+            fi
+
+            CHUNK_TABLE+="| \`$f\` | $m_h | $p_h | $d_h |\n"
+          done
+
+          # ── New & removed files ──
+          FILE_CHANGES=""
+          comm_new=$(comm -13 <(awk '{print $2}' /tmp/main-stats/manifest.txt | sort) \
+                              <(awk '{print $2}' /tmp/pr-stats/manifest.txt | sort))
+          comm_removed=$(comm -23 <(awk '{print $2}' /tmp/main-stats/manifest.txt | sort) \
+                                  <(awk '{print $2}' /tmp/pr-stats/manifest.txt | sort))
+
+          if [ -n "$comm_new" ]; then
+            while IFS= read -r f; do
+              sz=$(grep " $f$" /tmp/pr-stats/manifest.txt | awk '{print $1}')
+              FILE_CHANGES+="- ➕ \`$f\` ($(fmt "$sz"))\n"
+            done <<< "$comm_new"
+          fi
+          if [ -n "$comm_removed" ]; then
+            while IFS= read -r f; do
+              sz=$(grep " $f$" /tmp/main-stats/manifest.txt | awk '{print $1}')
+              FILE_CHANGES+="- ➖ \`$f\` ($(fmt "$sz"))\n"
+            done <<< "$comm_removed"
+          fi
+          if [ -z "$FILE_CHANGES" ]; then
+            FILE_CHANGES="No files added or removed."
+          fi
+
+          {
+            echo "total_table<<DELIM"
+            echo "| Metric | main | PR | Diff |"
+            echo "|--------|------|-----|------|"
+            echo "| Total Build | $MAIN_H | $PR_H | $DIFF_H $ICON |"
+            echo "DELIM"
+
+            echo "chunk_table<<DELIM"
+            echo -e "$CHUNK_TABLE"
+            echo "DELIM"
+
+            echo "file_changes<<DELIM"
+            echo -e "$FILE_CHANGES"
+            echo "DELIM"
+          } >> "$GITHUB_OUTPUT"
+
+      # ── Lighthouse: PR build ──────────────────────────────
+      - name: Lighthouse on PR build
+        id: lighthouse_pr
+        run: |
+          npx -y serve /tmp/pr-stats/dist -l 8080 &
+          SERVER_PID=$!
+          sleep 3
+
+          npx -y lighthouse http://localhost:8080 \
+            --chrome-flags="--headless --no-sandbox --disable-gpu" \
+            --output=json --output-path=/tmp/pr-stats/lh.json \
+            --only-categories=performance,accessibility,best-practices,seo \
+            --quiet || true
+
+          kill $SERVER_PID 2>/dev/null || true
+
+          PR_PERF=$(jq '.categories.performance.score * 100 | round' /tmp/pr-stats/lh.json)
+          PR_A11Y=$(jq '.categories.accessibility.score * 100 | round' /tmp/pr-stats/lh.json)
+          PR_BP=$(jq '.categories["best-practices"].score * 100 | round' /tmp/pr-stats/lh.json)
+          PR_SEO=$(jq '.categories.seo.score * 100 | round' /tmp/pr-stats/lh.json)
+
+          {
+            echo "perf=$PR_PERF"
+            echo "a11y=$PR_A11Y"
+            echo "bp=$PR_BP"
+            echo "seo=$PR_SEO"
+          } >> "$GITHUB_OUTPUT"
+
+      # ── Lighthouse: main build ─────────────────────────────
+      - name: Lighthouse on main build
+        id: lighthouse_main
+        run: |
+          npx -y serve /tmp/main-stats/dist -l 8080 &
+          SERVER_PID=$!
+          sleep 3
+
+          npx -y lighthouse http://localhost:8080 \
+            --chrome-flags="--headless --no-sandbox --disable-gpu" \
+            --output=json --output-path=/tmp/main-stats/lh.json \
+            --only-categories=performance,accessibility,best-practices,seo \
+            --quiet || true
+
+          kill $SERVER_PID 2>/dev/null || true
+
+          MAIN_PERF=$(jq '.categories.performance.score * 100 | round' /tmp/main-stats/lh.json)
+          MAIN_A11Y=$(jq '.categories.accessibility.score * 100 | round' /tmp/main-stats/lh.json)
+          MAIN_BP=$(jq '.categories["best-practices"].score * 100 | round' /tmp/main-stats/lh.json)
+          MAIN_SEO=$(jq '.categories.seo.score * 100 | round' /tmp/main-stats/lh.json)
+
+          {
+            echo "perf=$MAIN_PERF"
+            echo "a11y=$MAIN_A11Y"
+            echo "bp=$MAIN_BP"
+            echo "seo=$MAIN_SEO"
+          } >> "$GITHUB_OUTPUT"
+
+      # ── Format Lighthouse comparison ───────────────────────
+      - name: Format Lighthouse table
+        id: lh_table
+        run: |
+          icon() {
+            if [ "$1" -gt 0 ]; then echo "🔺 +$1"; elif [ "$1" -lt 0 ]; then echo "🔽 $1"; else echo "—"; fi
+          }
+
+          PERF_DIFF=$(( ${{ steps.lighthouse_pr.outputs.perf }} - ${{ steps.lighthouse_main.outputs.perf }} ))
+          A11Y_DIFF=$(( ${{ steps.lighthouse_pr.outputs.a11y }} - ${{ steps.lighthouse_main.outputs.a11y }} ))
+          BP_DIFF=$(( ${{ steps.lighthouse_pr.outputs.bp }} - ${{ steps.lighthouse_main.outputs.bp }} ))
+          SEO_DIFF=$(( ${{ steps.lighthouse_pr.outputs.seo }} - ${{ steps.lighthouse_main.outputs.seo }} ))
+
+          {
+            echo "table<<DELIM"
+            echo "| Category | main | PR | Diff |"
+            echo "|----------|------|-----|------|"
+            echo "| Performance | ${{ steps.lighthouse_main.outputs.perf }} | ${{ steps.lighthouse_pr.outputs.perf }} | $(icon $PERF_DIFF) |"
+            echo "| Accessibility | ${{ steps.lighthouse_main.outputs.a11y }} | ${{ steps.lighthouse_pr.outputs.a11y }} | $(icon $A11Y_DIFF) |"
+            echo "| Best Practices | ${{ steps.lighthouse_main.outputs.bp }} | ${{ steps.lighthouse_pr.outputs.bp }} | $(icon $BP_DIFF) |"
+            echo "| SEO | ${{ steps.lighthouse_main.outputs.seo }} | ${{ steps.lighthouse_pr.outputs.seo }} | $(icon $SEO_DIFF) |"
+            echo "DELIM"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Post comparison comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: pr-comparison
+          message: |
+            ## 📊 PR Comparison Report
+
+            ### Bundle Size
+            ${{ steps.compare.outputs.total_table }}
+
+            ### Chunk Sizes
+            ${{ steps.compare.outputs.chunk_table }}
+
+            ### File Changes
+            ${{ steps.compare.outputs.file_changes }}
+
+            ### Lighthouse Scores
+            ${{ steps.lh_table.outputs.table }}
+
+            ---
+            <sub>🤖 Auto-generated by PR Comparison workflow</sub>
