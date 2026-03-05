@@ -1,4 +1,4 @@
-import GhostButton from "@/components/utils/GhostButton";
+import GhostButton from "@/components/ui/ghost-button";
 import { Maximize2, Minimize2, TerminalIcon, Trash2, X } from "lucide-react";
 import React from "react";
 

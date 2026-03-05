@@ -12,18 +12,9 @@ import { VscSourceControl } from "react-icons/vsc";
 import { BsLayoutSidebarInset } from "react-icons/bs";
 import { cn } from "@/lib/utils";
 import { useEditorContext } from "../context/explorer-context";
-import GhostButton from "@/components/utils/GhostButton";
+import GhostButton from "@/components/ui/ghost-button";
 import GitCommitsPanel from "../git-commits/git-commits-panel";
 
-/**
- * SideBar component renders a vertical sidebar for navigation in the editor.
- * It provides buttons for various sections such as Home, Projects, GitHub, LinkedIn, and Terminal.
- * The sidebar can be toggled for mobile view and includes visual indicators for active states.
- * A Source Control button at the bottom opens the GitCommitsPanel showing recent git history.
- *
- * @component
- * @returns {JSX.Element} The rendered SideBar component.
- */
 const SideBar: React.FC = () => {
   const {
     mobileMenuOpen,
@@ -123,7 +114,6 @@ const SideBar: React.FC = () => {
         />
       </div>
 
-      {/* Git commits panel — rendered outside the narrow sidebar div so it can expand */}
       <GitCommitsPanel
         open={gitPanelOpen}
         onClose={() => setGitPanelOpen(false)}

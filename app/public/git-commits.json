@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-03-05T01:38:56.951Z",
+  "generatedAt": "2026-03-05T01:51:24.549Z",
   "commits": [
+    {
+      "hash": "9e0bc8fe61ada0141588e7aef1f8281fcab66aa3",
+      "shortHash": "9e0bc8f",
+      "message": "feat: add Source Control panel showing recent git commits in sidebar",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T07:08:29+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 376,
+      "deletions": 76,
+      "filesChanged": 5
+    },
     {
       "hash": "702408d2c630eae9039e09d5c34c0a2b670ca034",
       "shortHash": "702408d",
@@ -228,18 +240,6 @@
       "insertions": 299,
       "deletions": 144,
       "filesChanged": 3
-    },
-    {
-      "hash": "ba54a0eb90b0e1224db8e0bf66ffa2a31be86d14",
-      "shortHash": "ba54a0e",
-      "message": "refactor: replace Framer Motion with CSS animations in profile components",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-04T09:33:29+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 151,
-      "deletions": 101,
-      "filesChanged": 6
     }
   ]
 }

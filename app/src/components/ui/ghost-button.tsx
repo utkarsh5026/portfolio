@@ -38,18 +38,18 @@ const GhostButton: React.FC<GhostButtonProps> = ({
         "p-3 relative transition-colors duration-200 group/button",
         isActive ? "text-ctp-red" : "text-ctp-text hover:text-ctp-red",
         "hover:bg-ctp-overlay2",
-        className
+        className,
       )}
       onClick={onClick}
     >
       {icon}
       <span
         className={cn(
-          "absolute px-2 py-1 bg-[#313244] rounded text-xs invisible opacity-0 group-hover/button:visible group-hover/button:opacity-100 transition-opacity whitespace-nowrap",
+          "absolute px-2 py-1 bg-[#313244] rounded text-xs invisible opacity-0 group-hover/button:visible group-hover/button:opacity-100 transition-opacity whitespace-nowrap font-source",
           labelDirection === "left" && "left-14",
           labelDirection === "right" && "right-14",
           labelDirection === "top" && "top-14",
-          labelDirection === "bottom" && "bottom-14"
+          labelDirection === "bottom" && "bottom-14",
         )}
       >
         {label}
