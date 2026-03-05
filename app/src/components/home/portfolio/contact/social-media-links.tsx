@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaShareAlt, FaTwitter } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 import Reveal from "@/components/animations/reveal/Reveal";
@@ -44,14 +44,16 @@ const socialLinks = [
 
 const SocialMediaLinks = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-5 h-full w-full">
-      {socialLinks.map((link, index) => (
-        <OutlineNode
+    <OutlineNode
+      label="Social Media Links"
+      icon={<FaShareAlt className="w-3 h-3 text-ctp-lavender" />}
+      className="h-full w-full"
+    >
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-5 h-full w-full">
+        {socialLinks.map((link, index) => (
+          <OutlineNode
           key={link.name}
-          id={link.name}
           label={link.name}
-          level={1}
-          parentId="contact"
           icon={link.outlineIcon}
           className="h-full w-full"
         >
@@ -83,9 +85,10 @@ const SocialMediaLinks = () => {
               />
             </div>
           </Reveal>
-        </OutlineNode>
-      ))}
-    </div>
+          </OutlineNode>
+        ))}
+      </div>
+    </OutlineNode>
   );
 };
 

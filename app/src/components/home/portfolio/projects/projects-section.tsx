@@ -122,10 +122,7 @@ const Projects: React.FC = () => {
                   className="focus-visible:outline-none"
                 >
                   <OutlineNode
-                    id="featured-project"
                     label="Featured Project"
-                    level={1}
-                    parentId="projects"
                     icon={<Sparkles className="w-3 h-3 text-ctp-yellow" />}
                   >
                     <FeaturedProject
@@ -140,10 +137,7 @@ const Projects: React.FC = () => {
                   className="focus-visible:outline-none"
                 >
                   <OutlineNode
-                    id="project-gallery"
                     label="Project Gallery"
-                    level={1}
-                    parentId="projects"
                     icon={<Code className="w-3 h-3 text-ctp-peach" />}
                   >
                     {/* Project grid */}
@@ -153,10 +147,7 @@ const Projects: React.FC = () => {
                         .map((project, index) => (
                           <OutlineNode
                             key={project.name}
-                            id={`project-${project.name}`}
                             label={project.name}
-                            level={2}
-                            parentId="project-gallery"
                           >
                             <Reveal
                               effect="fade-up"

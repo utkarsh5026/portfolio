@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-03-05T13:07:54.584Z",
+  "generatedAt": "2026-03-05T15:33:25.190Z",
   "commits": [
+    {
+      "hash": "bcbc8d37f3c898677de6aa1c6186c088057ea024",
+      "shortHash": "bcbc8d3",
+      "message": "refactor: extract reusable Tree UI component and migrate editor tree views",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-05T18:37:41+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 498,
+      "deletions": 431,
+      "filesChanged": 10
+    },
     {
       "hash": "c64d44ff26e7487fb9a9c3908c3df2992a5058e5",
       "shortHash": "c64d44f",
@@ -228,22 +240,10 @@
       "insertions": 376,
       "deletions": 76,
       "filesChanged": 5
-    },
-    {
-      "hash": "702408d2c630eae9039e09d5c34c0a2b670ca034",
-      "shortHash": "702408d",
-      "message": "build: add git-commits generation script and migrate hooks to husky",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T05:50:20+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 529,
-      "deletions": 15,
-      "filesChanged": 12
     }
   ],
   "commitsByDate": {
-    "2026-03-05": 36,
+    "2026-03-05": 37,
     "2026-03-04": 17,
     "2026-03-03": 28,
     "2026-03-02": 17,
@@ -262,7 +262,7 @@
   "languageStats": [
     {
       "language": "TypeScript",
-      "count": 231,
+      "count": 232,
       "color": "#89b4fa"
     },
     {

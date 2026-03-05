@@ -1,4 +1,4 @@
-import { AnimatePresence,motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 import { FaCode, FaHandPointer } from "react-icons/fa";
 
@@ -27,12 +27,7 @@ const TechnologiesContent: React.FC<{ selectedExp: number }> = ({
   selectedExp,
 }) => (
   <div className="px-4 sm:px-5 md:px-6 lg:px-8 pb-6 sm:pb-8 border-t border-ctp-surface1/20">
-    <OutlineNode
-      id={`${experiences[selectedExp].company}-technologies`}
-      label="Technologies Used"
-      level={1}
-      parentId={"experience"}
-    >
+    <OutlineNode label="Technologies Used">
       <div className="pt-4 sm:pt-6">
         <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
           <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-lg bg-ctp-peach/20 flex items-center justify-center flex-shrink-0">

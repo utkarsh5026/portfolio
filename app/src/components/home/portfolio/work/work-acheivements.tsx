@@ -31,12 +31,7 @@ const Achievements: React.FC<AchievementsProps> = ({ selectedExp }) => {
   const experience = experiences[selectedExp];
 
   return (
-    <OutlineNode
-      id="achievements"
-      label="Key Achievements"
-      level={1}
-      parentId="experience"
-    >
+    <OutlineNode label="Key Achievements">
       <div className="space-y-4 sm:space-y-6">
         <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
           <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-lg bg-ctp-green/20 flex items-center justify-center flex-shrink-0">
@@ -52,10 +47,7 @@ const Achievements: React.FC<AchievementsProps> = ({ selectedExp }) => {
           {experience.achievements.map((achievement, index) => (
             <OutlineNode
               key={`achievement-${achievement.title}`}
-              id={`achievement-${index}`}
               label={achievement.title}
-              level={2}
-              parentId="achievements"
             >
               <Reveal
                 effect="rise"

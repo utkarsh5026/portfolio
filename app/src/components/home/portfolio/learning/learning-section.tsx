@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
-import { BookOpen, Lightbulb } from "lucide-react";
-import React, { useEffect,useState } from "react";
+import { BookOpen, FolderOpen, Lightbulb } from "lucide-react";
+import React, { useEffect, useState } from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
+import { OutlineNode } from "@/components/home/editor/outline";
 import Section from "@/components/section/portfolio-section";
 import type { TechnologyLearning } from "@/types";
 
@@ -81,46 +82,60 @@ const CurrentLearning: React.FC = () => {
         <div className="space-y-12">
           {Object.entries(categorizedTech).map(
             ([category, techs], categoryIndex) => (
-              <Reveal
+              <OutlineNode
                 key={category}
-                effect="rise"
-                delay={categoryIndex * 0.15}
-                duration={0.7}
-                className="space-y-6"
+                label={category}
+                icon={
+                  <FolderOpen
+                    className={`w-3 h-3 text-ctp-${getCategoryColor(category)}`}
+                  />
+                }
               >
-                {/* Category Header */}
-                <div className="flex items-center gap-3">
-                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-ctp-surface1 to-transparent" />
-                  <div className="flex items-center gap-2 px-4 py-2 bg-ctp-surface0/50 rounded-full border border-ctp-surface1/50">
-                    <div
-                      className={`w-2 h-2 rounded-full bg-ctp-${getCategoryColor(
-                        category,
-                      )}`}
-                    />
-                    <span className="text-sm font-medium text-ctp-text">
-                      {category}
-                    </span>
-                    <span className="text-xs text-ctp-subtext0">
-                      ({techs.length})
-                    </span>
+                <Reveal
+                  effect="rise"
+                  delay={categoryIndex * 0.15}
+                  duration={0.7}
+                  className="space-y-6"
+                >
+                  {/* Category Header */}
+                  <div className="flex items-center gap-3">
+                    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-ctp-surface1 to-transparent" />
+                    <div className="flex items-center gap-2 px-4 py-2 bg-ctp-surface0/50 rounded-full border border-ctp-surface1/50">
+                      <div
+                        className={`w-2 h-2 rounded-full bg-ctp-${getCategoryColor(
+                          category,
+                        )}`}
+                      />
+                      <span className="text-sm font-medium text-ctp-text">
+                        {category}
+                      </span>
+                      <span className="text-xs text-ctp-subtext0">
+                        ({techs.length})
+                      </span>
+                    </div>
+                    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-ctp-surface1 to-transparent" />
                   </div>
-                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-ctp-surface1 to-transparent" />
-                </div>
 
-                {/* Technology Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {techs.map((tech, techIndex) => (
-                    <LearningCard
-                      key={tech.name}
-                      tech={tech}
-                      category={category}
-                      onSelect={handleTechSelect}
-                      delay={categoryIndex * 0.1 + techIndex * 0.05}
-                      categoryColor={getCategoryColor(category)}
-                    />
-                  ))}
-                </div>
-              </Reveal>
+                  {/* Technology Cards */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {techs.map((tech, techIndex) => (
+                      <OutlineNode
+                        key={tech.name}
+                        label={tech.name}
+                        icon={tech.icon}
+                      >
+                        <LearningCard
+                          tech={tech}
+                          category={category}
+                          onSelect={handleTechSelect}
+                          delay={categoryIndex * 0.1 + techIndex * 0.05}
+                          categoryColor={getCategoryColor(category)}
+                        />
+                      </OutlineNode>
+                    ))}
+                  </div>
+                </Reveal>
+              </OutlineNode>
             ),
           )}
         </div>

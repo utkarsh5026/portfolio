@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useMemo } from "react";
 
 import { Tree } from "@/components/ui/tree";
-
-import { type OutlineItem, useOutline } from "./context/outline-context";
+import useOutlineStore, {
+  type OutlineItem,
+} from "@/store/outline/outline-store";
 
 const messages = [
   { icon: "🎯", text: "Found it!" },
@@ -24,13 +25,11 @@ function renderOutlineTree(
   depth: number,
   onClick: (item: OutlineItem) => void,
 ) {
-  const children = items
-    .filter((item) => item.parentId === parentId)
-    .sort((a, b) => items.indexOf(a) - items.indexOf(b));
+  const children = items.filter((item) => item.parentId === parentId);
 
   return children.map((item) => {
-    const subChildren = items.filter((i) => i.parentId === item.id);
-    if (subChildren.length > 0) {
+    const hasChildren = items.some((i) => i.parentId === item.id);
+    if (hasChildren) {
       return (
         <Tree.Group
           key={item.id}
@@ -60,25 +59,24 @@ function renderOutlineTree(
 }
 
 const OutlinePanel: React.FC = () => {
-  const { outlineItems, currentSection, highlightNode, activeHighlightId } =
-    useOutline();
+  const itemsMap = useOutlineStore((s) => s.items);
+  const activeSection = useOutlineStore((s) => s.activeSection);
+  const activeHighlightId = useOutlineStore((s) => s.activeHighlightId);
+  const highlightNode = useOutlineStore((s) => s.highlightNode);
+
   const [openItems, setOpenItems] = React.useState<Set<string>>(new Set());
 
-  useEffect(() => {
-    setOpenItems(
-      new Set([currentSection, ...outlineItems.map((item) => item.id)]),
-    );
-  }, [outlineItems, currentSection]);
+  const items = useMemo(() => [...itemsMap.values()], [itemsMap]);
 
-  const rootItems = useMemo(
-    () =>
-      outlineItems
-        .filter(
-          (item) => item.id.startsWith(currentSection) && item.level === 0,
-        )
-        .sort((a, b) => outlineItems.indexOf(a) - outlineItems.indexOf(b)),
-    [outlineItems, currentSection],
+  const sectionRoot = useMemo(
+    () => items.find((i) => i.parentId === null && i.id === activeSection),
+    [items, activeSection],
   );
+
+  useEffect(() => {
+    if (!activeSection) return;
+    setOpenItems(new Set([activeSection, ...items.map((i) => i.id)]));
+  }, [items, activeSection]);
 
   const handleItemClick = useCallback(
     (item: OutlineItem) => {
@@ -113,9 +111,7 @@ const OutlinePanel: React.FC = () => {
           element.style.backgroundColor = originalBg;
 
           setTimeout(() => {
-            if (element.contains(popup)) {
-              element.removeChild(popup);
-            }
+            if (element.contains(popup)) element.removeChild(popup);
             element.style.transition = originalTransition;
             element.style.borderRadius = originalBorderRadius;
           }, 400);
@@ -125,7 +121,7 @@ const OutlinePanel: React.FC = () => {
     [highlightNode],
   );
 
-  if (!currentSection || rootItems.length === 0) {
+  if (!activeSection || !sectionRoot) {
     return (
       <div className="h-full flex flex-col bg-ctp-mantle border-r border-ctp-surface0 w-64">
         <div className="flex items-center px-4 h-6 text-[11px] uppercase tracking-wider text-ctp-subtext0 font-semibold hover:text-ctp-text cursor-pointer transition-colors duration-200">
@@ -137,6 +133,13 @@ const OutlinePanel: React.FC = () => {
       </div>
     );
   }
+
+  const treeChildren = renderOutlineTree(
+    sectionRoot.id,
+    items,
+    1,
+    handleItemClick,
+  );
 
   return (
     <div className="h-full flex flex-col bg-ctp-mantle border-r border-ctp-surface0 w-64 select-none">
@@ -152,40 +155,29 @@ const OutlinePanel: React.FC = () => {
           guideLines
           rowHeight={22}
         >
-          {rootItems.map((item) => {
-            const children = renderOutlineTree(
-              item.id,
-              outlineItems,
-              1,
-              handleItemClick,
-            );
-            if (children.length > 0) {
-              return (
-                <Tree.Group
-                  key={item.id}
-                  id={item.id}
-                  depth={0}
-                  label={item.label}
-                  icon={item.icon}
-                  iconOpen={item.icon}
-                  iconColor=""
-                  onClick={() => handleItemClick(item)}
-                >
-                  {children}
-                </Tree.Group>
-              );
-            }
-            return (
-              <Tree.Item
-                key={item.id}
-                id={item.id}
-                depth={0}
-                label={item.label}
-                icon={item.icon}
-                onClick={() => handleItemClick(item)}
-              />
-            );
-          })}
+          {treeChildren.length > 0 ? (
+            <Tree.Group
+              key={sectionRoot.id}
+              id={sectionRoot.id}
+              depth={0}
+              label={sectionRoot.label}
+              icon={sectionRoot.icon}
+              iconOpen={sectionRoot.icon}
+              iconColor=""
+              onClick={() => handleItemClick(sectionRoot)}
+            >
+              {treeChildren}
+            </Tree.Group>
+          ) : (
+            <Tree.Item
+              key={sectionRoot.id}
+              id={sectionRoot.id}
+              depth={0}
+              label={sectionRoot.label}
+              icon={sectionRoot.icon}
+              onClick={() => handleItemClick(sectionRoot)}
+            />
+          )}
         </Tree>
       </div>
     </div>
