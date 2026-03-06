@@ -1,6 +1,30 @@
 {
-  "generatedAt": "2026-03-05T22:48:49.904Z",
+  "generatedAt": "2026-03-06T21:37:00.037Z",
   "commits": [
+    {
+      "hash": "b2fcb47839d2a2939ca53dd4fadc517048a6bca5",
+      "shortHash": "b2fcb47",
+      "message": "Merge pull request #71 from utkarsh5026/feat/add-remaining-projects",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-06T04:25:17+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 2944,
+      "deletions": 1636,
+      "filesChanged": 59
+    },
+    {
+      "hash": "7422e2da1f12f15bffb3a89aacf7899519fc80dc",
+      "shortHash": "7422e2d",
+      "message": "feat: bridge markdown headings into outline panel during Deep Dive",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-06T04:18:32+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 657,
+      "deletions": 282,
+      "filesChanged": 10
+    },
     {
       "hash": "8d2d8c7fc37cfd1fb0df86e4585ae9c9129ed928",
       "shortHash": "8d2d8c7",
@@ -216,34 +240,10 @@
       "insertions": 67,
       "deletions": 55,
       "filesChanged": 2
-    },
-    {
-      "hash": "35bd2f015b400240757b506371eca3fcaedaa567",
-      "shortHash": "35bd2f0",
-      "message": "Merge pull request #69 from utkarsh5026/simplify",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T08:30:23+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 12744,
-      "deletions": 8011,
-      "filesChanged": 257
-    },
-    {
-      "hash": "e45009997b8af7d232f4169e0d4fa0256c1fdb0d",
-      "shortHash": "e450099",
-      "message": "fix: prevent incomplete URL substring sanitization in MarkdownImage",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T08:24:04+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 38,
-      "deletions": 34,
-      "filesChanged": 3
     }
   ],
   "commitsByDate": {
-    "2026-03-06": 2,
+    "2026-03-06": 4,
     "2026-03-05": 42,
     "2026-03-04": 17,
     "2026-03-03": 28,
