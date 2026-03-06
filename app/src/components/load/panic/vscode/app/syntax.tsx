@@ -1,4 +1,4 @@
-import { SiCss3, SiJavascript,SiReact } from "react-icons/si";
+import { SiCss, SiJavascript,SiReact } from "react-icons/si";
 
 import { CodeType } from "../code";
 
@@ -42,7 +42,7 @@ export const getFileInfo = (codeFile: CodeType) => {
       };
     case "cssStyles":
       return {
-        icon: <SiCss3 className="text-blue-500" />,
+        icon: <SiCss className="text-blue-500" />,
         language: "css",
         extension: "css",
         filename: "Portfolio.css",

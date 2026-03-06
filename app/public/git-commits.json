@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-03-06T22:33:01.958Z",
+  "generatedAt": "2026-03-06T22:34:57.720Z",
   "commits": [
+    {
+      "hash": "a3e92ce280a308dc968b74d7305260e5b9571850",
+      "shortHash": "a3e92ce",
+      "message": "chore: migrate package manager from npm to bun",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T04:02:51+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 2015,
+      "deletions": 14378,
+      "filesChanged": 5
+    },
     {
       "hash": "1e38942783ff9fe6c36dddba73523b97208f4eef",
       "shortHash": "1e38942",
@@ -228,22 +240,10 @@
       "insertions": 151,
       "deletions": 35,
       "filesChanged": 6
-    },
-    {
-      "hash": "a4fb4c06f7f4e9c024abfd6356f7847c869d3fc1",
-      "shortHash": "a4fb4c0",
-      "message": "feat: add scroll-tracked heading breadcrumbs for project deep dive",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T16:24:35+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 362,
-      "deletions": 140,
-      "filesChanged": 11
     }
   ],
   "commitsByDate": {
-    "2026-03-07": 6,
+    "2026-03-07": 7,
     "2026-03-06": 4,
     "2026-03-05": 43,
     "2026-03-04": 17,

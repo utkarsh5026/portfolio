@@ -1,8 +1,8 @@
 import React from "react";
 import { GrTest } from "react-icons/gr";
 import { MdApi,MdAutoGraph } from "react-icons/md";
+import { FaAws } from "react-icons/fa";
 import {
-  SiAmazon,
   SiDocker,
   SiExpress,
   SiGit,
@@ -44,7 +44,7 @@ export const skillIcons: Record<string, React.ElementType> = {
   GraphQL: SiGraphql,
   "REST API Design": MdApi,
 
-  AWS: SiAmazon,
+  AWS: FaAws,
   "Google Cloud Platform": SiGooglecloud,
   Docker: SiDocker,
   Kubernetes: SiKubernetes,

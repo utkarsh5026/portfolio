@@ -19,7 +19,7 @@ import {
   SiApollographql,
   SiAxios,
   SiBittorrent,
-  SiCss3,
+  SiCss,
   SiDjango,
   SiDocker,
   SiFastapi,
@@ -189,7 +189,7 @@ export const technologies = {
   css: {
     name: "CSS",
     aboutLink: "https://www.w3.org/Style/CSS/",
-    icon: <SiCss3 />,
+    icon: <SiCss />,
   },
   svg: {
     name: "SVG",
