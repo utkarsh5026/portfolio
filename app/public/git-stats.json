@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-06T23:25:11.984Z",
+  "generatedAt": "2026-03-06T23:27:21.390Z",
   "sections": {
     "home": {
       "lastCommitHash": "e4ccb5a",
@@ -14,15 +14,15 @@
       "fileCount": 17
     },
     "about": {
-      "lastCommitHash": "e4ccb5a",
-      "lastCommitDate": "2026-03-07 04:25:58 +0530",
-      "lastCommitMessage": "style: add Prettier config and reformat entire codebase",
+      "lastCommitHash": "4425b18",
+      "lastCommitDate": "2026-03-07 04:54:58 +0530",
+      "lastCommitMessage": "perf: replace framer-motion with CSS modules in about section",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 23,
-      "linesAdded": 16,
-      "linesDeleted": 11,
-      "totalAdded": 2858,
-      "totalDeleted": 1571,
+      "commitCount": 24,
+      "linesAdded": 30,
+      "linesDeleted": 15,
+      "totalAdded": 2888,
+      "totalDeleted": 1586,
       "fileCount": 13
     },
     "skills": {

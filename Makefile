@@ -52,7 +52,7 @@ analyze-verbose:
 	@$(PY) makefile.py analyze-verbose
 
 # Quality
-.PHONY: lint lint-fix type-check check
+.PHONY: lint lint-fix type-check check format format-check
 lint:
 	@$(PY) makefile.py lint
 lint-fix:
@@ -61,6 +61,10 @@ type-check:
 	@$(PY) makefile.py type-check
 check:
 	@$(PY) makefile.py check
+format:
+	@$(PY) makefile.py format
+format-check:
+	@$(PY) makefile.py format-check
 
 # Maintenance
 .PHONY: clean clean-all reinstall update outdated
