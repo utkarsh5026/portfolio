@@ -12,6 +12,9 @@
     "build": "tsc -b && vite build",
     "force-build": "bunx tsc --build --force && vite build --force",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
     "preview": "vite preview",
     "analyze": "vite build --mode analyze",
     "analyze:verbose": "ANALYZE=true vite build"
@@ -72,6 +75,7 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "husky": "^9.1.7",
     "postcss": "^8.5.6",
+    "prettier": "^3.8.1",
     "rollup-plugin-visualizer": "^5.13.1",
     "sharp": "^0.34.5",
     "tailwindcss": "^3.4.16",

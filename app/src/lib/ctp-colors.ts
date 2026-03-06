@@ -37,9 +37,6 @@ export type AppColor =
 type ColorPrefix = "text" | "bg" | "border" | "from" | "to" | "shadow";
 
 /** Generate a Catppuccin Tailwind class like `text-ctp-blue` or `bg-ctp-peach` */
-export function ctpColorClass(
-  prefix: ColorPrefix,
-  color: AppColor,
-): string {
+export function ctpColorClass(prefix: ColorPrefix, color: AppColor): string {
   return `${prefix}-ctp-${color}`;
 }

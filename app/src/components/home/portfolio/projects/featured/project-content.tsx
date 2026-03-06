@@ -1,4 +1,4 @@
-import { ArrowRight,ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import React from "react";
 import { FaGithub } from "react-icons/fa";
 

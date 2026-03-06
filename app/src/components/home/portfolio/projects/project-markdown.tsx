@@ -63,7 +63,7 @@ const CoverBand: React.FC<{ coverImage?: string; name: string }> = ({
     <div
       className={cn(
         "relative w-full h-36 rounded-t-xl bg-gradient-to-b",
-        gradient,
+        gradient
       )}
     >
       {/* Subtle noise texture via repeating tiny radial */}
@@ -85,7 +85,7 @@ const PageIcon: React.FC<{ icon?: string; name: string }> = ({
         "relative -mt-14 ml-6 flex items-center justify-center z-10",
         "w-24 h-24 rounded-2xl shadow-md ring-[6px] ring-ctp-base",
         "bg-ctp-base text-5xl select-none",
-        !isEmoji && "bg-ctp-surface0 text-ctp-mauve font-bold text-4xl",
+        !isEmoji && "bg-ctp-surface0 text-ctp-mauve font-bold text-4xl"
       )}
     >
       {label}
@@ -188,7 +188,7 @@ const TabBar: React.FC<{
             "inline-flex items-center gap-1.5 px-3 py-2 text-xs border-b-2 transition-colors -mb-px",
             active === tab.id
               ? "border-ctp-blue text-ctp-blue"
-              : "border-transparent text-ctp-subtext0 hover:text-ctp-text",
+              : "border-transparent text-ctp-subtext0 hover:text-ctp-text"
           )}
         >
           {tab.icon}
@@ -208,13 +208,13 @@ interface ProjectMarkdownProps {
 
 const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
   const project = useProjectStore((state) =>
-    state.projects.find((p) => p.name === projectId),
+    state.projects.find((p) => p.name === projectId)
   );
 
   const slug = project ? getProjectSlug(project.name) : "";
   const markdown = useProjectStore((s) => s.markdownCache[slug] ?? "");
   const loadState = useProjectStore(
-    (s) => (s.markdownStates[slug] as LoadState) ?? "loading",
+    (s) => (s.markdownStates[slug] as LoadState) ?? "loading"
   );
 
   const [activeTab, setActiveTab] = React.useState<Tab>("overview");

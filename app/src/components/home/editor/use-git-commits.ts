@@ -5,13 +5,13 @@ import { relativeTime } from "./use-git-stats";
 type TimeGroup = "Today" | "Yesterday" | "This Week" | "Earlier";
 
 export function groupCommitsByTime(
-  commits: GitCommit[],
+  commits: GitCommit[]
 ): Map<TimeGroup, GitCommit[]> {
   const now = new Date();
   const todayStart = new Date(
     now.getFullYear(),
     now.getMonth(),
-    now.getDate(),
+    now.getDate()
   ).getTime();
   const yesterdayStart = todayStart - 86_400_000;
   const weekStart = todayStart - new Date(now).getDay() * 86_400_000;

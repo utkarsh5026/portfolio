@@ -55,7 +55,7 @@ const VsCodeEditor = React.forwardRef<HTMLDivElement, VsCodeEditorProps>(
                       {/* Simple token parsing for syntax highlighting */}
                       {line
                         .split(
-                          /(\s+|[{}();,=><]|\/\/.*$|(['"])(?:(?=(\\?))\3.)*?\2)/,
+                          /(\s+|[{}();,=><]|\/\/.*$|(['"])(?:(?=(\\?))\3.)*?\2)/
                         )
                         .filter(Boolean)
                         .map((token, j) => (
@@ -78,7 +78,7 @@ const VsCodeEditor = React.forwardRef<HTMLDivElement, VsCodeEditorProps>(
                 style={{
                   top: `${Math.min(
                     (typingProgress[filename] || 0) * 24,
-                    codeContent[filename].length * 24,
+                    codeContent[filename].length * 24
                   )}px`,
                   left: "0px",
                 }}
@@ -106,7 +106,7 @@ const VsCodeEditor = React.forwardRef<HTMLDivElement, VsCodeEditorProps>(
         </div>
       </div>
     );
-  },
+  }
 );
 
 export default VsCodeEditor;

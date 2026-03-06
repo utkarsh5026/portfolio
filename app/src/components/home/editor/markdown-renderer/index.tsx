@@ -199,14 +199,14 @@ export const MarkdownRender: React.FC<MarkdownRenderProps> = ({ markdown }) => {
     if (!container) return;
 
     const headings = Array.from(
-      container.querySelectorAll<HTMLElement>(".md-heading"),
+      container.querySelectorAll<HTMLElement>(".md-heading")
     );
 
     if (headings.length === 0) return;
 
     const updateBreadcrumbs = () => {
       const headings = Array.from(
-        container.querySelectorAll<HTMLElement>(".md-heading"),
+        container.querySelectorAll<HTMLElement>(".md-heading")
       );
 
       if (headings.length === 0) return;
@@ -218,7 +218,7 @@ export const MarkdownRender: React.FC<MarkdownRenderProps> = ({ markdown }) => {
       const THRESHOLD = 80;
 
       const scrollParent = container.closest<HTMLElement>(
-        "[data-scroll-container]",
+        "[data-scroll-container]"
       );
       const parentTop = scrollParent?.getBoundingClientRect().top ?? 0;
 

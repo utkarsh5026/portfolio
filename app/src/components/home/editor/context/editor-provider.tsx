@@ -52,7 +52,7 @@ export const EditorProvider: React.FC<ProviderProps> = ({ children }) => {
       resolveProjectSlug(projects);
       // Also kick off markdown prefetch for the deep-dive tab
       const match = projects.find(
-        (p) => getProjectSlug(p.name) === pendingProjectSlug,
+        (p) => getProjectSlug(p.name) === pendingProjectSlug
       );
       if (match) prefetchMarkdown(match.name);
     }

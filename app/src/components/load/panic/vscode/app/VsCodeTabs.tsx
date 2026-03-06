@@ -1,4 +1,4 @@
-import { SiCss, SiJavascript,SiReact } from "react-icons/si";
+import { SiCss, SiJavascript, SiReact } from "react-icons/si";
 
 import { type CodeType } from "../code";
 

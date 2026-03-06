@@ -29,23 +29,28 @@ export const education = [
 export const background = [
   {
     question: "Who am I?",
-    answer: "Full-Stack Developer & DevOps Engineer passionate about solving problems through code.",
+    answer:
+      "Full-Stack Developer & DevOps Engineer passionate about solving problems through code.",
   },
   {
     question: "How did I start?",
-    answer: "Started with simple HTML pages in college, grew into web technologies and cloud platforms.",
+    answer:
+      "Started with simple HTML pages in college, grew into web technologies and cloud platforms.",
   },
   {
     question: "What do I enjoy?",
-    answer: "Building both beautiful front-end interfaces and robust back-end systems.",
+    answer:
+      "Building both beautiful front-end interfaces and robust back-end systems.",
   },
   {
     question: "What drives me?",
-    answer: "Creating useful applications that help people accomplish their goals.",
+    answer:
+      "Creating useful applications that help people accomplish their goals.",
   },
   {
     question: "What's my approach?",
-    answer: "Quick learner, always eager for new challenges. Let's build something amazing together! ❤️",
+    answer:
+      "Quick learner, always eager for new challenges. Let's build something amazing together! ❤️",
   },
 ];
 

@@ -18,8 +18,8 @@ const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
             completed.includes(index)
               ? "bg-ctp-green"
               : index === current
-              ? "bg-ctp-blue"
-              : "bg-ctp-surface1"
+                ? "bg-ctp-blue"
+                : "bg-ctp-surface1"
           }`}
         />
       ))}

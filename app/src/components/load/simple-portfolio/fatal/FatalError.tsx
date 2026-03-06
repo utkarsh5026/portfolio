@@ -26,20 +26,20 @@ const FatalError: React.FC<FatalErrorProps> = ({
     <div
       className={cn(
         "fixed inset-0 bg-red-900 bg-opacity-95 z-50 flex justify-center items-center",
-        styles.container,
+        styles.container
       )}
     >
       <div
         className={cn(
           "w-96 bg-gray-800 border-2 border-red-600 rounded-lg p-8 text-center text-white shadow-2xl",
-          styles.content,
+          styles.content
         )}
       >
         <div
           className={cn(
             "text-5xl mb-5 inline-block",
             styles.icon,
-            makeSkullLarge && styles.skullLarge,
+            makeSkullLarge && styles.skullLarge
           )}
         >
           💀
@@ -68,7 +68,7 @@ const FatalError: React.FC<FatalErrorProps> = ({
         <button
           className={cn(
             "bg-red-600 text-white border-none py-2.5 px-5 rounded font-bold text-base cursor-pointer",
-            styles.button,
+            styles.button
           )}
           onClick={() => {
             if (onComplete) onComplete();

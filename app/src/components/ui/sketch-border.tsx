@@ -73,7 +73,7 @@ const SketchBorder: React.FC<SketchBorderProps> = ({
       className={cn(
         "relative group overflow-visible",
         hoverScale && "group-hover:scale-[1.01]",
-        className,
+        className
       )}
     >
       {/* Border layers — desktop only */}
@@ -82,7 +82,7 @@ const SketchBorder: React.FC<SketchBorderProps> = ({
         <div
           className={cn(
             "absolute inset-[-5px] border-[2px] transition-all duration-500 pointer-events-none z-0",
-            `border-ctp-${primaryColor}/${primaryOpacity}`,
+            `border-ctp-${primaryColor}/${primaryOpacity}`
           )}
           style={{
             borderRadius: borderRadiusVariants[0],
@@ -94,7 +94,7 @@ const SketchBorder: React.FC<SketchBorderProps> = ({
         <div
           className={cn(
             "absolute inset-[-2px] border-[2px] transition-all duration-500 pointer-events-none z-0",
-            `border-ctp-${secondaryColor}/${secondaryOpacity}`,
+            `border-ctp-${secondaryColor}/${secondaryOpacity}`
           )}
           style={{
             borderRadius: borderRadiusVariants[1],
@@ -106,7 +106,7 @@ const SketchBorder: React.FC<SketchBorderProps> = ({
         <div
           className={cn(
             "absolute inset-[1px] border-[1.5px] transition-all duration-500 pointer-events-none z-0",
-            `border-ctp-${tertiaryColor ?? primaryColor}/${tertiaryOpacity}`,
+            `border-ctp-${tertiaryColor ?? primaryColor}/${tertiaryOpacity}`
           )}
           style={{
             borderRadius: borderRadiusVariants[2],

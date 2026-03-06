@@ -1,6 +1,6 @@
 import "./Terminal.css";
 
-import { AnimatePresence,motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
 import { useEditorContext } from "../context/explorer-context";

@@ -147,7 +147,7 @@ const CommitTypeBadge: React.FC<CommitTypeBadgeProps> = ({ message }) => {
       className={cn(
         "px-1.5 py-0.5 rounded-full text-[9px] font-source font-medium",
         color,
-        bg,
+        bg
       )}
     >
       {label}

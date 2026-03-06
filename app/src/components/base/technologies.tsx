@@ -11,7 +11,7 @@
  * just import the technologies object and grab what you need!
  */
 
-import { FaAws, FaChartBar, FaDatabase,FaLinux, FaNode } from "react-icons/fa";
+import { FaAws, FaChartBar, FaDatabase, FaLinux, FaNode } from "react-icons/fa";
 import { GiCobra } from "react-icons/gi";
 import { GoCommandPalette } from "react-icons/go";
 import { MdHttp } from "react-icons/md";
@@ -58,7 +58,7 @@ import {
   SiWebassembly,
 } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
-import { VscEditorLayout,VscTerminalPowershell } from "react-icons/vsc";
+import { VscEditorLayout, VscTerminalPowershell } from "react-icons/vsc";
 
 export const technologies = {
   golang: {

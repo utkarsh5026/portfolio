@@ -1,5 +1,5 @@
 import React from "react";
-import { FaRegCopy,FaRegThumbsDown, FaRegThumbsUp } from "react-icons/fa";
+import { FaRegCopy, FaRegThumbsDown, FaRegThumbsUp } from "react-icons/fa";
 import { RxChatBubble } from "react-icons/rx";
 
 import ReactCodeLine from "@/components/load/utls/ReactCodeLine";

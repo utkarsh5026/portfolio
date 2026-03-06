@@ -1,5 +1,5 @@
 import React from "react";
-import { HiBookOpen, HiFire,HiSparkles } from "react-icons/hi2";
+import { HiBookOpen, HiFire, HiSparkles } from "react-icons/hi2";
 import { TbBrandVscode, TbTerminal2 } from "react-icons/tb";
 
 import SketchBorder from "@/components/ui/sketch-border";
@@ -58,7 +58,7 @@ const Terminal: React.FC = () => {
           "overflow-hidden w-full",
           "bg-gradient-to-br from-ctp-crust to-ctp-mantle",
           "rounded-2xl shadow-xl shadow-black/20 font-source",
-          styles.terminalContainer,
+          styles.terminalContainer
         )}
       >
         {/* Terminal Bar */}

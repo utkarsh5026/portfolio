@@ -1,4 +1,4 @@
-import React, { useEffect,useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 
 import {
   type SectionType,
@@ -25,12 +25,12 @@ const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
 
   const sectionKeys = useMemo(
     () => Object.keys(sections) as SectionType[],
-    [sections],
+    [sections]
   );
 
   useEffect(
     () => setOutlineActiveSection(activeSection),
-    [activeSection, setOutlineActiveSection],
+    [activeSection, setOutlineActiveSection]
   );
 
   return (

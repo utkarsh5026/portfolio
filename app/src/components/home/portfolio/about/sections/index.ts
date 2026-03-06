@@ -5,4 +5,4 @@ import MyEducation from "./my-education";
 import Philosophy from "./my-philosophy";
 import Skills from "./skills-display";
 
-export { Background, CurrentFocus,Interests, MyEducation, Philosophy, Skills };
+export { Background, CurrentFocus, Interests, MyEducation, Philosophy, Skills };

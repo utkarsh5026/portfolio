@@ -263,7 +263,7 @@ const MediumPortfolio: React.FC = () => {
             isExpanded={expandedSection === "structure"}
             onToggle={() =>
               setExpandedSection(
-                expandedSection === "structure" ? null : "structure",
+                expandedSection === "structure" ? null : "structure"
               )
             }
           >
@@ -468,7 +468,7 @@ const MediumPortfolio: React.FC = () => {
                   <span className="w-2 h-2 rounded-full bg-green-500 mr-2"></span>
                   {tag}
                 </span>
-              ),
+              )
             )}
           </div>
 

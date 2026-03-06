@@ -1,5 +1,5 @@
-import { ExternalLink,Folder } from "lucide-react";
-import { memo, useCallback,useMemo } from "react";
+import { ExternalLink, Folder } from "lucide-react";
+import { memo, useCallback, useMemo } from "react";
 import { FaGithub } from "react-icons/fa";
 
 import { technologies } from "@/components/base/technologies";
@@ -23,9 +23,9 @@ const ProjectSmall = memo<ProjectSmallProps>(function ProjectSmall({
   const filteredTechs = useMemo(
     () =>
       project.technologies.filter(
-        (tech) => technologies[tech as keyof typeof technologies],
+        (tech) => technologies[tech as keyof typeof technologies]
       ),
-    [project.technologies],
+    [project.technologies]
   );
 
   const handleGithubClick = useCallback(
@@ -33,7 +33,7 @@ const ProjectSmall = memo<ProjectSmallProps>(function ProjectSmall({
       e.stopPropagation();
       window.open(project.githubLink, "_blank");
     },
-    [project.githubLink],
+    [project.githubLink]
   );
 
   const handleLiveClick = useCallback(
@@ -41,7 +41,7 @@ const ProjectSmall = memo<ProjectSmallProps>(function ProjectSmall({
       e.stopPropagation();
       window.open(project.liveLink, "_blank");
     },
-    [project.liveLink],
+    [project.liveLink]
   );
 
   const handleClick = useCallback(() => {

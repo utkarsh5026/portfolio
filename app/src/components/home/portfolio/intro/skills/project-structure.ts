@@ -116,7 +116,8 @@ export const projectStructure: FileItem[] = [
         color: "text-ctp-peach",
         delay: 1050,
         depth: 1,
-        description: "Systems programming with memory safety guarantees using Rust",
+        description:
+          "Systems programming with memory safety guarantees using Rust",
       },
     ],
   },

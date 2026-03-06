@@ -99,9 +99,7 @@ export const FileExplorerItem: React.FC<FileExplorerItemProps> = ({
           )}
         </span>
 
-        <span
-          className={`text-sm font-source flex-shrink-0 ${item.color}`}
-        >
+        <span className={`text-sm font-source flex-shrink-0 ${item.color}`}>
           {item.name}
         </span>
       </div>

@@ -34,7 +34,7 @@ const SectionContent = forwardRef<HTMLDivElement, SectionContentProps>(
       children,
       isInView,
     },
-    ref,
+    ref
   ) => {
     const setRefs = useCallback(
       (node: HTMLDivElement | null) => {
@@ -42,7 +42,7 @@ const SectionContent = forwardRef<HTMLDivElement, SectionContentProps>(
         else if (ref)
           (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
       },
-      [ref],
+      [ref]
     );
 
     return (
@@ -77,7 +77,7 @@ const SectionContent = forwardRef<HTMLDivElement, SectionContentProps>(
             overscroll-behavior-y-contain
             focus-within:outline-none focus-within:ring-2 focus-within:ring-${colorScheme.primary}/20 focus-within:ring-offset-2`,
             styles.contentWrapper,
-            isInView && styles.visible,
+            isInView && styles.visible
           )}
         >
           {/* Section Header */}
@@ -102,7 +102,7 @@ const SectionContent = forwardRef<HTMLDivElement, SectionContentProps>(
               lg:leading-loose`,
               styles.innerContent,
               isInView && styles.visible,
-              showHeader ? styles.withHeader : styles.withoutHeader,
+              showHeader ? styles.withHeader : styles.withoutHeader
             )}
           >
             {/* Mock React Code Start */}
@@ -142,7 +142,7 @@ const SectionContent = forwardRef<HTMLDivElement, SectionContentProps>(
         </div>
       </div>
     );
-  },
+  }
 );
 
 export default SectionContent;

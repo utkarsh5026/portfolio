@@ -1,5 +1,5 @@
 import anime from "animejs";
-import { useCallback,useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 interface TerminalAnimationOptions {
   codeSnippets: string[];

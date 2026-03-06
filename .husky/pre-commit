@@ -13,3 +13,15 @@ node scripts/generate-git-commits.js
 
 git add app/public/git-stats.json app/public/git-commits.json
 echo "✓  JSON files updated and staged"
+
+echo "🔍  Running lint..."
+cd app && bun run lint
+echo "✓  Lint passed"
+
+echo "🔎  Running type check..."
+bun run typecheck
+echo "✓  Type check passed"
+
+echo "💅  Running Prettier check..."
+bun run format:check
+echo "✓  Prettier check passed"

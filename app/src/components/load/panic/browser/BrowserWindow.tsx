@@ -1,6 +1,6 @@
 import "./BrowserWindow.css";
 
-import { useCallback, useEffect, useMemo, useRef,useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { SiGooglechrome } from "react-icons/si";
 
 import { Card, CardContent } from "@/components/ui/card";

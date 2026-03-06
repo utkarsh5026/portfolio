@@ -1,6 +1,6 @@
 import "./CompilteTransition.css";
 
-import React, { useCallback,useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -102,9 +102,12 @@ const CompilationLoading: React.FC<CompilationLoadingProps> = ({
       0
     );
 
-    const safetyTimeout = safeSetTimeout(() => {
-      if (onComplete) onComplete();
-    }, Math.min(duration, totalDurationRef.current + 5000));
+    const safetyTimeout = safeSetTimeout(
+      () => {
+        if (onComplete) onComplete();
+      },
+      Math.min(duration, totalDurationRef.current + 5000)
+    );
 
     return () => {
       timeoutsRef.current.forEach((timeoutId) => clearTimeout(timeoutId));

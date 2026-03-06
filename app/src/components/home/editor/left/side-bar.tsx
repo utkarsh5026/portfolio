@@ -36,7 +36,7 @@ const SideBar: React.FC = () => {
           "editor-sidebar w-14 bg-[#181825] border-r border-[#313244] flex flex-col items-center py-4 z-50 fixed inset-y-0 left-0 transition-transform duration-200",
           mobileMenuOpen
             ? "translate-x-0"
-            : "-translate-x-full md:translate-x-0",
+            : "-translate-x-full md:translate-x-0"
         )}
       >
         <GhostButton
@@ -74,7 +74,7 @@ const SideBar: React.FC = () => {
           onClick={() =>
             window.open(
               "https://www.linkedin.com/in/utkarsh-priyadarshi-8b5a731b9/",
-              "_blank",
+              "_blank"
             )
           }
           className="text-ctp-sapphire hover:text-ctp-blue"
@@ -85,7 +85,7 @@ const SideBar: React.FC = () => {
           label="View Resume"
           onClick={() =>
             window.open(
-              "https://drive.google.com/file/d/1Rrg_GQMiwn2FL58L93sztTihyffN2sq9/view?usp=sharing",
+              "https://drive.google.com/file/d/1Rrg_GQMiwn2FL58L93sztTihyffN2sq9/view?usp=sharing"
             )
           }
         />

@@ -1,7 +1,7 @@
 import React from "react";
-import { GrTest } from "react-icons/gr";
-import { MdApi,MdAutoGraph } from "react-icons/md";
 import { FaAws } from "react-icons/fa";
+import { GrTest } from "react-icons/gr";
+import { MdApi, MdAutoGraph } from "react-icons/md";
 import {
   SiDocker,
   SiExpress,

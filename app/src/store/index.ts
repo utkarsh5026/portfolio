@@ -4,9 +4,7 @@ import useMarkdownHeadingStore, {
   type MarkdownHeading,
   parseMarkdownHeadings,
 } from "./markdown-heading/markdown-heading-store";
-import useOutlineStore, {
-  type OutlineItem,
-} from "./outline/outline-store";
+import useOutlineStore, { type OutlineItem } from "./outline/outline-store";
 import useProjectStore from "./projects/projects-store";
 
 export {

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo,useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -161,7 +161,7 @@ const FakePortfolioLoading: React.FC<FakePortfolioLoadingProps> = React.memo(
               {
                 hidden: progress < 7.5,
                 block: progress >= 7.5,
-              },
+              }
             )}
           ></div>
 
@@ -230,7 +230,7 @@ const FakePortfolioLoading: React.FC<FakePortfolioLoadingProps> = React.memo(
                           key={h}
                           className={cn(
                             "w-1.5 bg-cyan-400 opacity-70 rounded-t",
-                            `h-[${h}%]`,
+                            `h-[${h}%]`
                           )}
                         ></div>
                       ))}
@@ -250,7 +250,7 @@ const FakePortfolioLoading: React.FC<FakePortfolioLoadingProps> = React.memo(
                   }}
                 ></div>
               </div>
-            ),
+            )
           )}
         </div>
         {/* Loading details with dynamic styles and effects */}
@@ -258,7 +258,7 @@ const FakePortfolioLoading: React.FC<FakePortfolioLoadingProps> = React.memo(
           <p
             className={cn(
               "text-lg font-source transition-all duration-300",
-              progressText,
+              progressText
             )}
             style={{
               textShadow:
@@ -272,7 +272,7 @@ const FakePortfolioLoading: React.FC<FakePortfolioLoadingProps> = React.memo(
         </div>
       </div>
     );
-  },
+  }
 );
 
 export default FakePortfolioLoading;

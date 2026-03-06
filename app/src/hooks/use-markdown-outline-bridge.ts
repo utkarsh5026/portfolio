@@ -34,7 +34,7 @@ const LEVEL_CONFIG: Record<
 function flattenHeadingTree(
   nodes: HeadingNode[],
   parentId: string,
-  baseLevel: number,
+  baseLevel: number
 ): OutlineItem[] {
   const items: OutlineItem[] = [];
   for (const node of nodes) {

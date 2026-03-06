@@ -89,7 +89,7 @@ function rowClassName(isActive: boolean, className?: string) {
     isActive
       ? "bg-ctp-surface1/60 text-ctp-text"
       : "text-ctp-subtext0 hover:text-ctp-text hover:bg-ctp-surface0/50",
-    className,
+    className
   );
 }
 
@@ -175,7 +175,7 @@ const TreeGroup: React.FC<TreeGroupProps> = ({
           <VscChevronRight
             className={cn(
               "w-[14px] h-[14px] flex-shrink-0 transition-transform duration-150",
-              isOpen ? "rotate-90 text-ctp-text" : "text-ctp-overlay0",
+              isOpen ? "rotate-90 text-ctp-text" : "text-ctp-overlay0"
             )}
           />
         )}
@@ -210,7 +210,7 @@ const TreeRoot: React.FC<TreeProps> = ({
   children,
 }) => {
   const [internalExpanded, setInternalExpanded] = useState<Set<string>>(() =>
-    toSet(defaultExpanded),
+    toSet(defaultExpanded)
   );
 
   const isControlled = controlledExpanded !== undefined;
@@ -228,7 +228,7 @@ const TreeRoot: React.FC<TreeProps> = ({
         setInternalExpanded(next);
       }
     },
-    [expanded, isControlled, onExpandedChange],
+    [expanded, isControlled, onExpandedChange]
   );
 
   const ctx = useMemo<TreeContextValue>(
@@ -251,7 +251,7 @@ const TreeRoot: React.FC<TreeProps> = ({
       indentStep,
       indentBase,
       rowHeight,
-    ],
+    ]
   );
 
   return (

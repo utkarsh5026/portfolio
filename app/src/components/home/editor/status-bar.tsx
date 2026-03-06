@@ -12,11 +12,11 @@ import {
   FaUser,
 } from "react-icons/fa";
 import { GoFileCode } from "react-icons/go";
-import { VscGitCommit,VscMarkdown } from "react-icons/vsc";
+import { VscGitCommit, VscMarkdown } from "react-icons/vsc";
 
 import { cn } from "@/lib/utils";
 
-import { type SectionType,useEditorContext } from "./context/explorer-context";
+import { type SectionType, useEditorContext } from "./context/explorer-context";
 import {
   relativeTime,
   type SectionGitStats,
@@ -92,7 +92,7 @@ const StatusBarComponent: React.FC = () => {
   const meta: SectionMeta = useMemo(() => {
     if (activeProjectId !== null) {
       const tab = openTabs.find(
-        (t) => t.type === "project" && t.id === activeProjectId,
+        (t) => t.type === "project" && t.id === activeProjectId
       );
       const slug = tab?.fileName ?? `${activeProjectId}.tsx`;
       return {
@@ -184,13 +184,13 @@ const StatusBarComponent: React.FC = () => {
           <span
             className={cn(
               "w-2 h-2 rounded-full flex-shrink-0 transition-colors duration-500",
-              colors.dot,
+              colors.dot
             )}
           />
           <span
             className={cn(
               "font-medium transition-colors duration-500",
-              colors.text,
+              colors.text
             )}
           >
             {loading ? "…" : (timeAgo ?? "Ready")}

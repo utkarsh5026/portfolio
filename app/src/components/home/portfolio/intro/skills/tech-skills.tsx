@@ -1,11 +1,11 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import FileExplorer from "./file-explorer";
 import { FileItem, projectStructure } from "./project-structure";
 
 const getAllItems = (
   items: FileItem[],
-  parentPath = "",
+  parentPath = ""
 ): Array<{ path: string; delay: number }> => {
   const result: Array<{ path: string; delay: number }> = [];
   items.forEach((item) => {
@@ -30,7 +30,7 @@ const TechSkillsComponent = () => {
         setVisibleItems((prev) => [...prev, path]);
         if (
           projectStructure.some(
-            (item) => item.name === path && item.type === "folder",
+            (item) => item.name === path && item.type === "folder"
           )
         ) {
           setTimeout(() => {
@@ -43,7 +43,7 @@ const TechSkillsComponent = () => {
 
   const toggleFolder = (path: string) => {
     setExpandedFolders((prev) =>
-      prev.includes(path) ? prev.filter((p) => p !== path) : [...prev, path],
+      prev.includes(path) ? prev.filter((p) => p !== path) : [...prev, path]
     );
   };
 

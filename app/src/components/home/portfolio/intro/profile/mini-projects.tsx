@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { FaGithub } from "react-icons/fa";
 import { HiOutlineExternalLink } from "react-icons/hi";
-import { useLocation,useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { useEditorStore } from "@/components/home/editor/context/editor-store";
 import SketchBorder from "@/components/ui/sketch-border";
@@ -65,7 +65,7 @@ const MiniProjects: React.FC = () => {
                     "transition-all duration-300 cursor-pointer",
                     "bg-ctp-surface0/30 hover:bg-ctp-surface0/60",
                     "border border-ctp-surface1/40 backdrop-blur-sm",
-                    "shadow-lg shadow-black/5",
+                    "shadow-lg shadow-black/5"
                   )}
                 >
                   {/* Header */}
@@ -79,7 +79,7 @@ const MiniProjects: React.FC = () => {
                       <span
                         className={cn(
                           "text-ctp-text font-bold font-source truncate",
-                          `group-hover/card:text-ctp-${color} transition-colors`,
+                          `group-hover/card:text-ctp-${color} transition-colors`
                         )}
                       >
                         {project.name}

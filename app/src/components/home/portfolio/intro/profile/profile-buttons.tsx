@@ -135,13 +135,13 @@ const ProfileButtons: React.FC = () => {
                     shadowHover,
                     isPhone ? "py-3 px-4" : "py-3 px-5",
                     styles.buttonAction,
-                    buttonClass,
+                    buttonClass
                   )}
                 >
                   <div
                     className={cn(
                       "absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-500",
-                      gradient,
+                      gradient
                     )}
                   />
                   <div className="flex items-center gap-2.5 relative z-10">
@@ -149,21 +149,21 @@ const ProfileButtons: React.FC = () => {
                     <span
                       className={cn(
                         "text-ctp-text font-medium text-sm tracking-wide transition-colors",
-                        textHover,
+                        textHover
                       )}
                     >
                       {label}
                     </span>
                   </div>
                 </button>
-              ),
+              )
             )}
           </div>
 
           <div
             className={cn(
               "flex items-center justify-center gap-3",
-              "py-3 rounded-xl bg-ctp-surface0/30 backdrop-blur-sm border border-ctp-surface1/40",
+              "py-3 rounded-xl bg-ctp-surface0/30 backdrop-blur-sm border border-ctp-surface1/40"
             )}
           >
             {socialLinks.map(
@@ -187,7 +187,7 @@ const ProfileButtons: React.FC = () => {
                         "p-2.5 rounded-lg transition-all duration-300",
                         hoverBg,
                         styles.socialIcon,
-                        linkClass,
+                        linkClass
                       )}
                     >
                       <Icon
@@ -212,7 +212,7 @@ const ProfileButtons: React.FC = () => {
                     </div>
                   </TooltipContent>
                 </Tooltip>
-              ),
+              )
             )}
           </div>
         </div>
