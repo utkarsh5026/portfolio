@@ -8,12 +8,11 @@ import {
   Target,
   User,
 } from "lucide-react";
-import React, { lazy, Suspense,useState } from "react";
+import React, { lazy, Suspense, useState } from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
 import { OutlineNode } from "@/components/home/editor/outline";
 import Section from "@/components/section/portfolio-section";
-import type { AppColor } from "@/utils/ctp-colors";
 import {
   Collapsible,
   CollapsibleContent,
@@ -21,6 +20,7 @@ import {
 } from "@/components/ui/collapsible";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import useMobile from "@/hooks/use-mobile";
+import type { AppColor } from "@/lib/ctp-colors";
 
 import AboutSectionCard from "./about-section-card";
 
