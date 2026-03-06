@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { FiClock, FiGitCommit } from "react-icons/fi";
 
@@ -6,13 +5,12 @@ import { cn } from "@/lib/utils";
 
 import type { GitCommit } from "../use-git-commits";
 import { relativeTime } from "../use-git-commits";
+import styles from "./git-commits.module.css";
 
 interface CommitRowProps {
   commit: GitCommit;
   index: number;
 }
-
-const MotionAnchor = motion.create("a");
 
 export const CommitRow: React.FC<CommitRowProps> = ({ commit, index }) => {
   const [imgError, setImgError] = useState(false);
@@ -21,14 +19,15 @@ export const CommitRow: React.FC<CommitRowProps> = ({ commit, index }) => {
   const commitUrl = `https://github.com/utkarsh5026/portfolio/commit/${commit.hash}`;
 
   return (
-    <MotionAnchor
+    <a
       href={commitUrl}
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ opacity: 0, y: 6 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.2, delay: index * 0.03 }}
-      className="group flex items-start gap-3 px-4 py-3 border-b border-ctp-surface0/40 hover:bg-ctp-surface0/30 transition-all duration-200 cursor-pointer"
+      className={cn(
+        "group flex items-start gap-3 px-4 py-3 border-b border-ctp-surface0/40 hover:bg-ctp-surface0/30 transition-all duration-200 cursor-pointer",
+        styles.commitRow
+      )}
+      style={{ animationDelay: `${index * 0.03}s` }}
     >
       {/* Avatar */}
       <div className="mt-0.5 flex-shrink-0 relative">
@@ -96,7 +95,7 @@ export const CommitRow: React.FC<CommitRowProps> = ({ commit, index }) => {
           {relTime}
         </span>
       </div>
-    </MotionAnchor>
+    </a>
   );
 };
 

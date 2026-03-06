@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-03-06T23:27:24.657Z",
+  "generatedAt": "2026-03-06T23:37:36.678Z",
   "commits": [
+    {
+      "hash": "ffc225e2f5f233664cdb1e28f147409a189d422c",
+      "shortHash": "ffc225e",
+      "message": "build: add format and format-check make targets",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T04:57:13+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 42,
+      "deletions": 24,
+      "filesChanged": 4
+    },
     {
       "hash": "4425b18bb009750f35f92bafd59bcb8b0e15e780",
       "shortHash": "4425b18",
@@ -228,22 +240,10 @@
       "insertions": 107,
       "deletions": 63,
       "filesChanged": 6
-    },
-    {
-      "hash": "7547db3b0069c9c2a3921928a6b9de3b6e37ba5f",
-      "shortHash": "7547db3",
-      "message": "refactor: migrate outline state from React Context to Zustand store",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T21:03:11+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 333,
-      "deletions": 393,
-      "filesChanged": 22
     }
   ],
   "commitsByDate": {
-    "2026-03-07": 11,
+    "2026-03-07": 12,
     "2026-03-06": 4,
     "2026-03-05": 43,
     "2026-03-04": 17,
@@ -274,7 +274,7 @@
     },
     {
       "language": "CSS",
-      "count": 26,
+      "count": 27,
       "color": "#cba6f7"
     },
     {

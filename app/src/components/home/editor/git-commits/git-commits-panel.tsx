@@ -1,7 +1,8 @@
-import { AnimatePresence, motion } from "framer-motion";
 import React, { useMemo } from "react";
 import { FiFilePlus, FiMinus, FiPlus, FiRefreshCw, FiX } from "react-icons/fi";
 import { VscSourceControl } from "react-icons/vsc";
+
+import { cn } from "@/lib/utils";
 
 import type { GitCommit, LanguageStat } from "../use-git-commits";
 import {
@@ -11,6 +12,7 @@ import {
 } from "../use-git-commits";
 import { CommitRow } from "./commit-row";
 import ContributionHeatmap from "./contribution-heatmap";
+import styles from "./git-commits.module.css";
 
 const CommitSkeleton: React.FC = () => (
   <div className="flex items-start gap-3 px-4 py-3 border-b border-ctp-surface0/60 animate-pulse">
@@ -121,109 +123,101 @@ const GitCommitsPanel: React.FC<GitCommitsPanelProps> = ({ open, onClose }) => {
   const grouped = useMemo(() => groupCommitsByTime(commits), [commits]);
 
   return (
-    <AnimatePresence>
-      {open && (
-        <>
-          <motion.div
-            key="scm-backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-            className="fixed inset-0 z-40"
+    <>
+      <div
+        className={cn(
+          "fixed inset-0 z-40",
+          styles.backdrop,
+          open && styles.backdropOpen
+        )}
+        onClick={onClose}
+      />
+
+      <div
+        className={cn(
+          "fixed top-0 left-14 h-full w-72 z-50 flex flex-col bg-ctp-mantle border-r border-ctp-surface0 shadow-2xl font-source",
+          styles.panel,
+          open && styles.panelOpen
+        )}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between px-4 py-3 border-b border-ctp-surface0 bg-ctp-base/80 flex-shrink-0">
+          <div className="flex items-center gap-2">
+            <VscSourceControl className="w-4 h-4 text-ctp-teal" />
+            <span className="text-xs font-semibold text-ctp-text uppercase tracking-wider">
+              Source Control
+            </span>
+          </div>
+          <button
             onClick={onClose}
-          />
-
-          <motion.div
-            key="scm-panel"
-            initial={{ x: -320, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -320, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 340, damping: 32 }}
-            className="fixed top-0 left-14 h-full w-72 z-50 flex flex-col bg-ctp-mantle border-r border-ctp-surface0 shadow-2xl font-source"
+            className="text-ctp-overlay1 hover:text-ctp-text transition-colors duration-150 rounded p-0.5 hover:bg-ctp-surface0"
+            aria-label="Close source control panel"
           >
-            {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-ctp-surface0 bg-ctp-base/80 flex-shrink-0">
-              <div className="flex items-center gap-2">
-                <VscSourceControl className="w-4 h-4 text-ctp-teal" />
-                <span className="text-xs font-semibold text-ctp-text uppercase tracking-wider">
-                  Source Control
-                </span>
-              </div>
-              <button
-                onClick={onClose}
-                className="text-ctp-overlay1 hover:text-ctp-text transition-colors duration-150 rounded p-0.5 hover:bg-ctp-surface0"
-                aria-label="Close source control panel"
-              >
-                <FiX className="w-3.5 h-3.5" />
-              </button>
-            </div>
+            <FiX className="w-3.5 h-3.5" />
+          </button>
+        </div>
 
-            {/* Sub-header */}
-            <div className="flex items-center justify-between px-4 py-2 border-b border-ctp-surface0/50 bg-ctp-mantle flex-shrink-0">
-              <span className="text-[10px] text-ctp-subtext0 uppercase tracking-widest font-medium">
-                {loading ? "Loading…" : `${commits.length} Recent Commits`}
-              </span>
-              {genTime && !loading && (
-                <div className="flex items-center gap-1 text-[10px] text-ctp-overlay0">
-                  <FiRefreshCw className="w-2.5 h-2.5" />
-                  <span>{genTime}</span>
+        {/* Sub-header */}
+        <div className="flex items-center justify-between px-4 py-2 border-b border-ctp-surface0/50 bg-ctp-mantle flex-shrink-0">
+          <span className="text-[10px] text-ctp-subtext0 uppercase tracking-widest font-medium">
+            {loading ? "Loading…" : `${commits.length} Recent Commits`}
+          </span>
+          {genTime && !loading && (
+            <div className="flex items-center gap-1 text-[10px] text-ctp-overlay0">
+              <FiRefreshCw className="w-2.5 h-2.5" />
+              <span>{genTime}</span>
+            </div>
+          )}
+        </div>
+
+        {/* Summary stats */}
+        {!loading && commits.length > 0 && (
+          <SummaryStatsBar commits={commits} />
+        )}
+
+        {/* Contribution heatmap */}
+        {!loading && Object.keys(commitsByDate).length > 0 && (
+          <ContributionHeatmap commitsByDate={commitsByDate} />
+        )}
+
+        {/* Commit list */}
+        <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-ctp-surface0 scrollbar-track-transparent">
+          {loading ? (
+            Array.from({ length: 8 }).map((_, i) => <CommitSkeleton key={i} />)
+          ) : commits.length === 0 ? (
+            <div className="flex flex-col items-center justify-center h-full gap-3 text-ctp-overlay0">
+              <VscSourceControl className="w-8 h-8" />
+              <p className="text-xs">No commits found</p>
+            </div>
+          ) : (
+            Array.from(grouped.entries()).map(([group, groupCommits]) => (
+              <React.Fragment key={group}>
+                <div className="sticky top-0 z-10 bg-ctp-mantle/90 backdrop-blur-sm px-4 py-1 border-b border-ctp-surface0/30">
+                  <span className="text-[10px] text-ctp-overlay1 uppercase tracking-widest font-medium">
+                    {group}
+                  </span>
                 </div>
-              )}
-            </div>
+                {groupCommits.map((commit, i) => (
+                  <CommitRow key={commit.hash} commit={commit} index={i} />
+                ))}
+              </React.Fragment>
+            ))
+          )}
+        </div>
 
-            {/* Summary stats */}
-            {!loading && commits.length > 0 && (
-              <SummaryStatsBar commits={commits} />
-            )}
+        {/* Language bar */}
+        {!loading && languageStats.length > 0 && (
+          <LanguageBar stats={languageStats} />
+        )}
 
-            {/* Contribution heatmap */}
-            {!loading && Object.keys(commitsByDate).length > 0 && (
-              <ContributionHeatmap commitsByDate={commitsByDate} />
-            )}
-
-            {/* Commit list */}
-            <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-ctp-surface0 scrollbar-track-transparent">
-              {loading ? (
-                Array.from({ length: 8 }).map((_, i) => (
-                  <CommitSkeleton key={i} />
-                ))
-              ) : commits.length === 0 ? (
-                <div className="flex flex-col items-center justify-center h-full gap-3 text-ctp-overlay0">
-                  <VscSourceControl className="w-8 h-8" />
-                  <p className="text-xs">No commits found</p>
-                </div>
-              ) : (
-                Array.from(grouped.entries()).map(([group, groupCommits]) => (
-                  <React.Fragment key={group}>
-                    <div className="sticky top-0 z-10 bg-ctp-mantle/90 backdrop-blur-sm px-4 py-1 border-b border-ctp-surface0/30">
-                      <span className="text-[10px] text-ctp-overlay1 uppercase tracking-widest font-medium">
-                        {group}
-                      </span>
-                    </div>
-                    {groupCommits.map((commit, i) => (
-                      <CommitRow key={commit.hash} commit={commit} index={i} />
-                    ))}
-                  </React.Fragment>
-                ))
-              )}
-            </div>
-
-            {/* Language bar */}
-            {!loading && languageStats.length > 0 && (
-              <LanguageBar stats={languageStats} />
-            )}
-
-            {/* Footer */}
-            <div className="flex-shrink-0 px-4 py-2 border-t border-ctp-surface0 bg-ctp-base/60">
-              <p className="text-[9px] text-ctp-overlay0 text-center tracking-wider uppercase">
-                utkarsh5026/portfolio
-              </p>
-            </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+        {/* Footer */}
+        <div className="flex-shrink-0 px-4 py-2 border-t border-ctp-surface0 bg-ctp-base/60">
+          <p className="text-[9px] text-ctp-overlay0 text-center tracking-wider uppercase">
+            utkarsh5026/portfolio
+          </p>
+        </div>
+      </div>
+    </>
   );
 };
 
