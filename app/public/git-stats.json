@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-06T21:36:56.230Z",
+  "generatedAt": "2026-03-06T22:02:07.974Z",
   "sections": {
     "home": {
       "lastCommitHash": "049b164",
@@ -14,27 +14,27 @@
       "fileCount": 17
     },
     "about": {
-      "lastCommitHash": "dff6d01",
-      "lastCommitDate": "2026-03-06 04:04:56 +0530",
-      "lastCommitMessage": "feat: add outline nodes with icons to about, contact, work, and projects sections",
+      "lastCommitHash": "bf56b41",
+      "lastCommitDate": "2026-03-07 03:26:41 +0530",
+      "lastCommitMessage": "refactor: move ctp-colors.ts from utils/ to lib/ and update imports",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 20,
-      "linesAdded": 14,
-      "linesDeleted": 5,
-      "totalAdded": 2838,
-      "totalDeleted": 1556,
+      "commitCount": 21,
+      "linesAdded": 2,
+      "linesDeleted": 2,
+      "totalAdded": 2840,
+      "totalDeleted": 1558,
       "fileCount": 12
     },
     "skills": {
-      "lastCommitHash": "a51da40",
-      "lastCommitDate": "2026-03-05 21:56:36 +0530",
-      "lastCommitMessage": "chore: remove unused journeySteps data and dead imports from skills/data.tsx",
+      "lastCommitHash": "bf56b41",
+      "lastCommitDate": "2026-03-07 03:26:41 +0530",
+      "lastCommitMessage": "refactor: move ctp-colors.ts from utils/ to lib/ and update imports",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 20,
+      "commitCount": 21,
       "linesAdded": 1,
-      "linesDeleted": 63,
-      "totalAdded": 1913,
-      "totalDeleted": 1426,
+      "linesDeleted": 1,
+      "totalAdded": 1914,
+      "totalDeleted": 1427,
       "fileCount": 5
     },
     "projects": {

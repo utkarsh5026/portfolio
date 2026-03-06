@@ -1,7 +1,7 @@
 import type React from "react";
 import { create } from "zustand";
 
-import type { AppColor } from "@/utils/ctp-colors";
+import type { AppColor } from "@/lib/ctp-colors";
 
 export interface OutlineItem {
   id: string;

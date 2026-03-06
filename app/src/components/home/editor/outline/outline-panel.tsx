@@ -7,10 +7,10 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { Tree } from "@/components/ui/tree";
+import { ctpColorClass } from "@/lib/ctp-colors";
 import useOutlineStore, {
   type OutlineItem,
 } from "@/store/outline/outline-store";
-import { ctpColorClass } from "@/utils/ctp-colors";
 
 const messages = [
   { icon: "🎯", text: "Found it!" },

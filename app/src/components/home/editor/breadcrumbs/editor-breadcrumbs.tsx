@@ -21,9 +21,13 @@ import {
 } from "react-icons/vsc";
 
 import { Tree } from "@/components/ui/tree";
+import { ctpColorClass } from "@/lib/ctp-colors";
 import { cn } from "@/lib/utils";
 import type { HeadingNode } from "@/store";
 import { useMarkdownHeadingStore } from "@/store";
+import useOutlineStore, {
+  type OutlineItem,
+} from "@/store/outline/outline-store";
 import useProjectStore from "@/store/projects/projects-store";
 
 import {
@@ -55,6 +59,10 @@ interface BreadcrumbSegment {
   headingLevel?: 1 | 2 | 3 | "file";
   /** Heading id (slug) for this segment — used to highlight it in the dropdown. */
   headingId?: string;
+  /** Flat outline items to show in the dropdown for this section file segment. */
+  outlineItems?: OutlineItem[];
+  /** Root id to start rendering the outline tree from. */
+  outlineSectionId?: string;
 }
 
 const FolderIcon: React.FC<{ isOpen: boolean }> = ({ isOpen }) =>
@@ -100,6 +108,60 @@ interface SegmentProps {
   headingDropdownNodes?: HeadingNode[];
   /** Currently active heading id (for highlighting inside the heading dropdown). */
   activeHeadingId?: string | null;
+  /** Flat outline items to render as the dropdown for a section file segment. */
+  outlineItems?: OutlineItem[];
+  /** Root id to start rendering the outline tree from. */
+  outlineSectionId?: string;
+  /** Currently highlighted outline node id. */
+  activeOutlineId?: string | null;
+}
+
+function renderOutlineTree(
+  parentId: string,
+  items: OutlineItem[],
+  depth: number,
+  onNavigate: (id: string) => void,
+): React.ReactNode[] {
+  return items
+    .filter((item) => item.parentId === parentId)
+    .map((item) => {
+      const hasChildren = items.some((i) => i.parentId === item.id);
+      const wrappedIcon = item.icon ? (
+        <span className="w-3 h-3 flex items-center justify-center">
+          {item.icon}
+        </span>
+      ) : undefined;
+      const iconColor = item.iconColor
+        ? ctpColorClass("text", item.iconColor)
+        : undefined;
+      if (hasChildren) {
+        return (
+          <Tree.Group
+            key={item.id}
+            id={item.id}
+            depth={depth}
+            label={item.label}
+            icon={wrappedIcon}
+            iconOpen={wrappedIcon}
+            iconColor={iconColor}
+            onClick={() => onNavigate(item.id)}
+          >
+            {renderOutlineTree(item.id, items, depth + 1, onNavigate)}
+          </Tree.Group>
+        );
+      }
+      return (
+        <Tree.Item
+          key={item.id}
+          id={item.id}
+          depth={depth}
+          label={item.label}
+          icon={wrappedIcon}
+          iconColor={iconColor}
+          onClick={() => onNavigate(item.id)}
+        />
+      );
+    });
 }
 
 const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
@@ -112,14 +174,23 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
   onSelectProject,
   headingDropdownNodes,
   activeHeadingId,
+  outlineItems,
+  outlineSectionId,
+  activeOutlineId,
 }) => {
   const [open, setOpen] = useState(false);
   const projects = useProjectStore((s) => s.projects);
+  const highlightNode = useOutlineStore((s) => s.highlightNode);
 
   const isHeading = !!seg.headingLevel;
+  const isOutline =
+    !!outlineItems &&
+    !!outlineSectionId &&
+    outlineItems.some((i) => i.parentId === outlineSectionId);
   const hasDropdown =
     canOpenTree ||
-    (isHeading && headingDropdownNodes && headingDropdownNodes.length > 0);
+    (isHeading && headingDropdownNodes && headingDropdownNodes.length > 0) ||
+    isOutline;
 
   const inner = (
     <>
@@ -178,7 +249,23 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
     />
   ));
 
-  const treeContent = isHeading ? (
+  const treeContent = isOutline && outlineItems && outlineSectionId ? (
+    <Tree
+      activeId={activeOutlineId ?? null}
+      expandMode="all-open"
+      indentStep={14}
+      indentBase={16}
+    >
+      {renderOutlineTree(outlineSectionId, outlineItems, 0, (id) => {
+        document.getElementById(id)?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+        highlightNode(id);
+        setOpen(false);
+      })}
+    </Tree>
+  ) : isHeading ? (
     <>
       {headingDropdownNodes && headingDropdownNodes.length > 0 ? (
         <Tree
@@ -203,17 +290,31 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
     </>
   ) : treeVariant === "portfolio" ? (
     <Tree
-      activeId={activeProjectId ?? (activeProjectId === null ? activeSection : null)}
+      activeId={
+        activeProjectId ?? (activeProjectId === null ? activeSection : null)
+      }
       defaultExpanded={new Set(["portfolio", "projects"])}
     >
-      <Tree.Group id="portfolio" label="portfolio" depth={0} icon={folderIcon} iconOpen={folderOpenIcon} iconColor="text-ctp-blue" collapsible={false}>
+      <Tree.Group
+        id="portfolio"
+        label="portfolio"
+        depth={0}
+        icon={folderIcon}
+        iconOpen={folderOpenIcon}
+        iconColor="text-ctp-blue"
+        collapsible={false}
+      >
         {editorFiles.map((f) => (
           <Tree.Item
             key={f.section}
             id={f.section}
             depth={1}
             label={f.name}
-            icon={f.name.endsWith(".ts") || f.name.endsWith(".tsx") ? tsIcon : mdIcon}
+            icon={
+              f.name.endsWith(".ts") || f.name.endsWith(".tsx")
+                ? tsIcon
+                : mdIcon
+            }
             iconColor="text-ctp-blue"
             onClick={() => {
               onSelectSection(f.section);
@@ -221,17 +322,29 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
             }}
           />
         ))}
-        <Tree.Group id="projects" label="projects" depth={1} icon={folderIcon} iconOpen={folderOpenIcon} iconColor="text-ctp-blue">
+        <Tree.Group
+          id="projects"
+          label="projects"
+          depth={1}
+          icon={folderIcon}
+          iconOpen={folderOpenIcon}
+          iconColor="text-ctp-blue"
+        >
           {projectFileItems}
         </Tree.Group>
       </Tree.Group>
     </Tree>
   ) : (
-    <Tree
-      activeId={activeProjectId}
-      defaultExpanded={new Set(["projects"])}
-    >
-      <Tree.Group id="projects" label="projects" depth={0} icon={folderIcon} iconOpen={folderOpenIcon} iconColor="text-ctp-blue" collapsible={false}>
+    <Tree activeId={activeProjectId} defaultExpanded={new Set(["projects"])}>
+      <Tree.Group
+        id="projects"
+        label="projects"
+        depth={0}
+        icon={folderIcon}
+        iconOpen={folderOpenIcon}
+        iconColor="text-ctp-blue"
+        collapsible={false}
+      >
         {projectFileItems}
       </Tree.Group>
     </Tree>
@@ -306,6 +419,12 @@ export const EditorBreadcrumbs: React.FC = () => {
     activeProjectId,
   } = useEditorContext();
   const projects = useProjectStore((s) => s.projects);
+  const outlineItemsMap = useOutlineStore((s) => s.items);
+  const activeOutlineId = useOutlineStore((s) => s.activeHighlightId);
+  const outlineItems = useMemo(
+    () => [...outlineItemsMap.values()],
+    [outlineItemsMap],
+  );
   const isDeepDive = useMarkdownHeadingStore((s) => s.isDeepDive);
   const activeHeadings = useMarkdownHeadingStore((s) => s.activeHeadings);
   const headingTree = useMarkdownHeadingStore((s) => s.headingTree);
@@ -340,6 +459,8 @@ export const EditorBreadcrumbs: React.FC = () => {
           iconColor: getIconColor(sectionId),
           isActive: true,
           isFolder: false,
+          outlineItems,
+          outlineSectionId: sectionId,
         },
       ];
     }
@@ -417,6 +538,7 @@ export const EditorBreadcrumbs: React.FC = () => {
     activeH1Id,
     activeH2Id,
     activeH3Id,
+    outlineItems,
   ]);
 
   const handleSelectSection = useCallback(
@@ -479,6 +601,9 @@ export const EditorBreadcrumbs: React.FC = () => {
                     : undefined
                 }
                 activeHeadingId={deepestActiveId}
+                outlineItems={seg.outlineItems}
+                outlineSectionId={seg.outlineSectionId}
+                activeOutlineId={activeOutlineId}
               />
             </React.Fragment>
           ))}
