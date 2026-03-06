@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
+import type { AppColor } from "@/lib/ctp-colors";
 import useOutlineStore from "@/store/outline/outline-store";
-import type { AppColor } from "@/utils/ctp-colors";
 import { toOutlineId } from "@/utils/outline-id";
 
 import { OutlineNodeContext, useOutlinePosition } from "./outline-node-context";

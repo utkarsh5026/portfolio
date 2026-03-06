@@ -6,13 +6,13 @@ import {
   VscSymbolProperty,
 } from "react-icons/vsc";
 
+import type { AppColor } from "@/lib/ctp-colors";
 import useMarkdownHeadingStore, {
   type HeadingNode,
 } from "@/store/markdown-heading/markdown-heading-store";
 import useOutlineStore, {
   type OutlineItem,
 } from "@/store/outline/outline-store";
-import type { AppColor } from "@/utils/ctp-colors";
 const LEVEL_CONFIG: Record<
   1 | 2 | 3,
   { icon: React.ReactNode; color: AppColor }
