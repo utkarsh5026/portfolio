@@ -1,7 +1,7 @@
 import { ChevronDown, ChevronRight, Folder, FolderOpen } from "lucide-react";
 import { FaFileAlt } from "react-icons/fa";
 import {
-  SiCss3,
+  SiCss,
   SiDocker,
   SiGit,
   SiGo,
@@ -31,7 +31,7 @@ const getFileIcon = (extension?: string) => {
     case "rs":
       return <SiRust {...iconProps} className="text-ctp-peach" />;
     case "css":
-      return <SiCss3 {...iconProps} className="text-ctp-blue" />;
+      return <SiCss {...iconProps} className="text-ctp-blue" />;
     case "docker":
       return <SiDocker {...iconProps} className="text-ctp-blue" />;
     case "yaml":
@@ -99,9 +99,7 @@ export const FileExplorerItem: React.FC<FileExplorerItemProps> = ({
           )}
         </span>
 
-        <span
-          className={`text-sm font-source flex-shrink-0 ${item.color}`}
-        >
+        <span className={`text-sm font-source flex-shrink-0 ${item.color}`}>
           {item.name}
         </span>
       </div>

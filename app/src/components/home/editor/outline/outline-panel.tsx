@@ -37,7 +37,7 @@ function renderOutlineTree(
   parentId: string,
   items: OutlineItem[],
   depth: number,
-  onClick: (item: OutlineItem) => void,
+  onClick: (item: OutlineItem) => void
 ) {
   const children = items.filter((item) => item.parentId === parentId);
 
@@ -91,7 +91,7 @@ const OutlinePanel: React.FC = () => {
 
   const sectionRoot = useMemo(
     () => items.find((i) => i.parentId === null && i.id === activeSection),
-    [items, activeSection],
+    [items, activeSection]
   );
 
   useEffect(() => {
@@ -140,7 +140,7 @@ const OutlinePanel: React.FC = () => {
         }, 2000);
       }
     },
-    [highlightNode],
+    [highlightNode]
   );
 
   const header = (
@@ -172,7 +172,7 @@ const OutlinePanel: React.FC = () => {
     sectionRoot.id,
     items,
     1,
-    handleItemClick,
+    handleItemClick
   );
 
   return (

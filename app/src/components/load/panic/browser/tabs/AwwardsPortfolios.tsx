@@ -412,8 +412,8 @@ export const AwwwardsPortfolios: React.FC = () => {
                     item === 1
                       ? "from-blue-500 to-purple-500"
                       : item === 2
-                      ? "from-yellow-400 to-red-500"
-                      : "from-green-400 to-blue-500"
+                        ? "from-yellow-400 to-red-500"
+                        : "from-green-400 to-blue-500"
                   } flex items-center justify-center text-white font-medium`}
                 >
                   {item === 1 ? "JD" : item === 2 ? "AM" : "RK"}
@@ -423,15 +423,15 @@ export const AwwwardsPortfolios: React.FC = () => {
                     {item === 1
                       ? "John Doe"
                       : item === 2
-                      ? "Alicia Martinez"
-                      : "Robert Kim"}
+                        ? "Alicia Martinez"
+                        : "Robert Kim"}
                   </div>
                   <div className="text-gray-400 text-xs">
                     {item === 1
                       ? "Creative Director"
                       : item === 2
-                      ? "UX Specialist"
-                      : "Frontend Expert"}
+                        ? "UX Specialist"
+                        : "Frontend Expert"}
                   </div>
                 </div>
                 <div className="ml-auto">

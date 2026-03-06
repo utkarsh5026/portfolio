@@ -1,4 +1,4 @@
-import { Brain, Quote, Target,Zap } from "lucide-react";
+import { Brain, Quote, Target, Zap } from "lucide-react";
 import React from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";

@@ -1,4 +1,4 @@
-import { FaDatabase, FaMagic,FaServer, FaTerminal } from "react-icons/fa";
+import { FaDatabase, FaMagic, FaServer, FaTerminal } from "react-icons/fa";
 import { RiCodeSSlashLine } from "react-icons/ri";
 import { SiGraphql } from "react-icons/si";
 import { VscDebugConsole, VscSymbolClass } from "react-icons/vsc";

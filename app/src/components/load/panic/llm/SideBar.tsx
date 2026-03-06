@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BsChatLeft,BsChatLeftDots } from "react-icons/bs";
+import { BsChatLeft, BsChatLeftDots } from "react-icons/bs";
 import {
   FiChevronLeft,
   FiChevronRight,

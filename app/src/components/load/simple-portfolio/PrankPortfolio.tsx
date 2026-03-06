@@ -1,6 +1,6 @@
 import "./PrankAnimations.css";
 
-import React, { useCallback,useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -153,10 +153,13 @@ const PrankPortfolio: React.FC<ChaoticPortfolioProps> = ({ onComplete }) => {
 
     const errorTimeouts: NodeJS.Timeout[] = [];
     for (let i = 0; i < CONSOLE_ERROR_COUNT; i++) {
-      const timeout = setTimeout(() => {
-        const message = errorMessages[i % errorMessages.length];
-        addConsoleError(message);
-      }, TERMINAL_DELAY + i * TERMINAL_MESSAGE_INTERVAL);
+      const timeout = setTimeout(
+        () => {
+          const message = errorMessages[i % errorMessages.length];
+          addConsoleError(message);
+        },
+        TERMINAL_DELAY + i * TERMINAL_MESSAGE_INTERVAL
+      );
       errorTimeouts.push(timeout);
     }
     return () => {
@@ -171,40 +174,46 @@ const PrankPortfolio: React.FC<ChaoticPortfolioProps> = ({ onComplete }) => {
   const createRandomErrors = useCallback(() => {
     // Create and append error messages at random positions more frequently
     for (let i = 0; i < 15; i++) {
-      setTimeout(() => {
-        if (!containerRef.current) return;
+      setTimeout(
+        () => {
+          if (!containerRef.current) return;
 
-        const errorElement = document.createElement("div");
-        errorElement.className = "error-message";
-        errorElement.textContent =
-          errors[Math.floor(Math.random() * errors.length)];
+          const errorElement = document.createElement("div");
+          errorElement.className = "error-message";
+          errorElement.textContent =
+            errors[Math.floor(Math.random() * errors.length)];
 
-        // Random position
-        errorElement.style.top = `${10 + Math.random() * 80}%`;
-        errorElement.style.left = `${Math.random() * 80}%`;
-        errorElement.style.zIndex = "100";
+          // Random position
+          errorElement.style.top = `${10 + Math.random() * 80}%`;
+          errorElement.style.left = `${Math.random() * 80}%`;
+          errorElement.style.zIndex = "100";
 
-        // Add some random styling for variety
-        if (Math.random() > 0.5) {
-          errorElement.style.transform = `rotate(${
-            (Math.random() - 0.5) * 20
-          }deg)`;
-        }
+          // Add some random styling for variety
+          if (Math.random() > 0.5) {
+            errorElement.style.transform = `rotate(${
+              (Math.random() - 0.5) * 20
+            }deg)`;
+          }
 
-        if (Math.random() > 0.6) {
-          errorElement.style.fontSize = `${14 + Math.random() * 10}px`;
-        }
+          if (Math.random() > 0.6) {
+            errorElement.style.fontSize = `${14 + Math.random() * 10}px`;
+          }
 
-        // Random animation duration for more chaos
-        errorElement.style.animationDuration = `${2 + Math.random() * 3}s`;
+          // Random animation duration for more chaos
+          errorElement.style.animationDuration = `${2 + Math.random() * 3}s`;
 
-        containerRef.current.appendChild(errorElement);
+          containerRef.current.appendChild(errorElement);
 
-        // Remove after some time
-        setTimeout(() => {
-          containerRef.current?.removeChild(errorElement);
-        }, 3000 + Math.random() * 2000);
-      }, 1500 + i * 1000);
+          // Remove after some time
+          setTimeout(
+            () => {
+              containerRef.current?.removeChild(errorElement);
+            },
+            3000 + Math.random() * 2000
+          );
+        },
+        1500 + i * 1000
+      );
     }
   }, []);
 

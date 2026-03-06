@@ -1,28 +1,28 @@
 {
-  "generatedAt": "2026-03-06T22:02:07.974Z",
+  "generatedAt": "2026-03-06T22:56:08.449Z",
   "sections": {
     "home": {
-      "lastCommitHash": "049b164",
-      "lastCommitDate": "2026-03-05 08:01:37 +0530",
-      "lastCommitMessage": "refactor: enforce consistent import ordering across all source files",
+      "lastCommitHash": "8c17faa",
+      "lastCommitDate": "2026-03-07 04:04:45 +0530",
+      "lastCommitMessage": "fix: update react-icons imports for v5 compatibility (SiCss3 → SiCss, SiAmazon → FaAws)",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 32,
-      "linesAdded": 52,
-      "linesDeleted": 40,
-      "totalAdded": 3751,
-      "totalDeleted": 2055,
+      "commitCount": 33,
+      "linesAdded": 2,
+      "linesDeleted": 2,
+      "totalAdded": 3753,
+      "totalDeleted": 2057,
       "fileCount": 17
     },
     "about": {
-      "lastCommitHash": "bf56b41",
-      "lastCommitDate": "2026-03-07 03:26:41 +0530",
-      "lastCommitMessage": "refactor: move ctp-colors.ts from utils/ to lib/ and update imports",
+      "lastCommitHash": "8c17faa",
+      "lastCommitDate": "2026-03-07 04:04:45 +0530",
+      "lastCommitMessage": "fix: update react-icons imports for v5 compatibility (SiCss3 → SiCss, SiAmazon → FaAws)",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 21,
+      "commitCount": 22,
       "linesAdded": 2,
       "linesDeleted": 2,
-      "totalAdded": 2840,
-      "totalDeleted": 1558,
+      "totalAdded": 2842,
+      "totalDeleted": 1560,
       "fileCount": 12
     },
     "skills": {

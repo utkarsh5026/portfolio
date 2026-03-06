@@ -40,7 +40,7 @@ const DesktopPersonalIntro: React.FC = () => {
             <div
               className={cn(
                 "backdrop-blur-lg bg-gradient-to-b from-ctp-mantle to-ctp-crust rounded-2xl",
-                "p-6 md:p-10 shadow-2xl overflow-hidden",
+                "p-6 md:p-10 shadow-2xl overflow-hidden"
               )}
             >
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start relative z-10">
@@ -180,7 +180,7 @@ const MobilePersonalIntro: React.FC = () => {
             <div
               className={cn(
                 "backdrop-blur-md bg-gradient-to-b from-ctp-mantle/80 to-ctp-crust/60 rounded-xl",
-                "p-4 shadow-xl border-t border-ctp-surface1/20",
+                "p-4 shadow-xl border-t border-ctp-surface1/20"
               )}
             >
               <div className="text-center mb-4">

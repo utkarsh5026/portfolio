@@ -1,6 +1,6 @@
 import "./macos.css";
 
-import React, { useCallback,useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -145,8 +145,8 @@ const MacOSContainer: React.FC<MacOSContainerProps> = ({
                       batteryLevel > 50
                         ? "battery-high"
                         : batteryLevel > 20
-                        ? "battery-medium"
-                        : "battery-low"
+                          ? "battery-medium"
+                          : "battery-low"
                     )}
                     style={{ width: `${(batteryLevel / 100) * 5}px` }}
                   ></div>

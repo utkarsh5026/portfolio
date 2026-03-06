@@ -108,7 +108,7 @@ const Terminal: React.FC<TerminalProps> = ({
                 terminalContentRef.current.scrollHeight;
             }
           },
-          currentTimeOffset + timing.typingSpeeds[cmdIndex] * charIndex,
+          currentTimeOffset + timing.typingSpeeds[cmdIndex] * charIndex
         );
 
         animationTimeoutsRef.current.push(timeout);
@@ -122,7 +122,7 @@ const Terminal: React.FC<TerminalProps> = ({
             [`output${cmdIndex}`]: true,
           }));
         },
-        currentTimeOffset + timing.timePerCommand + 100,
+        currentTimeOffset + timing.timePerCommand + 100
       );
 
       animationTimeoutsRef.current.push(outputTimeout);
@@ -141,7 +141,7 @@ const Terminal: React.FC<TerminalProps> = ({
           setDeploymentProgress((step / deploymentAnimationSteps) * 100);
         },
         deploymentStartTime +
-          (timing.deploymentAnimationTime * step) / deploymentAnimationSteps,
+          (timing.deploymentAnimationTime * step) / deploymentAnimationSteps
       );
 
       animationTimeoutsRef.current.push(progressTimeout);
@@ -183,7 +183,7 @@ const Terminal: React.FC<TerminalProps> = ({
       className={cn(
         "terminal-window absolute bottom-[10%] left-[15%] w-[70%] h-[50%] shadow-xl transition-all duration-300 z-50 rounded-lg overflow-hidden border-0 terminal-appear",
         activeWindow === "terminal" ? "opacity-100" : "opacity-0",
-        panicPhase === "commands" && "opacity-100",
+        panicPhase === "commands" && "opacity-100"
       )}
       style={{
         transform:

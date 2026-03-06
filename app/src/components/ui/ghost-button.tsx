@@ -39,7 +39,7 @@ const GhostButton: React.FC<GhostButtonProps> = ({
         "p-3 relative transition-colors duration-200 group/button",
         isActive ? "text-ctp-red" : "text-ctp-text hover:text-ctp-red",
         "hover:bg-ctp-overlay2",
-        className,
+        className
       )}
       onClick={onClick}
     >
@@ -50,7 +50,7 @@ const GhostButton: React.FC<GhostButtonProps> = ({
           labelDirection === "left" && "left-14",
           labelDirection === "right" && "right-14",
           labelDirection === "top" && "top-14",
-          labelDirection === "bottom" && "bottom-14",
+          labelDirection === "bottom" && "bottom-14"
         )}
       >
         {label}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -68,17 +68,17 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-    :root,
-    .latte {
-      --radius: 0.5rem;
-    }
-  
-    .dark,
-    .mocha,
-    .macchiato,
-    .frappe {
-      color-scheme: dark;
-    }
+  :root,
+  .latte {
+    --radius: 0.5rem;
+  }
+
+  .dark,
+  .mocha,
+  .macchiato,
+  .frappe {
+    color-scheme: dark;
+  }
 }
 @layer base {
   * {
@@ -88,7 +88,6 @@
     @apply bg-background text-foreground;
   }
 }
-
 
 @keyframes borderAnimation {
   0% {
@@ -104,12 +103,12 @@
   }
 }
 
-
-
 .section-animate {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
 }
 
 .section-visible {
@@ -120,17 +119,13 @@
   .bg-gradient-border {
     animation: mistGlow 12s ease-in-out infinite;
   }
-  
+
   .bg-gradient-border::before {
     filter: blur(4px);
     padding: 6px;
     animation: borderAnimation 12s ease infinite;
   }
 }
-
-
-
-
 
 @keyframes sectionBorder {
   0%,
@@ -144,7 +139,6 @@
     filter: blur(8px) brightness(1.2);
   }
 }
-
 
 @media (max-width: 768px) {
   .section-gradient-border {
@@ -166,8 +160,6 @@
     padding: 6px;
   }
 }
-
-
 
 .infinite-void {
   perspective: 1000px;
@@ -199,14 +191,30 @@
 }
 
 /* Syntax highlighting */
-.token.keyword { color: var(--editor-keyword); }
-.token.function { color: var(--editor-function); }
-.token.string { color: var(--editor-string); }
-.token.comment { color: var(--editor-comment); }
-.token.class-name { color: var(--editor-class); }
-.token.operator { color: var(--editor-special); }
-.token.punctuation { color: var(--editor-fg); }
-.token.number { color: var(--editor-blue); }
+.token.keyword {
+  color: var(--editor-keyword);
+}
+.token.function {
+  color: var(--editor-function);
+}
+.token.string {
+  color: var(--editor-string);
+}
+.token.comment {
+  color: var(--editor-comment);
+}
+.token.class-name {
+  color: var(--editor-class);
+}
+.token.operator {
+  color: var(--editor-special);
+}
+.token.punctuation {
+  color: var(--editor-fg);
+}
+.token.number {
+  color: var(--editor-blue);
+}
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
@@ -239,7 +247,7 @@
 
 /* Neon text effect */
 .neon-text {
-  text-shadow: 
+  text-shadow:
     0 0 5px rgba(137, 180, 250, 0.5),
     0 0 10px rgba(137, 180, 250, 0.3),
     0 0 15px rgba(137, 180, 250, 0.2);
@@ -248,13 +256,13 @@
 
 @keyframes neon-pulse {
   from {
-    text-shadow: 
+    text-shadow:
       0 0 5px rgba(137, 180, 250, 0.5),
       0 0 10px rgba(137, 180, 250, 0.3),
       0 0 15px rgba(137, 180, 250, 0.2);
   }
   to {
-    text-shadow: 
+    text-shadow:
       0 0 10px rgba(137, 180, 250, 0.7),
       0 0 20px rgba(137, 180, 250, 0.5),
       0 0 30px rgba(137, 180, 250, 0.3);
@@ -279,4 +287,3 @@
 .skeleton-shimmer {
   animation: shimmer 1.5s infinite;
 }
-

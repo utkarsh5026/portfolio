@@ -30,7 +30,7 @@ interface LanguageBarProps {
 const LanguageBar: React.FC<LanguageBarProps> = ({ stats }) => {
   const total = useMemo(
     () => stats.reduce((sum, s) => sum + s.count, 0),
-    [stats],
+    [stats]
   );
 
   if (stats.length === 0 || total === 0) return null;

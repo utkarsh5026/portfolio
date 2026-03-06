@@ -4,7 +4,7 @@ import { FC } from "react";
 import Reveal from "@/components/animations/reveal/Reveal";
 
 import { skills } from "../data/data";
-import { skillColors,skillIcons } from "../data/icon-map";
+import { skillColors, skillIcons } from "../data/icon-map";
 import SectionHeader from "./about-header";
 
 const categoryColors = {

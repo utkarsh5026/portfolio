@@ -98,12 +98,12 @@ export interface EditorActions {
   setActiveSection: (
     section: SectionType,
     navigate: NavigateFunction,
-    currentPath: string,
+    currentPath: string
   ) => void;
   openProject: (
     project: Project,
     navigate: NavigateFunction,
-    currentPath: string,
+    currentPath: string
   ) => void;
   closeProject: (projectId: string, navigate: NavigateFunction) => void;
   setActiveProjectId: (id: string | null) => void;
@@ -140,7 +140,7 @@ export const useEditorStore = create<EditorStore>()(
       explorerOpen: true,
       terminalOpen: false,
       pendingProjectSlug: getProjectSlugFromPath(
-        typeof window !== "undefined" ? window.location.pathname : "/",
+        typeof window !== "undefined" ? window.location.pathname : "/"
       ),
 
       openTab: (tab, navigate, currentPath) => {
@@ -211,7 +211,7 @@ export const useEditorStore = create<EditorStore>()(
         get().openTab(
           { type: "section", id: section, fileName: `${section}.ts` },
           navigate,
-          currentPath,
+          currentPath
         );
       },
 
@@ -220,7 +220,7 @@ export const useEditorStore = create<EditorStore>()(
         get().openTab(
           { type: "project", id: project.name, fileName, project },
           navigate,
-          currentPath,
+          currentPath
         );
       },
 
@@ -308,7 +308,7 @@ export const useEditorStore = create<EditorStore>()(
         const { pendingProjectSlug } = get();
         if (!pendingProjectSlug) return;
         const match = projects.find(
-          (p) => getProjectSlug(p.name) === pendingProjectSlug,
+          (p) => getProjectSlug(p.name) === pendingProjectSlug
         );
         if (!match) return;
         const fileName = getProjectFileName(match.name);
@@ -347,7 +347,7 @@ export const useEditorStore = create<EditorStore>()(
                 typeof t === "object" &&
                 "id" in t &&
                 "type" in t &&
-                "fileName" in t,
+                "fileName" in t
             )
           : null;
 
@@ -366,8 +366,8 @@ export const useEditorStore = create<EditorStore>()(
           terminalOpen: persisted.terminalOpen ?? currentState.terminalOpen,
         };
       },
-    },
-  ),
+    }
+  )
 );
 
 export const selectActiveTab = (state: EditorStore): Tab | null =>

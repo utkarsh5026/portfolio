@@ -25,29 +25,25 @@ jobs:
           # Without this, GitHub Actions only clones the latest commit (depth=1).
           fetch-depth: 0
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "npm"
-          cache-dependency-path: "./app/package-lock.json"
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
         working-directory: ./app
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       - name: Regenerate git-stats.json
-        run: node scripts/generate-git-stats.js
+        run: bun scripts/generate-git-stats.js
 
       - name: Regenerate git-commits.json
-        run: node scripts/generate-git-commits.js
+        run: bun scripts/generate-git-commits.js
 
       - name: Build
         working-directory: ./app
         env:
           BASE_URL: "https://utkarsh5026.github.io"
           NODE_ENV: "production"
-        run: npm run build
+        run: bun run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -1,6 +1,6 @@
 import React from "react";
 import { FiMoreVertical, FiStar } from "react-icons/fi";
-import { VscChevronLeft,VscChevronRight, VscRefresh } from "react-icons/vsc";
+import { VscChevronLeft, VscChevronRight, VscRefresh } from "react-icons/vsc";
 
 import { cn } from "@/lib/utils";
 

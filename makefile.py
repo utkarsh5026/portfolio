@@ -79,21 +79,21 @@ def run_cmd(args, allow_failure: bool = False, cwd: str | None = None):
 
 
 def _app_cmd(args, allow_failure: bool = False):
-    """Run an npm/npx command inside the `app/` subdirectory."""
+    """Run a bun command inside the `app/` subdirectory."""
     return run_cmd(args, allow_failure=allow_failure, cwd=APP_DIR)
 
 
 def target_install():
     print_header("Installing Dependencies")
-    print_step("Running npm install...")
-    _app_cmd(["npm", "install"])
+    print_step("Running bun install...")
+    _app_cmd(["bun", "install"])
     print_success("Dependencies installed successfully!")
 
 
 def target_dev():
     print_header("Starting Development Server")
     print_step("Launching Vite dev server — press Ctrl+C to stop")
-    _app_cmd(["npm", "run", "dev"])
+    _app_cmd(["bun", "run", "dev"])
 
 
 def target_start():
@@ -103,59 +103,59 @@ def target_start():
 def target_preview():
     print_header("Starting Preview Server")
     print_step("Serving production build locally — press Ctrl+C to stop")
-    _app_cmd(["npm", "run", "preview"])
+    _app_cmd(["bun", "run", "preview"])
 
 
 def target_gen_git_stats():
     print_header("Generating Git Statistics")
-    _app_cmd(["npm", "run", "gen:git-stats"])
+    _app_cmd(["bun", "run", "gen:git-stats"])
     print_success("Git stats generated!")
 
 
 def target_gen_git_commits():
     print_header("Generating Git Commits")
-    _app_cmd(["npm", "run", "gen:git-commits"])
+    _app_cmd(["bun", "run", "gen:git-commits"])
     print_success("Git commits generated!")
 
 
 def target_build():
     print_header("Building for Production")
-    _app_cmd(["npm", "run", "build"])
+    _app_cmd(["bun", "run", "build"])
     print_success("Build completed successfully!")
 
 
 def target_build_force():
     print_header("Force Building (Cleaning Caches)")
     print_step("Cleaning TypeScript cache before build...")
-    _app_cmd(["npm", "run", "force-build"])
+    _app_cmd(["bun", "run", "force-build"])
     print_success("Force build completed!")
 
 
 def target_analyze():
     print_header("Analyzing Bundle Size")
-    _app_cmd(["npm", "run", "analyze"])
+    _app_cmd(["bun", "run", "analyze"])
 
 
 def target_analyze_verbose():
     print_header("Verbose Bundle Analysis")
-    _app_cmd(["npm", "run", "analyze:verbose"])
+    _app_cmd(["bun", "run", "analyze:verbose"])
 
 
 def target_lint():
     print_header("Running ESLint")
-    _app_cmd(["npm", "run", "lint"])
+    _app_cmd(["bun", "run", "lint"])
     print_success("Linting completed!")
 
 
 def target_lint_fix():
     print_header("Running ESLint with Auto-fix")
-    _app_cmd(["npx", "eslint", ".", "--ext", "ts,tsx", "--fix"])
+    _app_cmd(["bunx", "eslint", ".", "--ext", "ts,tsx", "--fix"])
     print_success("Linting and fixes completed!")
 
 
 def target_type_check():
     print_header("TypeScript Type Check")
-    _app_cmd(["npx", "tsc", "--noEmit"])
+    _app_cmd(["bunx", "tsc", "--noEmit"])
     print_success("Type checking completed!")
 
 
@@ -197,13 +197,13 @@ def target_reinstall():
 
 def target_update():
     print_header("Updating Dependencies")
-    _app_cmd(["npm", "update"])
+    _app_cmd(["bun", "update"])
     print_success("Dependencies updated!")
 
 
 def target_outdated():
     print_header("Checking for Outdated Dependencies")
-    _app_cmd(["npm", "outdated"], allow_failure=True)
+    _app_cmd(["bun", "outdated"], allow_failure=True)
 
 
 def target_status():
@@ -249,8 +249,8 @@ def target_info():
         )
     print()
 
-    # node / npm versions (best-effort)
-    for tool in ["node", "npm"]:
+    # bun version (best-effort)
+    for tool in ["bun"]:
         try:
             version = subprocess.check_output(
                 [tool, "--version"], text=True, cwd=APP_DIR

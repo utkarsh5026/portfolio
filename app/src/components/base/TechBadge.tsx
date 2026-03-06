@@ -14,7 +14,7 @@
 
 import React from "react";
 
-import { type TechName,technologies } from "./technologies";
+import { type TechName, technologies } from "./technologies";
 
 type TechBadgeProps = {
   tech: TechName;

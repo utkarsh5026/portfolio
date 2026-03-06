@@ -31,7 +31,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, index }) => {
             "overflow-hidden",
             "sm:hover:border-ctp-pink/40 sm:hover:shadow-lg sm:hover:shadow-ctp-pink/10",
             "sm:hover:-translate-y-1.5",
-            "active:scale-[0.98] sm:active:scale-100",
+            "active:scale-[0.98] sm:active:scale-100"
           )}
         >
           {/* Image Header wrapper - 16:9 aspect ratio */}
@@ -61,7 +61,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, index }) => {
                 "absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out",
                 "saturate-[0.85] brightness-[0.85]",
                 "sm:group-hover:scale-105 sm:group-hover:saturate-100 sm:group-hover:brightness-100",
-                isLoaded ? "opacity-90" : "opacity-0",
+                isLoaded ? "opacity-90" : "opacity-0"
               )}
             />
 
@@ -84,7 +84,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, index }) => {
               className={cn(
                 "text-sm sm:text-[15px] font-semibold text-ctp-text line-clamp-3 leading-snug",
                 "transition-colors duration-300",
-                "sm:group-hover:text-ctp-pink",
+                "sm:group-hover:text-ctp-pink"
               )}
               title={article.title}
             >

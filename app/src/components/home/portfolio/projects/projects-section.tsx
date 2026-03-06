@@ -1,4 +1,4 @@
-import { Code, Folder,Sparkles } from "lucide-react";
+import { Code, Folder, Sparkles } from "lucide-react";
 import React, { useCallback, useRef, useState } from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
@@ -26,7 +26,7 @@ const Projects: React.FC = () => {
     (project: Project) => {
       openProject(project);
     },
-    [openProject],
+    [openProject]
   );
 
   const loadMore = () => {
@@ -148,7 +148,13 @@ const Projects: React.FC = () => {
                           <OutlineNode
                             key={project.name}
                             label={project.name}
-                            icon={project.icon ? <span className="text-[10px]">{project.icon}</span> : undefined}
+                            icon={
+                              project.icon ? (
+                                <span className="text-[10px]">
+                                  {project.icon}
+                                </span>
+                              ) : undefined
+                            }
                           >
                             <Reveal
                               effect="fade-up"

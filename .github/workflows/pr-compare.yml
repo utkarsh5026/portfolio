@@ -19,12 +19,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "npm"
-          cache-dependency-path: "./app/package-lock.json"
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
 
       - name: Install Chrome
         uses: browser-actions/setup-chrome@v1
@@ -33,18 +29,18 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./app
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       - name: Generate git data (PR)
         run: |
-          node scripts/generate-git-stats.js
-          node scripts/generate-git-commits.js
+          bun scripts/generate-git-stats.js
+          bun scripts/generate-git-commits.js
 
       - name: Build PR branch
         working-directory: ./app
         env:
           NODE_ENV: production
-        run: npm run build
+        run: bun run build
 
       - name: Capture PR build stats
         run: |
@@ -59,18 +55,18 @@ jobs:
 
       - name: Install dependencies (main)
         working-directory: ./app
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       - name: Generate git data (main)
         run: |
-          node scripts/generate-git-stats.js
-          node scripts/generate-git-commits.js
+          bun scripts/generate-git-stats.js
+          bun scripts/generate-git-commits.js
 
       - name: Build main branch
         working-directory: ./app
         env:
           NODE_ENV: production
-        run: npm run build
+        run: bun run build
 
       - name: Capture main build stats
         run: |
@@ -196,11 +192,11 @@ jobs:
       - name: Lighthouse on PR build
         id: lighthouse_pr
         run: |
-          npx -y serve /tmp/pr-stats/dist -l 8080 &
+          bunx serve /tmp/pr-stats/dist -l 8080 &
           SERVER_PID=$!
           sleep 3
 
-          npx -y lighthouse http://localhost:8080 \
+          bunx lighthouse http://localhost:8080 \
             --chrome-flags="--headless --no-sandbox --disable-gpu" \
             --output=json --output-path=/tmp/pr-stats/lh.json \
             --only-categories=performance,accessibility,best-practices,seo \
@@ -224,11 +220,11 @@ jobs:
       - name: Lighthouse on main build
         id: lighthouse_main
         run: |
-          npx -y serve /tmp/main-stats/dist -l 8080 &
+          bunx serve /tmp/main-stats/dist -l 8080 &
           SERVER_PID=$!
           sleep 3
 
-          npx -y lighthouse http://localhost:8080 \
+          bunx lighthouse http://localhost:8080 \
             --chrome-flags="--headless --no-sandbox --disable-gpu" \
             --output=json --output-path=/tmp/main-stats/lh.json \
             --only-categories=performance,accessibility,best-practices,seo \

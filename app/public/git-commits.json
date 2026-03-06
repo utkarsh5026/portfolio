@@ -1,6 +1,78 @@
 {
-  "generatedAt": "2026-03-06T22:02:10.883Z",
+  "generatedAt": "2026-03-06T22:56:11.771Z",
   "commits": [
+    {
+      "hash": "df370868be01196dd878a1047cd3073355895276",
+      "shortHash": "df37086",
+      "message": "ci: migrate CI workflows and makefile from npm/node to bun",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T04:05:55+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 75,
+      "deletions": 87,
+      "filesChanged": 6
+    },
+    {
+      "hash": "8c17faaea0d089c09437956ad62b9b9de5cf08c4",
+      "shortHash": "8c17faa",
+      "message": "fix: update react-icons imports for v5 compatibility (SiCss3 → SiCss, SiAmazon → FaAws)",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T04:04:45+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 30,
+      "deletions": 30,
+      "filesChanged": 9
+    },
+    {
+      "hash": "a3e92ce280a308dc968b74d7305260e5b9571850",
+      "shortHash": "a3e92ce",
+      "message": "chore: migrate package manager from npm to bun",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T04:02:51+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 2015,
+      "deletions": 14378,
+      "filesChanged": 5
+    },
+    {
+      "hash": "1e38942783ff9fe6c36dddba73523b97208f4eef",
+      "shortHash": "1e38942",
+      "message": "Merge pull request #72 from utkarsh5026/feat/connect-outline-breadcrumb",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T03:41:28+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 199,
+      "deletions": 234,
+      "filesChanged": 12
+    },
+    {
+      "hash": "1e5e5662c6e193fb4d214671a74a20b0864cccdd",
+      "shortHash": "1e5e566",
+      "message": "Merge pull request #63 from utkarsh5026/dependabot/npm_and_yarn/app/gsap-3.14.2",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T03:37:45+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 6,
+      "deletions": 6,
+      "filesChanged": 2
+    },
+    {
+      "hash": "cae51c8baa612da62c5e456bcfababc9d4464ba6",
+      "shortHash": "cae51c8",
+      "message": "feat: connect outline store to breadcrumb dropdowns",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T03:32:00+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 155,
+      "deletions": 30,
+      "filesChanged": 7
+    },
     {
       "hash": "9011ff6c113b3d2d445c5354254b3cc48068fcf5",
       "shortHash": "9011ff6",
@@ -168,84 +240,12 @@
       "insertions": 618,
       "deletions": 210,
       "filesChanged": 12
-    },
-    {
-      "hash": "21f5818ce240d99a9104701b57da19d85e007ec9",
-      "shortHash": "21f5818",
-      "message": "refactor: replace custom portal dropdown with Radix DropdownMenu in breadcrumbs",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T16:42:51+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 167,
-      "deletions": 256,
-      "filesChanged": 4
-    },
-    {
-      "hash": "d65ac8e1897108b7f48a9a42eebdcc8107bbe7ac",
-      "shortHash": "d65ac8e",
-      "message": "build: integrate React Compiler with babel plugin and ESLint rule",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T16:28:53+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 151,
-      "deletions": 35,
-      "filesChanged": 6
-    },
-    {
-      "hash": "a4fb4c06f7f4e9c024abfd6356f7847c869d3fc1",
-      "shortHash": "a4fb4c0",
-      "message": "feat: add scroll-tracked heading breadcrumbs for project deep dive",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T16:24:35+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 362,
-      "deletions": 140,
-      "filesChanged": 11
-    },
-    {
-      "hash": "ff1dbf15db28f883fd3969fe0e492f5bd0769460",
-      "shortHash": "ff1dbf1",
-      "message": "refactor: remove unused project store methods and centralize slug utilities",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T16:01:43+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 147,
-      "deletions": 84,
-      "filesChanged": 7
-    },
-    {
-      "hash": "808489b4416a0f3c1faf1bad63fc3526655f6f30",
-      "shortHash": "808489b",
-      "message": "chore: improve VSCode developer experience settings",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T15:20:06+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 123,
-      "deletions": 32,
-      "filesChanged": 4
-    },
-    {
-      "hash": "288e817d6be6d98dae9e58286bd6890de1ae1f57",
-      "shortHash": "288e817",
-      "message": "feat: upgrade code block theme to VS Code Dark+ with language icons",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T10:20:04+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 136,
-      "deletions": 81,
-      "filesChanged": 5
     }
   ],
   "commitsByDate": {
-    "2026-03-07": 3,
+    "2026-03-07": 9,
     "2026-03-06": 4,
-    "2026-03-05": 42,
+    "2026-03-05": 43,
     "2026-03-04": 17,
     "2026-03-03": 28,
     "2026-03-02": 17,
@@ -269,7 +269,7 @@
     },
     {
       "language": "Other",
-      "count": 52,
+      "count": 55,
       "color": "#6c7086"
     },
     {
@@ -284,7 +284,7 @@
     },
     {
       "language": "JSON",
-      "count": 13,
+      "count": 12,
       "color": "#f9e2af"
     },
     {

@@ -1,4 +1,4 @@
-import { FileText, Folder, ListTodo,User } from "lucide-react";
+import { FileText, Folder, ListTodo, User } from "lucide-react";
 import { BiLogoVisualStudio } from "react-icons/bi";
 import { FaChrome, FaTerminal } from "react-icons/fa";
 import {

@@ -1,4 +1,4 @@
-import { SiCss3, SiJavascript,SiReact } from "react-icons/si";
+import { SiCss, SiJavascript, SiReact } from "react-icons/si";
 
 import { type CodeType } from "../code";
 
@@ -40,7 +40,7 @@ const VsCodeTabs: React.FC<VsCodeTabsProps> = ({ filename }) => {
             : "border-t-transparent"
         }`}
       >
-        <SiCss3 className="mr-1.5 text-blue-500" />
+        <SiCss className="mr-1.5 text-blue-500" />
         <span>Portfolio.css</span>
         {filename === "cssStyles" && (
           <span className="ml-2 w-4 h-4 flex items-center justify-center text-xs bg-[#252526] hover:bg-[#333333] rounded-sm">

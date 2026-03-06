@@ -128,10 +128,10 @@ export const GitHubPortfolios = memo(() => {
                 {repo === 1
                   ? "React"
                   : repo === 2
-                  ? "Next.js"
-                  : repo === 3
-                  ? "Vue"
-                  : "Svelte"}
+                    ? "Next.js"
+                    : repo === 3
+                      ? "Vue"
+                      : "Svelte"}
               </div>
             </div>
 
@@ -199,10 +199,10 @@ export const GitHubPortfolios = memo(() => {
                   {repo === 1
                     ? "React"
                     : repo === 2
-                    ? "Next.js"
-                    : repo === 3
-                    ? "Vue"
-                    : "Svelte"}
+                      ? "Next.js"
+                      : repo === 3
+                        ? "Vue"
+                        : "Svelte"}
                 </span>{" "}
                 and Tailwind CSS. Featuring dark mode, responsive design, and
                 optimized performance.

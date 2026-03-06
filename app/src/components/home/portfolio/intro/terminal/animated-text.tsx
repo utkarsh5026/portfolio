@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -23,7 +23,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ qaPairs }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [typedQuestion, setTypedQuestion] = useState("");
   const [step, setStep] = useState<"typing" | "answered" | "deleting">(
-    "typing",
+    "typing"
   );
   const [isDeletingFadeOut, setIsDeletingFadeOut] = useState(false);
 
@@ -36,7 +36,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ qaPairs }) => {
       if (typedQuestion.length < currentPair.question.length) {
         timeout = setTimeout(() => {
           setTypedQuestion(
-            currentPair.question.slice(0, typedQuestion.length + 1),
+            currentPair.question.slice(0, typedQuestion.length + 1)
           );
         }, TYPING_SPEED);
       } else {
@@ -80,7 +80,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ qaPairs }) => {
           <span
             className={cn(
               "inline-block w-[8px] h-[16px] ml-1 bg-ctp-overlay0 align-middle transition-opacity duration-300",
-              step === "answered" ? "opacity-0" : styles.cursorBlink,
+              step === "answered" ? "opacity-0" : styles.cursorBlink
             )}
           />
         </span>
@@ -93,14 +93,14 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ qaPairs }) => {
             key={currentPair.answer}
             className={cn(
               "flex items-start gap-3 w-full",
-              isDeletingFadeOut ? styles.answerFadeOut : styles.answerFadeIn,
+              isDeletingFadeOut ? styles.answerFadeOut : styles.answerFadeIn
             )}
           >
             <div className="mt-0.5 opacity-90">{currentPair.icon}</div>
             <p
               className={cn(
                 "leading-relaxed break-words",
-                currentPair.syntaxClass,
+                currentPair.syntaxClass
               )}
             >
               {currentPair.answer}
@@ -118,7 +118,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ qaPairs }) => {
               "h-1 rounded-full transition-all duration-300",
               idx === currentIndex
                 ? "bg-ctp-overlay0 w-4"
-                : "bg-ctp-surface0 w-1.5",
+                : "bg-ctp-surface0 w-1.5"
             )}
           />
         ))}

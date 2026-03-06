@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { DiJava } from "react-icons/di";
 import { FiCheck, FiCode, FiCopy } from "react-icons/fi";
 import {
-  SiCss3,
+  SiCss,
   SiDocker,
   SiGnubash,
   SiGo,
@@ -148,7 +148,7 @@ const langMetaMap: Record<string, LangMeta> = {
   json: { icon: <SiJson />, label: "JSON", color: "#cbcb41" },
   yaml: { icon: <SiYaml />, label: "YAML", color: "#cb171e" },
   yml: { icon: <SiYaml />, label: "YAML", color: "#cb171e" },
-  css: { icon: <SiCss3 />, label: "CSS", color: "#1572b6" },
+  css: { icon: <SiCss />, label: "CSS", color: "#1572b6" },
   sql: { icon: <SiMysql />, label: "SQL", color: "#f29111" },
   markdown: { icon: <SiMarkdown />, label: "Markdown", color: "#083fa1" },
   md: { icon: <SiMarkdown />, label: "Markdown", color: "#083fa1" },

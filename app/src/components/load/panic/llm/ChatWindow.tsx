@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 
 import MacosTrafficController from "../../macos/macos-traffic-controller";
 import ChatHeader from "./ChatHeader";
-import { aiCodeResponse,aiNormalResponse, humanMessage } from "./content";
+import { aiCodeResponse, aiNormalResponse, humanMessage } from "./content";
 import AiMessage from "./message/AiMessage";
 import UserMessage from "./message/UserMessage";
 import SideBar from "./SideBar";

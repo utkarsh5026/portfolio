@@ -48,9 +48,7 @@ const Explorer: React.FC = () => {
     <div
       className={cn(
         "editor-explorer w-64 bg-ctp-crust/95 shadow-[8px_0_30px_rgba(0,0,0,0.25)] border-r border-ctp-surface1/50 py-3 overflow-y-auto z-40 h-screen max-h-screen flex flex-col backdrop-blur-xl transition-transform duration-300",
-        mobileMenuOpen
-          ? "translate-x-0"
-          : "-translate-x-full lg:translate-x-0 ",
+        mobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0 "
       )}
     >
       {/* Logo */}
@@ -71,7 +69,14 @@ const Explorer: React.FC = () => {
           activeId={activeId}
           defaultExpanded={new Set(["portfolio", "projects"])}
         >
-          <Tree.Group id="portfolio" label="portfolio" depth={0} icon={folderIcon} iconOpen={folderOpenIcon} iconColor="text-ctp-blue">
+          <Tree.Group
+            id="portfolio"
+            label="portfolio"
+            depth={0}
+            icon={folderIcon}
+            iconOpen={folderOpenIcon}
+            iconColor="text-ctp-blue"
+          >
             {files.map((file) => (
               <Tree.Item
                 key={file.section}
@@ -85,7 +90,14 @@ const Explorer: React.FC = () => {
             ))}
 
             {/* projects/ folder */}
-            <Tree.Group id="projects" label="projects" depth={1} icon={folderIcon} iconOpen={folderOpenIcon} iconColor="text-ctp-blue">
+            <Tree.Group
+              id="projects"
+              label="projects"
+              depth={1}
+              icon={folderIcon}
+              iconOpen={folderOpenIcon}
+              iconColor="text-ctp-blue"
+            >
               {isLoading && (
                 <p
                   style={{ paddingLeft: "46px" }}

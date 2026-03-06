@@ -1,5 +1,5 @@
 import { Book, Pause, Play, RotateCcw } from "lucide-react";
-import React, { useEffect, useRef,useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import useTypewriting from "@/components/type-write/hooks/use-type-write";
 import {

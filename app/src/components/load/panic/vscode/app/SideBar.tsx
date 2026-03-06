@@ -1,4 +1,4 @@
-import { SiCss3, SiJavascript, SiReact } from "react-icons/si";
+import { SiCss, SiJavascript, SiReact } from "react-icons/si";
 
 interface SideBarProps {
   file: string;
@@ -39,7 +39,7 @@ const SideBar: React.FC<SideBarProps> = ({ file }) => {
             file === "cssStyles" ? "bg-[#37373d]" : ""
           }`}
         >
-          <SiCss3 className="mr-1.5 text-blue-500" />
+          <SiCss className="mr-1.5 text-blue-500" />
           <span>Portfolio.css</span>
         </div>
         <div
@@ -84,7 +84,7 @@ const SideBar: React.FC<SideBarProps> = ({ file }) => {
               <span>Portfolio.jsx</span>
             </div>
             <div className="flex items-center text-[#cccccc] text-xs hover:bg-[#2a2d2e] rounded py-1">
-              <SiCss3 className="mr-1.5 text-blue-500" />
+              <SiCss className="mr-1.5 text-blue-500" />
               <span>Portfolio.css</span>
             </div>
             <div className="flex items-center text-[#cccccc] text-xs hover:bg-[#2a2d2e] rounded py-1">

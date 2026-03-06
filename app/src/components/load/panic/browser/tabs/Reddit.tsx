@@ -96,8 +96,8 @@ const RedditWebDev: React.FC = React.memo(() => {
             ? 0
             : 1
           : currentVotes === -1
-          ? 0
-          : -1,
+            ? 0
+            : -1,
     });
   };
 
@@ -242,8 +242,8 @@ const RedditWebDev: React.FC = React.memo(() => {
                       votes["megathread"] === 1
                         ? "text-[#ff4500]"
                         : votes["megathread"] === -1
-                        ? "text-blue-600"
-                        : "text-gray-400"
+                          ? "text-blue-600"
+                          : "text-gray-400"
                     }`}
                   >
                     {245 + (votes["megathread"] || 0)}
@@ -396,8 +396,8 @@ const RedditWebDev: React.FC = React.memo(() => {
                           votes[`comment-${comment.id}`] === 1
                             ? "text-[#ff4500]"
                             : votes[`comment-${comment.id}`] === -1
-                            ? "text-blue-600"
-                            : "text-gray-400"
+                              ? "text-blue-600"
+                              : "text-gray-400"
                         }`}
                       >
                         {getAdjustedVotes(

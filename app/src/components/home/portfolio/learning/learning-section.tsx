@@ -22,12 +22,12 @@ const categorizedTech = currentLearningTechnologies.reduce(
     acc[tech.category].push(tech);
     return acc;
   },
-  {} as Record<Category, TechnologyLearning[]>,
+  {} as Record<Category, TechnologyLearning[]>
 );
 
 const CurrentLearning: React.FC = () => {
   const [selectedTech, setSelectedTech] = useState<TechnologyLearning | null>(
-    null,
+    null
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isJourneyOpen, setIsJourneyOpen] = useState(false);
@@ -103,7 +103,7 @@ const CurrentLearning: React.FC = () => {
                     <div className="flex items-center gap-2 px-4 py-2 bg-ctp-surface0/50 rounded-full border border-ctp-surface1/50">
                       <div
                         className={`w-2 h-2 rounded-full bg-ctp-${getCategoryColor(
-                          category,
+                          category
                         )}`}
                       />
                       <span className="text-sm font-medium text-ctp-text">
@@ -136,7 +136,7 @@ const CurrentLearning: React.FC = () => {
                   </div>
                 </Reveal>
               </OutlineNode>
-            ),
+            )
           )}
         </div>
 

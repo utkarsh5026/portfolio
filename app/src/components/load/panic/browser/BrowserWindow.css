@@ -15,7 +15,7 @@
     transform: scale(0.2);
   }
   33% {
-    transform: scale(1.0);
+    transform: scale(1);
   }
   66% {
     transform: scale(1.05);
@@ -44,6 +44,12 @@
 
 /* Easing function approximation */
 @keyframes ease-out-quad {
-  0% { transform: scale(0.4); opacity: 0; }
-  100% { transform: scale(0.8); opacity: 1; }
-} 
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+}

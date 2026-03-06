@@ -33,7 +33,7 @@ const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({
     start.setDate(start.getDate() - start.getDay());
 
     const totalDays = Math.ceil(
-      (today.getTime() - start.getTime()) / 86_400_000,
+      (today.getTime() - start.getTime()) / 86_400_000
     );
     const monthLabels: { label: string; col: number }[] = [];
     let lastMonth = -1;
@@ -110,7 +110,7 @@ const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({
                 >
                   {label}
                 </text>
-              ) : null,
+              ) : null
             )}
 
             {/* Cells */}

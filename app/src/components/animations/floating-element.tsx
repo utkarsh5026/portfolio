@@ -58,7 +58,10 @@ const FloatingElementComponent: React.FC<FloatingElementProps> = ({
   }, [intensity, delay]);
 
   return (
-    <div ref={elementRef} className={`inline-block w-full${className ? ` ${className}` : ""}`}>
+    <div
+      ref={elementRef}
+      className={`inline-block w-full${className ? ` ${className}` : ""}`}
+    >
       {children}
     </div>
   );

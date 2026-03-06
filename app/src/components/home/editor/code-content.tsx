@@ -5,7 +5,7 @@ import { useEditorContext } from "./context/explorer-context";
 import SectionLoadingScreen from "./context/section-loading";
 
 const ProjectMarkdown = lazy(
-  () => import("../portfolio/projects/project-markdown"),
+  () => import("../portfolio/projects/project-markdown")
 );
 
 interface CodeContentProps {

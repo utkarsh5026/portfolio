@@ -78,7 +78,7 @@ const LEVEL_META: Record<1 | 2 | 3, { icon: React.ReactNode; color: string }> =
 function renderHeadingTree(
   nodes: HeadingNode[],
   depth: number,
-  onNavigate: (id: string) => void,
+  onNavigate: (id: string) => void
 ): React.ReactNode[] {
   return nodes.map((node) => (
     <React.Fragment key={node.id}>
@@ -120,7 +120,7 @@ function renderOutlineTree(
   parentId: string,
   items: OutlineItem[],
   depth: number,
-  onNavigate: (id: string) => void,
+  onNavigate: (id: string) => void
 ): React.ReactNode[] {
   return items
     .filter((item) => item.parentId === parentId)
@@ -200,7 +200,7 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
       <span
         className={cn(
           "leading-none",
-          seg.isActive ? "text-ctp-text font-medium" : "text-ctp-subtext0",
+          seg.isActive ? "text-ctp-text font-medium" : "text-ctp-subtext0"
         )}
       >
         {seg.label}
@@ -209,7 +209,7 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
         <VscChevronDown
           className={cn(
             "w-3 h-3 flex-shrink-0 text-ctp-overlay0/70 transition-transform duration-150",
-            open && "rotate-180",
+            open && "rotate-180"
           )}
         />
       )}
@@ -223,7 +223,7 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
           "flex items-center gap-1.5 px-1.5 py-0.5 rounded-sm",
           seg.isActive
             ? "text-ctp-text bg-ctp-surface0/60"
-            : "text-ctp-subtext0",
+            : "text-ctp-subtext0"
         )}
       >
         {inner}
@@ -249,106 +249,107 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
     />
   ));
 
-  const treeContent = isOutline && outlineItems && outlineSectionId ? (
-    <Tree
-      activeId={activeOutlineId ?? null}
-      expandMode="all-open"
-      indentStep={14}
-      indentBase={16}
-    >
-      {renderOutlineTree(outlineSectionId, outlineItems, 0, (id) => {
-        document.getElementById(id)?.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-        });
-        highlightNode(id);
-        setOpen(false);
-      })}
-    </Tree>
-  ) : isHeading ? (
-    <>
-      {headingDropdownNodes && headingDropdownNodes.length > 0 ? (
-        <Tree
-          activeId={activeHeadingId ?? null}
-          expandMode="all-open"
-          indentStep={14}
-          indentBase={16}
-        >
-          {renderHeadingTree(headingDropdownNodes, 0, (id: string) => {
-            document.getElementById(id)?.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-            setOpen(false);
-          })}
-        </Tree>
-      ) : (
-        <span className="block px-4 py-3 text-xs text-ctp-overlay0 italic">
-          No headings found
-        </span>
-      )}
-    </>
-  ) : treeVariant === "portfolio" ? (
-    <Tree
-      activeId={
-        activeProjectId ?? (activeProjectId === null ? activeSection : null)
-      }
-      defaultExpanded={new Set(["portfolio", "projects"])}
-    >
-      <Tree.Group
-        id="portfolio"
-        label="portfolio"
-        depth={0}
-        icon={folderIcon}
-        iconOpen={folderOpenIcon}
-        iconColor="text-ctp-blue"
-        collapsible={false}
+  const treeContent =
+    isOutline && outlineItems && outlineSectionId ? (
+      <Tree
+        activeId={activeOutlineId ?? null}
+        expandMode="all-open"
+        indentStep={14}
+        indentBase={16}
       >
-        {editorFiles.map((f) => (
-          <Tree.Item
-            key={f.section}
-            id={f.section}
-            depth={1}
-            label={f.name}
-            icon={
-              f.name.endsWith(".ts") || f.name.endsWith(".tsx")
-                ? tsIcon
-                : mdIcon
-            }
-            iconColor="text-ctp-blue"
-            onClick={() => {
-              onSelectSection(f.section);
+        {renderOutlineTree(outlineSectionId, outlineItems, 0, (id) => {
+          document.getElementById(id)?.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+          highlightNode(id);
+          setOpen(false);
+        })}
+      </Tree>
+    ) : isHeading ? (
+      <>
+        {headingDropdownNodes && headingDropdownNodes.length > 0 ? (
+          <Tree
+            activeId={activeHeadingId ?? null}
+            expandMode="all-open"
+            indentStep={14}
+            indentBase={16}
+          >
+            {renderHeadingTree(headingDropdownNodes, 0, (id: string) => {
+              document.getElementById(id)?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
               setOpen(false);
-            }}
-          />
-        ))}
+            })}
+          </Tree>
+        ) : (
+          <span className="block px-4 py-3 text-xs text-ctp-overlay0 italic">
+            No headings found
+          </span>
+        )}
+      </>
+    ) : treeVariant === "portfolio" ? (
+      <Tree
+        activeId={
+          activeProjectId ?? (activeProjectId === null ? activeSection : null)
+        }
+        defaultExpanded={new Set(["portfolio", "projects"])}
+      >
         <Tree.Group
-          id="projects"
-          label="projects"
-          depth={1}
+          id="portfolio"
+          label="portfolio"
+          depth={0}
           icon={folderIcon}
           iconOpen={folderOpenIcon}
           iconColor="text-ctp-blue"
+          collapsible={false}
+        >
+          {editorFiles.map((f) => (
+            <Tree.Item
+              key={f.section}
+              id={f.section}
+              depth={1}
+              label={f.name}
+              icon={
+                f.name.endsWith(".ts") || f.name.endsWith(".tsx")
+                  ? tsIcon
+                  : mdIcon
+              }
+              iconColor="text-ctp-blue"
+              onClick={() => {
+                onSelectSection(f.section);
+                setOpen(false);
+              }}
+            />
+          ))}
+          <Tree.Group
+            id="projects"
+            label="projects"
+            depth={1}
+            icon={folderIcon}
+            iconOpen={folderOpenIcon}
+            iconColor="text-ctp-blue"
+          >
+            {projectFileItems}
+          </Tree.Group>
+        </Tree.Group>
+      </Tree>
+    ) : (
+      <Tree activeId={activeProjectId} defaultExpanded={new Set(["projects"])}>
+        <Tree.Group
+          id="projects"
+          label="projects"
+          depth={0}
+          icon={folderIcon}
+          iconOpen={folderOpenIcon}
+          iconColor="text-ctp-blue"
+          collapsible={false}
         >
           {projectFileItems}
         </Tree.Group>
-      </Tree.Group>
-    </Tree>
-  ) : (
-    <Tree activeId={activeProjectId} defaultExpanded={new Set(["projects"])}>
-      <Tree.Group
-        id="projects"
-        label="projects"
-        depth={0}
-        icon={folderIcon}
-        iconOpen={folderOpenIcon}
-        iconColor="text-ctp-blue"
-        collapsible={false}
-      >
-        {projectFileItems}
-      </Tree.Group>
-    </Tree>
-  );
+      </Tree>
+    );
 
   return (
     <TreeDropdown
@@ -359,7 +360,7 @@ const BreadcrumbSegmentItem: React.FC<SegmentProps> = ({
           className={cn(
             "flex items-center gap-1.5 px-1.5 py-0.5 rounded-sm transition-colors duration-150 cursor-pointer",
             "text-ctp-subtext0 hover:text-ctp-text hover:bg-ctp-surface0/40",
-            open && "bg-ctp-surface0/60 text-ctp-text",
+            open && "bg-ctp-surface0/60 text-ctp-text"
           )}
         >
           {inner}
@@ -379,7 +380,7 @@ function getSiblingNodes(
   tree: HeadingNode[],
   level: 1 | 2 | 3 | "file",
   activeH1Id: string | null,
-  activeH2Id: string | null,
+  activeH2Id: string | null
 ): HeadingNode[] {
   if (level === "file") return tree;
 
@@ -423,7 +424,7 @@ export const EditorBreadcrumbs: React.FC = () => {
   const activeOutlineId = useOutlineStore((s) => s.activeHighlightId);
   const outlineItems = useMemo(
     () => [...outlineItemsMap.values()],
-    [outlineItemsMap],
+    [outlineItemsMap]
   );
   const isDeepDive = useMarkdownHeadingStore((s) => s.isDeepDive);
   const activeHeadings = useMarkdownHeadingStore((s) => s.activeHeadings);
@@ -543,7 +544,7 @@ export const EditorBreadcrumbs: React.FC = () => {
 
   const handleSelectSection = useCallback(
     (section: SectionType) => setActiveSection(section),
-    [setActiveSection],
+    [setActiveSection]
   );
 
   const handleSelectProject = useCallback(
@@ -551,7 +552,7 @@ export const EditorBreadcrumbs: React.FC = () => {
       const project = projects.find((p) => p.name === projectId);
       if (project) openProject(project);
     },
-    [projects, openProject],
+    [projects, openProject]
   );
 
   // Scroll the bar to reveal the rightmost (latest) heading segment whenever
@@ -596,7 +597,7 @@ export const EditorBreadcrumbs: React.FC = () => {
                         headingTree,
                         seg.headingLevel,
                         activeH1Id,
-                        activeH2Id,
+                        activeH2Id
                       )
                     : undefined
                 }
