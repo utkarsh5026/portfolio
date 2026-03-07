@@ -45,7 +45,7 @@ const Console: React.FC<ConsoleProps> = React.memo(({ errors }) => {
               error.isNew ? "new-error" : ""
             }`}
           >
-            <span className="text-gray-500">
+            <span className="text-gray-400">
               {new Date().toLocaleTimeString()}
             </span>
             <span className="text-red-400">{error.message}</span>

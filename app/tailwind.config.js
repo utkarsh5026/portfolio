@@ -131,7 +131,6 @@ export default {
         serif: ["Noto Sans", "serif"],
         mono: ["Noto Sans", "monospace"],
         source: ["Cascadia Code", "monospace"],
-        "roboto-mono": ["Noto Sans Mono", "monospace"],
       },
     },
   },

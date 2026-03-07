@@ -6,6 +6,7 @@ import { useSwipe } from "@/hooks/use-swipe";
 import styles from "./code-content.module.css";
 import {
   sections as sectionList,
+  type SectionType,
   useEditorContext,
 } from "./context/explorer-context";
 import { SectionLoadingScreen } from "./section/section-loading";
@@ -15,7 +16,7 @@ const ProjectMarkdown = lazy(
 );
 
 interface CodeContentProps {
-  sections: Record<string, React.ReactNode>;
+  sections: Record<SectionType, React.LazyExoticComponent<React.ComponentType>>;
 }
 
 const CodeContent: React.FC<CodeContentProps> = ({ sections }) => {
@@ -74,7 +75,10 @@ const CodeContent: React.FC<CodeContentProps> = ({ sections }) => {
             ref={contentRef}
             className="grow px-3 py-4 md:px-4 md:pt-8 flex flex-col"
           >
-            {sections[activeSection]}
+            {(() => {
+              const ActiveSection = sections[activeSection];
+              return <ActiveSection />;
+            })()}
           </div>
         </div>
       </Suspense>

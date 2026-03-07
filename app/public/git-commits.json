@@ -1,6 +1,114 @@
 {
-  "generatedAt": "2026-03-07T02:13:31.994Z",
+  "generatedAt": "2026-03-07T06:27:41.279Z",
   "commits": [
+    {
+      "hash": "47011a01ec0940293171dbda1d0c0dd8e335d296",
+      "shortHash": "47011a0",
+      "message": "style: replace generic spinner with branded VS Code-style initial loader",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T11:45:27+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 322,
+      "deletions": 23,
+      "filesChanged": 5
+    },
+    {
+      "hash": "caaebe33b0ea8eb2d61762f528a7ea4b05d5383e",
+      "shortHash": "caaebe3",
+      "message": "perf: lazy load loading stage components and refactor section component map",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T11:24:18+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 88,
+      "deletions": 93,
+      "filesChanged": 6
+    },
+    {
+      "hash": "162e205fc400e66661e47cacae76f4f2cde0596a",
+      "shortHash": "162e205",
+      "message": "build: add watch-prod script for production build watcher with preview server",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T10:43:52+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 80,
+      "deletions": 18,
+      "filesChanged": 8
+    },
+    {
+      "hash": "021fd74062f045132187c6ea5246a5a462165620",
+      "shortHash": "021fd74",
+      "message": "fix: use composite key for language bar items to prevent duplicate key warnings",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T09:40:52+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 22,
+      "deletions": 19,
+      "filesChanged": 3
+    },
+    {
+      "hash": "cf026e7156aa7f195abfec30ec9b3de847628967",
+      "shortHash": "cf026e7",
+      "message": "style: improve contrast and accessibility across loading screen components",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T09:37:31+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 114,
+      "deletions": 90,
+      "filesChanged": 15
+    },
+    {
+      "hash": "c15815ee4519a48bc81fdbd919f53e1887005a42",
+      "shortHash": "c15815e",
+      "message": "perf: migrate profile images from JPEG to WebP and replace hardcoded sidebar colors with Catppuccin tokens",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T09:24:03+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 32,
+      "deletions": 27,
+      "filesChanged": 10
+    },
+    {
+      "hash": "b9596a8ffee93a9451a8cc06951c7807876e2ce0",
+      "shortHash": "b9596a8",
+      "message": "perf: migrate Google Fonts to self-hosted @fontsource packages",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T08:47:15+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 48,
+      "deletions": 44,
+      "filesChanged": 9
+    },
+    {
+      "hash": "fde289dedf818e8ab29975a875441aa99514c7ac",
+      "shortHash": "fde289d",
+      "message": "Merge pull request #75 from utkarsh5026/feat/react-swipeable-mobile",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T07:51:03+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 206,
+      "deletions": 55,
+      "filesChanged": 7
+    },
+    {
+      "hash": "8355e1e86591f7049bc8bda74a6b21ec44fc3d2e",
+      "shortHash": "8355e1e",
+      "message": "feat(mobile): add swipe navigation for sections and projects with onboarding hint",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T07:43:19+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 146,
+      "deletions": 19,
+      "filesChanged": 6
+    },
     {
       "hash": "518003d08d8f489827b94e884694653efeb11f66",
       "shortHash": "518003d",
@@ -132,118 +240,10 @@
       "insertions": 94,
       "deletions": 79,
       "filesChanged": 5
-    },
-    {
-      "hash": "80f55266cfbe6e75608911dac3217f0116d92107",
-      "shortHash": "80f5526",
-      "message": "Merge pull request #73 from utkarsh5026/chore/migrate-to-bun",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T04:30:11+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 7233,
-      "deletions": 19425,
-      "filesChanged": 146
-    },
-    {
-      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
-      "shortHash": "e4ccb5a",
-      "message": "style: add Prettier config and reformat entire codebase",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T04:25:58+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 5126,
-      "deletions": 4943,
-      "filesChanged": 139
-    },
-    {
-      "hash": "df370868be01196dd878a1047cd3073355895276",
-      "shortHash": "df37086",
-      "message": "ci: migrate CI workflows and makefile from npm/node to bun",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T04:05:55+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 75,
-      "deletions": 87,
-      "filesChanged": 6
-    },
-    {
-      "hash": "8c17faaea0d089c09437956ad62b9b9de5cf08c4",
-      "shortHash": "8c17faa",
-      "message": "fix: update react-icons imports for v5 compatibility (SiCss3 → SiCss, SiAmazon → FaAws)",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T04:04:45+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 30,
-      "deletions": 30,
-      "filesChanged": 9
-    },
-    {
-      "hash": "a3e92ce280a308dc968b74d7305260e5b9571850",
-      "shortHash": "a3e92ce",
-      "message": "chore: migrate package manager from npm to bun",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T04:02:51+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 2015,
-      "deletions": 14378,
-      "filesChanged": 5
-    },
-    {
-      "hash": "1e38942783ff9fe6c36dddba73523b97208f4eef",
-      "shortHash": "1e38942",
-      "message": "Merge pull request #72 from utkarsh5026/feat/connect-outline-breadcrumb",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T03:41:28+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 199,
-      "deletions": 234,
-      "filesChanged": 12
-    },
-    {
-      "hash": "1e5e5662c6e193fb4d214671a74a20b0864cccdd",
-      "shortHash": "1e5e566",
-      "message": "Merge pull request #63 from utkarsh5026/dependabot/npm_and_yarn/app/gsap-3.14.2",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T03:37:45+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 6,
-      "deletions": 6,
-      "filesChanged": 2
-    },
-    {
-      "hash": "cae51c8baa612da62c5e456bcfababc9d4464ba6",
-      "shortHash": "cae51c8",
-      "message": "feat: connect outline store to breadcrumb dropdowns",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T03:32:00+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 155,
-      "deletions": 30,
-      "filesChanged": 7
-    },
-    {
-      "hash": "9011ff6c113b3d2d445c5354254b3cc48068fcf5",
-      "shortHash": "9011ff6",
-      "message": "chore: remove CLAUDE.md and skills-lock.json",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T03:28:40+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 32,
-      "deletions": 193,
-      "filesChanged": 4
     }
   ],
   "commitsByDate": {
-    "2026-03-07": 22,
+    "2026-03-07": 31,
     "2026-03-06": 4,
     "2026-03-05": 43,
     "2026-03-04": 17,
@@ -269,7 +269,7 @@
     },
     {
       "language": "Other",
-      "count": 55,
+      "count": 56,
       "color": "#6c7086"
     },
     {
@@ -289,7 +289,7 @@
     },
     {
       "language": "JavaScript",
-      "count": 4,
+      "count": 5,
       "color": "#a6e3a1"
     },
     {

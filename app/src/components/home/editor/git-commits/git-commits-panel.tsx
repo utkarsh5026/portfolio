@@ -41,9 +41,9 @@ const LanguageBar: React.FC<LanguageBarProps> = ({ stats }) => {
     <div className="flex-shrink-0 px-4 py-2 border-t border-ctp-surface0/40">
       {/* Stacked bar */}
       <div className="flex h-1.5 rounded-full overflow-hidden gap-px">
-        {stats.map((s) => (
+        {stats.map((s, idx) => (
           <div
-            key={s.language}
+            key={`${s.language}-${idx}`}
             style={{
               width: `${(s.count / total) * 100}%`,
               backgroundColor: s.color,
@@ -55,8 +55,11 @@ const LanguageBar: React.FC<LanguageBarProps> = ({ stats }) => {
 
       {/* Legend */}
       <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1.5">
-        {stats.map((s) => (
-          <span key={s.language} className="flex items-center gap-1">
+        {stats.map((s, idx) => (
+          <span
+            key={`${s.language}-${idx}`}
+            className="flex items-center gap-1"
+          >
             <span
               className="w-2 h-2 rounded-full flex-shrink-0"
               style={{ backgroundColor: s.color }}

@@ -30,7 +30,7 @@ const BasicPortfolio: React.FC<BasicPortfolioProps> = ({ layoutBroken }) => {
       }`}
     >
       <img
-        src="personal.jpg"
+        src="personal.webp"
         alt="Utkarsh Priyadarshi"
         className="w-20 h-20 rounded-lg mb-5"
       />

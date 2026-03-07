@@ -3,3 +3,5 @@ node_modules
 public
 *.min.js
 bun.lockb
+stats.html
+stats.json

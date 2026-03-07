@@ -90,7 +90,7 @@ const Twitter: React.FC = () => {
             <div className="bg-blue-500 w-full h-16 rounded-t-sm"></div>
             <div className="bg-blue-500 w-full h-30 rounded-t-sm"></div>
           </div>
-          <div className="mt-2 text-xs text-gray-500 flex justify-between">
+          <div className="mt-2 text-xs text-gray-400 flex justify-between">
             <span>Last 7 days</span>
             <span>+45% growth</span>
           </div>
@@ -184,7 +184,7 @@ const Twitter: React.FC = () => {
                 </Avatar>
                 <div className="flex-1 mr-3">
                   <div className="font-bold">Your Name</div>
-                  <div className="text-gray-500 text-sm">@username</div>
+                  <div className="text-gray-400 text-sm">@username</div>
                 </div>
                 <FiMoreHorizontal />
               </div>
@@ -202,7 +202,7 @@ const Twitter: React.FC = () => {
             <div className="flex border-b border-gray-800">
               <button
                 className={`flex-1 py-4 text-center relative ${
-                  activeTab === "for-you" ? "font-bold" : "text-gray-500"
+                  activeTab === "for-you" ? "font-bold" : "text-gray-400"
                 }`}
                 onClick={() => setActiveTab("for-you")}
               >
@@ -213,7 +213,7 @@ const Twitter: React.FC = () => {
               </button>
               <button
                 className={`flex-1 py-4 text-center relative ${
-                  activeTab === "following" ? "font-bold" : "text-gray-500"
+                  activeTab === "following" ? "font-bold" : "text-gray-400"
                 }`}
                 onClick={() => setActiveTab("following")}
               >
@@ -308,7 +308,7 @@ const Twitter: React.FC = () => {
           {/* Search box */}
           <div className="relative mb-4">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <FiSearch className="text-gray-500" />
+              <FiSearch className="text-gray-400" />
             </div>
             <input
               type="text"
@@ -326,18 +326,18 @@ const Twitter: React.FC = () => {
                 className={`p-4 cursor-pointer hover:bg-gray-800 transition-colors`}
               >
                 <div className="flex justify-between">
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-gray-400">
                     {topic.category} · Trending
                   </span>
                   <button
-                    className="text-gray-500 hover:text-blue-500 hover:bg-blue-500 hover:bg-opacity-10 rounded-full p-1 transition-colors"
+                    className="text-gray-400 hover:text-blue-500 hover:bg-blue-500 hover:bg-opacity-10 rounded-full p-1 transition-colors"
                     title="More"
                   >
                     <FiMoreHorizontal size={14} />
                   </button>
                 </div>
                 <div className="font-bold mt-0.5">{topic.name}</div>
-                <div className="text-xs text-gray-500 mt-0.5">
+                <div className="text-xs text-gray-400 mt-0.5">
                   {topic.tweets} Tweets
                 </div>
               </div>
@@ -372,7 +372,7 @@ const Twitter: React.FC = () => {
                       </g>
                     </svg>
                   </div>
-                  <div className="text-gray-500 text-sm">
+                  <div className="text-gray-400 text-sm">
                     {profile.username}
                   </div>
                 </div>
@@ -387,7 +387,7 @@ const Twitter: React.FC = () => {
           </div>
 
           {/* Footer links */}
-          <div className="text-xs text-gray-500">
+          <div className="text-xs text-gray-400">
             <div className="flex flex-wrap">
               <span className="mr-3 mb-1 hover:underline cursor-pointer">
                 Terms of Service
@@ -417,25 +417,29 @@ const Twitter: React.FC = () => {
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-black border-t border-gray-800 flex justify-around py-3 z-10">
         <button
           onClick={() => setActiveTab("for-you")}
+          aria-label="Home"
           className="p-2 text-white"
         >
           <FiHome size={24} />
         </button>
         <button
           onClick={() => setActiveTab("following")}
-          className="p-2 text-gray-500"
+          aria-label="Search"
+          className="p-2 text-gray-400"
         >
           <FiSearch size={24} />
         </button>
         <button
           onClick={() => setActiveTab("notifications")}
-          className="p-2 text-gray-500"
+          aria-label="Notifications"
+          className="p-2 text-gray-400"
         >
           <FiBell size={24} />
         </button>
         <button
           onClick={() => setActiveTab("messages")}
-          className="p-2 text-gray-500"
+          aria-label="Messages"
+          className="p-2 text-gray-400"
         >
           <FiMail size={24} />
         </button>
@@ -597,11 +601,11 @@ const Tweet: React.FC<TweetProps> = ({
                 </g>
               </svg>
             )}
-            <span className="text-gray-500 mr-1">{tweet.username}</span>
-            <span className="text-gray-500 mx-1">·</span>
-            <span className="text-gray-500 hover:underline">{tweet.time}</span>
+            <span className="text-gray-400 mr-1">{tweet.username}</span>
+            <span className="text-gray-400 mx-1">·</span>
+            <span className="text-gray-400 hover:underline">{tweet.time}</span>
             <span
-              className="ml-auto text-gray-500 hover:text-blue-500 p-1 rounded-full hover:bg-blue-500 hover:bg-opacity-10 transition-colors"
+              className="ml-auto text-gray-400 hover:text-blue-500 p-1 rounded-full hover:bg-blue-500 hover:bg-opacity-10 transition-colors"
               onClick={() => setShowActions(!showActions)}
             >
               <FiMoreHorizontal size={16} />
@@ -610,7 +614,7 @@ const Tweet: React.FC<TweetProps> = ({
 
           {/* Pinned tweet indicator */}
           {tweet.isPinned && (
-            <div className="text-xs text-gray-500 mb-1 flex items-center">
+            <div className="text-xs text-gray-400 mb-1 flex items-center">
               <FiStar size={12} className="mr-1" />
               Pinned Tweet
             </div>
@@ -643,7 +647,7 @@ const Tweet: React.FC<TweetProps> = ({
           )}
 
           {/* Tweet actions */}
-          <div className="flex justify-between text-gray-500 mt-3">
+          <div className="flex justify-between text-gray-400 mt-3">
             <button className="flex items-center space-x-1 group">
               <div className="p-2 rounded-full group-hover:bg-blue-500 group-hover:bg-opacity-10 group-hover:text-blue-500 transition-colors">
                 <FiMessageCircle size={18} />
@@ -708,6 +712,7 @@ const Tweet: React.FC<TweetProps> = ({
             </button>
 
             <button
+              aria-label="Bookmark"
               className={`flex items-center space-x-1 group ${
                 isBookmarked ? "text-blue-500" : ""
               }`}
@@ -727,11 +732,14 @@ const Tweet: React.FC<TweetProps> = ({
               </div>
             </button>
 
-            <span className="flex items-center space-x-1 group">
+            <button
+              aria-label="Share"
+              className="flex items-center space-x-1 group"
+            >
               <div className="p-2 rounded-full group-hover:bg-blue-500 group-hover:bg-opacity-10 group-hover:text-blue-500 transition-colors">
                 <FiShare2 size={18} />
               </div>
-            </span>
+            </button>
           </div>
         </div>
       </div>

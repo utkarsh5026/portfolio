@@ -56,7 +56,7 @@ const FatalError: React.FC<FatalErrorProps> = ({
           ERR_PORTFOLIO_CRASH
         </div>
 
-        <div className="text-left font-source text-xs text-gray-500 bg-black bg-opacity-50 p-2.5 rounded mb-5 overflow-auto max-h-24">
+        <div className="text-left font-source text-xs text-gray-400 bg-black bg-opacity-50 p-2.5 rounded mb-5 overflow-auto max-h-24">
           <div className="mb-1">at renderPortfolio (portfolio.js:42)</div>
           <div className="mb-1">at loadStylesheets (styles.js:17)</div>
           <div className="mb-1">at Object.initializeApp (index.js:23)</div>

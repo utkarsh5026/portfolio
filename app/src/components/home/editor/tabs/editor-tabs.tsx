@@ -10,7 +10,7 @@ import DesktopTabs from "./desktop-tabs";
 import MobileEditorDropdown from "./mobile-editor-dropdown";
 
 interface EditorTabsProps {
-  sections: Record<SectionType, React.ReactNode>;
+  sections: Record<SectionType, React.LazyExoticComponent<React.ComponentType>>;
 }
 
 /**

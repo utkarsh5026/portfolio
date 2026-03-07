@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-07T02:13:28.826Z",
+  "generatedAt": "2026-03-07T06:27:26.887Z",
   "sections": {
     "home": {
-      "lastCommitHash": "e4ccb5a",
-      "lastCommitDate": "2026-03-07 04:25:58 +0530",
-      "lastCommitMessage": "style: add Prettier config and reformat entire codebase",
+      "lastCommitHash": "c15815e",
+      "lastCommitDate": "2026-03-07 09:24:03 +0530",
+      "lastCommitMessage": "perf: migrate profile images from JPEG to WebP and replace hardcoded sidebar colors with Catppuccin tokens",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 34,
-      "linesAdded": 30,
-      "linesDeleted": 31,
-      "totalAdded": 3783,
-      "totalDeleted": 2088,
+      "commitCount": 35,
+      "linesAdded": 3,
+      "linesDeleted": 3,
+      "totalAdded": 3786,
+      "totalDeleted": 2091,
       "fileCount": 17
     },
     "about": {
@@ -38,15 +38,15 @@
       "fileCount": 4
     },
     "projects": {
-      "lastCommitHash": "3cb4e11",
-      "lastCommitDate": "2026-03-07 06:12:45 +0530",
-      "lastCommitMessage": "refactor: replace framer-motion with CSS modules in featured-project and work components",
+      "lastCommitHash": "8355e1e",
+      "lastCommitDate": "2026-03-07 07:43:19 +0530",
+      "lastCommitMessage": "feat(mobile): add swipe navigation for sections and projects with onboarding hint",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 72,
-      "linesAdded": 118,
-      "linesDeleted": 103,
-      "totalAdded": 9911,
-      "totalDeleted": 8597,
+      "commitCount": 73,
+      "linesAdded": 25,
+      "linesDeleted": 1,
+      "totalAdded": 9936,
+      "totalDeleted": 8598,
       "fileCount": 9
     },
     "experience": {

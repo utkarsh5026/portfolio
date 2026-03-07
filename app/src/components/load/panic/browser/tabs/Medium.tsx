@@ -522,7 +522,7 @@ const MediumPortfolio: React.FC = () => {
               className="flex items-start cursor-pointer group hover:bg-[#1a1a1a] p-3 rounded-lg transition-colors"
             >
               <div className="mr-4 flex flex-col items-center">
-                <div className="text-gray-500 text-sm font-medium">
+                <div className="text-gray-400 text-sm font-medium">
                   0{index + 1}
                 </div>
                 <div className="mt-2 w-8 h-8 rounded-full bg-[#2d2e32] flex items-center justify-center text-gray-400 group-hover:text-green-500 transition-colors">
@@ -543,7 +543,7 @@ const MediumPortfolio: React.FC = () => {
                   <span className="text-gray-400">{article.author}</span>
                 </div>
 
-                <div className="flex items-center mt-1 text-xs text-gray-500">
+                <div className="flex items-center mt-1 text-xs text-gray-400">
                   <span className="flex items-center">
                     <Clock size={10} className="mr-1" />
                     {article.time}
@@ -579,7 +579,7 @@ const MediumPortfolio: React.FC = () => {
               portfolios.
             </p>
 
-            <div className="flex items-center text-sm text-gray-500">
+            <div className="flex items-center text-sm text-gray-400">
               <span className="flex items-center">
                 <FileText size={14} className="mr-1" />
                 87 Stories

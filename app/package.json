@@ -9,6 +9,8 @@
     "gen:git-stats": "bun ../scripts/generate-git-stats.js",
     "gen:git-commits": "bun ../scripts/generate-git-commits.js",
     "dev": "vite",
+    "watch": "vite --port 3000 --strictPort",
+    "watch:prod": "bun ../scripts/watch-prod.js",
     "build": "tsc -b && vite build",
     "force-build": "bunx tsc --build --force && vite build --force",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -20,6 +22,8 @@
     "analyze:verbose": "ANALYZE=true vite build"
   },
   "dependencies": {
+    "@fontsource/cascadia-code": "^5.2.3",
+    "@fontsource/noto-sans": "^5.2.10",
     "@radix-ui/react-avatar": "^1.1.11",
     "@radix-ui/react-collapsible": "^1.1.12",
     "@radix-ui/react-dialog": "^1.1.15",

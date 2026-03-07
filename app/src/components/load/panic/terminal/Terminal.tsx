@@ -195,15 +195,24 @@ const Terminal: React.FC<TerminalProps> = ({
       {/* macOS Terminal Header */}
       <div className="h-9 bg-gradient-to-b from-[#3a3a3a] to-[#2d2d2d] px-3 flex items-center border-b border-[#000000] group">
         <div className="flex gap-2 mr-4">
-          <button className="w-3 h-3 rounded-full bg-[#ff5f57] flex items-center justify-center group-hover:brightness-90 transition-all">
+          <button
+            aria-label="Close"
+            className="w-3 h-3 rounded-full bg-[#ff5f57] flex items-center justify-center group-hover:brightness-90 transition-all"
+          >
             <span className="w-1.5 h-0.5 bg-[#930005] opacity-0 group-hover:opacity-100"></span>
           </button>
-          <button className="w-3 h-3 rounded-full bg-[#febc2e] flex items-center justify-center group-hover:brightness-90 transition-all">
+          <button
+            aria-label="Minimize"
+            className="w-3 h-3 rounded-full bg-[#febc2e] flex items-center justify-center group-hover:brightness-90 transition-all"
+          >
             <span className="w-1.5 h-1.5 bg-[#985700] opacity-0 group-hover:opacity-100">
               −
             </span>
           </button>
-          <button className="w-3 h-3 rounded-full bg-[#28c840] flex items-center justify-center group-hover:brightness-90 transition-all">
+          <button
+            aria-label="Maximize"
+            className="w-3 h-3 rounded-full bg-[#28c840] flex items-center justify-center group-hover:brightness-90 transition-all"
+          >
             <span className="rotate-45 text-[#003c00] opacity-0 group-hover:opacity-100 text-[8px] font-bold leading-none">
               +
             </span>
