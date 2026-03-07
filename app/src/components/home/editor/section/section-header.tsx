@@ -3,7 +3,10 @@ import React from "react";
 import { VscGitCommit } from "react-icons/vsc";
 
 import Reveal from "@/components/animations/reveal/Reveal";
-import { type ComponentMeta, relativeTime } from "@/hooks/use-git-meta";
+import { relativeTime } from "@/lib/utils";
+import useGitMetaStore, {
+  type ComponentMeta,
+} from "@/store/git-store/git-meta-store";
 
 import { sectionColorSchemes } from "./sec-utils";
 import styles from "./section.module.css";
@@ -28,6 +31,9 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   showHeader = false,
   blameMeta,
 }) => {
+  const getAuthor = useGitMetaStore((s) => s.getAuthor);
+  const authorMeta = blameMeta ? getAuthor(blameMeta.author) : null;
+
   if (!showHeader || !title) {
     return null;
   }
@@ -64,6 +70,13 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
             <div className="ml-4 flex items-center gap-2 text-ctp-overlay0 text-xs sm:text-sm mt-0.5">
               <span>*</span>
               <VscGitCommit className="w-3 h-3 text-ctp-green flex-shrink-0" />
+              {authorMeta?.avatar && (
+                <img
+                  src={authorMeta.avatar}
+                  alt={blameMeta.author}
+                  className="w-4 h-4 rounded-full flex-shrink-0"
+                />
+              )}
               <span className="text-ctp-subtext0">{blameMeta.author}</span>
               <span>·</span>
               <span>{relativeTime(blameMeta.date)}</span>

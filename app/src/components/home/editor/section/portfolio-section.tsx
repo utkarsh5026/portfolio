@@ -2,9 +2,9 @@ import { Book, LucideIcon } from "lucide-react";
 import React, { useRef } from "react";
 
 import { OutlineNode } from "@/components/home/editor/outline";
-import { useGitMeta } from "@/hooks/use-git-meta";
 import { useInView } from "@/hooks/use-in-view";
 import useMobile from "@/hooks/use-mobile";
+import useGitMetaStore from "@/store/git-store/git-meta-store";
 
 import { getIcon, sectionColorSchemes } from "./sec-utils";
 import styles from "./section.module.css";
@@ -45,10 +45,9 @@ const Section: React.FC<SectionProps> = ({
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const { isMobile } = useMobile();
-  const { getBySection } = useGitMeta();
+  const getBySection = useGitMetaStore((s) => s.getBySection);
   const blameMeta = getBySection(id);
 
-  // Get color scheme for this section
   const colorScheme =
     sectionColorSchemes[id as keyof typeof sectionColorSchemes] ||
     sectionColorSchemes.home;
@@ -63,6 +62,7 @@ const Section: React.FC<SectionProps> = ({
       <div
         ref={sectionRef}
         id={id}
+        data-git-section={id}
         className={`${id}-section relative w-full ${className} ${styles.sectionContainer} ${isInView ? styles.sectionVisible : ""}`}
       >
         <div className="relative w-full overflow-hidden">

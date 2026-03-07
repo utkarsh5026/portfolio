@@ -1,8 +1,8 @@
 import { LucideIcon } from "lucide-react";
 import { forwardRef, useCallback } from "react";
 
-import { type ComponentMeta } from "@/hooks/use-git-meta";
 import { cn } from "@/lib/utils";
+import { type ComponentMeta } from "@/store/git-store/git-meta-store";
 
 import { sectionColorSchemes } from "./sec-utils";
 import styles from "./section-content.module.css";
