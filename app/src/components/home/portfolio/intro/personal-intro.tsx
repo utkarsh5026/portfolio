@@ -2,6 +2,7 @@ import React from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
 import SketchBorder from "@/components/ui/sketch-border";
+import { useGitComponent } from "@/hooks/use-git-component";
 import useMobile from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 
@@ -208,15 +209,18 @@ const MobilePersonalIntro: React.FC = () => {
  */
 const PersonalIntro: React.FC = () => {
   const { isMobile } = useMobile();
+  const ref = useGitComponent(PersonalIntro);
 
   return (
-    <Reveal
-      effect="fade-up"
-      duration={0.7}
-      className="relative isolate min-h-screen overflow-hidden"
-    >
-      {isMobile ? <MobilePersonalIntro /> : <DesktopPersonalIntro />}
-    </Reveal>
+    <div ref={ref}>
+      <Reveal
+        effect="fade-up"
+        duration={0.7}
+        className="relative isolate min-h-screen overflow-hidden"
+      >
+        {isMobile ? <MobilePersonalIntro /> : <DesktopPersonalIntro />}
+      </Reveal>
+    </div>
   );
 };
 

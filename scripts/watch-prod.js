@@ -41,7 +41,7 @@ initial.on("exit", (code) => {
   }
 
   console.log("Initial build done. Starting watcher and preview server...\n");
-  run("bunx", ["vite", "build", "--watch"], "build");
+  run("bunx", ["vite", "build", "--watch", "--emptyOutDir", "false"], "build");
   run("bunx", ["vite", "preview", "--port", "3000", "--strictPort"], "preview");
 });
 

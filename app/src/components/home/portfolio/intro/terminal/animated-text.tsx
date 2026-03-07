@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import { useGitComponent } from "@/hooks/use-git-component";
 import { cn } from "@/lib/utils";
 
 import styles from "./statements-terminal.module.css";
@@ -20,6 +21,7 @@ interface AnimatedTextProps {
 }
 
 const AnimatedText: React.FC<AnimatedTextProps> = ({ qaPairs }) => {
+  const ref = useGitComponent(AnimatedText);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [typedQuestion, setTypedQuestion] = useState("");
   const [step, setStep] = useState<"typing" | "answered" | "deleting">(
@@ -70,7 +72,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ qaPairs }) => {
   const showAnswer = step === "answered" || isDeletingFadeOut;
 
   return (
-    <div className="flex flex-col h-full z-10">
+    <div ref={ref} className="flex flex-col h-full z-10">
       {/* Command Line */}
       <div className="flex items-center flex-wrap gap-2 text-ctp-subtext1">
         <span className="text-ctp-green font-bold">➜</span>

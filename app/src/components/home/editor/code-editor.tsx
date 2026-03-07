@@ -7,6 +7,7 @@ import EditorBreadcrumbs from "./breadcrumbs/editor-breadcrumbs";
 import CodeContent from "./code-content";
 import type { SectionType } from "./context/explorer-context";
 import { useEditorContext } from "./context/explorer-context";
+import GitBlameManager from "./git-blame/git-blame-manager";
 import Explorer from "./left/editor-explorer";
 import SideBar from "./left/side-bar";
 import MobileSwipeHint from "./mobile-swipe-hint";
@@ -59,6 +60,7 @@ const CodeEditor: React.FC = () => {
         {!isMobile && <SideBar />}
         {!isMobile && explorerOpen && <Explorer />}
         <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+          <GitBlameManager />
           <EditorTabs sections={sectionComponents} />
           <EditorBreadcrumbs />
           <CodeContent sections={sectionComponents} />

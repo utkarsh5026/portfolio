@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Reveal from "@/components/animations/reveal/Reveal";
 import { OutlineNode } from "@/components/home/editor/outline";
 import Section from "@/components/home/editor/section/portfolio-section";
+import { useGitComponent } from "@/hooks/use-git-component";
 import type { TechnologyLearning } from "@/types";
 
 import { currentLearningTechnologies } from "./data";
@@ -26,6 +27,7 @@ const categorizedTech = currentLearningTechnologies.reduce(
 );
 
 const CurrentLearning: React.FC = () => {
+  const ref = useGitComponent(CurrentLearning);
   const [selectedTech, setSelectedTech] = useState<TechnologyLearning | null>(
     null
   );
@@ -60,7 +62,7 @@ const CurrentLearning: React.FC = () => {
       icon="code"
       showHeader={true}
     >
-      <div className="w-full max-w-6xl mx-auto px-4 py-12">
+      <div ref={ref} className="w-full max-w-6xl mx-auto px-4 py-12">
         <Reveal
           effect="blur-in"
           duration={0.6}

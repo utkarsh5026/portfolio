@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
 import Reveal from "@/components/animations/reveal/Reveal";
+import { useGitComponent } from "@/hooks/use-git-component";
 import { useMobileContext } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/types";
@@ -22,9 +23,10 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<Tab>("overview");
   const { isMobile } = useMobileContext();
+  const gitRef = useGitComponent(FeaturedProject);
 
   return (
-    <div className="mb-16 max-w-6xl mx-auto relative">
+    <div ref={gitRef} className="mb-16 max-w-6xl mx-auto relative">
       <FeaturedHeader />
       <Reveal effect="zoom-in" duration={0.5}>
         <div className="overflow-hidden">

@@ -1,15 +1,11 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { FiFilePlus, FiMinus, FiPlus, FiRefreshCw, FiX } from "react-icons/fi";
 import { VscSourceControl } from "react-icons/vsc";
 
-import { cn } from "@/lib/utils";
+import { cn, relativeTime } from "@/lib/utils";
+import type { GitCommit, LanguageStat } from "@/store";
+import { useGitCommitsActions, useGitCommitsState } from "@/store";
 
-import type { GitCommit, LanguageStat } from "../use-git-commits";
-import {
-  groupCommitsByTime,
-  relativeTime,
-  useGitCommits,
-} from "../use-git-commits";
 import { CommitRow } from "./commit-row";
 import ContributionHeatmap from "./contribution-heatmap";
 import styles from "./git-commits.module.css";
@@ -119,11 +115,17 @@ interface GitCommitsPanelProps {
 
 const GitCommitsPanel: React.FC<GitCommitsPanelProps> = ({ open, onClose }) => {
   const { commits, loading, generatedAt, commitsByDate, languageStats } =
-    useGitCommits();
+    useGitCommitsState();
+
+  const { fetchCommits, getCommitsByTimeGroup } = useGitCommitsActions();
 
   const genTime = generatedAt ? relativeTime(generatedAt) : null;
 
-  const grouped = useMemo(() => groupCommitsByTime(commits), [commits]);
+  const grouped = getCommitsByTimeGroup();
+
+  useEffect(() => {
+    fetchCommits();
+  }, [fetchCommits]);
 
   return (
     <>
@@ -173,18 +175,16 @@ const GitCommitsPanel: React.FC<GitCommitsPanelProps> = ({ open, onClose }) => {
           )}
         </div>
 
-        {/* Summary stats */}
         {!loading && commits.length > 0 && (
           <SummaryStatsBar commits={commits} />
         )}
 
-        {/* Contribution heatmap */}
         {!loading && Object.keys(commitsByDate).length > 0 && (
           <ContributionHeatmap commitsByDate={commitsByDate} />
         )}
 
         {/* Commit list */}
-        <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-ctp-surface0 scrollbar-track-transparent">
+        <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin scrollbar-thumb-ctp-surface0 scrollbar-track-transparent">
           {loading ? (
             Array.from({ length: 8 }).map((_, i) => <CommitSkeleton key={i} />)
           ) : commits.length === 0 ? (
@@ -208,14 +208,12 @@ const GitCommitsPanel: React.FC<GitCommitsPanelProps> = ({ open, onClose }) => {
           )}
         </div>
 
-        {/* Language bar */}
         {!loading && languageStats.length > 0 && (
           <LanguageBar stats={languageStats} />
         )}
 
-        {/* Footer */}
         <div className="flex-shrink-0 px-4 py-2 border-t border-ctp-surface0 bg-ctp-base/60">
-          <p className="text-[9px] text-ctp-overlay0 text-center tracking-wider uppercase">
+          <p className="text-[9px] text-ctp-overlay0 text-center tracking-wider">
             utkarsh5026/portfolio
           </p>
         </div>

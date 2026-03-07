@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import { useGitComponent } from "@/hooks/use-git-component";
+
 import FileExplorer from "./file-explorer";
 import { FileItem, projectStructure } from "./project-structure";
 
@@ -19,6 +21,7 @@ const getAllItems = (
 };
 
 const TechSkillsComponent = () => {
+  const ref = useGitComponent(TechSkillsComponent);
   const [visibleItems, setVisibleItems] = useState<string[]>([]);
   const [expandedFolders, setExpandedFolders] = useState<string[]>([]);
 
@@ -48,7 +51,7 @@ const TechSkillsComponent = () => {
   };
 
   return (
-    <div className="w-full  mx-auto">
+    <div ref={ref} className="w-full  mx-auto">
       <div className="bg-gradient from-ctp-crust/80 to-ctp-mantle/80 backdrop-blur-sm rounded-lg border-none  overflow-hidden shadow-2xl">
         {/* Explorer Header */}
         <div className="flex items-center justify-between px-4 py-2 bg-ctp-crust/80 border-b border-ctp-surface0 font-source">

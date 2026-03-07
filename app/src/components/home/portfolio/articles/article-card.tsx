@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
+import { useGitComponent } from "@/hooks/use-git-component";
 import { cn } from "@/lib/utils";
 
 import { articles } from "./articles-dump";
@@ -14,10 +15,12 @@ interface ArticleCardProps {
 const ArticleCard: React.FC<ArticleCardProps> = ({ article, index }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const gitRef = useGitComponent<HTMLAnchorElement>("ArticleCard");
 
   return (
     <Reveal effect="fade-up" duration={0.5} delay={index * 0.1}>
       <a
+        ref={gitRef}
         href={article.link}
         target="_blank"
         rel="noopener noreferrer"

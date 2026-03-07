@@ -14,6 +14,8 @@ import {
   SiTerraform,
 } from "react-icons/si";
 
+import { useGitComponent } from "@/hooks/use-git-component";
+
 import { FileItem } from "./project-structure";
 
 const getFileIcon = (extension?: string) => {
@@ -62,12 +64,14 @@ export const FileExplorerItem: React.FC<FileExplorerItemProps> = ({
   onToggle,
   isExpanded = false,
 }) => {
+  const ref = useGitComponent(FileExplorerItem);
   const paddingLeft = item.depth * 20 + 8;
 
   return (
     <>
       {/* Main file/folder line */}
       <div
+        ref={ref}
         className={`flex items-center rounded-2xl py-1 px-2 hover:bg-ctp-surface0 cursor-pointer transition-all duration-300 ${
           isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
         }`}

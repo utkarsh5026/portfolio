@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 
+import { useGitComponent } from "@/hooks/use-git-component";
+
 const ProfileAvatar: React.FC = () => {
+  const ref = useGitComponent(ProfileAvatar);
   const [highResLoaded, setHighResLoaded] = useState(false);
 
   useEffect(() => {
@@ -13,7 +16,10 @@ const ProfileAvatar: React.FC = () => {
   }, []);
 
   return (
-    <div className="group relative h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64 transition-all duration-500 hover:scale-[1.03] cursor-pointer">
+    <div
+      ref={ref}
+      className="group relative h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64 transition-all duration-500 hover:scale-[1.03] cursor-pointer"
+    >
       <div
         className="absolute inset-[-4px] border-2 border-ctp-mauve/80 -rotate-3 transition-all duration-500 group-hover:rotate-0"
         style={{ borderRadius: "45% 55% 40% 60% / 60% 40% 55% 45%" }}

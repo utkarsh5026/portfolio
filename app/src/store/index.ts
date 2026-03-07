@@ -1,3 +1,19 @@
+import useGitCommitsStore, {
+  type GitCommit,
+  type LanguageStat,
+  type TimeGroup,
+  useGitCommitsActions,
+  useGitCommitsState,
+} from "./git-store/git-commits-store";
+import useGitMetaStore, {
+  type AuthorMeta,
+  type ComponentMeta,
+  type GitMetaJson,
+} from "./git-store/git-meta-store";
+import useGitStore, {
+  GitStatsJson,
+  SectionGitStats,
+} from "./git-store/git-store";
 import useMarkdownHeadingStore, {
   type HeadingNode,
   idToLabel,
@@ -10,8 +26,26 @@ import useProjectStore from "./projects/projects-store";
 export {
   idToLabel,
   parseMarkdownHeadings,
+  useGitCommitsActions,
+  useGitCommitsState,
+  useGitCommitsStore,
+  useGitMetaStore,
+  useGitStore,
   useMarkdownHeadingStore,
   useOutlineStore,
   useProjectStore,
 };
-export type { HeadingNode, MarkdownHeading, OutlineItem };
+
+export type {
+  AuthorMeta,
+  ComponentMeta,
+  GitCommit,
+  GitMetaJson,
+  GitStatsJson,
+  HeadingNode,
+  LanguageStat,
+  MarkdownHeading,
+  OutlineItem,
+  SectionGitStats,
+  TimeGroup,
+};

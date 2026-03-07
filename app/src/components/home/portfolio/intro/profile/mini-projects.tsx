@@ -5,12 +5,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { useEditorStore } from "@/components/home/editor/context/editor-store";
 import SketchBorder from "@/components/ui/sketch-border";
+import { useGitComponent } from "@/hooks/use-git-component";
 import { cn } from "@/lib/utils";
 import useProjectStore from "@/store/projects/projects-store";
 
 const cardColors = ["mauve", "green", "blue", "peach"] as const;
 
 const MiniProjects: React.FC = () => {
+  const ref = useGitComponent(MiniProjects);
   const { projects, fetchProjects, isLoading } = useProjectStore();
   const openProject = useEditorStore((s) => s.openProject);
   const navigate = useNavigate();
@@ -23,7 +25,7 @@ const MiniProjects: React.FC = () => {
   const topTwo = projects.slice(1, 3);
 
   return (
-    <div className="w-full mt-10 mb-2 hidden lg:block">
+    <div ref={ref} className="w-full mt-10 mb-2 hidden lg:block">
       <div className="flex items-center gap-4 mb-4">
         <h3 className="text-sm font-semibold text-ctp-text tracking-wider uppercase font-source">
           Recent Highlights

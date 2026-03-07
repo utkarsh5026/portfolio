@@ -4,6 +4,7 @@ import { MdEmail } from "react-icons/md";
 
 import Reveal from "@/components/animations/reveal/Reveal";
 import { OutlineNode } from "@/components/home/editor/outline";
+import { useGitComponent } from "@/hooks/use-git-component";
 
 import styles from "./contact.module.css";
 
@@ -43,13 +44,17 @@ const socialLinks = [
 ];
 
 const SocialMediaLinks = () => {
+  const ref = useGitComponent(SocialMediaLinks);
   return (
     <OutlineNode
       label="Social Media Links"
       icon={<FaShareAlt className="w-3 h-3 text-ctp-lavender" />}
       className="h-full w-full"
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-5 h-full w-full">
+      <div
+        ref={ref}
+        className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-5 h-full w-full"
+      >
         {socialLinks.map((link, index) => (
           <OutlineNode
             key={link.name}

@@ -8,6 +8,7 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useGitComponent } from "@/hooks/use-git-component";
 import useMobile from "@/hooks/use-mobile";
 
 import { experiences } from "./experienceDump";
@@ -18,11 +19,12 @@ interface ExperienceHeaderProps {
 }
 
 const ExperienceHeader: React.FC<ExperienceHeaderProps> = ({ selectedExp }) => {
+  const ref = useGitComponent(ExperienceHeader);
   const experience = experiences[selectedExp];
   const { isMobile } = useMobile();
 
   return (
-    <div className="relative bg-transparent backdrop-blur-2xl">
+    <div ref={ref} className="relative bg-transparent backdrop-blur-2xl">
       <div className={isMobile ? "p-4 pb-6" : "p-4 sm:p-5 md:p-6 lg:p-8"}>
         <div
           className={isMobile ? "space-y-4" : "flex flex-col gap-4 sm:gap-6"}

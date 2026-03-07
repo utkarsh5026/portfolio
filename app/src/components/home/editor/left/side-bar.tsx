@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 
 import { useEditorContext } from "../context/explorer-context";
 import GitCommitsPanel from "../git-commits/git-commits-panel";
+import SettingsPanel from "./settings-panel";
 
 const SideBar: React.FC = () => {
   const {
@@ -119,6 +120,9 @@ const SideBar: React.FC = () => {
           onClick={() => setTerminalOpen(!terminalOpen)}
           isActive={terminalOpen}
         />
+
+        {/* Settings */}
+        <SettingsPanel />
       </div>
 
       <GitCommitsPanel

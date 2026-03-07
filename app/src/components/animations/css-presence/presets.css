@@ -1,0 +1,180 @@
+/*
+ * CSSPresence animation presets
+ * Import this file (or copy individual keyframes) wherever you use CSSPresence.
+ *
+ * Usage:
+ *   <CSSPresence enterClassName="cp-fade-in" exitClassName="cp-fade-out">
+ *
+ * All animations respect prefers-reduced-motion.
+ */
+
+/* ─── Fade ─────────────────────────────────────────────────────────────────── */
+@keyframes cp-fade-in-kf {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes cp-fade-out-kf {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.cp-fade-in {
+  animation: cp-fade-in-kf 200ms ease forwards;
+}
+.cp-fade-out {
+  animation: cp-fade-out-kf 200ms ease forwards;
+}
+
+/* ─── Slide up ──────────────────────────────────────────────────────────────── */
+@keyframes cp-slide-up-in-kf {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes cp-slide-up-out-kf {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}
+.cp-slide-up-in {
+  animation: cp-slide-up-in-kf 220ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.cp-slide-up-out {
+  animation: cp-slide-up-out-kf 180ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ─── Slide down ────────────────────────────────────────────────────────────── */
+@keyframes cp-slide-down-in-kf {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes cp-slide-down-out-kf {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+.cp-slide-down-in {
+  animation: cp-slide-down-in-kf 220ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.cp-slide-down-out {
+  animation: cp-slide-down-out-kf 180ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ─── Scale ─────────────────────────────────────────────────────────────────── */
+@keyframes cp-scale-in-kf {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes cp-scale-out-kf {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+.cp-scale-in {
+  animation: cp-scale-in-kf 200ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.cp-scale-out {
+  animation: cp-scale-out-kf 160ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ─── Slide left (next) ──────────────────────────────────────────────────────── */
+@keyframes cp-slide-left-in-kf {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes cp-slide-left-out-kf {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+.cp-slide-left-in {
+  animation: cp-slide-left-in-kf 220ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.cp-slide-left-out {
+  animation: cp-slide-left-out-kf 180ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ─── Slide right (prev) ─────────────────────────────────────────────────────── */
+@keyframes cp-slide-right-in-kf {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes cp-slide-right-out-kf {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+.cp-slide-right-in {
+  animation: cp-slide-right-in-kf 220ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.cp-slide-right-out {
+  animation: cp-slide-right-out-kf 180ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ─── Reduced motion ────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  [class^="cp-"] {
+    animation-duration: 1ms !important;
+  }
+}

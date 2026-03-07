@@ -1,5 +1,7 @@
 import React from "react";
 
+import { useGitComponent } from "@/hooks/use-git-component";
+
 import styles from "./profile.module.css";
 import ProfileAvatar from "./profile-avatar";
 
@@ -11,8 +13,13 @@ import ProfileAvatar from "./profile-avatar";
  * @returns {JSX.Element} The rendered ProfilePicture component.
  */
 const ProfilePicture: React.FC = () => {
+  const ref = useGitComponent(ProfilePicture);
+
   return (
-    <div className="lg:col-span-2 order-1 lg:order-2 flex justify-center">
+    <div
+      ref={ref}
+      className="lg:col-span-2 order-1 lg:order-2 flex justify-center"
+    >
       <div className={`relative ${styles.pictureContainer}`}>
         <div className="absolute inset-0 bg-ctp-crust rounded-full blur-sm opacity-10"></div>
         <div className={styles.avatarWrapper}>

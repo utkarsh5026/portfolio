@@ -6,6 +6,7 @@ import { technologies } from "@/components/base/technologies";
 import { useEditorContext } from "@/components/home/editor/context/explorer-context";
 import { MarkdownRender } from "@/components/home/editor/markdown-renderer";
 import { Heading, Text } from "@/components/ui/text";
+import { useGitComponent } from "@/hooks/use-git-component";
 import { useMarkdownOutlineBridge } from "@/hooks/use-markdown-outline-bridge";
 import useMobile from "@/hooks/use-mobile";
 import { useSwipe } from "@/hooks/use-swipe";
@@ -210,6 +211,7 @@ interface ProjectMarkdownProps {
 }
 
 const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
+  const ref = useGitComponent(ProjectMarkdown);
   const project = useProjectStore((state) =>
     state.projects.find((p) => p.name === projectId)
   );
@@ -266,107 +268,110 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
   }
 
   return (
-    <article
-      className="max-w-4xl mx-auto font-source text-sm text-ctp-text leading-relaxed mt-4"
-      {...projectSwipeHandlers}
-    >
-      <CoverBand coverImage={project.coverImage} name={project.name} />
-      <PageIcon icon={project.icon} name={project.name} />
+    <div ref={ref}>
+      <article
+        className="max-w-4xl mx-auto font-source text-sm text-ctp-text leading-relaxed mt-4"
+        {...projectSwipeHandlers}
+      >
+        <CoverBand coverImage={project.coverImage} name={project.name} />
+        <PageIcon icon={project.icon} name={project.name} />
 
-      <div className="px-6 mt-6 mb-4 font-source">
-        <Heading as="h1">{project.name}</Heading>
-        {project.tagline && (
-          <Text variant="lead" className="mt-3">
-            {project.tagline}
-          </Text>
-        )}
-      </div>
-
-      <div className="flex items-center gap-3 px-6 mt-3 font-source">
-        {project.githubLink && project.githubLink !== "private-repository" && (
-          <a
-            href={project.githubLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs text-ctp-subtext1 hover:text-ctp-mauve transition-colors"
-          >
-            <FaGithub className="w-3.5 h-3.5" />
-            GitHub
-          </a>
-        )}
-        {project.liveLink && (
-          <>
-            <span className="text-ctp-surface2">·</span>
-            <a
-              href={project.liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs text-ctp-subtext1 hover:text-ctp-blue transition-colors"
-            >
-              <FaExternalLinkAlt className="w-3 h-3" />
-              Live Demo
-            </a>
-          </>
-        )}
-      </div>
-
-      {project.technologies.length > 0 && (
-        <div className="px-6">
-          <SectionHeading color="bg-ctp-yellow">Tech Stack</SectionHeading>
-          <div className="flex flex-wrap gap-2 font-source">
-            {project.technologies.map((tech) => (
-              <div
-                key={tech}
-                className="flex items-center gap-1.5 px-2.5 py-1.5 bg-ctp-surface1/15 hover:bg-ctp-surface1/30 rounded-md transition-all duration-200 group/tech"
-              >
-                <div className="flex-shrink-0 flex items-center justify-center group-hover/tech:scale-110 transition-transform duration-200">
-                  <div className="w-3.5 h-3.5 flex items-center justify-center">
-                    {technologies[tech].icon}
-                  </div>
-                </div>
-                <span className="text-[11px] sm:text-sm text-ctp-subtext1 group-hover/tech:text-ctp-text font-medium transition-colors duration-200 -mt-[1px]">
-                  {technologies[tech].name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Tab bar */}
-      <TabBar active={activeTab} onChange={setActiveTab} />
-
-      {/* Tab panels */}
-      {activeTab === "overview" && (
-        <div className="mt-6">
-          <OverviewTab
-            description={project.description ?? ""}
-            keyFeatures={(project.keyFeatures as string[]) ?? []}
-          />
-        </div>
-      )}
-
-      {activeTab === "deepdive" && (
-        <div className="mt-6">
-          {loadState === "loading" && <LoadingSkeleton />}
-
-          {loadState === "loaded" && markdown && (
-            <div className="px-6 pb-10 font-sans">
-              <MarkdownRender markdown={markdown} />
-            </div>
-          )}
-
-          {loadState === "error" && (
-            <Text
-              variant="caption"
-              className="px-6 mt-8 text-ctp-red font-source"
-            >
-              ⚠ Could not load project notes.
+        <div className="px-6 mt-6 mb-4 font-source">
+          <Heading as="h1">{project.name}</Heading>
+          {project.tagline && (
+            <Text variant="lead" className="mt-3">
+              {project.tagline}
             </Text>
           )}
         </div>
-      )}
-    </article>
+
+        <div className="flex items-center gap-3 px-6 mt-3 font-source">
+          {project.githubLink &&
+            project.githubLink !== "private-repository" && (
+              <a
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-ctp-subtext1 hover:text-ctp-mauve transition-colors"
+              >
+                <FaGithub className="w-3.5 h-3.5" />
+                GitHub
+              </a>
+            )}
+          {project.liveLink && (
+            <>
+              <span className="text-ctp-surface2">·</span>
+              <a
+                href={project.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-ctp-subtext1 hover:text-ctp-blue transition-colors"
+              >
+                <FaExternalLinkAlt className="w-3 h-3" />
+                Live Demo
+              </a>
+            </>
+          )}
+        </div>
+
+        {project.technologies.length > 0 && (
+          <div className="px-6">
+            <SectionHeading color="bg-ctp-yellow">Tech Stack</SectionHeading>
+            <div className="flex flex-wrap gap-2 font-source">
+              {project.technologies.map((tech) => (
+                <div
+                  key={tech}
+                  className="flex items-center gap-1.5 px-2.5 py-1.5 bg-ctp-surface1/15 hover:bg-ctp-surface1/30 rounded-md transition-all duration-200 group/tech"
+                >
+                  <div className="flex-shrink-0 flex items-center justify-center group-hover/tech:scale-110 transition-transform duration-200">
+                    <div className="w-3.5 h-3.5 flex items-center justify-center">
+                      {technologies[tech].icon}
+                    </div>
+                  </div>
+                  <span className="text-[11px] sm:text-sm text-ctp-subtext1 group-hover/tech:text-ctp-text font-medium transition-colors duration-200 -mt-[1px]">
+                    {technologies[tech].name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Tab bar */}
+        <TabBar active={activeTab} onChange={setActiveTab} />
+
+        {/* Tab panels */}
+        {activeTab === "overview" && (
+          <div className="mt-6">
+            <OverviewTab
+              description={project.description ?? ""}
+              keyFeatures={(project.keyFeatures as string[]) ?? []}
+            />
+          </div>
+        )}
+
+        {activeTab === "deepdive" && (
+          <div className="mt-6">
+            {loadState === "loading" && <LoadingSkeleton />}
+
+            {loadState === "loaded" && markdown && (
+              <div className="px-6 pb-10 font-sans">
+                <MarkdownRender markdown={markdown} />
+              </div>
+            )}
+
+            {loadState === "error" && (
+              <Text
+                variant="caption"
+                className="px-6 mt-8 text-ctp-red font-source"
+              >
+                ⚠ Could not load project notes.
+              </Text>
+            )}
+          </div>
+        )}
+      </article>
+    </div>
   );
 };
 

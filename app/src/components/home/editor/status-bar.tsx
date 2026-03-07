@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import {
   FaBriefcase,
   FaCodeBranch,
@@ -14,15 +14,25 @@ import {
 import { GoFileCode } from "react-icons/go";
 import { VscGitCommit, VscMarkdown } from "react-icons/vsc";
 
-import { cn } from "@/lib/utils";
+import { cn, relativeTime } from "@/lib/utils";
+import { type SectionGitStats, useGitStore } from "@/store";
 
 import { type SectionType, useEditorContext } from "./context/explorer-context";
-import {
-  relativeTime,
-  type SectionGitStats,
-  stalenessColor,
-  useGitStats,
-} from "./use-git-stats";
+
+function stalenessColor(isoDate: string): { dot: string; text: string } {
+  if (!isoDate) return { dot: "bg-ctp-overlay0", text: "text-ctp-overlay0" };
+
+  const days = (Date.now() - new Date(isoDate).getTime()) / 86_400_000;
+  if (days < 7) {
+    return { dot: "bg-ctp-green", text: "text-ctp-green" };
+  }
+
+  if (days < 30) {
+    return { dot: "bg-ctp-yellow", text: "text-ctp-yellow" };
+  }
+
+  return { dot: "bg-ctp-red", text: "text-ctp-red" };
+}
 
 interface SectionMeta {
   icon: React.ReactNode;
@@ -85,7 +95,11 @@ function diffLabel(added: number, deleted: number): string {
 
 const StatusBarComponent: React.FC = () => {
   const { activeSection, activeProjectId, openTabs } = useEditorContext();
-  const { getSectionStats, loading } = useGitStats();
+  const { fetchGitStats, getSectionStats, loading } = useGitStore();
+
+  useEffect(() => {
+    void fetchGitStats();
+  }, [fetchGitStats]);
 
   const currentSection: SectionType = activeSection;
 

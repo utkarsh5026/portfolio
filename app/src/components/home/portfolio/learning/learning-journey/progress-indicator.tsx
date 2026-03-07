@@ -1,3 +1,5 @@
+import { useGitComponent } from "@/hooks/use-git-component";
+
 interface ProgressIndicatorProps {
   total: number;
   current: number;
@@ -9,8 +11,10 @@ const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
   current,
   completed,
 }) => {
+  const ref = useGitComponent(ProgressIndicator);
+
   return (
-    <div className="flex items-center gap-2">
+    <div ref={ref} className="flex items-center gap-2">
       {Array.from({ length: total }, (_, index) => (
         <div
           key={index}

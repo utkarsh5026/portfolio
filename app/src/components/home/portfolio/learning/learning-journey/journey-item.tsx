@@ -1,4 +1,5 @@
 import Reveal from "@/components/animations/reveal/Reveal";
+import { useGitComponent } from "@/hooks/use-git-component";
 
 import { learningJourneyItems } from "../data";
 import styles from "./learning-journey.module.css";
@@ -22,6 +23,7 @@ const JourneyItem: React.FC<JourneyItemProps> = ({
   isTyping,
   progress,
 }) => {
+  const ref = useGitComponent(JourneyItem);
   const isActive = index === currentIndex;
   const isCompleted = completedItems.includes(index);
   const isUpcoming = index > currentIndex && !isCompleted;
@@ -29,6 +31,7 @@ const JourneyItem: React.FC<JourneyItemProps> = ({
   return (
     <Reveal effect="slide-in" direction="up" delay={index * 0.1} duration={0.6}>
       <div
+        ref={ref}
         style={{ opacity: isUpcoming ? 0.4 : 1 }}
         className={`relative transition-opacity duration-500 font-source ${
           isUpcoming ? "pointer-events-none" : ""

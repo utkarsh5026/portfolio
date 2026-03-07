@@ -1,5 +1,6 @@
 import React from "react";
 
+import { useGitComponent } from "@/hooks/use-git-component";
 import { cn } from "@/lib/utils";
 
 const texts = [
@@ -9,8 +10,11 @@ const texts = [
 ];
 
 const PersonalDescription: React.FC = () => {
+  const ref = useGitComponent(PersonalDescription);
+
   return (
     <div
+      ref={ref}
       className={cn(
         "mb-8 text-ctp-text p-6  bg-gradient-to-br from-ctp-mantle to-ctp-crust rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-2xl font-source"
       )}

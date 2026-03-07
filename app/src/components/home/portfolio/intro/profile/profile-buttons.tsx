@@ -13,6 +13,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useGitComponent } from "@/hooks/use-git-component";
 import useMobile from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 
@@ -103,12 +104,13 @@ const socialLinks = [
 ];
 
 const ProfileButtons: React.FC = () => {
+  const ref = useGitComponent(ProfileButtons);
   const { setActiveSection } = useEditorContext();
   const { isPhone } = useMobile();
 
   return (
     <TooltipProvider delayDuration={300}>
-      <div className="w-full">
+      <div ref={ref} className="w-full">
         <div className="mt-6 flex flex-col gap-4">
           <div className="flex gap-3 min-w-0">
             {primaryButtons.map(

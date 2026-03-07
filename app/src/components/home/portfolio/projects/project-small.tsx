@@ -3,6 +3,7 @@ import { memo, useCallback, useMemo } from "react";
 import { FaGithub } from "react-icons/fa";
 
 import { technologies } from "@/components/base/technologies";
+import { useGitComponent } from "@/hooks/use-git-component";
 import { Project } from "@/types";
 
 import { useProjectTheme } from "./context/ThemeContext";
@@ -17,6 +18,7 @@ const ProjectSmall = memo<ProjectSmallProps>(function ProjectSmall({
   project,
   handleProjectSelect,
 }) {
+  const ref = useGitComponent<HTMLButtonElement>(ProjectSmall);
   const { getProjectTheme } = useProjectTheme();
   const { accentColor } = getProjectTheme(project);
 
@@ -50,6 +52,7 @@ const ProjectSmall = memo<ProjectSmallProps>(function ProjectSmall({
 
   return (
     <button
+      ref={ref}
       onClick={handleClick}
       className={`group w-full text-left cursor-pointer bg-ctp-surface0/10 border border-ctp-surface0/30 hover:border-ctp-${accentColor}/50 rounded-xl sm:rounded-2xl p-4 sm:p-5 overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md hover:shadow-ctp-${accentColor}/5 hover:-translate-y-0.5`}
       aria-label={`View details for ${project.name}`}

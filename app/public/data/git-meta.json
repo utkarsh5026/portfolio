@@ -1,0 +1,726 @@
+{
+  "generatedAt": "2026-03-07T22:56:29.119Z",
+  "authors": {
+    "Utkarsh Priyadarshi": {
+      "github": "utkarsh5026",
+      "avatar": "https://github.com/utkarsh5026.png"
+    }
+  },
+  "components": {
+    "DesktopPersonalIntro": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/personal-intro.tsx",
+      "lines": [
+        19,
+        116
+      ],
+      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
+      "shortHash": "e4ccb5a",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T22:55:58.000Z",
+      "message": "style: add Prettier config and reformat entire codebase"
+    },
+    "MobilePersonalIntro": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/personal-intro.tsx",
+      "lines": [
+        118,
+        202
+      ],
+      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
+      "shortHash": "e4ccb5a",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T22:55:58.000Z",
+      "message": "style: add Prettier config and reformat entire codebase"
+    },
+    "AboutMe": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/about-me.tsx",
+      "lines": [
+        241,
+        288
+      ],
+      "hash": "dff6d01016aa1a62c1507cfc34b203aefdb593fa",
+      "shortHash": "dff6d01",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-05T22:34:56.000Z",
+      "message": "feat: add outline nodes with icons to about, contact, work, and projects sections"
+    },
+    "DesktopAboutSection": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/about-me.tsx",
+      "lines": [
+        203,
+        239
+      ],
+      "hash": "4425b18bb009750f35f92bafd59bcb8b0e15e780",
+      "shortHash": "4425b18",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T23:24:58.000Z",
+      "message": "perf: replace framer-motion with CSS modules in about section"
+    },
+    "SkillsSection": {
+      "section": "skills",
+      "file": "app/src/components/home/portfolio/skills/skills-section.tsx",
+      "lines": [
+        10,
+        39
+      ],
+      "hash": "739cf2fb801d6e77461583f4e046bdbcfd454ff3",
+      "shortHash": "739cf2f",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-05T16:16:51.000Z",
+      "message": "chore: remove unused usage data from skill categories"
+    },
+    "Projects": {
+      "section": "projects",
+      "file": "app/src/components/home/portfolio/projects/projects-section.tsx",
+      "lines": [
+        19,
+        207
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "WorkExperience": {
+      "section": "experience",
+      "file": "app/src/components/home/portfolio/work/work-experience.tsx",
+      "lines": [
+        16,
+        121
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "ContactMe": {
+      "section": "contact",
+      "file": "app/src/components/home/portfolio/contact/contact-me.tsx",
+      "lines": [
+        12,
+        49
+      ],
+      "hash": "16c0a2b22ca6b308675f34f338dfef4cb5802a7f",
+      "shortHash": "16c0a2b",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:45:15.000Z",
+      "message": "refactor: extract EmailHighlight into its own file and pass component refs directly"
+    },
+    "CurrentLearning": {
+      "section": "learning",
+      "file": "app/src/components/home/portfolio/learning/learning-section.tsx",
+      "lines": [
+        29,
+        157
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "ArticlesComponent": {
+      "section": "articles",
+      "file": "app/src/components/home/portfolio/articles/articles-section.tsx",
+      "lines": [
+        10,
+        43
+      ],
+      "hash": "deddb5bb5f677e933400d20b017b22c617f64226",
+      "shortHash": "deddb5b",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-04T23:02:52.000Z",
+      "message": "style: redesign article cards with 16:9 image layout and cleaner hover effects"
+    },
+    "MiniProjects": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/profile/mini-projects.tsx",
+      "lines": [
+        14,
+        146
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "PersonalDescription": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/profile/personal-description.tsx",
+      "lines": [
+        12,
+        36
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "PersonalTitle": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/profile/personal-title.tsx",
+      "lines": [
+        12,
+        75
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "ProfileAvatar": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/profile/profile-avatar.tsx",
+      "lines": [
+        5,
+        63
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "ProfileButtons": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/profile/profile-buttons.tsx",
+      "lines": [
+        106,
+        224
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "ProfilePicture": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/profile/profile-picture.tsx",
+      "lines": [
+        15,
+        38
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "FileExplorerItem": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/skills/file-explorer.tsx",
+      "lines": [
+        61,
+        112
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "FileExplorer": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/skills/file-explorer.tsx",
+      "lines": [
+        122,
+        160
+      ],
+      "hash": "76c76e840ab222c4e238a5cf0a0d27a61389c74b",
+      "shortHash": "76c76e8",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2025-07-03T13:12:24.000Z",
+      "message": "Refactor TechSkills component and restructure skills organization"
+    },
+    "TechSkillsComponent": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/skills/tech-skills.tsx",
+      "lines": [
+        23,
+        77
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "AnimatedText": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/terminal/animated-text.tsx",
+      "lines": [
+        23,
+        130
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "Terminal": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/terminal/statements-terminal.tsx",
+      "lines": [
+        49,
+        87
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "AboutSectionCard": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/about-section-card.tsx",
+      "lines": [
+        19,
+        78
+      ],
+      "hash": "4425b18bb009750f35f92bafd59bcb8b0e15e780",
+      "shortHash": "4425b18",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T23:24:58.000Z",
+      "message": "perf: replace framer-motion with CSS modules in about section"
+    },
+    "SectionHeader": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/about-header.tsx",
+      "lines": [
+        15,
+        40
+      ],
+      "hash": "310711b46ab388d9d53366bdf61be6285a022dea",
+      "shortHash": "310711b",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:10:42.000Z",
+      "message": "feat: add SectionHeader component with animation and styling"
+    },
+    "Interests": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/current-interests.tsx",
+      "lines": [
+        29,
+        118
+      ],
+      "hash": "0de3110f0c2f7249f124efa2bb161b62f9987a88",
+      "shortHash": "0de3110",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:12:07.000Z",
+      "message": "refactor: simplify Interests component by removing unused icons and animations"
+    },
+    "CurrentFocus": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/currrent-focus.tsx",
+      "lines": [
+        20,
+        104
+      ],
+      "hash": "77403af67b0532ad13e3b6ea60f31b15e0a473c1",
+      "shortHash": "77403af",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:12:49.000Z",
+      "message": "refactor: replace learning philosophy section with SectionHeader component for improved clarity"
+    },
+    "FlashCard": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/my-background.tsx",
+      "lines": [
+        45,
+        75
+      ],
+      "hash": "a9f96125dda7b3eb33dd23bbbaf766a6730eda0b",
+      "shortHash": "a9f9612",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:26:06.000Z",
+      "message": "refactor: streamline Background and Education components for improved clarity and performance"
+    },
+    "Background": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/my-background.tsx",
+      "lines": [
+        9,
+        38
+      ],
+      "hash": "a9f96125dda7b3eb33dd23bbbaf766a6730eda0b",
+      "shortHash": "a9f9612",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:26:06.000Z",
+      "message": "refactor: streamline Background and Education components for improved clarity and performance"
+    },
+    "EducationCard": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/my-education.tsx",
+      "lines": [
+        53,
+        123
+      ],
+      "hash": "20099465999a78ca80556c5ddfe99944d372bd2c",
+      "shortHash": "2009946",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:17:04.000Z",
+      "message": "refactor: replace custom header implementation with SectionHeader component for improved consistency"
+    },
+    "Education": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/my-education.tsx",
+      "lines": [
+        15,
+        46
+      ],
+      "hash": "20099465999a78ca80556c5ddfe99944d372bd2c",
+      "shortHash": "2009946",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:17:04.000Z",
+      "message": "refactor: replace custom header implementation with SectionHeader component for improved consistency"
+    },
+    "Philosophy": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/my-philosophy.tsx",
+      "lines": [
+        29,
+        86
+      ],
+      "hash": "f42e1cb984d35075039065882992c192ed9a1e70",
+      "shortHash": "f42e1cb",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:14:39.000Z",
+      "message": "refactor: replace PhilosophyCard with SectionHeader for improved structure and clarity"
+    },
+    "Skills": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/skills-display.tsx",
+      "lines": [
+        24,
+        87
+      ],
+      "hash": "df837c022f62137e2523a8fc080923d349d12263",
+      "shortHash": "df837c0",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:15:16.000Z",
+      "message": "refactor: optimize Skills component structure and enhance category display"
+    },
+    "SkillsList": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/skills-display.tsx",
+      "lines": [
+        93,
+        120
+      ],
+      "hash": "df837c022f62137e2523a8fc080923d349d12263",
+      "shortHash": "df837c0",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:15:16.000Z",
+      "message": "refactor: optimize Skills component structure and enhance category display"
+    },
+    "ExpandedSkillsContent": {
+      "section": "skills",
+      "file": "app/src/components/home/portfolio/skills/skill-card/expanded-content.tsx",
+      "lines": [
+        7,
+        29
+      ],
+      "hash": "7276be231b2b82fcb62a76a7019999e9643998cd",
+      "shortHash": "7276be2",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-02T02:22:56.000Z",
+      "message": "style: tighten spacing and typography in skills section"
+    },
+    "SkillCard": {
+      "section": "skills",
+      "file": "app/src/components/home/portfolio/skills/skill-card/skill-card.tsx",
+      "lines": [
+        14,
+        53
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "ProjectThemeProvider": {
+      "section": "projects",
+      "file": "app/src/components/home/portfolio/projects/context/ProjectThemeProvider.tsx",
+      "lines": [
+        90,
+        118
+      ],
+      "hash": "e9ba17fab3cc9b6e4ecea25a01d402a364eaf4d2",
+      "shortHash": "e9ba17f",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T08:19:55.000Z",
+      "message": "Refactor mobile detection: replace useMobile hook with useMobileContext for improved context management and performance"
+    },
+    "FeaturedProject": {
+      "section": "projects",
+      "file": "app/src/components/home/portfolio/projects/featured/featured-project.tsx",
+      "lines": [
+        20,
+        92
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "TabNavigation": {
+      "section": "projects",
+      "file": "app/src/components/home/portfolio/projects/featured/featured-project.tsx",
+      "lines": [
+        99,
+        133
+      ],
+      "hash": "99d41b0723365594c25773ba922c9aa9893d4709",
+      "shortHash": "99d41b0",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2025-05-16T14:49:47.000Z",
+      "message": "Refactor FeaturedProject component for improved styling and responsiveness"
+    },
+    "ProjectContent": {
+      "section": "projects",
+      "file": "app/src/components/home/portfolio/projects/featured/project-content.tsx",
+      "lines": [
+        17,
+        135
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "ProjectMarkdown": {
+      "section": "projects",
+      "file": "app/src/components/home/portfolio/projects/project-markdown.tsx",
+      "lines": [
+        213,
+        376
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "TabBar": {
+      "section": "projects",
+      "file": "app/src/components/home/portfolio/projects/project-markdown.tsx",
+      "lines": [
+        168,
+        204
+      ],
+      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
+      "shortHash": "e4ccb5a",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T22:55:58.000Z",
+      "message": "style: add Prettier config and reformat entire codebase"
+    },
+    "MobileDrawerContent": {
+      "section": "experience",
+      "file": "app/src/components/home/portfolio/work/experience-details.tsx",
+      "lines": [
+        74,
+        126
+      ],
+      "hash": "afbc35e2559db959d3c993352474c7863bc61a1d",
+      "shortHash": "afbc35e",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2025-07-02T14:22:19.000Z",
+      "message": "Enhance mobile responsiveness and styling in ExperienceHeader and ExperienceDetails components"
+    },
+    "ExperienceDetails": {
+      "section": "experience",
+      "file": "app/src/components/home/portfolio/work/experience-details.tsx",
+      "lines": [
+        161,
+        200
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "ExperienceHeader": {
+      "section": "experience",
+      "file": "app/src/components/home/portfolio/work/experience-header.tsx",
+      "lines": [
+        21,
+        195
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "ExperienceTabs": {
+      "section": "experience",
+      "file": "app/src/components/home/portfolio/work/experience-tabs.tsx",
+      "lines": [
+        14,
+        104
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "AchievementCard": {
+      "section": "experience",
+      "file": "app/src/components/home/portfolio/work/work-acheivements.tsx",
+      "lines": [
+        77,
+        117
+      ],
+      "hash": "3cb4e111d624e8d0a1a9e12292aef53c174514bb",
+      "shortHash": "3cb4e11",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T00:42:45.000Z",
+      "message": "refactor: replace framer-motion with CSS modules in featured-project and work components"
+    },
+    "Achievements": {
+      "section": "experience",
+      "file": "app/src/components/home/portfolio/work/work-acheivements.tsx",
+      "lines": [
+        31,
+        70
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "AvailableForOpportunities": {
+      "section": "contact",
+      "file": "app/src/components/home/portfolio/contact/available-for-opportunities.tsx",
+      "lines": [
+        26,
+        133
+      ],
+      "hash": "16c0a2b22ca6b308675f34f338dfef4cb5802a7f",
+      "shortHash": "16c0a2b",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:45:15.000Z",
+      "message": "refactor: extract EmailHighlight into its own file and pass component refs directly"
+    },
+    "EmailHighlight": {
+      "section": "contact",
+      "file": "app/src/components/home/portfolio/contact/email-highlight.tsx",
+      "lines": [
+        10,
+        55
+      ],
+      "hash": "16c0a2b22ca6b308675f34f338dfef4cb5802a7f",
+      "shortHash": "16c0a2b",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:45:15.000Z",
+      "message": "refactor: extract EmailHighlight into its own file and pass component refs directly"
+    },
+    "SocialMediaLinks": {
+      "section": "contact",
+      "file": "app/src/components/home/portfolio/contact/social-media-links.tsx",
+      "lines": [
+        46,
+        98
+      ],
+      "hash": "16c0a2b22ca6b308675f34f338dfef4cb5802a7f",
+      "shortHash": "16c0a2b",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:45:15.000Z",
+      "message": "refactor: extract EmailHighlight into its own file and pass component refs directly"
+    },
+    "LearningCard": {
+      "section": "learning",
+      "file": "app/src/components/home/portfolio/learning/learning-card.tsx",
+      "lines": [
+        17,
+        114
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "JourneyItem": {
+      "section": "learning",
+      "file": "app/src/components/home/portfolio/learning/learning-journey/journey-item.tsx",
+      "lines": [
+        17,
+        141
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "LearningJourney": {
+      "section": "learning",
+      "file": "app/src/components/home/portfolio/learning/learning-journey/learning-journey.tsx",
+      "lines": [
+        23,
+        177
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "ProgressIndicator": {
+      "section": "learning",
+      "file": "app/src/components/home/portfolio/learning/learning-journey/progress-indicator.tsx",
+      "lines": [
+        9,
+        32
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "LearningModal": {
+      "section": "learning",
+      "file": "app/src/components/home/portfolio/learning/learning-project-drawer.tsx",
+      "lines": [
+        23,
+        137
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "ArticleCard": {
+      "section": "articles",
+      "file": "app/src/components/home/portfolio/articles/article-card.tsx",
+      "lines": [
+        15,
+        110
+      ],
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:42:42.000Z",
+      "message": "feat: integrate useGitComponent ref across all portfolio components"
+    }
+  }
+}

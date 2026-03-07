@@ -2,6 +2,7 @@ import { LucideIcon } from "lucide-react";
 import { forwardRef, useCallback } from "react";
 
 import { cn } from "@/lib/utils";
+import { type ComponentMeta } from "@/store/git-store/git-meta-store";
 
 import { sectionColorSchemes } from "./sec-utils";
 import styles from "./section-content.module.css";
@@ -19,6 +20,7 @@ interface SectionContentProps {
   showHeader: boolean;
   children: React.ReactNode;
   isInView: boolean;
+  blameMeta?: ComponentMeta | null;
 }
 
 const LINE_NUMBERS = Array.from({ length: 500 }, (_, i) => i + 1);
@@ -33,6 +35,7 @@ const SectionContent = forwardRef<HTMLDivElement, SectionContentProps>(
       showHeader,
       children,
       isInView,
+      blameMeta,
     },
     ref
   ) => {
@@ -87,6 +90,7 @@ const SectionContent = forwardRef<HTMLDivElement, SectionContentProps>(
             icon={HeaderIcon}
             colorScheme={colorScheme}
             showHeader={showHeader}
+            blameMeta={blameMeta}
           />
 
           <div

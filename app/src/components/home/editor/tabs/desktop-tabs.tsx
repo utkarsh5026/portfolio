@@ -20,7 +20,6 @@ const DesktopTabs: React.FC = () => {
     closeTabsToRight,
     closeAllProjects,
   } = useEditorContext();
-
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const activeIdx = openTabs.findIndex((t) => t.id === activeTabId);
@@ -28,7 +27,6 @@ const DesktopTabs: React.FC = () => {
   const hasRight = activeIdx !== -1 && activeIdx < openTabs.length - 1;
   const hasProjects = openTabs.some((t) => t.type === "project");
 
-  // Horizontal scroll with mouse wheel
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
@@ -42,7 +40,6 @@ const DesktopTabs: React.FC = () => {
     return () => el.removeEventListener("wheel", onWheel);
   }, []);
 
-  // Scroll active tab into view when it changes
   useEffect(() => {
     const el = scrollRef.current;
     if (!el || !activeTabId) return;
@@ -74,6 +71,9 @@ const DesktopTabs: React.FC = () => {
               <button
                 key={tab.id}
                 data-tab-id={tab.id}
+                {...(isSectionTab
+                  ? { "data-git-section": (tab as SectionTab).id }
+                  : {})}
                 onClick={() => openTab(tab)}
                 className={cn(
                   "relative h-10 px-3 flex-shrink-0 min-w-[140px] max-w-[220px] border-r border-ctp-surface0/50 text-xs transition-colors flex items-center gap-2 group",

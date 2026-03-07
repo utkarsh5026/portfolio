@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { FiClock, FiGitCommit } from "react-icons/fi";
 
-import { cn } from "@/lib/utils";
+import { cn, relativeTime } from "@/lib/utils";
+import type { GitCommit } from "@/store";
 
-import type { GitCommit } from "../use-git-commits";
-import { relativeTime } from "../use-git-commits";
 import styles from "./git-commits.module.css";
 
 interface CommitRowProps {
