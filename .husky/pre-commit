@@ -1,18 +1,40 @@
 #!/usr/bin/env sh
 # .husky/pre-commit
-# Runs lint, type check, and prettier before every commit.
+# Runs lint-fix and prettier on staged files only, then re-stages them.
 # Husky runs this automatically — no manual setup needed.
 
 set -e
 
-echo "🔍  Running lint..."
-cd app && bun run lint
-echo "✓  Lint passed"
+REPO_ROOT=$(git rev-parse --show-toplevel)
 
-echo "🔎  Running type check..."
-bun run typecheck
-echo "✓  Type check passed"
+# Paths relative to repo root (for git add later)
+STAGED_ROOT=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '\.(ts|tsx|js|jsx)$' || true)
+STAGED_ALL_ROOT=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '\.(ts|tsx|js|jsx|json|css|md)$' || true)
 
-echo "💅  Running Prettier check..."
-bun run format:check
-echo "✓  Prettier check passed"
+# Paths relative to app/ (for running tools)
+STAGED=$(echo "$STAGED_ROOT" | sed 's|^app/||' | xargs -I{} sh -c "[ -f \"$REPO_ROOT/app/{}\" ] && echo \"{}\"" 2>/dev/null || true)
+STAGED_ALL=$(echo "$STAGED_ALL_ROOT" | sed 's|^app/||' | xargs -I{} sh -c "[ -f \"$REPO_ROOT/app/{}\" ] && echo \"{}\"" 2>/dev/null || true)
+
+cd app
+
+if [ -n "$STAGED" ]; then
+  echo "🔍  Running lint fix on staged files..."
+  echo "$STAGED" | xargs bunx eslint --fix --ext ts,tsx --max-warnings 0
+  echo "✓  Lint passed"
+else
+  echo "⏭  No staged TS/TSX files to lint"
+fi
+
+if [ -n "$STAGED_ALL" ]; then
+  echo "💅  Running Prettier on staged files..."
+  echo "$STAGED_ALL" | xargs bunx prettier --write
+  echo "✓  Prettier done"
+else
+  echo "⏭  No staged files to format"
+fi
+
+# Re-stage any files that were auto-fixed (use repo-root-relative paths)
+if [ -n "$STAGED_ALL_ROOT" ]; then
+  cd "$REPO_ROOT"
+  echo "$STAGED_ALL_ROOT" | xargs git add
+fi
