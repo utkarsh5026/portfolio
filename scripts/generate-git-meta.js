@@ -14,6 +14,28 @@ const tsMorphPath = require.resolve("ts-morph", {
 });
 const { Project, SyntaxKind } = require(tsMorphPath);
 
+/**
+ * @typedef {{ github: string, avatar: string }} AuthorInfo
+ * @typedef {Record<string, AuthorInfo>} AuthorMap
+ */
+
+/**
+ * @typedef {{ name: string, start: number, end: number }} ComponentRange
+ */
+
+/**
+ * @typedef {{ hash: string, shortHash: string, author: string, date: string | null, message: string }} CommitMeta
+ */
+
+/**
+ * @typedef {{ section: string, file: string, lines: [number, number] } & CommitMeta} ComponentMeta
+ */
+
+/**
+ * @typedef {{ generatedAt: string, authors: AuthorMap, components: Record<string, ComponentMeta> }} GitMetaOutput
+ */
+
+/** @type {AuthorMap} */
 const AUTHOR_MAP = {
   "Utkarsh Priyadarshi": {
     github: "utkarsh5026",
@@ -21,39 +43,84 @@ const AUTHOR_MAP = {
   },
 };
 
-const TARGET_FILES = {
-  home: "app/src/components/home/portfolio/intro/personal-intro.tsx",
-  about: "app/src/components/home/portfolio/about/about-me.tsx",
-  skills: "app/src/components/home/portfolio/skills/skills-section.tsx",
-  projects: "app/src/components/home/portfolio/projects/projects-section.tsx",
-  experience: "app/src/components/home/portfolio/work/work-experience.tsx",
-  contact: "app/src/components/home/portfolio/contact/contact-me.tsx",
-  learning: "app/src/components/home/portfolio/learning/learning-section.tsx",
-  articles: "app/src/components/home/portfolio/articles/articles-section.tsx",
+const BASE = "app/src/components/home/portfolio";
+
+const SECTIONS = {
+  home: "intro/personal-intro.tsx",
+  about: "about/about-me.tsx",
+  skills: "skills/skills-section.tsx",
+  projects: "projects/projects-section.tsx",
+  experience: "work/work-experience.tsx",
+  contact: "contact/contact-me.tsx",
+  learning: "learning/learning-section.tsx",
+  articles: "articles/articles-section.tsx",
 };
 
-// Sub-component files to track individually (file → section they belong to)
-const EXTRA_COMPONENT_FILES = [
-  {
-    file: "app/src/components/home/portfolio/skills/skill-card/skill-card.tsx",
-    section: "skills",
-  },
-  {
-    file: "app/src/components/home/portfolio/projects/featured/featured-project.tsx",
-    section: "projects",
-  },
-  {
-    file: "app/src/components/home/portfolio/articles/article-card.tsx",
-    section: "articles",
-  },
-  {
-    file: "app/src/components/home/portfolio/work/experience-details.tsx",
-    section: "experience",
-  },
-];
+const TARGET_FILES = Object.fromEntries(
+  Object.entries(SECTIONS).map(([section, primary]) => [
+    section,
+    `${BASE}/${primary}`,
+  ]),
+);
+
+/**
+ * Recursively collect all .tsx files under a directory.
+ * @param {string} dir
+ * @returns {string[]}
+ */
+function collectTsxFiles(dir) {
+  const results = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      results.push(...collectTsxFiles(full));
+      continue;
+    }
+
+    if (entry.isFile() && entry.name.endsWith(".tsx")) {
+      results.push(full);
+    }
+  }
+  return results;
+}
+
+/**
+ * Build EXTRA_COMPONENT_FILES at runtime by scanning each section directory
+ * and excluding the primary file and pure data/icon files.
+ * @returns {{ section: string, file: string }[]}
+ */
+function discoverExtraFiles() {
+  const extras = [];
+  const EXCLUDED_NAMES = new Set(["data.tsx", "icon-map.tsx"]);
+
+  for (const [section, primary] of Object.entries(SECTIONS)) {
+    const primaryAbs = path.join(REPO_ROOT, BASE, primary);
+    const sectionDir = path.join(REPO_ROOT, BASE, path.dirname(primary));
+
+    if (!fs.existsSync(sectionDir)) continue;
+
+    for (const absFile of collectTsxFiles(sectionDir)) {
+      if (
+        absFile === primaryAbs ||
+        EXCLUDED_NAMES.has(path.basename(absFile))
+      ) {
+        continue;
+      }
+
+      const relFile = path.relative(REPO_ROOT, absFile).replace(/\\/g, "/");
+      extras.push({ section, file: relFile });
+    }
+  }
+  return extras;
+}
 
 const REPO_ROOT = path.resolve(__dirname, "..");
 
+/**
+ * @param {string} cmd
+ * @param {string} [cwd]
+ * @returns {string}
+ */
 function run(cmd, cwd = REPO_ROOT) {
   try {
     return execSync(cmd, {
@@ -68,7 +135,9 @@ function run(cmd, cwd = REPO_ROOT) {
 
 /**
  * Parse a file with ts-morph and return top-level React components
- * with their line ranges: [{ name, start, end }]
+ * with their line ranges.
+ * @param {string} absFilePath
+ * @returns {ComponentRange[]}
  */
 function extractComponents(absFilePath) {
   const project = new Project({
@@ -114,20 +183,40 @@ function extractComponents(absFilePath) {
     });
   }
 
-  return components;
+  return components
+    .sort((a, b) => b.end - b.start - (a.end - a.start))
+    .slice(0, 2);
 }
 
 /**
  * Parse porcelain git blame output and return the commit with the latest timestamp.
  * Porcelain format repeats commit header lines for each line blamed.
+ * @param {string} blameOutput
+ * @returns {CommitMeta | null}
  */
 function parseBlameForLatestCommit(blameOutput) {
   if (!blameOutput) return null;
 
-  const commits = new Map(); // hash → { author, authorTime, summary }
+  /** @type {Map<string, { author?: string, authorTime?: number, summary?: string, authorMail?: string }>} */
+  const commits = new Map();
   const lines = blameOutput.split("\n");
 
   let currentHash = null;
+
+  const fields = [
+    { prefix: "author ", key: "author", parse: (v) => v },
+    {
+      prefix: "author-time ",
+      key: "authorTime",
+      parse: (v) => parseInt(v, 10),
+    },
+    { prefix: "summary ", key: "summary", parse: (v) => v },
+    {
+      prefix: "author-mail ",
+      key: "authorMail",
+      parse: (v) => v.replace(/[<>]/g, ""),
+    },
+  ];
 
   for (const line of lines) {
     if (/^[0-9a-f]{40}\s/.test(line)) {
@@ -137,21 +226,18 @@ function parseBlameForLatestCommit(blameOutput) {
       }
     } else if (currentHash) {
       const entry = commits.get(currentHash);
-      if (line.startsWith("author ")) {
-        entry.author = line.slice(7).trim();
-      } else if (line.startsWith("author-time ")) {
-        entry.authorTime = parseInt(line.slice(12).trim(), 10);
-      } else if (line.startsWith("summary ")) {
-        entry.summary = line.slice(8).trim();
-      } else if (line.startsWith("author-mail ")) {
-        entry.authorMail = line.slice(12).trim().replace(/[<>]/g, "");
+
+      for (const { prefix, key, parse } of fields) {
+        if (line.startsWith(prefix)) {
+          entry[key] = parse(line.slice(prefix.length).trim());
+          break;
+        }
       }
     }
   }
 
   if (commits.size === 0) return null;
 
-  // Pick the commit with the latest authorTime
   let latest = null;
   for (const [hash, data] of commits.entries()) {
     if (!latest || (data.authorTime ?? 0) > (latest.authorTime ?? 0)) {
@@ -175,14 +261,15 @@ function parseBlameForLatestCommit(blameOutput) {
 function main() {
   console.log("Generating git-meta.json (component-level blame)...");
 
+  /** @type {Record<string, ComponentMeta>} */
   const result = {};
 
-  for (const [section, relFile] of Object.entries(TARGET_FILES)) {
+  function processFile(relFile, section) {
     const absFile = path.join(REPO_ROOT, relFile);
 
     if (!fs.existsSync(absFile)) {
       console.warn(`  [SKIP] ${section}: file not found at ${relFile}`);
-      continue;
+      return;
     }
 
     process.stdout.write(`  • ${section.padEnd(12)} → ${relFile}\n`);
@@ -192,12 +279,12 @@ function main() {
       components = extractComponents(absFile);
     } catch (err) {
       console.warn(`    [WARN] AST parse failed: ${err.message}`);
-      continue;
+      return;
     }
 
     if (components.length === 0) {
       console.warn(`    [WARN] No React components found in ${relFile}`);
-      continue;
+      return;
     }
 
     for (const comp of components) {
@@ -229,60 +316,17 @@ function main() {
     }
   }
 
-  // Process extra sub-component files
-  console.log("\nProcessing sub-component files...");
-  for (const { file: relFile, section } of EXTRA_COMPONENT_FILES) {
-    const absFile = path.join(REPO_ROOT, relFile);
-
-    if (!fs.existsSync(absFile)) {
-      console.warn(`  [SKIP] ${relFile}: file not found`);
-      continue;
-    }
-
-    process.stdout.write(`  • ${section.padEnd(12)} → ${relFile}\n`);
-
-    let components;
-    try {
-      components = extractComponents(absFile);
-    } catch (err) {
-      console.warn(`    [WARN] AST parse failed: ${err.message}`);
-      continue;
-    }
-
-    if (components.length === 0) {
-      console.warn(`    [WARN] No React components found in ${relFile}`);
-      continue;
-    }
-
-    for (const comp of components) {
-      process.stdout.write(
-        `    ↳ ${comp.name.padEnd(30)} lines ${comp.start}–${comp.end} … `,
-      );
-
-      const blameOut = run(
-        `git blame -L ${comp.start},${comp.end} --porcelain -- "${relFile}"`,
-      );
-
-      const meta = parseBlameForLatestCommit(blameOut);
-
-      if (!meta) {
-        console.log("(no blame data)");
-        continue;
-      }
-
-      result[comp.name] = {
-        section,
-        file: relFile,
-        lines: [comp.start, comp.end],
-        ...meta,
-      };
-
-      console.log(
-        `${meta.shortHash} by ${meta.author} — "${meta.message.slice(0, 50)}"`,
-      );
-    }
+  for (const [section, relFile] of Object.entries(TARGET_FILES)) {
+    processFile(relFile, section);
   }
 
+  const extraFiles = discoverExtraFiles();
+  console.log(`\nProcessing ${extraFiles.length} sub-component files...`);
+  for (const { file: relFile, section } of extraFiles) {
+    processFile(relFile, section);
+  }
+
+  /** @type {GitMetaOutput} */
   const output = {
     generatedAt: new Date().toISOString(),
     authors: AUTHOR_MAP,

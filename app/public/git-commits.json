@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-07T19:10:59.926Z",
+  "generatedAt": "2026-03-07T19:13:56.380Z",
   "commits": [
     {
-      "hash": "12303c0fcc26c0d212a64a45f3e99d20b10a5ccc",
-      "shortHash": "12303c0",
+      "hash": "7016ab071a9336bfb0eb237be927118c57a13a67",
+      "shortHash": "7016ab0",
+      "message": "refactor: auto-discover sub-component files in generate-git-meta script",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T00:43:03+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 139,
+      "deletions": 95,
+      "filesChanged": 1
+    },
+    {
+      "hash": "3d7705463e2a1fbaca235f3d1da763dcb7ee30b6",
+      "shortHash": "3d77054",
       "message": "refactor: migrate git hooks to Zustand stores",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T00:38:49+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 225,
-      "deletions": 213,
-      "filesChanged": 7
+      "insertions": 255,
+      "deletions": 243,
+      "filesChanged": 10
     },
     {
       "hash": "19f07f53a19dd9ce83dca7b419700e920a3d499e",
@@ -228,22 +240,10 @@
       "insertions": 48,
       "deletions": 44,
       "filesChanged": 9
-    },
-    {
-      "hash": "fde289dedf818e8ab29975a875441aa99514c7ac",
-      "shortHash": "fde289d",
-      "message": "Merge pull request #75 from utkarsh5026/feat/react-swipeable-mobile",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T07:51:03+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 206,
-      "deletions": 55,
-      "filesChanged": 7
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 2,
+    "2026-03-08": 3,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
