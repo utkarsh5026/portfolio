@@ -1,7 +1,13 @@
 import { lazy, Suspense, useRef } from "react";
 
+import useMobile from "@/hooks/use-mobile";
+import { useSwipe } from "@/hooks/use-swipe";
+
 import styles from "./code-content.module.css";
-import { useEditorContext } from "./context/explorer-context";
+import {
+  sections as sectionList,
+  useEditorContext,
+} from "./context/explorer-context";
 import { SectionLoadingScreen } from "./section/section-loading";
 
 const ProjectMarkdown = lazy(
@@ -13,8 +19,23 @@ interface CodeContentProps {
 }
 
 const CodeContent: React.FC<CodeContentProps> = ({ sections }) => {
-  const { activeSection, activeProjectId } = useEditorContext();
+  const { activeSection, activeProjectId, setActiveSection } =
+    useEditorContext();
   const contentRef = useRef<HTMLDivElement>(null);
+  const { isMobile } = useMobile();
+
+  const currentSectionIndex = sectionList.indexOf(activeSection);
+  const sectionSwipeHandlers = useSwipe({
+    disabled: !isMobile || activeProjectId !== null,
+    onSwipeLeft: () => {
+      if (currentSectionIndex < sectionList.length - 1)
+        setActiveSection(sectionList[currentSectionIndex + 1]);
+    },
+    onSwipeRight: () => {
+      if (currentSectionIndex > 0)
+        setActiveSection(sectionList[currentSectionIndex - 1]);
+    },
+  });
 
   // When a project file tab is active, render the project markdown view
   if (activeProjectId !== null) {
@@ -47,6 +68,7 @@ const CodeContent: React.FC<CodeContentProps> = ({ sections }) => {
         <div
           key={activeSection}
           className={`min-h-[calc(100vh-8rem)] sm:min-h-[calc(100vh-10rem)] flex ${styles.fadeIn}`}
+          {...sectionSwipeHandlers}
         >
           <div
             ref={contentRef}
