@@ -9,6 +9,7 @@ import type { SectionType } from "./context/explorer-context";
 import { useEditorContext } from "./context/explorer-context";
 import Explorer from "./left/editor-explorer";
 import SideBar from "./left/side-bar";
+import MobileSwipeHint from "./mobile-swipe-hint";
 import StatusBar from "./status-bar";
 import EditorTabs from "./tabs/editor-tabs";
 import Terminal from "./terminal/Terminal";
@@ -78,6 +79,7 @@ const CodeEditor: React.FC = () => {
           <CodeContent sections={sections} />
           <StatusBar />
           {terminalOpen && <Terminal />}
+          <MobileSwipeHint />
         </div>
       </div>
     </div>

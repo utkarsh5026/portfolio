@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-03-07T02:11:43.184Z",
+  "generatedAt": "2026-03-07T02:13:31.994Z",
   "commits": [
+    {
+      "hash": "518003d08d8f489827b94e884694653efeb11f66",
+      "shortHash": "518003d",
+      "message": "feat: add useSwipe hook wrapping react-swipeable for mobile navigation",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T07:41:26+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 64,
+      "deletions": 40,
+      "filesChanged": 3
+    },
     {
       "hash": "46a857dbc2b0ea8a56119fc33daad52707b2496a",
       "shortHash": "46a857d",
@@ -228,22 +240,10 @@
       "insertions": 32,
       "deletions": 193,
       "filesChanged": 4
-    },
-    {
-      "hash": "bf56b4135a539a52d799bf84bf1e1872f54ff879",
-      "shortHash": "bf56b41",
-      "message": "refactor: move ctp-colors.ts from utils/ to lib/ and update imports",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T03:26:41+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 18,
-      "deletions": 17,
-      "filesChanged": 5
     }
   ],
   "commitsByDate": {
-    "2026-03-07": 21,
+    "2026-03-07": 22,
     "2026-03-06": 4,
     "2026-03-05": 43,
     "2026-03-04": 17,
@@ -264,7 +264,7 @@
   "languageStats": [
     {
       "language": "TypeScript",
-      "count": 217,
+      "count": 218,
       "color": "#89b4fa"
     },
     {

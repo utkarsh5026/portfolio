@@ -3,9 +3,12 @@ import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { HiOutlineBookOpen, HiOutlineCode } from "react-icons/hi";
 
 import { technologies } from "@/components/base/technologies";
+import { useEditorContext } from "@/components/home/editor/context/explorer-context";
 import { MarkdownRender } from "@/components/home/editor/markdown-renderer";
 import { Heading, Text } from "@/components/ui/text";
 import { useMarkdownOutlineBridge } from "@/hooks/use-markdown-outline-bridge";
+import useMobile from "@/hooks/use-mobile";
+import { useSwipe } from "@/hooks/use-swipe";
 import { cn } from "@/lib/utils";
 import { useMarkdownHeadingStore } from "@/store";
 import useProjectStore from "@/store/projects/projects-store";
@@ -210,6 +213,24 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
   const project = useProjectStore((state) =>
     state.projects.find((p) => p.name === projectId)
   );
+  const allProjects = useProjectStore((state) => state.projects);
+  const { openProject } = useEditorContext();
+  const { isMobile } = useMobile();
+
+  const currentProjectIndex = allProjects.findIndex(
+    (p) => p.name === projectId
+  );
+  const projectSwipeHandlers = useSwipe({
+    disabled: !isMobile,
+    onSwipeLeft: () => {
+      if (currentProjectIndex < allProjects.length - 1)
+        openProject(allProjects[currentProjectIndex + 1]);
+    },
+    onSwipeRight: () => {
+      if (currentProjectIndex > 0)
+        openProject(allProjects[currentProjectIndex - 1]);
+    },
+  });
 
   const slug = project ? getProjectSlug(project.name) : "";
   const markdown = useProjectStore((s) => s.markdownCache[slug] ?? "");
@@ -245,7 +266,10 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
   }
 
   return (
-    <article className="max-w-4xl mx-auto font-source text-sm text-ctp-text leading-relaxed mt-4">
+    <article
+      className="max-w-4xl mx-auto font-source text-sm text-ctp-text leading-relaxed mt-4"
+      {...projectSwipeHandlers}
+    >
       <CoverBand coverImage={project.coverImage} name={project.name} />
       <PageIcon icon={project.icon} name={project.name} />
 
