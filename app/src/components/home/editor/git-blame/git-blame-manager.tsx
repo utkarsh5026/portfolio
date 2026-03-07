@@ -5,6 +5,7 @@ import {
   type ComponentMeta,
   useGitMeta,
 } from "@/hooks/use-git-meta";
+import useSettingsStore from "@/store/settings-store";
 
 import GitBlamePortalTooltip from "./git-blame-portal-tooltip";
 
@@ -28,6 +29,7 @@ interface TooltipState {
  */
 const GitBlameManager: React.FC = () => {
   const { getBySection, getByComponent, getAuthor } = useGitMeta();
+  const gitBlameEnabled = useSettingsStore((s) => s.gitBlameEnabled);
   const [tooltip, setTooltip] = useState<TooltipState>({
     visible: false,
     x: 0,
@@ -130,6 +132,8 @@ const GitBlameManager: React.FC = () => {
       clearTimer();
     };
   }, [hide, resolveMeta, tooltip.visible, clearTimer, getAuthor]);
+
+  if (!gitBlameEnabled) return null;
 
   return (
     <GitBlamePortalTooltip

@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-07T19:49:23.756Z",
+  "generatedAt": "2026-03-07T19:58:03.526Z",
   "commits": [
     {
-      "hash": "86d7785952ce5e5e63de3b669431d54ff3f61174",
-      "shortHash": "86d7785",
+      "hash": "b516f7ef5408569c1ada1b8be501c69b379ae3e5",
+      "shortHash": "b516f7e",
+      "message": "feat: add settings panel with git blame toggle",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T01:27:20+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 122,
+      "deletions": 0,
+      "filesChanged": 7
+    },
+    {
+      "hash": "1f410ffd6eec12a73ffec1bd929b9a1f471c9d76",
+      "shortHash": "1f410ff",
       "message": "chore: optimize pre-commit hook to lint and format staged files only",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T01:18:51+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 32,
-      "deletions": 10,
-      "filesChanged": 1
+      "insertions": 53,
+      "deletions": 31,
+      "filesChanged": 4
     },
     {
       "hash": "4ea217b60670734bb9246ff7e4402fe29222a23d",
@@ -228,22 +240,10 @@
       "insertions": 88,
       "deletions": 93,
       "filesChanged": 6
-    },
-    {
-      "hash": "162e205fc400e66661e47cacae76f4f2cde0596a",
-      "shortHash": "162e205",
-      "message": "build: add watch-prod script for production build watcher with preview server",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T10:43:52+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 80,
-      "deletions": 18,
-      "filesChanged": 8
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 7,
+    "2026-03-08": 8,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
@@ -265,7 +265,7 @@
   "languageStats": [
     {
       "language": "TypeScript",
-      "count": 222,
+      "count": 225,
       "color": "#89b4fa"
     },
     {
