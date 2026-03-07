@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-07T19:13:56.380Z",
+  "generatedAt": "2026-03-07T19:23:22.031Z",
   "commits": [
     {
-      "hash": "7016ab071a9336bfb0eb237be927118c57a13a67",
-      "shortHash": "7016ab0",
+      "hash": "8ed442531aa9d4cb5d098c592a4944486f6ca671",
+      "shortHash": "8ed4425",
+      "message": "feat: add global git blame manager with portal tooltip",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T00:51:12+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 295,
+      "deletions": 2,
+      "filesChanged": 4
+    },
+    {
+      "hash": "919a86018747a08af755677ffa8af235dc29617d",
+      "shortHash": "919a860",
       "message": "refactor: auto-discover sub-component files in generate-git-meta script",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T00:43:03+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 139,
-      "deletions": 95,
-      "filesChanged": 1
+      "insertions": 160,
+      "deletions": 116,
+      "filesChanged": 4
     },
     {
       "hash": "3d7705463e2a1fbaca235f3d1da763dcb7ee30b6",
@@ -228,22 +240,10 @@
       "insertions": 32,
       "deletions": 27,
       "filesChanged": 10
-    },
-    {
-      "hash": "b9596a8ffee93a9451a8cc06951c7807876e2ce0",
-      "shortHash": "b9596a8",
-      "message": "perf: migrate Google Fonts to self-hosted @fontsource packages",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T08:47:15+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 48,
-      "deletions": 44,
-      "filesChanged": 9
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 3,
+    "2026-03-08": 4,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
@@ -265,7 +265,7 @@
   "languageStats": [
     {
       "language": "TypeScript",
-      "count": 221,
+      "count": 223,
       "color": "#89b4fa"
     },
     {
@@ -275,7 +275,7 @@
     },
     {
       "language": "CSS",
-      "count": 35,
+      "count": 36,
       "color": "#cba6f7"
     },
     {

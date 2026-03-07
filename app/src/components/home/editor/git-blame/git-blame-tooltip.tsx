@@ -1,8 +1,8 @@
 import React from "react";
 import { VscGitCommit } from "react-icons/vsc";
 
-import { type ComponentMeta, relativeTime } from "@/hooks/use-git-meta";
-import { cn } from "@/lib/utils";
+import { type ComponentMeta } from "@/hooks/use-git-meta";
+import { cn, relativeTime } from "@/lib/utils";
 
 interface GitBlameTooltipProps {
   meta: ComponentMeta | null;
