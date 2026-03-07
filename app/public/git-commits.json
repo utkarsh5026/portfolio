@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-07T09:19:22.500Z",
+  "generatedAt": "2026-03-07T09:24:49.391Z",
   "commits": [
     {
-      "hash": "84a04d34efbe8af72826173e5ec78c0ea233b842",
-      "shortHash": "84a04d3",
+      "hash": "8382673eb5ca9a991e68042aa886f36274349f15",
+      "shortHash": "8382673",
+      "message": "build: remove three.js dependencies and add gen:git-meta script",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T14:54:06+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 1,
+      "deletions": 36,
+      "filesChanged": 2
+    },
+    {
+      "hash": "2856b033fa2d136e1c6fff8a20e53c2c80f3f149",
+      "shortHash": "2856b03",
       "message": "fix: guard post-commit hook against infinite amend loop",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-07T14:48:44+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 6,
-      "deletions": 0,
-      "filesChanged": 1
+      "insertions": 24,
+      "deletions": 18,
+      "filesChanged": 4
     },
     {
       "hash": "336f04fac0353204400752ff0ac9ffb5b7246e88",
@@ -228,22 +240,10 @@
       "insertions": 1634,
       "deletions": 1567,
       "filesChanged": 70
-    },
-    {
-      "hash": "d2508250812fd4875e53883bb641950d8433a7a6",
-      "shortHash": "d250825",
-      "message": "chore(data): update auto-generated git commits and stats JSON",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T06:53:47+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 15,
-      "deletions": 15,
-      "filesChanged": 2
     }
   ],
   "commitsByDate": {
-    "2026-03-07": 39,
+    "2026-03-07": 40,
     "2026-03-06": 4,
     "2026-03-05": 43,
     "2026-03-04": 17,

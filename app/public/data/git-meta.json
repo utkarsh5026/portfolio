@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-07T09:19:28.453Z",
+  "generatedAt": "2026-03-07T09:24:55.016Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -189,19 +189,6 @@
       "date": "2025-05-16T14:49:47.000Z",
       "message": "Refactor FeaturedProject component for improved styling and responsiveness"
     },
-    "ArticleCard": {
-      "section": "articles",
-      "file": "app/src/components/home/portfolio/articles/article-card.tsx",
-      "lines": [
-        14,
-        107
-      ],
-      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
-      "shortHash": "e4ccb5a",
-      "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-06T22:55:58.000Z",
-      "message": "style: add Prettier config and reformat entire codebase"
-    },
     "MobileDrawerContent": {
       "section": "experience",
       "file": "app/src/components/home/portfolio/work/experience-details.tsx",
@@ -227,6 +214,19 @@
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T00:42:45.000Z",
       "message": "refactor: replace framer-motion with CSS modules in featured-project and work components"
+    },
+    "ArticleCard": {
+      "section": "articles",
+      "file": "app/src/components/home/portfolio/articles/article-card.tsx",
+      "lines": [
+        14,
+        107
+      ],
+      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
+      "shortHash": "e4ccb5a",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T22:55:58.000Z",
+      "message": "style: add Prettier config and reformat entire codebase"
     }
   }
 }
