@@ -125,6 +125,31 @@ def target_gen_git_commits():
     print_success("Git commits generated!")
 
 
+def target_gen_git_meta():
+    print_header("Generating Git Meta")
+    _app_cmd(["bun", "run", "gen:git-meta"])
+    print_success("Git meta generated!")
+
+
+def target_gen_git_all():
+    print_header("Generating All Git Data (parallel)")
+    scripts = ["gen:git-stats", "gen:git-commits", "gen:git-meta"]
+    processes = [
+        subprocess.Popen(
+            ["bun", "run", script],
+            cwd=APP_DIR,
+            shell=True,
+        )
+        for script in scripts
+    ]
+    exit_codes = [p.wait() for p in processes]
+    failed = [scripts[i] for i, code in enumerate(exit_codes) if code != 0]
+    if failed:
+        print(f"{Fore.RED}[ERROR]{Style.RESET_ALL} Failed: {', '.join(failed)}")
+        sys.exit(1)
+    print_success("All git data generated!")
+
+
 def target_build():
     print_header("Building for Production")
     _app_cmd(["bun", "run", "build"])
@@ -326,6 +351,8 @@ TARGETS = {
     # Build
     "gen-git-stats": (target_gen_git_stats, "Generate git statistics", "Build"),
     "gen-git-commits": (target_gen_git_commits, "Generate git commits JSON", "Build"),
+    "gen-git-meta": (target_gen_git_meta, "Generate component-level git blame metadata", "Build"),
+    "gen-git-all": (target_gen_git_all, "Generate all git data in parallel", "Build"),
     "build": (target_build, "Build for production", "Build"),
     "build-force": (
         target_build_force,
