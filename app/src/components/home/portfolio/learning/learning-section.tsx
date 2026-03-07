@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { BookOpen, FolderOpen, Lightbulb } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
@@ -8,6 +7,7 @@ import Section from "@/components/home/editor/section/portfolio-section";
 import type { TechnologyLearning } from "@/types";
 
 import { currentLearningTechnologies } from "./data";
+import styles from "./learning.module.css";
 import LearningCard from "./learning-card";
 import LearningJourney from "./learning-journey/learning-journey";
 import LearningModal from "./learning-project-drawer";
@@ -67,15 +67,13 @@ const CurrentLearning: React.FC = () => {
           delay={0.2}
           className="text-center mb-8"
         >
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+          <button
             onClick={() => setIsJourneyOpen(true)}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-ctp-surface0/80 hover:bg-ctp-surface1/80 rounded-full text-ctp-text font-medium border border-ctp-surface1/50 hover:border-ctp-peach/80 transition-all duration-300 backdrop-blur-sm"
+            className={`inline-flex items-center gap-2 px-6 py-3 bg-ctp-surface0/80 hover:bg-ctp-surface1/80 rounded-full text-ctp-text font-medium border border-ctp-surface1/50 hover:border-ctp-peach/80 transition-all duration-300 backdrop-blur-sm ${styles.interactiveBtn}`}
           >
             <Lightbulb className="w-4 h-4" />
             <span>Learning Journey</span>
-          </motion.button>
+          </button>
         </Reveal>
 
         {/* Category Sections */}

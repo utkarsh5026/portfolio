@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import React from "react";
 
 import { TerminalOutput } from "./use-terminal";
@@ -25,12 +24,9 @@ const TerminalCommandOutput: React.FC<TerminalCommandOutputProps> = ({
   return (
     <>
       {outputBlocks.map((block, blockIndex) => (
-        <motion.div
+        <div
           key={`block-${block.map((line) => line.text).join("")}`}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-          className="rounded-xl overflow-hidden"
+          className="rounded-xl overflow-hidden terminal-block-enter"
           style={{
             background: "rgba(30, 30, 46, 0.5)",
             backdropFilter: "blur(12px)",
@@ -39,20 +35,14 @@ const TerminalCommandOutput: React.FC<TerminalCommandOutputProps> = ({
           }}
         >
           {block.map((line, lineIndex) => (
-            <motion.div
+            <div
               key={`line-${blockIndex}-${lineIndex}`}
-              initial={{ opacity: 0, filter: "blur(2px)" }}
-              animate={{ opacity: 1, filter: "blur(0px)" }}
-              transition={{
-                duration: 0.2,
-                delay: lineIndex * 0.03,
-                ease: "easeOut",
-              }}
-              className={`px-5 py-3 ${
+              className={`px-5 py-3 terminal-line-enter ${
                 line.isCommand
                   ? "bg-gradient-to-r from-ctp-mantle to-ctp-base border-b border-ctp-surface0/30"
                   : ""
               }`}
+              style={{ animationDelay: `${lineIndex * 0.03}s` }}
             >
               {line.isCommand ? (
                 <div className="flex items-center">
@@ -74,9 +64,9 @@ const TerminalCommandOutput: React.FC<TerminalCommandOutputProps> = ({
                   {line.text}
                 </div>
               )}
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       ))}
     </>
   );

@@ -1,0 +1,54 @@
+/* learning-journey.module.css */
+
+.pulsatingIcon {
+  animation: pulseScale 2s infinite ease-in-out;
+}
+
+@keyframes pulseScale {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.statusPop {
+  animation: statusEntrance 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+    forwards;
+  transform: scale(0);
+  opacity: 0;
+}
+
+@keyframes statusEntrance {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation: fadeInAnim 0.3s ease-in forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInAnim {
+  to {
+    opacity: 1;
+  }
+}
+
+.blinkingCursor {
+  animation: blinkAnim 1s infinite step-end;
+}
+
+@keyframes blinkAnim {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import React, { useEffect, useRef } from "react";
 import { VscClose, VscMarkdown } from "react-icons/vsc";
 
@@ -6,6 +5,7 @@ import { cn } from "@/lib/utils";
 
 import type { SectionTab, Tab } from "../context/explorer-context";
 import { useEditorContext } from "../context/explorer-context";
+import styles from "../editor-ui.module.css";
 import { TabActions } from "./tab-actions";
 import { getActiveTabColor, getIconColor, sectionIconMap } from "./tab-style";
 
@@ -125,17 +125,14 @@ const DesktopTabs: React.FC = () => {
 
                 {/* Active top-border indicator */}
                 {isActive && (
-                  <motion.div
-                    layoutId="activeTabIndicator"
+                  <div
                     className={cn(
                       "absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r",
                       isSectionTab
                         ? getActiveTabColor((tab as SectionTab).id)
-                        : "from-ctp-green to-ctp-teal"
+                        : "from-ctp-green to-ctp-teal",
+                      styles.activeTabIndicator
                     )}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.2 }}
                   />
                 )}
               </button>

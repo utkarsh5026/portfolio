@@ -1,6 +1,5 @@
 import "./Terminal.css";
 
-import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
 import { useEditorContext } from "../context/explorer-context";
@@ -59,19 +58,10 @@ const Terminal: React.FC = () => {
   }, []);
 
   return (
-    <AnimatePresence>
+    <>
       {isVisible && (
-        <motion.div
-          initial={{ opacity: 0, y: 50, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 50, scale: 0.95 }}
-          transition={{
-            type: "spring",
-            damping: 20,
-            stiffness: 300,
-            duration: 0.4,
-          }}
-          className="w-full rounded-xl flex flex-col overflow-hidden font-source text-sm shadow-2xl relative group bg-ctp-crust"
+        <div
+          className="w-full rounded-xl flex flex-col overflow-hidden font-source text-sm shadow-2xl relative group bg-ctp-crust terminal-window-enter"
           style={{
             height: isMaximized ? "100vh" : "min(60vh, 600px)",
             fontSize: `${fontSize}px`,
@@ -123,9 +113,9 @@ const Terminal: React.FC = () => {
               handleSuggestionSelect={handleSuggestionSelect}
             />
           )}
-        </motion.div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   );
 };
 

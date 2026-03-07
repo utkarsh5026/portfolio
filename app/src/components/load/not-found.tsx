@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
 import { AlertCircle, Home } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import styles from "./not-found.module.css";
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -24,34 +25,15 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen bg-ctp-base flex items-center justify-center px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="text-center max-w-md"
-      >
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-          className="mb-6 flex justify-center"
-        >
+      <div className={`text-center max-w-md ${styles.containerEnter}`}>
+        <div className={`mb-6 flex justify-center ${styles.iconPop}`}>
           <div className="relative">
             <AlertCircle className="w-24 h-24 text-ctp-red" />
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.5, 0.8, 0.5],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute inset-0 bg-ctp-red rounded-full blur-xl opacity-50"
+            <div
+              className={`absolute inset-0 bg-ctp-red rounded-full blur-xl ${styles.glowPulse}`}
             />
           </div>
-        </motion.div>
+        </div>
 
         <h1 className="text-4xl md:text-5xl font-bold text-ctp-text mb-4">
           Oops!
@@ -67,25 +49,18 @@ const NotFound = () => {
           seconds...
         </p>
 
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+        <button
           onClick={() => navigate("/", { replace: true })}
-          className="inline-flex items-center gap-2 bg-ctp-mauve text-ctp-base px-6 py-3 rounded-lg font-medium hover:bg-ctp-mauve/90 transition-colors"
+          className={`inline-flex items-center gap-2 bg-ctp-mauve text-ctp-base px-6 py-3 rounded-lg font-medium hover:bg-ctp-mauve/90 transition-colors ${styles.interactiveBtn}`}
         >
           <Home className="w-5 h-5" />
           Go Home Now
-        </motion.button>
+        </button>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="mt-8 text-xs text-ctp-subtext1"
-        >
+        <div className={`mt-8 text-xs text-ctp-subtext1 ${styles.simpleFade}`}>
           Looking for something specific? Try the navigation menu.
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </div>
   );
 };

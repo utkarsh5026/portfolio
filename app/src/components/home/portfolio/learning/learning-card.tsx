@@ -1,8 +1,9 @@
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
 import { TechnologyLearning } from "@/types";
+
+import styles from "./learning.module.css";
 
 interface LearningCardProps {
   tech: TechnologyLearning;
@@ -39,7 +40,7 @@ const LearningCard: React.FC<LearningCardProps> = ({
   return (
     <Reveal effect={getCardEffect()} delay={delay} duration={0.6} cascade>
       <div
-        className="group cursor-pointer h-full block"
+        className={`group cursor-pointer h-full block ${styles.arrowGroup}`}
         onClick={() => onSelect(tech)}
       >
         <div className="h-full bg-gradient-to-b from-ctp-mantle to-ctp-crust backdrop-blur-sm rounded-2xl p-6 border-none hover:border-ctp-surface2/80 transition-all duration-300 hover:bg-ctp-surface0/80">
@@ -50,12 +51,11 @@ const LearningCard: React.FC<LearningCardProps> = ({
               {tech.icon}
             </div>
 
-            <motion.div
-              className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              whileHover={{ x: 2 }}
+            <div
+              className={`opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${styles.arrowHover}`}
             >
               <ArrowRight className="w-4 h-4 text-ctp-subtext0" />
-            </motion.div>
+            </div>
           </div>
 
           {/* Content */}

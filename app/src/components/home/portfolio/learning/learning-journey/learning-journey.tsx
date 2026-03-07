@@ -26,7 +26,7 @@ const LearningJourney: React.FC<LearningJourneyProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [completedItems, setCompletedItems] = useState<number[]>([]);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const { displayedText, isTyping, progress, start, reset } = useTypewriting({
     text:

@@ -1,8 +1,7 @@
-import { motion } from "framer-motion";
-
 import Reveal from "@/components/animations/reveal/Reveal";
 
 import { learningJourneyItems } from "../data";
+import styles from "./learning-journey.module.css";
 
 interface JourneyItemProps {
   item: (typeof learningJourneyItems)[0];
@@ -38,26 +37,22 @@ const JourneyItem: React.FC<JourneyItemProps> = ({
         <div className="flex gap-3 sm:gap-4 md:gap-6">
           {/* Icon */}
           <div className="flex-shrink-0 relative">
-            <motion.div
+            <div
               className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center transition-all duration-300 border-none text-sm sm:text-base ${
                 isActive
-                  ? `bg-ctp-${item.color}/20 text-ctp-${item.color} border-none`
+                  ? `bg-ctp-${item.color}/20 text-ctp-${item.color} border-none ${styles.pulsatingIcon}`
                   : isCompleted
                     ? `bg-ctp-${item.color}/10 text-ctp-${item.color}/80 border-none`
                     : "bg-ctp-surface0/30 text-ctp-subtext0 border-none"
               }`}
-              animate={isActive ? { scale: [1, 1.05, 1] } : {}}
-              transition={{ duration: 2, repeat: Infinity }}
             >
               {item.icon}
-            </motion.div>
+            </div>
 
             {/* Status Indicator */}
             {isCompleted && (
-              <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                className="absolute -bottom-0.5 -right-0.5 sm:-bottom-1 sm:-right-1 w-4 h-4 sm:w-5 sm:h-5 bg-ctp-green rounded-full flex items-center justify-center"
+              <div
+                className={`absolute -bottom-0.5 -right-0.5 sm:-bottom-1 sm:-right-1 w-4 h-4 sm:w-5 sm:h-5 bg-ctp-green rounded-full flex items-center justify-center ${styles.statusPop}`}
               >
                 <svg
                   className="w-2 h-2 sm:w-3 sm:h-3 text-ctp-base"
@@ -72,22 +67,18 @@ const JourneyItem: React.FC<JourneyItemProps> = ({
                     d="m4.5 12.75 6 6 9-13.5"
                   />
                 </svg>
-              </motion.div>
+              </div>
             )}
 
             {/* Connection Line */}
             {index < learningJourneyItems.length - 1 && (
               <div className="absolute top-8 sm:top-10 md:top-12 left-1/2 w-px h-4 sm:h-6 md:h-8 -translate-x-px">
-                <motion.div
-                  className={`w-full h-full ${
+                <div
+                  className={`w-full h-full transform origin-top transition-transform duration-500 delay-300 ${
                     isCompleted
-                      ? `bg-ctp-${item.color}/40`
-                      : "bg-ctp-surface1/50"
+                      ? `bg-ctp-${item.color}/40 scale-y-100`
+                      : "bg-ctp-surface1/50 scale-y-0"
                   }`}
-                  initial={{ scaleY: 0 }}
-                  animate={{ scaleY: isCompleted ? 1 : 0 }}
-                  style={{ transformOrigin: "top" }}
-                  transition={{ duration: 0.5 }}
                 />
               </div>
             )}
@@ -95,7 +86,7 @@ const JourneyItem: React.FC<JourneyItemProps> = ({
 
           {/* Content */}
           <div className="flex-1 min-w-0">
-            <motion.div
+            <div
               className={`p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl border transition-all duration-300 ${
                 isActive
                   ? `bg-ctp-${item.color}/5 border-ctp-${item.color}/20`
@@ -117,10 +108,8 @@ const JourneyItem: React.FC<JourneyItemProps> = ({
                   <>
                     {displayedText}
                     {isTyping && (
-                      <motion.span
-                        className={`inline-block w-0.5 h-3 sm:h-4 bg-ctp-${item.color} ml-1`}
-                        animate={{ opacity: [0, 1, 0] }}
-                        transition={{ duration: 1, repeat: Infinity }}
+                      <span
+                        className={`inline-block w-0.5 h-3 sm:h-4 bg-ctp-${item.color} ml-1 ${styles.blinkingCursor}`}
                       />
                     )}
                   </>
@@ -131,21 +120,16 @@ const JourneyItem: React.FC<JourneyItemProps> = ({
 
               {/* Progress Bar for Active Item */}
               {isActive && isTyping && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="mt-3 sm:mt-4"
-                >
+                <div className={`mt-3 sm:mt-4 ${styles.fadeIn}`}>
                   <div className="w-full h-0.5 sm:h-1 bg-ctp-surface1/30 rounded-full overflow-hidden">
-                    <motion.div
-                      className={`h-full bg-ctp-${item.color} rounded-full`}
+                    <div
+                      className={`h-full bg-ctp-${item.color} rounded-full transition-all duration-100 ease-linear`}
                       style={{ width: `${progress}%` }}
-                      transition={{ duration: 0.1 }}
                     />
                   </div>
-                </motion.div>
+                </div>
               )}
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
