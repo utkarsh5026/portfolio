@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-07T17:11:21.562Z",
+  "generatedAt": "2026-03-07T18:45:05.724Z",
   "commits": [
     {
-      "hash": "0652c4fe68dded1af569ef84486649f889783fdd",
-      "shortHash": "0652c4f",
+      "hash": "cf17b53eb626d67c45740e58a9533a5932ddbe80",
+      "shortHash": "cf17b53",
+      "message": "feat: integrate git blame tracking into contact section components",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T00:13:35+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 23,
+      "deletions": 4,
+      "filesChanged": 3
+    },
+    {
+      "hash": "022d6d40d64afeccca07215e055cb81fbf9b0c2b",
+      "shortHash": "022d6d4",
       "message": "feat: add relativeTime utility for human-readable date formatting",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-07T22:40:17+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 46,
-      "deletions": 0,
-      "filesChanged": 1
+      "insertions": 575,
+      "deletions": 35,
+      "filesChanged": 4
     },
     {
       "hash": "0011e9e9527da849149a62432746b5c30892ee8f",
@@ -228,21 +240,10 @@
       "insertions": 146,
       "deletions": 19,
       "filesChanged": 6
-    },
-    {
-      "hash": "518003d08d8f489827b94e884694653efeb11f66",
-      "shortHash": "518003d",
-      "message": "feat: add useSwipe hook wrapping react-swipeable for mobile navigation",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T07:41:26+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 64,
-      "deletions": 40,
-      "filesChanged": 3
     }
   ],
   "commitsByDate": {
+    "2026-03-08": 1,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,

@@ -5,12 +5,14 @@ import Reveal from "@/components/animations/reveal/Reveal";
 import { OutlineNode } from "@/components/home/editor/outline";
 import Section from "@/components/home/editor/section/portfolio-section";
 import { Button } from "@/components/ui/button";
+import { useGitComponent } from "@/hooks/use-git-component";
 
 import AvailableForOpportunities from "./available-for-opportunities";
 import styles from "./contact.module.css";
 import SocialMediaLinks from "./social-media-links";
 
 const ContactMe: React.FC = () => {
+  const ref = useGitComponent("ContactMe");
   return (
     <Section
       id="contact"
@@ -20,7 +22,10 @@ const ContactMe: React.FC = () => {
       headerIcon={Heart}
       showHeader={true}
     >
-      <div className="w-full max-w-5xl mx-auto flex flex-col gap-4 sm:gap-4 md:gap-5">
+      <div
+        ref={ref}
+        className="w-full max-w-5xl mx-auto flex flex-col gap-4 sm:gap-4 md:gap-5"
+      >
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4 sm:gap-4 md:gap-5">
           <div className="md:col-span-3">
             <OutlineNode
@@ -46,13 +51,17 @@ const ContactMe: React.FC = () => {
 };
 
 const EmailHighlight = () => {
+  const ref = useGitComponent("EmailHighlight");
   return (
     <OutlineNode
       label="Email Highlight"
       icon={<Mail className="w-3 h-3 text-ctp-pink" />}
     >
       <Reveal effect="slide-in" direction="up" duration={0.6} delay={0.3}>
-        <div className="relative overflow-hidden bg-ctp-surface0/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 md:p-10 border border-ctp-surface0/50 hover:border-ctp-pink/30 transition-all duration-300 group flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 text-center md:text-left shadow-lg shadow-black/5">
+        <div
+          ref={ref}
+          className="relative overflow-hidden bg-ctp-surface0/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 md:p-10 border border-ctp-surface0/50 hover:border-ctp-pink/30 transition-all duration-300 group flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 text-center md:text-left shadow-lg shadow-black/5"
+        >
           <div className="relative z-10 flex-1">
             <h3 className="text-xl sm:text-2xl font-bold text-ctp-text mb-2">
               Have a project in mind?
