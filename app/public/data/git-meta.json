@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-07T09:24:55.016Z",
+  "generatedAt": "2026-03-07T17:11:52.453Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -102,27 +102,27 @@
       "section": "contact",
       "file": "app/src/components/home/portfolio/contact/contact-me.tsx",
       "lines": [
-        48,
-        89
+        53,
+        98
       ],
-      "hash": "7547db3b0069c9c2a3921928a6b9de3b6e37ba5f",
-      "shortHash": "7547db3",
-      "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-05T15:33:11.000Z",
-      "message": "refactor: migrate outline state from React Context to Zustand store"
+      "hash": "0000000000000000000000000000000000000000",
+      "shortHash": "0000000",
+      "author": "Not Committed Yet",
+      "date": "2026-03-07T17:11:26.000Z",
+      "message": "Version of app/src/components/home/portfolio/contact/contact-me.tsx from app/src/components/home/portfolio/contact/contact-me.tsx"
     },
     "ContactMe": {
       "section": "contact",
       "file": "app/src/components/home/portfolio/contact/contact-me.tsx",
       "lines": [
-        13,
-        46
+        14,
+        51
       ],
-      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
-      "shortHash": "e4ccb5a",
-      "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-06T22:55:58.000Z",
-      "message": "style: add Prettier config and reformat entire codebase"
+      "hash": "0000000000000000000000000000000000000000",
+      "shortHash": "0000000",
+      "author": "Not Committed Yet",
+      "date": "2026-03-07T17:11:27.000Z",
+      "message": "Version of app/src/components/home/portfolio/contact/contact-me.tsx from app/src/components/home/portfolio/contact/contact-me.tsx"
     },
     "CurrentLearning": {
       "section": "learning",
@@ -150,6 +150,305 @@
       "date": "2026-03-04T23:02:52.000Z",
       "message": "style: redesign article cards with 16:9 image layout and cleaner hover effects"
     },
+    "MiniProjects": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/profile/mini-projects.tsx",
+      "lines": [
+        13,
+        144
+      ],
+      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
+      "shortHash": "e4ccb5a",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T22:55:58.000Z",
+      "message": "style: add Prettier config and reformat entire codebase"
+    },
+    "PersonalDescription": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/profile/personal-description.tsx",
+      "lines": [
+        11,
+        32
+      ],
+      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
+      "shortHash": "e4ccb5a",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T22:55:58.000Z",
+      "message": "style: add Prettier config and reformat entire codebase"
+    },
+    "PersonalTitle": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/profile/personal-title.tsx",
+      "lines": [
+        11,
+        72
+      ],
+      "hash": "ba54a0eb90b0e1224db8e0bf66ffa2a31be86d14",
+      "shortHash": "ba54a0e",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-04T04:03:29.000Z",
+      "message": "refactor: replace Framer Motion with CSS animations in profile components"
+    },
+    "ProfileAvatar": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/profile/profile-avatar.tsx",
+      "lines": [
+        3,
+        57
+      ],
+      "hash": "c15815ee4519a48bc81fdbd919f53e1887005a42",
+      "shortHash": "c15815e",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T03:54:03.000Z",
+      "message": "perf: migrate profile images from JPEG to WebP and replace hardcoded sidebar colors with Catppuccin tokens"
+    },
+    "ProfileButtons": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/profile/profile-buttons.tsx",
+      "lines": [
+        105,
+        222
+      ],
+      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
+      "shortHash": "e4ccb5a",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T22:55:58.000Z",
+      "message": "style: add Prettier config and reformat entire codebase"
+    },
+    "ProfilePicture": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/profile/profile-picture.tsx",
+      "lines": [
+        13,
+        31
+      ],
+      "hash": "ba54a0eb90b0e1224db8e0bf66ffa2a31be86d14",
+      "shortHash": "ba54a0e",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-04T04:03:29.000Z",
+      "message": "refactor: replace Framer Motion with CSS animations in profile components"
+    },
+    "FileExplorerItem": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/skills/file-explorer.tsx",
+      "lines": [
+        59,
+        108
+      ],
+      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
+      "shortHash": "e4ccb5a",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T22:55:58.000Z",
+      "message": "style: add Prettier config and reformat entire codebase"
+    },
+    "FileExplorer": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/skills/file-explorer.tsx",
+      "lines": [
+        118,
+        156
+      ],
+      "hash": "76c76e840ab222c4e238a5cf0a0d27a61389c74b",
+      "shortHash": "76c76e8",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2025-07-03T13:12:24.000Z",
+      "message": "Refactor TechSkills component and restructure skills organization"
+    },
+    "TechSkillsComponent": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/skills/tech-skills.tsx",
+      "lines": [
+        21,
+        74
+      ],
+      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
+      "shortHash": "e4ccb5a",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T22:55:58.000Z",
+      "message": "style: add Prettier config and reformat entire codebase"
+    },
+    "AnimatedText": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/terminal/animated-text.tsx",
+      "lines": [
+        22,
+        128
+      ],
+      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
+      "shortHash": "e4ccb5a",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T22:55:58.000Z",
+      "message": "style: add Prettier config and reformat entire codebase"
+    },
+    "Terminal": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/terminal/statements-terminal.tsx",
+      "lines": [
+        48,
+        83
+      ],
+      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
+      "shortHash": "e4ccb5a",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T22:55:58.000Z",
+      "message": "style: add Prettier config and reformat entire codebase"
+    },
+    "AboutSectionCard": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/about-section-card.tsx",
+      "lines": [
+        19,
+        78
+      ],
+      "hash": "4425b18bb009750f35f92bafd59bcb8b0e15e780",
+      "shortHash": "4425b18",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T23:24:58.000Z",
+      "message": "perf: replace framer-motion with CSS modules in about section"
+    },
+    "SectionHeader": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/about-header.tsx",
+      "lines": [
+        15,
+        40
+      ],
+      "hash": "310711b46ab388d9d53366bdf61be6285a022dea",
+      "shortHash": "310711b",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:10:42.000Z",
+      "message": "feat: add SectionHeader component with animation and styling"
+    },
+    "Interests": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/current-interests.tsx",
+      "lines": [
+        29,
+        118
+      ],
+      "hash": "0de3110f0c2f7249f124efa2bb161b62f9987a88",
+      "shortHash": "0de3110",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:12:07.000Z",
+      "message": "refactor: simplify Interests component by removing unused icons and animations"
+    },
+    "CurrentFocus": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/currrent-focus.tsx",
+      "lines": [
+        20,
+        104
+      ],
+      "hash": "77403af67b0532ad13e3b6ea60f31b15e0a473c1",
+      "shortHash": "77403af",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:12:49.000Z",
+      "message": "refactor: replace learning philosophy section with SectionHeader component for improved clarity"
+    },
+    "FlashCard": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/my-background.tsx",
+      "lines": [
+        45,
+        75
+      ],
+      "hash": "a9f96125dda7b3eb33dd23bbbaf766a6730eda0b",
+      "shortHash": "a9f9612",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:26:06.000Z",
+      "message": "refactor: streamline Background and Education components for improved clarity and performance"
+    },
+    "Background": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/my-background.tsx",
+      "lines": [
+        9,
+        38
+      ],
+      "hash": "a9f96125dda7b3eb33dd23bbbaf766a6730eda0b",
+      "shortHash": "a9f9612",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:26:06.000Z",
+      "message": "refactor: streamline Background and Education components for improved clarity and performance"
+    },
+    "EducationCard": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/my-education.tsx",
+      "lines": [
+        53,
+        123
+      ],
+      "hash": "20099465999a78ca80556c5ddfe99944d372bd2c",
+      "shortHash": "2009946",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:17:04.000Z",
+      "message": "refactor: replace custom header implementation with SectionHeader component for improved consistency"
+    },
+    "Education": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/my-education.tsx",
+      "lines": [
+        15,
+        46
+      ],
+      "hash": "20099465999a78ca80556c5ddfe99944d372bd2c",
+      "shortHash": "2009946",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:17:04.000Z",
+      "message": "refactor: replace custom header implementation with SectionHeader component for improved consistency"
+    },
+    "Philosophy": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/my-philosophy.tsx",
+      "lines": [
+        29,
+        86
+      ],
+      "hash": "f42e1cb984d35075039065882992c192ed9a1e70",
+      "shortHash": "f42e1cb",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:14:39.000Z",
+      "message": "refactor: replace PhilosophyCard with SectionHeader for improved structure and clarity"
+    },
+    "Skills": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/skills-display.tsx",
+      "lines": [
+        24,
+        87
+      ],
+      "hash": "df837c022f62137e2523a8fc080923d349d12263",
+      "shortHash": "df837c0",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:15:16.000Z",
+      "message": "refactor: optimize Skills component structure and enhance category display"
+    },
+    "SkillsList": {
+      "section": "about",
+      "file": "app/src/components/home/portfolio/about/sections/skills-display.tsx",
+      "lines": [
+        93,
+        120
+      ],
+      "hash": "df837c022f62137e2523a8fc080923d349d12263",
+      "shortHash": "df837c0",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T23:15:16.000Z",
+      "message": "refactor: optimize Skills component structure and enhance category display"
+    },
+    "ExpandedSkillsContent": {
+      "section": "skills",
+      "file": "app/src/components/home/portfolio/skills/skill-card/expanded-content.tsx",
+      "lines": [
+        7,
+        29
+      ],
+      "hash": "7276be231b2b82fcb62a76a7019999e9643998cd",
+      "shortHash": "7276be2",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-02T02:22:56.000Z",
+      "message": "style: tighten spacing and typography in skills section"
+    },
     "SkillCard": {
       "section": "skills",
       "file": "app/src/components/home/portfolio/skills/skill-card/skill-card.tsx",
@@ -162,6 +461,19 @@
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T08:51:20.000Z",
       "message": "feat: add useGitComponent hook and wire it to FeaturedProject and SkillCard"
+    },
+    "ProjectThemeProvider": {
+      "section": "projects",
+      "file": "app/src/components/home/portfolio/projects/context/ProjectThemeProvider.tsx",
+      "lines": [
+        90,
+        118
+      ],
+      "hash": "e9ba17fab3cc9b6e4ecea25a01d402a364eaf4d2",
+      "shortHash": "e9ba17f",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-01-04T08:19:55.000Z",
+      "message": "Refactor mobile detection: replace useMobile hook with useMobileContext for improved context management and performance"
     },
     "FeaturedProject": {
       "section": "projects",
@@ -189,6 +501,45 @@
       "date": "2025-05-16T14:49:47.000Z",
       "message": "Refactor FeaturedProject component for improved styling and responsiveness"
     },
+    "ProjectContent": {
+      "section": "projects",
+      "file": "app/src/components/home/portfolio/projects/featured/project-content.tsx",
+      "lines": [
+        16,
+        132
+      ],
+      "hash": "fd8e456a5fd04d554c3248ff04a9dd0e9d2820b0",
+      "shortHash": "fd8e456",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-03T06:00:58.000Z",
+      "message": "feat: redesign project cards and add tabbed Overview/Deep Dive detail view"
+    },
+    "ProjectMarkdown": {
+      "section": "projects",
+      "file": "app/src/components/home/portfolio/projects/project-markdown.tsx",
+      "lines": [
+        212,
+        371
+      ],
+      "hash": "8355e1e86591f7049bc8bda74a6b21ec44fc3d2e",
+      "shortHash": "8355e1e",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T02:13:19.000Z",
+      "message": "feat(mobile): add swipe navigation for sections and projects with onboarding hint"
+    },
+    "TabBar": {
+      "section": "projects",
+      "file": "app/src/components/home/portfolio/projects/project-markdown.tsx",
+      "lines": [
+        167,
+        203
+      ],
+      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
+      "shortHash": "e4ccb5a",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T22:55:58.000Z",
+      "message": "style: add Prettier config and reformat entire codebase"
+    },
     "MobileDrawerContent": {
       "section": "experience",
       "file": "app/src/components/home/portfolio/work/experience-details.tsx",
@@ -214,6 +565,149 @@
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T00:42:45.000Z",
       "message": "refactor: replace framer-motion with CSS modules in featured-project and work components"
+    },
+    "ExperienceHeader": {
+      "section": "experience",
+      "file": "app/src/components/home/portfolio/work/experience-header.tsx",
+      "lines": [
+        20,
+        193
+      ],
+      "hash": "3cb4e111d624e8d0a1a9e12292aef53c174514bb",
+      "shortHash": "3cb4e11",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T00:42:45.000Z",
+      "message": "refactor: replace framer-motion with CSS modules in featured-project and work components"
+    },
+    "ExperienceTabs": {
+      "section": "experience",
+      "file": "app/src/components/home/portfolio/work/experience-tabs.tsx",
+      "lines": [
+        13,
+        102
+      ],
+      "hash": "3cb4e111d624e8d0a1a9e12292aef53c174514bb",
+      "shortHash": "3cb4e11",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T00:42:45.000Z",
+      "message": "refactor: replace framer-motion with CSS modules in featured-project and work components"
+    },
+    "AchievementCard": {
+      "section": "experience",
+      "file": "app/src/components/home/portfolio/work/work-acheivements.tsx",
+      "lines": [
+        73,
+        113
+      ],
+      "hash": "3cb4e111d624e8d0a1a9e12292aef53c174514bb",
+      "shortHash": "3cb4e11",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T00:42:45.000Z",
+      "message": "refactor: replace framer-motion with CSS modules in featured-project and work components"
+    },
+    "Achievements": {
+      "section": "experience",
+      "file": "app/src/components/home/portfolio/work/work-acheivements.tsx",
+      "lines": [
+        30,
+        66
+      ],
+      "hash": "7547db3b0069c9c2a3921928a6b9de3b6e37ba5f",
+      "shortHash": "7547db3",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-05T15:33:11.000Z",
+      "message": "refactor: migrate outline state from React Context to Zustand store"
+    },
+    "AvailableForOpportunities": {
+      "section": "contact",
+      "file": "app/src/components/home/portfolio/contact/available-for-opportunities.tsx",
+      "lines": [
+        26,
+        133
+      ],
+      "hash": "0000000000000000000000000000000000000000",
+      "shortHash": "0000000",
+      "author": "Not Committed Yet",
+      "date": "2026-03-07T17:11:49.000Z",
+      "message": "Version of app/src/components/home/portfolio/contact/available-for-opportunities.tsx from app/src/components/home/portfolio/contact/available-for-opportunities.tsx"
+    },
+    "SocialMediaLinks": {
+      "section": "contact",
+      "file": "app/src/components/home/portfolio/contact/social-media-links.tsx",
+      "lines": [
+        46,
+        98
+      ],
+      "hash": "0000000000000000000000000000000000000000",
+      "shortHash": "0000000",
+      "author": "Not Committed Yet",
+      "date": "2026-03-07T17:11:49.000Z",
+      "message": "Version of app/src/components/home/portfolio/contact/social-media-links.tsx from app/src/components/home/portfolio/contact/social-media-links.tsx"
+    },
+    "LearningCard": {
+      "section": "learning",
+      "file": "app/src/components/home/portfolio/learning/learning-card.tsx",
+      "lines": [
+        16,
+        110
+      ],
+      "hash": "e0a2f1df27d134a523187d18597a82bac9ebb00e",
+      "shortHash": "e0a2f1d",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T01:07:38.000Z",
+      "message": "refactor: replace framer-motion with CSS modules in editor and learning components"
+    },
+    "JourneyItem": {
+      "section": "learning",
+      "file": "app/src/components/home/portfolio/learning/learning-journey/journey-item.tsx",
+      "lines": [
+        16,
+        138
+      ],
+      "hash": "e0a2f1df27d134a523187d18597a82bac9ebb00e",
+      "shortHash": "e0a2f1d",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T01:07:38.000Z",
+      "message": "refactor: replace framer-motion with CSS modules in editor and learning components"
+    },
+    "LearningJourney": {
+      "section": "learning",
+      "file": "app/src/components/home/portfolio/learning/learning-journey/learning-journey.tsx",
+      "lines": [
+        22,
+        173
+      ],
+      "hash": "e0a2f1df27d134a523187d18597a82bac9ebb00e",
+      "shortHash": "e0a2f1d",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T01:07:38.000Z",
+      "message": "refactor: replace framer-motion with CSS modules in editor and learning components"
+    },
+    "ProgressIndicator": {
+      "section": "learning",
+      "file": "app/src/components/home/portfolio/learning/learning-journey/progress-indicator.tsx",
+      "lines": [
+        7,
+        28
+      ],
+      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
+      "shortHash": "e4ccb5a",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T22:55:58.000Z",
+      "message": "style: add Prettier config and reformat entire codebase"
+    },
+    "LearningModal": {
+      "section": "learning",
+      "file": "app/src/components/home/portfolio/learning/learning-project-drawer.tsx",
+      "lines": [
+        22,
+        132
+      ],
+      "hash": "a09ff2cc7a5113b353f97e74f22168540c81e454",
+      "shortHash": "a09ff2c",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-04T23:39:21.000Z",
+      "message": "refactor: replace framer-motion entry animations with Reveal component in learning section"
     },
     "ArticleCard": {
       "section": "articles",

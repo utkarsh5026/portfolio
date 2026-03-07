@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-07T09:24:49.391Z",
+  "generatedAt": "2026-03-07T17:11:21.562Z",
   "commits": [
     {
-      "hash": "8382673eb5ca9a991e68042aa886f36274349f15",
-      "shortHash": "8382673",
+      "hash": "0652c4fe68dded1af569ef84486649f889783fdd",
+      "shortHash": "0652c4f",
+      "message": "feat: add relativeTime utility for human-readable date formatting",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T22:40:17+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 46,
+      "deletions": 0,
+      "filesChanged": 1
+    },
+    {
+      "hash": "0011e9e9527da849149a62432746b5c30892ee8f",
+      "shortHash": "0011e9e",
       "message": "build: remove three.js dependencies and add gen:git-meta script",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-07T14:54:06+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 1,
-      "deletions": 36,
-      "filesChanged": 2
+      "insertions": 35,
+      "deletions": 70,
+      "filesChanged": 5
     },
     {
       "hash": "2856b033fa2d136e1c6fff8a20e53c2c80f3f149",
@@ -228,22 +240,10 @@
       "insertions": 64,
       "deletions": 40,
       "filesChanged": 3
-    },
-    {
-      "hash": "46a857dbc2b0ea8a56119fc33daad52707b2496a",
-      "shortHash": "46a857d",
-      "message": "Merge pull request #74 from utkarsh5026/refactor/replace-framer-motion-with-css-modules",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T07:00:56+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 1634,
-      "deletions": 1567,
-      "filesChanged": 70
     }
   ],
   "commitsByDate": {
-    "2026-03-07": 40,
+    "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
     "2026-03-04": 17,
