@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-07T22:46:26.583Z",
+  "generatedAt": "2026-03-07T22:56:29.119Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -105,8 +105,8 @@
         12,
         49
       ],
-      "hash": "1f702a55306c3d5237cef8bb1d53067c78146319",
-      "shortHash": "1f702a5",
+      "hash": "16c0a2b22ca6b308675f34f338dfef4cb5802a7f",
+      "shortHash": "16c0a2b",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:45:15.000Z",
       "message": "refactor: extract EmailHighlight into its own file and pass component refs directly"
@@ -612,8 +612,8 @@
         26,
         133
       ],
-      "hash": "1f702a55306c3d5237cef8bb1d53067c78146319",
-      "shortHash": "1f702a5",
+      "hash": "16c0a2b22ca6b308675f34f338dfef4cb5802a7f",
+      "shortHash": "16c0a2b",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:45:15.000Z",
       "message": "refactor: extract EmailHighlight into its own file and pass component refs directly"
@@ -625,8 +625,8 @@
         10,
         55
       ],
-      "hash": "1f702a55306c3d5237cef8bb1d53067c78146319",
-      "shortHash": "1f702a5",
+      "hash": "16c0a2b22ca6b308675f34f338dfef4cb5802a7f",
+      "shortHash": "16c0a2b",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:45:15.000Z",
       "message": "refactor: extract EmailHighlight into its own file and pass component refs directly"
@@ -638,8 +638,8 @@
         46,
         98
       ],
-      "hash": "1f702a55306c3d5237cef8bb1d53067c78146319",
-      "shortHash": "1f702a5",
+      "hash": "16c0a2b22ca6b308675f34f338dfef4cb5802a7f",
+      "shortHash": "16c0a2b",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:45:15.000Z",
       "message": "refactor: extract EmailHighlight into its own file and pass component refs directly"

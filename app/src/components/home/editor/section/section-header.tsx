@@ -2,6 +2,7 @@ import { LucideIcon } from "lucide-react";
 import React from "react";
 import { VscGitCommit } from "react-icons/vsc";
 
+import { CSSPresence } from "@/components/animations";
 import Reveal from "@/components/animations/reveal/Reveal";
 import { relativeTime } from "@/lib/utils";
 import useGitMetaStore, {
@@ -68,31 +69,41 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
             </div>
           )}
 
-          {blameMeta && gitBlameEnabled && (
-            <div className="ml-4 flex items-center gap-2 text-ctp-overlay0 text-xs sm:text-sm mt-0.5">
-              <span>*</span>
-              <VscGitCommit className="w-3 h-3 text-ctp-green flex-shrink-0" />
-              {authorMeta?.avatar && (
-                <img
-                  src={authorMeta.avatar}
-                  alt={blameMeta.author}
-                  className="w-4 h-4 rounded-full flex-shrink-0"
-                />
-              )}
-              <span className="text-ctp-subtext0">{blameMeta.author}</span>
-              <span>·</span>
-              <span>{relativeTime(blameMeta.date)}</span>
-              <span>·</span>
-              <span className="text-ctp-subtext0 truncate max-w-[260px]">
-                {blameMeta.message.length > 55
-                  ? blameMeta.message.slice(0, 55) + "…"
-                  : blameMeta.message}
-              </span>
-              <span className="text-ctp-surface2 flex-shrink-0">
-                ({blameMeta.shortHash})
-              </span>
-            </div>
-          )}
+          <CSSPresence
+            enterClassName="cp-slide-left-in"
+            exitClassName="cp-slide-left-out"
+            mode="wait"
+            className="contents"
+          >
+            {blameMeta && gitBlameEnabled ? (
+              <div
+                key="blame"
+                className="ml-4 flex items-center gap-2 text-ctp-overlay0 text-xs sm:text-sm mt-0.5"
+              >
+                <span>*</span>
+                <VscGitCommit className="w-3 h-3 text-ctp-green flex-shrink-0" />
+                {authorMeta?.avatar && (
+                  <img
+                    src={authorMeta.avatar}
+                    alt={blameMeta.author}
+                    className="w-4 h-4 rounded-full flex-shrink-0"
+                  />
+                )}
+                <span className="text-ctp-subtext0">{blameMeta.author}</span>
+                <span>·</span>
+                <span>{relativeTime(blameMeta.date)}</span>
+                <span>·</span>
+                <span className="text-ctp-subtext0 truncate max-w-[260px]">
+                  {blameMeta.message.length > 55
+                    ? blameMeta.message.slice(0, 55) + "…"
+                    : blameMeta.message}
+                </span>
+                <span className="text-ctp-surface2 flex-shrink-0">
+                  ({blameMeta.shortHash})
+                </span>
+              </div>
+            ) : null}
+          </CSSPresence>
 
           <div className="flex items-center gap-2">
             <span>*/</span>

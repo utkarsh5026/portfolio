@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-07T22:45:47.085Z",
+  "generatedAt": "2026-03-07T22:55:58.100Z",
   "commits": [
     {
-      "hash": "1f702a55306c3d5237cef8bb1d53067c78146319",
-      "shortHash": "1f702a5",
+      "hash": "89b4c8fb7ea906826b6733a927726515a480a34c",
+      "shortHash": "89b4c8f",
+      "message": "feat: add CSSPresence animation component and use slide-left in section header",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T04:25:28+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 409,
+      "deletions": 26,
+      "filesChanged": 4
+    },
+    {
+      "hash": "16c0a2b22ca6b308675f34f338dfef4cb5802a7f",
+      "shortHash": "16c0a2b",
       "message": "refactor: extract EmailHighlight into its own file and pass component refs directly",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T04:15:15+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 60,
-      "deletions": 54,
-      "filesChanged": 4
+      "insertions": 179,
+      "deletions": 160,
+      "filesChanged": 7
     },
     {
       "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
@@ -228,22 +240,10 @@
       "insertions": 24,
       "deletions": 18,
       "filesChanged": 4
-    },
-    {
-      "hash": "336f04fac0353204400752ff0ac9ffb5b7246e88",
-      "shortHash": "336f04f",
-      "message": "build: add gen-git-meta and gen-git-all Makefile targets",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T14:45:49+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 70,
-      "deletions": 156,
-      "filesChanged": 5
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 16,
+    "2026-03-08": 17,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
@@ -265,7 +265,7 @@
   "languageStats": [
     {
       "language": "TypeScript",
-      "count": 226,
+      "count": 227,
       "color": "#89b4fa"
     },
     {
@@ -275,7 +275,7 @@
     },
     {
       "language": "CSS",
-      "count": 36,
+      "count": 37,
       "color": "#cba6f7"
     },
     {
