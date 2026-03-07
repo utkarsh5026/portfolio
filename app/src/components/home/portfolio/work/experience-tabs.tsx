@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
 import { FaChevronRight } from "react-icons/fa";
 
 import { Badge } from "@/components/ui/badge";
 
 import { experiences } from "./experienceDump";
+import styles from "./work.module.css";
 
 interface ExperienceTabsProps {
   selectedExp: number;
@@ -20,11 +20,9 @@ const ExperienceTabs: React.FC<ExperienceTabsProps> = ({
         Experience Timeline
       </h3>
       {experiences.map((exp, index) => (
-        <motion.div
+        <div
           key={`${exp.duration}-${index}`}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="relative"
+          className={`relative ${styles.interactive}`}
         >
           <button
             className={`w-full text-left p-3 sm:p-4 lg:p-5 rounded-lg sm:rounded-xl transition-all duration-300 relative overflow-hidden border ${
@@ -36,11 +34,8 @@ const ExperienceTabs: React.FC<ExperienceTabsProps> = ({
           >
             {/* Selection indicator */}
             {selectedExp === index && (
-              <motion.div
-                layoutId="activeTab"
-                className="absolute left-0 top-0 w-1 h-full bg-ctp-blue rounded-r-full"
-                initial={false}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              <div
+                className={`absolute left-0 top-0 w-1 h-full bg-ctp-blue rounded-r-full ${styles.zoomIn}`}
               />
             )}
 
@@ -62,10 +57,8 @@ const ExperienceTabs: React.FC<ExperienceTabsProps> = ({
 
                 {/* Active indicator */}
                 {selectedExp === index && (
-                  <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    className="absolute -bottom-0.5 -right-0.5 sm:-bottom-1 sm:-right-1 w-3 h-3 sm:w-4 sm:h-4 bg-ctp-blue rounded-full border-2 border-ctp-base"
+                  <div
+                    className={`absolute -bottom-0.5 -right-0.5 sm:-bottom-1 sm:-right-1 w-3 h-3 sm:w-4 sm:h-4 bg-ctp-blue rounded-full border-2 border-ctp-base ${styles.zoomIn}`}
                   />
                 )}
               </div>
@@ -102,7 +95,7 @@ const ExperienceTabs: React.FC<ExperienceTabsProps> = ({
               />
             </div>
           </button>
-        </motion.div>
+        </div>
       ))}
     </div>
   );

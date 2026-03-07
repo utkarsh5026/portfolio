@@ -1,14 +1,14 @@
-import { motion } from "framer-motion";
 import { Building } from "lucide-react";
 import React, { useState } from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
 import { OutlineNode } from "@/components/home/editor/outline";
-import Section from "@/components/section/portfolio-section";
+import Section from "@/components/home/editor/section/portfolio-section";
 
 import ExperienceDetails from "./experience-details";
 import ExperienceTabs from "./experience-tabs";
 import { experiences } from "./experienceDump";
+import styles from "./work.module.css";
 
 const EXPERIENCE_ID = "experience";
 
@@ -43,16 +43,14 @@ const WorkExperience: React.FC = () => {
                 <div className="overflow-x-auto pb-3 sm:pb-4 -mx-3 sm:-mx-4 px-3 sm:px-4">
                   <div className="flex gap-2 sm:gap-3 min-w-max">
                     {experiences.map((exp, index) => (
-                      <motion.button
+                      <button
                         key={`mobile-${exp.duration}-${index}`}
                         className={`flex-shrink-0 p-3 sm:p-4 rounded-lg sm:rounded-xl transition-all duration-300 min-w-[160px] sm:min-w-[200px] border ${
                           selectedExp === index
                             ? "bg-ctp-surface0/80 border-ctp-blue/30"
                             : "bg-ctp-surface0/30 border-ctp-surface1/30 hover:bg-ctp-surface0/50"
-                        }`}
+                        } ${styles.interactive}`}
                         onClick={() => handleExperienceClick(index)}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
                       >
                         <div className="flex items-center gap-2 sm:gap-3">
                           <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-md sm:rounded-lg overflow-hidden border border-ctp-surface1/50 flex-shrink-0">
@@ -71,7 +69,7 @@ const WorkExperience: React.FC = () => {
                             </p>
                           </div>
                         </div>
-                      </motion.button>
+                      </button>
                     ))}
                   </div>
                 </div>

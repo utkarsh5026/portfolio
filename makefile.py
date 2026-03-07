@@ -159,6 +159,18 @@ def target_type_check():
     print_success("Type checking completed!")
 
 
+def target_format():
+    print_header("Formatting Code")
+    _app_cmd(["bun", "run", "format:write"])
+    print_success("Formatting completed!")
+
+
+def target_format_check():
+    print_header("Checking Code Formatting")
+    _app_cmd(["bun", "run", "format:check"])
+    print_success("Formatting check passed!")
+
+
 def target_check():
     print_header("Full Check: lint + type-check")
     target_lint()
@@ -322,6 +334,8 @@ TARGETS = {
     "lint": (target_lint, "Run ESLint on the codebase", "Quality"),
     "lint-fix": (target_lint_fix, "Run ESLint and auto-fix issues", "Quality"),
     "type-check": (target_type_check, "Run TypeScript type checking", "Quality"),
+    "format": (target_format, "Format codebase with Prettier", "Quality"),
+    "format-check": (target_format_check, "Check formatting with Prettier", "Quality"),
     "check": (target_check, "Run all checks (lint + type-check)", "Quality"),
     # Maintenance
     "clean": (target_clean, "Clean build artifacts", "Maintenance"),

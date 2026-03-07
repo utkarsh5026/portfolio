@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import {
   BookOpen,
   Brain,
@@ -12,7 +11,7 @@ import React, { lazy, Suspense, useState } from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
 import { OutlineNode } from "@/components/home/editor/outline";
-import Section from "@/components/section/portfolio-section";
+import Section from "@/components/home/editor/section/portfolio-section";
 import {
   Collapsible,
   CollapsibleContent,
@@ -22,9 +21,9 @@ import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import useMobile from "@/hooks/use-mobile";
 import type { AppColor } from "@/lib/ctp-colors";
 
+import styles from "./about.module.css";
 import AboutSectionCard from "./about-section-card";
 
-// Lazy load section components for better mobile performance
 const Background = lazy(() => import("./sections/my-background"));
 const MyEducation = lazy(() => import("./sections/my-education"));
 const Skills = lazy(() => import("./sections/skills-display"));
@@ -34,7 +33,6 @@ const CurrentFocus = lazy(() => import("./sections/currrent-focus"));
 
 const ABOUT_SECTION = "about";
 
-// Loading fallback for lazy components
 const SectionLoader: React.FC = () => (
   <div className="flex items-center justify-center p-8">
     <div className="w-6 h-6 border-2 border-ctp-blue border-t-transparent rounded-full animate-spin" />
@@ -227,16 +225,13 @@ const DesktopAboutSection: React.FC<DesktopAboutSectionProps> = ({
           </button>
         </CollapsibleTrigger>
         <CollapsibleContent className="data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up overflow-hidden">
-          <motion.div
-            initial={false}
-            animate={{ opacity: isOpen ? 1 : 0 }}
-            transition={{ duration: 0.3, delay: isOpen ? 0.1 : 0 }}
-            className="pt-4 pl-11"
+          <div
+            className={`${styles.sectionContent} ${isOpen ? styles.sectionContentOpen : ""}`}
           >
             <Suspense fallback={<SectionLoader />}>
               <SectionComponent />
             </Suspense>
-          </motion.div>
+          </div>
         </CollapsibleContent>
       </Collapsible>
     </Reveal>

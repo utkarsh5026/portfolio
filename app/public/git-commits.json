@@ -1,6 +1,114 @@
 {
-  "generatedAt": "2026-03-06T22:56:11.771Z",
+  "generatedAt": "2026-03-07T01:24:03.534Z",
   "commits": [
+    {
+      "hash": "29cc420355d2819ec618eca831ceab61c8ea758b",
+      "shortHash": "29cc420",
+      "message": "chore: remove unused framer-motion and gsap dependencies",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T06:44:17+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 23,
+      "deletions": 35,
+      "filesChanged": 4
+    },
+    {
+      "hash": "e0a2f1df27d134a523187d18597a82bac9ebb00e",
+      "shortHash": "e0a2f1d",
+      "message": "refactor: replace framer-motion with CSS modules in editor and learning components",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T06:37:38+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 381,
+      "deletions": 200,
+      "filesChanged": 20
+    },
+    {
+      "hash": "a49d2c71e87eea57c6bd464b5289d3a76fbe1667",
+      "shortHash": "a49d2c7",
+      "message": "refactor: remove unused framer-motion utility components",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T06:32:26+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 39,
+      "deletions": 250,
+      "filesChanged": 8
+    },
+    {
+      "hash": "3cb4e111d624e8d0a1a9e12292aef53c174514bb",
+      "shortHash": "3cb4e11",
+      "message": "refactor: replace framer-motion with CSS modules in featured-project and work components",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T06:12:45+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 320,
+      "deletions": 420,
+      "filesChanged": 13
+    },
+    {
+      "hash": "2bf6332903627daa36b62f7db5226a1a8fa9b0ac",
+      "shortHash": "2bf6332",
+      "message": "refactor: consolidate section-loading and relocate section components under editor",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T05:56:37+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 666,
+      "deletions": 526,
+      "filesChanged": 30
+    },
+    {
+      "hash": "2568ee3c5fb66b7044304e54e6d0d2c5da6183f8",
+      "shortHash": "2568ee3",
+      "message": "refactor: replace framer-motion with CSS modules in git-commits components",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T05:07:25+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 160,
+      "deletions": 124,
+      "filesChanged": 5
+    },
+    {
+      "hash": "ffc225e2f5f233664cdb1e28f147409a189d422c",
+      "shortHash": "ffc225e",
+      "message": "build: add format and format-check make targets",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T04:57:13+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 42,
+      "deletions": 24,
+      "filesChanged": 4
+    },
+    {
+      "hash": "4425b18bb009750f35f92bafd59bcb8b0e15e780",
+      "shortHash": "4425b18",
+      "message": "perf: replace framer-motion with CSS modules in about section",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T04:54:58+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 94,
+      "deletions": 79,
+      "filesChanged": 5
+    },
+    {
+      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
+      "shortHash": "e4ccb5a",
+      "message": "style: add Prettier config and reformat entire codebase",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T04:25:58+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 5126,
+      "deletions": 4943,
+      "filesChanged": 139
+    },
     {
       "hash": "df370868be01196dd878a1047cd3073355895276",
       "shortHash": "df37086",
@@ -132,118 +240,10 @@
       "insertions": 657,
       "deletions": 282,
       "filesChanged": 10
-    },
-    {
-      "hash": "8d2d8c7fc37cfd1fb0df86e4585ae9c9129ed928",
-      "shortHash": "8d2d8c7",
-      "message": "feat: bridge markdown headings into outline panel during Deep Dive",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-06T04:17:49+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 174,
-      "deletions": 46,
-      "filesChanged": 4
-    },
-    {
-      "hash": "dff6d01016aa1a62c1507cfc34b203aefdb593fa",
-      "shortHash": "dff6d01",
-      "message": "feat: add outline nodes with icons to about, contact, work, and projects sections",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-06T04:04:56+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 44,
-      "deletions": 24,
-      "filesChanged": 6
-    },
-    {
-      "hash": "5e550c31f1895b897877fe48ddb85e06133f0800",
-      "shortHash": "5e550c3",
-      "message": "feat: add collapsible toggle to outline panel",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T22:05:18+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 78,
-      "deletions": 44,
-      "filesChanged": 3
-    },
-    {
-      "hash": "a51da4028f596d0bdec6588bf55e5f01a8d3067b",
-      "shortHash": "a51da40",
-      "message": "chore: remove unused journeySteps data and dead imports from skills/data.tsx",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T21:56:36+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 24,
-      "deletions": 86,
-      "filesChanged": 3
-    },
-    {
-      "hash": "739cf2fb801d6e77461583f4e046bdbcfd454ff3",
-      "shortHash": "739cf2f",
-      "message": "chore: remove unused usage data from skill categories",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T21:46:51+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 18,
-      "deletions": 122,
-      "filesChanged": 4
-    },
-    {
-      "hash": "88e39009650c04bf2e6c75a4b628d4ae6068efe5",
-      "shortHash": "88e3900",
-      "message": "feat: add icon color support to outline panel with Catppuccin tokens",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T21:44:52+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 107,
-      "deletions": 63,
-      "filesChanged": 6
-    },
-    {
-      "hash": "7547db3b0069c9c2a3921928a6b9de3b6e37ba5f",
-      "shortHash": "7547db3",
-      "message": "refactor: migrate outline state from React Context to Zustand store",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T21:03:11+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 333,
-      "deletions": 393,
-      "filesChanged": 22
-    },
-    {
-      "hash": "bcbc8d37f3c898677de6aa1c6186c088057ea024",
-      "shortHash": "bcbc8d3",
-      "message": "refactor: extract reusable Tree UI component and migrate editor tree views",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T18:37:41+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 498,
-      "deletions": 431,
-      "filesChanged": 10
-    },
-    {
-      "hash": "c64d44ff26e7487fb9a9c3908c3df2992a5058e5",
-      "shortHash": "c64d44f",
-      "message": "feat: add heading navigation dropdowns to editor breadcrumbs",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T17:47:44+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 618,
-      "deletions": 210,
-      "filesChanged": 12
     }
   ],
   "commitsByDate": {
-    "2026-03-07": 9,
+    "2026-03-07": 18,
     "2026-03-06": 4,
     "2026-03-05": 43,
     "2026-03-04": 17,
@@ -264,7 +264,7 @@
   "languageStats": [
     {
       "language": "TypeScript",
-      "count": 233,
+      "count": 216,
       "color": "#89b4fa"
     },
     {
@@ -274,7 +274,7 @@
     },
     {
       "language": "CSS",
-      "count": 25,
+      "count": 35,
       "color": "#cba6f7"
     },
     {

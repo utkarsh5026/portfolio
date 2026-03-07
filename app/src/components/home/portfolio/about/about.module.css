@@ -1,0 +1,21 @@
+.sectionContent {
+  padding-top: 1rem;
+  padding-left: 2.75rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sectionContentOpen {
+  opacity: 1;
+  transition: opacity 0.3s ease 0.1s;
+}
+
+.chevron {
+  flex-shrink: 0;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}

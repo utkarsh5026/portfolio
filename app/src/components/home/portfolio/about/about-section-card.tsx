@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
+
+import styles from "./about.module.css";
 
 interface AboutSectionCardProps {
   section: {
@@ -62,15 +63,13 @@ const AboutSectionCard: React.FC<AboutSectionCardProps> = ({
               <ArrowRight className="w-4 h-4" />
             </div>
           ) : (
-            <motion.div
-              animate={{ rotate: isOpen ? 180 : 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="flex-shrink-0"
+            <div
+              className={`${styles.chevron} ${isOpen ? styles.chevronOpen : ""}`}
             >
               <ChevronDown
                 className={`w-5 h-5 text-ctp-subtext0 group-hover:text-ctp-${section.color} transition-colors duration-300`}
               />
-            </motion.div>
+            </div>
           )}
         </div>
       </div>

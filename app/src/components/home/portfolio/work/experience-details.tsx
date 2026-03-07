@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 import { FaCode, FaHandPointer } from "react-icons/fa";
 
@@ -17,6 +16,7 @@ import useMobile from "@/hooks/use-mobile";
 
 import ExperienceHeader from "./experience-header";
 import { experiences } from "./experienceDump";
+import styles from "./work.module.css";
 import Achievements from "./work-acheivements";
 
 interface ExperienceDetailsProps {
@@ -46,13 +46,9 @@ const TechnologiesContent: React.FC<{ selectedExp: number }> = ({
           className="flex flex-wrap gap-2 sm:gap-3 md:gap-4"
         >
           {experiences[selectedExp].technologies.map((tech, index) => (
-            <motion.div
-              key={`${tech}-${index}`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <div key={`${tech}-${index}`} className={styles.interactiveLg}>
               <TechBadge tech={tech} />
-            </motion.div>
+            </div>
           ))}
         </Reveal>
       </div>
@@ -169,42 +165,34 @@ const ExperienceDetails: React.FC<ExperienceDetailsProps> = ({
 
   return (
     <div className="space-y-6 sm:space-y-8">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={`experience-${selectedExp}`}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.4 }}
-        >
-          {isMobile ? (
-            <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
-              <DrawerTrigger asChild>
-                <div className="cursor-pointer group">
-                  <Card className="overflow-hidden border-none bg-ctp-surface0/10 backdrop-blur-sm hover:bg-ctp-surface0/15 transition-all duration-300 relative">
-                    <CardContent className="p-0 pb-12">
-                      <Reveal effect="fade-up" duration={0.7} delay={0.3}>
-                        <ExperienceHeader selectedExp={selectedExp} />
-                      </Reveal>
-                    </CardContent>
+      <div key={`experience-${selectedExp}`} className={styles.slideInUp}>
+        {isMobile ? (
+          <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+            <DrawerTrigger asChild>
+              <div className="cursor-pointer group">
+                <Card className="overflow-hidden border-none bg-ctp-surface0/10 backdrop-blur-sm hover:bg-ctp-surface0/15 transition-all duration-300 relative">
+                  <CardContent className="p-0 pb-12">
+                    <Reveal effect="fade-up" duration={0.7} delay={0.3}>
+                      <ExperienceHeader selectedExp={selectedExp} />
+                    </Reveal>
+                  </CardContent>
 
-                    <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex items-center gap-2 px-4 py-2 bg-transparent backdrop-blur-sm rounded-full border-none text-ctp-overlay0 shadow-lg text-xs">
-                      <FaHandPointer className="w-3 h-3 animate-pulse" />
-                      <span className="font-medium whitespace-nowrap">
-                        Tap for details
-                      </span>
-                    </div>
-                  </Card>
-                </div>
-              </DrawerTrigger>
+                  <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex items-center gap-2 px-4 py-2 bg-transparent backdrop-blur-sm rounded-full border-none text-ctp-overlay0 shadow-lg text-xs">
+                    <FaHandPointer className="w-3 h-3 animate-pulse" />
+                    <span className="font-medium whitespace-nowrap">
+                      Tap for details
+                    </span>
+                  </div>
+                </Card>
+              </div>
+            </DrawerTrigger>
 
-              <MobileDrawerContent selectedExp={selectedExp} />
-            </Drawer>
-          ) : (
-            <DesktopContent selectedExp={selectedExp} />
-          )}
-        </motion.div>
-      </AnimatePresence>
+            <MobileDrawerContent selectedExp={selectedExp} />
+          </Drawer>
+        ) : (
+          <DesktopContent selectedExp={selectedExp} />
+        )}
+      </div>
     </div>
   );
 };

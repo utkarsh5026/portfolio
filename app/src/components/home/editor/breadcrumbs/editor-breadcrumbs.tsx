@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from "framer-motion";
 import React, {
   type ReactNode,
   useCallback,
@@ -40,6 +39,7 @@ import {
   type Tab,
   useEditorContext,
 } from "../context/explorer-context";
+import styles from "../editor-ui.module.css";
 import { getIconColor, sectionIconMap } from "../tabs/tab-style";
 import TreeDropdown from "./tree-dropdown";
 
@@ -565,16 +565,12 @@ export const EditorBreadcrumbs: React.FC = () => {
   }, [segments]);
 
   return (
-    <AnimatePresence mode="wait">
+    <>
       {activeTab && (
-        <motion.div
+        <div
           ref={barRef}
           key={`${activeTabId}-bar`}
-          initial={{ opacity: 0, y: -4 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -4 }}
-          transition={{ duration: 0.15, ease: "easeOut" }}
-          className="flex items-center gap-0 px-3 py-1 bg-ctp-mantle border-none text-xs font-source select-none overflow-x-auto whitespace-nowrap [&::-webkit-scrollbar]:hidden"
+          className={`flex items-center gap-0 px-3 py-1 bg-ctp-mantle border-none text-xs font-source select-none overflow-x-auto whitespace-nowrap [&::-webkit-scrollbar]:hidden ${styles.breadcrumbBar}`}
         >
           {segments.map((seg, i) => (
             <React.Fragment key={`${seg.label}-${i}`}>
@@ -608,9 +604,9 @@ export const EditorBreadcrumbs: React.FC = () => {
               />
             </React.Fragment>
           ))}
-        </motion.div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   );
 };
 

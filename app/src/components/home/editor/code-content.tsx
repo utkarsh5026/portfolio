@@ -2,7 +2,7 @@ import { lazy, Suspense, useRef } from "react";
 
 import styles from "./code-content.module.css";
 import { useEditorContext } from "./context/explorer-context";
-import SectionLoadingScreen from "./context/section-loading";
+import { SectionLoadingScreen } from "./section/section-loading";
 
 const ProjectMarkdown = lazy(
   () => import("../portfolio/projects/project-markdown")

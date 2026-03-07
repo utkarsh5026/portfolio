@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import React from "react";
 
 interface TerminalInputProps {
@@ -24,11 +23,8 @@ interface TerminalInputProps {
 const TerminalInput = React.forwardRef<HTMLInputElement, TerminalInputProps>(
   ({ input, setInput, handleSubmit, handleKeyDown }, ref) => {
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-        className="rounded-xl overflow-hidden terminal-input-block"
+      <div
+        className="rounded-xl overflow-hidden terminal-input-block terminal-block-enter"
         style={{
           background: "rgba(30, 30, 46, 0.6)",
           backdropFilter: "blur(12px)",
@@ -71,7 +67,7 @@ const TerminalInput = React.forwardRef<HTMLInputElement, TerminalInputProps>(
             )}
           </form>
         </div>
-      </motion.div>
+      </div>
     );
   }
 );

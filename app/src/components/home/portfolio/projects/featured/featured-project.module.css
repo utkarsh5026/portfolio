@@ -1,0 +1,45 @@
+/* featured-project.module.css */
+
+.sparkleIcon {
+  animation: sparkleEntrance 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+    forwards;
+  /* Equivalent to initial={{ rotate: -10, scale: 0.8, opacity: 0 }} */
+  transform: rotate(-10deg) scale(0.8);
+  opacity: 0;
+}
+
+@keyframes sparkleEntrance {
+  to {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.titleSlideIn {
+  animation: titleEntrance 0.5s ease 0.1s forwards;
+  /* Equivalent to initial={{ x: -20, opacity: 0 }} */
+  transform: translateX(-20px);
+  opacity: 0;
+}
+
+@keyframes titleEntrance {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.lineGrow {
+  animation: lineEntrance 0.8s ease 0.2s forwards;
+  /* Equivalent to initial={{ scaleX: 0, opacity: 0 }} */
+  transform: scaleX(0);
+  opacity: 0;
+  transform-origin: left;
+}
+
+@keyframes lineEntrance {
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}

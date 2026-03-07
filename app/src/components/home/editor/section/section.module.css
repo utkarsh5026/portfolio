@@ -1,0 +1,56 @@
+/* section.module.css */
+
+.sectionContainer {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.sectionVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scrollbar {
+  opacity: 0;
+  transform: translateX(-50%) scaleX(0);
+  transition:
+    opacity 0.8s ease 0.5s,
+    transform 0.8s ease 0.5s;
+  transform-origin: center;
+}
+
+.scrollbarVisible {
+  opacity: 1;
+  transform: translateX(-50%) scaleX(1);
+}
+
+.borderDeco {
+  opacity: 0;
+  transition: opacity 0.8s ease 0.4s;
+}
+
+.borderDecoVisible {
+  opacity: 1;
+}
+
+.headerTitle {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.4s ease 0.2s forwards;
+}
+
+.headerDesc {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.4s ease 0.3s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

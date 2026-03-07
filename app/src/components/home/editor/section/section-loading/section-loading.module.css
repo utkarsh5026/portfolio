@@ -1,0 +1,149 @@
+/* ── Keyframes ─────────────────────────────────────────────── */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInSlightUp {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes progressFill {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes pulseOpacity {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulseScaleOpacity {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Classes ───────────────────────────────────────────────── */
+
+/** Command row: slides in from slightly below */
+.commandRow {
+  animation: fadeInUp 0.2s ease both;
+}
+
+/** Cursor: alternates between visible and invisible */
+.cursor {
+  animation: blink 0.8s step-end infinite;
+}
+
+/** Output line under a command */
+.outputLine {
+  animation: fadeInSlightUp 0.2s ease both;
+}
+
+/** AboutLoading – progress bar fill */
+.progressBar {
+  animation: progressFill 2s linear infinite;
+}
+
+/** ContactLoading – connection row appears from below.
+    Set --delay inline for staggered items. */
+.connectionRow {
+  animation: fadeInUp 0.3s ease both;
+  animation-delay: var(--delay, 0s);
+}
+
+/** ContactLoading – output text under a connection row */
+.connectionOutput {
+  animation: fadeIn 0.3s ease both;
+}
+
+/** ContactLoading / HomeLoading – status dot pulse */
+.pulseDot {
+  animation: pulseOpacity 1.5s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+/** LearningLoading – scale + opacity pulse dots */
+.pulseScaleDot {
+  animation: pulseScaleOpacity 1.2s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+/** SkillsLoading – spinner */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/** SectionLoadingScreen – fade + scale entrance */
+.screenEnter {
+  animation: fadeInScale 0.4s ease-out both;
+}

@@ -1,12 +1,12 @@
-import { motion, useInView } from "framer-motion";
 import { Book, LucideIcon } from "lucide-react";
 import React, { useRef } from "react";
 
 import { OutlineNode } from "@/components/home/editor/outline";
+import { useInView } from "@/hooks/use-in-view";
 import useMobile from "@/hooks/use-mobile";
 
-import { getIcon } from "./sec-utils";
-import { sectionColorSchemes } from "./sec-utils";
+import { getIcon, sectionColorSchemes } from "./sec-utils";
+import styles from "./section.module.css";
 import SectionContent from "./section-content";
 
 interface SectionProps {
@@ -57,16 +57,10 @@ const Section: React.FC<SectionProps> = ({
 
   return (
     <OutlineNode id={id} label={label} icon={getIcon(icon)}>
-      <motion.div
+      <div
         ref={sectionRef}
         id={id}
-        className={`${id}-section relative w-full ${className}`}
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{
-          duration: 0.6,
-          ease: [0.25, 0.46, 0.45, 0.94], // Custom easing for smooth mobile animation
-        }}
+        className={`${id}-section relative w-full ${className} ${styles.sectionContainer} ${isInView ? styles.sectionVisible : ""}`}
       >
         <div className="relative w-full overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-ctp-surface0/5 via-transparent to-ctp-mantle/5 pointer-events-none" />
@@ -85,35 +79,28 @@ const Section: React.FC<SectionProps> = ({
 
           {/* Mobile scroll indicator (subtle visual cue) */}
           {isMobile && (
-            <motion.div
-              className={`absolute bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-ctp-surface0/30 rounded-full`}
-              initial={{ opacity: 0, scaleX: 0 }}
-              animate={
-                isInView ? { opacity: 1, scaleX: 1 } : { opacity: 0, scaleX: 0 }
-              }
-              transition={{ duration: 0.8, delay: 0.5 }}
+            <div
+              className={`absolute bottom-2 left-1/2 w-8 h-1 bg-ctp-surface0/30 rounded-full ${styles.scrollbar} ${isInView ? styles.scrollbarVisible : ""}`}
             />
           )}
 
           {/* Responsive border decoration with section color */}
-          <motion.div
+          <div
             className={`
               absolute inset-0 rounded-none
               sm:rounded-lg
               lg:rounded-xl
-              
+
               border-0
               sm:border border-${colorScheme.primary}/10
-              
+
               shadow-none
               sm:shadow-sm
               lg:shadow-md lg:shadow-${colorScheme.primary}/5
-              
+
               pointer-events-none
+              ${styles.borderDeco} ${isInView ? styles.borderDecoVisible : ""}
             `}
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
           />
         </div>
 
@@ -122,7 +109,7 @@ const Section: React.FC<SectionProps> = ({
             {label} section loaded
           </div>
         )}
-      </motion.div>
+      </div>
     </OutlineNode>
   );
 };
