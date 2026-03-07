@@ -57,6 +57,8 @@ export default defineConfig({
     minify: "terser",
     cssMinify: true,
     terserOptions: {
+      keep_classnames: true,
+      keep_fnames: true,
       compress: {
         drop_console: false, // Keep console.logs in production
         drop_debugger: true,
