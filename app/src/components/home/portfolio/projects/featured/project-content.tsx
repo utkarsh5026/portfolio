@@ -5,6 +5,7 @@ import { FaGithub } from "react-icons/fa";
 import Reveal from "@/components/animations/reveal/Reveal";
 import TechBadge from "@/components/base/TechBadge";
 import { Button } from "@/components/ui/button";
+import { useGitComponent } from "@/hooks/use-git-component";
 import { Project } from "@/types";
 
 interface ProjectContentProps {
@@ -18,8 +19,10 @@ const ProjectContent: React.FC<ProjectContentProps> = ({
   featuredProject,
   handleProjectSelect,
 }) => {
+  const ref = useGitComponent(ProjectContent);
+
   return (
-    <div className="xl:w-1/2 space-y-6">
+    <div ref={ref} className="xl:w-1/2 space-y-6">
       {activeTab === "overview" ? (
         <Reveal effect="fade-up" duration={0.4}>
           <p className="text-ctp-text leading-relaxed">

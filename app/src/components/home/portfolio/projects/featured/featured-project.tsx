@@ -23,7 +23,7 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<Tab>("overview");
   const { isMobile } = useMobileContext();
-  const gitRef = useGitComponent("FeaturedProject");
+  const gitRef = useGitComponent(FeaturedProject);
 
   return (
     <div ref={gitRef} className="mb-16 max-w-6xl mx-auto relative">

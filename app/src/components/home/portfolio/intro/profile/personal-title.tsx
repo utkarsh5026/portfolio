@@ -1,6 +1,7 @@
 import React from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
+import { useGitComponent } from "@/hooks/use-git-component";
 
 import styles from "./profile.module.css";
 
@@ -9,8 +10,10 @@ import styles from "./profile.module.css";
  * Clean and modern with subtle tech aesthetics.
  */
 const PersonalTitle: React.FC = () => {
+  const ref = useGitComponent(PersonalTitle);
+
   return (
-    <div className="relative">
+    <div ref={ref} className="relative">
       {/* Subtle grid background */}
       <div
         className="absolute inset-0 opacity-[0.02] pointer-events-none"

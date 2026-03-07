@@ -11,6 +11,7 @@ import {
 import Reveal from "@/components/animations/reveal/Reveal";
 import { OutlineNode } from "@/components/home/editor/outline";
 import { Card, CardContent } from "@/components/ui/card";
+import { useGitComponent } from "@/hooks/use-git-component";
 
 import { experiences } from "./experienceDump";
 import styles from "./work.module.css";
@@ -28,40 +29,43 @@ const iconMap: { [key: string]: JSX.Element } = {
 };
 
 const Achievements: React.FC<AchievementsProps> = ({ selectedExp }) => {
+  const ref = useGitComponent(Achievements);
   const experience = experiences[selectedExp];
 
   return (
-    <OutlineNode label="Key Achievements">
-      <div className="space-y-4 sm:space-y-6">
-        <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-          <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-lg bg-ctp-green/20 flex items-center justify-center flex-shrink-0">
-            <FaRocket className="w-3 h-3 sm:w-4 sm:h-4 text-ctp-green" />
+    <div ref={ref}>
+      <OutlineNode label="Key Achievements">
+        <div className="space-y-4 sm:space-y-6">
+          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+            <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-lg bg-ctp-green/20 flex items-center justify-center flex-shrink-0">
+              <FaRocket className="w-3 h-3 sm:w-4 sm:h-4 text-ctp-green" />
+            </div>
+            <h3 className="text-base sm:text-lg md:text-xl font-bold text-ctp-text">
+              Achievements & Impact
+            </h3>
+            <div className="flex-1 h-px bg-gradient-to-r from-ctp-surface1/50 to-transparent" />
           </div>
-          <h3 className="text-base sm:text-lg md:text-xl font-bold text-ctp-text">
-            Achievements & Impact
-          </h3>
-          <div className="flex-1 h-px bg-gradient-to-r from-ctp-surface1/50 to-transparent" />
-        </div>
 
-        <div className="flex flex-col  gap-3 sm:gap-4 md:gap-6">
-          {experience.achievements.map((achievement, index) => (
-            <OutlineNode
-              key={`achievement-${achievement.title}`}
-              label={achievement.title}
-            >
-              <Reveal
-                effect="rise"
-                duration={0.6}
-                delay={0.1 * index}
-                threshold={0.2}
+          <div className="flex flex-col  gap-3 sm:gap-4 md:gap-6">
+            {experience.achievements.map((achievement, index) => (
+              <OutlineNode
+                key={`achievement-${achievement.title}`}
+                label={achievement.title}
               >
-                <AchievementCard achievement={achievement} index={index} />
-              </Reveal>
-            </OutlineNode>
-          ))}
+                <Reveal
+                  effect="rise"
+                  duration={0.6}
+                  delay={0.1 * index}
+                  threshold={0.2}
+                >
+                  <AchievementCard achievement={achievement} index={index} />
+                </Reveal>
+              </OutlineNode>
+            ))}
+          </div>
         </div>
-      </div>
-    </OutlineNode>
+      </OutlineNode>
+    </div>
   );
 };
 

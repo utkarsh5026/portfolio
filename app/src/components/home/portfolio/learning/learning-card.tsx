@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
+import { useGitComponent } from "@/hooks/use-git-component";
 import { TechnologyLearning } from "@/types";
 
 import styles from "./learning.module.css";
@@ -20,6 +21,8 @@ const LearningCard: React.FC<LearningCardProps> = ({
   delay = 0,
   categoryColor,
 }) => {
+  const ref = useGitComponent(LearningCard);
+
   const getCardEffect = () => {
     switch (categoryColor) {
       case "blue":
@@ -40,6 +43,7 @@ const LearningCard: React.FC<LearningCardProps> = ({
   return (
     <Reveal effect={getCardEffect()} delay={delay} duration={0.6} cascade>
       <div
+        ref={ref}
         className={`group cursor-pointer h-full block ${styles.arrowGroup}`}
         onClick={() => onSelect(tech)}
       >

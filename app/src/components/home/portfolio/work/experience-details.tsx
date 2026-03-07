@@ -12,6 +12,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { useGitComponent } from "@/hooks/use-git-component";
 import useMobile from "@/hooks/use-mobile";
 
 import ExperienceHeader from "./experience-header";
@@ -160,11 +161,12 @@ const DesktopContent: React.FC<{ selectedExp: number }> = ({ selectedExp }) => (
 const ExperienceDetails: React.FC<ExperienceDetailsProps> = ({
   selectedExp,
 }) => {
+  const ref = useGitComponent(ExperienceDetails);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { isMobile } = useMobile();
 
   return (
-    <div className="space-y-6 sm:space-y-8">
+    <div ref={ref} className="space-y-6 sm:space-y-8">
       <div key={`experience-${selectedExp}`} className={styles.slideInUp}>
         {isMobile ? (
           <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>

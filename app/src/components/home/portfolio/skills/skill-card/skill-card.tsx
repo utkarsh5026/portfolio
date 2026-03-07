@@ -13,7 +13,7 @@ const effects: RevealEffect[] = ["fade-up", "slide-in", "blur-in", "glide"];
 
 const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
   const currentEffect = effects[index % effects.length];
-  const gitRef = useGitComponent("SkillCard");
+  const gitRef = useGitComponent(SkillCard);
 
   return (
     <Reveal

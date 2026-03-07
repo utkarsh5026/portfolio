@@ -3,6 +3,7 @@ import { HiBookOpen, HiFire, HiSparkles } from "react-icons/hi2";
 import { TbBrandVscode, TbTerminal2 } from "react-icons/tb";
 
 import SketchBorder from "@/components/ui/sketch-border";
+import { useGitComponent } from "@/hooks/use-git-component";
 import { cn } from "@/lib/utils";
 
 import AnimatedText from "./animated-text";
@@ -46,6 +47,8 @@ const qaPairs = [
 ];
 
 const Terminal: React.FC = () => {
+  const ref = useGitComponent(Terminal);
+
   return (
     <SketchBorder
       primaryColor="green"
@@ -54,6 +57,7 @@ const Terminal: React.FC = () => {
       tertiaryColor="sky"
     >
       <div
+        ref={ref}
         className={cn(
           "overflow-hidden w-full",
           "bg-gradient-to-br from-ctp-crust to-ctp-mantle",
