@@ -1,5 +1,11 @@
 {
-  "generatedAt": "2026-03-07T07:24:25.485Z",
+  "generatedAt": "2026-03-07T08:51:49.498Z",
+  "authors": {
+    "Utkarsh Priyadarshi": {
+      "github": "utkarsh5026",
+      "avatar": "https://github.com/utkarsh5026.png"
+    }
+  },
   "components": {
     "DesktopPersonalIntro": {
       "section": "home",
@@ -195,6 +201,149 @@
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-04T23:02:52.000Z",
       "message": "style: redesign article cards with 16:9 image layout and cleaner hover effects"
+    },
+    "SkillCard": {
+      "section": "skills",
+      "file": "app/src/components/home/portfolio/skills/skill-card/skill-card.tsx",
+      "lines": [
+        14,
+        53
+      ],
+      "hash": "0000000000000000000000000000000000000000",
+      "shortHash": "0000000",
+      "author": "Not Committed Yet",
+      "date": "2026-03-07T08:51:46.000Z",
+      "message": "Version of app/src/components/home/portfolio/skills/skill-card/skill-card.tsx from app/src/components/home/portfolio/skills/skill-card/skill-card.tsx"
+    },
+    "FeaturedProject": {
+      "section": "projects",
+      "file": "app/src/components/home/portfolio/projects/featured/featured-project.tsx",
+      "lines": [
+        20,
+        92
+      ],
+      "hash": "0000000000000000000000000000000000000000",
+      "shortHash": "0000000",
+      "author": "Not Committed Yet",
+      "date": "2026-03-07T08:51:46.000Z",
+      "message": "Version of app/src/components/home/portfolio/projects/featured/featured-project.tsx from app/src/components/home/portfolio/projects/featured/featured-project.tsx"
+    },
+    "TabNavigation": {
+      "section": "projects",
+      "file": "app/src/components/home/portfolio/projects/featured/featured-project.tsx",
+      "lines": [
+        99,
+        133
+      ],
+      "hash": "99d41b0723365594c25773ba922c9aa9893d4709",
+      "shortHash": "99d41b0",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2025-05-16T14:49:47.000Z",
+      "message": "Refactor FeaturedProject component for improved styling and responsiveness"
+    },
+    "FeaturedHeader": {
+      "section": "projects",
+      "file": "app/src/components/home/portfolio/projects/featured/featured-project.tsx",
+      "lines": [
+        140,
+        164
+      ],
+      "hash": "3cb4e111d624e8d0a1a9e12292aef53c174514bb",
+      "shortHash": "3cb4e11",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T00:42:45.000Z",
+      "message": "refactor: replace framer-motion with CSS modules in featured-project and work components"
+    },
+    "Certificate": {
+      "section": "projects",
+      "file": "app/src/components/home/portfolio/projects/featured/featured-project.tsx",
+      "lines": [
+        170,
+        204
+      ],
+      "hash": "3cb4e111d624e8d0a1a9e12292aef53c174514bb",
+      "shortHash": "3cb4e11",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T00:42:45.000Z",
+      "message": "refactor: replace framer-motion with CSS modules in featured-project and work components"
+    },
+    "ArticleCard": {
+      "section": "articles",
+      "file": "app/src/components/home/portfolio/articles/article-card.tsx",
+      "lines": [
+        14,
+        107
+      ],
+      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
+      "shortHash": "e4ccb5a",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T22:55:58.000Z",
+      "message": "style: add Prettier config and reformat entire codebase"
+    },
+    "TechnologiesContent": {
+      "section": "experience",
+      "file": "app/src/components/home/portfolio/work/experience-details.tsx",
+      "lines": [
+        26,
+        57
+      ],
+      "hash": "3cb4e111d624e8d0a1a9e12292aef53c174514bb",
+      "shortHash": "3cb4e11",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T00:42:45.000Z",
+      "message": "refactor: replace framer-motion with CSS modules in featured-project and work components"
+    },
+    "FooterContent": {
+      "section": "experience",
+      "file": "app/src/components/home/portfolio/work/experience-details.tsx",
+      "lines": [
+        59,
+        71
+      ],
+      "hash": "f5c4103e304fb26b380e965a38f25c7ef222b0c9",
+      "shortHash": "f5c4103",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2025-07-02T14:13:34.000Z",
+      "message": "Refactor ExperienceDetails component to enhance mobile responsiveness and introduce new layout structure"
+    },
+    "MobileDrawerContent": {
+      "section": "experience",
+      "file": "app/src/components/home/portfolio/work/experience-details.tsx",
+      "lines": [
+        73,
+        125
+      ],
+      "hash": "afbc35e2559db959d3c993352474c7863bc61a1d",
+      "shortHash": "afbc35e",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2025-07-02T14:22:19.000Z",
+      "message": "Enhance mobile responsiveness and styling in ExperienceHeader and ExperienceDetails components"
+    },
+    "DesktopContent": {
+      "section": "experience",
+      "file": "app/src/components/home/portfolio/work/experience-details.tsx",
+      "lines": [
+        127,
+        158
+      ],
+      "hash": "f5c4103e304fb26b380e965a38f25c7ef222b0c9",
+      "shortHash": "f5c4103",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2025-07-02T14:13:34.000Z",
+      "message": "Refactor ExperienceDetails component to enhance mobile responsiveness and introduce new layout structure"
+    },
+    "ExperienceDetails": {
+      "section": "experience",
+      "file": "app/src/components/home/portfolio/work/experience-details.tsx",
+      "lines": [
+        160,
+        198
+      ],
+      "hash": "3cb4e111d624e8d0a1a9e12292aef53c174514bb",
+      "shortHash": "3cb4e11",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T00:42:45.000Z",
+      "message": "refactor: replace framer-motion with CSS modules in featured-project and work components"
     }
   }
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 export interface ComponentMeta {
+  name: string;
   section: string;
   file: string;
   lines: [number, number];
@@ -11,8 +12,14 @@ export interface ComponentMeta {
   message: string;
 }
 
+export interface AuthorMeta {
+  github: string;
+  avatar: string;
+}
+
 interface GitMetaJson {
   generatedAt: string;
+  authors: Record<string, AuthorMeta>;
   components: Record<string, ComponentMeta>;
 }
 
@@ -27,6 +34,10 @@ function loadGitMeta(): Promise<GitMetaJson> {
   fetchPromise = fetch("/data/git-meta.json")
     .then((r) => r.json() as Promise<GitMetaJson>)
     .then((data) => {
+      // Inject the component name as a field so callers don't need the key
+      Object.entries(data.components).forEach(([name, meta]) => {
+        meta.name = name;
+      });
       cachedMeta = data;
       return data;
     })
@@ -65,7 +76,11 @@ export function useGitMeta() {
     );
   }
 
-  return { getByComponent, getBySection };
+  function getAuthor(authorName: string): AuthorMeta | null {
+    return meta?.authors?.[authorName] ?? null;
+  }
+
+  return { getByComponent, getBySection, getAuthor };
 }
 
 /** Format a UTC ISO date string as a relative time string, e.g. "3 days ago" */

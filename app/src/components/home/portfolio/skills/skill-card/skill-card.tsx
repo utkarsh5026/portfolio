@@ -1,4 +1,5 @@
 import { Reveal, type RevealEffect } from "@/components/animations";
+import { useGitComponent } from "@/hooks/use-git-component";
 
 import { skillCategories } from "../data";
 import ExpandedSkillsContent from "./expanded-content";
@@ -12,6 +13,7 @@ const effects: RevealEffect[] = ["fade-up", "slide-in", "blur-in", "glide"];
 
 const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
   const currentEffect = effects[index % effects.length];
+  const gitRef = useGitComponent("SkillCard");
 
   return (
     <Reveal
@@ -20,7 +22,10 @@ const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
       duration={0.5}
       className="group w-full"
     >
-      <div className="bg-ctp-surface0/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 border-none w-full overflow-hidden">
+      <div
+        ref={gitRef}
+        className="bg-ctp-surface0/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 border-none w-full overflow-hidden"
+      >
         {/* Category Header */}
         <div className="flex items-center gap-3 sm:gap-4 mb-6">
           <div

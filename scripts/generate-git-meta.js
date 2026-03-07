@@ -14,6 +14,13 @@ const tsMorphPath = require.resolve("ts-morph", {
 });
 const { Project, SyntaxKind } = require(tsMorphPath);
 
+const AUTHOR_MAP = {
+  "Utkarsh Priyadarshi": {
+    github: "utkarsh5026",
+    avatar: "https://github.com/utkarsh5026.png",
+  },
+};
+
 const TARGET_FILES = {
   home: "app/src/components/home/portfolio/intro/personal-intro.tsx",
   about: "app/src/components/home/portfolio/about/about-me.tsx",
@@ -24,6 +31,26 @@ const TARGET_FILES = {
   learning: "app/src/components/home/portfolio/learning/learning-section.tsx",
   articles: "app/src/components/home/portfolio/articles/articles-section.tsx",
 };
+
+// Sub-component files to track individually (file → section they belong to)
+const EXTRA_COMPONENT_FILES = [
+  {
+    file: "app/src/components/home/portfolio/skills/skill-card/skill-card.tsx",
+    section: "skills",
+  },
+  {
+    file: "app/src/components/home/portfolio/projects/featured/featured-project.tsx",
+    section: "projects",
+  },
+  {
+    file: "app/src/components/home/portfolio/articles/article-card.tsx",
+    section: "articles",
+  },
+  {
+    file: "app/src/components/home/portfolio/work/experience-details.tsx",
+    section: "experience",
+  },
+];
 
 const REPO_ROOT = path.resolve(__dirname, "..");
 
@@ -202,8 +229,63 @@ function main() {
     }
   }
 
+  // Process extra sub-component files
+  console.log("\nProcessing sub-component files...");
+  for (const { file: relFile, section } of EXTRA_COMPONENT_FILES) {
+    const absFile = path.join(REPO_ROOT, relFile);
+
+    if (!fs.existsSync(absFile)) {
+      console.warn(`  [SKIP] ${relFile}: file not found`);
+      continue;
+    }
+
+    process.stdout.write(`  • ${section.padEnd(12)} → ${relFile}\n`);
+
+    let components;
+    try {
+      components = extractComponents(absFile);
+    } catch (err) {
+      console.warn(`    [WARN] AST parse failed: ${err.message}`);
+      continue;
+    }
+
+    if (components.length === 0) {
+      console.warn(`    [WARN] No React components found in ${relFile}`);
+      continue;
+    }
+
+    for (const comp of components) {
+      process.stdout.write(
+        `    ↳ ${comp.name.padEnd(30)} lines ${comp.start}–${comp.end} … `,
+      );
+
+      const blameOut = run(
+        `git blame -L ${comp.start},${comp.end} --porcelain -- "${relFile}"`,
+      );
+
+      const meta = parseBlameForLatestCommit(blameOut);
+
+      if (!meta) {
+        console.log("(no blame data)");
+        continue;
+      }
+
+      result[comp.name] = {
+        section,
+        file: relFile,
+        lines: [comp.start, comp.end],
+        ...meta,
+      };
+
+      console.log(
+        `${meta.shortHash} by ${meta.author} — "${meta.message.slice(0, 50)}"`,
+      );
+    }
+  }
+
   const output = {
     generatedAt: new Date().toISOString(),
+    authors: AUTHOR_MAP,
     components: result,
   };
 
