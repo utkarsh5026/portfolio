@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-07T19:23:22.031Z",
+  "generatedAt": "2026-03-07T19:33:20.400Z",
   "commits": [
     {
-      "hash": "8ed442531aa9d4cb5d098c592a4944486f6ca671",
-      "shortHash": "8ed4425",
+      "hash": "28b102f58f432a208f4a1c0c00709f57bf489a0c",
+      "shortHash": "28b102f",
+      "message": "refactor: remove inline GitBlameTooltip from desktop tabs, add data-git-section attribute",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T01:02:03+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 61,
+      "deletions": 151,
+      "filesChanged": 2
+    },
+    {
+      "hash": "af8634c1d0d529b08e9251bc0ae2f20a6969df45",
+      "shortHash": "af8634c",
       "message": "feat: add global git blame manager with portal tooltip",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T00:51:12+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 295,
-      "deletions": 2,
-      "filesChanged": 4
+      "insertions": 318,
+      "deletions": 25,
+      "filesChanged": 7
     },
     {
       "hash": "919a86018747a08af755677ffa8af235dc29617d",
@@ -228,22 +240,10 @@
       "insertions": 114,
       "deletions": 90,
       "filesChanged": 15
-    },
-    {
-      "hash": "c15815ee4519a48bc81fdbd919f53e1887005a42",
-      "shortHash": "c15815e",
-      "message": "perf: migrate profile images from JPEG to WebP and replace hardcoded sidebar colors with Catppuccin tokens",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T09:24:03+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 32,
-      "deletions": 27,
-      "filesChanged": 10
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 4,
+    "2026-03-08": 5,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
@@ -265,7 +265,7 @@
   "languageStats": [
     {
       "language": "TypeScript",
-      "count": 223,
+      "count": 222,
       "color": "#89b4fa"
     },
     {

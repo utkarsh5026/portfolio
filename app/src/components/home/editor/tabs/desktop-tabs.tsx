@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { VscClose, VscMarkdown } from "react-icons/vsc";
 
-import GitBlameTooltip from "@/components/home/editor/git-blame/git-blame-tooltip";
-import { useGitMeta } from "@/hooks/use-git-meta";
 import { cn } from "@/lib/utils";
 
 import type { SectionTab, Tab } from "../context/explorer-context";
@@ -22,8 +20,6 @@ const DesktopTabs: React.FC = () => {
     closeTabsToRight,
     closeAllProjects,
   } = useEditorContext();
-  const { getBySection } = useGitMeta();
-
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const activeIdx = openTabs.findIndex((t) => t.id === activeTabId);
@@ -31,7 +27,6 @@ const DesktopTabs: React.FC = () => {
   const hasRight = activeIdx !== -1 && activeIdx < openTabs.length - 1;
   const hasProjects = openTabs.some((t) => t.type === "project");
 
-  // Horizontal scroll with mouse wheel
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
@@ -45,7 +40,6 @@ const DesktopTabs: React.FC = () => {
     return () => el.removeEventListener("wheel", onWheel);
   }, []);
 
-  // Scroll active tab into view when it changes
   useEffect(() => {
     const el = scrollRef.current;
     if (!el || !activeTabId) return;
@@ -72,77 +66,76 @@ const DesktopTabs: React.FC = () => {
           {openTabs.map((tab: Tab) => {
             const isActive = activeTabId === tab.id;
             const isSectionTab = tab.type === "section";
-            const blameMeta = isSectionTab
-              ? getBySection((tab as SectionTab).id)
-              : null;
 
             return (
-              <GitBlameTooltip key={tab.id} meta={blameMeta}>
-                <button
-                  data-tab-id={tab.id}
-                  onClick={() => openTab(tab)}
-                  className={cn(
-                    "relative h-10 px-3 flex-shrink-0 min-w-[140px] max-w-[220px] border-r border-ctp-surface0/50 text-xs transition-colors flex items-center gap-2 group",
-                    isActive
-                      ? "bg-ctp-base text-ctp-text font-medium"
-                      : "bg-ctp-mantle text-ctp-subtext0 hover:bg-ctp-surface0 hover:text-ctp-text"
-                  )}
-                >
-                  {isSectionTab ? (
-                    <span
-                      className={cn(
-                        "w-3 h-3 flex-shrink-0",
-                        getIconColor((tab as SectionTab).id)
-                      )}
-                    >
-                      {sectionIconMap[(tab as SectionTab).id]}
-                    </span>
-                  ) : (
-                    <VscMarkdown className="w-3.5 h-3.5 text-ctp-blue flex-shrink-0" />
-                  )}
-
-                  <span className="text-sm tracking-wide truncate flex-1 text-left select-none">
-                    {isSectionTab ? (tab as SectionTab).id : tab.fileName}
-                  </span>
-
-                  {/* Per-tab close button */}
+              <button
+                key={tab.id}
+                data-tab-id={tab.id}
+                {...(isSectionTab
+                  ? { "data-git-section": (tab as SectionTab).id }
+                  : {})}
+                onClick={() => openTab(tab)}
+                className={cn(
+                  "relative h-10 px-3 flex-shrink-0 min-w-[140px] max-w-[220px] border-r border-ctp-surface0/50 text-xs transition-colors flex items-center gap-2 group",
+                  isActive
+                    ? "bg-ctp-base text-ctp-text font-medium"
+                    : "bg-ctp-mantle text-ctp-subtext0 hover:bg-ctp-surface0 hover:text-ctp-text"
+                )}
+              >
+                {isSectionTab ? (
                   <span
-                    role="button"
-                    tabIndex={0}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      closeTab(tab.id);
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.stopPropagation();
-                        closeTab(tab.id);
-                      }
-                    }}
                     className={cn(
-                      "w-4 h-4 rounded-sm flex items-center justify-center ml-1 flex-shrink-0 transition-colors",
-                      isActive
-                        ? "opacity-70 hover:opacity-100 hover:bg-ctp-surface1"
-                        : "opacity-0 group-hover:opacity-70 hover:!opacity-100 hover:bg-ctp-surface1"
+                      "w-3 h-3 flex-shrink-0",
+                      getIconColor((tab as SectionTab).id)
                     )}
                   >
-                    <VscClose className="w-3 h-3" />
+                    {sectionIconMap[(tab as SectionTab).id]}
                   </span>
+                ) : (
+                  <VscMarkdown className="w-3.5 h-3.5 text-ctp-blue flex-shrink-0" />
+                )}
 
-                  {/* Active top-border indicator */}
-                  {isActive && (
-                    <div
-                      className={cn(
-                        "absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r",
-                        isSectionTab
-                          ? getActiveTabColor((tab as SectionTab).id)
-                          : "from-ctp-green to-ctp-teal",
-                        styles.activeTabIndicator
-                      )}
-                    />
+                <span className="text-sm tracking-wide truncate flex-1 text-left select-none">
+                  {isSectionTab ? (tab as SectionTab).id : tab.fileName}
+                </span>
+
+                {/* Per-tab close button */}
+                <span
+                  role="button"
+                  tabIndex={0}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    closeTab(tab.id);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.stopPropagation();
+                      closeTab(tab.id);
+                    }
+                  }}
+                  className={cn(
+                    "w-4 h-4 rounded-sm flex items-center justify-center ml-1 flex-shrink-0 transition-colors",
+                    isActive
+                      ? "opacity-70 hover:opacity-100 hover:bg-ctp-surface1"
+                      : "opacity-0 group-hover:opacity-70 hover:!opacity-100 hover:bg-ctp-surface1"
                   )}
-                </button>
-              </GitBlameTooltip>
+                >
+                  <VscClose className="w-3 h-3" />
+                </span>
+
+                {/* Active top-border indicator */}
+                {isActive && (
+                  <div
+                    className={cn(
+                      "absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r",
+                      isSectionTab
+                        ? getActiveTabColor((tab as SectionTab).id)
+                        : "from-ctp-green to-ctp-teal",
+                      styles.activeTabIndicator
+                    )}
+                  />
+                )}
+              </button>
             );
           })}
         </div>
