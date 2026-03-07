@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-03-07T01:07:50.461Z",
+  "generatedAt": "2026-03-07T01:14:33.985Z",
   "commits": [
+    {
+      "hash": "e0a2f1df27d134a523187d18597a82bac9ebb00e",
+      "shortHash": "e0a2f1d",
+      "message": "refactor: replace framer-motion with CSS modules in editor and learning components",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T06:37:38+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 381,
+      "deletions": 200,
+      "filesChanged": 20
+    },
     {
       "hash": "a49d2c71e87eea57c6bd464b5289d3a76fbe1667",
       "shortHash": "a49d2c7",
@@ -228,22 +240,10 @@
       "insertions": 174,
       "deletions": 46,
       "filesChanged": 4
-    },
-    {
-      "hash": "dff6d01016aa1a62c1507cfc34b203aefdb593fa",
-      "shortHash": "dff6d01",
-      "message": "feat: add outline nodes with icons to about, contact, work, and projects sections",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-06T04:04:56+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 44,
-      "deletions": 24,
-      "filesChanged": 6
     }
   ],
   "commitsByDate": {
-    "2026-03-07": 16,
+    "2026-03-07": 17,
     "2026-03-06": 4,
     "2026-03-05": 43,
     "2026-03-04": 17,
