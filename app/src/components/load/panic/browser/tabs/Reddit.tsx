@@ -433,7 +433,7 @@ const RedditWebDev: React.FC = React.memo(() => {
                             {comment.username}
                           </span>
                           <AuthorBadge type={comment.badge} />
-                          <span className="text-gray-500 text-xs ml-2">
+                          <span className="text-gray-400 text-xs ml-2">
                             {comment.timeAgo} ago
                           </span>
                         </div>
@@ -508,7 +508,7 @@ const RedditWebDev: React.FC = React.memo(() => {
                         </div>
                       )}
 
-                      <div className="flex items-center mt-2 text-xs text-gray-500">
+                      <div className="flex items-center mt-2 text-xs text-gray-400">
                         <button className="flex items-center mr-4 hover:text-gray-300">
                           <MessageSquare size={14} className="mr-1" />
                           {comment.replies}{" "}
@@ -557,7 +557,7 @@ const RedditWebDev: React.FC = React.memo(() => {
                               <span className="text-gray-300 text-sm font-medium mr-1">
                                 ReactPro
                               </span>
-                              <span className="text-gray-500 text-xs">
+                              <span className="text-gray-400 text-xs">
                                 8h ago
                               </span>
                             </div>
@@ -568,7 +568,7 @@ const RedditWebDev: React.FC = React.memo(() => {
                               I'd also suggest adding more contrast to your text
                               for better accessibility.
                             </div>
-                            <div className="flex items-center mt-2 text-xs text-gray-500">
+                            <div className="flex items-center mt-2 text-xs text-gray-400">
                               <span className="flex items-center mr-3">
                                 <ThumbsUp size={12} className="mr-1" />6
                               </span>
@@ -629,7 +629,7 @@ const RedditWebDev: React.FC = React.memo(() => {
                           )}
                           {tip.tip}
                         </div>
-                        <div className="text-gray-500">
+                        <div className="text-gray-400">
                           {expandedTip === tip.id ? (
                             <ChevronUp size={14} />
                           ) : (
@@ -736,7 +736,7 @@ const RedditWebDev: React.FC = React.memo(() => {
           </div>
 
           {/* Footer links */}
-          <div className="p-4 text-xs text-gray-500">
+          <div className="p-4 text-xs text-gray-400">
             <div className="flex flex-wrap gap-2 mb-3">
               <a href="#" className="hover:text-gray-300">
                 Content Policy

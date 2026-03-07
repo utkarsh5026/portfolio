@@ -215,16 +215,16 @@ export const AwwwardsPortfolios: React.FC = () => {
               SITE OF THE DAY
             </span>
             <span className="text-gray-400 text-sm">Excellence in design</span>
-            <span className="mx-2 text-gray-600">•</span>
+            <span className="mx-2 text-gray-500">•</span>
             <span className="text-gray-400 text-sm">Jury selected</span>
           </div>
           <div className="flex items-center text-sm text-gray-400">
             <div className="flex items-center mr-3">
-              <Eye size={14} className="mr-1 text-gray-500" />
+              <Eye size={14} className="mr-1 text-gray-400" />
               <span>12.5k</span>
             </div>
             <div className="flex items-center">
-              <Heart size={14} className="mr-1 text-gray-500" />
+              <Heart size={14} className="mr-1 text-gray-400" />
               <span>854</span>
             </div>
           </div>
@@ -338,11 +338,11 @@ export const AwwwardsPortfolios: React.FC = () => {
 
             {/* Project info */}
             <div className="flex flex-col">
-              <h3 className="text-white font-medium mb-2 group-hover:text-yellow-400 transition-colors flex items-center">
+              <h2 className="text-white font-medium mb-2 group-hover:text-yellow-400 transition-colors flex items-center">
                 {project.title}
                 <div className="w-2 h-2 rounded-full bg-green-500 ml-2 mr-1"></div>
                 <span className="text-xs text-gray-400">Online</span>
-              </h3>
+              </h2>
 
               <div className="flex items-center text-sm">
                 <span className="text-gray-400">by</span>
@@ -375,10 +375,10 @@ export const AwwwardsPortfolios: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Trending design elements column */}
         <div className="md:col-span-2 bg-[#1a1a1a] p-6 rounded-lg">
-          <h3 className="text-white font-medium mb-4 flex items-center">
+          <h2 className="text-white font-medium mb-4 flex items-center">
             <TrendingUp size={16} className="mr-2 text-yellow-400" />
             Design Elements Trending in Portfolios
-          </h3>
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {trendingElements.map((element, index) => (
               <div
@@ -400,10 +400,10 @@ export const AwwwardsPortfolios: React.FC = () => {
 
         {/* Jury members column */}
         <div className="bg-[#1a1a1a] p-6 rounded-lg">
-          <h3 className="text-white font-medium mb-4 flex items-center">
+          <h2 className="text-white font-medium mb-4 flex items-center">
             <Users size={16} className="mr-2 text-yellow-400" />
             Jury Members
-          </h3>
+          </h2>
           <div className="space-y-4">
             {[1, 2, 3].map((item) => (
               <div key={item} className="flex items-center">
@@ -453,10 +453,10 @@ export const AwwwardsPortfolios: React.FC = () => {
       <div className="mt-10 p-6 bg-gradient-to-r from-[#252525] to-[#1a1a1a] rounded-lg">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="mb-4 md:mb-0">
-            <h3 className="text-white font-medium mb-1 flex items-center">
+            <h2 className="text-white font-medium mb-1 flex items-center">
               <Award size={16} className="mr-2 text-yellow-400" />
               Get notified about award-winning portfolios
-            </h3>
+            </h2>
             <p className="text-gray-400 text-sm">
               Weekly inspiration and portfolio design trends
             </p>

@@ -49,7 +49,7 @@ export const GitHubPortfolios = memo(() => {
               REPOSITORIES
             </span>
             <span className="text-gray-300">portfolio-template</span>
-            <span className="mx-2 text-gray-500">•</span>
+            <span className="mx-2 text-gray-400">•</span>
             <span className="text-gray-400">120 results</span>
           </div>
 
@@ -82,7 +82,7 @@ export const GitHubPortfolios = memo(() => {
                   clipRule="evenodd"
                 />
               </svg>
-              Filter
+              Quick Setup
             </button>
           </div>
         </div>
@@ -111,7 +111,7 @@ export const GitHubPortfolios = memo(() => {
         </svg>
         <div className="absolute right-4 top-3 flex items-center space-x-2">
           <div className="h-5 border-r border-[#30363d]"></div>
-          <span className="text-xs text-gray-500">Press / to search</span>
+          <span className="text-xs text-gray-400">Press / to search</span>
         </div>
       </div>
 
@@ -153,7 +153,7 @@ export const GitHubPortfolios = memo(() => {
                     >
                       dev-name/portfolio-template-{repo}
                     </a>
-                    <p className="text-xs text-gray-500 mt-0.5">
+                    <p className="text-xs text-gray-400 mt-0.5">
                       Updated {Math.floor(Math.random() * 30) + 1} days ago
                     </p>
                   </div>
@@ -299,7 +299,7 @@ export const GitHubPortfolios = memo(() => {
           >
             3
           </a>
-          <span className="relative inline-flex items-center px-4 py-2 bg-[#0d1117] border border-[#30363d] text-sm font-medium text-gray-500">
+          <span className="relative inline-flex items-center px-4 py-2 bg-[#0d1117] border border-[#30363d] text-sm font-medium text-gray-400">
             ...
           </span>
           <a
@@ -333,7 +333,7 @@ export const GitHubPortfolios = memo(() => {
       <div className="mt-12 mb-8 border-t border-[#30363d] pt-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-5 bg-[#0d1117] border border-[#30363d] rounded-lg">
-            <h3 className="flex items-center text-white text-lg font-medium mb-3">
+            <h2 className="flex items-center text-white text-lg font-medium mb-3">
               <svg
                 className="w-5 h-5 mr-2 text-green-400"
                 xmlns="http://www.w3.org/2000/svg"
@@ -347,15 +347,15 @@ export const GitHubPortfolios = memo(() => {
                 />
               </svg>
               Popular Templates
-            </h3>
+            </h2>
             <p className="text-gray-400 text-sm">
               Discover the most starred and forked portfolio templates from our
-              community.
+              Modern Stack
             </p>
           </div>
 
           <div className="p-5 bg-[#0d1117] border border-[#30363d] rounded-lg">
-            <h3 className="flex items-center text-white text-lg font-medium mb-3">
+            <h2 className="flex items-center text-white text-lg font-medium mb-3">
               <svg
                 className="w-5 h-5 mr-2 text-blue-400"
                 xmlns="http://www.w3.org/2000/svg"
@@ -365,7 +365,7 @@ export const GitHubPortfolios = memo(() => {
                 <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z" />
               </svg>
               Framework Variety
-            </h3>
+            </h2>
             <p className="text-gray-400 text-sm">
               Choose from React, Next.js, Vue, Svelte and more for your perfect
               portfolio setup.
@@ -373,7 +373,7 @@ export const GitHubPortfolios = memo(() => {
           </div>
 
           <div className="p-5 bg-[#0d1117] border border-[#30363d] rounded-lg">
-            <h3 className="flex items-center text-white text-lg font-medium mb-3">
+            <h2 className="flex items-center text-white text-lg font-medium mb-3">
               <svg
                 className="w-5 h-5 mr-2 text-purple-400"
                 xmlns="http://www.w3.org/2000/svg"
@@ -386,8 +386,8 @@ export const GitHubPortfolios = memo(() => {
                   clipRule="evenodd"
                 />
               </svg>
-              Customizable Code
-            </h3>
+              SEO Optimized
+            </h2>
             <p className="text-gray-400 text-sm">
               All templates include clean, well-documented code that's easy to
               customize.

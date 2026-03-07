@@ -266,7 +266,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ totalAnimationTimeMS }) => {
                   <FiSend size={16} />
                 </Button>
               </div>
-              <div className="text-xs text-center text-gray-500 mt-2">
+              <div className="text-xs text-center text-gray-400 mt-2">
                 <span>ChatGPT can make mistakes. </span>
                 <span className="hover:underline cursor-pointer">
                   Consider checking important information.

@@ -57,7 +57,7 @@ const FakePortfolioLoading: React.FC<FakePortfolioLoadingProps> = React.memo(
      * Changes color based on the current progress percentage
      */
     const progressText = useMemo(() => {
-      if (progress < 20) return "text-gray-500";
+      if (progress < 20) return "text-gray-400";
       else if (progress < 50) return "text-blue-400";
       else if (progress < 70) return "text-purple-400";
       else return "text-cyan-300";
