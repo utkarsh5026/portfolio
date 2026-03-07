@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-07T22:43:53.787Z",
+  "generatedAt": "2026-03-07T22:46:26.583Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -79,8 +79,8 @@
         19,
         207
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -92,8 +92,8 @@
         16,
         121
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -105,11 +105,11 @@
         12,
         49
       ],
-      "hash": "0000000000000000000000000000000000000000",
-      "shortHash": "0000000",
-      "author": "Not Committed Yet",
-      "date": "2026-03-07T22:43:37.000Z",
-      "message": "Version of app/src/components/home/portfolio/contact/contact-me.tsx from app/src/components/home/portfolio/contact/contact-me.tsx"
+      "hash": "1f702a55306c3d5237cef8bb1d53067c78146319",
+      "shortHash": "1f702a5",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:45:15.000Z",
+      "message": "refactor: extract EmailHighlight into its own file and pass component refs directly"
     },
     "CurrentLearning": {
       "section": "learning",
@@ -118,8 +118,8 @@
         29,
         157
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -144,8 +144,8 @@
         14,
         146
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -157,8 +157,8 @@
         12,
         36
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -170,8 +170,8 @@
         12,
         75
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -183,8 +183,8 @@
         5,
         63
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -196,8 +196,8 @@
         106,
         224
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -209,8 +209,8 @@
         15,
         38
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -222,8 +222,8 @@
         61,
         112
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -248,8 +248,8 @@
         23,
         77
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -261,8 +261,8 @@
         23,
         130
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -274,8 +274,8 @@
         49,
         87
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -443,8 +443,8 @@
         14,
         53
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -469,8 +469,8 @@
         20,
         92
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -495,8 +495,8 @@
         17,
         135
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -508,8 +508,8 @@
         213,
         376
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -547,8 +547,8 @@
         161,
         200
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -560,8 +560,8 @@
         21,
         195
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -573,8 +573,8 @@
         14,
         104
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -599,8 +599,8 @@
         31,
         70
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -612,11 +612,24 @@
         26,
         133
       ],
-      "hash": "0000000000000000000000000000000000000000",
-      "shortHash": "0000000",
-      "author": "Not Committed Yet",
-      "date": "2026-03-07T22:43:51.000Z",
-      "message": "Version of app/src/components/home/portfolio/contact/available-for-opportunities.tsx from app/src/components/home/portfolio/contact/available-for-opportunities.tsx"
+      "hash": "1f702a55306c3d5237cef8bb1d53067c78146319",
+      "shortHash": "1f702a5",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:45:15.000Z",
+      "message": "refactor: extract EmailHighlight into its own file and pass component refs directly"
+    },
+    "EmailHighlight": {
+      "section": "contact",
+      "file": "app/src/components/home/portfolio/contact/email-highlight.tsx",
+      "lines": [
+        10,
+        55
+      ],
+      "hash": "1f702a55306c3d5237cef8bb1d53067c78146319",
+      "shortHash": "1f702a5",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:45:15.000Z",
+      "message": "refactor: extract EmailHighlight into its own file and pass component refs directly"
     },
     "SocialMediaLinks": {
       "section": "contact",
@@ -625,11 +638,11 @@
         46,
         98
       ],
-      "hash": "0000000000000000000000000000000000000000",
-      "shortHash": "0000000",
-      "author": "Not Committed Yet",
-      "date": "2026-03-07T22:43:52.000Z",
-      "message": "Version of app/src/components/home/portfolio/contact/social-media-links.tsx from app/src/components/home/portfolio/contact/social-media-links.tsx"
+      "hash": "1f702a55306c3d5237cef8bb1d53067c78146319",
+      "shortHash": "1f702a5",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-07T22:45:15.000Z",
+      "message": "refactor: extract EmailHighlight into its own file and pass component refs directly"
     },
     "LearningCard": {
       "section": "learning",
@@ -638,8 +651,8 @@
         17,
         114
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -651,8 +664,8 @@
         17,
         141
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -664,8 +677,8 @@
         23,
         177
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -677,8 +690,8 @@
         9,
         32
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -690,8 +703,8 @@
         23,
         137
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
@@ -703,8 +716,8 @@
         15,
         110
       ],
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"

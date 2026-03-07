@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-03-07T22:43:27.896Z",
+  "generatedAt": "2026-03-07T22:45:43.185Z",
   "sections": {
     "home": {
-      "lastCommitHash": "6565979",
+      "lastCommitHash": "61211ff",
       "lastCommitDate": "2026-03-08 04:12:42 +0530",
       "lastCommitMessage": "feat: integrate useGitComponent ref across all portfolio components",
       "lastAuthor": "Utkarsh Priyadarshi",
@@ -26,7 +26,7 @@
       "fileCount": 13
     },
     "skills": {
-      "lastCommitHash": "6565979",
+      "lastCommitHash": "61211ff",
       "lastCommitDate": "2026-03-08 04:12:42 +0530",
       "lastCommitMessage": "feat: integrate useGitComponent ref across all portfolio components",
       "lastAuthor": "Utkarsh Priyadarshi",
@@ -38,7 +38,7 @@
       "fileCount": 4
     },
     "projects": {
-      "lastCommitHash": "6565979",
+      "lastCommitHash": "61211ff",
       "lastCommitDate": "2026-03-08 04:12:42 +0530",
       "lastCommitMessage": "feat: integrate useGitComponent ref across all portfolio components",
       "lastAuthor": "Utkarsh Priyadarshi",
@@ -50,7 +50,7 @@
       "fileCount": 9
     },
     "experience": {
-      "lastCommitHash": "6565979",
+      "lastCommitHash": "61211ff",
       "lastCommitDate": "2026-03-08 04:12:42 +0530",
       "lastCommitMessage": "feat: integrate useGitComponent ref across all portfolio components",
       "lastAuthor": "Utkarsh Priyadarshi",
@@ -62,19 +62,19 @@
       "fileCount": 7
     },
     "contact": {
-      "lastCommitHash": "19f07f5",
-      "lastCommitDate": "2026-03-08 00:13:35 +0530",
-      "lastCommitMessage": "feat: integrate git blame tracking into contact section components",
+      "lastCommitHash": "1f702a5",
+      "lastCommitDate": "2026-03-08 04:15:15 +0530",
+      "lastCommitMessage": "refactor: extract EmailHighlight into its own file and pass component refs directly",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 17,
-      "linesAdded": 23,
-      "linesDeleted": 4,
-      "totalAdded": 1113,
-      "totalDeleted": 607,
-      "fileCount": 4
+      "commitCount": 18,
+      "linesAdded": 60,
+      "linesDeleted": 54,
+      "totalAdded": 1173,
+      "totalDeleted": 661,
+      "fileCount": 5
     },
     "learning": {
-      "lastCommitHash": "6565979",
+      "lastCommitHash": "61211ff",
       "lastCommitDate": "2026-03-08 04:12:42 +0530",
       "lastCommitMessage": "feat: integrate useGitComponent ref across all portfolio components",
       "lastAuthor": "Utkarsh Priyadarshi",
@@ -86,7 +86,7 @@
       "fileCount": 9
     },
     "articles": {
-      "lastCommitHash": "6565979",
+      "lastCommitHash": "61211ff",
       "lastCommitDate": "2026-03-08 04:12:42 +0530",
       "lastCommitMessage": "feat: integrate useGitComponent ref across all portfolio components",
       "lastAuthor": "Utkarsh Priyadarshi",

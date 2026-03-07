@@ -44,7 +44,7 @@ const socialLinks = [
 ];
 
 const SocialMediaLinks = () => {
-  const ref = useGitComponent("SocialMediaLinks");
+  const ref = useGitComponent(SocialMediaLinks);
   return (
     <OutlineNode
       label="Social Media Links"

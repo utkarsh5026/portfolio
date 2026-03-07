@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-07T22:43:32.255Z",
+  "generatedAt": "2026-03-07T22:45:47.085Z",
   "commits": [
     {
-      "hash": "65659794575ae2fcd4b622fc7713ba87babe977c",
-      "shortHash": "6565979",
+      "hash": "1f702a55306c3d5237cef8bb1d53067c78146319",
+      "shortHash": "1f702a5",
+      "message": "refactor: extract EmailHighlight into its own file and pass component refs directly",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T04:15:15+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 60,
+      "deletions": 54,
+      "filesChanged": 4
+    },
+    {
+      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
+      "shortHash": "61211ff",
       "message": "feat: integrate useGitComponent ref across all portfolio components",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T04:12:42+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 613,
-      "deletions": 496,
-      "filesChanged": 30
+      "insertions": 831,
+      "deletions": 727,
+      "filesChanged": 33
     },
     {
       "hash": "f24f91e4b07ad10ac2994a04c1308c5b5da4cdce",
@@ -228,22 +240,10 @@
       "insertions": 70,
       "deletions": 156,
       "filesChanged": 5
-    },
-    {
-      "hash": "864ab5e2be98535cadbf40076c49c8eb980e4417",
-      "shortHash": "864ab5e",
-      "message": "build: move git JSON generation from pre-commit to post-commit hook",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T14:27:56+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 76,
-      "deletions": 67,
-      "filesChanged": 5
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 15,
+    "2026-03-08": 16,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
@@ -265,7 +265,7 @@
   "languageStats": [
     {
       "language": "TypeScript",
-      "count": 225,
+      "count": 226,
       "color": "#89b4fa"
     },
     {

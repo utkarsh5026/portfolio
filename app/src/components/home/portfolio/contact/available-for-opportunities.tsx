@@ -24,7 +24,7 @@ const opportunities = [
 ];
 
 const AvailableForOpportunities = () => {
-  const ref = useGitComponent("AvailableForOpportunities");
+  const ref = useGitComponent(AvailableForOpportunities);
   return (
     <OutlineNode
       label="Available for Opportunities"
