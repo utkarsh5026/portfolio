@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-03-07T00:42:56.308Z",
+  "generatedAt": "2026-03-07T01:03:07.035Z",
   "commits": [
+    {
+      "hash": "3cb4e111d624e8d0a1a9e12292aef53c174514bb",
+      "shortHash": "3cb4e11",
+      "message": "refactor: replace framer-motion with CSS modules in featured-project and work components",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T06:12:45+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 320,
+      "deletions": 420,
+      "filesChanged": 13
+    },
     {
       "hash": "2bf6332903627daa36b62f7db5226a1a8fa9b0ac",
       "shortHash": "2bf6332",
@@ -228,22 +240,10 @@
       "insertions": 78,
       "deletions": 44,
       "filesChanged": 3
-    },
-    {
-      "hash": "a51da4028f596d0bdec6588bf55e5f01a8d3067b",
-      "shortHash": "a51da40",
-      "message": "chore: remove unused journeySteps data and dead imports from skills/data.tsx",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T21:56:36+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 24,
-      "deletions": 86,
-      "filesChanged": 3
     }
   ],
   "commitsByDate": {
-    "2026-03-07": 14,
+    "2026-03-07": 15,
     "2026-03-06": 4,
     "2026-03-05": 43,
     "2026-03-04": 17,
@@ -264,7 +264,7 @@
   "languageStats": [
     {
       "language": "TypeScript",
-      "count": 221,
+      "count": 215,
       "color": "#89b4fa"
     },
     {
