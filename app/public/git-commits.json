@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-03-07T03:17:33.731Z",
+  "generatedAt": "2026-03-07T03:54:22.545Z",
   "commits": [
+    {
+      "hash": "b9596a8ffee93a9451a8cc06951c7807876e2ce0",
+      "shortHash": "b9596a8",
+      "message": "perf: migrate Google Fonts to self-hosted @fontsource packages",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T08:47:15+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 48,
+      "deletions": 44,
+      "filesChanged": 9
+    },
     {
       "hash": "fde289dedf818e8ab29975a875441aa99514c7ac",
       "shortHash": "fde289d",
@@ -228,22 +240,10 @@
       "insertions": 199,
       "deletions": 234,
       "filesChanged": 12
-    },
-    {
-      "hash": "1e5e5662c6e193fb4d214671a74a20b0864cccdd",
-      "shortHash": "1e5e566",
-      "message": "Merge pull request #63 from utkarsh5026/dependabot/npm_and_yarn/app/gsap-3.14.2",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T03:37:45+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 6,
-      "deletions": 6,
-      "filesChanged": 2
     }
   ],
   "commitsByDate": {
-    "2026-03-07": 24,
+    "2026-03-07": 25,
     "2026-03-06": 4,
     "2026-03-05": 43,
     "2026-03-04": 17,

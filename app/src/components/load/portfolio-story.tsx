@@ -15,7 +15,7 @@ import PrankPortfolio from "./simple-portfolio/PrankPortfolio";
 
 const IMAGES_TO_PRELOAD = [
   "macos-color-optimized.jpg",
-  "personal.jpg",
+  "personal.webp",
   "skoda-certificate.jpg",
 ];
 

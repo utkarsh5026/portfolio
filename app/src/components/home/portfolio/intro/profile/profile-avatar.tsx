@@ -5,7 +5,7 @@ const ProfileAvatar: React.FC = () => {
 
   useEffect(() => {
     const highQualityImage = new Image();
-    highQualityImage.src = "./personal.jpg";
+    highQualityImage.src = "./personal.webp";
 
     highQualityImage.onload = () => {
       setHighResLoaded(true);
@@ -42,10 +42,10 @@ const ProfileAvatar: React.FC = () => {
             </span>
           </div>
 
-          {/* High Res Image */}
+          {/* High Res WebP Image */}
           <img
             className={`h-full w-full object-cover transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-105 absolute inset-0 z-10 ${highResLoaded ? "opacity-100" : "opacity-0"}`}
-            src={highResLoaded ? "./personal.jpg" : undefined}
+            src={highResLoaded ? "./personal.webp" : undefined}
             alt="Utkarsh Priyadarshi"
           />
 

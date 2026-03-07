@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { BsLayoutSidebarInset } from "react-icons/bs";
 import {
-  FaCode,
   FaEye,
   FaFolder,
   FaFolderOpen,
@@ -33,18 +32,24 @@ const SideBar: React.FC = () => {
     <>
       <div
         className={cn(
-          "editor-sidebar w-14 bg-[#181825] border-r border-[#313244] flex flex-col items-center py-4 z-50 fixed inset-y-0 left-0 transition-transform duration-200",
+          "editor-sidebar w-14 bg-ctp-mantle border-r border-ctp-surface0 flex flex-col items-center py-4 z-50 fixed inset-y-0 left-0 transition-transform duration-200",
           mobileMenuOpen
             ? "translate-x-0"
             : "-translate-x-full md:translate-x-0"
         )}
       >
-        <GhostButton
-          icon={<FaCode className="w-5 h-5 text-ctp-green" />}
-          label="Home"
+        {/* Home — Avatar Button */}
+        <button
+          title="Home"
           onClick={() => setActiveSection("home")}
-          className="mb-6"
-        />
+          className="mb-6 group relative flex items-center justify-center"
+        >
+          <img
+            src="./personal.webp"
+            alt="Utkarsh Priyadarshi"
+            className="w-6 h-6 rounded-full object-cover ring-2 ring-ctp-mauve/60 transition-all duration-200 group-hover:ring-ctp-lavender group-hover:scale-110"
+          />
+        </button>
 
         <GhostButton
           icon={<BsLayoutSidebarInset className="w-5 h-5" />}
