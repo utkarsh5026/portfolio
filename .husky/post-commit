@@ -3,6 +3,12 @@
 # Regenerates git JSON files after every commit so they reflect the latest commit.
 # Husky runs this automatically — no manual setup needed.
 
+# Guard against infinite loop: the amend below re-triggers this hook.
+if [ -n "$HUSKY_POST_COMMIT_RUNNING" ]; then
+  exit 0
+fi
+export HUSKY_POST_COMMIT_RUNNING=1
+
 set -e
 
 echo "⚙  Regenerating git-stats.json..."
