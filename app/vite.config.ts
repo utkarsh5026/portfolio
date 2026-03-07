@@ -41,7 +41,7 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       workbox: {
-        globPatterns: ["**/*.{js,css,html}"],
+        globPatterns: ["**/*.{js,css,html,woff2}"],
       },
     }),
   ],
@@ -67,17 +67,27 @@ export default defineConfig({
         manualChunks(id) {
           if (
             id.includes("node_modules/react/") ||
-            id.includes("node_modules/react-dom/")
+            id.includes("node_modules/react-dom/") ||
+            id.includes("node_modules/react-router") ||
+            id.includes("node_modules/scheduler/")
           ) {
-            return "vendor";
+            return "vendor-react";
           }
-          if (id.includes("node_modules/animejs")) return "animations";
+          if (id.includes("node_modules/animejs")) {
+            return "vendor-animations";
+          }
+          if (id.includes("node_modules/react-syntax-highlighter/")) {
+            return "vendor-syntax";
+          }
           if (
             id.includes("node_modules/@radix-ui") ||
             id.includes("node_modules/lucide-react") ||
             id.includes("node_modules/react-icons")
           ) {
-            return "ui";
+            return "vendor-ui";
+          }
+          if (id.includes("node_modules/zustand/")) {
+            return "vendor-state";
           }
         },
       },

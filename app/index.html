@@ -29,7 +29,296 @@
     <title>utkarsh.me</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="initial-loader">
+        <div class="il-window">
+          <div class="il-titlebar">
+            <div class="il-dots">
+              <span class="il-dot il-dot-red"></span>
+              <span class="il-dot il-dot-yellow"></span>
+              <span class="il-dot il-dot-green"></span>
+            </div>
+            <span class="il-title">utkarsh.me &mdash; portfolio</span>
+          </div>
+
+          <div class="il-body">
+            <div class="il-name">
+              utkarsh<span class="il-dot-name">.</span>me
+            </div>
+            <div class="il-subtitle">Web Developer &amp; DevOps Engineer</div>
+
+            <div class="il-terminal">
+              <div class="il-line il-line-1">
+                <span class="il-prompt">$</span>
+                <span class="il-cmd">bun run dev</span>
+              </div>
+              <div class="il-line il-line-2">
+                <span class="il-prompt il-prompt-arrow">&gt;</span>
+                <span class="il-out"
+                  >Initializing <span class="il-hl">utkarsh.me</span>...</span
+                >
+              </div>
+              <div class="il-line il-line-3">
+                <span class="il-prompt il-prompt-arrow">&gt;</span>
+                <span class="il-out">Loading modules &amp; assets...</span>
+              </div>
+              <div class="il-line il-line-4">
+                <span class="il-prompt il-prompt-arrow">&gt;</span>
+                <span class="il-out il-green">Ready</span>
+                <span class="il-cursor">_</span>
+              </div>
+            </div>
+
+            <div class="il-progress-wrap">
+              <div class="il-progress-bar"></div>
+            </div>
+          </div>
+        </div>
+
+        <style>
+          html,
+          body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+          }
+
+          #root {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+          }
+
+          #initial-loader {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            background: #1e1e2e;
+            font-family: "Cascadia Code", "Fira Code", Consolas, monospace;
+          }
+
+          .il-window {
+            width: min(480px, 92vw);
+            background: #181825;
+            border: 1px solid #313244;
+            border-radius: 10px;
+            box-shadow:
+              0 24px 80px rgba(0, 0, 0, 0.6),
+              0 0 0 1px #11111b;
+            overflow: hidden;
+            animation: il-fadeIn 0.35s ease both;
+          }
+
+          .il-titlebar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #11111b;
+            padding: 10px 14px;
+            border-bottom: 1px solid #313244;
+          }
+
+          .il-dots {
+            display: flex;
+            gap: 6px;
+          }
+
+          .il-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+          }
+
+          .il-dot-red {
+            background: #f38ba8;
+          }
+          .il-dot-yellow {
+            background: #f9e2af;
+          }
+          .il-dot-green {
+            background: #a6e3a1;
+          }
+
+          .il-title {
+            flex: 1;
+            text-align: center;
+            font-size: 12px;
+            color: #6c7086;
+            letter-spacing: 0.04em;
+            margin-right: 48px; /* compensate for dots width to visually center */
+          }
+
+          .il-body {
+            padding: 28px 24px 22px;
+          }
+
+          .il-name {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(90deg, #89b4fa, #cba6f7);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation:
+              il-shimmer 3s linear infinite,
+              il-fadeInUp 0.5s ease 0.1s both;
+          }
+
+          .il-dot-name {
+            color: #f38ba8;
+            -webkit-text-fill-color: #f38ba8;
+          }
+
+          .il-subtitle {
+            font-size: 12px;
+            color: #6c7086;
+            letter-spacing: 0.06em;
+            margin-top: 4px;
+            margin-bottom: 20px;
+            animation: il-fadeInUp 0.5s ease 0.25s both;
+          }
+
+          .il-terminal {
+            background: #11111b;
+            border: 1px solid #313244;
+            border-radius: 6px;
+            padding: 12px 14px;
+            font-size: 12.5px;
+            line-height: 1.8;
+          }
+
+          .il-line {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            opacity: 0;
+          }
+
+          .il-line-1 {
+            animation: il-fadeInUp 0.4s ease 0s forwards;
+          }
+          .il-line-2 {
+            animation: il-fadeInUp 0.4s ease 0.4s forwards;
+          }
+          .il-line-3 {
+            animation: il-fadeInUp 0.4s ease 0.8s forwards;
+          }
+          .il-line-4 {
+            animation: il-fadeInUp 0.4s ease 1.2s forwards;
+          }
+
+          .il-prompt {
+            color: #cba6f7;
+            user-select: none;
+          }
+
+          .il-prompt-arrow {
+            color: #89b4fa;
+          }
+
+          .il-cmd {
+            color: #cdd6f4;
+          }
+
+          .il-out {
+            color: #a6adc8;
+          }
+
+          .il-hl {
+            color: #cba6f7;
+          }
+
+          .il-green {
+            color: #a6e3a1;
+          }
+
+          .il-cursor {
+            color: #cba6f7;
+            animation: il-blink 1s step-end infinite;
+            animation-delay: 1.4s;
+          }
+
+          .il-progress-wrap {
+            margin-top: 18px;
+            height: 3px;
+            background: #313244;
+            border-radius: 99px;
+            overflow: hidden;
+            animation: il-fadeInUp 0.4s ease 0.5s both;
+          }
+
+          .il-progress-bar {
+            height: 100%;
+            width: 0;
+            border-radius: 99px;
+            background: linear-gradient(90deg, #89b4fa, #cba6f7, #f5c2e7);
+            animation: il-progress 3.5s cubic-bezier(0.4, 0, 0.2, 1) 0.6s
+              forwards;
+            box-shadow: 0 0 8px #cba6f780;
+          }
+
+          @keyframes il-fadeIn {
+            from {
+              opacity: 0;
+              transform: scale(0.97);
+            }
+            to {
+              opacity: 1;
+              transform: scale(1);
+            }
+          }
+
+          @keyframes il-fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(6px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
+          @keyframes il-blink {
+            0%,
+            100% {
+              opacity: 1;
+            }
+            50% {
+              opacity: 0;
+            }
+          }
+
+          @keyframes il-progress {
+            0% {
+              width: 0%;
+            }
+            60% {
+              width: 72%;
+            }
+            85% {
+              width: 85%;
+            }
+            100% {
+              width: 92%;
+            }
+          }
+
+          @keyframes il-shimmer {
+            0% {
+              background-position: 0% center;
+            }
+            100% {
+              background-position: 200% center;
+            }
+          }
+        </style>
+      </div>
+    </div>
     <script type="module" src="./src/main.tsx"></script>
   </body>
 </html>
