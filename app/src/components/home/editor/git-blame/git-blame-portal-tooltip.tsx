@@ -1,5 +1,6 @@
 import React from "react";
 import { createPortal } from "react-dom";
+import { FaReact } from "react-icons/fa";
 import { VscGitCommit } from "react-icons/vsc";
 
 import { type AuthorMeta, type ComponentMeta } from "@/hooks/use-git-meta";
@@ -70,11 +71,12 @@ const GitBlamePortalTooltip: React.FC<GitBlamePortalTooltipProps> = ({
         zIndex: 9999,
         pointerEvents: "none",
       }}
-      className={`bg-ctp-base border border-ctp-surface1 rounded-md shadow-xl shadow-ctp-crust/70 px-3 py-2.5 font-source text-xs select-none ${styles.tooltip} backdrop-blur-lg`}
+      className={`bg-ctp-base/80 border border-ctp-surface1 rounded-md shadow-xl shadow-ctp-crust/70 px-3 py-2.5 font-source text-xs select-none ${styles.tooltip} backdrop-blur-lg`}
     >
       {/* Component name badge */}
       <div className="flex items-center gap-1.5 mb-1.5">
-        <span className="text-[9px] font-bold uppercase tracking-widest text-ctp-overlay0 bg-ctp-surface1 px-1.5 py-0.5 rounded">
+        <span className="flex items-center gap-1 text-[11px] font-semibold text-ctp-blue">
+          <FaReact className="w-3 h-3" />
           {meta.name}
         </span>
         <span className="text-ctp-surface2 text-[10px]">
