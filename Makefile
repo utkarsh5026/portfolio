@@ -26,7 +26,7 @@ help:
 	@$(PY) makefile.py help
 
 # Development
-.PHONY: install dev start preview
+.PHONY: install dev start preview watch-prod
 install:
 	@$(PY) makefile.py install
 dev:
@@ -35,6 +35,8 @@ start:
 	@$(PY) makefile.py start
 preview:
 	@$(PY) makefile.py preview
+watch-prod:
+	@$(PY) makefile.py watch-prod
 
 # Build
 .PHONY: build build-force analyze analyze-verbose gen-git-stats gen-git-commits

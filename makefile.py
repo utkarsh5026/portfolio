@@ -106,6 +106,13 @@ def target_preview():
     _app_cmd(["bun", "run", "preview"])
 
 
+def target_watch_prod():
+    print_header("Watch + Serve Production Build")
+    print_step("Building, watching for changes, and serving at http://localhost:3000")
+    print_step("Press Ctrl+C to stop")
+    _app_cmd(["bun", "run", "watch:prod"])
+
+
 def target_gen_git_stats():
     print_header("Generating Git Statistics")
     _app_cmd(["bun", "run", "gen:git-stats"])
@@ -315,6 +322,7 @@ TARGETS = {
     "dev": (target_dev, "Start development server", "Development"),
     "start": (target_start, "Alias for dev", "Development"),
     "preview": (target_preview, "Preview production build locally", "Development"),
+    "watch-prod": (target_watch_prod, "Watch, rebuild, and serve production build at :3000", "Development"),
     # Build
     "gen-git-stats": (target_gen_git_stats, "Generate git statistics", "Build"),
     "gen-git-commits": (target_gen_git_commits, "Generate git commits JSON", "Build"),
