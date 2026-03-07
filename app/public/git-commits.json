@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-07T20:33:06.634Z",
+  "generatedAt": "2026-03-07T20:50:51.042Z",
   "commits": [
     {
-      "hash": "0e6d2f7b5c861a7470be4c4fea5b2c99c7b54650",
-      "shortHash": "0e6d2f7",
+      "hash": "bab260deed4c3c6d04b86c8daed569aac37353b1",
+      "shortHash": "bab260d",
+      "message": "feat: hide git blame in section header when git blame is disabled",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T02:20:39+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 3,
+      "deletions": 1,
+      "filesChanged": 1
+    },
+    {
+      "hash": "6d094acb1c84bad90ed810a971f47e3e1f5a059a",
+      "shortHash": "6d094ac",
       "message": "refactor: migrate git meta/stats from hooks to Zustand store and inline staleness util",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T02:02:47+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 43,
-      "deletions": 14,
-      "filesChanged": 5
+      "insertions": 64,
+      "deletions": 35,
+      "filesChanged": 8
     },
     {
       "hash": "e68209a3b3f5fdd341ea54df30b16d8bad1c5a45",
@@ -228,22 +240,10 @@
       "insertions": 1009,
       "deletions": 406,
       "filesChanged": 39
-    },
-    {
-      "hash": "901177e741df2d342744d01005a34cc25d6309e9",
-      "shortHash": "901177e",
-      "message": "docs: fix README tech stack to reflect actual dependencies",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T11:57:13+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 326,
-      "deletions": 115,
-      "filesChanged": 3
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 10,
+    "2026-03-08": 11,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,

@@ -7,6 +7,7 @@ import { relativeTime } from "@/lib/utils";
 import useGitMetaStore, {
   type ComponentMeta,
 } from "@/store/git-store/git-meta-store";
+import useSettingsStore from "@/store/settings-store";
 
 import { sectionColorSchemes } from "./sec-utils";
 import styles from "./section.module.css";
@@ -32,6 +33,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   blameMeta,
 }) => {
   const getAuthor = useGitMetaStore((s) => s.getAuthor);
+  const gitBlameEnabled = useSettingsStore((s) => s.gitBlameEnabled);
   const authorMeta = blameMeta ? getAuthor(blameMeta.author) : null;
 
   if (!showHeader || !title) {
@@ -66,7 +68,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
             </div>
           )}
 
-          {blameMeta && (
+          {blameMeta && gitBlameEnabled && (
             <div className="ml-4 flex items-center gap-2 text-ctp-overlay0 text-xs sm:text-sm mt-0.5">
               <span>*</span>
               <VscGitCommit className="w-3 h-3 text-ctp-green flex-shrink-0" />
