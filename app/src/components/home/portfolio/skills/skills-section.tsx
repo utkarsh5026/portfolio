@@ -1,7 +1,7 @@
 import { Sparkles } from "lucide-react";
 
 import { OutlineNode } from "@/components/home/editor/outline";
-import Section from "@/components/section/portfolio-section";
+import Section from "@/components/home/editor/section/portfolio-section";
 import type { AppColor } from "@/lib/ctp-colors";
 
 import { skillCategories } from "./data";

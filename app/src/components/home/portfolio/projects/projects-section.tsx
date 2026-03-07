@@ -4,7 +4,7 @@ import React, { useCallback, useRef, useState } from "react";
 import Reveal from "@/components/animations/reveal/Reveal";
 import { useEditorContext } from "@/components/home/editor/context/explorer-context";
 import { OutlineNode } from "@/components/home/editor/outline";
-import Section from "@/components/section/portfolio-section";
+import Section from "@/components/home/editor/section/portfolio-section";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { MobileProvider } from "@/hooks/use-mobile";

@@ -11,7 +11,7 @@ import React, { lazy, Suspense, useState } from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
 import { OutlineNode } from "@/components/home/editor/outline";
-import Section from "@/components/section/portfolio-section";
+import Section from "@/components/home/editor/section/portfolio-section";
 import {
   Collapsible,
   CollapsibleContent,
