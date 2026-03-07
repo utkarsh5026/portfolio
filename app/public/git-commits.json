@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-07T19:58:03.526Z",
+  "generatedAt": "2026-03-07T20:26:06.026Z",
   "commits": [
     {
-      "hash": "b516f7ef5408569c1ada1b8be501c69b379ae3e5",
-      "shortHash": "b516f7e",
+      "hash": "96eec858ee827d7de7ade7f8a38439dfd314aa65",
+      "shortHash": "96eec85",
+      "message": "refactor: migrate git meta from hook to Zustand store",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T01:55:29+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 99,
+      "deletions": 106,
+      "filesChanged": 5
+    },
+    {
+      "hash": "fb5ee5688fdb3de5b32c13ff1c52cff58b46405f",
+      "shortHash": "fb5ee56",
       "message": "feat: add settings panel with git blame toggle",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T01:27:20+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 122,
-      "deletions": 0,
-      "filesChanged": 7
+      "insertions": 144,
+      "deletions": 22,
+      "filesChanged": 10
     },
     {
       "hash": "1f410ffd6eec12a73ffec1bd929b9a1f471c9d76",
@@ -228,22 +240,10 @@
       "insertions": 322,
       "deletions": 23,
       "filesChanged": 5
-    },
-    {
-      "hash": "caaebe33b0ea8eb2d61762f528a7ea4b05d5383e",
-      "shortHash": "caaebe3",
-      "message": "perf: lazy load loading stage components and refactor section component map",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T11:24:18+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 88,
-      "deletions": 93,
-      "filesChanged": 6
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 8,
+    "2026-03-08": 9,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,

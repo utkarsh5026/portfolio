@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
-import {
+import useGitMetaStore, {
   type AuthorMeta,
   type ComponentMeta,
-  useGitMeta,
-} from "@/hooks/use-git-meta";
+} from "@/store/git-store/git-meta-store";
 import useSettingsStore from "@/store/settings-store";
 
 import GitBlamePortalTooltip from "./git-blame-portal-tooltip";
@@ -28,7 +27,14 @@ interface TooltipState {
  * - [data-git-component="SkillCard"] → looks up by component name
  */
 const GitBlameManager: React.FC = () => {
-  const { getBySection, getByComponent, getAuthor } = useGitMeta();
+  const getBySection = useGitMetaStore((s) => s.getBySection);
+  const getByComponent = useGitMetaStore((s) => s.getByComponent);
+  const getAuthor = useGitMetaStore((s) => s.getAuthor);
+  const fetchGitMeta = useGitMetaStore((s) => s.fetchGitMeta);
+
+  useEffect(() => {
+    fetchGitMeta();
+  }, [fetchGitMeta]);
   const gitBlameEnabled = useSettingsStore((s) => s.gitBlameEnabled);
   const [tooltip, setTooltip] = useState<TooltipState>({
     visible: false,

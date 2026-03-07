@@ -3,8 +3,11 @@ import { createPortal } from "react-dom";
 import { FaReact } from "react-icons/fa";
 import { VscGitCommit } from "react-icons/vsc";
 
-import { type AuthorMeta, type ComponentMeta } from "@/hooks/use-git-meta";
 import { relativeTime } from "@/lib/utils";
+import {
+  type AuthorMeta,
+  type ComponentMeta,
+} from "@/store/git-store/git-meta-store";
 
 import styles from "./git-blame-portal-tooltip.module.css";
 

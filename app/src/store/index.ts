@@ -5,6 +5,11 @@ import useGitCommitsStore, {
   useGitCommitsActions,
   useGitCommitsState,
 } from "./git-store/git-commits-store";
+import useGitMetaStore, {
+  type AuthorMeta,
+  type ComponentMeta,
+  type GitMetaJson,
+} from "./git-store/git-meta-store";
 import useGitStore, {
   GitStatsJson,
   SectionGitStats,
@@ -24,6 +29,7 @@ export {
   useGitCommitsActions,
   useGitCommitsState,
   useGitCommitsStore,
+  useGitMetaStore,
   useGitStore,
   useMarkdownHeadingStore,
   useOutlineStore,
@@ -31,7 +37,10 @@ export {
 };
 
 export type {
+  AuthorMeta,
+  ComponentMeta,
   GitCommit,
+  GitMetaJson,
   GitStatsJson,
   HeadingNode,
   LanguageStat,
