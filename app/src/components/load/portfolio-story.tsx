@@ -1,17 +1,21 @@
 import "./style.css";
 
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import useMobile from "@/hooks/use-mobile";
 
-import CompilationLoading from "./bridge/compile/CompilationLoading";
-import FakePortfolioLoading from "./bridge/portfolio/FakePortfolioLoading";
-import CodeCompilation from "./compilation/code-compilation";
-import MainPortfolio from "./main-portfolio";
-import Panic from "./panic/main/Panic";
-import Realization from "./realization/Realization";
-import PrankPortfolio from "./simple-portfolio/PrankPortfolio";
+const CompilationLoading = lazy(
+  () => import("./bridge/compile/CompilationLoading")
+);
+const FakePortfolioLoading = lazy(
+  () => import("./bridge/portfolio/FakePortfolioLoading")
+);
+const CodeCompilation = lazy(() => import("./compilation/code-compilation"));
+const MainPortfolio = lazy(() => import("./main-portfolio"));
+const Panic = lazy(() => import("./panic/main/Panic"));
+const Realization = lazy(() => import("./realization/Realization"));
+const PrankPortfolio = lazy(() => import("./simple-portfolio/PrankPortfolio"));
 
 const IMAGES_TO_PRELOAD = [
   "macos-color-optimized.jpg",
@@ -150,32 +154,34 @@ const PortfolioStory: React.FC = () => {
 
   return (
     <div className="portfolio-story-container scene-transition-container">
-      {currentStage === "realization" && (
-        <Realization onComplete={handleRealizationComplete} />
-      )}
+      <Suspense fallback={null}>
+        {currentStage === "realization" && (
+          <Realization onComplete={handleRealizationComplete} />
+        )}
 
-      {currentStage === "panic" && <Panic onComplete={handlePanicComplete} />}
+        {currentStage === "panic" && <Panic onComplete={handlePanicComplete} />}
 
-      {currentStage === "chaos" && (
-        <PrankPortfolio onComplete={handleChaosComplete} />
-      )}
+        {currentStage === "chaos" && (
+          <PrankPortfolio onComplete={handleChaosComplete} />
+        )}
 
-      {currentStage === "compilation-loading" && (
-        <CompilationLoading onComplete={handleCompilationLoadingComplete} />
-      )}
+        {currentStage === "compilation-loading" && (
+          <CompilationLoading onComplete={handleCompilationLoadingComplete} />
+        )}
 
-      {currentStage === "compilation" && (
-        <CodeCompilation onLoadComplete={handleCompilationComplete} />
-      )}
+        {currentStage === "compilation" && (
+          <CodeCompilation onLoadComplete={handleCompilationComplete} />
+        )}
 
-      {currentStage === "chaos-loading" && (
-        <FakePortfolioLoading
-          onComplete={handleChaosLoadingComplete}
-          duration={2000}
-        />
-      )}
+        {currentStage === "chaos-loading" && (
+          <FakePortfolioLoading
+            onComplete={handleChaosLoadingComplete}
+            duration={2000}
+          />
+        )}
 
-      {currentStage === "portfolio" && <MainPortfolio />}
+        {currentStage === "portfolio" && <MainPortfolio />}
+      </Suspense>
 
       {showSkipButton && currentStage !== "portfolio" && (
         <button

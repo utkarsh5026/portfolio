@@ -1,4 +1,4 @@
-import React, { lazy, useMemo } from "react";
+import React, { lazy } from "react";
 
 import useMobile from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
@@ -14,30 +14,29 @@ import StatusBar from "./status-bar";
 import EditorTabs from "./tabs/editor-tabs";
 import Terminal from "./terminal/Terminal";
 
-const TerminalHeader = lazy(
-  () => import("@/components/home/portfolio/intro/personal-intro")
-);
-const AboutMe = lazy(
-  () => import("@/components/home/portfolio/about/about-me")
-);
-const Skills = lazy(
-  () => import("@/components/home/portfolio/skills/skills-section")
-);
-const Projects = lazy(
-  () => import("@/components/home/portfolio/projects/projects-section")
-);
-const Experience = lazy(
-  () => import("@/components/home/portfolio/work/work-experience")
-);
-const ContactMe = lazy(
-  () => import("@/components/home/portfolio/contact/contact-me")
-);
-const Learning = lazy(
-  () => import("@/components/home/portfolio/learning/learning-section")
-);
-const Articles = lazy(
-  () => import("@/components/home/portfolio/articles/articles-section")
-);
+const sectionComponents: Record<
+  SectionType,
+  React.LazyExoticComponent<React.ComponentType>
+> = {
+  home: lazy(() => import("@/components/home/portfolio/intro/personal-intro")),
+  about: lazy(() => import("@/components/home/portfolio/about/about-me")),
+  skills: lazy(
+    () => import("@/components/home/portfolio/skills/skills-section")
+  ),
+  projects: lazy(
+    () => import("@/components/home/portfolio/projects/projects-section")
+  ),
+  experience: lazy(
+    () => import("@/components/home/portfolio/work/work-experience")
+  ),
+  contact: lazy(() => import("@/components/home/portfolio/contact/contact-me")),
+  learning: lazy(
+    () => import("@/components/home/portfolio/learning/learning-section")
+  ),
+  articles: lazy(
+    () => import("@/components/home/portfolio/articles/articles-section")
+  ),
+};
 
 /**
  * CodeEditor component represents the main editor interface of the application
@@ -48,20 +47,6 @@ const Articles = lazy(
 const CodeEditor: React.FC = () => {
   const { explorerOpen, terminalOpen } = useEditorContext();
   const { isMobile } = useMobile();
-
-  const sections: Record<SectionType, React.ReactNode> = useMemo(
-    () => ({
-      home: <TerminalHeader />,
-      about: <AboutMe />,
-      skills: <Skills />,
-      projects: <Projects />,
-      experience: <Experience />,
-      contact: <ContactMe />,
-      learning: <Learning />,
-      articles: <Articles />,
-    }),
-    []
-  );
 
   return (
     <div className="min-h-screen bg-ctp-base flex">
@@ -74,9 +59,9 @@ const CodeEditor: React.FC = () => {
         {!isMobile && <SideBar />}
         {!isMobile && explorerOpen && <Explorer />}
         <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-          <EditorTabs sections={sections} />
+          <EditorTabs sections={sectionComponents} />
           <EditorBreadcrumbs />
-          <CodeContent sections={sections} />
+          <CodeContent sections={sectionComponents} />
           <StatusBar />
           {terminalOpen && <Terminal />}
           <MobileSwipeHint />
