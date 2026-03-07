@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-07T08:51:31.685Z",
+  "generatedAt": "2026-03-07T09:03:09.689Z",
   "sections": {
     "home": {
       "lastCommitHash": "c15815e",
@@ -26,27 +26,27 @@
       "fileCount": 13
     },
     "skills": {
-      "lastCommitHash": "3cb4e11",
-      "lastCommitDate": "2026-03-07 06:12:45 +0530",
-      "lastCommitMessage": "refactor: replace framer-motion with CSS modules in featured-project and work components",
+      "lastCommitHash": "536cc30",
+      "lastCommitDate": "2026-03-07 14:21:20 +0530",
+      "lastCommitMessage": "feat: add useGitComponent hook and wire it to FeaturedProject and SkillCard",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 23,
-      "linesAdded": 0,
-      "linesDeleted": 165,
-      "totalAdded": 1915,
-      "totalDeleted": 1593,
+      "commitCount": 24,
+      "linesAdded": 6,
+      "linesDeleted": 1,
+      "totalAdded": 1921,
+      "totalDeleted": 1594,
       "fileCount": 4
     },
     "projects": {
-      "lastCommitHash": "8355e1e",
-      "lastCommitDate": "2026-03-07 07:43:19 +0530",
-      "lastCommitMessage": "feat(mobile): add swipe navigation for sections and projects with onboarding hint",
+      "lastCommitHash": "536cc30",
+      "lastCommitDate": "2026-03-07 14:21:20 +0530",
+      "lastCommitMessage": "feat: add useGitComponent hook and wire it to FeaturedProject and SkillCard",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 73,
-      "linesAdded": 25,
+      "commitCount": 74,
+      "linesAdded": 3,
       "linesDeleted": 1,
-      "totalAdded": 9936,
-      "totalDeleted": 8598,
+      "totalAdded": 9939,
+      "totalDeleted": 8599,
       "fileCount": 9
     },
     "experience": {
