@@ -1,6 +1,30 @@
 {
-  "generatedAt": "2026-03-07T01:24:03.534Z",
+  "generatedAt": "2026-03-07T02:11:43.184Z",
   "commits": [
+    {
+      "hash": "46a857dbc2b0ea8a56119fc33daad52707b2496a",
+      "shortHash": "46a857d",
+      "message": "Merge pull request #74 from utkarsh5026/refactor/replace-framer-motion-with-css-modules",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T07:00:56+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 1634,
+      "deletions": 1567,
+      "filesChanged": 70
+    },
+    {
+      "hash": "d2508250812fd4875e53883bb641950d8433a7a6",
+      "shortHash": "d250825",
+      "message": "chore(data): update auto-generated git commits and stats JSON",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T06:53:47+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 15,
+      "deletions": 15,
+      "filesChanged": 2
+    },
     {
       "hash": "29cc420355d2819ec618eca831ceab61c8ea758b",
       "shortHash": "29cc420",
@@ -96,6 +120,18 @@
       "insertions": 94,
       "deletions": 79,
       "filesChanged": 5
+    },
+    {
+      "hash": "80f55266cfbe6e75608911dac3217f0116d92107",
+      "shortHash": "80f5526",
+      "message": "Merge pull request #73 from utkarsh5026/chore/migrate-to-bun",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T04:30:11+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 7233,
+      "deletions": 19425,
+      "filesChanged": 146
     },
     {
       "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
@@ -204,46 +240,10 @@
       "insertions": 18,
       "deletions": 17,
       "filesChanged": 5
-    },
-    {
-      "hash": "a8275f2d0796eacfd2f28f5f18cf19b7d9e4cc1c",
-      "shortHash": "a8275f2",
-      "message": "feat: bridge markdown headings into outline panel during Deep Dive chore: disable TypeScript inlay hints for parameters, variables, and return types",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T03:06:47+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 28,
-      "deletions": 31,
-      "filesChanged": 3
-    },
-    {
-      "hash": "b2fcb47839d2a2939ca53dd4fadc517048a6bca5",
-      "shortHash": "b2fcb47",
-      "message": "Merge pull request #71 from utkarsh5026/feat/add-remaining-projects",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-06T04:25:17+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 2944,
-      "deletions": 1636,
-      "filesChanged": 59
-    },
-    {
-      "hash": "7422e2da1f12f15bffb3a89aacf7899519fc80dc",
-      "shortHash": "7422e2d",
-      "message": "feat: bridge markdown headings into outline panel during Deep Dive",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-06T04:18:32+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 657,
-      "deletions": 282,
-      "filesChanged": 10
     }
   ],
   "commitsByDate": {
-    "2026-03-07": 18,
+    "2026-03-07": 21,
     "2026-03-06": 4,
     "2026-03-05": 43,
     "2026-03-04": 17,
@@ -264,7 +264,7 @@
   "languageStats": [
     {
       "language": "TypeScript",
-      "count": 216,
+      "count": 217,
       "color": "#89b4fa"
     },
     {
