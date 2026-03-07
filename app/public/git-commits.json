@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-03-07T00:26:48.176Z",
+  "generatedAt": "2026-03-07T00:42:56.308Z",
   "commits": [
+    {
+      "hash": "2bf6332903627daa36b62f7db5226a1a8fa9b0ac",
+      "shortHash": "2bf6332",
+      "message": "refactor: consolidate section-loading and relocate section components under editor",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T05:56:37+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 666,
+      "deletions": 526,
+      "filesChanged": 30
+    },
     {
       "hash": "2568ee3c5fb66b7044304e54e6d0d2c5da6183f8",
       "shortHash": "2568ee3",
@@ -228,22 +240,10 @@
       "insertions": 24,
       "deletions": 86,
       "filesChanged": 3
-    },
-    {
-      "hash": "739cf2fb801d6e77461583f4e046bdbcfd454ff3",
-      "shortHash": "739cf2f",
-      "message": "chore: remove unused usage data from skill categories",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-05T21:46:51+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 18,
-      "deletions": 122,
-      "filesChanged": 4
     }
   ],
   "commitsByDate": {
-    "2026-03-07": 13,
+    "2026-03-07": 14,
     "2026-03-06": 4,
     "2026-03-05": 43,
     "2026-03-04": 17,
@@ -264,7 +264,7 @@
   "languageStats": [
     {
       "language": "TypeScript",
-      "count": 224,
+      "count": 221,
       "color": "#89b4fa"
     },
     {
@@ -274,7 +274,7 @@
     },
     {
       "language": "CSS",
-      "count": 28,
+      "count": 30,
       "color": "#cba6f7"
     },
     {

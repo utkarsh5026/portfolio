@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import {
   FaBuilding,
   FaCalendarAlt,
@@ -12,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import useMobile from "@/hooks/use-mobile";
 
 import { experiences } from "./experienceDump";
+import styles from "./work.module.css";
 
 interface ExperienceHeaderProps {
   selectedExp: number;
@@ -155,10 +155,8 @@ const ExperienceHeader: React.FC<ExperienceHeaderProps> = ({ selectedExp }) => {
 
           {/* Action Button */}
           {experience.docsUrl && (
-            <motion.div
-              whileHover={!isMobile ? { scale: 1.02 } : {}}
-              whileTap={{ scale: 0.98 }}
-              className={isMobile ? "w-full" : "self-start sm:self-end"}
+            <div
+              className={`${isMobile ? "w-full" : "self-start sm:self-end"} ${styles.interactive}`}
             >
               <Button
                 className={
@@ -186,7 +184,7 @@ const ExperienceHeader: React.FC<ExperienceHeaderProps> = ({ selectedExp }) => {
                   />
                 )}
               </Button>
-            </motion.div>
+            </div>
           )}
         </div>
       </div>

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import React from "react";
 import {
   FaCode,
@@ -14,6 +13,7 @@ import { OutlineNode } from "@/components/home/editor/outline";
 import { Card, CardContent } from "@/components/ui/card";
 
 import { experiences } from "./experienceDump";
+import styles from "./work.module.css";
 
 interface AchievementsProps {
   selectedExp: number;
@@ -93,20 +93,16 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
 
             <div className="space-y-3 sm:space-y-4">
               {achievement.description.map((desc, i) => (
-                <motion.div
+                <div
                   key={`${index}-${i}`}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{
-                    delay: 0.2 + index * 0.1 + i * 0.05,
-                  }}
-                  className="flex items-start gap-3 sm:gap-4 group/item"
+                  className={`flex items-start gap-3 sm:gap-4 group/item ${styles.slideInRight}`}
+                  style={{ animationDelay: `${0.2 + index * 0.1 + i * 0.05}s` }}
                 >
                   <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-ctp-green mt-2 sm:mt-2.5 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200" />
                   <p className="text-xs sm:text-sm md:text-base text-ctp-subtext0 leading-relaxed group-hover/item:text-ctp-subtext1 transition-colors duration-200 break-words">
                     {desc}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>

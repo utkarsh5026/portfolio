@@ -1,0 +1,77 @@
+/* work.module.css */
+
+/* Interactive elements (hover/tap) */
+.interactive {
+  transition: transform 0.3s ease;
+}
+
+.interactive:hover {
+  transform: scale(1.02);
+}
+
+.interactive:active {
+  transform: scale(0.98);
+}
+
+/* Larger scale for tech badges */
+.interactiveLg {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.interactiveLg:hover {
+  transform: scale(1.05);
+}
+
+.interactiveLg:active {
+  transform: scale(0.95);
+}
+
+/* Entrance Animations */
+.slideInRight {
+  animation: slideInRightAnim 0.6s ease forwards;
+  opacity: 0;
+}
+
+@keyframes slideInRightAnim {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.zoomIn {
+  animation: zoomInAnim 0.3s ease forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes zoomInAnim {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.slideInUp {
+  animation: slideInUpAnim 0.4s ease forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes slideInUpAnim {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

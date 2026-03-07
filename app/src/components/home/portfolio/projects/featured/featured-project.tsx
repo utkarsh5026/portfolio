@@ -1,3 +1,4 @@
+import { Sparkles } from "lucide-react";
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
@@ -6,8 +7,7 @@ import { useMobileContext } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/types";
 
-import FeaturedHeader from "./featured-project-header";
-import Certificate from "./project-certificate";
+import styles from "./featured-project.module.css";
 import ProjectContent from "./project-content";
 
 interface FeaturedProjectProps {
@@ -126,6 +126,77 @@ const TabNavigation: React.FC<TabNavigationProps> = ({
           <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-ctp-peach" />
         )}
       </button>
+    </div>
+  );
+};
+
+/**
+ * FeaturedHeader component displays the header for the featured project section.
+ * It includes a title, an animated sparkles icon, a divider, and a button to toggle
+ * the visibility of the featured project details.
+ */
+const FeaturedHeader: React.FC = () => {
+  return (
+    <div className="flex items-center gap-3 mb-6">
+      <div className={styles.sparkleIcon}>
+        <div className="p-2 bg-gradient-to-r from-ctp-peach to-ctp-yellow rounded-full">
+          <Sparkles className="w-5 h-5 text-ctp-crust" />
+        </div>
+      </div>
+
+      <h3
+        className={`text-xl font-bold bg-gradient-to-r from-ctp-peach to-ctp-yellow bg-clip-text text-transparent ${styles.titleSlideIn}`}
+      >
+        Featured Project
+      </h3>
+
+      <div
+        className={`h-px flex-grow ${styles.lineGrow}`}
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(250,179,135,0.5) 0%, rgba(137,180,250,0) 100%)",
+        }}
+      />
+    </div>
+  );
+};
+
+interface CertificateProps {
+  name: string;
+}
+
+const Certificate: React.FC<CertificateProps> = ({ name }) => {
+  return (
+    <div className="xl:w-1/2">
+      <Reveal
+        effect="zoom-in"
+        duration={0.7}
+        delay={0.4}
+        className="relative mx-auto max-w-md"
+      >
+        <div className="absolute -inset-0.5 bg-gradient-to-r from-ctp-peach to-ctp-blue opacity-50 rounded-xl blur-sm" />
+        <div className="absolute -inset-1 bg-ctp-crust rounded-xl" />
+
+        <div className="relative rounded-lg overflow-hidden border-2 border-ctp-surface0">
+          <img
+            src="skoda-certificate.jpg"
+            alt={`${name} Certificate`}
+            className="w-full h-auto object-cover z-10 relative"
+          />
+
+          <div className="absolute inset-0 bg-gradient-to-tr from-ctp-peach/5 via-white/5 to-ctp-blue/5 z-20" />
+          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--ctp-blue),_transparent_70%)]" />
+        </div>
+
+        <div className="absolute -bottom-3 -right-3 z-30">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-ctp-peach to-ctp-blue rounded-full blur-sm" />
+            <div className="relative p-2 bg-ctp-crust rounded-full border border-ctp-surface0">
+              <FaStar className="w-5 h-5 text-ctp-yellow" />
+            </div>
+          </div>
+        </div>
+      </Reveal>
     </div>
   );
 };
