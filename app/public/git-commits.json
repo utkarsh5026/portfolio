@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-07T18:45:05.724Z",
+  "generatedAt": "2026-03-07T19:10:59.926Z",
   "commits": [
     {
-      "hash": "cf17b53eb626d67c45740e58a9533a5932ddbe80",
-      "shortHash": "cf17b53",
+      "hash": "12303c0fcc26c0d212a64a45f3e99d20b10a5ccc",
+      "shortHash": "12303c0",
+      "message": "refactor: migrate git hooks to Zustand stores",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T00:38:49+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 225,
+      "deletions": 213,
+      "filesChanged": 7
+    },
+    {
+      "hash": "19f07f53a19dd9ce83dca7b419700e920a3d499e",
+      "shortHash": "19f07f5",
       "message": "feat: integrate git blame tracking into contact section components",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T00:13:35+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 23,
-      "deletions": 4,
-      "filesChanged": 3
+      "insertions": 72,
+      "deletions": 52,
+      "filesChanged": 6
     },
     {
       "hash": "022d6d40d64afeccca07215e055cb81fbf9b0c2b",
@@ -228,22 +240,10 @@
       "insertions": 206,
       "deletions": 55,
       "filesChanged": 7
-    },
-    {
-      "hash": "8355e1e86591f7049bc8bda74a6b21ec44fc3d2e",
-      "shortHash": "8355e1e",
-      "message": "feat(mobile): add swipe navigation for sections and projects with onboarding hint",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T07:43:19+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 146,
-      "deletions": 19,
-      "filesChanged": 6
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 1,
+    "2026-03-08": 2,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
