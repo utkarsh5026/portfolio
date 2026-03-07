@@ -121,10 +121,7 @@ const GitCommitsPanel: React.FC<GitCommitsPanelProps> = ({ open, onClose }) => {
 
   const genTime = generatedAt ? relativeTime(generatedAt) : null;
 
-  const grouped = useMemo(
-    () => getCommitsByTimeGroup(),
-    [getCommitsByTimeGroup]
-  );
+  const grouped = getCommitsByTimeGroup();
 
   useEffect(() => {
     fetchCommits();
@@ -187,7 +184,7 @@ const GitCommitsPanel: React.FC<GitCommitsPanelProps> = ({ open, onClose }) => {
         )}
 
         {/* Commit list */}
-        <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-ctp-surface0 scrollbar-track-transparent">
+        <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin scrollbar-thumb-ctp-surface0 scrollbar-track-transparent">
           {loading ? (
             Array.from({ length: 8 }).map((_, i) => <CommitSkeleton key={i} />)
           ) : commits.length === 0 ? (

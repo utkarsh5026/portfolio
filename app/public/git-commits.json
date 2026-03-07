@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-07T21:01:44.524Z",
+  "generatedAt": "2026-03-07T21:08:29.733Z",
   "commits": [
     {
-      "hash": "105f20ab6dcceec3ce6175060fcafc7ca202fd4f",
-      "shortHash": "105f20a",
+      "hash": "7045eff749deb1a77bba720f4a1ea923cad34e95",
+      "shortHash": "7045eff",
+      "message": "fix: remove redundant useMemo and fix commit list overflow scrolling",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T02:37:52+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 2,
+      "deletions": 5,
+      "filesChanged": 1
+    },
+    {
+      "hash": "f81d52d94dd8fe28d51ae7ac58ca271dfb26af7e",
+      "shortHash": "f81d52d",
       "message": "refactor: improve getBySection heuristic to prefer name-based matching over line count",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T02:31:23+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 16,
-      "deletions": 3,
-      "filesChanged": 1
+      "insertions": 44,
+      "deletions": 31,
+      "filesChanged": 4
     },
     {
       "hash": "efc0c7fa535f230b29d980895cf9ba2c26e5f94e",
@@ -228,22 +240,10 @@
       "insertions": 283,
       "deletions": 75,
       "filesChanged": 9
-    },
-    {
-      "hash": "6df8702e5e43ef19ace41c820b36f809f26a9c83",
-      "shortHash": "6df8702",
-      "message": "feat: add component-level git blame metadata generation",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T12:51:15+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 466,
-      "deletions": 30,
-      "filesChanged": 7
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 12,
+    "2026-03-08": 13,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
