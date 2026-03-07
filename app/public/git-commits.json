@@ -1,6 +1,30 @@
 {
-  "generatedAt": "2026-03-07T06:27:41.279Z",
+  "generatedAt": "2026-03-07T07:21:32.502Z",
   "commits": [
+    {
+      "hash": "63acee1406d9d327a5d13415205687d319786f70",
+      "shortHash": "63acee1",
+      "message": "Merge pull request #76 from utkarsh5026/perf/fix-performance-issues",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T12:02:49+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 1009,
+      "deletions": 406,
+      "filesChanged": 39
+    },
+    {
+      "hash": "901177e741df2d342744d01005a34cc25d6309e9",
+      "shortHash": "901177e",
+      "message": "docs: fix README tech stack to reflect actual dependencies",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T11:57:13+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 326,
+      "deletions": 115,
+      "filesChanged": 3
+    },
     {
       "hash": "47011a01ec0940293171dbda1d0c0dd8e335d296",
       "shortHash": "47011a0",
@@ -216,34 +240,10 @@
       "insertions": 160,
       "deletions": 124,
       "filesChanged": 5
-    },
-    {
-      "hash": "ffc225e2f5f233664cdb1e28f147409a189d422c",
-      "shortHash": "ffc225e",
-      "message": "build: add format and format-check make targets",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T04:57:13+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 42,
-      "deletions": 24,
-      "filesChanged": 4
-    },
-    {
-      "hash": "4425b18bb009750f35f92bafd59bcb8b0e15e780",
-      "shortHash": "4425b18",
-      "message": "perf: replace framer-motion with CSS modules in about section",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T04:54:58+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 94,
-      "deletions": 79,
-      "filesChanged": 5
     }
   ],
   "commitsByDate": {
-    "2026-03-07": 31,
+    "2026-03-07": 33,
     "2026-03-06": 4,
     "2026-03-05": 43,
     "2026-03-04": 17,
@@ -284,12 +284,12 @@
     },
     {
       "language": "JSON",
-      "count": 12,
+      "count": 13,
       "color": "#f9e2af"
     },
     {
       "language": "JavaScript",
-      "count": 5,
+      "count": 6,
       "color": "#a6e3a1"
     },
     {

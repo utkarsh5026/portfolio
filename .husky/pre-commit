@@ -11,7 +11,10 @@ node scripts/generate-git-stats.js
 echo "⚙  Regenerating git-commits.json..."
 node scripts/generate-git-commits.js
 
-git add app/public/git-stats.json app/public/git-commits.json
+echo "⚙  Regenerating git-meta.json (component-level blame)..."
+node scripts/generate-git-meta.js
+
+git add app/public/git-stats.json app/public/git-commits.json app/public/data/git-meta.json
 echo "✓  JSON files updated and staged"
 
 echo "🔍  Running lint..."
