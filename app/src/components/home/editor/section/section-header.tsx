@@ -1,7 +1,9 @@
 import { LucideIcon } from "lucide-react";
 import React from "react";
+import { VscGitCommit } from "react-icons/vsc";
 
 import Reveal from "@/components/animations/reveal/Reveal";
+import { type ComponentMeta, relativeTime } from "@/hooks/use-git-meta";
 
 import { sectionColorSchemes } from "./sec-utils";
 import styles from "./section.module.css";
@@ -15,6 +17,7 @@ interface SectionHeaderProps {
   icon?: LucideIcon;
   colorScheme: SectionColorScheme;
   showHeader?: boolean;
+  blameMeta?: ComponentMeta | null;
 }
 
 const SectionHeader: React.FC<SectionHeaderProps> = ({
@@ -23,6 +26,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   icon: HeaderIcon,
   colorScheme,
   showHeader = false,
+  blameMeta,
 }) => {
   if (!showHeader || !title) {
     return null;
@@ -55,6 +59,26 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
               <p className="max-w-2xl leading-relaxed">{description}</p>
             </div>
           )}
+
+          {blameMeta && (
+            <div className="ml-4 flex items-center gap-2 text-ctp-overlay0 text-xs sm:text-sm mt-0.5">
+              <span>*</span>
+              <VscGitCommit className="w-3 h-3 text-ctp-green flex-shrink-0" />
+              <span className="text-ctp-subtext0">{blameMeta.author}</span>
+              <span>·</span>
+              <span>{relativeTime(blameMeta.date)}</span>
+              <span>·</span>
+              <span className="text-ctp-subtext0 truncate max-w-[260px]">
+                {blameMeta.message.length > 55
+                  ? blameMeta.message.slice(0, 55) + "…"
+                  : blameMeta.message}
+              </span>
+              <span className="text-ctp-surface2 flex-shrink-0">
+                ({blameMeta.shortHash})
+              </span>
+            </div>
+          )}
+
           <div className="flex items-center gap-2">
             <span>*/</span>
           </div>

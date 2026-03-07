@@ -2,6 +2,7 @@ import { Book, LucideIcon } from "lucide-react";
 import React, { useRef } from "react";
 
 import { OutlineNode } from "@/components/home/editor/outline";
+import { useGitMeta } from "@/hooks/use-git-meta";
 import { useInView } from "@/hooks/use-in-view";
 import useMobile from "@/hooks/use-mobile";
 
@@ -44,6 +45,8 @@ const Section: React.FC<SectionProps> = ({
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const { isMobile } = useMobile();
+  const { getBySection } = useGitMeta();
+  const blameMeta = getBySection(id);
 
   // Get color scheme for this section
   const colorScheme =
@@ -75,6 +78,7 @@ const Section: React.FC<SectionProps> = ({
             isInView={isInView}
             children={children}
             ref={contentRef}
+            blameMeta={blameMeta}
           />
 
           {/* Mobile scroll indicator (subtle visual cue) */}
