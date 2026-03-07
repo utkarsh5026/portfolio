@@ -1,6 +1,30 @@
 {
-  "generatedAt": "2026-03-07T02:13:31.994Z",
+  "generatedAt": "2026-03-07T03:17:33.731Z",
   "commits": [
+    {
+      "hash": "fde289dedf818e8ab29975a875441aa99514c7ac",
+      "shortHash": "fde289d",
+      "message": "Merge pull request #75 from utkarsh5026/feat/react-swipeable-mobile",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T07:51:03+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 206,
+      "deletions": 55,
+      "filesChanged": 7
+    },
+    {
+      "hash": "8355e1e86591f7049bc8bda74a6b21ec44fc3d2e",
+      "shortHash": "8355e1e",
+      "message": "feat(mobile): add swipe navigation for sections and projects with onboarding hint",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-07T07:43:19+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 146,
+      "deletions": 19,
+      "filesChanged": 6
+    },
     {
       "hash": "518003d08d8f489827b94e884694653efeb11f66",
       "shortHash": "518003d",
@@ -216,34 +240,10 @@
       "insertions": 6,
       "deletions": 6,
       "filesChanged": 2
-    },
-    {
-      "hash": "cae51c8baa612da62c5e456bcfababc9d4464ba6",
-      "shortHash": "cae51c8",
-      "message": "feat: connect outline store to breadcrumb dropdowns",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T03:32:00+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 155,
-      "deletions": 30,
-      "filesChanged": 7
-    },
-    {
-      "hash": "9011ff6c113b3d2d445c5354254b3cc48068fcf5",
-      "shortHash": "9011ff6",
-      "message": "chore: remove CLAUDE.md and skills-lock.json",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T03:28:40+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 32,
-      "deletions": 193,
-      "filesChanged": 4
     }
   ],
   "commitsByDate": {
-    "2026-03-07": 22,
+    "2026-03-07": 24,
     "2026-03-06": 4,
     "2026-03-05": 43,
     "2026-03-04": 17,

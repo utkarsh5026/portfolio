@@ -1,3 +1,5 @@
+import "@fontsource/cascadia-code/index.css";
+import "@fontsource/noto-sans/index.css";
 import "./index.css";
 
 import React from "react";
