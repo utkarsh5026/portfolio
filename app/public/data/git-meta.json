@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-07T20:51:03.880Z",
+  "generatedAt": "2026-03-07T21:02:02.212Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -713,14 +713,14 @@
       "section": "articles",
       "file": "app/src/components/home/portfolio/articles/article-card.tsx",
       "lines": [
-        14,
-        107
+        15,
+        110
       ],
-      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
-      "shortHash": "e4ccb5a",
-      "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-06T22:55:58.000Z",
-      "message": "style: add Prettier config and reformat entire codebase"
+      "hash": "0000000000000000000000000000000000000000",
+      "shortHash": "0000000",
+      "author": "Not Committed Yet",
+      "date": "2026-03-07T21:02:02.000Z",
+      "message": "Version of app/src/components/home/portfolio/articles/article-card.tsx from app/src/components/home/portfolio/articles/article-card.tsx"
     }
   }
 }

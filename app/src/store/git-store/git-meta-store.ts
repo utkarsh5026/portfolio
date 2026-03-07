@@ -65,9 +65,22 @@ const useGitMetaStore = create<GitMetaState>((set, get) => ({
       (c) => c.section === sectionId
     );
     if (matches.length === 0) return null;
-    return matches.reduce((best, c) =>
-      c.lines[1] - c.lines[0] > best.lines[1] - best.lines[0] ? c : best
-    );
+    if (matches.length === 1) return matches[0];
+
+    const normalized = sectionId.toLowerCase();
+    const score = (c: ComponentMeta) => {
+      const name = c.name.toLowerCase();
+      if (name === normalized) return 3;
+      if (name.startsWith(normalized) || name.endsWith(normalized)) return 2;
+      if (name.includes(normalized)) return 1;
+      return 0;
+    };
+
+    return matches.reduce((best, c) => {
+      const scoreDiff = score(c) - score(best);
+      if (scoreDiff !== 0) return scoreDiff > 0 ? c : best;
+      return c.lines[1] - c.lines[0] > best.lines[1] - best.lines[0] ? c : best;
+    });
   },
 
   getAuthor: (authorName) => get().meta?.authors?.[authorName] ?? null,

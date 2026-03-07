@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-07T20:50:51.042Z",
+  "generatedAt": "2026-03-07T21:01:44.524Z",
   "commits": [
     {
-      "hash": "bab260deed4c3c6d04b86c8daed569aac37353b1",
-      "shortHash": "bab260d",
+      "hash": "105f20ab6dcceec3ce6175060fcafc7ca202fd4f",
+      "shortHash": "105f20a",
+      "message": "refactor: improve getBySection heuristic to prefer name-based matching over line count",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T02:31:23+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 16,
+      "deletions": 3,
+      "filesChanged": 1
+    },
+    {
+      "hash": "efc0c7fa535f230b29d980895cf9ba2c26e5f94e",
+      "shortHash": "efc0c7f",
       "message": "feat: hide git blame in section header when git blame is disabled",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T02:20:39+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 3,
-      "deletions": 1,
-      "filesChanged": 1
+      "insertions": 24,
+      "deletions": 22,
+      "filesChanged": 4
     },
     {
       "hash": "6d094acb1c84bad90ed810a971f47e3e1f5a059a",
@@ -228,22 +240,10 @@
       "insertions": 466,
       "deletions": 30,
       "filesChanged": 7
-    },
-    {
-      "hash": "63acee1406d9d327a5d13415205687d319786f70",
-      "shortHash": "63acee1",
-      "message": "Merge pull request #76 from utkarsh5026/perf/fix-performance-issues",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T12:02:49+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 1009,
-      "deletions": 406,
-      "filesChanged": 39
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 11,
+    "2026-03-08": 12,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
