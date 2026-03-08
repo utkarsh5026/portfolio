@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-08T07:22:02.227Z",
+  "generatedAt": "2026-03-08T07:26:09.086Z",
   "commits": [
     {
-      "hash": "3f268dbac8b24514497fac5e9fe3276d6a2b1fad",
-      "shortHash": "3f268db",
+      "hash": "e473a07e7c39039e1622518c8e453155f1eee722",
+      "shortHash": "e473a07",
+      "message": "feat: add desktop hint banner to mobile editor dropdown",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T12:55:44+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 10,
+      "deletions": 2,
+      "filesChanged": 1
+    },
+    {
+      "hash": "1f166ff43e00ec68a7fd3de15e226235c94d94db",
+      "shortHash": "1f166ff",
       "message": "fix: disable git blame on mobile to prevent layout issues",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T12:51:41+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 3,
-      "deletions": 1,
-      "filesChanged": 1
+      "insertions": 24,
+      "deletions": 22,
+      "filesChanged": 4
     },
     {
       "hash": "11b9b8f5212b9339975b429dd3e563e68f6a2e86",
@@ -228,22 +240,10 @@
       "insertions": 24,
       "deletions": 27,
       "filesChanged": 4
-    },
-    {
-      "hash": "f81d52d94dd8fe28d51ae7ac58ca271dfb26af7e",
-      "shortHash": "f81d52d",
-      "message": "refactor: improve getBySection heuristic to prefer name-based matching over line count",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T02:31:23+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 44,
-      "deletions": 31,
-      "filesChanged": 4
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 31,
+    "2026-03-08": 32,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
