@@ -73,4 +73,10 @@ export const sectionColorSchemes = {
     accent: "ctp-lavender",
     gradient: "from-ctp-pink via-ctp-mauve to-ctp-lavender",
   },
+  resume: {
+    primary: "ctp-red",
+    secondary: "ctp-peach",
+    accent: "ctp-maroon",
+    gradient: "from-ctp-red via-ctp-peach to-ctp-maroon",
+  },
 } as const;

@@ -21,6 +21,7 @@ function App() {
         <Route path="/contact" element={<MainPortfolio />} />
         <Route path="/learning" element={<MainPortfolio />} />
         <Route path="/articles" element={<MainPortfolio />} />
+        <Route path="/resume" element={<MainPortfolio />} />
 
         {/* Individual project deep-link — editor loads with that project tab active */}
         <Route path="/projects/:slug" element={<MainPortfolio />} />

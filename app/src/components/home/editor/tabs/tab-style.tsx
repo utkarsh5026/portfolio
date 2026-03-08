@@ -8,6 +8,7 @@ import {
   FaStar,
   FaUser,
 } from "react-icons/fa";
+import { VscFilePdf } from "react-icons/vsc";
 
 import { SectionType } from "../context/explorer-context";
 
@@ -20,6 +21,7 @@ export const sectionIconMap: Record<SectionType, React.ReactNode> = {
   contact: <FaEnvelope />,
   learning: <FaGraduationCap />,
   articles: <FaNewspaper />,
+  resume: <VscFilePdf />,
 };
 
 export const getIconColor = (section: SectionType): string => {
@@ -40,6 +42,8 @@ export const getIconColor = (section: SectionType): string => {
       return "text-ctp-teal";
     case "learning":
       return "text-ctp-sapphire";
+    case "resume":
+      return "text-ctp-red";
     default:
       return "text-ctp-blue";
   }
@@ -64,6 +68,8 @@ export const getActiveTabColor = (section: SectionType): string => {
       return "from-ctp-teal to-ctp-green";
     case "learning":
       return "from-ctp-sapphire to-ctp-blue";
+    case "resume":
+      return "from-ctp-red to-ctp-peach";
     default:
       return "from-ctp-blue to-ctp-lavender";
   }

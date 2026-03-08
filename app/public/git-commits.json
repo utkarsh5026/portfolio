@@ -1,16 +1,28 @@
 {
-  "generatedAt": "2026-03-08T06:25:30.430Z",
+  "generatedAt": "2026-03-08T06:27:32.776Z",
   "commits": [
     {
-      "hash": "56a0f41761697c2bc16cbbce965fd875c5a5d9e2",
-      "shortHash": "56a0f41",
+      "hash": "bb757a2ca50281dd8a9550a75811934b68e01598",
+      "shortHash": "bb757a2",
+      "message": "feat: add resume section to the VS Code editor UI",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T11:45:18+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 151,
+      "deletions": 121,
+      "filesChanged": 10
+    },
+    {
+      "hash": "8513b3111e8cefc0e107b6817cc23cf87866712a",
+      "shortHash": "8513b31",
       "message": "feat: add resume section with experience, education, projects, and skills components",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T11:37:12+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 552,
-      "deletions": 101,
+      "insertions": 489,
+      "deletions": 38,
       "filesChanged": 9
     },
     {
@@ -228,22 +240,10 @@
       "insertions": 53,
       "deletions": 31,
       "filesChanged": 4
-    },
-    {
-      "hash": "4ea217b60670734bb9246ff7e4402fe29222a23d",
-      "shortHash": "4ea217b",
-      "message": "style: update git blame portal tooltip badge styling and add React icon",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T01:13:01+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 25,
-      "deletions": 23,
-      "filesChanged": 4
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 25,
+    "2026-03-08": 26,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
