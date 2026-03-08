@@ -1,17 +1,41 @@
 {
-  "generatedAt": "2026-03-07T22:55:58.100Z",
+  "generatedAt": "2026-03-08T01:07:25.870Z",
   "commits": [
     {
-      "hash": "89b4c8fb7ea906826b6733a927726515a480a34c",
-      "shortHash": "89b4c8f",
+      "hash": "e257e9692e8cd91cb21a166f326e3f8cb45a647b",
+      "shortHash": "e257e96",
+      "message": "feat: add multi-theme Catppuccin CSS variables for runtime theme switching",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T06:37:04+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 149,
+      "deletions": 27,
+      "filesChanged": 2
+    },
+    {
+      "hash": "1c0323cfede94521157e0e780a824249bdada366",
+      "shortHash": "1c0323c",
+      "message": "Merge pull request #77 from utkarsh5026/feat/git-blame",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T04:30:07+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 3348,
+      "deletions": 1026,
+      "filesChanged": 71
+    },
+    {
+      "hash": "40891af8acec0145a69211d9b5a01af815f76b9c",
+      "shortHash": "40891af",
       "message": "feat: add CSSPresence animation component and use slide-left in section header",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T04:25:28+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 409,
-      "deletions": 26,
-      "filesChanged": 4
+      "insertions": 441,
+      "deletions": 58,
+      "filesChanged": 7
     },
     {
       "hash": "16c0a2b22ca6b308675f34f338dfef4cb5802a7f",
@@ -216,34 +240,10 @@
       "insertions": 575,
       "deletions": 35,
       "filesChanged": 4
-    },
-    {
-      "hash": "0011e9e9527da849149a62432746b5c30892ee8f",
-      "shortHash": "0011e9e",
-      "message": "build: remove three.js dependencies and add gen:git-meta script",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T14:54:06+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 35,
-      "deletions": 70,
-      "filesChanged": 5
-    },
-    {
-      "hash": "2856b033fa2d136e1c6fff8a20e53c2c80f3f149",
-      "shortHash": "2856b03",
-      "message": "fix: guard post-commit hook against infinite amend loop",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T14:48:44+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 24,
-      "deletions": 18,
-      "filesChanged": 4
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 17,
+    "2026-03-08": 19,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
