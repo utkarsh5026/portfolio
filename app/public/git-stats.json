@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-08T06:51:20.522Z",
+  "generatedAt": "2026-03-08T07:12:45.176Z",
   "sections": {
     "home": {
       "lastCommitHash": "25c87a3",
@@ -98,7 +98,7 @@
       "fileCount": 3
     },
     "resume": {
-      "lastCommitHash": "ee4bb83",
+      "lastCommitHash": "c9fc954",
       "lastCommitDate": "2026-03-08 12:20:56 +0530",
       "lastCommitMessage": "feat: wrap resume sections with OutlineNode for VS Code outline integration",
       "lastAuthor": "Utkarsh Priyadarshi",

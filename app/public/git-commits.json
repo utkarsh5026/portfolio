@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-08T06:51:31.146Z",
+  "generatedAt": "2026-03-08T07:12:48.404Z",
   "commits": [
     {
-      "hash": "ee4bb83a05eddeea06e544819b8c436129f22a05",
-      "shortHash": "ee4bb83",
+      "hash": "c0e2c114c826d35581213117b08808584105c310",
+      "shortHash": "c0e2c11",
+      "message": "fix: prevent git blame row from overflowing on mobile in SectionHeader",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T12:42:22+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 12,
+      "deletions": 8,
+      "filesChanged": 1
+    },
+    {
+      "hash": "c9fc95414ea1270d0bd187b6d3691ac2ebdc32d8",
+      "shortHash": "c9fc954",
       "message": "feat: wrap resume sections with OutlineNode for VS Code outline integration",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T12:20:56+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 295,
-      "deletions": 248,
-      "filesChanged": 6
+      "insertions": 359,
+      "deletions": 312,
+      "filesChanged": 9
     },
     {
       "hash": "ada27062c39a010dc1f3a1e94989b5970f86de5d",
@@ -228,22 +240,10 @@
       "insertions": 24,
       "deletions": 22,
       "filesChanged": 4
-    },
-    {
-      "hash": "6d094acb1c84bad90ed810a971f47e3e1f5a059a",
-      "shortHash": "6d094ac",
-      "message": "refactor: migrate git meta/stats from hooks to Zustand store and inline staleness util",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T02:02:47+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 64,
-      "deletions": 35,
-      "filesChanged": 8
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 29,
+    "2026-03-08": 30,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
