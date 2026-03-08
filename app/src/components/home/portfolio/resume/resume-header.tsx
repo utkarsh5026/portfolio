@@ -2,6 +2,7 @@ import { Download, Github, Linkedin, Mail, Twitter } from "lucide-react";
 import React from "react";
 
 import { Heading, Text } from "@/components/ui/text";
+import { useGitComponent } from "@/hooks/use-git-component";
 import { cn } from "@/lib/utils";
 
 const contacts = [
@@ -28,8 +29,13 @@ const contacts = [
 ];
 
 const ResumeHeader: React.FC = () => {
+  const ref = useGitComponent(ResumeHeader);
+
   return (
-    <div className="border-b border-ctp-surface1 pb-6 mb-6 animate-fadeIn">
+    <div
+      ref={ref}
+      className="border-b border-ctp-surface1 pb-6 mb-6 animate-fadeIn"
+    >
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
         <div>
           <Heading

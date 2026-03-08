@@ -2,10 +2,17 @@ import React from "react";
 
 import { education } from "@/components/home/portfolio/about/data/data";
 import { Heading, Text } from "@/components/ui/text";
+import { useGitComponent } from "@/hooks/use-git-component";
 
 const ResumeEducation: React.FC = () => {
+  const ref = useGitComponent(ResumeEducation);
+
   return (
-    <div className="animate-fadeIn" style={{ animationDelay: "0.2s" }}>
+    <div
+      ref={ref}
+      className="animate-fadeIn"
+      style={{ animationDelay: "0.2s" }}
+    >
       <Heading
         as="h4"
         className="mb-4 text-xl border-b-2 border-ctp-surface2 pb-2 uppercase tracking-widest text-ctp-text"

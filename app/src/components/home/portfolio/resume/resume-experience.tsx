@@ -3,10 +3,17 @@ import React from "react";
 
 import { experiences } from "@/components/home/portfolio/work/experienceDump";
 import { Heading, Text } from "@/components/ui/text";
+import { useGitComponent } from "@/hooks/use-git-component";
 
 const ResumeExperience: React.FC = () => {
+  const ref = useGitComponent(ResumeExperience);
+
   return (
-    <div className="animate-fadeIn" style={{ animationDelay: "0.1s" }}>
+    <div
+      ref={ref}
+      className="animate-fadeIn"
+      style={{ animationDelay: "0.1s" }}
+    >
       <Heading
         as="h4"
         className="mb-4 text-xl border-b-2 border-ctp-surface2 pb-2 uppercase tracking-widest text-ctp-text"

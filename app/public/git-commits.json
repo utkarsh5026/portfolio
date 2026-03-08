@@ -1,16 +1,28 @@
 {
-  "generatedAt": "2026-03-08T06:27:32.776Z",
+  "generatedAt": "2026-03-08T06:29:07.135Z",
   "commits": [
     {
-      "hash": "bb757a2ca50281dd8a9550a75811934b68e01598",
-      "shortHash": "bb757a2",
+      "hash": "67b13f21e93fd468e699610a66abcd0606c679b1",
+      "shortHash": "67b13f2",
+      "message": "feat: add useGitComponent tracking to all resume section components",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T11:51:08+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 249,
+      "deletions": 133,
+      "filesChanged": 10
+    },
+    {
+      "hash": "4a9f8886c275ce9219245c7e02c01335f1b9942f",
+      "shortHash": "4a9f888",
       "message": "feat: add resume section to the VS Code editor UI",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T11:45:18+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 151,
-      "deletions": 121,
+      "insertions": 51,
+      "deletions": 21,
       "filesChanged": 10
     },
     {
@@ -228,22 +240,10 @@
       "insertions": 144,
       "deletions": 22,
       "filesChanged": 10
-    },
-    {
-      "hash": "1f410ffd6eec12a73ffec1bd929b9a1f471c9d76",
-      "shortHash": "1f410ff",
-      "message": "chore: optimize pre-commit hook to lint and format staged files only",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T01:18:51+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 53,
-      "deletions": 31,
-      "filesChanged": 4
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 26,
+    "2026-03-08": 27,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
