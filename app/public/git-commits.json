@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-08T01:35:41.343Z",
+  "generatedAt": "2026-03-08T01:42:37.939Z",
   "commits": [
     {
-      "hash": "d4e055dbfd0ed0b89f7a336c71e5c305bfac6ea4",
-      "shortHash": "d4e055d",
+      "hash": "a5f05f844d8cb9c84b72fdb1de46aa2b5a96fdc8",
+      "shortHash": "a5f05f8",
+      "message": "refactor: migrate hardcoded colors to CSS variable-based color-mix for theme compatibility",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T07:12:05+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 45,
+      "deletions": 29,
+      "filesChanged": 5
+    },
+    {
+      "hash": "a4c70d8b0efc7ae50a1438176ed0786a7871dc52",
+      "shortHash": "a4c70d8",
       "message": "refactor: rename TechBadge to kebab-case, drop category-icon, and update git-meta script",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T07:05:20+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 64,
-      "deletions": 473,
-      "filesChanged": 4
+      "insertions": 93,
+      "deletions": 502,
+      "filesChanged": 7
     },
     {
       "hash": "8cbc5e6c3ec94048c551be5423df6d3b6cf35b83",
@@ -228,22 +240,10 @@
       "insertions": 160,
       "deletions": 116,
       "filesChanged": 4
-    },
-    {
-      "hash": "3d7705463e2a1fbaca235f3d1da763dcb7ee30b6",
-      "shortHash": "3d77054",
-      "message": "refactor: migrate git hooks to Zustand stores",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T00:38:49+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 255,
-      "deletions": 243,
-      "filesChanged": 10
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 21,
+    "2026-03-08": 22,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,

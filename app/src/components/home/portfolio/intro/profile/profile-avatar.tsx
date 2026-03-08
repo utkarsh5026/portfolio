@@ -21,16 +21,28 @@ const ProfileAvatar: React.FC = () => {
       className="group relative h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64 transition-all duration-500 hover:scale-[1.03] cursor-pointer"
     >
       <div
-        className="absolute inset-[-4px] border-2 border-ctp-mauve/80 -rotate-3 transition-all duration-500 group-hover:rotate-0"
-        style={{ borderRadius: "45% 55% 40% 60% / 60% 40% 55% 45%" }}
+        className="absolute inset-[-4px] border-2 -rotate-3 transition-all duration-500 group-hover:rotate-0"
+        style={{
+          borderColor:
+            "color-mix(in srgb, rgb(var(--ctp-mauve)) 80%, transparent)",
+          borderRadius: "45% 55% 40% 60% / 60% 40% 55% 45%",
+        }}
       />
       <div
-        className="absolute inset-[-8px] border-[3px] border-ctp-pink/60 rotate-6 transition-all duration-500 group-hover:rotate-[2deg]"
-        style={{ borderRadius: "50% 40% 60% 45% / 45% 60% 40% 55%" }}
+        className="absolute inset-[-8px] border-[3px] rotate-6 transition-all duration-500 group-hover:rotate-[2deg]"
+        style={{
+          borderColor:
+            "color-mix(in srgb, rgb(var(--ctp-pink)) 60%, transparent)",
+          borderRadius: "50% 40% 60% 45% / 45% 60% 40% 55%",
+        }}
       />
       <div
-        className="absolute inset-[-1px] border-2 border-ctp-lavender/90 rotate-1 transition-all duration-500 group-hover:-rotate-1"
-        style={{ borderRadius: "48% 52% 45% 55% / 55% 45% 50% 48%" }}
+        className="absolute inset-[-1px] border-2 rotate-1 transition-all duration-500 group-hover:-rotate-1"
+        style={{
+          borderColor:
+            "color-mix(in srgb, rgb(var(--ctp-lavender)) 90%, transparent)",
+          borderRadius: "48% 52% 45% 55% / 55% 45% 50% 48%",
+        }}
       />
 
       <div
@@ -55,7 +67,13 @@ const ProfileAvatar: React.FC = () => {
             alt="Utkarsh Priyadarshi"
           />
 
-          <div className="absolute inset-0 bg-ctp-mantle/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20" />
+          <div
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20"
+            style={{
+              backgroundColor:
+                "color-mix(in srgb, rgb(var(--ctp-mantle)) 10%, transparent)",
+            }}
+          />
         </div>
       </div>
     </div>

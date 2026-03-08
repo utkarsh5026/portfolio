@@ -19,8 +19,8 @@ const PersonalTitle: React.FC = () => {
         className="absolute inset-0 opacity-[0.02] pointer-events-none"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(137, 180, 250, 1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(137, 180, 250, 1) 1px, transparent 1px)
+            linear-gradient(rgb(var(--ctp-blue)) 1px, transparent 1px),
+            linear-gradient(90deg, rgb(var(--ctp-blue)) 1px, transparent 1px)
           `,
           backgroundSize: "30px 30px",
         }}
@@ -36,15 +36,16 @@ const PersonalTitle: React.FC = () => {
 
       {/* Main title */}
       <h1
-        className={`text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-source mb-6 text-white ${styles.textFadeInDelay1}`}
+        className={`text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-source mb-6 text-ctp-text ${styles.textFadeInDelay1}`}
       >
         <span className="flex flex-col xs:flex-row xs:items-center xs:flex-wrap gap-1 xs:gap-3">
-          <span className="text-white">Hi, I'm</span>
+          <span className="text-ctp-text">Hi, I'm</span>
           <Reveal effect="slide-in" direction="right" delay={1}>
             <span
               className="bg-gradient-to-r from-ctp-teal to-ctp-mauve text-transparent bg-clip-text relative"
               style={{
-                filter: "drop-shadow(0 0 8px rgba(203, 166, 247, 0.3))",
+                filter:
+                  "drop-shadow(0 0 8px color-mix(in srgb, rgb(var(--ctp-mauve)) 30%, transparent))",
               }}
             >
               Utkarsh Priyadarshi

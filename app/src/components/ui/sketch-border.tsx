@@ -54,6 +54,9 @@ const borderRadiusVariants = [
  * The wrapper gains a Tailwind `group` class so nested `group-hover:`
  * utilities animate all three layers on hover.
  */
+const toRgba = (color: SketchColor, opacity: number) =>
+  `color-mix(in srgb, rgb(var(--ctp-${color})) ${opacity}%, transparent)`;
+
 const SketchBorder: React.FC<SketchBorderProps> = ({
   children,
   className,
@@ -80,11 +83,9 @@ const SketchBorder: React.FC<SketchBorderProps> = ({
       <div className="hidden md:contents">
         {/* Layer 1 — outermost, negative rotation */}
         <div
-          className={cn(
-            "absolute inset-[-5px] border-[2px] transition-all duration-500 pointer-events-none z-0",
-            `border-ctp-${primaryColor}/${primaryOpacity}`
-          )}
+          className="absolute inset-[-5px] border-[2px] transition-all duration-500 pointer-events-none z-0"
           style={{
+            borderColor: toRgba(primaryColor, primaryOpacity),
             borderRadius: borderRadiusVariants[0],
             transform: `rotate(-${r}deg)`,
           }}
@@ -92,11 +93,9 @@ const SketchBorder: React.FC<SketchBorderProps> = ({
 
         {/* Layer 2 — middle, positive rotation (slightly larger magnitude) */}
         <div
-          className={cn(
-            "absolute inset-[-2px] border-[2px] transition-all duration-500 pointer-events-none z-0",
-            `border-ctp-${secondaryColor}/${secondaryOpacity}`
-          )}
+          className="absolute inset-[-2px] border-[2px] transition-all duration-500 pointer-events-none z-0"
           style={{
+            borderColor: toRgba(secondaryColor, secondaryOpacity),
             borderRadius: borderRadiusVariants[1],
             transform: `rotate(${r * 1.4}deg)`,
           }}
@@ -104,11 +103,9 @@ const SketchBorder: React.FC<SketchBorderProps> = ({
 
         {/* Layer 3 — innermost, slight negative rotation */}
         <div
-          className={cn(
-            "absolute inset-[1px] border-[1.5px] transition-all duration-500 pointer-events-none z-0",
-            `border-ctp-${tertiaryColor ?? primaryColor}/${tertiaryOpacity}`
-          )}
+          className="absolute inset-[1px] border-[1.5px] transition-all duration-500 pointer-events-none z-0"
           style={{
+            borderColor: toRgba(tertiaryColor ?? primaryColor, tertiaryOpacity),
             borderRadius: borderRadiusVariants[2],
             transform: `rotate(-${r * 0.6}deg)`,
           }}

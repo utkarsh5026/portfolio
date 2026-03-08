@@ -46,7 +46,7 @@ const GhostButton: React.FC<GhostButtonProps> = ({
       {icon}
       <span
         className={cn(
-          "absolute px-2 py-1 bg-[#313244] rounded text-xs invisible opacity-0 group-hover/button:visible group-hover/button:opacity-100 transition-opacity whitespace-nowrap font-source",
+          "absolute px-2 py-1 bg-ctp-surface0 rounded text-xs invisible opacity-0 group-hover/button:visible group-hover/button:opacity-100 transition-opacity whitespace-nowrap font-source",
           labelDirection === "left" && "left-14",
           labelDirection === "right" && "right-14",
           labelDirection === "top" && "top-14",

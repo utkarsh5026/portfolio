@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-08T01:35:37.397Z",
+  "generatedAt": "2026-03-08T01:42:30.644Z",
   "sections": {
     "home": {
-      "lastCommitHash": "61211ff",
-      "lastCommitDate": "2026-03-08 04:12:42 +0530",
-      "lastCommitMessage": "feat: integrate useGitComponent ref across all portfolio components",
+      "lastCommitHash": "a5f05f8",
+      "lastCommitDate": "2026-03-08 07:12:05 +0530",
+      "lastCommitMessage": "refactor: migrate hardcoded colors to CSS variable-based color-mix for theme compatibility",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 36,
-      "linesAdded": 55,
-      "linesDeleted": 14,
-      "totalAdded": 3841,
-      "totalDeleted": 2105,
+      "commitCount": 37,
+      "linesAdded": 31,
+      "linesDeleted": 12,
+      "totalAdded": 3872,
+      "totalDeleted": 2117,
       "fileCount": 17
     },
     "about": {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-08T01:36:47.056Z",
+  "generatedAt": "2026-03-08T01:43:07.205Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -168,26 +168,26 @@
       "file": "app/src/components/home/portfolio/intro/profile/personal-title.tsx",
       "lines": [
         12,
-        75
+        76
       ],
-      "hash": "0000000000000000000000000000000000000000",
-      "shortHash": "0000000",
-      "author": "Not Committed Yet",
-      "date": "2026-03-08T01:35:50.000Z",
-      "message": "Version of app/src/components/home/portfolio/intro/profile/personal-title.tsx from app/src/components/home/portfolio/intro/profile/personal-title.tsx"
+      "hash": "a5f05f844d8cb9c84b72fdb1de46aa2b5a96fdc8",
+      "shortHash": "a5f05f8",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-08T01:42:05.000Z",
+      "message": "refactor: migrate hardcoded colors to CSS variable-based color-mix for theme compatibility"
     },
     "ProfileAvatar": {
       "section": "home",
       "file": "app/src/components/home/portfolio/intro/profile/profile-avatar.tsx",
       "lines": [
         5,
-        79
+        81
       ],
-      "hash": "0000000000000000000000000000000000000000",
-      "shortHash": "0000000",
-      "author": "Not Committed Yet",
-      "date": "2026-03-08T01:35:51.000Z",
-      "message": "Version of app/src/components/home/portfolio/intro/profile/profile-avatar.tsx from app/src/components/home/portfolio/intro/profile/profile-avatar.tsx"
+      "hash": "a5f05f844d8cb9c84b72fdb1de46aa2b5a96fdc8",
+      "shortHash": "a5f05f8",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-08T01:42:05.000Z",
+      "message": "refactor: migrate hardcoded colors to CSS variable-based color-mix for theme compatibility"
     },
     "ProfileButtons": {
       "section": "home",
@@ -531,21 +531,21 @@
       "section": "experience",
       "file": "app/src/components/home/portfolio/work/experience-details.tsx",
       "lines": [
-        74,
-        126
+        80,
+        132
       ],
       "hash": "0000000000000000000000000000000000000000",
       "shortHash": "0000000",
       "author": "Not Committed Yet",
-      "date": "2026-03-08T01:36:34.000Z",
+      "date": "2026-03-08T01:43:01.000Z",
       "message": "Version of app/src/components/home/portfolio/work/experience-details.tsx from app/src/components/home/portfolio/work/experience-details.tsx"
     },
     "ExperienceDetails": {
       "section": "experience",
       "file": "app/src/components/home/portfolio/work/experience-details.tsx",
       "lines": [
-        161,
-        200
+        170,
+        209
       ],
       "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
       "shortHash": "61211ff",
