@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-08T01:11:22.640Z",
+  "generatedAt": "2026-03-08T01:35:41.343Z",
   "commits": [
     {
-      "hash": "97d3c69dd0ee89f396edd651941ca005f6591ae6",
-      "shortHash": "97d3c69",
+      "hash": "d4e055dbfd0ed0b89f7a336c71e5c305bfac6ea4",
+      "shortHash": "d4e055d",
+      "message": "refactor: rename TechBadge to kebab-case, drop category-icon, and update git-meta script",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T07:05:20+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 64,
+      "deletions": 473,
+      "filesChanged": 4
+    },
+    {
+      "hash": "8cbc5e6c3ec94048c551be5423df6d3b6cf35b83",
+      "shortHash": "8cbc5e6",
       "message": "feat: add Catppuccin flavor picker to settings panel with persisted theme state",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T06:40:33+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 74,
-      "deletions": 39,
-      "filesChanged": 3
+      "insertions": 97,
+      "deletions": 62,
+      "filesChanged": 6
     },
     {
       "hash": "f9f41123a5b0de5a0c46e0c50ed159039a93562c",
@@ -228,22 +240,10 @@
       "insertions": 255,
       "deletions": 243,
       "filesChanged": 10
-    },
-    {
-      "hash": "19f07f53a19dd9ce83dca7b419700e920a3d499e",
-      "shortHash": "19f07f5",
-      "message": "feat: integrate git blame tracking into contact section components",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T00:13:35+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 72,
-      "deletions": 52,
-      "filesChanged": 6
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 20,
+    "2026-03-08": 21,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
@@ -265,7 +265,7 @@
   "languageStats": [
     {
       "language": "TypeScript",
-      "count": 227,
+      "count": 226,
       "color": "#89b4fa"
     },
     {
