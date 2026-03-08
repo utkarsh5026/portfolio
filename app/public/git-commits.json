@@ -1,16 +1,28 @@
 {
-  "generatedAt": "2026-03-08T06:29:07.135Z",
+  "generatedAt": "2026-03-08T06:38:46.618Z",
   "commits": [
     {
-      "hash": "67b13f21e93fd468e699610a66abcd0606c679b1",
-      "shortHash": "67b13f2",
+      "hash": "a720d422fadc123e8472f4a7f0e8f35e5ce4db0d",
+      "shortHash": "a720d42",
+      "message": "chore: add resume section to git stats tracking and clean up comments",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T12:08:22+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 3,
+      "deletions": 5,
+      "filesChanged": 1
+    },
+    {
+      "hash": "4fb9e9237fcbb6453c2331784bee5efafb7538ab",
+      "shortHash": "4fb9e92",
       "message": "feat: add useGitComponent tracking to all resume section components",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T11:51:08+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 249,
-      "deletions": 133,
+      "insertions": 142,
+      "deletions": 26,
       "filesChanged": 10
     },
     {
@@ -228,22 +240,10 @@
       "insertions": 120,
       "deletions": 127,
       "filesChanged": 8
-    },
-    {
-      "hash": "fb5ee5688fdb3de5b32c13ff1c52cff58b46405f",
-      "shortHash": "fb5ee56",
-      "message": "feat: add settings panel with git blame toggle",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T01:27:20+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 144,
-      "deletions": 22,
-      "filesChanged": 10
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 27,
+    "2026-03-08": 28,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,

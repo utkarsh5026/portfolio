@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-08T06:29:47.767Z",
+  "generatedAt": "2026-03-08T06:39:05.756Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -144,8 +144,8 @@
         13,
         51
       ],
-      "hash": "67b13f21e93fd468e699610a66abcd0606c679b1",
-      "shortHash": "67b13f2",
+      "hash": "4fb9e9237fcbb6453c2331784bee5efafb7538ab",
+      "shortHash": "4fb9e92",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-08T06:21:08.000Z",
       "message": "feat: add useGitComponent tracking to all resume section components"
@@ -739,14 +739,14 @@
       "section": "resume",
       "file": "app/src/components/home/portfolio/resume/resume-education.tsx",
       "lines": [
-        7,
-        66
+        9,
+        74
       ],
-      "hash": "67b13f21e93fd468e699610a66abcd0606c679b1",
-      "shortHash": "67b13f2",
-      "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-08T06:21:08.000Z",
-      "message": "feat: add useGitComponent tracking to all resume section components"
+      "hash": "0000000000000000000000000000000000000000",
+      "shortHash": "0000000",
+      "author": "Not Committed Yet",
+      "date": "2026-03-08T06:39:05.000Z",
+      "message": "Version of app/src/components/home/portfolio/resume/resume-education.tsx from app/src/components/home/portfolio/resume/resume-education.tsx"
     },
     "ResumeExperience": {
       "section": "resume",
@@ -755,8 +755,8 @@
         8,
         95
       ],
-      "hash": "67b13f21e93fd468e699610a66abcd0606c679b1",
-      "shortHash": "67b13f2",
+      "hash": "4fb9e9237fcbb6453c2331784bee5efafb7538ab",
+      "shortHash": "4fb9e92",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-08T06:21:08.000Z",
       "message": "feat: add useGitComponent tracking to all resume section components"
@@ -768,8 +768,8 @@
         31,
         89
       ],
-      "hash": "67b13f21e93fd468e699610a66abcd0606c679b1",
-      "shortHash": "67b13f2",
+      "hash": "4fb9e9237fcbb6453c2331784bee5efafb7538ab",
+      "shortHash": "4fb9e92",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-08T06:21:08.000Z",
       "message": "feat: add useGitComponent tracking to all resume section components"
@@ -781,8 +781,8 @@
         59,
         130
       ],
-      "hash": "67b13f21e93fd468e699610a66abcd0606c679b1",
-      "shortHash": "67b13f2",
+      "hash": "4fb9e9237fcbb6453c2331784bee5efafb7538ab",
+      "shortHash": "4fb9e92",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-08T06:21:08.000Z",
       "message": "feat: add useGitComponent tracking to all resume section components"
@@ -794,8 +794,8 @@
         7,
         45
       ],
-      "hash": "67b13f21e93fd468e699610a66abcd0606c679b1",
-      "shortHash": "67b13f2",
+      "hash": "4fb9e9237fcbb6453c2331784bee5efafb7538ab",
+      "shortHash": "4fb9e92",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-08T06:21:08.000Z",
       "message": "feat: add useGitComponent tracking to all resume section components"
