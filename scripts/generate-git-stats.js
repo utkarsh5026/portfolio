@@ -18,6 +18,7 @@ const SECTION_DIRS = {
   contact: "app/src/components/home/portfolio/contact",
   learning: "app/src/components/home/portfolio/learning",
   articles: "app/src/components/home/portfolio/articles",
+  resume: "app/src/components/home/portfolio/resume",
 };
 
 function run(cmd, cwd) {
@@ -39,12 +40,10 @@ function shortHash(hash) {
 function getStatsForDir(repoRoot, relDir) {
   const absDir = path.join(repoRoot, relDir);
 
-  // Does the directory even exist?
   if (!fs.existsSync(absDir)) {
     return null;
   }
 
-  // ── last commit touching this dir ──────────────────────────────────────
   const logLine = run(
     `git log -1 --format="%H|%ai|%s|%an" -- "${relDir}"`,
     repoRoot,
@@ -57,11 +56,10 @@ function getStatsForDir(repoRoot, relDir) {
 
   if (logLine) {
     const [hash, date, ...rest] = logLine.split("|");
-    // author is the last segment; message may contain | characters
+
     lastCommitHash = shortHash(hash);
     lastCommitDate = date ? date.trim() : "";
-    // rest[0] is the subject, rest[1] (if present) is the author
-    // because we split by | and subject might not contain |
+
     if (rest.length >= 2) {
       lastAuthor = rest[rest.length - 1].trim();
       lastCommitMessage = rest

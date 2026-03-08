@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import { SiTypescript } from "react-icons/si";
-import { VscFolder, VscFolderOpened, VscMarkdown } from "react-icons/vsc";
+import {
+  VscFilePdf,
+  VscFolder,
+  VscFolderOpened,
+  VscMarkdown,
+} from "react-icons/vsc";
 
 import Logo from "@/components/home/appbar/Logo";
 import { Tree } from "@/components/ui/tree";
@@ -16,8 +21,10 @@ const folderIcon = <VscFolder className="w-[14px] h-[14px]" />;
 const folderOpenIcon = <VscFolderOpened className="w-[14px] h-[14px]" />;
 const tsIcon = <SiTypescript className="w-[14px] h-[14px]" />;
 const mdIcon = <VscMarkdown className="w-[14px] h-[14px]" />;
+const pdfIcon = <VscFilePdf className="w-[14px] h-[14px]" />;
 
 function fileIcon(name: string) {
+  if (name.endsWith(".pdf")) return pdfIcon;
   return name.endsWith(".ts") || name.endsWith(".tsx") ? tsIcon : mdIcon;
 }
 

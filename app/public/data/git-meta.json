@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-08T02:24:47.714Z",
+  "generatedAt": "2026-03-08T08:16:27.683Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -136,6 +136,19 @@
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-04T23:02:52.000Z",
       "message": "style: redesign article cards with 16:9 image layout and cleaner hover effects"
+    },
+    "ResumeSection": {
+      "section": "resume",
+      "file": "app/src/components/home/portfolio/resume/resume-section.tsx",
+      "lines": [
+        14,
+        58
+      ],
+      "hash": "c9fc95414ea1270d0bd187b6d3691ac2ebdc32d8",
+      "shortHash": "c9fc954",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-08T06:50:56.000Z",
+      "message": "feat: wrap resume sections with OutlineNode for VS Code outline integration"
     },
     "MiniProjects": {
       "section": "home",
@@ -534,8 +547,8 @@
         86,
         138
       ],
-      "hash": "1f12f0168b6f9d2f6ba7ae8959eb4884ee0345b4",
-      "shortHash": "1f12f01",
+      "hash": "d7babbbce4df1f0b3c1b35b780c854771ebba099",
+      "shortHash": "d7babbb",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-08T02:24:20.000Z",
       "message": "refactor: replace inline tech rendering with TechBadge, fix CSS vars, and add git-blame refs to work components"
@@ -721,6 +734,71 @@
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-07T22:42:42.000Z",
       "message": "feat: integrate useGitComponent ref across all portfolio components"
+    },
+    "ResumeEducation": {
+      "section": "resume",
+      "file": "app/src/components/home/portfolio/resume/resume-education.tsx",
+      "lines": [
+        9,
+        74
+      ],
+      "hash": "c9fc95414ea1270d0bd187b6d3691ac2ebdc32d8",
+      "shortHash": "c9fc954",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-08T06:50:56.000Z",
+      "message": "feat: wrap resume sections with OutlineNode for VS Code outline integration"
+    },
+    "ResumeExperience": {
+      "section": "resume",
+      "file": "app/src/components/home/portfolio/resume/resume-experience.tsx",
+      "lines": [
+        9,
+        105
+      ],
+      "hash": "c9fc95414ea1270d0bd187b6d3691ac2ebdc32d8",
+      "shortHash": "c9fc954",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-08T06:50:56.000Z",
+      "message": "feat: wrap resume sections with OutlineNode for VS Code outline integration"
+    },
+    "ResumeHeader": {
+      "section": "resume",
+      "file": "app/src/components/home/portfolio/resume/resume-header.tsx",
+      "lines": [
+        32,
+        96
+      ],
+      "hash": "c9fc95414ea1270d0bd187b6d3691ac2ebdc32d8",
+      "shortHash": "c9fc954",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-08T06:50:56.000Z",
+      "message": "feat: wrap resume sections with OutlineNode for VS Code outline integration"
+    },
+    "ResumeProjects": {
+      "section": "resume",
+      "file": "app/src/components/home/portfolio/resume/resume-projects.tsx",
+      "lines": [
+        60,
+        137
+      ],
+      "hash": "c9fc95414ea1270d0bd187b6d3691ac2ebdc32d8",
+      "shortHash": "c9fc954",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-08T06:50:56.000Z",
+      "message": "feat: wrap resume sections with OutlineNode for VS Code outline integration"
+    },
+    "ResumeSkills": {
+      "section": "resume",
+      "file": "app/src/components/home/portfolio/resume/resume-skills.tsx",
+      "lines": [
+        9,
+        53
+      ],
+      "hash": "c9fc95414ea1270d0bd187b6d3691ac2ebdc32d8",
+      "shortHash": "c9fc954",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-08T06:50:56.000Z",
+      "message": "feat: wrap resume sections with OutlineNode for VS Code outline integration"
     }
   }
 }

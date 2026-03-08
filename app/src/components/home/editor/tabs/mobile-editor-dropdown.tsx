@@ -1,4 +1,4 @@
-import { ExternalLink, Menu } from "lucide-react";
+import { ExternalLink, Menu, Monitor } from "lucide-react";
 import React from "react";
 import { FaCode, FaFilePdf, FaGithub, FaLinkedin } from "react-icons/fa";
 
@@ -84,8 +84,16 @@ const MobileEditorDropdown: React.FC<MobileEditorDropdownProps> = ({
 
         <DropdownMenuContent
           align="end"
-          className="w-72 bg-gradient-to-b from-ctp-base to-ctp-mantle border border-ctp-surface0/50 rounded-xl shadow-2xl z-[99999] backdrop-blur-sm p-2 max-h-[60vh] overflow-y-auto"
+          className="w-72 bg-gradient-to-b from-ctp-base to-ctp-mantle border border-ctp-surface0/50 rounded-xl shadow-2xl z-[99999] backdrop-blur-sm p-2 max-h-[60vh] overflow-y-auto font-source"
         >
+          {/* Desktop hint */}
+          <div className="mx-1 mb-3 px-3 py-2 rounded-lg bg-ctp-blue/10 border border-ctp-blue/20 flex items-center gap-2.5">
+            <Monitor className="w-3.5 h-3.5 text-ctp-blue flex-shrink-0" />
+            <p className="text-xs text-ctp-subtext0 leading-snug">
+              For the full experience, visit on desktop 😃.
+            </p>
+          </div>
+
           <div className="px-3 py-2 mb-2">
             <h3 className="text-xs font-semibold text-ctp-subtext1 uppercase tracking-wider">
               Navigation

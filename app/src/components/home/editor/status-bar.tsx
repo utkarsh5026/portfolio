@@ -81,6 +81,11 @@ const SECTION_META: Record<SectionType, SectionMeta> = {
     branchLabel: "articles",
     fileLabel: "articles.tsx",
   },
+  resume: {
+    icon: <GoFileCode className="w-3 h-3" />,
+    branchLabel: "resume",
+    fileLabel: "resume.pdf",
+  },
 };
 
 function truncate(str: string, maxLen: number): string {

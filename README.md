@@ -15,16 +15,31 @@
 
 ## 📋 Table of Contents
 
-- [About The Project](#-about-the-project)
-- [Key Features](#-key-features)
-- [Tech Stack](#️-tech-stack)
-- [Project Structure](#-project-structure)
-- [Getting Started](#-getting-started)
-- [Usage & Examples](#-usage--examples)
-- [Roadmap](#️-roadmap)
-- [Contributing](#-contributing)
-- [License](#-license)
-- [Contact](#-contact)
+- [Utkarsh Priyadarshi — Developer Portfolio](#utkarsh-priyadarshi--developer-portfolio)
+  - [📋 Table of Contents](#-table-of-contents)
+  - [🧠 About The Project](#-about-the-project)
+  - [✨ Key Features](#-key-features)
+  - [🛠️ Tech Stack](#️-tech-stack)
+    - [🏗️ Core](#️-core)
+    - [🧩 UI \& Components](#-ui--components)
+    - [🎬 Animations](#-animations)
+    - [⚙️ Build \& DX](#️-build--dx)
+  - [📁 Project Structure](#-project-structure)
+  - [🚀 Getting Started](#-getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Available Commands](#available-commands)
+    - [Adding a New Project](#adding-a-new-project)
+  - [💡 Usage \& Examples](#-usage--examples)
+    - [Terminal Commands](#terminal-commands)
+    - [Navigating Sections](#navigating-sections)
+    - [Customizing Content](#customizing-content)
+  - [🗺️ Roadmap](#️-roadmap)
+  - [🤝 Contributing](#-contributing)
+    - [How to Contribute](#how-to-contribute)
+    - [Conventions](#conventions)
+  - [📄 License](#-license)
+  - [📬 Contact](#-contact)
 
 ---
 
@@ -48,6 +63,9 @@ Most portfolios are static pages. This one behaves like an IDE. Every section of
 ## ✨ Key Features
 
 - 💻 **VS Code Editor UI** — Authentic file explorer, draggable/closeable tabs, breadcrumbs, status bar, and outline panel
+- 🔍 **Git Blame Annotations** — Inline per-section git blame metadata (commit hash, date, author, message) sourced from pre-generated `git-meta.json`, mirroring the VS Code GitLens experience. Disabled on mobile.
+- 📜 **Git Commits Panel** — Browsable commit history panel rendered inside the editor UI
+- 📄 **Resume Section** — Interactive resume as a VS Code editor tab (experience, education, projects, skills) with VS Code outline integration and a downloadable PDF
 - ⌨️ **Interactive Terminal** — A real-feeling terminal with custom commands: `help`, `about`, `projects`, `skills`, `contact`, and more
 - 📊 **D3 Data Visualizations** — Dynamic, animated charts for skills and learning journey sections
 - 💫 **CSS Module Animations** — Performant, zero-runtime-cost animations via CSS modules + AnimeJS for complex sequences
@@ -56,7 +74,7 @@ Most portfolios are static pages. This one behaves like an IDE. Every section of
 - 📝 **Articles Section** — Highlights technical writing, blog posts, and dev content
 - 🔥 **Git Commit Heatmap** — Visual GitHub-style contribution heatmap powered by real commit data
 - 📱 **Swipe Navigation** — Mobile-first swipe gestures (via `react-swipeable`) for navigating sections and projects
-- 🎨 **Catppuccin Mocha Theme** — A cohesive, aesthetically pleasing dark color palette applied system-wide
+- 🎨 **Multi-Theme Support** — Catppuccin flavor picker (Mocha, Macchiato, Frappé, Latte) with persisted preference
 - ⚡ **PWA Ready** — Installable, offline-capable, and lightning-fast with Vite's service worker plugin
 - 🔬 **React Compiler** — Powered by the React 19 compiler beta for automatic memoization and optimized re-renders
 
@@ -66,51 +84,51 @@ Most portfolios are static pages. This one behaves like an IDE. Every section of
 
 ### 🏗️ Core
 
-| Layer | Technology |
-| :--- | :--- |
-| **UI Framework** | React 18.3 + TypeScript 5 |
-| **Build Tool** | Vite 5 |
-| **Styling** | Tailwind CSS 3 (Catppuccin Mocha palette) + CSS Modules |
-| **Routing** | React Router DOM 7 |
-| **State Mgt** | Zustand 5 |
-| **Pkg Manager** | Bun |
-| **Compiler** | React Compiler (beta) |
+| Layer            | Technology                                              |
+| :--------------- | :------------------------------------------------------ |
+| **UI Framework** | React 18.3 + TypeScript 5                               |
+| **Build Tool**   | Vite 5                                                  |
+| **Styling**      | Tailwind CSS 3 (Catppuccin Mocha palette) + CSS Modules |
+| **Routing**      | React Router DOM 7                                      |
+| **State Mgt**    | Zustand 5                                               |
+| **Pkg Manager**  | Bun                                                     |
+| **Compiler**     | React Compiler (beta)                                   |
 
 ### 🧩 UI & Components
 
-| Purpose | Library |
-| :--- | :--- |
-| **Headless Primitives** | Radix UI _(Dialog, Tabs, Tooltip, Dropdown, Avatar, …)_ |
-| **Component System** | shadcn/ui (style: `new-york`) |
-| **Icons** | Lucide React + React Icons |
-| **Drawer** | Vaul |
-| **Resizable Layouts** | react-resizable-panels |
-| **Swipe Gestures** | react-swipeable |
-| **Scroll Observers** | react-intersection-observer |
-| **Code Highlighting** | PrismJS + react-syntax-highlighter |
-| **Markdown Rendering** | react-markdown + rehype-highlight + rehype-raw + remark-gfm |
+| Purpose                 | Library                                                     |
+| :---------------------- | :---------------------------------------------------------- |
+| **Headless Primitives** | Radix UI _(Dialog, Tabs, Tooltip, Dropdown, Avatar, …)_     |
+| **Component System**    | shadcn/ui (style: `new-york`)                               |
+| **Icons**               | Lucide React + React Icons                                  |
+| **Drawer**              | Vaul                                                        |
+| **Resizable Layouts**   | react-resizable-panels                                      |
+| **Swipe Gestures**      | react-swipeable                                             |
+| **Scroll Observers**    | react-intersection-observer                                 |
+| **Code Highlighting**   | PrismJS + react-syntax-highlighter                          |
+| **Markdown Rendering**  | react-markdown + rehype-highlight + rehype-raw + remark-gfm |
 
 ### 🎬 Animations
 
-| Purpose                    | Library                        |
-| :------------------------- | :----------------------------- |
-| **Complex Sequences**      | AnimeJS 3                      |
-| **Transition Animations**  | CSS Modules + tailwindcss-animate |
-| **Data Visualization**     | D3 7                           |
+| Purpose                   | Library                           |
+| :------------------------ | :-------------------------------- |
+| **Complex Sequences**     | AnimeJS 3                         |
+| **Transition Animations** | CSS Modules + tailwindcss-animate |
+| **Data Visualization**    | D3 7                              |
 
 ### ⚙️ Build & DX
 
-| Purpose               | Tool                                                        |
-| :-------------------- | :---------------------------------------------------------- |
-| **Bundler**           | Vite 5 + Rollup                                             |
-| **Type Checking**     | TypeScript 5 + vite-plugin-checker                          |
-| **Linting**           | ESLint 8 + typescript-eslint + react-hooks + simple-import-sort |
-| **Formatting**        | Prettier 3                                                  |
-| **Git Hooks**         | Husky 9                                                     |
-| **Bundle Analysis**   | rollup-plugin-visualizer                                    |
-| **Image Optimization**| vite-imagetools + sharp                                     |
-| **Compression**       | vite-plugin-compression (gzip/brotli)                       |
-| **PWA**               | vite-plugin-pwa                                             |
+| Purpose                | Tool                                                            |
+| :--------------------- | :-------------------------------------------------------------- |
+| **Bundler**            | Vite 5 + Rollup                                                 |
+| **Type Checking**      | TypeScript 5 + vite-plugin-checker                              |
+| **Linting**            | ESLint 8 + typescript-eslint + react-hooks + simple-import-sort |
+| **Formatting**         | Prettier 3                                                      |
+| **Git Hooks**          | Husky 9                                                         |
+| **Bundle Analysis**    | rollup-plugin-visualizer                                        |
+| **Image Optimization** | vite-imagetools + sharp                                         |
+| **Compression**        | vite-plugin-compression (gzip/brotli)                           |
+| **PWA**                | vite-plugin-pwa                                                 |
 
 ---
 
@@ -127,16 +145,20 @@ portfolio/
 │   │   │   ├── base/           # ThemeProvider, TechBadge, icon mapping
 │   │   │   ├── home/
 │   │   │   │   ├── editor/     # VS Code chrome: tabs, explorer, terminal, status bar
-│   │   │   │   └── portfolio/  # Content sections: intro, about, skills, projects, work, …
+│   │   │   │   │   ├── git-blame/   # Git blame annotations (manager + portal tooltip)
+│   │   │   │   │   └── git-commits/ # Commit history panel
+│   │   │   │   └── portfolio/  # Content sections: intro, about, skills, projects, work, resume, …
 │   │   │   ├── load/           # Story-driven loading screens
 │   │   │   ├── ui/             # shadcn/ui components
 │   │   │   └── section/        # Shared section layout wrappers
-│   │   ├── hooks/              # use-project, use-mobile, use-local-storage, use-video
-│   │   ├── store/              # Zustand: projects-store.ts
+│   │   ├── hooks/              # use-project, use-mobile, use-local-storage, use-video, use-git-component
+│   │   ├── store/              # Zustand: projects-store.ts, git-store/ (blame stats + commits)
 │   │   ├── lib/utils.ts        # cn() helper (tailwind-merge + clsx)
 │   │   └── utils/              # ctp-colors.ts, unique-ids.ts
 │   ├── public/
 │   │   ├── data/               # projects.json, articles.json, work.json
+│   │   ├── git-meta.json       # Pre-generated git stats per section
+│   │   ├── resume.pdf          # Downloadable resume PDF
 │   │   └── media/              # Project media & videos
 │   ├── package.json
 │   ├── vite.config.ts
@@ -258,12 +280,15 @@ Edit these JSON files to update content — no component changes needed.
 - [x] Interactive terminal with custom commands
 - [x] D3-powered skills visualization
 - [x] Git contribution heatmap panel
+- [x] Git blame annotations per section (VS Code GitLens–style)
+- [x] Git commits history panel
+- [x] Interactive resume section with VS Code outline integration + PDF download
+- [x] Multi-theme Catppuccin flavor picker (Mocha, Macchiato, Frappé, Latte)
 - [x] PWA support (offline, installable)
 - [x] Mobile swipe navigation
 - [x] Story-driven loading sequence
 - [x] Replace Framer Motion with CSS modules for zero-runtime animations
 - [x] React Compiler beta integration for automatic memoization
-- [ ] Dark/light theme toggle (Catppuccin Latte as light variant)
 - [ ] Keyboard shortcut palette (Ctrl+P command palette simulation)
 - [ ] Guestbook / visitor message feature
 - [ ] Blog/article detail pages with full markdown rendering
@@ -333,13 +358,13 @@ See [`LICENSE`](LICENSE) for full details.
 
 **Utkarsh Priyadarshi** — Software Developer & Open Source Enthusiast
 
-| Platform          | Link                                                                              |
-| :---------------- | :-------------------------------------------------------------------------------- |
-| 🌐 **Portfolio**  | [utkarsh5026.github.io](https://utkarsh5026.github.io/)                           |
-| 🐙 **GitHub**     | [@utkarsh5026](https://github.com/utkarsh5026)                                    |
-| 💼 **LinkedIn**   | [Utkarsh Priyadarshi](https://www.linkedin.com/in/utkarsh-priyadarshi-8b5a731b9/) |
-| 🐦 **Twitter / X**| [@UtkarshPriyad10](https://x.com/UtkarshPriyad10)                                 |
-| 📧 **Email**      | [utkarshpriyadarshi5026@gmail.com](mailto:utkarshpriyadarshi5026@gmail.com)        |
+| Platform           | Link                                                                              |
+| :----------------- | :-------------------------------------------------------------------------------- |
+| 🌐 **Portfolio**   | [utkarsh5026.github.io](https://utkarsh5026.github.io/)                           |
+| 🐙 **GitHub**      | [@utkarsh5026](https://github.com/utkarsh5026)                                    |
+| 💼 **LinkedIn**    | [Utkarsh Priyadarshi](https://www.linkedin.com/in/utkarsh-priyadarshi-8b5a731b9/) |
+| 🐦 **Twitter / X** | [@UtkarshPriyad10](https://x.com/UtkarshPriyad10)                                 |
+| 📧 **Email**       | [utkarshpriyadarshi5026@gmail.com](mailto:utkarshpriyadarshi5026@gmail.com)       |
 
 > Found a bug or have a suggestion? [Open an issue](https://github.com/utkarsh5026/portfolio/issues) — I'd love to hear from you.
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-08T02:24:30.803Z",
+  "generatedAt": "2026-03-08T08:16:12.188Z",
   "sections": {
     "home": {
       "lastCommitHash": "25c87a3",
@@ -38,7 +38,7 @@
       "fileCount": 4
     },
     "projects": {
-      "lastCommitHash": "1f12f01",
+      "lastCommitHash": "d7babbb",
       "lastCommitDate": "2026-03-08 07:54:20 +0530",
       "lastCommitMessage": "refactor: replace inline tech rendering with TechBadge, fix CSS vars, and add git-blame refs to work components",
       "lastAuthor": "Utkarsh Priyadarshi",
@@ -50,7 +50,7 @@
       "fileCount": 9
     },
     "experience": {
-      "lastCommitHash": "1f12f01",
+      "lastCommitHash": "d7babbb",
       "lastCommitDate": "2026-03-08 07:54:20 +0530",
       "lastCommitMessage": "refactor: replace inline tech rendering with TechBadge, fix CSS vars, and add git-blame refs to work components",
       "lastAuthor": "Utkarsh Priyadarshi",
@@ -96,6 +96,18 @@
       "totalAdded": 783,
       "totalDeleted": 586,
       "fileCount": 3
+    },
+    "resume": {
+      "lastCommitHash": "c9fc954",
+      "lastCommitDate": "2026-03-08 12:20:56 +0530",
+      "lastCommitMessage": "feat: wrap resume sections with OutlineNode for VS Code outline integration",
+      "lastAuthor": "Utkarsh Priyadarshi",
+      "commitCount": 3,
+      "linesAdded": 295,
+      "linesDeleted": 248,
+      "totalAdded": 789,
+      "totalDeleted": 254,
+      "fileCount": 6
     }
   }
 }

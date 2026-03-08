@@ -58,6 +58,7 @@ const SECTIONS = {
   contact: "contact/contact-me.tsx",
   learning: "learning/learning-section.tsx",
   articles: "articles/articles-section.tsx",
+  resume: "resume/resume-section.tsx",
 };
 
 const TARGET_FILES = Object.fromEntries(

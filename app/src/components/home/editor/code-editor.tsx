@@ -37,6 +37,9 @@ const sectionComponents: Record<
   articles: lazy(
     () => import("@/components/home/portfolio/articles/articles-section")
   ),
+  resume: lazy(
+    () => import("@/components/home/portfolio/resume/resume-section")
+  ),
 };
 
 /**

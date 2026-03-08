@@ -26,6 +26,7 @@ export const sections = [
   "contact",
   "learning",
   "articles",
+  "resume",
 ] as const;
 
 export type SectionType = (typeof sections)[number];
@@ -69,6 +70,7 @@ export const editorFiles: { name: string; section: SectionType }[] = [
   { name: "contact.ts", section: "contact" },
   { name: "learning.ts", section: "learning" },
   { name: "articles.ts", section: "articles" },
+  { name: "resume.pdf", section: "resume" },
 ];
 
 export interface EditorState {

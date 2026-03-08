@@ -44,7 +44,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   return (
     <Reveal effect="fade-up" duration={0.8}>
       <div className="flex flex-col items-start text-left mb-6 sm:mb-8 md:mb-10 font-source w-full">
-        <div className="text-ctp-overlay1 text-sm sm:text-base md:text-lg w-full">
+        <div className="text-ctp-overlay1 text-sm sm:text-base md:text-lg w-full overflow-hidden">
           <div className="flex items-center gap-2">
             <span>/**</span>
           </div>
@@ -78,9 +78,9 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
             {blameMeta && gitBlameEnabled ? (
               <div
                 key="blame"
-                className="ml-4 flex items-center gap-2 text-ctp-overlay0 text-xs sm:text-sm mt-0.5"
+                className="ml-4 flex items-center gap-2 text-ctp-overlay0 text-xs sm:text-sm mt-0.5 overflow-hidden min-w-0"
               >
-                <span>*</span>
+                <span className="flex-shrink-0">*</span>
                 <VscGitCommit className="w-3 h-3 text-ctp-green flex-shrink-0" />
                 {authorMeta?.avatar && (
                   <img
@@ -89,11 +89,15 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
                     className="w-4 h-4 rounded-full flex-shrink-0"
                   />
                 )}
-                <span className="text-ctp-subtext0">{blameMeta.author}</span>
-                <span>·</span>
-                <span>{relativeTime(blameMeta.date)}</span>
-                <span>·</span>
-                <span className="text-ctp-subtext0 truncate max-w-[260px]">
+                <span className="text-ctp-subtext0 flex-shrink-0">
+                  {blameMeta.author}
+                </span>
+                <span className="flex-shrink-0">·</span>
+                <span className="flex-shrink-0">
+                  {relativeTime(blameMeta.date)}
+                </span>
+                <span className="hidden sm:inline flex-shrink-0">·</span>
+                <span className="hidden sm:inline text-ctp-subtext0 truncate min-w-0">
                   {blameMeta.message.length > 55
                     ? blameMeta.message.slice(0, 55) + "…"
                     : blameMeta.message}
