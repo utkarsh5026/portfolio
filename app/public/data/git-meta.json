@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-08T02:24:47.714Z",
+  "generatedAt": "2026-03-08T06:26:22.100Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -534,8 +534,8 @@
         86,
         138
       ],
-      "hash": "1f12f0168b6f9d2f6ba7ae8959eb4884ee0345b4",
-      "shortHash": "1f12f01",
+      "hash": "d7babbbce4df1f0b3c1b35b780c854771ebba099",
+      "shortHash": "d7babbb",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-08T02:24:20.000Z",
       "message": "refactor: replace inline tech rendering with TechBadge, fix CSS vars, and add git-blame refs to work components"

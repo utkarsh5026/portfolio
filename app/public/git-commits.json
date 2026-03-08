@@ -1,17 +1,41 @@
 {
-  "generatedAt": "2026-03-08T02:24:32.616Z",
+  "generatedAt": "2026-03-08T06:25:30.430Z",
   "commits": [
     {
-      "hash": "1f12f0168b6f9d2f6ba7ae8959eb4884ee0345b4",
-      "shortHash": "1f12f01",
+      "hash": "56a0f41761697c2bc16cbbce965fd875c5a5d9e2",
+      "shortHash": "56a0f41",
+      "message": "feat: add resume section with experience, education, projects, and skills components",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T11:37:12+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 552,
+      "deletions": 101,
+      "filesChanged": 9
+    },
+    {
+      "hash": "fde120aade268d67e6f2de30496edb9251c5fc4f",
+      "shortHash": "fde120a",
+      "message": "Merge pull request #78 from utkarsh5026/feat/theme-support",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T10:09:12+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 552,
+      "deletions": 793,
+      "filesChanged": 22
+    },
+    {
+      "hash": "d7babbbce4df1f0b3c1b35b780c854771ebba099",
+      "shortHash": "d7babbb",
       "message": "refactor: replace inline tech rendering with TechBadge, fix CSS vars, and add git-blame refs to work components",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T07:54:20+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 96,
-      "deletions": 101,
-      "filesChanged": 5
+      "insertions": 147,
+      "deletions": 152,
+      "filesChanged": 8
     },
     {
       "hash": "25c87a326952160967e26a8840292a2515bbba02",
@@ -216,34 +240,10 @@
       "insertions": 25,
       "deletions": 23,
       "filesChanged": 4
-    },
-    {
-      "hash": "4bd681cf5dda9d3dc1d74587d33650125409550d",
-      "shortHash": "4bd681c",
-      "message": "refactor: remove inline GitBlameTooltip from desktop tabs, add data-git-section attribute",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T01:02:03+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 83,
-      "deletions": 173,
-      "filesChanged": 5
-    },
-    {
-      "hash": "af8634c1d0d529b08e9251bc0ae2f20a6969df45",
-      "shortHash": "af8634c",
-      "message": "feat: add global git blame manager with portal tooltip",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T00:51:12+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 318,
-      "deletions": 25,
-      "filesChanged": 7
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 23,
+    "2026-03-08": 25,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
@@ -265,7 +265,7 @@
   "languageStats": [
     {
       "language": "TypeScript",
-      "count": 226,
+      "count": 232,
       "color": "#89b4fa"
     },
     {
