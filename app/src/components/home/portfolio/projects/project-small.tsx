@@ -1,8 +1,8 @@
 import { ExternalLink, Folder } from "lucide-react";
-import { memo, useCallback, useMemo } from "react";
+import { memo, useCallback } from "react";
 import { FaGithub } from "react-icons/fa";
 
-import { technologies } from "@/components/base/technologies";
+import TechBadge from "@/components/base/tech-badge";
 import { useGitComponent } from "@/hooks/use-git-component";
 import { Project } from "@/types";
 
@@ -21,14 +21,6 @@ const ProjectSmall = memo<ProjectSmallProps>(function ProjectSmall({
   const ref = useGitComponent<HTMLButtonElement>(ProjectSmall);
   const { getProjectTheme } = useProjectTheme();
   const { accentColor } = getProjectTheme(project);
-
-  const filteredTechs = useMemo(
-    () =>
-      project.technologies.filter(
-        (tech) => technologies[tech as keyof typeof technologies]
-      ),
-    [project.technologies]
-  );
 
   const handleGithubClick = useCallback(
     (e: React.MouseEvent) => {
@@ -90,24 +82,9 @@ const ProjectSmall = memo<ProjectSmallProps>(function ProjectSmall({
 
       {/* Tech stack pills */}
       <div className="flex flex-wrap items-center gap-2 mb-4">
-        {filteredTechs.map((tech) => {
-          const techData = technologies[tech as keyof typeof technologies];
-          return (
-            <div
-              key={tech}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 bg-ctp-surface1/15 hover:bg-ctp-surface1/30 rounded-md transition-all duration-200 group/tech"
-            >
-              <div className="flex-shrink-0 flex items-center justify-center group-hover/tech:scale-110 transition-transform duration-200">
-                <div className="w-3.5 h-3.5 flex items-center justify-center">
-                  {techData.icon}
-                </div>
-              </div>
-              <span className="text-[11px] sm:text-xs text-ctp-subtext1 group-hover/tech:text-ctp-text font-medium transition-colors duration-200 -mt-[1px]">
-                {techData.name}
-              </span>
-            </div>
-          );
-        })}
+        {project.technologies.map((tech) => (
+          <TechBadge key={tech} tech={tech} />
+        ))}
       </div>
 
       {/* Footer Links (Always visible but subtle) */}

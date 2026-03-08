@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-08T01:42:37.939Z",
+  "generatedAt": "2026-03-08T02:24:32.616Z",
   "commits": [
     {
-      "hash": "a5f05f844d8cb9c84b72fdb1de46aa2b5a96fdc8",
-      "shortHash": "a5f05f8",
+      "hash": "1f12f0168b6f9d2f6ba7ae8959eb4884ee0345b4",
+      "shortHash": "1f12f01",
+      "message": "refactor: replace inline tech rendering with TechBadge, fix CSS vars, and add git-blame refs to work components",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T07:54:20+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 96,
+      "deletions": 101,
+      "filesChanged": 5
+    },
+    {
+      "hash": "25c87a326952160967e26a8840292a2515bbba02",
+      "shortHash": "25c87a3",
       "message": "refactor: migrate hardcoded colors to CSS variable-based color-mix for theme compatibility",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T07:12:05+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 45,
-      "deletions": 29,
-      "filesChanged": 5
+      "insertions": 91,
+      "deletions": 75,
+      "filesChanged": 8
     },
     {
       "hash": "a4c70d8b0efc7ae50a1438176ed0786a7871dc52",
@@ -228,22 +240,10 @@
       "insertions": 318,
       "deletions": 25,
       "filesChanged": 7
-    },
-    {
-      "hash": "919a86018747a08af755677ffa8af235dc29617d",
-      "shortHash": "919a860",
-      "message": "refactor: auto-discover sub-component files in generate-git-meta script",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T00:43:03+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 160,
-      "deletions": 116,
-      "filesChanged": 4
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 22,
+    "2026-03-08": 23,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,

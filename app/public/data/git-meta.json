@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-08T01:43:07.205Z",
+  "generatedAt": "2026-03-08T02:24:47.714Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -170,8 +170,8 @@
         12,
         76
       ],
-      "hash": "a5f05f844d8cb9c84b72fdb1de46aa2b5a96fdc8",
-      "shortHash": "a5f05f8",
+      "hash": "25c87a326952160967e26a8840292a2515bbba02",
+      "shortHash": "25c87a3",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-08T01:42:05.000Z",
       "message": "refactor: migrate hardcoded colors to CSS variable-based color-mix for theme compatibility"
@@ -183,8 +183,8 @@
         5,
         81
       ],
-      "hash": "a5f05f844d8cb9c84b72fdb1de46aa2b5a96fdc8",
-      "shortHash": "a5f05f8",
+      "hash": "25c87a326952160967e26a8840292a2515bbba02",
+      "shortHash": "25c87a3",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-08T01:42:05.000Z",
       "message": "refactor: migrate hardcoded colors to CSS variable-based color-mix for theme compatibility"
@@ -531,21 +531,21 @@
       "section": "experience",
       "file": "app/src/components/home/portfolio/work/experience-details.tsx",
       "lines": [
-        80,
-        132
+        86,
+        138
       ],
-      "hash": "0000000000000000000000000000000000000000",
-      "shortHash": "0000000",
-      "author": "Not Committed Yet",
-      "date": "2026-03-08T01:43:01.000Z",
-      "message": "Version of app/src/components/home/portfolio/work/experience-details.tsx from app/src/components/home/portfolio/work/experience-details.tsx"
+      "hash": "1f12f0168b6f9d2f6ba7ae8959eb4884ee0345b4",
+      "shortHash": "1f12f01",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-08T02:24:20.000Z",
+      "message": "refactor: replace inline tech rendering with TechBadge, fix CSS vars, and add git-blame refs to work components"
     },
     "ExperienceDetails": {
       "section": "experience",
       "file": "app/src/components/home/portfolio/work/experience-details.tsx",
       "lines": [
-        170,
-        209
+        179,
+        218
       ],
       "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
       "shortHash": "61211ff",
