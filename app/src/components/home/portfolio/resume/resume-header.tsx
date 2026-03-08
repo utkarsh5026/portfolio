@@ -1,6 +1,7 @@
-import { Download, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Download, Github, Linkedin, Mail, Twitter, User } from "lucide-react";
 import React from "react";
 
+import { OutlineNode } from "@/components/home/editor/outline";
 import { Heading, Text } from "@/components/ui/text";
 import { useGitComponent } from "@/hooks/use-git-component";
 import { cn } from "@/lib/utils";
@@ -36,54 +37,60 @@ const ResumeHeader: React.FC = () => {
       ref={ref}
       className="border-b border-ctp-surface1 pb-6 mb-6 animate-fadeIn"
     >
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-        <div>
-          <Heading
-            as="h1"
-            className="text-3xl md:text-4xl font-extrabold text-ctp-text tracking-tight"
+      <OutlineNode
+        label="Profile"
+        icon={<User className="w-3 h-3" />}
+        iconColor="teal"
+      >
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+          <div>
+            <Heading
+              as="h1"
+              className="text-3xl md:text-4xl font-extrabold text-ctp-text tracking-tight"
+            >
+              Utkarsh Priyadarshi
+            </Heading>
+            <Text variant="lead" className="mt-1 text-ctp-subtext0  text-base">
+              Full-Stack Developer &amp; DevOps Engineer
+            </Text>
+          </div>
+
+          <a
+            href="/resume.pdf"
+            download
+            className={cn(
+              "inline-flex items-center gap-2 self-start px-4 py-2 rounded-md",
+              "bg-transparent border border-ctp-surface2",
+              "text-ctp-text hover:bg-ctp-surface0 hover:border-ctp-overlay0 transition-all duration-200",
+              "text-sm  font-medium"
+            )}
           >
-            Utkarsh Priyadarshi
-          </Heading>
-          <Text variant="lead" className="mt-1 text-ctp-subtext0  text-base">
-            Full-Stack Developer &amp; DevOps Engineer
-          </Text>
+            <Download className="w-4 h-4" />
+            Download PDF
+          </a>
         </div>
 
-        <a
-          href="/resume.pdf"
-          download
-          className={cn(
-            "inline-flex items-center gap-2 self-start px-4 py-2 rounded-md",
-            "bg-transparent border border-ctp-surface2",
-            "text-ctp-text hover:bg-ctp-surface0 hover:border-ctp-overlay0 transition-all duration-200",
-            "text-sm  font-medium"
-          )}
-        >
-          <Download className="w-4 h-4" />
-          Download PDF
-        </a>
-      </div>
-
-      <div className="flex flex-wrap gap-x-6 gap-y-2 mt-6">
-        {contacts.map(({ icon: Icon, label, href }) => (
-          <a
-            key={href}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-ctp-subtext0 hover:text-ctp-text transition-colors group"
-          >
-            <Icon className="w-3.5 h-3.5 text-ctp-overlay0 group-hover:text-ctp-text transition-colors" />
-            <Text
-              as="span"
-              variant="caption"
-              className=" text-xs group-hover:text-ctp-text transition-colors"
+        <div className="flex flex-wrap gap-x-6 gap-y-2 mt-6">
+          {contacts.map(({ icon: Icon, label, href }) => (
+            <a
+              key={href}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-ctp-subtext0 hover:text-ctp-text transition-colors group"
             >
-              {label}
-            </Text>
-          </a>
-        ))}
-      </div>
+              <Icon className="w-3.5 h-3.5 text-ctp-overlay0 group-hover:text-ctp-text transition-colors" />
+              <Text
+                as="span"
+                variant="caption"
+                className=" text-xs group-hover:text-ctp-text transition-colors"
+              >
+                {label}
+              </Text>
+            </a>
+          ))}
+        </div>
+      </OutlineNode>
     </div>
   );
 };

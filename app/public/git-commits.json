@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-08T06:38:46.618Z",
+  "generatedAt": "2026-03-08T06:51:31.146Z",
   "commits": [
     {
-      "hash": "a720d422fadc123e8472f4a7f0e8f35e5ce4db0d",
-      "shortHash": "a720d42",
+      "hash": "ee4bb83a05eddeea06e544819b8c436129f22a05",
+      "shortHash": "ee4bb83",
+      "message": "feat: wrap resume sections with OutlineNode for VS Code outline integration",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T12:20:56+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 295,
+      "deletions": 248,
+      "filesChanged": 6
+    },
+    {
+      "hash": "ada27062c39a010dc1f3a1e94989b5970f86de5d",
+      "shortHash": "ada2706",
       "message": "chore: add resume section to git stats tracking and clean up comments",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T12:08:22+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 3,
-      "deletions": 5,
-      "filesChanged": 1
+      "insertions": 52,
+      "deletions": 42,
+      "filesChanged": 4
     },
     {
       "hash": "4fb9e9237fcbb6453c2331784bee5efafb7538ab",
@@ -228,22 +240,10 @@
       "insertions": 64,
       "deletions": 35,
       "filesChanged": 8
-    },
-    {
-      "hash": "e68209a3b3f5fdd341ea54df30b16d8bad1c5a45",
-      "shortHash": "e68209a",
-      "message": "refactor: migrate git meta from hook to Zustand store",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T01:55:29+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 120,
-      "deletions": 127,
-      "filesChanged": 8
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 28,
+    "2026-03-08": 29,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,

@@ -1,6 +1,7 @@
 import { FileText } from "lucide-react";
 import React from "react";
 
+import { OutlineNode } from "@/components/home/editor/outline";
 import Section from "@/components/home/editor/section/portfolio-section";
 import { useGitComponent } from "@/hooks/use-git-component";
 
@@ -28,23 +29,29 @@ const ResumeSection: React.FC = () => {
         ref={ref}
         className="max-w-[850px] mx-auto p-8 sm:p-12 md:p-16 bg-ctp-crust border border-ctp-surface2 rounded-xl shadow-2xl font-mono ring-1 ring-ctp-surface1/50 my-6"
       >
-        <ResumeHeader />
+        <OutlineNode
+          label="Resume Content"
+          icon={<FileText className="w-3 h-3" />}
+          iconColor="lavender"
+        >
+          <ResumeHeader />
 
-        <div className="flex flex-col gap-8">
-          <ResumeExperience />
+          <div className="flex flex-col gap-8">
+            <ResumeExperience />
 
-          <div>
-            <ResumeEducation />
+            <div>
+              <ResumeEducation />
+            </div>
+
+            <div>
+              <ResumeProjects />
+            </div>
+
+            <div>
+              <ResumeSkills />
+            </div>
           </div>
-
-          <div>
-            <ResumeProjects />
-          </div>
-
-          <div>
-            <ResumeSkills />
-          </div>
-        </div>
+        </OutlineNode>
       </div>
     </Section>
   );

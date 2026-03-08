@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-08T06:38:37.813Z",
+  "generatedAt": "2026-03-08T06:51:20.522Z",
   "sections": {
     "home": {
       "lastCommitHash": "25c87a3",
@@ -98,15 +98,15 @@
       "fileCount": 3
     },
     "resume": {
-      "lastCommitHash": "4fb9e92",
-      "lastCommitDate": "2026-03-08 11:51:08 +0530",
-      "lastCommitMessage": "feat: add useGitComponent tracking to all resume section components",
+      "lastCommitHash": "ee4bb83",
+      "lastCommitDate": "2026-03-08 12:20:56 +0530",
+      "lastCommitMessage": "feat: wrap resume sections with OutlineNode for VS Code outline integration",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 2,
-      "linesAdded": 43,
-      "linesDeleted": 6,
-      "totalAdded": 494,
-      "totalDeleted": 6,
+      "commitCount": 3,
+      "linesAdded": 295,
+      "linesDeleted": 248,
+      "totalAdded": 789,
+      "totalDeleted": 254,
       "fileCount": 6
     }
   }

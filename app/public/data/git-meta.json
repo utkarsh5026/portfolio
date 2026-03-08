@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-08T06:39:05.756Z",
+  "generatedAt": "2026-03-08T06:51:49.831Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -141,14 +141,14 @@
       "section": "resume",
       "file": "app/src/components/home/portfolio/resume/resume-section.tsx",
       "lines": [
-        13,
-        51
+        14,
+        58
       ],
-      "hash": "4fb9e9237fcbb6453c2331784bee5efafb7538ab",
-      "shortHash": "4fb9e92",
+      "hash": "ee4bb83a05eddeea06e544819b8c436129f22a05",
+      "shortHash": "ee4bb83",
       "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-08T06:21:08.000Z",
-      "message": "feat: add useGitComponent tracking to all resume section components"
+      "date": "2026-03-08T06:50:56.000Z",
+      "message": "feat: wrap resume sections with OutlineNode for VS Code outline integration"
     },
     "MiniProjects": {
       "section": "home",
@@ -742,63 +742,63 @@
         9,
         74
       ],
-      "hash": "0000000000000000000000000000000000000000",
-      "shortHash": "0000000",
-      "author": "Not Committed Yet",
-      "date": "2026-03-08T06:39:05.000Z",
-      "message": "Version of app/src/components/home/portfolio/resume/resume-education.tsx from app/src/components/home/portfolio/resume/resume-education.tsx"
+      "hash": "ee4bb83a05eddeea06e544819b8c436129f22a05",
+      "shortHash": "ee4bb83",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-08T06:50:56.000Z",
+      "message": "feat: wrap resume sections with OutlineNode for VS Code outline integration"
     },
     "ResumeExperience": {
       "section": "resume",
       "file": "app/src/components/home/portfolio/resume/resume-experience.tsx",
       "lines": [
-        8,
-        95
+        9,
+        105
       ],
-      "hash": "4fb9e9237fcbb6453c2331784bee5efafb7538ab",
-      "shortHash": "4fb9e92",
+      "hash": "ee4bb83a05eddeea06e544819b8c436129f22a05",
+      "shortHash": "ee4bb83",
       "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-08T06:21:08.000Z",
-      "message": "feat: add useGitComponent tracking to all resume section components"
+      "date": "2026-03-08T06:50:56.000Z",
+      "message": "feat: wrap resume sections with OutlineNode for VS Code outline integration"
     },
     "ResumeHeader": {
       "section": "resume",
       "file": "app/src/components/home/portfolio/resume/resume-header.tsx",
       "lines": [
-        31,
-        89
+        32,
+        96
       ],
-      "hash": "4fb9e9237fcbb6453c2331784bee5efafb7538ab",
-      "shortHash": "4fb9e92",
+      "hash": "ee4bb83a05eddeea06e544819b8c436129f22a05",
+      "shortHash": "ee4bb83",
       "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-08T06:21:08.000Z",
-      "message": "feat: add useGitComponent tracking to all resume section components"
+      "date": "2026-03-08T06:50:56.000Z",
+      "message": "feat: wrap resume sections with OutlineNode for VS Code outline integration"
     },
     "ResumeProjects": {
       "section": "resume",
       "file": "app/src/components/home/portfolio/resume/resume-projects.tsx",
       "lines": [
-        59,
-        130
+        60,
+        137
       ],
-      "hash": "4fb9e9237fcbb6453c2331784bee5efafb7538ab",
-      "shortHash": "4fb9e92",
+      "hash": "ee4bb83a05eddeea06e544819b8c436129f22a05",
+      "shortHash": "ee4bb83",
       "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-08T06:21:08.000Z",
-      "message": "feat: add useGitComponent tracking to all resume section components"
+      "date": "2026-03-08T06:50:56.000Z",
+      "message": "feat: wrap resume sections with OutlineNode for VS Code outline integration"
     },
     "ResumeSkills": {
       "section": "resume",
       "file": "app/src/components/home/portfolio/resume/resume-skills.tsx",
       "lines": [
-        7,
-        45
+        9,
+        53
       ],
-      "hash": "4fb9e9237fcbb6453c2331784bee5efafb7538ab",
-      "shortHash": "4fb9e92",
+      "hash": "ee4bb83a05eddeea06e544819b8c436129f22a05",
+      "shortHash": "ee4bb83",
       "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-08T06:21:08.000Z",
-      "message": "feat: add useGitComponent tracking to all resume section components"
+      "date": "2026-03-08T06:50:56.000Z",
+      "message": "feat: wrap resume sections with OutlineNode for VS Code outline integration"
     }
   }
 }
