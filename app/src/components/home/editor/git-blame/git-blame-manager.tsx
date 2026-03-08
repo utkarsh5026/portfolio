@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
+import useMobile from "@/hooks/use-mobile";
 import useGitMetaStore, {
   type AuthorMeta,
   type ComponentMeta,
@@ -36,6 +37,7 @@ const GitBlameManager: React.FC = () => {
     fetchGitMeta();
   }, [fetchGitMeta]);
   const gitBlameEnabled = useSettingsStore((s) => s.gitBlameEnabled);
+  const { isMobile } = useMobile();
   const [tooltip, setTooltip] = useState<TooltipState>({
     visible: false,
     x: 0,
@@ -139,7 +141,7 @@ const GitBlameManager: React.FC = () => {
     };
   }, [hide, resolveMeta, tooltip.visible, clearTimer, getAuthor]);
 
-  if (!gitBlameEnabled) return null;
+  if (!gitBlameEnabled || isMobile) return null;
 
   return (
     <GitBlamePortalTooltip
