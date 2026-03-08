@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-07T22:56:29.119Z",
+  "generatedAt": "2026-03-08T02:24:47.714Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -168,26 +168,26 @@
       "file": "app/src/components/home/portfolio/intro/profile/personal-title.tsx",
       "lines": [
         12,
-        75
+        76
       ],
-      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
-      "shortHash": "61211ff",
+      "hash": "25c87a326952160967e26a8840292a2515bbba02",
+      "shortHash": "25c87a3",
       "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-07T22:42:42.000Z",
-      "message": "feat: integrate useGitComponent ref across all portfolio components"
+      "date": "2026-03-08T01:42:05.000Z",
+      "message": "refactor: migrate hardcoded colors to CSS variable-based color-mix for theme compatibility"
     },
     "ProfileAvatar": {
       "section": "home",
       "file": "app/src/components/home/portfolio/intro/profile/profile-avatar.tsx",
       "lines": [
         5,
-        63
+        81
       ],
-      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
-      "shortHash": "61211ff",
+      "hash": "25c87a326952160967e26a8840292a2515bbba02",
+      "shortHash": "25c87a3",
       "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-07T22:42:42.000Z",
-      "message": "feat: integrate useGitComponent ref across all portfolio components"
+      "date": "2026-03-08T01:42:05.000Z",
+      "message": "refactor: migrate hardcoded colors to CSS variable-based color-mix for theme compatibility"
     },
     "ProfileButtons": {
       "section": "home",
@@ -531,21 +531,21 @@
       "section": "experience",
       "file": "app/src/components/home/portfolio/work/experience-details.tsx",
       "lines": [
-        74,
-        126
+        86,
+        138
       ],
-      "hash": "afbc35e2559db959d3c993352474c7863bc61a1d",
-      "shortHash": "afbc35e",
+      "hash": "1f12f0168b6f9d2f6ba7ae8959eb4884ee0345b4",
+      "shortHash": "1f12f01",
       "author": "Utkarsh Priyadarshi",
-      "date": "2025-07-02T14:22:19.000Z",
-      "message": "Enhance mobile responsiveness and styling in ExperienceHeader and ExperienceDetails components"
+      "date": "2026-03-08T02:24:20.000Z",
+      "message": "refactor: replace inline tech rendering with TechBadge, fix CSS vars, and add git-blame refs to work components"
     },
     "ExperienceDetails": {
       "section": "experience",
       "file": "app/src/components/home/portfolio/work/experience-details.tsx",
       "lines": [
-        161,
-        200
+        179,
+        218
       ],
       "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
       "shortHash": "61211ff",

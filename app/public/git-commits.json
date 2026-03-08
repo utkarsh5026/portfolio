@@ -1,17 +1,89 @@
 {
-  "generatedAt": "2026-03-07T22:55:58.100Z",
+  "generatedAt": "2026-03-08T02:24:32.616Z",
   "commits": [
     {
-      "hash": "89b4c8fb7ea906826b6733a927726515a480a34c",
-      "shortHash": "89b4c8f",
+      "hash": "1f12f0168b6f9d2f6ba7ae8959eb4884ee0345b4",
+      "shortHash": "1f12f01",
+      "message": "refactor: replace inline tech rendering with TechBadge, fix CSS vars, and add git-blame refs to work components",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T07:54:20+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 96,
+      "deletions": 101,
+      "filesChanged": 5
+    },
+    {
+      "hash": "25c87a326952160967e26a8840292a2515bbba02",
+      "shortHash": "25c87a3",
+      "message": "refactor: migrate hardcoded colors to CSS variable-based color-mix for theme compatibility",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T07:12:05+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 91,
+      "deletions": 75,
+      "filesChanged": 8
+    },
+    {
+      "hash": "a4c70d8b0efc7ae50a1438176ed0786a7871dc52",
+      "shortHash": "a4c70d8",
+      "message": "refactor: rename TechBadge to kebab-case, drop category-icon, and update git-meta script",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T07:05:20+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 93,
+      "deletions": 502,
+      "filesChanged": 7
+    },
+    {
+      "hash": "8cbc5e6c3ec94048c551be5423df6d3b6cf35b83",
+      "shortHash": "8cbc5e6",
+      "message": "feat: add Catppuccin flavor picker to settings panel with persisted theme state",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T06:40:33+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 97,
+      "deletions": 62,
+      "filesChanged": 6
+    },
+    {
+      "hash": "f9f41123a5b0de5a0c46e0c50ed159039a93562c",
+      "shortHash": "f9f4112",
+      "message": "feat: add multi-theme Catppuccin CSS variables for runtime theme switching",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T06:37:04+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 193,
+      "deletions": 71,
+      "filesChanged": 5
+    },
+    {
+      "hash": "1c0323cfede94521157e0e780a824249bdada366",
+      "shortHash": "1c0323c",
+      "message": "Merge pull request #77 from utkarsh5026/feat/git-blame",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T04:30:07+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 3348,
+      "deletions": 1026,
+      "filesChanged": 71
+    },
+    {
+      "hash": "40891af8acec0145a69211d9b5a01af815f76b9c",
+      "shortHash": "40891af",
       "message": "feat: add CSSPresence animation component and use slide-left in section header",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T04:25:28+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 409,
-      "deletions": 26,
-      "filesChanged": 4
+      "insertions": 441,
+      "deletions": 58,
+      "filesChanged": 7
     },
     {
       "hash": "16c0a2b22ca6b308675f34f338dfef4cb5802a7f",
@@ -168,82 +240,10 @@
       "insertions": 318,
       "deletions": 25,
       "filesChanged": 7
-    },
-    {
-      "hash": "919a86018747a08af755677ffa8af235dc29617d",
-      "shortHash": "919a860",
-      "message": "refactor: auto-discover sub-component files in generate-git-meta script",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T00:43:03+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 160,
-      "deletions": 116,
-      "filesChanged": 4
-    },
-    {
-      "hash": "3d7705463e2a1fbaca235f3d1da763dcb7ee30b6",
-      "shortHash": "3d77054",
-      "message": "refactor: migrate git hooks to Zustand stores",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T00:38:49+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 255,
-      "deletions": 243,
-      "filesChanged": 10
-    },
-    {
-      "hash": "19f07f53a19dd9ce83dca7b419700e920a3d499e",
-      "shortHash": "19f07f5",
-      "message": "feat: integrate git blame tracking into contact section components",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T00:13:35+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 72,
-      "deletions": 52,
-      "filesChanged": 6
-    },
-    {
-      "hash": "022d6d40d64afeccca07215e055cb81fbf9b0c2b",
-      "shortHash": "022d6d4",
-      "message": "feat: add relativeTime utility for human-readable date formatting",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T22:40:17+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 575,
-      "deletions": 35,
-      "filesChanged": 4
-    },
-    {
-      "hash": "0011e9e9527da849149a62432746b5c30892ee8f",
-      "shortHash": "0011e9e",
-      "message": "build: remove three.js dependencies and add gen:git-meta script",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T14:54:06+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 35,
-      "deletions": 70,
-      "filesChanged": 5
-    },
-    {
-      "hash": "2856b033fa2d136e1c6fff8a20e53c2c80f3f149",
-      "shortHash": "2856b03",
-      "message": "fix: guard post-commit hook against infinite amend loop",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-07T14:48:44+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 24,
-      "deletions": 18,
-      "filesChanged": 4
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 17,
+    "2026-03-08": 23,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
@@ -265,7 +265,7 @@
   "languageStats": [
     {
       "language": "TypeScript",
-      "count": 227,
+      "count": 226,
       "color": "#89b4fa"
     },
     {

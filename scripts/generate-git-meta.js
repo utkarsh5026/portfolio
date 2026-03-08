@@ -45,6 +45,10 @@ const AUTHOR_MAP = {
 
 const BASE = "app/src/components/home/portfolio";
 
+const BASE_COMPONENTS = {
+  TechBadge: "app/src/components/base/TechBadge.tsx",
+};
+
 const SECTIONS = {
   home: "intro/personal-intro.tsx",
   about: "about/about-me.tsx",
@@ -324,6 +328,11 @@ function main() {
   console.log(`\nProcessing ${extraFiles.length} sub-component files...`);
   for (const { file: relFile, section } of extraFiles) {
     processFile(relFile, section);
+  }
+
+  console.log("\nProcessing base components...");
+  for (const [, relFile] of Object.entries(BASE_COMPONENTS)) {
+    processFile(relFile, "base");
   }
 
   /** @type {GitMetaOutput} */

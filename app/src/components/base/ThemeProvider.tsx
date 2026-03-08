@@ -1,27 +1,9 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { useEffect } from "react";
 
-type CatppuccinFlavor = "latte" | "frappe" | "macchiato" | "mocha";
+import useSettingsStore from "@/store/settings-store";
 
-type ThemeProviderProps = {
-  children: React.ReactNode;
-  defaultFlavor?: CatppuccinFlavor;
-};
-
-type ThemeProviderState = {
-  flavor: CatppuccinFlavor;
-  setFlavor: (flavor: CatppuccinFlavor) => void;
-};
-
-const ThemeProviderContext = createContext<ThemeProviderState>({
-  flavor: "mocha",
-  setFlavor: () => null,
-});
-
-export function ThemeProvider({
-  children,
-  defaultFlavor = "mocha",
-}: ThemeProviderProps) {
-  const [flavor, setFlavor] = useState<CatppuccinFlavor>(defaultFlavor);
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const flavor = useSettingsStore((s) => s.flavor);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -29,18 +11,5 @@ export function ThemeProvider({
     root.classList.add(flavor);
   }, [flavor]);
 
-  return (
-    <ThemeProviderContext.Provider value={{ flavor, setFlavor }}>
-      {children}
-    </ThemeProviderContext.Provider>
-  );
+  return <>{children}</>;
 }
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const useTheme = () => {
-  const context = useContext(ThemeProviderContext);
-  if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
-  return context;
-};

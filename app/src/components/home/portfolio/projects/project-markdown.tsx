@@ -71,7 +71,7 @@ const CoverBand: React.FC<{ coverImage?: string; name: string }> = ({
       )}
     >
       {/* Subtle noise texture via repeating tiny radial */}
-      <div className="absolute inset-0 opacity-10 [background-image:radial-gradient(circle,_hsl(var(--ctp-overlay2))_1px,_transparent_1px)] [background-size:20px_20px]" />
+      <div className="absolute inset-0 opacity-10 [background-image:radial-gradient(circle,_rgb(var(--ctp-overlay2))_1px,_transparent_1px)] [background-size:20px_20px]" />
     </div>
   );
 };

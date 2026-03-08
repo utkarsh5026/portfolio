@@ -187,7 +187,7 @@ const Certificate: React.FC<CertificateProps> = ({ name }) => {
           />
 
           <div className="absolute inset-0 bg-gradient-to-tr from-ctp-peach/5 via-white/5 to-ctp-blue/5 z-20" />
-          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--ctp-blue),_transparent_70%)]" />
+          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_rgb(var(--ctp-blue)),_transparent_70%)]" />
         </div>
 
         <div className="absolute -bottom-3 -right-3 z-30">

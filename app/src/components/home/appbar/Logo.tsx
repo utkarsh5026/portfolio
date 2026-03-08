@@ -96,7 +96,7 @@ const Logo: React.FC<LogoProps> = ({ centerDot }) => {
 
   return (
     <button
-      className="flex gap-4 transform transition-transform hover:scale-105"
+      className="flex gap-4 transform transition-transform hover:scale-105 font-source"
       onClick={() => {
         window.location.reload();
       }}
@@ -111,7 +111,7 @@ const Logo: React.FC<LogoProps> = ({ centerDot }) => {
           <div className="flex items-center font-semibold">
             <span
               ref={leftTextRef}
-              className={`text-white opacity-0 ${
+              className={`text-ctp-text opacity-0 ${
                 centerDot ? "relative right-[10px]" : ""
               }`}
             >
@@ -119,7 +119,7 @@ const Logo: React.FC<LogoProps> = ({ centerDot }) => {
             </span>
             <span
               ref={dotRef}
-              className={`text-orange-500 font-bold opacity-0 leading-none ${
+              className={`text-ctp-peach font-bold opacity-0 leading-none ${
                 centerDot ? "absolute left-1/2 -translate-x-1/2 dot-center" : ""
               }`}
             >
@@ -127,7 +127,7 @@ const Logo: React.FC<LogoProps> = ({ centerDot }) => {
             </span>
             <span
               ref={rightTextRef}
-              className={`text-white opacity-0 ${
+              className={`text-ctp-text opacity-0 ${
                 centerDot ? "relative left-[10px]" : ""
               }`}
             >

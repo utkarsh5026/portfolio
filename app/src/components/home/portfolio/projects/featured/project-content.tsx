@@ -3,7 +3,7 @@ import React from "react";
 import { FaGithub } from "react-icons/fa";
 
 import Reveal from "@/components/animations/reveal/Reveal";
-import TechBadge from "@/components/base/TechBadge";
+import TechBadge from "@/components/base/tech-badge";
 import { Button } from "@/components/ui/button";
 import { useGitComponent } from "@/hooks/use-git-component";
 import { Project } from "@/types";
