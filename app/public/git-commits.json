@@ -1,17 +1,41 @@
 {
-  "generatedAt": "2026-03-08T08:16:14.465Z",
+  "generatedAt": "2026-03-09T00:19:59.684Z",
   "commits": [
     {
-      "hash": "b703107629901e09f13c6b9e76f543c12c9fef54",
-      "shortHash": "b703107",
+      "hash": "6dbbb035abd3fe7f8ac5a090f0a954b38463aecb",
+      "shortHash": "6dbbb03",
+      "message": "fix: remove broken husky pre-commit hook and enhance sidebar avatar with tooltip and status indicator",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-09T05:49:42+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 12,
+      "deletions": 7,
+      "filesChanged": 2
+    },
+    {
+      "hash": "57d05f455cefed0506b72735096ee5bfba243e3a",
+      "shortHash": "57d05f4",
+      "message": "Merge pull request #79 from utkarsh5026/feat/resume-pdf",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-08T13:50:28+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 902,
+      "deletions": 209,
+      "filesChanged": 22
+    },
+    {
+      "hash": "f8ed1a16c8444d740ccd16892bee66f52e608c6e",
+      "shortHash": "f8ed1a1",
       "message": "docs: update README with git blame and resume feature details",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-08T13:46:02+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 83,
-      "deletions": 58,
-      "filesChanged": 1
+      "insertions": 104,
+      "deletions": 79,
+      "filesChanged": 4
     },
     {
       "hash": "f43bae244c577e8377713a2f1c3fff958cc73cce",
@@ -216,34 +240,11 @@
       "insertions": 179,
       "deletions": 160,
       "filesChanged": 7
-    },
-    {
-      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
-      "shortHash": "61211ff",
-      "message": "feat: integrate useGitComponent ref across all portfolio components",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T04:12:42+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 831,
-      "deletions": 727,
-      "filesChanged": 33
-    },
-    {
-      "hash": "f24f91e4b07ad10ac2994a04c1308c5b5da4cdce",
-      "shortHash": "f24f91e",
-      "message": "build: preserve class/function names and fix watch mode output dir",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T04:03:38+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 215,
-      "deletions": 213,
-      "filesChanged": 5
     }
   ],
   "commitsByDate": {
-    "2026-03-08": 33,
+    "2026-03-09": 1,
+    "2026-03-08": 34,
     "2026-03-07": 41,
     "2026-03-06": 4,
     "2026-03-05": 43,
@@ -270,7 +271,7 @@
     },
     {
       "language": "Other",
-      "count": 57,
+      "count": 56,
       "color": "#6c7086"
     },
     {

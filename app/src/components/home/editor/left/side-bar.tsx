@@ -43,13 +43,19 @@ const SideBar: React.FC = () => {
         <button
           title="Home"
           onClick={() => setActiveSection("home")}
-          className="mb-6 group relative flex items-center justify-center"
+          className="mb-4 group relative flex items-center justify-center p-1.5 rounded-lg transition-all duration-200 hover:bg-ctp-surface0/60"
         >
-          <img
-            src="./personal.webp"
-            alt="Utkarsh Priyadarshi"
-            className="w-6 h-6 rounded-full object-cover ring-2 ring-ctp-mauve/60 transition-all duration-200 group-hover:ring-ctp-lavender group-hover:scale-110"
-          />
+          <div className="relative">
+            <img
+              src="/personal.webp"
+              alt="Utkarsh Priyadarshi"
+              className="w-6 h-6 rounded-full object-cover ring-2 ring-ctp-mauve/50 transition-all duration-200 group-hover:ring-ctp-lavender group-hover:scale-105 group-hover:shadow-[0_0_10px_rgba(203,166,247,0.4)]"
+            />
+            <span className="absolute bottom-0 right-0 w-2 h-2 bg-ctp-green rounded-full border border-ctp-mantle" />
+          </div>
+          <span className="absolute left-14 px-2 py-1 bg-ctp-surface0 rounded text-xs invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity whitespace-nowrap font-source text-ctp-text z-50">
+            Home
+          </span>
         </button>
 
         <GhostButton
