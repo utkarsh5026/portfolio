@@ -83,7 +83,7 @@
     "ts-morph": "^27.0.2",
     "typescript": "^5.9.3",
     "vite": "^5.4.21",
-    "vite-imagetools": "^9.0.2",
+    "vite-imagetools": "^10.0.0",
     "vite-plugin-checker": "^0.8.0",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-pwa": "^1.2.0"
