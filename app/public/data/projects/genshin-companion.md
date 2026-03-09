@@ -1,6 +1,6 @@
 # GenshinQL
 
-![GenshinQL Hero Dashboard seamlessly blending character stats and material tracking](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Add+Image+Here)
+![GenshinQL Hero Dashboard seamlessly blending character stats and material tracking](https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/genshin-build/GenshinQL%20-%20Google%20Chrome%2009-03-2026%2009_51_48.webp)
 
 > A lightning-fast, zero-backend companion app delivering instant Genshin Impact data, routine planning, and native mini-games entirely through the browser.
 
@@ -12,15 +12,18 @@ Most players eventually resort to maintaining massive, cumbersome spreadsheets. 
 
 Existing unofficial tools in the ecosystem are often bloated with intrusive ads and suffer from terrible load times. Worse, many force users to create accounts and log in just to save simple preferences or track their farming progress.
 
-![A visual representation of the overwhelming amount of game data players must navigate](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Add+Image+Here)
+![A visual representation of the overwhelming amount of game data players must navigate](https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/genshin-build/genshinql-problem.svg)
 
-There was a massive void for a premium, snappy utility that respected the user's time. The core challenge was delivering this massive compendium of game knowledge instantly, without relying on slow API requests or expensive backend infrastructure.
+
+
+
+There was a massive void for a premium,snappy utility that respected the user's time. The core challenge was delivering this massive compendium of game knowledge instantly, without relying on slow API requests or expensive backend infrastructure.
 
 ## The Solution
 
 I built GenshinQL to be the ultimate, all-in-one web companion for the game. It completely ditches the traditional backend model in favor of a static, offline-first architecture that serves data with zero latency.
 
-![System architecture showing Vercel edge delivery, raw JSON, and client-side processing](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Add+Image+Here)
+![System architecture showing Vercel edge delivery, raw JSON, and client-side processing](https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/genshin-build/genshinql-architecture.svg)
 
 ### An Instant Utility Hub
 
@@ -28,7 +31,7 @@ The app provides native-like performance by pushing all the data processing to t
 
 This speed transforms the wiki experience from a cumbersome lookup task into a fluid, exploratory journey. Users can seamlessly bounce between character profiles, talent material requirements, and their personal routine planner.
 
-![UI showcasing the fluid transitions between the character database and farming tracker](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Add+Image+Here)
+![UI showcasing the fluid transitions between the character database and farming tracker](https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/genshin-build/genshinql-talents-calendar.webp)
 
 ### Complex Tools Made Simple
 
@@ -36,7 +39,7 @@ Beyond simple data lookups, GenshinQL features powerful interactive utilities. T
 
 The Routine Planner goes a step further, letting users construct personalized daily farming schedules based on their actual in-game resin limits. Everything is cleanly organized and automatically filtered by the current day of the week.
 
-![The interactive drag-and-drop tier list builder interface](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Add+Image+Here)
+![The interactive drag-and-drop tier list builder interface](https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/genshin-build/genshinql-team-peview.webp)
 
 ### Integrated Mini-Games
 
@@ -44,7 +47,7 @@ To keep users engaged even when they aren't actively farming materials, I integr
 
 The standout feature is "Genshindle," a highly addictive daily Wordle-style game where players guess the mystery character based on attributes like element, weapon type, and region.
 
-![Genshindle gameplay showing the Wordle-style attribute deduction interface](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Add+Image+Here)
+![Genshindle gameplay showing the Wordle-style attribute deduction interface](https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/genshin-build/GenshinQL%20-%20Google%20Chrome%2009-03-2026%2010_04_53.webp)
 
 ## Key Features
 
@@ -75,7 +78,7 @@ Serving a massive, constantly updating library of game statistics without a data
 
 ### Automated Data Pipeline
 
-![Diagram of the Selenium scraping pipeline processing wiki data into structured JSON](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Add+Image+Here)
+![Diagram of the Selenium scraping pipeline processing wiki data into structured JSON](https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/genshin-build/genshinql-scraping-pipeline.svg)
 
 Because the game updates continuously on a six-week cycle, manual data entry was completely unscalable. I engineered a fully automated scraping pipeline utilizing Bun and Selenium.
 
@@ -83,7 +86,7 @@ This custom infrastructure targets official databases and community wikis, extra
 
 ### Stale-While-Revalidate Engine
 
-![Flowchart of the IndexedDB caching strategy intercepting network requests](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Add+Image+Here)
+![Flowchart of the IndexedDB caching strategy intercepting network requests](https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/genshin-build/genshinql-cache.svg)
 
 To guarantee the "instant" feel of the application, I implemented a robust caching layer built on top of the browser's native IndexedDB. When a user requests any data, the application first serves the local copy.
 
@@ -91,7 +94,7 @@ Simultaneously, a background worker silently pings the Vercel edge to check agai
 
 ### High-Fidelity UI and State
 
-![Visual breakdown of the React component tree and Zustand state injection](https://placehold.co/900x450/1e1e2e/cdd6f4?text=Add+Image+Here)
+![Visual breakdown of the React component tree and Zustand state injection](https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/genshin-build/genshinql-frontend-architecture.svg)
 
 The frontend is built using React 18, Vite, and Tailwind CSS, but the real magic lies in the state management. Because the data originates locally, I utilized Zustand for ultra-lightweight, atomic state updates.
 
