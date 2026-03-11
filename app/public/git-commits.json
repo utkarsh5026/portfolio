@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-11T12:17:59.664Z",
+  "generatedAt": "2026-03-11T12:25:08.825Z",
   "commits": [
     {
-      "hash": "14ca2793d90dc83356d2df34717e8198941cc448",
-      "shortHash": "14ca279",
+      "hash": "8e1840308f44689bc082dc9cf5571422979770f3",
+      "shortHash": "8e18403",
+      "message": "perf: replace array state with Set for file explorer visibility and expansion tracking",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T17:53:56+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 34,
+      "deletions": 37,
+      "filesChanged": 2
+    },
+    {
+      "hash": "962efa6d08bfc20085c650a7bd567f070786cea8",
+      "shortHash": "962efa6",
       "message": "feat: extend git blame to project markdown files",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-11T17:47:33+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 42,
-      "deletions": 2,
-      "filesChanged": 3
+      "insertions": 251,
+      "deletions": 55,
+      "filesChanged": 6
     },
     {
       "hash": "ca7a80ee80fe713dd9785a888c2f4ecdf75bd3b2",
@@ -228,22 +240,10 @@
       "insertions": 147,
       "deletions": 152,
       "filesChanged": 8
-    },
-    {
-      "hash": "25c87a326952160967e26a8840292a2515bbba02",
-      "shortHash": "25c87a3",
-      "message": "refactor: migrate hardcoded colors to CSS variable-based color-mix for theme compatibility",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T07:12:05+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 91,
-      "deletions": 75,
-      "filesChanged": 8
     }
   ],
   "commitsByDate": {
-    "2026-03-11": 5,
+    "2026-03-11": 6,
     "2026-03-09": 2,
     "2026-03-08": 34,
     "2026-03-07": 41,

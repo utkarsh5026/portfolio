@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-11T12:18:22.018Z",
+  "generatedAt": "2026-03-11T12:26:11.973Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -17,7 +17,7 @@
       "hash": "0000000000000000000000000000000000000000",
       "shortHash": "0000000",
       "author": "Not Committed Yet",
-      "date": "2026-03-11T12:18:00.000Z",
+      "date": "2026-03-11T12:25:11.000Z",
       "message": "Version of app/src/components/home/portfolio/intro/personal-intro.tsx from app/src/components/home/portfolio/intro/personal-intro.tsx"
     },
     "MobilePersonalIntro": {
@@ -248,24 +248,24 @@
         122,
         160
       ],
-      "hash": "0000000000000000000000000000000000000000",
-      "shortHash": "0000000",
-      "author": "Not Committed Yet",
-      "date": "2026-03-11T12:18:06.000Z",
-      "message": "Version of app/src/components/home/portfolio/intro/skills/file-explorer.tsx from app/src/components/home/portfolio/intro/skills/file-explorer.tsx"
+      "hash": "8e1840308f44689bc082dc9cf5571422979770f3",
+      "shortHash": "8e18403",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-11T12:23:56.000Z",
+      "message": "perf: replace array state with Set for file explorer visibility and expansion tracking"
     },
     "TechSkillsComponent": {
       "section": "home",
       "file": "app/src/components/home/portfolio/intro/skills/tech-skills.tsx",
       "lines": [
         28,
-        75
+        74
       ],
-      "hash": "0000000000000000000000000000000000000000",
-      "shortHash": "0000000",
-      "author": "Not Committed Yet",
-      "date": "2026-03-11T12:18:06.000Z",
-      "message": "Version of app/src/components/home/portfolio/intro/skills/tech-skills.tsx from app/src/components/home/portfolio/intro/skills/tech-skills.tsx"
+      "hash": "8e1840308f44689bc082dc9cf5571422979770f3",
+      "shortHash": "8e18403",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-11T12:23:56.000Z",
+      "message": "perf: replace array state with Set for file explorer visibility and expansion tracking"
     },
     "AnimatedText": {
       "section": "home",
@@ -521,8 +521,8 @@
         227,
         401
       ],
-      "hash": "14ca2793d90dc83356d2df34717e8198941cc448",
-      "shortHash": "14ca279",
+      "hash": "962efa6d08bfc20085c650a7bd567f070786cea8",
+      "shortHash": "962efa6",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-11T12:17:33.000Z",
       "message": "feat: extend git blame to project markdown files"

@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-11T12:17:55.797Z",
+  "generatedAt": "2026-03-11T12:25:02.365Z",
   "sections": {
     "home": {
-      "lastCommitHash": "85fc174",
-      "lastCommitDate": "2026-03-11 17:14:06 +0530",
-      "lastCommitMessage": "perf: reduce animation timings and eliminate redundant re-renders for snappier UI",
+      "lastCommitHash": "8e18403",
+      "lastCommitDate": "2026-03-11 17:53:56 +0530",
+      "lastCommitMessage": "perf: replace array state with Set for file explorer visibility and expansion tracking",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 38,
-      "linesAdded": 1,
-      "linesDeleted": 1,
-      "totalAdded": 3873,
-      "totalDeleted": 2118,
+      "commitCount": 39,
+      "linesAdded": 34,
+      "linesDeleted": 37,
+      "totalAdded": 3907,
+      "totalDeleted": 2155,
       "fileCount": 17
     },
     "about": {
@@ -38,7 +38,7 @@
       "fileCount": 4
     },
     "projects": {
-      "lastCommitHash": "14ca279",
+      "lastCommitHash": "962efa6",
       "lastCommitDate": "2026-03-11 17:47:33 +0530",
       "lastCommitMessage": "feat: extend git blame to project markdown files",
       "lastAuthor": "Utkarsh Priyadarshi",
