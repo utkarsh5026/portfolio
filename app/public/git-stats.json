@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-11T11:54:51.315Z",
+  "generatedAt": "2026-03-11T12:02:23.648Z",
   "sections": {
     "home": {
       "lastCommitHash": "85fc174",
@@ -38,15 +38,15 @@
       "fileCount": 4
     },
     "projects": {
-      "lastCommitHash": "e433bef",
-      "lastCommitDate": "2026-03-11 17:08:21 +0530",
-      "lastCommitMessage": "fix: show \"coming soon\" for projects without a deep dive markdown file",
+      "lastCommitHash": "f1b7743",
+      "lastCommitDate": "2026-03-11 17:31:52 +0530",
+      "lastCommitMessage": "feat: replace skeleton loader with minimal deep dive loading indicator",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 77,
-      "linesAdded": 15,
-      "linesDeleted": 6,
-      "totalAdded": 10203,
-      "totalDeleted": 8858,
+      "commitCount": 78,
+      "linesAdded": 26,
+      "linesDeleted": 10,
+      "totalAdded": 10229,
+      "totalDeleted": 8868,
       "fileCount": 9
     },
     "experience": {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-11T11:55:30.142Z",
+  "generatedAt": "2026-03-11T12:03:03.328Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -518,21 +518,21 @@
       "section": "projects",
       "file": "app/src/components/home/portfolio/projects/project-markdown.tsx",
       "lines": [
-        235,
-        407
+        227,
+        401
       ],
-      "hash": "0000000000000000000000000000000000000000",
-      "shortHash": "0000000",
-      "author": "Not Committed Yet",
-      "date": "2026-03-11T11:55:17.000Z",
-      "message": "Version of app/src/components/home/portfolio/projects/project-markdown.tsx from app/src/components/home/portfolio/projects/project-markdown.tsx"
+      "hash": "f1b77435f9f2b207f46b65f6306dd998290ff9f7",
+      "shortHash": "f1b7743",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-11T12:01:52.000Z",
+      "message": "feat: replace skeleton loader with minimal deep dive loading indicator"
     },
     "TabBar": {
       "section": "projects",
       "file": "app/src/components/home/portfolio/projects/project-markdown.tsx",
       "lines": [
-        190,
-        226
+        182,
+        218
       ],
       "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
       "shortHash": "e4ccb5a",

@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-11T11:54:56.673Z",
+  "generatedAt": "2026-03-11T12:02:27.370Z",
   "commits": [
     {
-      "hash": "5a6b47f141590c68c1732e98e088dbcdf66c62b7",
-      "shortHash": "5a6b47f",
+      "hash": "f1b77435f9f2b207f46b65f6306dd998290ff9f7",
+      "shortHash": "f1b7743",
+      "message": "feat: replace skeleton loader with minimal deep dive loading indicator",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T17:31:52+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 26,
+      "deletions": 10,
+      "filesChanged": 1
+    },
+    {
+      "hash": "11f3513b2a62d0e1ffb88b803e57fb57f3e35fe8",
+      "shortHash": "11f3513",
       "message": "feat: show project info in markdown loading fallback",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-11T17:24:13+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 44,
-      "deletions": 5,
-      "filesChanged": 1
+      "insertions": 80,
+      "deletions": 41,
+      "filesChanged": 4
     },
     {
       "hash": "85fc1746a29f88e9cc77cb4d9910d7e1ba8fb5b4",
@@ -228,22 +240,10 @@
       "insertions": 93,
       "deletions": 502,
       "filesChanged": 7
-    },
-    {
-      "hash": "8cbc5e6c3ec94048c551be5423df6d3b6cf35b83",
-      "shortHash": "8cbc5e6",
-      "message": "feat: add Catppuccin flavor picker to settings panel with persisted theme state",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T06:40:33+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 97,
-      "deletions": 62,
-      "filesChanged": 6
     }
   ],
   "commitsByDate": {
-    "2026-03-11": 3,
+    "2026-03-11": 4,
     "2026-03-09": 2,
     "2026-03-08": 34,
     "2026-03-07": 41,
