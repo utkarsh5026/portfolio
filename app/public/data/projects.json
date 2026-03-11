@@ -42,6 +42,31 @@
     "liveLink": "",
     "icon": "🗄️"
   },
+    {
+    "name": "Enigma",
+    "tagline": "Build and debug your own programming language in the browser 🚀",
+    "description": "Full-featured interpreter for Enigma, a custom programming language built from scratch with 240+ TypeScript files implementing lexer, parser, and tree-walking evaluator. Interactive web IDE with Monaco editor featuring real-time AST visualization, step-by-step debugger with execution state tracking, and instant syntax analysis processing 1000+ tokens per second.",
+    "keyFeatures": [
+      "Complete Language Implementation Pipeline: Hand-crafted lexer supporting f-strings and multi-line comments. Pratt parser implementation with operator precedence and error recovery. Tree-walking evaluator supporting closures, OOP, and first-class functions. Standard library with 20+ built-in functions including map, filter, and reduce.",
+      "Interactive Step-by-Step Debugger: State tracking system capturing environment snapshots at every step. Visualized call stack and variable inspection for deep debugging. Time-travel navigation (forward/backward) with sub-millisecond transitions.",
+      "Real-Time AST Visualization Engine: React-based tree renderer supporting 15+ distinct AST node types. Bidirectional code-to-AST highlighting via Monaco decorations API. Live syntax processing with <100ms latency using memoized parsing.",
+      "Monaco-Powered Code Editor: Custom syntax highlighting and intelligent tokenization for 30+ types. Error underlining with precise source context extraction. Responsive split-pane and mobile drawer layouts via Tailwind and Shadcn UI."
+    ],
+    "technologies": [
+      "typescript",
+      "react",
+      "monaco",
+      "vite",
+      "tailwind",
+      "shadcn",
+      "framermotion",
+      "jest",
+      "lucideicons"
+    ],
+    "githubLink": "https://github.com/utkarsh5026/enigma",
+    "icon": "👨‍💻",
+    "coverImage": "https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/enigma/luca-bravo-XJXWbfSo2f0-unsplash%20(1).jpg"
+  },
   {
     "name": "First Principles",
     "tagline": "Transform technical learning with gamified reading analytics 📚",
@@ -80,31 +105,6 @@
     "technologies": ["golang", "cli", "cobra", "git"],
     "githubLink": "https://github.com/utkarsh5026/SourceControl",
     "icon": "🔧"
-  },
-  {
-    "name": "Enigma",
-    "tagline": "Build and debug your own programming language in the browser 🚀",
-    "description": "Full-featured interpreter for Enigma, a custom programming language built from scratch with 240+ TypeScript files implementing lexer, parser, and tree-walking evaluator. Interactive web IDE with Monaco editor featuring real-time AST visualization, step-by-step debugger with execution state tracking, and instant syntax analysis processing 1000+ tokens per second.",
-    "keyFeatures": [
-      "Complete Language Implementation Pipeline: Hand-crafted lexer supporting f-strings and multi-line comments. Pratt parser implementation with operator precedence and error recovery. Tree-walking evaluator supporting closures, OOP, and first-class functions. Standard library with 20+ built-in functions including map, filter, and reduce.",
-      "Interactive Step-by-Step Debugger: State tracking system capturing environment snapshots at every step. Visualized call stack and variable inspection for deep debugging. Time-travel navigation (forward/backward) with sub-millisecond transitions.",
-      "Real-Time AST Visualization Engine: React-based tree renderer supporting 15+ distinct AST node types. Bidirectional code-to-AST highlighting via Monaco decorations API. Live syntax processing with <100ms latency using memoized parsing.",
-      "Monaco-Powered Code Editor: Custom syntax highlighting and intelligent tokenization for 30+ types. Error underlining with precise source context extraction. Responsive split-pane and mobile drawer layouts via Tailwind and Shadcn UI."
-    ],
-    "technologies": [
-      "typescript",
-      "react",
-      "monaco",
-      "vite",
-      "tailwind",
-      "shadcn",
-      "framermotion",
-      "jest",
-      "lucideicons"
-    ],
-    "githubLink": "https://github.com/utkarsh5026/enigma",
-    "icon": "👨‍💻",
-    "coverImage": "https://pub-9e4c1f8428a244cf9603f534bdbe23e8.r2.dev/enigma/luca-bravo-XJXWbfSo2f0-unsplash%20(1).jpg"
   },
   {
     "name": "DevPortfolio",
@@ -149,20 +149,6 @@
     "icon": "⚡"
   },
   {
-    "name": "SemanticCode",
-    "tagline": "AI-powered semantic code search and navigation 🔎",
-    "description": "Intelligent code search tool using embeddings and semantic analysis. Search codebases by intent rather than exact keywords with context-aware results.",
-    "keyFeatures": [
-      "Semantic Search Engine: High-performance vector similarity search using FAISS indexing. OpenAI embeddings integration for natural language understanding. Intent-based matching enabling concept-driven code discovery.",
-      "Code Context Analysis: Robust AST parsing via Tree-sitter for precise structural extraction. Automated generation of function signatures and dependency trees. Comprehensive call graph analysis for deep context understanding.",
-      "Multi-Language Support: Unified indexing architecture across Python, JS/TS, Go, and Rust. Cross-language reference tracking for distributed systems. Language Server Protocol (LSP) integration for syntax awareness.",
-      "Real-Time Index Updates: Intelligent file watcher triggering instantaneous incremental updates. Background re-indexing processes to prevent search downtime. Differential update logic ensuring index consistency with code changes."
-    ],
-    "technologies": ["python", "typescript", "fastapi", "mongodb"],
-    "githubLink": "https://github.com/utkarsh5026/gep",
-    "icon": "🔎"
-  },
-  {
     "name": "AuthGuard",
     "tagline": "Enterprise authentication and authorization service 🛡️",
     "description": "Microservice-based auth platform with OAuth2, SAML, and MFA support. Provides centralized user management and SSO for enterprise applications.",
@@ -202,7 +188,7 @@
     "liveLink": "https://mdhd.vercel.app/"
   },
   {
-    "name": "ReduceMe",
+    "name": "Reducer",
     "tagline": "Educational Redux reimplementation teaching state management internals 📚",
     "description": "TypeScript-native state management library built from scratch to demystify Redux architecture. Implements core Redux patterns including middleware composition, slice-based reducers, and immutable updates using Immer, serving as both a functional library and educational resource for understanding state management internals.",
     "keyFeatures": [

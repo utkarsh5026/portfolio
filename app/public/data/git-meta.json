@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-11T12:31:35.997Z",
+  "generatedAt": "2026-03-11T12:36:43.409Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -14,8 +14,8 @@
         19,
         106
       ],
-      "hash": "e6f5421d1e3b813aa82d1c67fd23383a7d23982f",
-      "shortHash": "e6f5421",
+      "hash": "e20243f28ccbcf556512dcbaa646af5f1bb1e946",
+      "shortHash": "e20243f",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-11T12:29:15.000Z",
       "message": "chore: remove unused media assets and simplify intro animations"

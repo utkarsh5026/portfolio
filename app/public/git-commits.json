@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-11T12:30:28.318Z",
+  "generatedAt": "2026-03-11T12:35:34.116Z",
   "commits": [
     {
-      "hash": "e6f5421d1e3b813aa82d1c67fd23383a7d23982f",
-      "shortHash": "e6f5421",
+      "hash": "8729d191054452e7820c2e01920ab3c49c895a6b",
+      "shortHash": "8729d19",
+      "message": "chore: reorder Enigma project and remove SemanticCode, rename ReduceMe to Reducer in projects.json",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T18:04:59+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 26,
+      "deletions": 40,
+      "filesChanged": 1
+    },
+    {
+      "hash": "e20243f28ccbcf556512dcbaa646af5f1bb1e946",
+      "shortHash": "e20243f",
       "message": "chore: remove unused media assets and simplify intro animations",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-11T17:59:15+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 30,
-      "deletions": 45,
-      "filesChanged": 10
+      "insertions": 71,
+      "deletions": 86,
+      "filesChanged": 13
     },
     {
       "hash": "8eabe39e624569935cc6772ac47908861a8c9d12",
@@ -228,22 +240,10 @@
       "insertions": 489,
       "deletions": 38,
       "filesChanged": 9
-    },
-    {
-      "hash": "fde120aade268d67e6f2de30496edb9251c5fc4f",
-      "shortHash": "fde120a",
-      "message": "Merge pull request #78 from utkarsh5026/feat/theme-support",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T10:09:12+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 552,
-      "deletions": 793,
-      "filesChanged": 22
     }
   ],
   "commitsByDate": {
-    "2026-03-11": 7,
+    "2026-03-11": 8,
     "2026-03-09": 2,
     "2026-03-08": 34,
     "2026-03-07": 41,

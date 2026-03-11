@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-03-11T12:30:21.680Z",
+  "generatedAt": "2026-03-11T12:35:28.267Z",
   "sections": {
     "home": {
-      "lastCommitHash": "e6f5421",
+      "lastCommitHash": "e20243f",
       "lastCommitDate": "2026-03-11 17:59:15 +0530",
       "lastCommitMessage": "chore: remove unused media assets and simplify intro animations",
       "lastAuthor": "Utkarsh Priyadarshi",
