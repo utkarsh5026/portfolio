@@ -82,17 +82,9 @@ const DesktopPersonalIntro: React.FC = () => {
 
                     {/* Tech Skills */}
                     <Reveal effect="fade-up" delay={0.8}>
-                      <SketchBorder
-                        primaryColor="teal"
-                        secondaryColor="blue"
-                        primaryOpacity={30}
-                        secondaryOpacity={20}
-                        className="h-full"
-                      >
-                        <div className="border-t border-ctp-surface1/20 pt-6 mt-2">
-                          <TechSkills />
-                        </div>
-                      </SketchBorder>
+                      <div className="border-t border-ctp-surface1/20 pt-6 mt-2">
+                        <TechSkills />
+                      </div>
                     </Reveal>
                   </div>
                 </div>
