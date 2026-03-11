@@ -28,7 +28,6 @@ let pendingRegistrations: OutlineItem[] = [];
 let pendingUnregistrations: string[] = [];
 let flushScheduled = false;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const flushPending = (
   set: (fn: (state: OutlineStore) => Partial<OutlineStore>) => void
 ) => {

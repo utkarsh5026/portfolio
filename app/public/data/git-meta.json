@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-11T12:41:51.597Z",
+  "generatedAt": "2026-03-11T15:00:19.142Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -27,8 +27,8 @@
         19,
         98
       ],
-      "hash": "7e705a3f2de7bef77667611a26c9c43019e6a2d4",
-      "shortHash": "7e705a3",
+      "hash": "85019b619d14dac2dc3ea30adbae1ee99a8c1b38",
+      "shortHash": "85019b6",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-11T12:40:16.000Z",
       "message": "style: remove SketchBorder wrapper from TechSkills in personal intro"

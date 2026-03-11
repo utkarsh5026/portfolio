@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-03-11T12:40:51.831Z",
+  "generatedAt": "2026-03-11T15:00:06.665Z",
   "sections": {
     "home": {
-      "lastCommitHash": "7e705a3",
+      "lastCommitHash": "85019b6",
       "lastCommitDate": "2026-03-11 18:10:16 +0530",
       "lastCommitMessage": "style: remove SketchBorder wrapper from TechSkills in personal intro",
       "lastAuthor": "Utkarsh Priyadarshi",
