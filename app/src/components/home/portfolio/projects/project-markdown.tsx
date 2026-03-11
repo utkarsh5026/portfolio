@@ -361,12 +361,21 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
             )}
 
             {loadState === "error" && (
-              <Text
-                variant="caption"
-                className="px-6 mt-8 text-ctp-red font-source"
-              >
-                ⚠ Could not load project notes.
-              </Text>
+              <div className="flex flex-col items-center justify-center gap-4 px-6 py-20 text-center">
+                <div className="text-5xl">🚧</div>
+                <div className="flex flex-col gap-1">
+                  <Text
+                    variant="subtitle"
+                    className="text-ctp-subtext0 font-semibold"
+                  >
+                    Deep Dive Coming Soon
+                  </Text>
+                  <Text variant="caption" className="text-ctp-subtext1">
+                    The write-up for this project is still being drafted. Check
+                    back later!
+                  </Text>
+                </div>
+              </div>
             )}
           </div>
         )}

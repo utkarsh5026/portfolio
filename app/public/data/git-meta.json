@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-09T05:13:10.752Z",
+  "generatedAt": "2026-03-11T11:39:18.764Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -519,13 +519,13 @@
       "file": "app/src/components/home/portfolio/projects/project-markdown.tsx",
       "lines": [
         213,
-        376
+        385
       ],
-      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
-      "shortHash": "61211ff",
+      "hash": "8cce2a7f3731dffafae032887111add0ec262320",
+      "shortHash": "8cce2a7",
       "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-07T22:42:42.000Z",
-      "message": "feat: integrate useGitComponent ref across all portfolio components"
+      "date": "2026-03-11T11:38:21.000Z",
+      "message": "fix: show \"coming soon\" for projects without a deep dive markdown file"
     },
     "TabBar": {
       "section": "projects",
@@ -690,11 +690,11 @@
         23,
         177
       ],
-      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
-      "shortHash": "61211ff",
-      "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-07T22:42:42.000Z",
-      "message": "feat: integrate useGitComponent ref across all portfolio components"
+      "hash": "0000000000000000000000000000000000000000",
+      "shortHash": "0000000",
+      "author": "Not Committed Yet",
+      "date": "2026-03-11T11:39:16.000Z",
+      "message": "Version of app/src/components/home/portfolio/learning/learning-journey/learning-journey.tsx from app/src/components/home/portfolio/learning/learning-journey/learning-journey.tsx"
     },
     "ProgressIndicator": {
       "section": "learning",

@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-09T05:12:54.558Z",
+  "generatedAt": "2026-03-11T11:38:47.569Z",
   "commits": [
     {
-      "hash": "5ba37665255c394298c6dc036b06dfdec6619971",
-      "shortHash": "5ba3766",
+      "hash": "8cce2a7f3731dffafae032887111add0ec262320",
+      "shortHash": "8cce2a7",
+      "message": "fix: show \"coming soon\" for projects without a deep dive markdown file",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T17:08:21+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 18,
+      "deletions": 6,
+      "filesChanged": 2
+    },
+    {
+      "hash": "86a05f6f5773535bfab79cf73fd73a0082385dbe",
+      "shortHash": "86a05f6",
       "message": "docs: replace placeholder images with actual screenshots for genshin-companion project",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-09T10:42:39+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 13,
-      "deletions": 10,
-      "filesChanged": 1
+      "insertions": 34,
+      "deletions": 31,
+      "filesChanged": 4
     },
     {
       "hash": "750fae855c9712d727a493caff4868fb91b15f17",
@@ -228,21 +240,10 @@
       "insertions": 3348,
       "deletions": 1026,
       "filesChanged": 71
-    },
-    {
-      "hash": "40891af8acec0145a69211d9b5a01af815f76b9c",
-      "shortHash": "40891af",
-      "message": "feat: add CSSPresence animation component and use slide-left in section header",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T04:25:28+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 441,
-      "deletions": 58,
-      "filesChanged": 7
     }
   ],
   "commitsByDate": {
+    "2026-03-11": 1,
     "2026-03-09": 2,
     "2026-03-08": 34,
     "2026-03-07": 41,

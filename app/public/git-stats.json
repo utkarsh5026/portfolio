@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-09T05:12:51.905Z",
+  "generatedAt": "2026-03-11T11:38:42.141Z",
   "sections": {
     "home": {
       "lastCommitHash": "25c87a3",
@@ -38,15 +38,15 @@
       "fileCount": 4
     },
     "projects": {
-      "lastCommitHash": "d7babbb",
-      "lastCommitDate": "2026-03-08 07:54:20 +0530",
-      "lastCommitMessage": "refactor: replace inline tech rendering with TechBadge, fix CSS vars, and add git-blame refs to work components",
+      "lastCommitHash": "8cce2a7",
+      "lastCommitDate": "2026-03-11 17:08:21 +0530",
+      "lastCommitMessage": "fix: show \"coming soon\" for projects without a deep dive markdown file",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 76,
-      "linesAdded": 8,
-      "linesDeleted": 31,
-      "totalAdded": 10188,
-      "totalDeleted": 8852,
+      "commitCount": 77,
+      "linesAdded": 15,
+      "linesDeleted": 6,
+      "totalAdded": 10203,
+      "totalDeleted": 8858,
       "fileCount": 9
     },
     "experience": {
