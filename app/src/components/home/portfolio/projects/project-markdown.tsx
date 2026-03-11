@@ -97,15 +97,29 @@ const PageIcon: React.FC<{ icon?: string; name: string }> = ({
   );
 };
 
-const LoadingSkeleton: React.FC = () => (
-  <div className="mt-8 space-y-3 animate-pulse px-6">
-    {[80, 60, 90, 50, 70].map((w, i) => (
-      <div
-        key={i}
-        className="h-3 rounded bg-ctp-surface1"
-        style={{ width: `${w}%` }}
-      />
-    ))}
+const DeepDiveLoading: React.FC<{ name: string; icon?: string }> = ({
+  name,
+  icon,
+}) => (
+  <div className="flex flex-col items-center justify-center gap-3 py-20 text-center">
+    {icon && <span className="text-3xl">{icon}</span>}
+    <p className="text-sm text-ctp-subtext1 font-source font-medium">{name}</p>
+    <div className="flex gap-1.5">
+      {[0, 1, 2].map((i) => (
+        <span
+          key={i}
+          className="w-1.5 h-1.5 rounded-full bg-ctp-blue animate-pulse"
+          style={{ animationDelay: `${i * 0.18}s` }}
+        />
+      ))}
+    </div>
+    <p className="text-xs text-ctp-subtext0 font-source">
+      Downloading{" "}
+      <code className="px-1 py-0.5 rounded bg-ctp-surface1/50 text-ctp-blue font-mono">
+        .md
+      </code>{" "}
+      file…
+    </p>
   </div>
 );
 
@@ -352,21 +366,32 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
 
         {activeTab === "deepdive" && (
           <div className="mt-6">
-            {loadState === "loading" && <LoadingSkeleton />}
+            {loadState === "loading" && (
+              <DeepDiveLoading name={project.name} icon={project.icon} />
+            )}
 
             {loadState === "loaded" && markdown && (
-              <div className="px-6 pb-10 font-sans">
+              <div className="px-6 pb-10 font-sans" data-git-component={slug}>
                 <MarkdownRender markdown={markdown} />
               </div>
             )}
 
             {loadState === "error" && (
-              <Text
-                variant="caption"
-                className="px-6 mt-8 text-ctp-red font-source"
-              >
-                ⚠ Could not load project notes.
-              </Text>
+              <div className="flex flex-col items-center justify-center gap-4 px-6 py-20 text-center">
+                <div className="text-5xl">🚧</div>
+                <div className="flex flex-col gap-1">
+                  <Text
+                    variant="subtitle"
+                    className="text-ctp-subtext0 font-semibold"
+                  >
+                    Deep Dive Coming Soon
+                  </Text>
+                  <Text variant="caption" className="text-ctp-subtext1">
+                    The write-up for this project is still being drafted. Check
+                    back later!
+                  </Text>
+                </div>
+              </div>
             )}
           </div>
         )}

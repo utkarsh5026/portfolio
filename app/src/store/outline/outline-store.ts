@@ -23,24 +23,45 @@ interface OutlineStore {
   highlightNode: (id: string) => void;
 }
 
+/** Pending batch of registrations/unregistrations, flushed via microtask. */
+let pendingRegistrations: OutlineItem[] = [];
+let pendingUnregistrations: string[] = [];
+let flushScheduled = false;
+
+const flushPending = (
+  set: (fn: (state: OutlineStore) => Partial<OutlineStore>) => void
+) => {
+  if (flushScheduled) return;
+  flushScheduled = true;
+  queueMicrotask(() => {
+    const toAdd = pendingRegistrations;
+    const toRemove = pendingUnregistrations;
+    pendingRegistrations = [];
+    pendingUnregistrations = [];
+    flushScheduled = false;
+    set((state) => {
+      const next = new Map(state.items);
+      for (const item of toAdd) next.set(item.id, item);
+      for (const id of toRemove) next.delete(id);
+      return { items: next };
+    });
+  });
+};
+
 const useOutlineStore = create<OutlineStore>((set) => ({
   items: new Map(),
   activeSection: null,
   activeHighlightId: null,
 
-  register: (item) =>
-    set((state) => {
-      const next = new Map(state.items);
-      next.set(item.id, item);
-      return { items: next };
-    }),
+  register: (item) => {
+    pendingRegistrations.push(item);
+    flushPending(set);
+  },
 
-  unregister: (id) =>
-    set((state) => {
-      const next = new Map(state.items);
-      next.delete(id);
-      return { items: next };
-    }),
+  unregister: (id) => {
+    pendingUnregistrations.push(id);
+    flushPending(set);
+  },
 
   setActiveSection: (id) => set({ activeSection: id }),
 

@@ -97,9 +97,12 @@ const useProjectStore = create<ProjectState>((set, get) => ({
     fetch(`/data/projects/${slug}.md`)
       .then((res) => {
         if (!res.ok) throw new Error(`${res.status}`);
+        const ct = res.headers.get("content-type") ?? "";
+        if (ct.includes("text/html")) throw new Error("not-found");
         return res.text();
       })
       .then((text) => {
+        if (text.trimStart().startsWith("<!")) throw new Error("not-found");
         set((s) => ({
           markdownCache: { ...s.markdownCache, [slug]: text },
           markdownStates: { ...s.markdownStates, [slug]: "loaded" },

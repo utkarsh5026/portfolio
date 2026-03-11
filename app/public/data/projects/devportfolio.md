@@ -1,7 +1,5 @@
 # DevPortfolio
 
-![Portfolio Walkthrough — Full demo of the VS Code-inspired interface, cinematic loading narrative, and integrated terminal in action](/media/portfolio/demo.mp4)
-
 > VS Code-inspired portfolio with cinematic multi-stage storytelling.
 
 ## The Problem

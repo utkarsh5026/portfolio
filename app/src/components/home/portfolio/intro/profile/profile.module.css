@@ -22,10 +22,10 @@
 @keyframes pulseShadow {
   0%,
   100% {
-    box-shadow: 0 0 0px rgba(166, 227, 161, 0);
+    filter: drop-shadow(0 0 0px rgba(166, 227, 161, 0));
   }
   50% {
-    box-shadow: 0 0 15px rgba(166, 227, 161, 0.5);
+    filter: drop-shadow(0 0 6px rgba(166, 227, 161, 0.6));
   }
 }
 
@@ -161,15 +161,13 @@
   }
 }
 
-/* Continuous icon animations — staggered so they don't all fire together */
-.contactButton svg {
-  animation: mailShake 3.5s ease-in-out infinite;
-  animation-delay: 0s;
+/* Icon animations — play once on hover only */
+.contactButton:hover svg {
+  animation: mailShake 0.6s ease-in-out;
 }
 
-.projectsButton svg {
-  animation: codeExpand 4s ease-in-out infinite;
-  animation-delay: 0.8s;
+.projectsButton:hover svg {
+  animation: codeExpand 0.5s ease-in-out;
 }
 
 .githubLink:hover svg {

@@ -336,6 +336,41 @@ function main() {
     processFile(relFile, "base");
   }
 
+  const mdDir = path.join(REPO_ROOT, "app/public/data/projects");
+  if (fs.existsSync(mdDir)) {
+    const mdFiles = fs.readdirSync(mdDir).filter((f) => f.endsWith(".md"));
+    console.log(`\nProcessing ${mdFiles.length} project markdown files...`);
+
+    for (const filename of mdFiles) {
+      const slug = filename.replace(/\.md$/, "");
+      const relFile = `app/public/data/projects/${filename}`;
+      const absFile = path.join(REPO_ROOT, relFile);
+
+      process.stdout.write(`  • ${slug.padEnd(50)} → ${relFile}\n`);
+
+      const blameOut = run(`git blame --porcelain -- "${relFile}"`);
+      const meta = parseBlameForLatestCommit(blameOut);
+
+      if (!meta) {
+        console.log("    (no blame data)");
+        continue;
+      }
+
+      const lineCount = fs.readFileSync(absFile, "utf8").split("\n").length;
+
+      result[slug] = {
+        section: "projects",
+        file: relFile,
+        lines: [1, lineCount],
+        ...meta,
+      };
+
+      console.log(
+        `    ${meta.shortHash} by ${meta.author} — "${meta.message.slice(0, 50)}"`,
+      );
+    }
+  }
+
   /** @type {GitMetaOutput} */
   const output = {
     generatedAt: new Date().toISOString(),

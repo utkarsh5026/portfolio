@@ -113,8 +113,8 @@ export const FileExplorerItem: React.FC<FileExplorerItemProps> = ({
 
 interface FileExplorerProps {
   items: FileItem[];
-  visibleItems: string[];
-  expandedFolders: string[];
+  visibleItems: Set<string>;
+  expandedFolders: Set<string>;
   onToggleFolder: (path: string) => void;
   parentPath?: string;
 }
@@ -130,8 +130,8 @@ const FileExplorer: React.FC<FileExplorerProps> = ({
     <>
       {items.map((item) => {
         const itemPath = parentPath ? `${parentPath}/${item.name}` : item.name;
-        const isExpanded = expandedFolders.includes(itemPath);
-        const isVisible = visibleItems.includes(itemPath);
+        const isExpanded = expandedFolders.has(itemPath);
+        const isVisible = visibleItems.has(itemPath);
 
         return (
           <div key={itemPath}>

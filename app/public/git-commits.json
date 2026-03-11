@@ -1,17 +1,137 @@
 {
-  "generatedAt": "2026-03-09T05:12:54.558Z",
+  "generatedAt": "2026-03-11T15:00:08.997Z",
   "commits": [
     {
-      "hash": "5ba37665255c394298c6dc036b06dfdec6619971",
-      "shortHash": "5ba3766",
+      "hash": "70087f8b15ee1dfdf59c9e71e574f74fb0589c0f",
+      "shortHash": "70087f8",
+      "message": "chore: remove stale eslint-disable directive in outline-store",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T20:29:59+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 0,
+      "deletions": 1,
+      "filesChanged": 1
+    },
+    {
+      "hash": "85019b619d14dac2dc3ea30adbae1ee99a8c1b38",
+      "shortHash": "85019b6",
+      "message": "style: remove SketchBorder wrapper from TechSkills in personal intro",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T18:10:16+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 47,
+      "deletions": 127,
+      "filesChanged": 5
+    },
+    {
+      "hash": "524a806903f04c619dd4545b336b0f766fec4dde",
+      "shortHash": "524a806",
+      "message": "chore: reorder Enigma project and remove SemanticCode, rename ReduceMe to Reducer in projects.json",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T18:04:59+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 50,
+      "deletions": 64,
+      "filesChanged": 4
+    },
+    {
+      "hash": "e20243f28ccbcf556512dcbaa646af5f1bb1e946",
+      "shortHash": "e20243f",
+      "message": "chore: remove unused media assets and simplify intro animations",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T17:59:15+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 71,
+      "deletions": 86,
+      "filesChanged": 13
+    },
+    {
+      "hash": "8eabe39e624569935cc6772ac47908861a8c9d12",
+      "shortHash": "8eabe39",
+      "message": "perf: replace array state with Set for file explorer visibility and expansion tracking",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T17:53:56+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 78,
+      "deletions": 81,
+      "filesChanged": 5
+    },
+    {
+      "hash": "962efa6d08bfc20085c650a7bd567f070786cea8",
+      "shortHash": "962efa6",
+      "message": "feat: extend git blame to project markdown files",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T17:47:33+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 251,
+      "deletions": 55,
+      "filesChanged": 6
+    },
+    {
+      "hash": "ca7a80ee80fe713dd9785a888c2f4ecdf75bd3b2",
+      "shortHash": "ca7a80e",
+      "message": "feat: replace skeleton loader with minimal deep dive loading indicator",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T17:31:52+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 64,
+      "deletions": 48,
+      "filesChanged": 4
+    },
+    {
+      "hash": "11f3513b2a62d0e1ffb88b803e57fb57f3e35fe8",
+      "shortHash": "11f3513",
+      "message": "feat: show project info in markdown loading fallback",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T17:24:13+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 80,
+      "deletions": 41,
+      "filesChanged": 4
+    },
+    {
+      "hash": "85fc1746a29f88e9cc77cb4d9910d7e1ba8fb5b4",
+      "shortHash": "85fc174",
+      "message": "perf: reduce animation timings and eliminate redundant re-renders for snappier UI",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T17:14:06+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 117,
+      "deletions": 85,
+      "filesChanged": 8
+    },
+    {
+      "hash": "e433bef6fb814e1ead34c115f579a06639580491",
+      "shortHash": "e433bef",
+      "message": "fix: show \"coming soon\" for projects without a deep dive markdown file",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T17:08:21+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 57,
+      "deletions": 44,
+      "filesChanged": 5
+    },
+    {
+      "hash": "86a05f6f5773535bfab79cf73fd73a0082385dbe",
+      "shortHash": "86a05f6",
       "message": "docs: replace placeholder images with actual screenshots for genshin-companion project",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-09T10:42:39+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 13,
-      "deletions": 10,
-      "filesChanged": 1
+      "insertions": 34,
+      "deletions": 31,
+      "filesChanged": 4
     },
     {
       "hash": "750fae855c9712d727a493caff4868fb91b15f17",
@@ -120,129 +240,10 @@
       "insertions": 142,
       "deletions": 26,
       "filesChanged": 10
-    },
-    {
-      "hash": "4a9f8886c275ce9219245c7e02c01335f1b9942f",
-      "shortHash": "4a9f888",
-      "message": "feat: add resume section to the VS Code editor UI",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T11:45:18+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 51,
-      "deletions": 21,
-      "filesChanged": 10
-    },
-    {
-      "hash": "8513b3111e8cefc0e107b6817cc23cf87866712a",
-      "shortHash": "8513b31",
-      "message": "feat: add resume section with experience, education, projects, and skills components",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T11:37:12+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 489,
-      "deletions": 38,
-      "filesChanged": 9
-    },
-    {
-      "hash": "fde120aade268d67e6f2de30496edb9251c5fc4f",
-      "shortHash": "fde120a",
-      "message": "Merge pull request #78 from utkarsh5026/feat/theme-support",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T10:09:12+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 552,
-      "deletions": 793,
-      "filesChanged": 22
-    },
-    {
-      "hash": "d7babbbce4df1f0b3c1b35b780c854771ebba099",
-      "shortHash": "d7babbb",
-      "message": "refactor: replace inline tech rendering with TechBadge, fix CSS vars, and add git-blame refs to work components",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T07:54:20+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 147,
-      "deletions": 152,
-      "filesChanged": 8
-    },
-    {
-      "hash": "25c87a326952160967e26a8840292a2515bbba02",
-      "shortHash": "25c87a3",
-      "message": "refactor: migrate hardcoded colors to CSS variable-based color-mix for theme compatibility",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T07:12:05+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 91,
-      "deletions": 75,
-      "filesChanged": 8
-    },
-    {
-      "hash": "a4c70d8b0efc7ae50a1438176ed0786a7871dc52",
-      "shortHash": "a4c70d8",
-      "message": "refactor: rename TechBadge to kebab-case, drop category-icon, and update git-meta script",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T07:05:20+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 93,
-      "deletions": 502,
-      "filesChanged": 7
-    },
-    {
-      "hash": "8cbc5e6c3ec94048c551be5423df6d3b6cf35b83",
-      "shortHash": "8cbc5e6",
-      "message": "feat: add Catppuccin flavor picker to settings panel with persisted theme state",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T06:40:33+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 97,
-      "deletions": 62,
-      "filesChanged": 6
-    },
-    {
-      "hash": "f9f41123a5b0de5a0c46e0c50ed159039a93562c",
-      "shortHash": "f9f4112",
-      "message": "feat: add multi-theme Catppuccin CSS variables for runtime theme switching",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T06:37:04+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 193,
-      "deletions": 71,
-      "filesChanged": 5
-    },
-    {
-      "hash": "1c0323cfede94521157e0e780a824249bdada366",
-      "shortHash": "1c0323c",
-      "message": "Merge pull request #77 from utkarsh5026/feat/git-blame",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T04:30:07+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 3348,
-      "deletions": 1026,
-      "filesChanged": 71
-    },
-    {
-      "hash": "40891af8acec0145a69211d9b5a01af815f76b9c",
-      "shortHash": "40891af",
-      "message": "feat: add CSSPresence animation component and use slide-left in section header",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T04:25:28+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 441,
-      "deletions": 58,
-      "filesChanged": 7
     }
   ],
   "commitsByDate": {
+    "2026-03-11": 10,
     "2026-03-09": 2,
     "2026-03-08": 34,
     "2026-03-07": 41,
@@ -271,7 +272,7 @@
     },
     {
       "language": "Other",
-      "count": 56,
+      "count": 51,
       "color": "#6c7086"
     },
     {
@@ -281,7 +282,7 @@
     },
     {
       "language": "Markdown",
-      "count": 15,
+      "count": 14,
       "color": "#89dceb"
     },
     {
@@ -296,7 +297,7 @@
     },
     {
       "language": "Other",
-      "count": 2,
+      "count": 1,
       "color": "#6c7086"
     }
   ]

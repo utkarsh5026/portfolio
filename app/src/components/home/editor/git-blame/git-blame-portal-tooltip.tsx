@@ -1,6 +1,7 @@
 import React from "react";
 import { createPortal } from "react-dom";
 import { FaReact } from "react-icons/fa";
+import { SiMarkdown } from "react-icons/si";
 import { VscGitCommit } from "react-icons/vsc";
 
 import { relativeTime } from "@/lib/utils";
@@ -79,7 +80,11 @@ const GitBlamePortalTooltip: React.FC<GitBlamePortalTooltipProps> = ({
       {/* Component name badge */}
       <div className="flex items-center gap-1.5 mb-1.5">
         <span className="flex items-center gap-1 text-[11px] font-semibold text-ctp-blue">
-          <FaReact className="w-3 h-3" />
+          {meta.file.endsWith(".md") ? (
+            <SiMarkdown className="w-3 h-3" />
+          ) : (
+            <FaReact className="w-3 h-3" />
+          )}
           {meta.name}
         </span>
         <span className="text-ctp-surface2 text-[10px]">

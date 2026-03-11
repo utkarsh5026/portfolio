@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-09T05:12:51.905Z",
+  "generatedAt": "2026-03-11T15:00:06.665Z",
   "sections": {
     "home": {
-      "lastCommitHash": "25c87a3",
-      "lastCommitDate": "2026-03-08 07:12:05 +0530",
-      "lastCommitMessage": "refactor: migrate hardcoded colors to CSS variable-based color-mix for theme compatibility",
+      "lastCommitHash": "85019b6",
+      "lastCommitDate": "2026-03-11 18:10:16 +0530",
+      "lastCommitMessage": "style: remove SketchBorder wrapper from TechSkills in personal intro",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 37,
-      "linesAdded": 31,
-      "linesDeleted": 12,
-      "totalAdded": 3872,
-      "totalDeleted": 2117,
+      "commitCount": 41,
+      "linesAdded": 3,
+      "linesDeleted": 11,
+      "totalAdded": 3940,
+      "totalDeleted": 2208,
       "fileCount": 17
     },
     "about": {
@@ -38,15 +38,15 @@
       "fileCount": 4
     },
     "projects": {
-      "lastCommitHash": "d7babbb",
-      "lastCommitDate": "2026-03-08 07:54:20 +0530",
-      "lastCommitMessage": "refactor: replace inline tech rendering with TechBadge, fix CSS vars, and add git-blame refs to work components",
+      "lastCommitHash": "962efa6",
+      "lastCommitDate": "2026-03-11 17:47:33 +0530",
+      "lastCommitMessage": "feat: extend git blame to project markdown files",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 76,
-      "linesAdded": 8,
-      "linesDeleted": 31,
-      "totalAdded": 10188,
-      "totalDeleted": 8852,
+      "commitCount": 79,
+      "linesAdded": 1,
+      "linesDeleted": 1,
+      "totalAdded": 10230,
+      "totalDeleted": 8869,
       "fileCount": 9
     },
     "experience": {
@@ -74,15 +74,15 @@
       "fileCount": 5
     },
     "learning": {
-      "lastCommitHash": "61211ff",
-      "lastCommitDate": "2026-03-08 04:12:42 +0530",
-      "lastCommitMessage": "feat: integrate useGitComponent ref across all portfolio components",
+      "lastCommitHash": "85fc174",
+      "lastCommitDate": "2026-03-11 17:14:06 +0530",
+      "lastCommitMessage": "perf: reduce animation timings and eliminate redundant re-renders for snappier UI",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 13,
-      "linesAdded": 168,
-      "linesDeleted": 146,
-      "totalAdded": 1595,
-      "totalDeleted": 546,
+      "commitCount": 14,
+      "linesAdded": 2,
+      "linesDeleted": 2,
+      "totalAdded": 1597,
+      "totalDeleted": 548,
       "fileCount": 9
     },
     "articles": {
