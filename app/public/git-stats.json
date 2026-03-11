@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-11T12:02:23.648Z",
+  "generatedAt": "2026-03-11T12:17:55.797Z",
   "sections": {
     "home": {
       "lastCommitHash": "85fc174",
@@ -38,15 +38,15 @@
       "fileCount": 4
     },
     "projects": {
-      "lastCommitHash": "f1b7743",
-      "lastCommitDate": "2026-03-11 17:31:52 +0530",
-      "lastCommitMessage": "feat: replace skeleton loader with minimal deep dive loading indicator",
+      "lastCommitHash": "14ca279",
+      "lastCommitDate": "2026-03-11 17:47:33 +0530",
+      "lastCommitMessage": "feat: extend git blame to project markdown files",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 78,
-      "linesAdded": 26,
-      "linesDeleted": 10,
-      "totalAdded": 10229,
-      "totalDeleted": 8868,
+      "commitCount": 79,
+      "linesAdded": 1,
+      "linesDeleted": 1,
+      "totalAdded": 10230,
+      "totalDeleted": 8869,
       "fileCount": 9
     },
     "experience": {

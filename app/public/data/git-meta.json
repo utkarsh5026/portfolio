@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-11T12:03:03.328Z",
+  "generatedAt": "2026-03-11T12:18:22.018Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -12,20 +12,20 @@
       "file": "app/src/components/home/portfolio/intro/personal-intro.tsx",
       "lines": [
         19,
-        116
+        106
       ],
-      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
-      "shortHash": "e4ccb5a",
-      "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-06T22:55:58.000Z",
-      "message": "style: add Prettier config and reformat entire codebase"
+      "hash": "0000000000000000000000000000000000000000",
+      "shortHash": "0000000",
+      "author": "Not Committed Yet",
+      "date": "2026-03-11T12:18:00.000Z",
+      "message": "Version of app/src/components/home/portfolio/intro/personal-intro.tsx from app/src/components/home/portfolio/intro/personal-intro.tsx"
     },
     "MobilePersonalIntro": {
       "section": "home",
       "file": "app/src/components/home/portfolio/intro/personal-intro.tsx",
       "lines": [
-        118,
-        202
+        108,
+        192
       ],
       "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
       "shortHash": "e4ccb5a",
@@ -248,24 +248,24 @@
         122,
         160
       ],
-      "hash": "76c76e840ab222c4e238a5cf0a0d27a61389c74b",
-      "shortHash": "76c76e8",
-      "author": "Utkarsh Priyadarshi",
-      "date": "2025-07-03T13:12:24.000Z",
-      "message": "Refactor TechSkills component and restructure skills organization"
+      "hash": "0000000000000000000000000000000000000000",
+      "shortHash": "0000000",
+      "author": "Not Committed Yet",
+      "date": "2026-03-11T12:18:06.000Z",
+      "message": "Version of app/src/components/home/portfolio/intro/skills/file-explorer.tsx from app/src/components/home/portfolio/intro/skills/file-explorer.tsx"
     },
     "TechSkillsComponent": {
       "section": "home",
       "file": "app/src/components/home/portfolio/intro/skills/tech-skills.tsx",
       "lines": [
-        23,
-        77
+        28,
+        75
       ],
-      "hash": "61211ffad579bea894ffaa77da85624bed9b5e08",
-      "shortHash": "61211ff",
-      "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-07T22:42:42.000Z",
-      "message": "feat: integrate useGitComponent ref across all portfolio components"
+      "hash": "0000000000000000000000000000000000000000",
+      "shortHash": "0000000",
+      "author": "Not Committed Yet",
+      "date": "2026-03-11T12:18:06.000Z",
+      "message": "Version of app/src/components/home/portfolio/intro/skills/tech-skills.tsx from app/src/components/home/portfolio/intro/skills/tech-skills.tsx"
     },
     "AnimatedText": {
       "section": "home",
@@ -521,11 +521,11 @@
         227,
         401
       ],
-      "hash": "f1b77435f9f2b207f46b65f6306dd998290ff9f7",
-      "shortHash": "f1b7743",
+      "hash": "14ca2793d90dc83356d2df34717e8198941cc448",
+      "shortHash": "14ca279",
       "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-11T12:01:52.000Z",
-      "message": "feat: replace skeleton loader with minimal deep dive loading indicator"
+      "date": "2026-03-11T12:17:33.000Z",
+      "message": "feat: extend git blame to project markdown files"
     },
     "TabBar": {
       "section": "projects",
@@ -799,6 +799,162 @@
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-08T06:50:56.000Z",
       "message": "feat: wrap resume sections with OutlineNode for VS Code outline integration"
+    },
+    "automotive-training-workforce-analytics-dss": {
+      "section": "projects",
+      "file": "app/public/data/projects/automotive-training-workforce-analytics-dss.md",
+      "lines": [
+        1,
+        60
+      ],
+      "hash": "908e30516954025a6641dff52b3e8906e3f8bf8a",
+      "shortHash": "908e305",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-02T04:45:37.000Z",
+      "message": "feat: add markdown content files for 8 projects"
+    },
+    "chankit": {
+      "section": "projects",
+      "file": "app/public/data/projects/chankit.md",
+      "lines": [
+        1,
+        140
+      ],
+      "hash": "6a8a54b7c1c94d5eab40aca84f390ee99b4bdaaf",
+      "shortHash": "6a8a54b",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-04T01:48:50.000Z",
+      "message": "docs: rewrite chankit, gopool, and inpeace project write-ups in portfolio style"
+    },
+    "devportfolio": {
+      "section": "projects",
+      "file": "app/public/data/projects/devportfolio.md",
+      "lines": [
+        1,
+        198
+      ],
+      "hash": "7422e2da1f12f15bffb3a89aacf7899519fc80dc",
+      "shortHash": "7422e2d",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-05T22:48:32.000Z",
+      "message": "feat: bridge markdown headings into outline panel during Deep Dive"
+    },
+    "enigma": {
+      "section": "projects",
+      "file": "app/public/data/projects/enigma.md",
+      "lines": [
+        1,
+        366
+      ],
+      "hash": "fb3bef675c3ca24b6cdbc8f484bd296712171a95",
+      "shortHash": "fb3bef6",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-04T01:34:00.000Z",
+      "message": "docs: add ProgChain project write-up"
+    },
+    "first-principles": {
+      "section": "projects",
+      "file": "app/public/data/projects/first-principles.md",
+      "lines": [
+        1,
+        82
+      ],
+      "hash": "908e30516954025a6641dff52b3e8906e3f8bf8a",
+      "shortHash": "908e305",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-02T04:45:37.000Z",
+      "message": "feat: add markdown content files for 8 projects"
+    },
+    "genshin-companion": {
+      "section": "projects",
+      "file": "app/public/data/projects/genshin-companion.md",
+      "lines": [
+        1,
+        107
+      ],
+      "hash": "86a05f6f5773535bfab79cf73fd73a0082385dbe",
+      "shortHash": "86a05f6",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-09T05:12:39.000Z",
+      "message": "docs: replace placeholder images with actual screenshots for genshin-companion project"
+    },
+    "gopool": {
+      "section": "projects",
+      "file": "app/public/data/projects/gopool.md",
+      "lines": [
+        1,
+        235
+      ],
+      "hash": "6a8a54b7c1c94d5eab40aca84f390ee99b4bdaaf",
+      "shortHash": "6a8a54b",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-04T01:48:50.000Z",
+      "message": "docs: rewrite chankit, gopool, and inpeace project write-ups in portfolio style"
+    },
+    "inpeace": {
+      "section": "projects",
+      "file": "app/public/data/projects/inpeace.md",
+      "lines": [
+        1,
+        112
+      ],
+      "hash": "6a8a54b7c1c94d5eab40aca84f390ee99b4bdaaf",
+      "shortHash": "6a8a54b",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-04T01:48:50.000Z",
+      "message": "docs: rewrite chankit, gopool, and inpeace project write-ups in portfolio style"
+    },
+    "mdhd": {
+      "section": "projects",
+      "file": "app/public/data/projects/mdhd.md",
+      "lines": [
+        1,
+        156
+      ],
+      "hash": "c6902397c6d0c975e2c5885d8ba2e41d8c9fcf9f",
+      "shortHash": "c690239",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-03T08:48:46.000Z",
+      "message": "docs: rewrite mdhd.md with real content, images, and technical deep dive"
+    },
+    "progchain": {
+      "section": "projects",
+      "file": "app/public/data/projects/progchain.md",
+      "lines": [
+        1,
+        152
+      ],
+      "hash": "c4278c451ca8baf19230ffacf2fcd04b955d7b32",
+      "shortHash": "c4278c4",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-04T01:25:06.000Z",
+      "message": "docs: add ProgChain project write-up"
+    },
+    "sourcecontrol": {
+      "section": "projects",
+      "file": "app/public/data/projects/sourcecontrol.md",
+      "lines": [
+        1,
+        188
+      ],
+      "hash": "7422e2da1f12f15bffb3a89aacf7899519fc80dc",
+      "shortHash": "7422e2d",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-05T22:48:32.000Z",
+      "message": "feat: bridge markdown headings into outline panel during Deep Dive"
+    },
+    "storemy": {
+      "section": "projects",
+      "file": "app/public/data/projects/storemy.md",
+      "lines": [
+        1,
+        205
+      ],
+      "hash": "a78c75672021397867af970e7ed4b69ace4f1cfc",
+      "shortHash": "a78c756",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-04T00:16:14.000Z",
+      "message": "docs: add StoreMy project write-up markdown file"
     }
   }
 }

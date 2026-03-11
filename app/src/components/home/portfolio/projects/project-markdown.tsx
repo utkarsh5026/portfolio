@@ -371,7 +371,7 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
             )}
 
             {loadState === "loaded" && markdown && (
-              <div className="px-6 pb-10 font-sans">
+              <div className="px-6 pb-10 font-sans" data-git-component={slug}>
                 <MarkdownRender markdown={markdown} />
               </div>
             )}

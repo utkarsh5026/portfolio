@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-11T12:02:27.370Z",
+  "generatedAt": "2026-03-11T12:17:59.664Z",
   "commits": [
     {
-      "hash": "f1b77435f9f2b207f46b65f6306dd998290ff9f7",
-      "shortHash": "f1b7743",
+      "hash": "14ca2793d90dc83356d2df34717e8198941cc448",
+      "shortHash": "14ca279",
+      "message": "feat: extend git blame to project markdown files",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T17:47:33+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 42,
+      "deletions": 2,
+      "filesChanged": 3
+    },
+    {
+      "hash": "ca7a80ee80fe713dd9785a888c2f4ecdf75bd3b2",
+      "shortHash": "ca7a80e",
       "message": "feat: replace skeleton loader with minimal deep dive loading indicator",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-11T17:31:52+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 26,
-      "deletions": 10,
-      "filesChanged": 1
+      "insertions": 64,
+      "deletions": 48,
+      "filesChanged": 4
     },
     {
       "hash": "11f3513b2a62d0e1ffb88b803e57fb57f3e35fe8",
@@ -228,22 +240,10 @@
       "insertions": 91,
       "deletions": 75,
       "filesChanged": 8
-    },
-    {
-      "hash": "a4c70d8b0efc7ae50a1438176ed0786a7871dc52",
-      "shortHash": "a4c70d8",
-      "message": "refactor: rename TechBadge to kebab-case, drop category-icon, and update git-meta script",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T07:05:20+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 93,
-      "deletions": 502,
-      "filesChanged": 7
     }
   ],
   "commitsByDate": {
-    "2026-03-11": 4,
+    "2026-03-11": 5,
     "2026-03-09": 2,
     "2026-03-08": 34,
     "2026-03-07": 41,
