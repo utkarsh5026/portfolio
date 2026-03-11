@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-11T11:45:49.221Z",
+  "generatedAt": "2026-03-11T11:55:30.142Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -518,27 +518,27 @@
       "section": "projects",
       "file": "app/src/components/home/portfolio/projects/project-markdown.tsx",
       "lines": [
-        270,
-        442
+        235,
+        407
       ],
       "hash": "0000000000000000000000000000000000000000",
       "shortHash": "0000000",
       "author": "Not Committed Yet",
-      "date": "2026-03-11T11:45:37.000Z",
+      "date": "2026-03-11T11:55:17.000Z",
       "message": "Version of app/src/components/home/portfolio/projects/project-markdown.tsx from app/src/components/home/portfolio/projects/project-markdown.tsx"
     },
-    "DeepDiveLoading": {
+    "TabBar": {
       "section": "projects",
       "file": "app/src/components/home/portfolio/projects/project-markdown.tsx",
       "lines": [
-        100,
-        167
+        190,
+        226
       ],
-      "hash": "0000000000000000000000000000000000000000",
-      "shortHash": "0000000",
-      "author": "Not Committed Yet",
-      "date": "2026-03-11T11:45:38.000Z",
-      "message": "Version of app/src/components/home/portfolio/projects/project-markdown.tsx from app/src/components/home/portfolio/projects/project-markdown.tsx"
+      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
+      "shortHash": "e4ccb5a",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-06T22:55:58.000Z",
+      "message": "style: add Prettier config and reformat entire codebase"
     },
     "MobileDrawerContent": {
       "section": "experience",
@@ -690,8 +690,8 @@
         23,
         177
       ],
-      "hash": "a889b467602a06836d97510ce9b00a8331e543f8",
-      "shortHash": "a889b46",
+      "hash": "85fc1746a29f88e9cc77cb4d9910d7e1ba8fb5b4",
+      "shortHash": "85fc174",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-11T11:44:06.000Z",
       "message": "perf: reduce animation timings and eliminate redundant re-renders for snappier UI"

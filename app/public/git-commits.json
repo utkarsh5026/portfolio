@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-11T11:44:48.796Z",
+  "generatedAt": "2026-03-11T11:54:56.673Z",
   "commits": [
     {
-      "hash": "a889b467602a06836d97510ce9b00a8331e543f8",
-      "shortHash": "a889b46",
+      "hash": "5a6b47f141590c68c1732e98e088dbcdf66c62b7",
+      "shortHash": "5a6b47f",
+      "message": "feat: show project info in markdown loading fallback",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T17:24:13+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 44,
+      "deletions": 5,
+      "filesChanged": 1
+    },
+    {
+      "hash": "85fc1746a29f88e9cc77cb4d9910d7e1ba8fb5b4",
+      "shortHash": "85fc174",
       "message": "perf: reduce animation timings and eliminate redundant re-renders for snappier UI",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-11T17:14:06+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 59,
-      "deletions": 27,
-      "filesChanged": 5
+      "insertions": 117,
+      "deletions": 85,
+      "filesChanged": 8
     },
     {
       "hash": "e433bef6fb814e1ead34c115f579a06639580491",
@@ -228,22 +240,10 @@
       "insertions": 97,
       "deletions": 62,
       "filesChanged": 6
-    },
-    {
-      "hash": "f9f41123a5b0de5a0c46e0c50ed159039a93562c",
-      "shortHash": "f9f4112",
-      "message": "feat: add multi-theme Catppuccin CSS variables for runtime theme switching",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T06:37:04+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 193,
-      "deletions": 71,
-      "filesChanged": 5
     }
   ],
   "commitsByDate": {
-    "2026-03-11": 2,
+    "2026-03-11": 3,
     "2026-03-09": 2,
     "2026-03-08": 34,
     "2026-03-07": 41,

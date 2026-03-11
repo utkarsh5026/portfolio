@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-03-11T11:44:44.798Z",
+  "generatedAt": "2026-03-11T11:54:51.315Z",
   "sections": {
     "home": {
-      "lastCommitHash": "a889b46",
+      "lastCommitHash": "85fc174",
       "lastCommitDate": "2026-03-11 17:14:06 +0530",
       "lastCommitMessage": "perf: reduce animation timings and eliminate redundant re-renders for snappier UI",
       "lastAuthor": "Utkarsh Priyadarshi",
@@ -74,7 +74,7 @@
       "fileCount": 5
     },
     "learning": {
-      "lastCommitHash": "a889b46",
+      "lastCommitHash": "85fc174",
       "lastCommitDate": "2026-03-11 17:14:06 +0530",
       "lastCommitMessage": "perf: reduce animation timings and eliminate redundant re-renders for snappier UI",
       "lastAuthor": "Utkarsh Priyadarshi",
