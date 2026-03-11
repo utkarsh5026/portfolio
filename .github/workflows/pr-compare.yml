@@ -23,7 +23,7 @@ jobs:
         uses: oven-sh/setup-bun@v2
 
       - name: Install Chrome
-        uses: browser-actions/setup-chrome@v1
+        uses: browser-actions/setup-chrome@v2
         with:
           chrome-version: stable
 
