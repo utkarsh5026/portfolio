@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-11T12:36:43.409Z",
+  "generatedAt": "2026-03-11T12:41:51.597Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -7,31 +7,31 @@
     }
   },
   "components": {
-    "DesktopPersonalIntro": {
-      "section": "home",
-      "file": "app/src/components/home/portfolio/intro/personal-intro.tsx",
-      "lines": [
-        19,
-        106
-      ],
-      "hash": "e20243f28ccbcf556512dcbaa646af5f1bb1e946",
-      "shortHash": "e20243f",
-      "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-11T12:29:15.000Z",
-      "message": "chore: remove unused media assets and simplify intro animations"
-    },
     "MobilePersonalIntro": {
       "section": "home",
       "file": "app/src/components/home/portfolio/intro/personal-intro.tsx",
       "lines": [
-        108,
-        192
+        100,
+        184
       ],
       "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
       "shortHash": "e4ccb5a",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-06T22:55:58.000Z",
       "message": "style: add Prettier config and reformat entire codebase"
+    },
+    "DesktopPersonalIntro": {
+      "section": "home",
+      "file": "app/src/components/home/portfolio/intro/personal-intro.tsx",
+      "lines": [
+        19,
+        98
+      ],
+      "hash": "7e705a3f2de7bef77667611a26c9c43019e6a2d4",
+      "shortHash": "7e705a3",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-11T12:40:16.000Z",
+      "message": "style: remove SketchBorder wrapper from TechSkills in personal intro"
     },
     "AboutMe": {
       "section": "about",
@@ -799,19 +799,6 @@
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-08T06:50:56.000Z",
       "message": "feat: wrap resume sections with OutlineNode for VS Code outline integration"
-    },
-    "automotive-training-workforce-analytics-dss": {
-      "section": "projects",
-      "file": "app/public/data/projects/automotive-training-workforce-analytics-dss.md",
-      "lines": [
-        1,
-        60
-      ],
-      "hash": "908e30516954025a6641dff52b3e8906e3f8bf8a",
-      "shortHash": "908e305",
-      "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-02T04:45:37.000Z",
-      "message": "feat: add markdown content files for 8 projects"
     },
     "chankit": {
       "section": "projects",

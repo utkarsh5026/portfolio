@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-11T12:35:34.116Z",
+  "generatedAt": "2026-03-11T12:40:57.591Z",
   "commits": [
     {
-      "hash": "8729d191054452e7820c2e01920ab3c49c895a6b",
-      "shortHash": "8729d19",
+      "hash": "7e705a3f2de7bef77667611a26c9c43019e6a2d4",
+      "shortHash": "7e705a3",
+      "message": "style: remove SketchBorder wrapper from TechSkills in personal intro",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T18:10:16+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 3,
+      "deletions": 70,
+      "filesChanged": 2
+    },
+    {
+      "hash": "524a806903f04c619dd4545b336b0f766fec4dde",
+      "shortHash": "524a806",
       "message": "chore: reorder Enigma project and remove SemanticCode, rename ReduceMe to Reducer in projects.json",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-11T18:04:59+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 26,
-      "deletions": 40,
-      "filesChanged": 1
+      "insertions": 50,
+      "deletions": 64,
+      "filesChanged": 4
     },
     {
       "hash": "e20243f28ccbcf556512dcbaa646af5f1bb1e946",
@@ -228,22 +240,10 @@
       "insertions": 51,
       "deletions": 21,
       "filesChanged": 10
-    },
-    {
-      "hash": "8513b3111e8cefc0e107b6817cc23cf87866712a",
-      "shortHash": "8513b31",
-      "message": "feat: add resume section with experience, education, projects, and skills components",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T11:37:12+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 489,
-      "deletions": 38,
-      "filesChanged": 9
     }
   ],
   "commitsByDate": {
-    "2026-03-11": 8,
+    "2026-03-11": 9,
     "2026-03-09": 2,
     "2026-03-08": 34,
     "2026-03-07": 41,
@@ -282,7 +282,7 @@
     },
     {
       "language": "Markdown",
-      "count": 15,
+      "count": 14,
       "color": "#89dceb"
     },
     {

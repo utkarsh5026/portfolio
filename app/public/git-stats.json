@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-11T12:35:28.267Z",
+  "generatedAt": "2026-03-11T12:40:51.831Z",
   "sections": {
     "home": {
-      "lastCommitHash": "e20243f",
-      "lastCommitDate": "2026-03-11 17:59:15 +0530",
-      "lastCommitMessage": "chore: remove unused media assets and simplify intro animations",
+      "lastCommitHash": "7e705a3",
+      "lastCommitDate": "2026-03-11 18:10:16 +0530",
+      "lastCommitMessage": "style: remove SketchBorder wrapper from TechSkills in personal intro",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 40,
-      "linesAdded": 30,
-      "linesDeleted": 42,
-      "totalAdded": 3937,
-      "totalDeleted": 2197,
+      "commitCount": 41,
+      "linesAdded": 3,
+      "linesDeleted": 11,
+      "totalAdded": 3940,
+      "totalDeleted": 2208,
       "fileCount": 17
     },
     "about": {
