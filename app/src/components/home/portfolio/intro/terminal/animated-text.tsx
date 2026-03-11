@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 
 import styles from "./statements-terminal.module.css";
 
-const TYPING_SPEED = 50;
-const DELETE_SPEED = 30;
+const TYPING_SPEED = 75;
+const DELETE_SPEED = 45;
 const PAUSE_DURATION = 2000;
 
 interface QAPair {

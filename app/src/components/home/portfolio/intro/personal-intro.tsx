@@ -20,15 +20,13 @@ const DesktopPersonalIntro: React.FC = () => {
   return (
     <>
       <div className="absolute inset-0 -z-20">
-        <Reveal effect="blur-in" duration={1.8} delay={0.8}>
-          <div
-            className="absolute inset-0 opacity-25 mix-blend-overlay"
-            style={{
-              backgroundImage: `radial-gradient(circle at 30% 70%, rgba(203, 166, 247, 0.15), transparent 40%),
-                                 radial-gradient(circle at 70% 30%, rgba(137, 180, 250, 0.15), transparent 40%)`,
-            }}
-          />
-        </Reveal>
+        <div
+          className="absolute inset-0 opacity-25 mix-blend-overlay"
+          style={{
+            backgroundImage: `radial-gradient(circle at 30% 70%, rgba(203, 166, 247, 0.15), transparent 40%),
+                               radial-gradient(circle at 70% 30%, rgba(137, 180, 250, 0.15), transparent 40%)`,
+          }}
+        />
       </div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-6 md:py-12">
@@ -46,29 +44,21 @@ const DesktopPersonalIntro: React.FC = () => {
             >
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start relative z-10">
                 {/* Left Column - Main Content (3 columns) */}
-                <div className="lg:col-span-3">
-                  <Reveal
-                    effect="assemble"
-                    cascade={true}
-                    staggerChildren={0.09}
-                    className="space-y-6"
-                  >
-                    <Reveal effect="slide-in" direction="left">
-                      <PersonalTitle />
-                    </Reveal>
+                <div className="lg:col-span-3 space-y-6">
+                  <Reveal effect="slide-in" direction="left">
+                    <PersonalTitle />
+                  </Reveal>
 
-                    <Reveal effect="spotlight-in" delay={1}>
-                      <PersonalDescription />
-                    </Reveal>
+                  <Reveal effect="fade-up" delay={0.3}>
+                    <PersonalDescription />
+                  </Reveal>
 
-                    <Reveal effect="fade-up" delay={0.7}>
-                      <ProfileButtons />
-                    </Reveal>
+                  <Reveal effect="fade-up" delay={0.5}>
+                    <ProfileButtons />
+                  </Reveal>
 
-                    {/* Empty Space Filler - Mini Projects */}
-                    <Reveal effect="fade-up" delay={0.9}>
-                      <MiniProjects />
-                    </Reveal>
+                  <Reveal effect="fade-up" delay={0.7}>
+                    <MiniProjects />
                   </Reveal>
                 </div>
 
@@ -86,12 +76,12 @@ const DesktopPersonalIntro: React.FC = () => {
                     </Reveal>
 
                     {/* Terminal */}
-                    <Reveal effect="fold-unfold" delay={1.2}>
+                    <Reveal effect="fold-unfold" delay={0.6}>
                       <Terminal />
                     </Reveal>
 
                     {/* Tech Skills */}
-                    <Reveal effect="fade-up" delay={1.4}>
+                    <Reveal effect="fade-up" delay={0.8}>
                       <SketchBorder
                         primaryColor="teal"
                         secondaryColor="blue"

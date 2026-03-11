@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-11T12:25:08.825Z",
+  "generatedAt": "2026-03-11T12:30:28.318Z",
   "commits": [
     {
-      "hash": "8e1840308f44689bc082dc9cf5571422979770f3",
-      "shortHash": "8e18403",
+      "hash": "e6f5421d1e3b813aa82d1c67fd23383a7d23982f",
+      "shortHash": "e6f5421",
+      "message": "chore: remove unused media assets and simplify intro animations",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T17:59:15+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 30,
+      "deletions": 45,
+      "filesChanged": 10
+    },
+    {
+      "hash": "8eabe39e624569935cc6772ac47908861a8c9d12",
+      "shortHash": "8eabe39",
       "message": "perf: replace array state with Set for file explorer visibility and expansion tracking",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-11T17:53:56+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 34,
-      "deletions": 37,
-      "filesChanged": 2
+      "insertions": 78,
+      "deletions": 81,
+      "filesChanged": 5
     },
     {
       "hash": "962efa6d08bfc20085c650a7bd567f070786cea8",
@@ -228,22 +240,10 @@
       "insertions": 552,
       "deletions": 793,
       "filesChanged": 22
-    },
-    {
-      "hash": "d7babbbce4df1f0b3c1b35b780c854771ebba099",
-      "shortHash": "d7babbb",
-      "message": "refactor: replace inline tech rendering with TechBadge, fix CSS vars, and add git-blame refs to work components",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T07:54:20+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 147,
-      "deletions": 152,
-      "filesChanged": 8
     }
   ],
   "commitsByDate": {
-    "2026-03-11": 6,
+    "2026-03-11": 7,
     "2026-03-09": 2,
     "2026-03-08": 34,
     "2026-03-07": 41,
@@ -272,7 +272,7 @@
     },
     {
       "language": "Other",
-      "count": 56,
+      "count": 51,
       "color": "#6c7086"
     },
     {
@@ -297,7 +297,7 @@
     },
     {
       "language": "Other",
-      "count": 2,
+      "count": 1,
       "color": "#6c7086"
     }
   ]

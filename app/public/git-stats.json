@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-11T12:25:02.365Z",
+  "generatedAt": "2026-03-11T12:30:21.680Z",
   "sections": {
     "home": {
-      "lastCommitHash": "8e18403",
-      "lastCommitDate": "2026-03-11 17:53:56 +0530",
-      "lastCommitMessage": "perf: replace array state with Set for file explorer visibility and expansion tracking",
+      "lastCommitHash": "e6f5421",
+      "lastCommitDate": "2026-03-11 17:59:15 +0530",
+      "lastCommitMessage": "chore: remove unused media assets and simplify intro animations",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 39,
-      "linesAdded": 34,
-      "linesDeleted": 37,
-      "totalAdded": 3907,
-      "totalDeleted": 2155,
+      "commitCount": 40,
+      "linesAdded": 30,
+      "linesDeleted": 42,
+      "totalAdded": 3937,
+      "totalDeleted": 2197,
       "fileCount": 17
     },
     "about": {

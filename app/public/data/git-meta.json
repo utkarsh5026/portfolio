@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-11T12:26:11.973Z",
+  "generatedAt": "2026-03-11T12:31:35.997Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -14,11 +14,11 @@
         19,
         106
       ],
-      "hash": "0000000000000000000000000000000000000000",
-      "shortHash": "0000000",
-      "author": "Not Committed Yet",
-      "date": "2026-03-11T12:25:11.000Z",
-      "message": "Version of app/src/components/home/portfolio/intro/personal-intro.tsx from app/src/components/home/portfolio/intro/personal-intro.tsx"
+      "hash": "e6f5421d1e3b813aa82d1c67fd23383a7d23982f",
+      "shortHash": "e6f5421",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-11T12:29:15.000Z",
+      "message": "chore: remove unused media assets and simplify intro animations"
     },
     "MobilePersonalIntro": {
       "section": "home",
@@ -248,8 +248,8 @@
         122,
         160
       ],
-      "hash": "8e1840308f44689bc082dc9cf5571422979770f3",
-      "shortHash": "8e18403",
+      "hash": "8eabe39e624569935cc6772ac47908861a8c9d12",
+      "shortHash": "8eabe39",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-11T12:23:56.000Z",
       "message": "perf: replace array state with Set for file explorer visibility and expansion tracking"
@@ -261,8 +261,8 @@
         28,
         74
       ],
-      "hash": "8e1840308f44689bc082dc9cf5571422979770f3",
-      "shortHash": "8e18403",
+      "hash": "8eabe39e624569935cc6772ac47908861a8c9d12",
+      "shortHash": "8eabe39",
       "author": "Utkarsh Priyadarshi",
       "date": "2026-03-11T12:23:56.000Z",
       "message": "perf: replace array state with Set for file explorer visibility and expansion tracking"
@@ -831,7 +831,7 @@
       "file": "app/public/data/projects/devportfolio.md",
       "lines": [
         1,
-        198
+        196
       ],
       "hash": "7422e2da1f12f15bffb3a89aacf7899519fc80dc",
       "shortHash": "7422e2d",
