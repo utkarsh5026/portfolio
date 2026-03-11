@@ -252,13 +252,23 @@ export const MarkdownRender: React.FC<MarkdownRenderProps> = ({ markdown }) => {
       setActiveHeadings({ h1, h2, h3 });
     };
 
+    let rafId: number | null = null;
+    const handleScroll = () => {
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(() => {
+        updateBreadcrumbs();
+        rafId = null;
+      });
+    };
+
     const scrollEl = container.closest("[data-scroll-container]") ?? window;
-    scrollEl.addEventListener("scroll", updateBreadcrumbs, { passive: true });
+    scrollEl.addEventListener("scroll", handleScroll, { passive: true });
 
     updateBreadcrumbs();
 
     return () => {
-      scrollEl.removeEventListener("scroll", updateBreadcrumbs);
+      scrollEl.removeEventListener("scroll", handleScroll);
+      if (rafId !== null) cancelAnimationFrame(rafId);
       setActiveHeadings({ h1: null, h2: null, h3: null });
     };
   }, [markdown, setActiveHeadings]);

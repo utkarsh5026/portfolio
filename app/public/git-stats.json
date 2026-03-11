@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-11T11:38:42.141Z",
+  "generatedAt": "2026-03-11T11:44:44.798Z",
   "sections": {
     "home": {
-      "lastCommitHash": "25c87a3",
-      "lastCommitDate": "2026-03-08 07:12:05 +0530",
-      "lastCommitMessage": "refactor: migrate hardcoded colors to CSS variable-based color-mix for theme compatibility",
+      "lastCommitHash": "a889b46",
+      "lastCommitDate": "2026-03-11 17:14:06 +0530",
+      "lastCommitMessage": "perf: reduce animation timings and eliminate redundant re-renders for snappier UI",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 37,
-      "linesAdded": 31,
-      "linesDeleted": 12,
-      "totalAdded": 3872,
-      "totalDeleted": 2117,
+      "commitCount": 38,
+      "linesAdded": 1,
+      "linesDeleted": 1,
+      "totalAdded": 3873,
+      "totalDeleted": 2118,
       "fileCount": 17
     },
     "about": {
@@ -38,7 +38,7 @@
       "fileCount": 4
     },
     "projects": {
-      "lastCommitHash": "8cce2a7",
+      "lastCommitHash": "e433bef",
       "lastCommitDate": "2026-03-11 17:08:21 +0530",
       "lastCommitMessage": "fix: show \"coming soon\" for projects without a deep dive markdown file",
       "lastAuthor": "Utkarsh Priyadarshi",
@@ -74,15 +74,15 @@
       "fileCount": 5
     },
     "learning": {
-      "lastCommitHash": "61211ff",
-      "lastCommitDate": "2026-03-08 04:12:42 +0530",
-      "lastCommitMessage": "feat: integrate useGitComponent ref across all portfolio components",
+      "lastCommitHash": "a889b46",
+      "lastCommitDate": "2026-03-11 17:14:06 +0530",
+      "lastCommitMessage": "perf: reduce animation timings and eliminate redundant re-renders for snappier UI",
       "lastAuthor": "Utkarsh Priyadarshi",
-      "commitCount": 13,
-      "linesAdded": 168,
-      "linesDeleted": 146,
-      "totalAdded": 1595,
-      "totalDeleted": 546,
+      "commitCount": 14,
+      "linesAdded": 2,
+      "linesDeleted": 2,
+      "totalAdded": 1597,
+      "totalDeleted": 548,
       "fileCount": 9
     },
     "articles": {

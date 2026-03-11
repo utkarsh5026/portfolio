@@ -62,7 +62,7 @@ const LearningJourney: React.FC<LearningJourneyProps> = ({
 
     const timeout = setTimeout(() => {
       start();
-    }, 500);
+    }, 150);
 
     return () => clearTimeout(timeout);
   }, [isOpen, start, reset]);
@@ -80,7 +80,7 @@ const LearningJourney: React.FC<LearningJourneyProps> = ({
     setCurrentIndex(0);
     setCompletedItems([]);
     setIsAutoPlaying(true);
-    setTimeout(() => start(), 300);
+    setTimeout(() => start(), 100);
   };
 
   const toggleAutoPlay = () => {

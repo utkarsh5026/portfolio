@@ -452,18 +452,18 @@
 }
 
 .duration-1000 {
-  animation-duration: 1000ms;
-  transition-duration: 1000ms;
+  animation-duration: 700ms;
+  transition-duration: 700ms;
 }
 
 .duration-1500 {
-  animation-duration: 1500ms;
-  transition-duration: 1500ms;
+  animation-duration: 900ms;
+  transition-duration: 900ms;
 }
 
 .duration-2000 {
-  animation-duration: 2000ms;
-  transition-duration: 2000ms;
+  animation-duration: 1100ms;
+  transition-duration: 1100ms;
 }
 
 /* Animation delays */
@@ -493,13 +493,13 @@
 }
 
 .delay-700 {
-  animation-delay: 700ms;
-  transition-delay: 700ms;
+  animation-delay: 400ms;
+  transition-delay: 400ms;
 }
 
 .delay-1000 {
-  animation-delay: 1000ms;
-  transition-delay: 1000ms;
+  animation-delay: 500ms;
+  transition-delay: 500ms;
 }
 
 /* Cinematic transition easing */

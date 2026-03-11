@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-11T11:38:47.569Z",
+  "generatedAt": "2026-03-11T11:44:48.796Z",
   "commits": [
     {
-      "hash": "8cce2a7f3731dffafae032887111add0ec262320",
-      "shortHash": "8cce2a7",
+      "hash": "a889b467602a06836d97510ce9b00a8331e543f8",
+      "shortHash": "a889b46",
+      "message": "perf: reduce animation timings and eliminate redundant re-renders for snappier UI",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T17:14:06+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 59,
+      "deletions": 27,
+      "filesChanged": 5
+    },
+    {
+      "hash": "e433bef6fb814e1ead34c115f579a06639580491",
+      "shortHash": "e433bef",
       "message": "fix: show \"coming soon\" for projects without a deep dive markdown file",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-11T17:08:21+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 18,
-      "deletions": 6,
-      "filesChanged": 2
+      "insertions": 57,
+      "deletions": 44,
+      "filesChanged": 5
     },
     {
       "hash": "86a05f6f5773535bfab79cf73fd73a0082385dbe",
@@ -228,22 +240,10 @@
       "insertions": 193,
       "deletions": 71,
       "filesChanged": 5
-    },
-    {
-      "hash": "1c0323cfede94521157e0e780a824249bdada366",
-      "shortHash": "1c0323c",
-      "message": "Merge pull request #77 from utkarsh5026/feat/git-blame",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T04:30:07+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 3348,
-      "deletions": 1026,
-      "filesChanged": 71
     }
   ],
   "commitsByDate": {
-    "2026-03-11": 1,
+    "2026-03-11": 2,
     "2026-03-09": 2,
     "2026-03-08": 34,
     "2026-03-07": 41,

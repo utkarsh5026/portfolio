@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-11T11:39:18.764Z",
+  "generatedAt": "2026-03-11T11:45:49.221Z",
   "authors": {
     "Utkarsh Priyadarshi": {
       "github": "utkarsh5026",
@@ -518,27 +518,27 @@
       "section": "projects",
       "file": "app/src/components/home/portfolio/projects/project-markdown.tsx",
       "lines": [
-        213,
-        385
+        270,
+        442
       ],
-      "hash": "8cce2a7f3731dffafae032887111add0ec262320",
-      "shortHash": "8cce2a7",
-      "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-11T11:38:21.000Z",
-      "message": "fix: show \"coming soon\" for projects without a deep dive markdown file"
+      "hash": "0000000000000000000000000000000000000000",
+      "shortHash": "0000000",
+      "author": "Not Committed Yet",
+      "date": "2026-03-11T11:45:37.000Z",
+      "message": "Version of app/src/components/home/portfolio/projects/project-markdown.tsx from app/src/components/home/portfolio/projects/project-markdown.tsx"
     },
-    "TabBar": {
+    "DeepDiveLoading": {
       "section": "projects",
       "file": "app/src/components/home/portfolio/projects/project-markdown.tsx",
       "lines": [
-        168,
-        204
+        100,
+        167
       ],
-      "hash": "e4ccb5a6b8ab44c3018d7d3a18f6a3e9955f4ea1",
-      "shortHash": "e4ccb5a",
-      "author": "Utkarsh Priyadarshi",
-      "date": "2026-03-06T22:55:58.000Z",
-      "message": "style: add Prettier config and reformat entire codebase"
+      "hash": "0000000000000000000000000000000000000000",
+      "shortHash": "0000000",
+      "author": "Not Committed Yet",
+      "date": "2026-03-11T11:45:38.000Z",
+      "message": "Version of app/src/components/home/portfolio/projects/project-markdown.tsx from app/src/components/home/portfolio/projects/project-markdown.tsx"
     },
     "MobileDrawerContent": {
       "section": "experience",
@@ -690,11 +690,11 @@
         23,
         177
       ],
-      "hash": "0000000000000000000000000000000000000000",
-      "shortHash": "0000000",
-      "author": "Not Committed Yet",
-      "date": "2026-03-11T11:39:16.000Z",
-      "message": "Version of app/src/components/home/portfolio/learning/learning-journey/learning-journey.tsx from app/src/components/home/portfolio/learning/learning-journey/learning-journey.tsx"
+      "hash": "a889b467602a06836d97510ce9b00a8331e543f8",
+      "shortHash": "a889b46",
+      "author": "Utkarsh Priyadarshi",
+      "date": "2026-03-11T11:44:06.000Z",
+      "message": "perf: reduce animation timings and eliminate redundant re-renders for snappier UI"
     },
     "ProgressIndicator": {
       "section": "learning",

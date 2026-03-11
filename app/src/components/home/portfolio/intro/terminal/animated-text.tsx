@@ -7,7 +7,7 @@ import styles from "./statements-terminal.module.css";
 
 const TYPING_SPEED = 50;
 const DELETE_SPEED = 30;
-const PAUSE_DURATION = 3000;
+const PAUSE_DURATION = 2000;
 
 interface QAPair {
   question: string;
