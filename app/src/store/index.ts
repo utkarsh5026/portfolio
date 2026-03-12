@@ -1,3 +1,13 @@
+import useActivityStore, {
+  type ActivityCommit,
+  type ActivityFeedJson,
+  type ActivityTimeGroup,
+  type LanguageShare,
+  type ProjectActivity,
+  type TimelineCommit,
+  useActivityActions,
+  useActivityState,
+} from "./activity/activity-store";
 import useGitCommitsStore, {
   type GitCommit,
   type LanguageStat,
@@ -26,6 +36,9 @@ import useProjectStore from "./projects/projects-store";
 export {
   idToLabel,
   parseMarkdownHeadings,
+  useActivityActions,
+  useActivityState,
+  useActivityStore,
   useGitCommitsActions,
   useGitCommitsState,
   useGitCommitsStore,
@@ -37,15 +50,21 @@ export {
 };
 
 export type {
+  ActivityCommit,
+  ActivityFeedJson,
+  ActivityTimeGroup,
   AuthorMeta,
   ComponentMeta,
   GitCommit,
   GitMetaJson,
   GitStatsJson,
   HeadingNode,
+  LanguageShare,
   LanguageStat,
   MarkdownHeading,
   OutlineItem,
+  ProjectActivity,
   SectionGitStats,
   TimeGroup,
+  TimelineCommit,
 };

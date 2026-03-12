@@ -8,8 +8,9 @@ import {
   FaLinkedin,
   FaTerminal,
 } from "react-icons/fa";
-import { VscSourceControl } from "react-icons/vsc";
+import { VscPulse, VscSourceControl } from "react-icons/vsc";
 
+import ActivityPanel from "@/components/home/editor/activity/activity-panel";
 import GhostButton from "@/components/ui/ghost-button";
 import { cn } from "@/lib/utils";
 
@@ -28,6 +29,7 @@ const SideBar: React.FC = () => {
   } = useEditorContext();
 
   const [gitPanelOpen, setGitPanelOpen] = useState(false);
+  const [activityOpen, setActivityOpen] = useState(false);
 
   return (
     <>
@@ -112,6 +114,14 @@ const SideBar: React.FC = () => {
           }
         />
 
+        {/* Activity Feed — opens the cross-repo activity panel */}
+        <GhostButton
+          icon={<VscPulse className="w-5 h-5 text-ctp-mauve" />}
+          label="Activity Feed"
+          onClick={() => setActivityOpen((prev) => !prev)}
+          isActive={activityOpen}
+        />
+
         {/* Source Control — opens the git commits panel */}
         <GhostButton
           icon={<VscSourceControl className="w-5 h-5 text-ctp-teal" />}
@@ -130,6 +140,11 @@ const SideBar: React.FC = () => {
         {/* Settings */}
         <SettingsPanel />
       </div>
+
+      <ActivityPanel
+        open={activityOpen}
+        onClose={() => setActivityOpen(false)}
+      />
 
       <GitCommitsPanel
         open={gitPanelOpen}
