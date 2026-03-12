@@ -21,7 +21,7 @@ interface GitBlamePortalTooltipProps {
 }
 
 const TOOLTIP_W = 420;
-const TOOLTIP_H = 110;
+const TOOLTIP_H = 130;
 const OFFSET_X = 18;
 const OFFSET_Y = 14;
 
@@ -67,13 +67,14 @@ const GitBlamePortalTooltip: React.FC<GitBlamePortalTooltipProps> = ({
   return createPortal(
     <div
       key="git-blame-portal"
+      data-git-blame-tooltip
       style={{
         position: "fixed",
         left,
         top,
         width: TOOLTIP_W,
         zIndex: 9999,
-        pointerEvents: "none",
+        pointerEvents: "auto",
       }}
       className={`bg-ctp-base/80 border border-ctp-surface1 rounded-md shadow-xl shadow-ctp-crust/70 px-3 py-2.5 font-source text-xs select-none ${styles.tooltip} backdrop-blur-lg`}
     >
@@ -117,10 +118,32 @@ const GitBlamePortalTooltip: React.FC<GitBlamePortalTooltipProps> = ({
       <div className="flex items-center gap-1.5 mt-1 text-ctp-subtext0">
         <VscGitCommit className="w-3 h-3 text-ctp-green flex-shrink-0" />
         <span className="break-words leading-relaxed">{shortMsg}</span>
-        <span className="text-ctp-surface2 flex-shrink-0 ml-auto pl-2">
+        <a
+          href={`https://github.com/utkarsh5026/portfolio/commit/${meta.hash}`}
+          target="_blank"
+          rel="noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="text-ctp-blue/70 hover:text-ctp-blue flex-shrink-0 ml-auto pl-2 hover:underline transition-colors cursor-pointer"
+        >
           ({meta.shortHash})
-        </span>
+        </a>
       </div>
+
+      {/* Diff stat */}
+      {meta.diffStat &&
+        (meta.diffStat.added > 0 || meta.diffStat.deleted > 0) && (
+          <div className="flex items-center gap-2 mt-1.5 pt-1.5 border-t border-ctp-surface1/60">
+            <span className="text-ctp-green font-mono text-[10px]">
+              +{meta.diffStat.added}
+            </span>
+            <span className="text-ctp-red font-mono text-[10px]">
+              -{meta.diffStat.deleted}
+            </span>
+            <span className="text-ctp-overlay0 text-[10px] ml-auto">
+              lines changed in commit
+            </span>
+          </div>
+        )}
     </div>,
     document.body
   );
