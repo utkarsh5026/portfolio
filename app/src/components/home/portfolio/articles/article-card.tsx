@@ -1,8 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
-import { useState } from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
 import { useGitComponent } from "@/hooks/use-git-component";
+import { useImageLoad } from "@/hooks/use-image-load";
 import { cn } from "@/lib/utils";
 
 import { articles } from "./articles-dump";
@@ -13,8 +13,7 @@ interface ArticleCardProps {
 }
 
 const ArticleCard: React.FC<ArticleCardProps> = ({ article, index }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [hasError, setHasError] = useState(false);
+  const { loaded, error, imgProps } = useImageLoad();
   const gitRef = useGitComponent<HTMLAnchorElement>("ArticleCard");
 
   return (
@@ -39,13 +38,13 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, index }) => {
         >
           {/* Image Header wrapper - 16:9 aspect ratio */}
           <div className="relative aspect-video w-full overflow-hidden rounded-xl sm:rounded-[16px] bg-ctp-surface0">
-            {!isLoaded && !hasError && (
+            {!loaded && !error && (
               <div className="absolute inset-0 bg-ctp-surface0/80 animate-pulse">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-ctp-surface1/20 to-transparent skeleton-shimmer" />
               </div>
             )}
 
-            {hasError && (
+            {error && (
               <div className="absolute inset-0 flex items-center justify-center bg-ctp-surface0/50">
                 <span className="text-ctp-subtext0 text-xs text-center px-4">
                   Failed to load image
@@ -58,13 +57,12 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, index }) => {
               src={article.imageUrl}
               alt={article.title}
               loading="lazy"
-              onLoad={() => setIsLoaded(true)}
-              onError={() => setHasError(true)}
+              {...imgProps}
               className={cn(
                 "absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out",
                 "saturate-[0.85] brightness-[0.85]",
                 "sm:group-hover:scale-105 sm:group-hover:saturate-100 sm:group-hover:brightness-100",
-                isLoaded ? "opacity-90" : "opacity-0"
+                loaded ? "opacity-90" : "opacity-0"
               )}
             />
 

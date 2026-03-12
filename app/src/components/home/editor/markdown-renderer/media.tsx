@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FiPlay, FiX } from "react-icons/fi";
 
+import { useImageLoad } from "@/hooks/use-image-load";
 import { cn } from "@/lib/utils";
 
 /** Extract a YouTube video ID from common YouTube URL formats */
@@ -24,11 +25,9 @@ export const MarkdownImage: React.FC<{ src?: string; alt?: string }> = ({
   src = "",
   alt = "",
 }) => {
-  const [loaded, setLoaded] = useState(false);
-  const [error, setError] = useState(false);
+  const { loaded, error, imgProps } = useImageLoad();
   const [lightbox, setLightbox] = useState(false);
 
-  // Hide placeholder images — check hostname exactly to avoid substring spoofing
   const PLACEHOLDER_HOSTS = new Set([
     "placehold.co",
     "via.placeholder.com",
@@ -91,8 +90,7 @@ export const MarkdownImage: React.FC<{ src?: string; alt?: string }> = ({
             <img
               src={src}
               alt={alt}
-              onLoad={() => setLoaded(true)}
-              onError={() => setError(true)}
+              {...imgProps}
               className="max-w-full h-auto block object-contain rounded-xl"
             />
           </div>
