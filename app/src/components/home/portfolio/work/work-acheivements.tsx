@@ -11,6 +11,8 @@ import {
 import Reveal from "@/components/animations/reveal/Reveal";
 import { OutlineNode } from "@/components/home/editor/outline";
 import { Card, CardContent } from "@/components/ui/card";
+import IconBox from "@/components/ui/icon-box";
+import { Heading, Text } from "@/components/ui/text";
 import { useGitComponent } from "@/hooks/use-git-component";
 
 import { experiences } from "./experienceDump";
@@ -37,12 +39,14 @@ const Achievements: React.FC<AchievementsProps> = ({ selectedExp }) => {
       <OutlineNode label="Key Achievements">
         <div className="space-y-4 sm:space-y-6">
           <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-lg bg-ctp-green/20 flex items-center justify-center flex-shrink-0">
-              <FaRocket className="w-3 h-3 sm:w-4 sm:h-4 text-ctp-green" />
-            </div>
-            <h3 className="text-base sm:text-lg md:text-xl font-bold text-ctp-text">
-              Achievements & Impact
-            </h3>
+            <IconBox
+              color="green"
+              size="sm"
+              className="bg-ctp-green/20 flex items-center justify-center"
+            >
+              <FaRocket className="w-3 h-3 sm:w-4 sm:h-4" />
+            </IconBox>
+            <Heading as="h3">Achievements & Impact</Heading>
             <div className="flex-1 h-px bg-gradient-to-r from-ctp-surface1/50 to-transparent" />
           </div>
 
@@ -91,9 +95,12 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
           )}
 
           <div className="flex-1 min-w-0">
-            <h4 className="font-bold text-sm sm:text-base md:text-lg text-ctp-text mb-2 sm:mb-3 group-hover:text-ctp-mauve transition-colors duration-300 leading-tight break-words">
+            <Heading
+              as="h4"
+              className="mb-2 sm:mb-3 group-hover:text-ctp-mauve transition-colors duration-300 leading-tight break-words"
+            >
               {achievement.title}
-            </h4>
+            </Heading>
 
             <div className="space-y-3 sm:space-y-4">
               {achievement.description.map((desc, i) => (
@@ -103,9 +110,12 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
                   style={{ animationDelay: `${0.2 + index * 0.1 + i * 0.05}s` }}
                 >
                   <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-ctp-green mt-2 sm:mt-2.5 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200" />
-                  <p className="text-xs sm:text-sm md:text-base text-ctp-subtext0 leading-relaxed group-hover/item:text-ctp-subtext1 transition-colors duration-200 break-words">
+                  <Text
+                    variant="body"
+                    className="group-hover/item:text-ctp-subtext1 transition-colors duration-200 break-words"
+                  >
                     {desc}
-                  </p>
+                  </Text>
                 </div>
               ))}
             </div>

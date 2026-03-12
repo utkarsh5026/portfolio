@@ -8,6 +8,7 @@ import {
 import React from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
+import { Heading, Text } from "@/components/ui/text";
 
 import { education } from "../data/data";
 import SectionHeader from "./about-header";
@@ -76,9 +77,12 @@ const EducationCard: React.FC<EducationCardProps> = ({ index, item }) => {
             <div className="flex-1 min-w-0 overflow-hidden">
               <div className="flex flex-col gap-2 mb-2 sm:mb-3">
                 <div className="min-w-0">
-                  <h4 className="text-sm sm:text-base md:text-lg font-bold text-ctp-text group-hover:text-ctp-sapphire transition-colors duration-300 leading-tight break-words">
+                  <Heading
+                    as="h4"
+                    className="group-hover:text-ctp-sapphire transition-colors duration-300 leading-tight break-words"
+                  >
                     {item.degree}
-                  </h4>
+                  </Heading>
                   <div className="flex items-start gap-1 sm:gap-2 mt-1 flex-wrap">
                     <MapPin className="w-3 h-3 text-ctp-subtext0 flex-shrink-0 mt-0.5" />
                     <a
@@ -108,9 +112,12 @@ const EducationCard: React.FC<EducationCardProps> = ({ index, item }) => {
                     key={hIndex}
                     className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg sm:rounded-xl transition-colors duration-200 w-full overflow-hidden border-none"
                   >
-                    <p className="text-xs sm:text-sm text-ctp-text leading-relaxed break-words">
+                    <Text
+                      variant="caption"
+                      className="text-ctp-text leading-relaxed break-words"
+                    >
                       {highlight}
-                    </p>
+                    </Text>
                   </div>
                 ))}
               </div>

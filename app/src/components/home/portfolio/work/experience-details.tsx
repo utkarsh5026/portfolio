@@ -12,6 +12,8 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import IconBox from "@/components/ui/icon-box";
+import { Heading, Text } from "@/components/ui/text";
 import { useGitComponent } from "@/hooks/use-git-component";
 import useMobile from "@/hooks/use-mobile";
 
@@ -36,12 +38,14 @@ const TechnologiesContent: React.FC<{ selectedExp: number }> = ({
       <OutlineNode label="Technologies Used">
         <div className="pt-4 sm:pt-6">
           <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-lg bg-ctp-peach/20 flex items-center justify-center flex-shrink-0">
-              <FaCode className="w-4 h-4 sm:w-5 sm:h-5 text-ctp-peach" />
-            </div>
-            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-ctp-text">
-              Tech Stack & Tools
-            </h3>
+            <IconBox
+              color="peach"
+              size="sm"
+              className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-ctp-peach/20 flex items-center justify-center"
+            >
+              <FaCode className="w-4 h-4 sm:w-5 sm:h-5" />
+            </IconBox>
+            <Heading as="h3">Tech Stack & Tools</Heading>
             <div className="flex-1 h-px bg-gradient-to-r from-ctp-surface1/50 to-transparent" />
           </div>
 
@@ -100,9 +104,9 @@ const MobileDrawerContent: React.FC<{ selectedExp: number }> = ({
           <DrawerTitle className="text-xl font-bold text-ctp-text text-left leading-tight">
             {experiences[selectedExp].position}
           </DrawerTitle>
-          <p className="text-sm text-ctp-subtext0 mt-1 text-left">
+          <Text variant="caption" className="mt-1 text-left">
             at {experiences[selectedExp].company}
-          </p>
+          </Text>
         </div>
       </div>
     </DrawerHeader>

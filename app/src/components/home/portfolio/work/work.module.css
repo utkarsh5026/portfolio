@@ -1,18 +1,5 @@
 /* work.module.css */
 
-/* Interactive elements (hover/tap) */
-.interactive {
-  transition: transform 0.3s ease;
-}
-
-.interactive:hover {
-  transform: scale(1.02);
-}
-
-.interactive:active {
-  transform: scale(0.98);
-}
-
 /* Larger scale for tech badges */
 .interactiveLg {
   transition: transform 0.3s ease;

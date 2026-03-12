@@ -1,11 +1,12 @@
 import { createContext, useContext } from "react";
 
+import { AppColor } from "@/lib/ctp-colors";
 import { Project } from "@/types";
 
 export type ProjectTheme = {
-  main: string;
-  secondary: string;
-  accentColor?: string;
+  main: AppColor;
+  secondary: AppColor;
+  accentColor?: AppColor;
   fromColor?: string;
   toColor?: string;
 };

@@ -2,6 +2,7 @@ import React from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
 import SketchBorder from "@/components/ui/sketch-border";
+import { Heading, Text } from "@/components/ui/text";
 import { useGitComponent } from "@/hooks/use-git-component";
 import useMobile from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
@@ -12,6 +13,7 @@ import {
   PersonalTitle,
   ProfileButtons,
   ProfilePicture,
+  RustFocus,
 } from "./profile";
 import { TechSkills } from "./skills";
 import { Terminal } from "./terminal";
@@ -59,6 +61,10 @@ const DesktopPersonalIntro: React.FC = () => {
 
                   <Reveal effect="fade-up" delay={0.7}>
                     <MiniProjects />
+                  </Reveal>
+
+                  <Reveal effect="fade-up" delay={0.85}>
+                    <RustFocus />
                   </Reveal>
                 </div>
 
@@ -146,6 +152,11 @@ const MobilePersonalIntro: React.FC = () => {
                 <Reveal delay={1.1}>
                   <Terminal />
                 </Reveal>
+
+                {/* Rust Focus */}
+                <Reveal effect="fade-up" delay={1.3}>
+                  <RustFocus />
+                </Reveal>
               </div>
             </div>
           </SketchBorder>
@@ -167,12 +178,12 @@ const MobilePersonalIntro: React.FC = () => {
               )}
             >
               <div className="text-center mb-4">
-                <h3 className="text-lg font-semibold text-ctp-text mb-1">
+                <Heading as="h3" className="mb-1">
                   Tech Stack
-                </h3>
-                <p className="text-ctp-subtext1 text-xs">
+                </Heading>
+                <Text variant="muted" className="text-ctp-subtext1">
                   Technologies I work with
-                </p>
+                </Text>
               </div>
               <TechSkills />
             </div>

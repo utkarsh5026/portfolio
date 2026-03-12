@@ -1,8 +1,9 @@
-import { Sparkles } from "lucide-react";
 import React, { useState } from "react";
-import { FaStar } from "react-icons/fa";
+import { FaAward, FaStar } from "react-icons/fa";
 
 import Reveal from "@/components/animations/reveal/Reveal";
+import GradientText from "@/components/ui/gradient-text";
+import { Heading } from "@/components/ui/text";
 import { useGitComponent } from "@/hooks/use-git-component";
 import { useMobileContext } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
@@ -31,9 +32,6 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
       <Reveal effect="zoom-in" duration={0.5}>
         <div className="overflow-hidden">
           <div className="relative">
-            {/* Spotlight glow effect */}
-            <div className="absolute -inset-2 bg-gradient-radial from-ctp-peach/20 via-transparent to-transparent rounded-full blur-2xl opacity-70 -z-10 animate-pulse-slow" />
-
             {/* Main content card */}
             <Reveal effect="fade-up" duration={0.6} delay={0.2}>
               <div
@@ -51,9 +49,11 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
                   )}
 
                   <Reveal effect="slide-in" direction="up" duration={0.6}>
-                    <h2 className="text-3xl font-bold bg-gradient-to-r from-ctp-peach via-ctp-maroon to-ctp-peach bg-clip-text text-transparent text-pretty">
-                      {featuredProject.name}
-                    </h2>
+                    <Heading as="h2" className="text-pretty">
+                      <GradientText from="peach" via="maroon" to="peach">
+                        {featuredProject.name}
+                      </GradientText>
+                    </Heading>
                   </Reveal>
                 </div>
 
@@ -142,15 +142,15 @@ const FeaturedHeader: React.FC = () => {
     <div className="flex items-center gap-3 mb-6">
       <div className={styles.sparkleIcon}>
         <div className="p-2 bg-gradient-to-r from-ctp-peach to-ctp-yellow rounded-full">
-          <Sparkles className="w-5 h-5 text-ctp-crust" />
+          <FaAward className="w-5 h-5 text-ctp-crust" />
         </div>
       </div>
 
-      <h3
-        className={`text-xl font-bold bg-gradient-to-r from-ctp-peach to-ctp-yellow bg-clip-text text-transparent ${styles.titleSlideIn}`}
-      >
-        Featured Project
-      </h3>
+      <Heading as="h3" className={styles.titleSlideIn}>
+        <GradientText from="peach" to="yellow">
+          Featured Project
+        </GradientText>
+      </Heading>
 
       <div
         className={`h-px flex-grow ${styles.lineGrow}`}

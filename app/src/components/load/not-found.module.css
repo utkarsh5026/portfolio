@@ -56,15 +56,3 @@
     opacity: 1;
   }
 }
-
-.interactiveBtn {
-  transition: transform 0.2s ease;
-}
-
-.interactiveBtn:hover {
-  transform: scale(1.05);
-}
-
-.interactiveBtn:active {
-  transform: scale(0.95);
-}

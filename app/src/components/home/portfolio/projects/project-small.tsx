@@ -3,6 +3,8 @@ import { memo, useCallback } from "react";
 import { FaGithub } from "react-icons/fa";
 
 import TechBadge from "@/components/base/tech-badge";
+import IconBox from "@/components/ui/icon-box";
+import { Heading, Text } from "@/components/ui/text";
 import { useGitComponent } from "@/hooks/use-git-component";
 import { Project } from "@/types";
 
@@ -20,7 +22,7 @@ const ProjectSmall = memo<ProjectSmallProps>(function ProjectSmall({
 }) {
   const ref = useGitComponent<HTMLButtonElement>(ProjectSmall);
   const { getProjectTheme } = useProjectTheme();
-  const { accentColor } = getProjectTheme(project);
+  const { accentColor = "blue" } = getProjectTheme(project);
 
   const handleGithubClick = useCallback(
     (e: React.MouseEvent) => {
@@ -50,8 +52,10 @@ const ProjectSmall = memo<ProjectSmallProps>(function ProjectSmall({
       aria-label={`View details for ${project.name}`}
     >
       <div className="flex items-center gap-3 sm:gap-4 mb-4">
-        <div
-          className={`p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-ctp-${accentColor}/15 text-ctp-${accentColor} flex-shrink-0 transition-transform duration-200 group-hover:scale-110`}
+        <IconBox
+          color={accentColor}
+          size="md"
+          className={`bg-ctp-${accentColor}/15 transition-transform duration-200 group-hover:scale-110`}
         >
           {project.icon ? (
             <span className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-lg sm:text-xl leading-none">
@@ -60,15 +64,15 @@ const ProjectSmall = memo<ProjectSmallProps>(function ProjectSmall({
           ) : (
             <Folder className="w-5 h-5 sm:w-6 sm:h-6" />
           )}
-        </div>
+        </IconBox>
         <div className="min-w-0 flex-1">
-          <h4 className="text-base sm:text-lg font-bold text-ctp-text leading-tight break-words group-hover:text-ctp-text transition-colors duration-200">
+          <Heading as="h4" className="leading-tight break-words">
             {project.name}
-          </h4>
+          </Heading>
           {project.tagline && (
-            <p className="text-xs sm:text-sm text-ctp-subtext0 mt-0.5 break-words font-medium leading-relaxed">
+            <Text variant="caption" className="mt-0.5 break-words">
               {project.tagline}
-            </p>
+            </Text>
           )}
         </div>
       </div>

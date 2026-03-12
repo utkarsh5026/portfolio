@@ -2,6 +2,7 @@ import { User } from "lucide-react";
 import React from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
+import { Heading, Text } from "@/components/ui/text";
 
 import { background } from "../data/data";
 import SectionHeader from "./about-header";
@@ -53,9 +54,9 @@ const FlashCard: React.FC<FlashCardProps> = ({ question, answer }) => {
               Q
             </span>
           </div>
-          <h3 className="text-sm sm:text-base md:text-lg font-semibold text-ctp-text leading-snug">
+          <Heading as="h4" className="leading-snug">
             {question}
-          </h3>
+          </Heading>
         </div>
 
         {/* Answer */}
@@ -65,9 +66,7 @@ const FlashCard: React.FC<FlashCardProps> = ({ question, answer }) => {
               A
             </span>
           </div>
-          <p className="text-ctp-subtext0 text-xs sm:text-sm md:text-base leading-relaxed">
-            {answer}
-          </p>
+          <Text variant="body">{answer}</Text>
         </div>
       </div>
     </div>

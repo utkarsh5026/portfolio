@@ -12,6 +12,7 @@ import {
   Video,
 } from "lucide-react";
 
+import type { AppColor } from "@/lib/ctp-colors";
 import type { TechnologyLearning } from "@/types";
 
 export const currentLearningTechnologies: TechnologyLearning[] = [
@@ -151,7 +152,14 @@ export const categoryInfo: Record<
   },
 };
 
-export const learningJourneyItems = [
+export const learningJourneyItems: {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  color: AppColor;
+  gradient: string;
+  accent: string;
+}[] = [
   {
     title: "Vector Databases & RAG",
     description:

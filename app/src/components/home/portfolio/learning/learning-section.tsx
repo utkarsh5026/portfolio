@@ -1,17 +1,19 @@
 import { BookOpen, FolderOpen, Lightbulb } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
 import { OutlineNode } from "@/components/home/editor/outline";
 import Section from "@/components/home/editor/section/portfolio-section";
+import QuoteBlock from "@/components/ui/quote-block";
 import { useGitComponent } from "@/hooks/use-git-component";
+import useKeydown from "@/hooks/use-keydown";
 import type { TechnologyLearning } from "@/types";
 
 import { currentLearningTechnologies } from "./data";
-import styles from "./learning.module.css";
 import LearningCard from "./learning-card";
 import LearningJourney from "./learning-journey/learning-journey";
 import LearningModal from "./learning-project-drawer";
+import { getCategoryColor } from "./utils";
 
 type Category = (typeof currentLearningTechnologies)[number]["category"];
 
@@ -39,18 +41,12 @@ const CurrentLearning: React.FC = () => {
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setIsModalOpen(false);
     setTimeout(() => setSelectedTech(null), 300);
-  };
-
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeModal();
-    };
-    window.addEventListener("keydown", handleEscape);
-    return () => window.removeEventListener("keydown", handleEscape);
   }, []);
+
+  useKeydown("Escape", closeModal);
 
   return (
     <Section
@@ -63,6 +59,13 @@ const CurrentLearning: React.FC = () => {
       showHeader={true}
     >
       <div ref={ref} className="w-full max-w-6xl mx-auto px-4 py-12">
+        <Reveal effect="fade-up" duration={0.7} delay={0.1}>
+          <QuoteBlock
+            quote="Any fool can write code that a computer can understand. Good programmers write code that humans can understand."
+            attribution="— Martin Fowler"
+            className="mb-8"
+          />
+        </Reveal>
         <Reveal
           effect="blur-in"
           duration={0.6}
@@ -71,7 +74,7 @@ const CurrentLearning: React.FC = () => {
         >
           <button
             onClick={() => setIsJourneyOpen(true)}
-            className={`inline-flex items-center gap-2 px-6 py-3 bg-ctp-surface0/80 hover:bg-ctp-surface1/80 rounded-full text-ctp-text font-medium border border-ctp-surface1/50 hover:border-ctp-peach/80 transition-all duration-300 backdrop-blur-sm ${styles.interactiveBtn}`}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-ctp-surface0/80 hover:bg-ctp-surface1/80 rounded-full text-ctp-text font-medium border border-ctp-surface1/50 hover:border-ctp-peach/80 transition-all duration-300 backdrop-blur-sm interactive-scale"
           >
             <Lightbulb className="w-4 h-4" />
             <span>Learning Journey</span>
@@ -154,17 +157,6 @@ const CurrentLearning: React.FC = () => {
       </div>
     </Section>
   );
-};
-
-const getCategoryColor = (category: string): string => {
-  const colors: Record<string, string> = {
-    Database: "blue",
-    Backend: "mauve",
-    Frontend: "red",
-    DevOps: "teal",
-    "AI/ML": "pink",
-  };
-  return colors[category] || "text";
 };
 
 export default CurrentLearning;

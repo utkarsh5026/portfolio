@@ -15,6 +15,7 @@ import {
 import { useSectionNav } from "@/hooks/use-editor-actions";
 import { useGitComponent } from "@/hooks/use-git-component";
 import useMobile from "@/hooks/use-mobile";
+import { AppColor, ctpColorClass } from "@/lib/ctp-colors";
 import { cn } from "@/lib/utils";
 
 import styles from "./profile.module.css";
@@ -25,7 +26,7 @@ interface PrimaryButton {
   label: string;
   icon: React.ElementType;
   section: Section;
-  iconColor: string;
+  iconColor: AppColor;
   borderHover: string;
   textHover: string;
   shadowHover: string;
@@ -38,7 +39,7 @@ const primaryButtons: PrimaryButton[] = [
     label: "Contact",
     icon: HiOutlineMail,
     section: "contact",
-    iconColor: "text-ctp-green",
+    iconColor: "green",
     borderHover: "hover:border-ctp-green/40",
     textHover: "group-hover:text-ctp-green",
     shadowHover: "hover:shadow-ctp-green/5",
@@ -49,7 +50,7 @@ const primaryButtons: PrimaryButton[] = [
     label: "Projects",
     icon: HiOutlineCode,
     section: "projects",
-    iconColor: "text-ctp-mauve",
+    iconColor: "mauve",
     borderHover: "hover:border-ctp-mauve/40",
     textHover: "group-hover:text-ctp-mauve",
     shadowHover: "hover:shadow-ctp-mauve/5",
@@ -147,7 +148,12 @@ const ProfileButtons: React.FC = () => {
                     )}
                   />
                   <div className="flex items-center gap-2.5 relative z-10">
-                    <Icon className={cn("w-4.5 h-4.5", iconColor)} />
+                    <Icon
+                      className={cn(
+                        "w-4.5 h-4.5",
+                        ctpColorClass("text", iconColor)
+                      )}
+                    />
                     <span
                       className={cn(
                         "text-ctp-text font-medium text-sm tracking-wide transition-colors",

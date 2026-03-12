@@ -4,6 +4,7 @@ import { MdTrendingUp, MdWork } from "react-icons/md";
 import Reveal from "@/components/animations/reveal/Reveal";
 import { OutlineNode } from "@/components/home/editor/outline";
 import { Button } from "@/components/ui/button";
+import { Heading, Text } from "@/components/ui/text";
 import { useGitComponent } from "@/hooks/use-git-component";
 
 import styles from "./contact.module.css";
@@ -59,7 +60,7 @@ const AvailableForOpportunities = () => {
               </span>
             </div>
 
-            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-ctp-text mb-4 sm:mb-6 leading-tight">
+            <Heading as="h2" className="mb-4 sm:mb-6 leading-tight lg:text-4xl">
               Let's build something <br className="hidden sm:block" />
               <span className="text-ctp-lavender relative inline-block">
                 amazing together.
@@ -69,13 +70,13 @@ const AvailableForOpportunities = () => {
                   />
                 </span>
               </span>
-            </h3>
+            </Heading>
 
-            <p className="text-xs sm:text-sm md:text-base text-ctp-subtext0 leading-relaxed max-w-sm sm:max-w-md mb-8 sm:mb-10">
+            <Text variant="body" className="max-w-sm sm:max-w-md mb-8 sm:mb-10">
               Currently open to exciting projects and collaborations. I
               specialize in crafting modern web applications and optimizing
               developer workflows.
-            </p>
+            </Text>
           </div>
 
           {/* Opportunity chips */}

@@ -1,7 +1,10 @@
 import { ArrowRight } from "lucide-react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
+import IconBox from "@/components/ui/icon-box";
+import { Heading, Text } from "@/components/ui/text";
 import { useGitComponent } from "@/hooks/use-git-component";
+import { AppColor } from "@/lib/ctp-colors";
 import { TechnologyLearning } from "@/types";
 
 import styles from "./learning.module.css";
@@ -11,7 +14,7 @@ interface LearningCardProps {
   category: string;
   onSelect: (tech: TechnologyLearning) => void;
   delay?: number;
-  categoryColor: string;
+  categoryColor: AppColor;
 }
 
 const LearningCard: React.FC<LearningCardProps> = ({
@@ -49,11 +52,13 @@ const LearningCard: React.FC<LearningCardProps> = ({
       >
         <div className="h-full bg-gradient-to-b from-ctp-mantle to-ctp-crust backdrop-blur-sm rounded-2xl p-6 border-none hover:border-ctp-surface2/80 transition-all duration-300 hover:bg-ctp-surface0/80">
           <div className="flex items-start justify-between mb-4">
-            <div
-              className={`p-3 rounded-xl bg-ctp-${categoryColor}/10 text-ctp-${categoryColor} group-hover:scale-105 transition-transform duration-300`}
+            <IconBox
+              color={categoryColor}
+              size="md"
+              className="group-hover:scale-105 transition-transform duration-300"
             >
               {tech.icon}
-            </div>
+            </IconBox>
 
             <div
               className={`opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${styles.arrowHover}`}
@@ -64,13 +69,16 @@ const LearningCard: React.FC<LearningCardProps> = ({
 
           {/* Content */}
           <div className="space-y-3">
-            <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-ctp-text group-hover:text-ctp-lavender transition-colors duration-300">
+            <Heading
+              as="h3"
+              className="group-hover:text-ctp-lavender transition-colors duration-300"
+            >
               {tech.name}
-            </h3>
+            </Heading>
 
-            <p className="text-sm md:text-base lg:text-lg text-ctp-subtext0 line-clamp-3 leading-relaxed">
+            <Text variant="lead" className="line-clamp-3">
               {tech.description}
-            </p>
+            </Text>
 
             {/* Learning Goals Preview */}
             <div className="pt-2">
@@ -82,9 +90,9 @@ const LearningCard: React.FC<LearningCardProps> = ({
                   Learning Focus
                 </span>
               </div>
-              <p className="text-xs md:text-sm lg:text-base text-ctp-subtext0 line-clamp-2">
+              <Text variant="body" className="line-clamp-2">
                 {tech.learningGoals[0]}
-              </p>
+              </Text>
             </div>
           </div>
 

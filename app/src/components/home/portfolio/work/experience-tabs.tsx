@@ -24,7 +24,7 @@ const ExperienceTabs: React.FC<ExperienceTabsProps> = ({
       {experiences.map((exp, index) => (
         <div
           key={`${exp.duration}-${index}`}
-          className={`relative ${styles.interactive}`}
+          className="relative interactive-scale"
         >
           <button
             className={`w-full text-left p-3 sm:p-4 lg:p-5 rounded-lg sm:rounded-xl transition-all duration-300 relative overflow-hidden border ${

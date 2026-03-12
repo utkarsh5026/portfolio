@@ -5,6 +5,7 @@ import { FaGithub } from "react-icons/fa";
 import Reveal from "@/components/animations/reveal/Reveal";
 import TechBadge from "@/components/base/tech-badge";
 import { Button } from "@/components/ui/button";
+import { Heading, Text } from "@/components/ui/text";
 import { useGitComponent } from "@/hooks/use-git-component";
 import { Project } from "@/types";
 
@@ -25,9 +26,9 @@ const ProjectContent: React.FC<ProjectContentProps> = ({
     <div ref={ref} className="xl:w-1/2 space-y-6">
       {activeTab === "overview" ? (
         <Reveal effect="fade-up" duration={0.4}>
-          <p className="text-ctp-text leading-relaxed">
+          <Text variant="lead" className="text-ctp-text">
             {featuredProject.description}
-          </p>
+          </Text>
         </Reveal>
       ) : (
         <Reveal effect="fade-up" duration={0.4}>
@@ -55,13 +56,13 @@ const ProjectContent: React.FC<ProjectContentProps> = ({
                       <div className="flex items-start gap-2">
                         <span className="text-ctp-peach mt-1 text-lg">•</span>
                         <div className="flex-1">
-                          <h5 className="text-ctp-text font-semibold">
+                          <Heading as="h5" className="text-ctp-text">
                             {title}
-                          </h5>
+                          </Heading>
                           {description && (
-                            <p className="text-ctp-subtext0 text-sm mt-1">
+                            <Text variant="caption" className="mt-1">
                               {description}
-                            </p>
+                            </Text>
                           )}
                         </div>
                       </div>
@@ -79,7 +80,9 @@ const ProjectContent: React.FC<ProjectContentProps> = ({
       )}
 
       <div className="pt-2">
-        <h4 className="text-sm text-ctp-subtext0 mb-3">TECHNOLOGIES</h4>
+        <Heading as="h5" className="mb-3">
+          TECHNOLOGIES
+        </Heading>
         <div className="flex flex-wrap gap-2">
           {featuredProject.technologies.map((tech, index) => (
             <Reveal

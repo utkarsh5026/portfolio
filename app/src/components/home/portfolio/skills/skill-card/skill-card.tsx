@@ -1,5 +1,8 @@
 import { Reveal, type RevealEffect } from "@/components/animations";
+import IconBox from "@/components/ui/icon-box";
+import { Heading, Text } from "@/components/ui/text";
 import { useGitComponent } from "@/hooks/use-git-component";
+import { AppColor } from "@/lib/ctp-colors";
 
 import { skillCategories } from "../data";
 import ExpandedSkillsContent from "./expanded-content";
@@ -28,20 +31,22 @@ const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
       >
         {/* Category Header */}
         <div className="flex items-center gap-3 sm:gap-4 mb-6">
-          <div
-            className={`p-2.5 sm:p-3 md:p-3.5 rounded-xl sm:rounded-2xl bg-ctp-${category.color}/15 text-ctp-${category.color} flex-shrink-0`}
+          <IconBox
+            color={category.color as AppColor}
+            size="md"
+            className={`bg-ctp-${category.color}/15`}
           >
             <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7">
               {category.icon}
             </div>
-          </div>
+          </IconBox>
           <div className="min-w-0 flex-1">
-            <h2 className="text-base sm:text-lg font-bold text-ctp-text leading-tight break-words">
+            <Heading as="h4" className="leading-tight break-words">
               {category.title}
-            </h2>
-            <p className="text-xs sm:text-sm text-ctp-subtext0 mt-0.5 break-words font-medium leading-relaxed">
+            </Heading>
+            <Text variant="caption" className="mt-0.5 break-words">
               {category.description}
-            </p>
+            </Text>
           </div>
         </div>
 
