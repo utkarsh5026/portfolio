@@ -6,9 +6,9 @@ import { cn, relativeTime } from "@/lib/utils";
 import type { GitCommit, LanguageStat } from "@/store";
 import { useGitCommitsActions, useGitCommitsState } from "@/store";
 
+import CommitRow from "../shared/commit-row";
 import CommitSkeleton from "../shared/commit-skeleton";
 import PanelShell from "../shared/panel-shell";
-import { CommitRow } from "./commit-row";
 import ContributionHeatmap from "./contribution-heatmap";
 
 interface LanguageBarProps {
@@ -187,7 +187,15 @@ const GitCommitsPanel: React.FC<GitCommitsPanelProps> = ({ open, onClose }) => {
                 </span>
               </div>
               {groupCommits.map((commit, i) => (
-                <CommitRow key={commit.hash} commit={commit} index={i} />
+                <CommitRow
+                  key={commit.hash}
+                  commit={{
+                    url: `https://github.com/utkarsh5026/portfolio/commit/${commit.hash}`,
+                    ...commit,
+                  }}
+                  index={i}
+                  showAuthor
+                />
               ))}
             </React.Fragment>
           ))

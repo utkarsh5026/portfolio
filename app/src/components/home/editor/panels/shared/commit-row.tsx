@@ -1,30 +1,60 @@
-import React, { useState } from "react";
+import React from "react";
 import { FiClock, FiExternalLink, FiGitCommit } from "react-icons/fi";
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn, relativeTime } from "@/lib/utils";
-import type { TimelineCommit } from "@/store/activity/activity-store";
 
-import { COMMIT_TYPES, parseCommit } from "../shared/commit-type-utils";
-import styles from "../shared/shared-panel.module.css";
+import { COMMIT_TYPES, parseCommit } from "./commit-type-utils";
+import styles from "./shared-panel.module.css";
 
-interface ActivityCommitRowProps {
-  commit: TimelineCommit;
-  index: number;
-  showRepo?: boolean;
+export interface CommitRowData {
+  /** Full commit URL (e.g. GitHub permalink) */
+  url: string;
+  message: string;
+  author: string;
+  avatarUrl: string;
+  shortHash: string;
+  date: string;
+
+  /** Optional repo label — shown as a badge when provided */
+  repo?: string;
+
+  /** Optional diff stats */
+  insertions?: number;
+  deletions?: number;
+  filesChanged?: number;
 }
 
-const ActivityCommitRow: React.FC<ActivityCommitRowProps> = ({
+interface CommitRowProps {
+  commit: CommitRowData;
+  index: number;
+  showAuthor?: boolean;
+}
+
+const CommitRow: React.FC<CommitRowProps> = ({
   commit,
   index,
-  showRepo = true,
+  showAuthor = false,
 }) => {
-  const [imgError, setImgError] = useState(false);
-  const { type, scope, body } = parseCommit(commit.message);
+  const {
+    url,
+    message,
+    author,
+    avatarUrl,
+    shortHash,
+    date,
+    repo,
+    insertions,
+    deletions,
+    filesChanged,
+  } = commit;
+  const relTime = relativeTime(date);
+  const { type, scope, body } = parseCommit(message);
   const typeStyle = type ? COMMIT_TYPES[type] : null;
 
   return (
     <a
-      href={commit.url}
+      href={url}
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
@@ -35,20 +65,12 @@ const ActivityCommitRow: React.FC<ActivityCommitRowProps> = ({
     >
       {/* Avatar */}
       <div className="mt-0.5 flex-shrink-0 relative">
-        {!imgError ? (
-          <img
-            src={commit.avatarUrl}
-            alt={commit.author}
-            width={24}
-            height={24}
-            onError={() => setImgError(true)}
-            className="w-6 h-6 rounded-full ring-1 ring-ctp-surface1 object-cover group-hover:ring-ctp-lavender transition-all duration-200"
-          />
-        ) : (
-          <div className="w-6 h-6 rounded-full bg-ctp-surface0 ring-1 ring-ctp-surface1 group-hover:ring-ctp-lavender flex items-center justify-center text-[10px] text-ctp-subtext0 font-medium uppercase select-none transition-all duration-200">
-            {commit.author.charAt(0)}
-          </div>
-        )}
+        <Avatar className="w-6 h-6 ring-1 ring-ctp-surface1 group-hover:ring-ctp-lavender transition-all duration-200">
+          <AvatarImage src={avatarUrl} alt={author} />
+          <AvatarFallback className="bg-ctp-surface0 text-[10px] text-ctp-subtext0 font-medium uppercase">
+            {author.charAt(0)}
+          </AvatarFallback>
+        </Avatar>
         <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-ctp-mantle group-hover:bg-ctp-base flex items-center justify-center transition-colors">
           <FiGitCommit className="w-1.5 h-1.5 text-ctp-teal" />
         </span>
@@ -61,8 +83,14 @@ const ActivityCommitRow: React.FC<ActivityCommitRowProps> = ({
         </p>
 
         <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
+          {showAuthor && (
+            <span className="text-[10px] text-ctp-subtext0 group-hover:text-ctp-subtext1 transition-colors truncate max-w-[110px]">
+              {author}
+            </span>
+          )}
+
           <span className="font-source text-[10px] text-ctp-peach bg-ctp-surface0/50 group-hover:bg-ctp-surface0/80 px-1.5 py-0.5 rounded transition-colors flex-shrink-0">
-            {commit.shortHash}
+            {shortHash}
           </span>
 
           {typeStyle && type && (
@@ -83,24 +111,46 @@ const ActivityCommitRow: React.FC<ActivityCommitRowProps> = ({
             </span>
           )}
 
-          {showRepo && (
+          {repo && (
             <span className="flex items-center gap-0.5 text-[10px] text-ctp-sapphire bg-ctp-sapphire/10 px-1.5 py-0.5 rounded-full font-source flex-shrink-0 group-hover:bg-ctp-sapphire/20 transition-colors">
-              {commit.repo}
+              {repo}
               <FiExternalLink className="w-2 h-2 ml-0.5" />
             </span>
           )}
         </div>
+
+        {(insertions != null && insertions > 0) ||
+        (deletions != null && deletions > 0) ||
+        (filesChanged != null && filesChanged > 0) ? (
+          <div className="mt-1 flex items-center gap-2.5">
+            {insertions != null && insertions > 0 && (
+              <span className="text-[10px] text-ctp-green font-source">
+                +{insertions}
+              </span>
+            )}
+            {deletions != null && deletions > 0 && (
+              <span className="text-[10px] text-ctp-red font-source">
+                -{deletions}
+              </span>
+            )}
+            {filesChanged != null && filesChanged > 0 && (
+              <span className="text-[10px] text-ctp-overlay1">
+                {filesChanged} file{filesChanged !== 1 ? "s" : ""}
+              </span>
+            )}
+          </div>
+        ) : null}
       </div>
 
       {/* Time */}
       <div className="flex-shrink-0 flex items-center gap-1 mt-0.5">
         <FiClock className="w-2.5 h-2.5 text-ctp-overlay0 group-hover:text-ctp-overlay1 transition-colors" />
         <span className="text-[10px] text-ctp-overlay0 group-hover:text-ctp-overlay1 whitespace-nowrap transition-colors">
-          {relativeTime(commit.date)}
+          {relTime}
         </span>
       </div>
     </a>
   );
 };
 
-export default ActivityCommitRow;
+export default CommitRow;

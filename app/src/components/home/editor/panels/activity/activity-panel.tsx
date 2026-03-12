@@ -12,9 +12,9 @@ import { VscPulse, VscRepo } from "react-icons/vsc";
 import useGitActivity from "@/hooks/use-git-activity";
 import { cn, relativeTime } from "@/lib/utils";
 
+import CommitRow from "../shared/commit-row";
 import CommitSkeleton from "../shared/commit-skeleton";
 import PanelShell from "../shared/panel-shell";
-import ActivityCommitRow from "./activity-commit-row";
 
 const LANGUAGE_ICONS: Record<string, React.ReactNode> = {
   TypeScript: <SiTypescript className="w-3.5 h-3.5 text-ctp-blue" />,
@@ -174,11 +174,10 @@ const ActivityPanel: React.FC<ActivityPanelProps> = ({ open, onClose }) => {
                 </span>
               </div>
               {commits.map((commit, i) => (
-                <ActivityCommitRow
+                <CommitRow
                   key={`${commit.repo}-${commit.hash}`}
                   commit={commit}
                   index={i}
-                  showRepo={true}
                 />
               ))}
             </React.Fragment>
