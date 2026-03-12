@@ -1,5 +1,10 @@
 import { create } from "zustand";
 
+export interface DiffStat {
+  added: number;
+  deleted: number;
+}
+
 export interface ComponentMeta {
   name: string;
   section: string;
@@ -10,6 +15,7 @@ export interface ComponentMeta {
   author: string;
   date: string | null;
   message: string;
+  diffStat?: DiffStat;
 }
 
 export interface AuthorMeta {
