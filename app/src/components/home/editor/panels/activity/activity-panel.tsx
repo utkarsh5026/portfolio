@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { FiGitCommit, FiRefreshCw, FiX } from "react-icons/fi";
 import {
   SiGo,
@@ -10,9 +10,17 @@ import {
 import { VscPulse, VscRepo } from "react-icons/vsc";
 
 import useGitActivity from "@/hooks/use-git-activity";
+import { AppColor, ctpColorClass } from "@/lib/ctp-colors";
 import { cn, relativeTime } from "@/lib/utils";
 
-import { CommitRow, CommitSkeleton, PanelShell } from "../shared";
+import {
+  CommitRow,
+  CommitSkeleton,
+  GroupedCommitList,
+  LanguageBar,
+  PanelShell,
+  SkeletonList,
+} from "../shared";
 
 const LANGUAGE_ICONS: Record<string, React.ReactNode> = {
   TypeScript: <SiTypescript className="w-3.5 h-3.5 text-ctp-blue" />,
@@ -34,15 +42,20 @@ interface StatTileProps {
   icon: React.ReactNode;
   value: string | number;
   label: string;
-  color: string;
+  color: AppColor;
 }
 
 const StatTile: React.FC<StatTileProps> = ({ icon, value, label, color }) => (
   <div className="flex-1 flex items-center gap-2 px-3 py-2 rounded-md bg-ctp-surface0/20 border border-ctp-surface0/40">
-    <span className={cn("flex-shrink-0", color)}>{icon}</span>
+    <span className={cn("flex-shrink-0", ctpColorClass("text", color))}>
+      {icon}
+    </span>
     <div className="min-w-0">
       <div
-        className={cn("text-xs font-semibold font-source leading-none", color)}
+        className={cn(
+          "text-xs font-semibold font-source leading-none",
+          ctpColorClass("text", color)
+        )}
       >
         {value}
       </div>
@@ -71,6 +84,37 @@ const ActivityPanel: React.FC<ActivityPanelProps> = ({ open, onClose }) => {
   } = useGitActivity();
 
   const genTime = feed?.generatedAt ? relativeTime(feed.generatedAt) : null;
+
+  // Accumulate language percentages weighted by each project's commit count
+  const combinedLanguages = useMemo(() => {
+    const totalCommitCount = projects.reduce((s, p) => s + p.commitCount, 0);
+    if (totalCommitCount === 0) return [];
+
+    const langMap = new Map<string, { color: string; weighted: number }>();
+    for (const project of projects) {
+      const weight = project.commitCount / totalCommitCount;
+      for (const l of project.languages) {
+        const existing = langMap.get(l.language);
+        if (existing) {
+          existing.weighted += l.percent * weight;
+        } else {
+          langMap.set(l.language, {
+            color: l.color,
+            weighted: l.percent * weight,
+          });
+        }
+      }
+    }
+
+    return Array.from(langMap.entries())
+      .map(([language, { color, weighted }]) => ({
+        language,
+        color,
+        percent: Math.round(weighted * 10) / 10,
+      }))
+      .filter((l) => l.percent >= 0.5)
+      .sort((a, b) => b.percent - a.percent);
+  }, [projects]);
 
   return (
     <PanelShell open={open} onClose={onClose} width="w-80">
@@ -115,13 +159,13 @@ const ActivityPanel: React.FC<ActivityPanelProps> = ({ open, onClose }) => {
               icon={<FiGitCommit className="w-3.5 h-3.5" />}
               value={totalCommits}
               label="commits"
-              color="text-ctp-teal"
+              color="teal"
             />
             <StatTile
               icon={<VscRepo className="w-3.5 h-3.5" />}
               value={projects.length}
               label="repos"
-              color="text-ctp-blue"
+              color="blue"
             />
             {topLanguage && (
               <StatTile
@@ -134,17 +178,32 @@ const ActivityPanel: React.FC<ActivityPanelProps> = ({ open, onClose }) => {
                 }
                 value={topLanguage}
                 label="top lang"
-                color="text-ctp-peach"
+                color="peach"
               />
             )}
           </div>
         )
       )}
 
+      {/* ── Language breakdown ── */}
+      {!loading && !error && combinedLanguages.length > 0 && (
+        <div className="flex-shrink-0 px-3 py-2.5 border-b border-ctp-surface0/50">
+          <span className="text-[9px] uppercase tracking-wider text-ctp-overlay0 font-semibold">
+            Languages across all commits
+          </span>
+          <LanguageBar
+            items={combinedLanguages}
+            height="md"
+            showLegend
+            className="mt-1.5"
+          />
+        </div>
+      )}
+
       {/* ── Commit list ── */}
       <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin scrollbar-thumb-ctp-surface0 scrollbar-track-transparent">
         {loading ? (
-          Array.from({ length: 8 }).map((_, i) => <CommitSkeleton key={i} />)
+          <SkeletonList component={CommitSkeleton} count={8} />
         ) : error ? (
           <div className="flex flex-col items-center justify-center h-full gap-3 text-ctp-overlay0 px-6 text-center">
             <VscPulse className="w-8 h-8 text-ctp-red" />
@@ -161,25 +220,14 @@ const ActivityPanel: React.FC<ActivityPanelProps> = ({ open, onClose }) => {
             <p className="text-xs">No activity found</p>
           </div>
         ) : (
-          Array.from(grouped.entries()).map(([group, commits]) => (
-            <React.Fragment key={group}>
-              <div className="sticky top-0 z-10 bg-ctp-mantle/95 backdrop-blur-sm px-4 py-1.5 border-b border-ctp-surface0/30 flex items-center justify-between">
-                <span className="text-[10px] text-ctp-overlay1 uppercase tracking-widest font-medium">
-                  {group}
-                </span>
-                <span className="text-[9px] text-ctp-overlay0 bg-ctp-surface0/50 px-1.5 py-0.5 rounded-full">
-                  {commits.length}
-                </span>
-              </div>
-              {commits.map((commit, i) => (
-                <CommitRow
-                  key={`${commit.repo}-${commit.hash}`}
-                  commit={commit}
-                  index={i}
-                />
-              ))}
-            </React.Fragment>
-          ))
+          <GroupedCommitList
+            grouped={grouped}
+            showCount
+            getKey={(commit, i) => `${commit.repo}-${commit.hash}-${i}`}
+            renderCommit={(commit, i) => (
+              <CommitRow commit={commit} index={i} />
+            )}
+          />
         )}
       </div>
 

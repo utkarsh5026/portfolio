@@ -5,6 +5,8 @@ import { VscRepoForked } from "react-icons/vsc";
 import { cn, relativeTime } from "@/lib/utils";
 import type { ProjectActivity } from "@/store/activity/activity-store";
 
+import { LanguageBar } from "../shared";
+
 interface ProjectActivityCardProps {
   project: ProjectActivity;
   isActive: boolean;
@@ -45,15 +47,14 @@ const ProjectActivityCard: React.FC<ProjectActivityCardProps> = ({
 
       {/* Language bar */}
       {project.languages.length > 0 && (
-        <div className="flex h-1 rounded-full overflow-hidden gap-px mb-1.5">
-          {project.languages.map((l, i) => (
-            <div
-              key={i}
-              style={{ width: `${l.percent}%`, backgroundColor: l.color }}
-              className="min-w-[2px] first:rounded-l-full last:rounded-r-full"
-            />
-          ))}
-        </div>
+        <LanguageBar
+          items={project.languages.map((l) => ({
+            color: l.color,
+            percent: l.percent,
+          }))}
+          height="sm"
+          className="mb-1.5"
+        />
       )}
 
       {/* Stats row */}

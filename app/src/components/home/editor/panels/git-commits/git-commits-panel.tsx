@@ -3,63 +3,18 @@ import { FiFilePlus, FiMinus, FiPlus, FiRefreshCw, FiX } from "react-icons/fi";
 import { VscSourceControl } from "react-icons/vsc";
 
 import { cn, relativeTime } from "@/lib/utils";
-import type { GitCommit, LanguageStat } from "@/store";
+import type { GitCommit } from "@/store";
 import { useGitCommitsActions, useGitCommitsState } from "@/store";
 
-import { CommitRow, CommitSkeleton, PanelShell } from "../shared";
+import {
+  CommitRow,
+  CommitSkeleton,
+  GroupedCommitList,
+  LanguageBar,
+  PanelShell,
+  SkeletonList,
+} from "../shared";
 import ContributionHeatmap from "./contribution-heatmap";
-
-interface LanguageBarProps {
-  stats: LanguageStat[];
-}
-
-const LanguageBar: React.FC<LanguageBarProps> = ({ stats }) => {
-  const total = useMemo(
-    () => stats.reduce((sum, s) => sum + s.count, 0),
-    [stats]
-  );
-
-  if (stats.length === 0 || total === 0) return null;
-
-  return (
-    <div className="flex-shrink-0 px-4 py-2 border-t border-ctp-surface0/40">
-      {/* Stacked bar */}
-      <div className="flex h-1.5 rounded-full overflow-hidden gap-px">
-        {stats.map((s, idx) => (
-          <div
-            key={`${s.language}-${idx}`}
-            style={{
-              width: `${(s.count / total) * 100}%`,
-              backgroundColor: s.color,
-            }}
-            className="min-w-[2px] first:rounded-l-full last:rounded-r-full"
-          />
-        ))}
-      </div>
-
-      {/* Legend */}
-      <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1.5">
-        {stats.map((s, idx) => (
-          <span
-            key={`${s.language}-${idx}`}
-            className="flex items-center gap-1"
-          >
-            <span
-              className="w-2 h-2 rounded-full flex-shrink-0"
-              style={{ backgroundColor: s.color }}
-            />
-            <span className="text-[9px] text-ctp-subtext0 font-source">
-              {s.language}
-            </span>
-            <span className="text-[9px] text-ctp-overlay0 font-source">
-              {((s.count / total) * 100).toFixed(1)}%
-            </span>
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-};
 
 interface SummaryStatsBarProps {
   commits: GitCommit[];
@@ -170,38 +125,40 @@ const GitCommitsPanel: React.FC<GitCommitsPanelProps> = ({ open, onClose }) => {
       {/* Commit list */}
       <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin scrollbar-thumb-ctp-surface0 scrollbar-track-transparent">
         {loading ? (
-          Array.from({ length: 8 }).map((_, i) => <CommitSkeleton key={i} />)
+          <SkeletonList component={CommitSkeleton} count={8} />
         ) : commits.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full gap-3 text-ctp-overlay0">
             <VscSourceControl className="w-8 h-8" />
             <p className="text-xs">No commits found</p>
           </div>
         ) : (
-          Array.from(grouped.entries()).map(([group, groupCommits]) => (
-            <React.Fragment key={group}>
-              <div className="sticky top-0 z-10 bg-ctp-mantle/90 backdrop-blur-sm px-4 py-1 border-b border-ctp-surface0/30">
-                <span className="text-[10px] text-ctp-overlay1 uppercase tracking-widest font-medium">
-                  {group}
-                </span>
-              </div>
-              {groupCommits.map((commit, i) => (
-                <CommitRow
-                  key={commit.hash}
-                  commit={{
-                    url: `https://github.com/utkarsh5026/portfolio/commit/${commit.hash}`,
-                    ...commit,
-                  }}
-                  index={i}
-                  showAuthor
-                />
-              ))}
-            </React.Fragment>
-          ))
+          <GroupedCommitList
+            grouped={grouped}
+            getKey={(commit) => commit.hash}
+            renderCommit={(commit, i) => (
+              <CommitRow
+                commit={{
+                  url: `https://github.com/utkarsh5026/portfolio/commit/${commit.hash}`,
+                  ...commit,
+                }}
+                index={i}
+                showAuthor
+              />
+            )}
+          />
         )}
       </div>
 
       {!loading && languageStats.length > 0 && (
-        <LanguageBar stats={languageStats} />
+        <LanguageBar
+          items={languageStats.map((s) => ({
+            language: s.language,
+            color: s.color,
+            count: s.count,
+          }))}
+          showLegend
+          className="flex-shrink-0 px-4 py-2 border-t border-ctp-surface0/40"
+        />
       )}
 
       <div className="flex-shrink-0 px-4 py-2 border-t border-ctp-surface0 bg-ctp-base/60">
