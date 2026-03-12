@@ -1,12 +1,14 @@
 import { ArrowRight, ChevronDown } from "lucide-react";
 
+import { AppColor } from "@/lib/ctp-colors";
+
 import styles from "./about.module.css";
 
 interface AboutSectionCardProps {
   section: {
     title: string;
     description: string;
-    color: string;
+    color: AppColor;
     gradient: string;
     icon: React.ComponentType<{ className?: string }>;
   };

@@ -9,7 +9,6 @@ import { useGitComponent } from "@/hooks/use-git-component";
 import ExperienceDetails from "./experience-details";
 import ExperienceTabs from "./experience-tabs";
 import { experiences } from "./experienceDump";
-import styles from "./work.module.css";
 
 const EXPERIENCE_ID = "experience";
 
@@ -52,7 +51,7 @@ const WorkExperience: React.FC = () => {
                             selectedExp === index
                               ? "bg-ctp-surface0/80 border-ctp-blue/30"
                               : "bg-ctp-surface0/30 border-ctp-surface1/30 hover:bg-ctp-surface0/50"
-                          } ${styles.interactive}`}
+                          } interactive-scale`}
                           onClick={() => handleExperienceClick(index)}
                         >
                           <div className="flex items-center gap-2 sm:gap-3">

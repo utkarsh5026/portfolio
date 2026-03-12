@@ -1,6 +1,7 @@
 import { LucideIcon } from "lucide-react";
 import React from "react";
 
+import { AppColor } from "@/lib/ctp-colors";
 import { cn } from "@/lib/utils";
 
 import IconBox from "./icon-box";
@@ -8,7 +9,7 @@ import IconBox from "./icon-box";
 interface IconCardProps {
   icon: LucideIcon;
   /** Catppuccin color token, e.g. "blue", "green", "peach" */
-  color: string;
+  color: AppColor;
   title: string;
   className?: string;
   children?: React.ReactNode;

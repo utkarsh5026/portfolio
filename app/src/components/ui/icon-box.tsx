@@ -1,5 +1,6 @@
 import React from "react";
 
+import { AppColor } from "@/lib/ctp-colors";
 import { cn } from "@/lib/utils";
 
 type IconBoxSize = "xs" | "sm" | "md" | "lg";
@@ -13,7 +14,7 @@ const sizeClasses: Record<IconBoxSize, string> = {
 
 interface IconBoxProps {
   /** Catppuccin color token name, e.g. "blue", "mauve", "peach" */
-  color: string;
+  color: AppColor;
   /** Size preset (default "sm") */
   size?: IconBoxSize;
   /** Additional classes merged via cn() */

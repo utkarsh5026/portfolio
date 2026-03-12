@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import Reveal from "@/components/animations/reveal/Reveal";
 import IconBox from "@/components/ui/icon-box";
 import { useGitComponent } from "@/hooks/use-git-component";
+import { AppColor } from "@/lib/ctp-colors";
 import { TechnologyLearning } from "@/types";
 
 import styles from "./learning.module.css";
@@ -12,7 +13,7 @@ interface LearningCardProps {
   category: string;
   onSelect: (tech: TechnologyLearning) => void;
   delay?: number;
-  categoryColor: string;
+  categoryColor: AppColor;
 }
 
 const LearningCard: React.FC<LearningCardProps> = ({

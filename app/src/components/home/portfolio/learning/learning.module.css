@@ -9,15 +9,3 @@
 .arrowGroup:hover .arrowHover {
   transform: translateX(4px);
 }
-
-.interactiveBtn {
-  transition: all 0.3s ease;
-}
-
-.interactiveBtn:hover {
-  transform: scale(1.02);
-}
-
-.interactiveBtn:active {
-  transform: scale(0.98);
-}

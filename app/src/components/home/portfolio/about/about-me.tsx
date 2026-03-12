@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/collapsible";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import QuoteBlock from "@/components/ui/quote-block";
+import SectionLoader from "@/components/ui/section-loader";
 import useMobile from "@/hooks/use-mobile";
 import type { AppColor } from "@/lib/ctp-colors";
 
@@ -34,12 +35,6 @@ const CurrentFocus = lazy(() => import("./sections/currrent-focus"));
 
 const ABOUT_SECTION = "about";
 
-const SectionLoader: React.FC = () => (
-  <div className="flex items-center justify-center p-8">
-    <div className="w-6 h-6 border-2 border-ctp-blue border-t-transparent rounded-full animate-spin" />
-  </div>
-);
-
 interface SectionData {
   id: string;
   title: string;
@@ -47,7 +42,7 @@ interface SectionData {
   Component: React.LazyExoticComponent<React.FC>;
   delay?: number;
   icon: React.ComponentType<{ className?: string }>;
-  color: string;
+  color: AppColor;
   gradient: string;
 }
 
@@ -266,7 +261,7 @@ const AboutMe: React.FC = () => {
                 id={section.id}
                 label={section.title}
                 icon={<section.icon className="w-3 h-3" />}
-                iconColor={section.color as AppColor}
+                iconColor={section.color}
               >
                 <ResponsiveAboutSection
                   section={section}

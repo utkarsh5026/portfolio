@@ -12,7 +12,6 @@ import { useGitComponent } from "@/hooks/use-git-component";
 import useMobile from "@/hooks/use-mobile";
 
 import { experiences } from "./experienceDump";
-import styles from "./work.module.css";
 
 interface ExperienceHeaderProps {
   selectedExp: number;
@@ -158,7 +157,7 @@ const ExperienceHeader: React.FC<ExperienceHeaderProps> = ({ selectedExp }) => {
           {/* Action Button */}
           {experience.docsUrl && (
             <div
-              className={`${isMobile ? "w-full" : "self-start sm:self-end"} ${styles.interactive}`}
+              className={`${isMobile ? "w-full" : "self-start sm:self-end"} interactive-scale`}
             >
               <Button
                 className={

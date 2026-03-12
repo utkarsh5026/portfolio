@@ -3,10 +3,11 @@ import React from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
 import IconBox from "@/components/ui/icon-box";
+import { AppColor } from "@/lib/ctp-colors";
 
 interface SectionHeaderProps {
   icon: LucideIcon;
-  color: string;
+  color: AppColor;
   title: string;
   subtitle: string;
   duration?: number;
