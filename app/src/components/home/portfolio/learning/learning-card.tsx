@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
 import IconBox from "@/components/ui/icon-box";
+import { Heading, Text } from "@/components/ui/text";
 import { useGitComponent } from "@/hooks/use-git-component";
 import { AppColor } from "@/lib/ctp-colors";
 import { TechnologyLearning } from "@/types";
@@ -68,13 +69,16 @@ const LearningCard: React.FC<LearningCardProps> = ({
 
           {/* Content */}
           <div className="space-y-3">
-            <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-ctp-text group-hover:text-ctp-lavender transition-colors duration-300">
+            <Heading
+              as="h3"
+              className="group-hover:text-ctp-lavender transition-colors duration-300"
+            >
               {tech.name}
-            </h3>
+            </Heading>
 
-            <p className="text-sm md:text-base lg:text-lg text-ctp-subtext0 line-clamp-3 leading-relaxed">
+            <Text variant="lead" className="line-clamp-3">
               {tech.description}
-            </p>
+            </Text>
 
             {/* Learning Goals Preview */}
             <div className="pt-2">
@@ -86,9 +90,9 @@ const LearningCard: React.FC<LearningCardProps> = ({
                   Learning Focus
                 </span>
               </div>
-              <p className="text-xs md:text-sm lg:text-base text-ctp-subtext0 line-clamp-2">
+              <Text variant="body" className="line-clamp-2">
                 {tech.learningGoals[0]}
-              </p>
+              </Text>
             </div>
           </div>
 

@@ -8,6 +8,7 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Heading } from "@/components/ui/text";
 import { useGitComponent } from "@/hooks/use-git-component";
 import useMobile from "@/hooks/use-mobile";
 
@@ -72,15 +73,12 @@ const ExperienceHeader: React.FC<ExperienceHeaderProps> = ({ selectedExp }) => {
 
               {/* Title and Company */}
               <div className="min-w-0 flex-1">
-                <h2
-                  className={
-                    isMobile
-                      ? "text-lg font-bold text-ctp-text mb-2 leading-tight break-words"
-                      : "text-base sm:text-xl md:text-2xl font-bold text-ctp-text mb-2 sm:mb-3 leading-tight break-words"
-                  }
+                <Heading
+                  as="h3"
+                  className="mb-2 sm:mb-3 leading-tight break-words"
                 >
                   {experience.position}
-                </h2>
+                </Heading>
 
                 <div
                   className={

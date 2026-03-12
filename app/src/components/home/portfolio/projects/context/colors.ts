@@ -11,9 +11,9 @@ const RANDOM_COLORS: ProjectTheme[] = [
   {
     main: "green",
     secondary: "teal",
-    accentColor: "emerald",
+    accentColor: "green",
     fromColor: "ctp-green/20",
-    toColor: "ctp-emerald/20",
+    toColor: "ctp-teal/20",
   },
   {
     main: "mauve",

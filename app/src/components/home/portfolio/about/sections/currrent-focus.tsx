@@ -13,12 +13,13 @@ import Reveal from "@/components/animations/reveal/Reveal";
 import IconBox from "@/components/ui/icon-box";
 import QuoteBlock from "@/components/ui/quote-block";
 import SectionContainer from "@/components/ui/section-container";
+import { AppColor } from "@/lib/ctp-colors";
 
 import { focusAreas } from "../data/data";
 import SectionHeader from "./about-header";
 
 const focusIcons = [Cloud, Database, TrendingUp, Code, Globe];
-const focusColors = ["peach", "blue", "green", "mauve", "teal"];
+const focusColors: AppColor[] = ["peach", "blue", "green", "mauve", "teal"];
 
 const CurrentFocus: React.FC = () => {
   return (

@@ -4,6 +4,7 @@ import { FC } from "react";
 import Reveal from "@/components/animations/reveal/Reveal";
 import IconBox from "@/components/ui/icon-box";
 import SectionContainer from "@/components/ui/section-container";
+import { Heading } from "@/components/ui/text";
 
 import { skills } from "../data/data";
 import { skillColors, skillIcons } from "../data/icon-map";
@@ -58,9 +59,9 @@ const Skills: FC = () => {
                       <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                     </IconBox>
                     <div className="min-w-0 flex-1">
-                      <h4 className="text-sm sm:text-base md:text-lg font-bold text-ctp-text leading-tight">
+                      <Heading as="h4" className="leading-tight">
                         {skillCategory.category}
-                      </h4>
+                      </Heading>
                     </div>
                   </div>
                 </div>

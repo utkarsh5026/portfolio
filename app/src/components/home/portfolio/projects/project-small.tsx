@@ -4,6 +4,7 @@ import { FaGithub } from "react-icons/fa";
 
 import TechBadge from "@/components/base/tech-badge";
 import IconBox from "@/components/ui/icon-box";
+import { Heading, Text } from "@/components/ui/text";
 import { useGitComponent } from "@/hooks/use-git-component";
 import { Project } from "@/types";
 
@@ -65,13 +66,13 @@ const ProjectSmall = memo<ProjectSmallProps>(function ProjectSmall({
           )}
         </IconBox>
         <div className="min-w-0 flex-1">
-          <h4 className="text-base sm:text-lg font-bold text-ctp-text leading-tight break-words group-hover:text-ctp-text transition-colors duration-200">
+          <Heading as="h4" className="leading-tight break-words">
             {project.name}
-          </h4>
+          </Heading>
           {project.tagline && (
-            <p className="text-xs sm:text-sm text-ctp-subtext0 mt-0.5 break-words font-medium leading-relaxed">
+            <Text variant="caption" className="mt-0.5 break-words">
               {project.tagline}
-            </p>
+            </Text>
           )}
         </div>
       </div>

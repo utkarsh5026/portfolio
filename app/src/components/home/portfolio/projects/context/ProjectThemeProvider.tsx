@@ -4,7 +4,7 @@ import { Project } from "@/types";
 
 import { ProjectTheme, ProjectThemeContext } from "./ThemeContext";
 
-const colorPairs = [
+const colorPairs: ProjectTheme[] = [
   {
     main: "blue",
     secondary: "lavender",

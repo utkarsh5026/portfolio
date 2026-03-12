@@ -6,7 +6,7 @@ import { Project } from "@/types";
 export type ProjectTheme = {
   main: AppColor;
   secondary: AppColor;
-  accentColor?: string;
+  accentColor?: AppColor;
   fromColor?: string;
   toColor?: string;
 };

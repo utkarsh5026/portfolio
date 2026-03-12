@@ -5,6 +5,7 @@ import { AppColor } from "@/lib/ctp-colors";
 import { cn } from "@/lib/utils";
 
 import IconBox from "./icon-box";
+import { Heading } from "./text";
 
 interface IconCardProps {
   icon: LucideIcon;
@@ -41,9 +42,9 @@ const IconCard: React.FC<IconCardProps> = ({
         <IconBox color={color}>
           <Icon className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
         </IconBox>
-        <h4 className="text-sm sm:text-base md:text-lg font-bold text-ctp-text leading-tight break-words min-w-0 flex-1">
+        <Heading as="h4" className="leading-tight break-words min-w-0 flex-1">
           {title}
-        </h4>
+        </Heading>
       </div>
       {children}
     </div>

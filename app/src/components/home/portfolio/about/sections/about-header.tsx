@@ -3,6 +3,7 @@ import React from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
 import IconBox from "@/components/ui/icon-box";
+import { Heading, Text } from "@/components/ui/text";
 import { AppColor } from "@/lib/ctp-colors";
 
 interface SectionHeaderProps {
@@ -29,10 +30,10 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
           <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
         </IconBox>
         <div className="min-w-0 flex-1">
-          <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-ctp-text leading-tight">
+          <Heading as="h3" className="leading-tight">
             {title}
-          </h3>
-          <p className="text-xs sm:text-sm text-ctp-subtext0">{subtitle}</p>
+          </Heading>
+          <Text variant="caption">{subtitle}</Text>
         </div>
       </div>
     </Reveal>

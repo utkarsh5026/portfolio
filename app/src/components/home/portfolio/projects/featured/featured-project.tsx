@@ -3,6 +3,7 @@ import { FaAward, FaStar } from "react-icons/fa";
 
 import Reveal from "@/components/animations/reveal/Reveal";
 import GradientText from "@/components/ui/gradient-text";
+import { Heading } from "@/components/ui/text";
 import { useGitComponent } from "@/hooks/use-git-component";
 import { useMobileContext } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
@@ -48,11 +49,11 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
                   )}
 
                   <Reveal effect="slide-in" direction="up" duration={0.6}>
-                    <h2 className="text-3xl font-bold text-pretty">
+                    <Heading as="h2" className="text-pretty">
                       <GradientText from="peach" via="maroon" to="peach">
                         {featuredProject.name}
                       </GradientText>
-                    </h2>
+                    </Heading>
                   </Reveal>
                 </div>
 
@@ -145,11 +146,11 @@ const FeaturedHeader: React.FC = () => {
         </div>
       </div>
 
-      <h3 className={`text-xl font-bold ${styles.titleSlideIn}`}>
+      <Heading as="h3" className={styles.titleSlideIn}>
         <GradientText from="peach" to="yellow">
           Featured Project
         </GradientText>
-      </h3>
+      </Heading>
 
       <div
         className={`h-px flex-grow ${styles.lineGrow}`}

@@ -5,10 +5,16 @@ import Reveal from "@/components/animations/reveal/Reveal";
 import IconBox from "@/components/ui/icon-box";
 import QuoteBlock from "@/components/ui/quote-block";
 import SectionContainer from "@/components/ui/section-container";
+import { AppColor } from "@/lib/ctp-colors";
 
 import SectionHeader from "./about-header";
 
-const philosophyPrinciples = [
+const philosophyPrinciples: {
+  title: string;
+  description: string;
+  color: AppColor;
+  icon: React.ElementType;
+}[] = [
   {
     title: "Make it Work",
     description: "Functionality first, ensuring the core requirements are met",

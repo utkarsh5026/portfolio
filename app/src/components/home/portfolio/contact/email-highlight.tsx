@@ -3,6 +3,7 @@ import { Mail } from "lucide-react";
 import Reveal from "@/components/animations/reveal/Reveal";
 import { OutlineNode } from "@/components/home/editor/outline";
 import { Button } from "@/components/ui/button";
+import { Heading, Text } from "@/components/ui/text";
 import { useGitComponent } from "@/hooks/use-git-component";
 
 import styles from "./contact.module.css";
@@ -20,16 +21,16 @@ export const EmailHighlight: React.FC = () => {
           className="relative overflow-hidden bg-ctp-surface0/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 md:p-10 border border-ctp-surface0/50 hover:border-ctp-pink/30 transition-all duration-300 group flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 text-center md:text-left shadow-lg shadow-black/5"
         >
           <div className="relative z-10 flex-1">
-            <h3 className="text-xl sm:text-2xl font-bold text-ctp-text mb-2">
+            <Heading as="h3" className="mb-2">
               Have a project in mind?
-            </h3>
-            <p className="text-sm sm:text-base text-ctp-subtext0">
+            </Heading>
+            <Text variant="lead" as="div">
               Reach out directly at{" "}
               <span className="text-ctp-pink font-source select-all relative inline-block group/email cursor-pointer">
                 utkarshpriyadarshi5026@gmail.com
                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-ctp-pink transition-all duration-300 group-hover/email:w-full" />
               </span>
-            </p>
+            </Text>
           </div>
 
           <div className="relative z-10 w-full md:w-auto">

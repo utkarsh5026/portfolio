@@ -11,6 +11,7 @@ import {
   DrawerOverlay,
   DrawerTitle,
 } from "@/components/ui/drawer";
+import { Heading, Text } from "@/components/ui/text";
 import { useGitComponent } from "@/hooks/use-git-component";
 import { TechnologyLearning } from "@/types";
 
@@ -72,13 +73,9 @@ const LearningModal: React.FC<LearningModalProps> = ({
                 <section className="space-y-3">
                   <div className="flex items-center gap-2">
                     <Code2 className="w-4 h-4 md:w-5 md:h-5 text-ctp-blue" />
-                    <h3 className="font-semibold text-base md:text-lg lg:text-xl text-ctp-text">
-                      Overview
-                    </h3>
+                    <Heading as="h4">Overview</Heading>
                   </div>
-                  <p className="text-sm md:text-base lg:text-lg text-ctp-subtext0 leading-relaxed">
-                    {selectedTech.description}
-                  </p>
+                  <Text variant="lead">{selectedTech.description}</Text>
                 </section>
               </Reveal>
 
@@ -87,9 +84,7 @@ const LearningModal: React.FC<LearningModalProps> = ({
                 <section className="space-y-4">
                   <div className="flex items-center gap-2">
                     <Target className="w-4 h-4 md:w-5 md:h-5 text-ctp-green" />
-                    <h3 className="font-semibold text-base md:text-lg lg:text-xl text-ctp-text">
-                      Learning Goals
-                    </h3>
+                    <Heading as="h4">Learning Goals</Heading>
                   </div>
 
                   <div className="space-y-3">
@@ -101,9 +96,7 @@ const LearningModal: React.FC<LearningModalProps> = ({
                         <div
                           className={`w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-ctp-${categoryColor} mt-2 flex-shrink-0`}
                         />
-                        <p className="text-sm md:text-base lg:text-lg text-ctp-subtext0 leading-relaxed">
-                          {goal}
-                        </p>
+                        <Text variant="lead">{goal}</Text>
                       </div>
                     ))}
                   </div>
