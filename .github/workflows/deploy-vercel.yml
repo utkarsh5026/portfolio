@@ -47,21 +47,22 @@ jobs:
         env:
           NODE_ENV: production
 
+      - name: Prepare Vercel output structure
+        run: |
+          mkdir -p .vercel/output/static
+          cp -r app/dist/. .vercel/output/static/
+          echo '{"version":3}' > .vercel/output/config.json
+
       - name: Deploy to Vercel (Production)
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        run: |
-          bunx vercel deploy ./app/dist --prebuilt \
-            --token=${{ secrets.VERCEL_TOKEN }} \
-            --prod
+        run: bunx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
       - name: Deploy to Vercel (Preview)
         if: github.event_name == 'pull_request'
-        run: |
-          bunx vercel deploy ./app/dist --prebuilt \
-            --token=${{ secrets.VERCEL_TOKEN }}
+        run: bunx vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
