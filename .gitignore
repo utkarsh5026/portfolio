@@ -135,6 +135,12 @@ dist
 stats.html
 stats.json
 
+# Generated at CI build time — do not commit
+app/public/git-stats.json
+app/public/git-commits.json
+app/public/data/activity-feed.json
+app/public/data/git-meta.json
+
 /.agent
 /.claude
 /.agents
