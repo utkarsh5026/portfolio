@@ -1,14 +1,28 @@
 import React from "react";
-import { FiCode, FiGitCommit, FiRefreshCw, FiX } from "react-icons/fi";
+import { FiGitCommit, FiRefreshCw, FiX } from "react-icons/fi";
+import {
+  SiGo,
+  SiJavascript,
+  SiPython,
+  SiRust,
+  SiTypescript,
+} from "react-icons/si";
 import { VscPulse, VscRepo } from "react-icons/vsc";
 
-import useGitActivity, { ACTIVITY_ALL } from "@/hooks/use-git-activity";
+import useGitActivity from "@/hooks/use-git-activity";
 import { cn, relativeTime } from "@/lib/utils";
 
 import CommitSkeleton from "../shared/commit-skeleton";
-import { COMMIT_TYPES } from "../shared/commit-type-utils";
 import PanelShell from "../shared/panel-shell";
 import ActivityCommitRow from "./activity-commit-row";
+
+const LANGUAGE_ICONS: Record<string, React.ReactNode> = {
+  TypeScript: <SiTypescript className="w-3.5 h-3.5 text-ctp-blue" />,
+  JavaScript: <SiJavascript className="w-3.5 h-3.5 text-ctp-yellow" />,
+  Python: <SiPython className="w-3.5 h-3.5 text-ctp-peach" />,
+  Go: <SiGo className="w-3.5 h-3.5 text-ctp-sky" />,
+  Rust: <SiRust className="w-3.5 h-3.5 text-ctp-peach" />,
+};
 
 const StatsSkeleton: React.FC = () => (
   <div className="flex gap-3 px-4 py-2.5 border-b border-ctp-surface0/50 animate-pulse">
@@ -16,41 +30,6 @@ const StatsSkeleton: React.FC = () => (
       <div key={i} className="flex-1 h-8 bg-ctp-surface0/60 rounded-md" />
     ))}
   </div>
-);
-
-interface FilterChipProps {
-  label: string;
-  isActive: boolean;
-  color?: string;
-  activeBg?: string;
-  onClick: () => void;
-}
-
-const FilterChip: React.FC<FilterChipProps> = ({
-  label,
-  isActive,
-  color,
-  activeBg,
-  onClick,
-}) => (
-  <button
-    onClick={onClick}
-    className={cn(
-      "flex-shrink-0 px-2.5 py-1 rounded-full border text-[10px] font-medium font-source transition-all duration-150",
-      isActive
-        ? cn(
-            "border-transparent",
-            activeBg ?? "bg-ctp-mauve/15 border-ctp-mauve/40",
-            color ?? "text-ctp-mauve"
-          )
-        : cn(
-            "border-ctp-surface0/60 text-ctp-overlay1 hover:border-ctp-surface1 hover:text-ctp-subtext0",
-            color && !isActive ? "" : ""
-          )
-    )}
-  >
-    {label}
-  </button>
 );
 
 interface StatTileProps {
@@ -61,11 +40,7 @@ interface StatTileProps {
 }
 
 const StatTile: React.FC<StatTileProps> = ({ icon, value, label, color }) => (
-  <div
-    className={cn(
-      "flex-1 flex items-center gap-2 px-3 py-2 rounded-md bg-ctp-surface0/20 border border-ctp-surface0/40"
-    )}
-  >
+  <div className="flex-1 flex items-center gap-2 px-3 py-2 rounded-md bg-ctp-surface0/20 border border-ctp-surface0/40">
     <span className={cn("flex-shrink-0", color)}>{icon}</span>
     <div className="min-w-0">
       <div
@@ -92,16 +67,9 @@ const ActivityPanel: React.FC<ActivityPanelProps> = ({ open, onClose }) => {
     error,
     projects,
     topLanguage,
-    presentTypes,
     grouped,
     totalCommits,
     visibleCommits,
-    isFiltered,
-    activeRepo,
-    activeType,
-    setActiveRepo,
-    setActiveType,
-    clearFilters,
   } = useGitActivity();
 
   const genTime = feed?.generatedAt ? relativeTime(feed.generatedAt) : null;
@@ -159,7 +127,13 @@ const ActivityPanel: React.FC<ActivityPanelProps> = ({ open, onClose }) => {
             />
             {topLanguage && (
               <StatTile
-                icon={<FiCode className="w-3.5 h-3.5" />}
+                icon={
+                  LANGUAGE_ICONS[topLanguage] ?? (
+                    <span className="text-[10px] font-bold text-ctp-peach">
+                      {topLanguage.slice(0, 2)}
+                    </span>
+                  )
+                }
                 value={topLanguage}
                 label="top lang"
                 color="text-ctp-peach"
@@ -167,73 +141,6 @@ const ActivityPanel: React.FC<ActivityPanelProps> = ({ open, onClose }) => {
             )}
           </div>
         )
-      )}
-
-      {/* ── Repo filter chips ── */}
-      {!loading && projects.length > 0 && (
-        <div className="flex-shrink-0 border-b border-ctp-surface0/40">
-          <div className="px-3 pt-2 pb-0.5">
-            <span className="text-[9px] text-ctp-overlay0 uppercase tracking-widest font-medium">
-              Repos
-            </span>
-          </div>
-          <div className="flex gap-1.5 px-3 pb-2 pt-1 overflow-x-auto scrollbar-none">
-            <FilterChip
-              label="All"
-              isActive={activeRepo === ACTIVITY_ALL}
-              activeBg="bg-ctp-mauve/15"
-              color="text-ctp-mauve"
-              onClick={() => setActiveRepo(ACTIVITY_ALL)}
-            />
-            {projects.map((p) => (
-              <FilterChip
-                key={p.name}
-                label={p.name}
-                isActive={activeRepo === p.name}
-                activeBg="bg-ctp-blue/15"
-                color={activeRepo === p.name ? "text-ctp-blue" : undefined}
-                onClick={() =>
-                  setActiveRepo(activeRepo === p.name ? ACTIVITY_ALL : p.name)
-                }
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* ── Type filter chips ── */}
-      {!loading && presentTypes.length > 0 && (
-        <div className="flex-shrink-0 border-b border-ctp-surface0/40">
-          <div className="px-3 pt-2 pb-0.5">
-            <span className="text-[9px] text-ctp-overlay0 uppercase tracking-widest font-medium">
-              Type
-            </span>
-          </div>
-          <div className="flex gap-1.5 px-3 pb-2 pt-1 overflow-x-auto scrollbar-none">
-            <FilterChip
-              label="All"
-              isActive={activeType === ACTIVITY_ALL}
-              activeBg="bg-ctp-mauve/15"
-              color="text-ctp-mauve"
-              onClick={() => setActiveType(ACTIVITY_ALL)}
-            />
-            {presentTypes.map((t) => {
-              const ts = COMMIT_TYPES[t];
-              return (
-                <FilterChip
-                  key={t}
-                  label={t}
-                  isActive={activeType === t}
-                  activeBg={ts?.activeBg}
-                  color={activeType === t ? ts?.color : undefined}
-                  onClick={() =>
-                    setActiveType(activeType === t ? ACTIVITY_ALL : t)
-                  }
-                />
-              );
-            })}
-          </div>
-        </div>
       )}
 
       {/* ── Commit list ── */}
@@ -253,17 +160,7 @@ const ActivityPanel: React.FC<ActivityPanelProps> = ({ open, onClose }) => {
         ) : visibleCommits === 0 ? (
           <div className="flex flex-col items-center justify-center h-full gap-3 text-ctp-overlay0">
             <VscPulse className="w-8 h-8" />
-            <p className="text-xs">
-              {isFiltered ? "No commits match filters" : "No activity found"}
-            </p>
-            {isFiltered && (
-              <button
-                onClick={clearFilters}
-                className="text-[10px] text-ctp-blue hover:underline"
-              >
-                Clear filters
-              </button>
-            )}
+            <p className="text-xs">No activity found</p>
           </div>
         ) : (
           Array.from(grouped.entries()).map(([group, commits]) => (
@@ -281,7 +178,7 @@ const ActivityPanel: React.FC<ActivityPanelProps> = ({ open, onClose }) => {
                   key={`${commit.repo}-${commit.hash}`}
                   commit={commit}
                   index={i}
-                  showRepo={activeRepo === ACTIVITY_ALL}
+                  showRepo={true}
                 />
               ))}
             </React.Fragment>
@@ -294,14 +191,6 @@ const ActivityPanel: React.FC<ActivityPanelProps> = ({ open, onClose }) => {
         <p className="text-[9px] text-ctp-overlay0 tracking-wider">
           {feed?.githubUser ?? "utkarsh5026"} · github activity
         </p>
-        {isFiltered && (
-          <button
-            onClick={clearFilters}
-            className="text-[9px] text-ctp-blue hover:text-ctp-lavender transition-colors"
-          >
-            clear filters
-          </button>
-        )}
       </div>
     </PanelShell>
   );

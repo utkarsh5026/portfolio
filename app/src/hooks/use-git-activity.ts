@@ -1,13 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 
-import { parseCommitType } from "@/components/home/editor/panels/shared/commit-type-utils";
 import type { TimelineCommit } from "@/store/activity/activity-store";
 import {
   useActivityActions,
   useActivityState,
 } from "@/store/activity/activity-store";
-
-const ALL = "__all__";
 
 type TimeGroup = "Today" | "Yesterday" | "This Week" | "Earlier";
 
@@ -42,26 +39,13 @@ function groupCommits(
 
 function useGitActivity() {
   const { feed, loading, error } = useActivityState();
-  const { fetchActivity, getCommitsByRepo } = useActivityActions();
-
-  const [activeRepo, setActiveRepo] = useState<string>(ALL);
-  const [activeType, setActiveType] = useState<string>(ALL);
+  const { fetchActivity } = useActivityActions();
 
   useEffect(() => {
     fetchActivity();
   }, [fetchActivity]);
 
   const projects = useMemo(() => Object.values(feed?.projects ?? {}), [feed]);
-
-  const presentTypes = useMemo(() => {
-    const timeline = feed?.timeline ?? [];
-    const types = new Set<string>();
-    for (const c of timeline) {
-      const t = parseCommitType(c.message);
-      if (t) types.add(t);
-    }
-    return Array.from(types).sort();
-  }, [feed]);
 
   const topLanguage = useMemo(() => {
     if (!projects.length) return null;
@@ -82,22 +66,7 @@ function useGitActivity() {
     return best || null;
   }, [projects]);
 
-  const grouped = useMemo(() => {
-    let commits = feed?.timeline ?? [];
-
-    if (activeRepo !== ALL) {
-      const byRepo = getCommitsByRepo();
-      commits = byRepo.get(activeRepo) ?? [];
-    }
-
-    if (activeType !== ALL) {
-      commits = commits.filter(
-        (c) => parseCommitType(c.message) === activeType
-      );
-    }
-
-    return groupCommits(commits);
-  }, [activeRepo, activeType, feed, getCommitsByRepo]);
+  const grouped = useMemo(() => groupCommits(feed?.timeline ?? []), [feed]);
 
   const totalCommits = feed?.timeline.length ?? 0;
 
@@ -106,32 +75,17 @@ function useGitActivity() {
     [grouped]
   );
 
-  const isFiltered = activeRepo !== ALL || activeType !== ALL;
-
-  const clearFilters = () => {
-    setActiveRepo(ALL);
-    setActiveType(ALL);
-  };
-
   return {
     feed,
     loading,
     error,
     projects,
     topLanguage,
-    presentTypes,
     grouped,
     totalCommits,
     visibleCommits,
-    isFiltered,
-    activeRepo,
-    activeType,
-    setActiveRepo,
-    setActiveType,
-    clearFilters,
   };
 }
 
-export { ALL as ACTIVITY_ALL };
 export type { TimeGroup };
 export default useGitActivity;
