@@ -6,9 +6,7 @@ import { cn, relativeTime } from "@/lib/utils";
 import type { GitCommit, LanguageStat } from "@/store";
 import { useGitCommitsActions, useGitCommitsState } from "@/store";
 
-import CommitRow from "../shared/commit-row";
-import CommitSkeleton from "../shared/commit-skeleton";
-import PanelShell from "../shared/panel-shell";
+import { CommitRow, CommitSkeleton, PanelShell } from "../shared";
 import ContributionHeatmap from "./contribution-heatmap";
 
 interface LanguageBarProps {

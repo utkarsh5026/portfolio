@@ -12,9 +12,7 @@ import { VscPulse, VscRepo } from "react-icons/vsc";
 import useGitActivity from "@/hooks/use-git-activity";
 import { cn, relativeTime } from "@/lib/utils";
 
-import CommitRow from "../shared/commit-row";
-import CommitSkeleton from "../shared/commit-skeleton";
-import PanelShell from "../shared/panel-shell";
+import { CommitRow, CommitSkeleton, PanelShell } from "../shared";
 
 const LANGUAGE_ICONS: Record<string, React.ReactNode> = {
   TypeScript: <SiTypescript className="w-3.5 h-3.5 text-ctp-blue" />,
