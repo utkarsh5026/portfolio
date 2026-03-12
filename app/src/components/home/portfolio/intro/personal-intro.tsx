@@ -13,6 +13,7 @@ import {
   PersonalTitle,
   ProfileButtons,
   ProfilePicture,
+  RustFocus,
 } from "./profile";
 import { TechSkills } from "./skills";
 import { Terminal } from "./terminal";
@@ -60,6 +61,10 @@ const DesktopPersonalIntro: React.FC = () => {
 
                   <Reveal effect="fade-up" delay={0.7}>
                     <MiniProjects />
+                  </Reveal>
+
+                  <Reveal effect="fade-up" delay={0.85}>
+                    <RustFocus />
                   </Reveal>
                 </div>
 
@@ -146,6 +151,11 @@ const MobilePersonalIntro: React.FC = () => {
                 {/* Mobile Terminal - Compact Version */}
                 <Reveal delay={1.1}>
                   <Terminal />
+                </Reveal>
+
+                {/* Rust Focus */}
+                <Reveal effect="fade-up" delay={1.3}>
+                  <RustFocus />
                 </Reveal>
               </div>
             </div>
