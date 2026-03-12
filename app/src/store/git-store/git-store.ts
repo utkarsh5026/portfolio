@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import type { SectionType } from "@/components/home/editor/context/explorer-context";
+import type { SectionType } from "@/components/home/editor/context/editor-store";
 
 export interface SectionGitStats {
   lastCommitHash: string;

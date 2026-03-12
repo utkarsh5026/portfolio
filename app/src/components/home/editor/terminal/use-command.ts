@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 
 import { technologies } from "@/components/base/technologies";
+import { useActiveSection } from "@/components/home/editor/context/editor-store";
 import {
   sections,
   type SectionType,
-  useEditorContext,
-} from "@/components/home/editor/context/explorer-context";
+} from "@/components/home/editor/context/editor-store";
 import { articles } from "@/components/home/portfolio/articles/articles-dump";
 import {
   databases,
@@ -14,6 +14,7 @@ import {
   tools,
 } from "@/components/home/portfolio/skills/data";
 import { experiences } from "@/components/home/portfolio/work/experienceDump";
+import { useSectionNav } from "@/hooks/use-editor-actions";
 import { useProject } from "@/hooks/use-project";
 
 export type Command = {
@@ -47,7 +48,8 @@ export type Command = {
  * @returns {Record<string, Command>} A collection of command objects that can be executed in the terminal
  */
 export const useLinuxCommands = () => {
-  const { setActiveSection, activeSection } = useEditorContext();
+  const { setActiveSection } = useSectionNav();
+  const activeSection = useActiveSection();
   const { projects } = useProject();
   return useMemo(() => {
     const cd = {

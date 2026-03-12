@@ -1,23 +1,19 @@
 import React, { useEffect, useMemo } from "react";
-import {
-  FaBriefcase,
-  FaCodeBranch,
-  FaEnvelope,
-  FaGitAlt,
-  FaGraduationCap,
-  FaHome,
-  FaLaptopCode,
-  FaNewspaper,
-  FaStar,
-  FaUser,
-} from "react-icons/fa";
+import { FaCodeBranch, FaGitAlt } from "react-icons/fa";
 import { GoFileCode } from "react-icons/go";
 import { VscGitCommit, VscMarkdown } from "react-icons/vsc";
 
 import { cn, relativeTime } from "@/lib/utils";
 import { type SectionGitStats, useGitStore } from "@/store";
 
-import { type SectionType, useEditorContext } from "./context/explorer-context";
+import {
+  editorFiles,
+  type SectionType,
+  useActiveProjectId,
+  useActiveSection,
+  useEditorStore,
+} from "./context/editor-store";
+import { getIconColor, sectionIconMap } from "./tabs/tab-style";
 
 function stalenessColor(isoDate: string): { dot: string; text: string } {
   if (!isoDate) return { dot: "bg-ctp-overlay0", text: "text-ctp-overlay0" };
@@ -40,53 +36,18 @@ interface SectionMeta {
   fileLabel: string;
 }
 
-const SECTION_META: Record<SectionType, SectionMeta> = {
-  home: {
-    icon: <FaHome className="w-3 h-3" />,
-    branchLabel: "main",
-    fileLabel: "home.tsx",
-  },
-  about: {
-    icon: <FaUser className="w-3 h-3" />,
-    branchLabel: "about",
-    fileLabel: "about.tsx",
-  },
-  skills: {
-    icon: <FaStar className="w-3 h-3" />,
-    branchLabel: "skills",
-    fileLabel: "skills.tsx",
-  },
-  projects: {
-    icon: <FaLaptopCode className="w-3 h-3" />,
-    branchLabel: "projects",
-    fileLabel: "projects.tsx",
-  },
-  experience: {
-    icon: <FaBriefcase className="w-3 h-3" />,
-    branchLabel: "experience",
-    fileLabel: "work.tsx",
-  },
-  contact: {
-    icon: <FaEnvelope className="w-3 h-3" />,
-    branchLabel: "contact",
-    fileLabel: "contact.tsx",
-  },
-  learning: {
-    icon: <FaGraduationCap className="w-3 h-3" />,
-    branchLabel: "learning",
-    fileLabel: "learning.tsx",
-  },
-  articles: {
-    icon: <FaNewspaper className="w-3 h-3" />,
-    branchLabel: "articles",
-    fileLabel: "articles.tsx",
-  },
-  resume: {
-    icon: <GoFileCode className="w-3 h-3" />,
-    branchLabel: "resume",
-    fileLabel: "resume.pdf",
-  },
-};
+const SECTION_META = Object.fromEntries(
+  editorFiles.map(({ section, name }) => [
+    section,
+    {
+      icon: (
+        <span className={getIconColor(section)}>{sectionIconMap[section]}</span>
+      ),
+      branchLabel: section === "home" ? "main" : section,
+      fileLabel: name,
+    } satisfies SectionMeta,
+  ])
+) as Record<SectionType, SectionMeta>;
 
 function truncate(str: string, maxLen: number): string {
   if (!str) return "—";
@@ -99,7 +60,9 @@ function diffLabel(added: number, deleted: number): string {
 }
 
 const StatusBarComponent: React.FC = () => {
-  const { activeSection, activeProjectId, openTabs } = useEditorContext();
+  const activeSection = useActiveSection();
+  const activeProjectId = useActiveProjectId();
+  const openTabs = useEditorStore((s) => s.openTabs);
   const { fetchGitStats, getSectionStats, loading } = useGitStore();
 
   useEffect(() => {
@@ -173,7 +136,6 @@ const StatusBarComponent: React.FC = () => {
         </div>
       </div>
 
-      {/* ── Right: stats + status ──────────────────────────────────────── */}
       <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
         {/* Commit count */}
         {!loading && commitCount !== null && (
@@ -215,11 +177,6 @@ const StatusBarComponent: React.FC = () => {
             {loading ? "…" : (timeAgo ?? "Ready")}
           </span>
         </div>
-
-        {/* UTF-8 encoding — hidden on mobile */}
-        <span className="hidden md:inline text-ctp-subtext1 flex-shrink-0">
-          UTF-8
-        </span>
       </div>
     </div>
   );

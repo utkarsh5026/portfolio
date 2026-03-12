@@ -1,5 +1,6 @@
 import { lazy, Suspense, useRef } from "react";
 
+import { useSectionNav } from "@/hooks/use-editor-actions";
 import useMobile from "@/hooks/use-mobile";
 import { useSwipe } from "@/hooks/use-swipe";
 import useProjectStore from "@/store/projects/projects-store";
@@ -7,9 +8,10 @@ import useProjectStore from "@/store/projects/projects-store";
 import styles from "./code-content.module.css";
 import {
   sections as sectionList,
-  type SectionType,
-  useEditorContext,
-} from "./context/explorer-context";
+  SectionType,
+  useActiveProjectId,
+  useActiveSection,
+} from "./context/editor-store";
 import { SectionLoadingScreen } from "./section/section-loading";
 
 const ProjectFileFallback: React.FC<{ projectId: string }> = ({
@@ -63,8 +65,9 @@ interface CodeContentProps {
 }
 
 const CodeContent: React.FC<CodeContentProps> = ({ sections }) => {
-  const { activeSection, activeProjectId, setActiveSection } =
-    useEditorContext();
+  const activeSection = useActiveSection();
+  const activeProjectId = useActiveProjectId();
+  const { setActiveSection } = useSectionNav();
   const contentRef = useRef<HTMLDivElement>(null);
   const { isMobile } = useMobile();
 

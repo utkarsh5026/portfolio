@@ -61,6 +61,37 @@ export const getSectionFromPath = (pathname: string): SectionType => {
   return sections.includes(s as SectionType) ? (s as SectionType) : "home";
 };
 
+const makeSectionTab = (section: SectionType): SectionTab => ({
+  type: "section",
+  id: section,
+  fileName: section === "resume" ? "resume.pdf" : `${section}.ts`,
+});
+
+const makeHomeTab = (): SectionTab => makeSectionTab("home");
+
+const addTabIfMissing = (tabs: Tab[], tab: Tab): Tab[] =>
+  tabs.some((t) => t.id === tab.id) ? tabs : [...tabs, tab];
+
+/**
+ * After slicing `openTabs` down to `next`, picks the new activeTabId and
+ * navigates if the previously-active tab was removed.
+ */
+const resolveActiveAfterRemoval = (
+  next: Tab[],
+  currentActiveId: string,
+  fallbackTab: Tab,
+  navigate: NavigateFunction
+): { openTabs: Tab[]; activeTabId: string } => {
+  const activeStillOpen = next.some((t) => t.id === currentActiveId);
+  if (!activeStillOpen && fallbackTab.type === "section") {
+    navigate(getSectionPath(fallbackTab.id), { replace: false });
+  }
+  return {
+    openTabs: next,
+    activeTabId: activeStillOpen ? currentActiveId : fallbackTab.id,
+  };
+};
+
 export const editorFiles: { name: string; section: SectionType }[] = [
   { name: "home.ts", section: "home" },
   { name: "about.ts", section: "about" },
@@ -130,13 +161,7 @@ const initialSection: SectionType =
 export const useEditorStore = create<EditorStore>()(
   persist(
     (set, get) => ({
-      openTabs: [
-        {
-          type: "section",
-          id: initialSection,
-          fileName: `${initialSection}.ts`,
-        },
-      ],
+      openTabs: [makeSectionTab(initialSection)],
       activeTabId: initialSection,
       mobileMenuOpen: false,
       explorerOpen: true,
@@ -147,9 +172,7 @@ export const useEditorStore = create<EditorStore>()(
 
       openTab: (tab, navigate, currentPath) => {
         set((state) => ({
-          openTabs: state.openTabs.some((t) => t.id === tab.id)
-            ? state.openTabs
-            : [...state.openTabs, tab],
+          openTabs: addTabIfMissing(state.openTabs, tab),
           activeTabId: tab.id,
         }));
         if (tab.type === "section") {
@@ -195,26 +218,13 @@ export const useEditorStore = create<EditorStore>()(
 
         const section = getSectionFromPath(pathname);
         set((state) => ({
-          openTabs: state.openTabs.some((t) => t.id === section)
-            ? state.openTabs
-            : [
-                ...state.openTabs,
-                {
-                  type: "section" as const,
-                  id: section,
-                  fileName: `${section}.ts`,
-                },
-              ],
+          openTabs: addTabIfMissing(state.openTabs, makeSectionTab(section)),
           activeTabId: section,
         }));
       },
 
       setActiveSection: (section, navigate, currentPath) => {
-        get().openTab(
-          { type: "section", id: section, fileName: `${section}.ts` },
-          navigate,
-          currentPath
-        );
+        get().openTab(makeSectionTab(section), navigate, currentPath);
       },
 
       openProject: (project, navigate, currentPath) => {
@@ -232,10 +242,7 @@ export const useEditorStore = create<EditorStore>()(
 
       closeAllTabs: (navigate) => {
         navigate("/", { replace: false });
-        set({
-          openTabs: [{ type: "section", id: "home", fileName: "home.ts" }],
-          activeTabId: "home",
-        });
+        set({ openTabs: [makeHomeTab()], activeTabId: "home" });
       },
 
       closeTabsToLeft: (id, navigate) => {
@@ -243,16 +250,12 @@ export const useEditorStore = create<EditorStore>()(
           const idx = state.openTabs.findIndex((t) => t.id === id);
           if (idx <= 0) return state;
           const next = state.openTabs.slice(idx);
-
-          const activeStillOpen = next.some((t) => t.id === state.activeTabId);
-          let nextActiveId = state.activeTabId;
-          if (!activeStillOpen) {
-            nextActiveId = next[0].id;
-            const pivotTab = next[0];
-            if (pivotTab.type === "section")
-              navigate(getSectionPath(pivotTab.id), { replace: false });
-          }
-          return { openTabs: next, activeTabId: nextActiveId };
+          return resolveActiveAfterRemoval(
+            next,
+            state.activeTabId,
+            next[0],
+            navigate
+          );
         });
       },
 
@@ -260,17 +263,13 @@ export const useEditorStore = create<EditorStore>()(
         set((state) => {
           const idx = state.openTabs.findIndex((t) => t.id === id);
           if (idx === -1 || idx === state.openTabs.length - 1) return state;
-
           const next = state.openTabs.slice(0, idx + 1);
-          const activeStillOpen = next.some((t) => t.id === state.activeTabId);
-          let nextActiveId = state.activeTabId;
-          if (!activeStillOpen) {
-            nextActiveId = next[next.length - 1].id;
-            const lastTab = next[next.length - 1];
-            if (lastTab.type === "section")
-              navigate(getSectionPath(lastTab.id), { replace: false });
-          }
-          return { openTabs: next, activeTabId: nextActiveId };
+          return resolveActiveAfterRemoval(
+            next,
+            state.activeTabId,
+            next[next.length - 1],
+            navigate
+          );
         });
       },
 
@@ -278,23 +277,13 @@ export const useEditorStore = create<EditorStore>()(
         set((state) => {
           const next = state.openTabs.filter((t) => t.type !== "project");
           if (next.length === state.openTabs.length) return state;
-
-          const activeStillOpen = next.some((t) => t.id === state.activeTabId);
-          let nextActiveId = state.activeTabId;
-          if (!activeStillOpen) {
-            nextActiveId = next[0]?.id ?? "home";
-            const fallback = next[0];
-            if (fallback?.type === "section")
-              navigate(getSectionPath(fallback.id), { replace: false });
-          }
-
-          return {
-            openTabs:
-              next.length > 0
-                ? next
-                : [{ type: "section", id: "home", fileName: "home.ts" }],
-            activeTabId: nextActiveId,
-          };
+          const safeNext = next.length > 0 ? next : [makeHomeTab()];
+          return resolveActiveAfterRemoval(
+            safeNext,
+            state.activeTabId,
+            safeNext[0],
+            navigate
+          );
         });
       },
 
@@ -315,17 +304,12 @@ export const useEditorStore = create<EditorStore>()(
         if (!match) return;
         const fileName = getProjectFileName(match.name);
         set((state) => ({
-          openTabs: state.openTabs.some((t) => t.id === match.name)
-            ? state.openTabs
-            : [
-                ...state.openTabs,
-                {
-                  type: "project" as const,
-                  id: match.name,
-                  fileName,
-                  project: match,
-                },
-              ],
+          openTabs: addTabIfMissing(state.openTabs, {
+            type: "project",
+            id: match.name,
+            fileName,
+            project: match,
+          }),
           activeTabId: match.name,
           pendingProjectSlug: null,
         }));
@@ -372,20 +356,28 @@ export const useEditorStore = create<EditorStore>()(
   )
 );
 
-export const selectActiveTab = (state: EditorStore): Tab | null =>
-  state.openTabs.find((t) => t.id === state.activeTabId) ?? null;
+export const useActiveTab = () =>
+  useEditorStore(
+    ({ openTabs, activeTabId }) =>
+      openTabs.find((t) => t.id === activeTabId) ?? null
+  );
 
-export const selectActiveSection = (state: EditorStore): SectionType => {
-  const activeTab = selectActiveTab(state);
-  if (activeTab?.type === "section") return activeTab.id;
-  for (let i = state.openTabs.length - 1; i >= 0; i--) {
-    if (state.openTabs[i].type === "section")
-      return (state.openTabs[i] as SectionTab).id;
-  }
-  return "home";
-};
+export const useActiveSection = () =>
+  useEditorStore(({ openTabs, activeTabId }) => {
+    const activeTab = openTabs.find((t) => t.id === activeTabId);
 
-export const selectActiveProjectId = (state: EditorStore): string | null => {
-  const activeTab = selectActiveTab(state);
-  return activeTab?.type === "project" ? activeTab.id : null;
-};
+    if (activeTab?.type === "section") return activeTab.id;
+    for (let i = openTabs.length - 1; i >= 0; i--) {
+      if (openTabs[i].type === "section") return (openTabs[i] as SectionTab).id;
+    }
+
+    return "home";
+  });
+
+export const useActiveProjectId = () =>
+  useEditorStore(({ openTabs, activeTabId }) => {
+    const activeTab = openTabs.find((t) => t.id === activeTabId);
+    if (activeTab === undefined) return null;
+
+    return activeTab?.type === "project" ? activeTab.id : null;
+  });

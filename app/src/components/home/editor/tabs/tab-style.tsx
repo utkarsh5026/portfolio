@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 import { VscFilePdf } from "react-icons/vsc";
 
-import { SectionType } from "../context/explorer-context";
+import type { SectionType } from "../context/editor-store";
 
 export const sectionIconMap: Record<SectionType, React.ReactNode> = {
   home: <FaHome />,

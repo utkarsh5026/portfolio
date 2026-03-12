@@ -8,13 +8,20 @@ import {
 } from "react-icons/vsc";
 
 import Logo from "@/components/home/appbar/Logo";
+import { type SectionType } from "@/components/home/editor/context/editor-store";
 import { Tree } from "@/components/ui/tree";
+import { useSectionNav } from "@/hooks/use-editor-actions";
 import { cn } from "@/lib/utils";
 import useProjectStore from "@/store/projects/projects-store";
 import type { Project } from "@/types";
 import { getProjectFileName } from "@/utils/project-slug";
 
-import { SectionType, useEditorContext } from "../context/explorer-context";
+import {
+  editorFiles,
+  useActiveProjectId,
+  useActiveSection,
+  useEditorStore,
+} from "../context/editor-store";
 import OutlinePanel from "../outline/outline-panel";
 
 const folderIcon = <VscFolder className="w-[14px] h-[14px]" />;
@@ -29,14 +36,11 @@ function fileIcon(name: string) {
 }
 
 const Explorer: React.FC = () => {
-  const {
-    activeSection,
-    setActiveSection,
-    files,
-    mobileMenuOpen,
-    activeProjectId,
-    openProject,
-  } = useEditorContext();
+  const activeSection = useActiveSection();
+  const activeProjectId = useActiveProjectId();
+  const mobileMenuOpen = useEditorStore((s) => s.mobileMenuOpen);
+  const { setActiveSection, openProject } = useSectionNav();
+  const files = editorFiles;
 
   const { projects, fetchProjects, isLoading } = useProjectStore();
 
@@ -130,7 +134,7 @@ const Explorer: React.FC = () => {
       </div>
 
       {/* Outline panel */}
-      <div className="mt-2 border-t border-ctp-surface1/60 pt-2 px-0">
+      <div className="mt-2 border-t border-ctp-surface1/60 pt-2 px-0 font-source">
         <OutlinePanel />
       </div>
     </div>

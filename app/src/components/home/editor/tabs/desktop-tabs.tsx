@@ -1,25 +1,26 @@
 import React, { useEffect, useRef } from "react";
 import { VscClose, VscMarkdown } from "react-icons/vsc";
 
+import { useTabActions } from "@/hooks/use-editor-actions";
 import { cn } from "@/lib/utils";
 
-import type { SectionTab, Tab } from "../context/explorer-context";
-import { useEditorContext } from "../context/explorer-context";
+import type { SectionTab, Tab } from "../context/editor-store";
+import { useEditorStore } from "../context/editor-store";
 import styles from "../editor-ui.module.css";
 import { TabActions } from "./tab-actions";
 import { getActiveTabColor, getIconColor, sectionIconMap } from "./tab-style";
 
 const DesktopTabs: React.FC = () => {
+  const openTabs = useEditorStore((s) => s.openTabs);
+  const activeTabId = useEditorStore((s) => s.activeTabId);
   const {
-    openTabs,
-    activeTabId,
     openTab,
     closeTab,
     closeAllTabs,
     closeTabsToLeft,
     closeTabsToRight,
     closeAllProjects,
-  } = useEditorContext();
+  } = useTabActions();
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const activeIdx = openTabs.findIndex((t) => t.id === activeTabId);

@@ -10,23 +10,21 @@ import {
 } from "react-icons/fa";
 import { VscPulse, VscSourceControl } from "react-icons/vsc";
 
+import { useEditorStore } from "@/components/home/editor/context/editor-store";
 import ActivityPanel from "@/components/home/editor/panels/activity/activity-panel";
 import GhostButton from "@/components/ui/ghost-button";
+import { useEditorToggles, useSectionNav } from "@/hooks/use-editor-actions";
 import { cn } from "@/lib/utils";
 
-import { useEditorContext } from "../context/explorer-context";
 import GitCommitsPanel from "../panels/git-commits/git-commits-panel";
 import SettingsPanel from "./settings-panel";
 
 const SideBar: React.FC = () => {
-  const {
-    mobileMenuOpen,
-    setActiveSection,
-    explorerOpen,
-    setExplorerOpen,
-    terminalOpen,
-    setTerminalOpen,
-  } = useEditorContext();
+  const mobileMenuOpen = useEditorStore((s) => s.mobileMenuOpen);
+  const explorerOpen = useEditorStore((s) => s.explorerOpen);
+  const terminalOpen = useEditorStore((s) => s.terminalOpen);
+  const { setExplorerOpen, setTerminalOpen } = useEditorToggles();
+  const { setActiveSection } = useSectionNav();
 
   const [gitPanelOpen, setGitPanelOpen] = useState(false);
   const [activityOpen, setActivityOpen] = useState(false);

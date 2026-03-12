@@ -1,11 +1,10 @@
 import React, { useEffect, useMemo } from "react";
 
-import {
-  type SectionType,
-  useEditorContext,
-} from "@/components/home/editor/context/explorer-context";
+import { type SectionType } from "@/components/home/editor/context/editor-store";
+import { useSectionNav } from "@/hooks/use-editor-actions";
 import useOutlineStore from "@/store/outline/outline-store";
 
+import { useActiveSection } from "../context/editor-store";
 import DesktopTabs from "./desktop-tabs";
 import MobileEditorDropdown from "./mobile-editor-dropdown";
 
@@ -21,7 +20,8 @@ interface EditorTabsProps {
  */
 const EditorTabs: React.FC<EditorTabsProps> = ({ sections }) => {
   const setOutlineActiveSection = useOutlineStore((s) => s.setActiveSection);
-  const { activeSection, setActiveSection } = useEditorContext();
+  const activeSection = useActiveSection();
+  const { setActiveSection } = useSectionNav();
 
   const sectionKeys = useMemo(
     () => Object.keys(sections) as SectionType[],
