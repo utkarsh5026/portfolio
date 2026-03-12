@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
+import IconBox from "@/components/ui/icon-box";
 import { useGitComponent } from "@/hooks/use-git-component";
 import { TechnologyLearning } from "@/types";
 
@@ -49,11 +50,13 @@ const LearningCard: React.FC<LearningCardProps> = ({
       >
         <div className="h-full bg-gradient-to-b from-ctp-mantle to-ctp-crust backdrop-blur-sm rounded-2xl p-6 border-none hover:border-ctp-surface2/80 transition-all duration-300 hover:bg-ctp-surface0/80">
           <div className="flex items-start justify-between mb-4">
-            <div
-              className={`p-3 rounded-xl bg-ctp-${categoryColor}/10 text-ctp-${categoryColor} group-hover:scale-105 transition-transform duration-300`}
+            <IconBox
+              color={categoryColor}
+              size="md"
+              className="group-hover:scale-105 transition-transform duration-300"
             >
               {tech.icon}
-            </div>
+            </IconBox>
 
             <div
               className={`opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${styles.arrowHover}`}

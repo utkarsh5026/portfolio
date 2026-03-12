@@ -12,6 +12,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import IconBox from "@/components/ui/icon-box";
 import { useGitComponent } from "@/hooks/use-git-component";
 import useMobile from "@/hooks/use-mobile";
 
@@ -36,9 +37,13 @@ const TechnologiesContent: React.FC<{ selectedExp: number }> = ({
       <OutlineNode label="Technologies Used">
         <div className="pt-4 sm:pt-6">
           <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-lg bg-ctp-peach/20 flex items-center justify-center flex-shrink-0">
-              <FaCode className="w-4 h-4 sm:w-5 sm:h-5 text-ctp-peach" />
-            </div>
+            <IconBox
+              color="peach"
+              size="sm"
+              className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-ctp-peach/20 flex items-center justify-center"
+            >
+              <FaCode className="w-4 h-4 sm:w-5 sm:h-5" />
+            </IconBox>
             <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-ctp-text">
               Tech Stack & Tools
             </h3>

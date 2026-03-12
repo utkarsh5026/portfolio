@@ -11,6 +11,7 @@ import {
 import Reveal from "@/components/animations/reveal/Reveal";
 import { OutlineNode } from "@/components/home/editor/outline";
 import { Card, CardContent } from "@/components/ui/card";
+import IconBox from "@/components/ui/icon-box";
 import { useGitComponent } from "@/hooks/use-git-component";
 
 import { experiences } from "./experienceDump";
@@ -37,9 +38,13 @@ const Achievements: React.FC<AchievementsProps> = ({ selectedExp }) => {
       <OutlineNode label="Key Achievements">
         <div className="space-y-4 sm:space-y-6">
           <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-lg bg-ctp-green/20 flex items-center justify-center flex-shrink-0">
-              <FaRocket className="w-3 h-3 sm:w-4 sm:h-4 text-ctp-green" />
-            </div>
+            <IconBox
+              color="green"
+              size="sm"
+              className="bg-ctp-green/20 flex items-center justify-center"
+            >
+              <FaRocket className="w-3 h-3 sm:w-4 sm:h-4" />
+            </IconBox>
             <h3 className="text-base sm:text-lg md:text-xl font-bold text-ctp-text">
               Achievements & Impact
             </h3>
