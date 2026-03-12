@@ -9,6 +9,7 @@
     "gen:git-stats": "bun ../scripts/generate-git-stats.js",
     "gen:git-commits": "bun ../scripts/generate-git-commits.js",
     "gen:git-meta": "bun ../scripts/generate-git-meta.js",
+    "gen:activity": "bun ../scripts/generate-activity-feed.js",
     "dev": "vite",
     "watch": "vite --port 3000 --strictPort",
     "watch:prod": "bun ../scripts/watch-prod.js",

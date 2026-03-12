@@ -1,15 +1,63 @@
 {
-  "generatedAt": "2026-03-11T15:00:08.997Z",
+  "generatedAt": "2026-03-12T00:28:35.730Z",
   "commits": [
     {
-      "hash": "70087f8b15ee1dfdf59c9e71e574f74fb0589c0f",
-      "shortHash": "70087f8",
+      "hash": "4b7ff6f09562735d180ce3e61c97ddf5086b3561",
+      "shortHash": "4b7ff6f",
+      "message": "feat: add GitHub activity feed generation script and CI integration",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-12T05:58:11+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 280,
+      "deletions": 0,
+      "filesChanged": 5
+    },
+    {
+      "hash": "3075a9642099c78cb6c61917f64cc17b25a3eebb",
+      "shortHash": "3075a96",
+      "message": "Merge pull request #91 from utkarsh5026/feat/snappy-ui",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T20:32:59+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 612,
+      "deletions": 429,
+      "filesChanged": 26
+    },
+    {
+      "hash": "f76d3d4d693580174e79959f672859b630b8c4bc",
+      "shortHash": "f76d3d4",
+      "message": "Merge branch 'feat/snappy-ui' of https://github.com/utkarsh5026/portfolio into feat/snappy-ui",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T20:31:16+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 327,
+      "deletions": 4,
+      "filesChanged": 11
+    },
+    {
+      "hash": "944248599f7b0450749ef46de849a5d2ea69563e",
+      "shortHash": "9442485",
       "message": "chore: remove stale eslint-disable directive in outline-store",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-11T20:29:59+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 0,
+      "insertions": 24,
+      "deletions": 25,
+      "filesChanged": 4
+    },
+    {
+      "hash": "deb4eaf928e7da563e5f6f6cb58569c2da17d06e",
+      "shortHash": "deb4eaf",
+      "message": "Merge pull request #80 from utkarsh5026/dependabot/github_actions/browser-actions/setup-chrome-2",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T18:19:19+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 1,
       "deletions": 1,
       "filesChanged": 1
     },
@@ -24,6 +72,18 @@
       "insertions": 47,
       "deletions": 127,
       "filesChanged": 5
+    },
+    {
+      "hash": "7e705a3f2de7bef77667611a26c9c43019e6a2d4",
+      "shortHash": "7e705a3",
+      "message": "style: remove SketchBorder wrapper from TechSkills in personal intro",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-11T18:10:16+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 3,
+      "deletions": 70,
+      "filesChanged": 2
     },
     {
       "hash": "524a806903f04c619dd4545b336b0f766fec4dde",
@@ -122,6 +182,18 @@
       "filesChanged": 5
     },
     {
+      "hash": "0df734b6a89597c1d3c3b8811e2249ae9f1ff55c",
+      "shortHash": "0df734b",
+      "message": "ci: bump browser-actions/setup-chrome from 1 to 2",
+      "author": "dependabot[bot]",
+      "email": "49699333+dependabot[bot]@users.noreply.github.com",
+      "date": "2026-03-09T09:39:31Z",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/49699333?v=4",
+      "insertions": 1,
+      "deletions": 1,
+      "filesChanged": 1
+    },
+    {
       "hash": "86a05f6f5773535bfab79cf73fd73a0082385dbe",
       "shortHash": "86a05f6",
       "message": "docs: replace placeholder images with actual screenshots for genshin-companion project",
@@ -168,83 +240,12 @@
       "insertions": 104,
       "deletions": 79,
       "filesChanged": 4
-    },
-    {
-      "hash": "f43bae244c577e8377713a2f1c3fff958cc73cce",
-      "shortHash": "f43bae2",
-      "message": "feat: add desktop hint banner to mobile editor dropdown",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T12:55:44+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 31,
-      "deletions": 23,
-      "filesChanged": 4
-    },
-    {
-      "hash": "1f166ff43e00ec68a7fd3de15e226235c94d94db",
-      "shortHash": "1f166ff",
-      "message": "fix: disable git blame on mobile to prevent layout issues",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T12:51:41+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 24,
-      "deletions": 22,
-      "filesChanged": 4
-    },
-    {
-      "hash": "11b9b8f5212b9339975b429dd3e563e68f6a2e86",
-      "shortHash": "11b9b8f",
-      "message": "fix: prevent git blame row from overflowing on mobile in SectionHeader",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T12:42:22+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 46,
-      "deletions": 42,
-      "filesChanged": 4
-    },
-    {
-      "hash": "c9fc95414ea1270d0bd187b6d3691ac2ebdc32d8",
-      "shortHash": "c9fc954",
-      "message": "feat: wrap resume sections with OutlineNode for VS Code outline integration",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T12:20:56+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 359,
-      "deletions": 312,
-      "filesChanged": 9
-    },
-    {
-      "hash": "ada27062c39a010dc1f3a1e94989b5970f86de5d",
-      "shortHash": "ada2706",
-      "message": "chore: add resume section to git stats tracking and clean up comments",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T12:08:22+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 52,
-      "deletions": 42,
-      "filesChanged": 4
-    },
-    {
-      "hash": "4fb9e9237fcbb6453c2331784bee5efafb7538ab",
-      "shortHash": "4fb9e92",
-      "message": "feat: add useGitComponent tracking to all resume section components",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T11:51:08+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 142,
-      "deletions": 26,
-      "filesChanged": 10
     }
   ],
   "commitsByDate": {
-    "2026-03-11": 10,
-    "2026-03-09": 2,
+    "2026-03-12": 1,
+    "2026-03-11": 14,
+    "2026-03-09": 3,
     "2026-03-08": 34,
     "2026-03-07": 41,
     "2026-03-06": 4,
@@ -272,7 +273,7 @@
     },
     {
       "language": "Other",
-      "count": 51,
+      "count": 52,
       "color": "#6c7086"
     },
     {
@@ -292,7 +293,7 @@
     },
     {
       "language": "JavaScript",
-      "count": 6,
+      "count": 7,
       "color": "#a6e3a1"
     },
     {
