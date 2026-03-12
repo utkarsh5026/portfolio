@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import useMobile from "@/hooks/use-mobile";
+import { addListeners } from "@/lib/utils";
 import useGitMetaStore, {
   type AuthorMeta,
   type ComponentMeta,
@@ -85,6 +86,8 @@ const GitBlameManager: React.FC = () => {
       const target = e.target as Element | null;
       if (!target) return;
 
+      if (target.closest("[data-git-blame-tooltip]")) return;
+
       const annotated = target.closest(
         "[data-git-section], [data-git-component]"
       );
@@ -94,7 +97,6 @@ const GitBlameManager: React.FC = () => {
         return;
       }
 
-      // Same target — just update mouse position, don't restart timer
       if (annotated === currentTarget.current) {
         mousePos.current = { x: e.clientX, y: e.clientY };
         setTooltip((prev) =>
@@ -129,14 +131,14 @@ const GitBlameManager: React.FC = () => {
 
     const onScroll = () => hide();
 
-    document.addEventListener("mouseover", onMouseOver);
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("scroll", onScroll, true);
+    const cleanup = addListeners(document, {
+      mouseover: onMouseOver,
+      mousemove: onMouseMove,
+      scroll: onScroll,
+    });
 
     return () => {
-      document.removeEventListener("mouseover", onMouseOver);
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("scroll", onScroll, true);
+      cleanup();
       clearTimer();
     };
   }, [hide, resolveMeta, tooltip.visible, clearTimer, getAuthor]);
