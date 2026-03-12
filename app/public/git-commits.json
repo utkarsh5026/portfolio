@@ -1,17 +1,29 @@
 {
-  "generatedAt": "2026-03-12T00:28:35.730Z",
+  "generatedAt": "2026-03-12T00:30:29.304Z",
   "commits": [
     {
-      "hash": "4b7ff6f09562735d180ce3e61c97ddf5086b3561",
-      "shortHash": "4b7ff6f",
+      "hash": "ea9f3d4a8168757f4f264c0e91ed9eb974d69eb9",
+      "shortHash": "ea9f3d4",
+      "message": "build: add gen-activity make target for activity feed generation",
+      "author": "Utkarsh Priyadarshi",
+      "email": "utkarshpriyadarshi5026@gmail.com",
+      "date": "2026-03-12T06:00:10+05:30",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
+      "insertions": 10,
+      "deletions": 1,
+      "filesChanged": 2
+    },
+    {
+      "hash": "894a47068608a7bc58edbf4ee4eede903d8af145",
+      "shortHash": "894a470",
       "message": "feat: add GitHub activity feed generation script and CI integration",
       "author": "Utkarsh Priyadarshi",
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-12T05:58:11+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 280,
-      "deletions": 0,
-      "filesChanged": 5
+      "insertions": 363,
+      "deletions": 82,
+      "filesChanged": 8
     },
     {
       "hash": "3075a9642099c78cb6c61917f64cc17b25a3eebb",
@@ -33,9 +45,9 @@
       "email": "utkarshpriyadarshi5026@gmail.com",
       "date": "2026-03-11T20:31:16+05:30",
       "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 327,
-      "deletions": 4,
-      "filesChanged": 11
+      "insertions": 409,
+      "deletions": 85,
+      "filesChanged": 13
     },
     {
       "hash": "944248599f7b0450749ef46de849a5d2ea69563e",
@@ -228,22 +240,10 @@
       "insertions": 902,
       "deletions": 209,
       "filesChanged": 22
-    },
-    {
-      "hash": "f8ed1a16c8444d740ccd16892bee66f52e608c6e",
-      "shortHash": "f8ed1a1",
-      "message": "docs: update README with git blame and resume feature details",
-      "author": "Utkarsh Priyadarshi",
-      "email": "utkarshpriyadarshi5026@gmail.com",
-      "date": "2026-03-08T13:46:02+05:30",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/73283695?v=4",
-      "insertions": 104,
-      "deletions": 79,
-      "filesChanged": 4
     }
   ],
   "commitsByDate": {
-    "2026-03-12": 1,
+    "2026-03-12": 2,
     "2026-03-11": 14,
     "2026-03-09": 3,
     "2026-03-08": 34,
