@@ -5,6 +5,7 @@ import Reveal from "@/components/animations/reveal/Reveal";
 import { OutlineNode } from "@/components/home/editor/outline";
 import Section from "@/components/home/editor/section/portfolio-section";
 import { Button } from "@/components/ui/button";
+import QuoteBlock from "@/components/ui/quote-block";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useSectionNav } from "@/hooks/use-editor-actions";
 import { useGitComponent } from "@/hooks/use-git-component";
@@ -107,6 +108,11 @@ const Projects: React.FC = () => {
           <ProjectThemeProvider>
             <div ref={projectsRef} className="relative max-w-6xl mx-auto px-4 ">
               <Reveal effect="fade-up" duration={0.7} delay={0.1}>
+                <QuoteBlock
+                  quote="What I cannot create, I do not understand."
+                  attribution="— Richard Feynman"
+                  className="mb-8"
+                />
                 <Tabs defaultValue="featured" className="w-full">
                   <div className="w-full flex justify-end">
                     <TabsList className="mb-8 bg-ctp-surface0/30 backdrop-blur-md border border-ctp-surface0 p-1 rounded-lg">

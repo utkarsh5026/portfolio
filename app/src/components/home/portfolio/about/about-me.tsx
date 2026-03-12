@@ -18,6 +18,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import QuoteBlock from "@/components/ui/quote-block";
 import useMobile from "@/hooks/use-mobile";
 import type { AppColor } from "@/lib/ctp-colors";
 
@@ -251,6 +252,13 @@ const AboutMe: React.FC = () => {
     >
       <div className="w-full min-h-0 overflow-hidden">
         <div className="w-full max-w-4xl mx-auto px-4 py-6">
+          <Reveal effect="fade-up" duration={0.7} delay={0.1}>
+            <QuoteBlock
+              quote="The more I learn, the more I realize how much I don't know."
+              attribution="— Albert Einstein"
+              className="mb-8"
+            />
+          </Reveal>
           <div className="space-y-4 relative">
             {sections.map((section, index) => (
               <OutlineNode

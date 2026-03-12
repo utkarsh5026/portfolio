@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Reveal from "@/components/animations/reveal/Reveal";
 import { OutlineNode } from "@/components/home/editor/outline";
 import Section from "@/components/home/editor/section/portfolio-section";
+import QuoteBlock from "@/components/ui/quote-block";
 import { useGitComponent } from "@/hooks/use-git-component";
 import type { TechnologyLearning } from "@/types";
 
@@ -63,6 +64,13 @@ const CurrentLearning: React.FC = () => {
       showHeader={true}
     >
       <div ref={ref} className="w-full max-w-6xl mx-auto px-4 py-12">
+        <Reveal effect="fade-up" duration={0.7} delay={0.1}>
+          <QuoteBlock
+            quote="Any fool can write code that a computer can understand. Good programmers write code that humans can understand."
+            attribution="— Martin Fowler"
+            className="mb-8"
+          />
+        </Reveal>
         <Reveal
           effect="blur-in"
           duration={0.6}
