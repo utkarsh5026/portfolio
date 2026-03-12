@@ -3,9 +3,9 @@ import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { HiOutlineBookOpen, HiOutlineCode } from "react-icons/hi";
 
 import { technologies } from "@/components/base/technologies";
-import { useEditorContext } from "@/components/home/editor/context/explorer-context";
 import { MarkdownRender } from "@/components/home/editor/markdown-renderer";
 import { Heading, Text } from "@/components/ui/text";
+import { useSectionNav } from "@/hooks/use-editor-actions";
 import { useGitComponent } from "@/hooks/use-git-component";
 import { useMarkdownOutlineBridge } from "@/hooks/use-markdown-outline-bridge";
 import useMobile from "@/hooks/use-mobile";
@@ -176,7 +176,6 @@ const OverviewTab: React.FC<{
   </div>
 );
 
-// ─── Tab bar ─────────────────────────────────────────────────────
 type Tab = "overview" | "deepdive";
 
 const TabBar: React.FC<{
@@ -217,7 +216,6 @@ const TabBar: React.FC<{
   );
 };
 
-// ─── Types ───────────────────────────────────────────────────────
 type LoadState = "loading" | "loaded" | "error";
 
 interface ProjectMarkdownProps {
@@ -230,7 +228,7 @@ const ProjectMarkdown: React.FC<ProjectMarkdownProps> = ({ projectId }) => {
     state.projects.find((p) => p.name === projectId)
   );
   const allProjects = useProjectStore((state) => state.projects);
-  const { openProject } = useEditorContext();
+  const { openProject } = useSectionNav();
   const { isMobile } = useMobile();
 
   const currentProjectIndex = allProjects.findIndex(

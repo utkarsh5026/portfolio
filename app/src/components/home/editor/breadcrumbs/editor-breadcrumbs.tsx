@@ -20,6 +20,7 @@ import {
 } from "react-icons/vsc";
 
 import { Tree } from "@/components/ui/tree";
+import { useSectionNav } from "@/hooks/use-editor-actions";
 import { ctpColorClass } from "@/lib/ctp-colors";
 import { cn } from "@/lib/utils";
 import type { HeadingNode } from "@/store";
@@ -30,15 +31,17 @@ import useOutlineStore, {
 import useProjectStore from "@/store/projects/projects-store";
 
 import {
-  editorFiles,
-  getProjectFileName,
-  type SectionType,
+  useActiveProjectId,
+  useActiveSection,
+  useEditorStore,
 } from "../context/editor-store";
 import {
+  editorFiles,
+  getProjectFileName,
   type SectionTab,
+  type SectionType,
   type Tab,
-  useEditorContext,
-} from "../context/explorer-context";
+} from "../context/editor-store";
 import styles from "../editor-ui.module.css";
 import { getIconColor, sectionIconMap } from "../tabs/tab-style";
 import TreeDropdown from "./tree-dropdown";
@@ -411,14 +414,11 @@ const labelToSlug = (label: string): string =>
     .replace(/\s+/g, "-");
 
 export const EditorBreadcrumbs: React.FC = () => {
-  const {
-    activeTabId,
-    openTabs,
-    setActiveSection,
-    openProject,
-    activeSection,
-    activeProjectId,
-  } = useEditorContext();
+  const activeTabId = useEditorStore((s) => s.activeTabId);
+  const openTabs = useEditorStore((s) => s.openTabs);
+  const activeSection = useActiveSection();
+  const activeProjectId = useActiveProjectId();
+  const { setActiveSection, openProject } = useSectionNav();
   const projects = useProjectStore((s) => s.projects);
   const outlineItemsMap = useOutlineStore((s) => s.items);
   const activeOutlineId = useOutlineStore((s) => s.activeHighlightId);

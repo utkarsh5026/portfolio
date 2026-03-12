@@ -1,16 +1,30 @@
 import { useEffect } from "react";
+import { useShallow } from "zustand/react/shallow";
 
 import { useProjectStore } from "@/store";
 
 export const useProject = () => {
-  const projects = useProjectStore((state) => state.projects);
-  const featuredProject = useProjectStore((state) => state.featuredProject);
-  const otherProjects = useProjectStore((state) => state.otherProjects);
-  const isLoading = useProjectStore((state) => state.isLoading);
-  const error = useProjectStore((state) => state.error);
-  const selectedProject = useProjectStore((state) => state.selectedProject);
-  const fetchProjects = useProjectStore((state) => state.fetchProjects);
-  const selectProject = useProjectStore((state) => state.selectProject);
+  const {
+    projects,
+    featuredProject,
+    otherProjects,
+    isLoading,
+    error,
+    selectedProject,
+    fetchProjects,
+    selectProject,
+  } = useProjectStore(
+    useShallow((state) => ({
+      projects: state.projects,
+      featuredProject: state.featuredProject,
+      otherProjects: state.otherProjects,
+      isLoading: state.isLoading,
+      error: state.error,
+      selectedProject: state.selectedProject,
+      fetchProjects: state.fetchProjects,
+      selectProject: state.selectProject,
+    }))
+  );
 
   useEffect(() => {
     fetchProjects();

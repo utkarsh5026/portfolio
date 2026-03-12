@@ -6,13 +6,13 @@ import {
   HiOutlineMail,
 } from "react-icons/hi";
 
-import { useEditorContext } from "@/components/home/editor";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useSectionNav } from "@/hooks/use-editor-actions";
 import { useGitComponent } from "@/hooks/use-git-component";
 import useMobile from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
@@ -105,7 +105,7 @@ const socialLinks = [
 
 const ProfileButtons: React.FC = () => {
   const ref = useGitComponent(ProfileButtons);
-  const { setActiveSection } = useEditorContext();
+  const { setActiveSection } = useSectionNav();
   const { isPhone } = useMobile();
 
   return (

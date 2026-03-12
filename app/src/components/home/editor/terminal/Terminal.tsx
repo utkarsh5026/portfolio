@@ -2,7 +2,8 @@ import "./Terminal.css";
 
 import React, { useEffect, useState } from "react";
 
-import { useEditorContext } from "../context/explorer-context";
+import { useEditorToggles } from "@/hooks/use-editor-actions";
+
 import TerminalCommandOutput from "./TerminalCommandOutput";
 import TerminalCommandSuggestions from "./TerminalCommandSuggestions";
 import TerminalHeader from "./TerminalHeader";
@@ -30,7 +31,7 @@ import useTerminal from "./use-terminal";
  * 5. Click the terminal header to maximize or minimize the terminal.
  */
 const Terminal: React.FC = () => {
-  const { setTerminalOpen } = useEditorContext();
+  const { setTerminalOpen } = useEditorToggles();
   const [isVisible, setIsVisible] = useState(false);
 
   const {

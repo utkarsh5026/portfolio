@@ -1,12 +1,15 @@
 import React, { lazy } from "react";
 
+import {
+  type SectionType,
+  useEditorStore,
+} from "@/components/home/editor/context/editor-store";
 import useMobile from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 
 import EditorBreadcrumbs from "./breadcrumbs/editor-breadcrumbs";
 import CodeContent from "./code-content";
-import type { SectionType } from "./context/explorer-context";
-import { useEditorContext } from "./context/explorer-context";
+import { useEditorSync } from "./context/use-editor-sync";
 import GitBlameManager from "./git-blame/git-blame-manager";
 import Explorer from "./left/editor-explorer";
 import SideBar from "./left/side-bar";
@@ -49,7 +52,9 @@ const sectionComponents: Record<
  * Implements responsive design for mobile optimization
  */
 const CodeEditor: React.FC = () => {
-  const { explorerOpen, terminalOpen } = useEditorContext();
+  useEditorSync();
+  const explorerOpen = useEditorStore((s) => s.explorerOpen);
+  const terminalOpen = useEditorStore((s) => s.terminalOpen);
   const { isMobile } = useMobile();
 
   return (

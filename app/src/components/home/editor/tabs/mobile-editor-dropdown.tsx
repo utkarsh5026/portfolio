@@ -3,7 +3,7 @@ import React from "react";
 import { FaCode, FaFilePdf, FaGithub, FaLinkedin } from "react-icons/fa";
 
 import Logo from "@/components/home/appbar/Logo";
-import type { SectionType } from "@/components/home/editor/context/explorer-context";
+import type { SectionType } from "@/components/home/editor/context/editor-store";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,

@@ -2,11 +2,11 @@ import { Code, Folder, Sparkles } from "lucide-react";
 import React, { useCallback, useRef, useState } from "react";
 
 import Reveal from "@/components/animations/reveal/Reveal";
-import { useEditorContext } from "@/components/home/editor/context/explorer-context";
 import { OutlineNode } from "@/components/home/editor/outline";
 import Section from "@/components/home/editor/section/portfolio-section";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useSectionNav } from "@/hooks/use-editor-actions";
 import { useGitComponent } from "@/hooks/use-git-component";
 import { MobileProvider } from "@/hooks/use-mobile";
 import { useProject } from "@/hooks/use-project";
@@ -20,7 +20,7 @@ const Projects: React.FC = () => {
   const ref = useGitComponent(Projects);
   const { featuredProject, otherProjects, isLoading, error } = useProject();
 
-  const { openProject } = useEditorContext();
+  const { openProject } = useSectionNav();
   const [visibleCount, setVisibleCount] = useState(6);
   const projectsRef = useRef<HTMLDivElement>(null);
 
