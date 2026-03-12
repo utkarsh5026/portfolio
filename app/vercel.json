@@ -1,5 +1,4 @@
 {
-  "buildCommand": "cd .. && bun scripts/build.js",
   "rewrites": [
     {
       "source": "/data/(.*)",

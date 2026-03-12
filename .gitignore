@@ -144,3 +144,5 @@ app/public/data/git-meta.json
 /.agent
 /.claude
 /.agents
+.vercel
+.env*.local
