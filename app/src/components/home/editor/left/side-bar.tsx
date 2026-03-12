@@ -10,12 +10,12 @@ import {
 } from "react-icons/fa";
 import { VscPulse, VscSourceControl } from "react-icons/vsc";
 
-import ActivityPanel from "@/components/home/editor/activity/activity-panel";
+import ActivityPanel from "@/components/home/editor/panels/activity/activity-panel";
 import GhostButton from "@/components/ui/ghost-button";
 import { cn } from "@/lib/utils";
 
 import { useEditorContext } from "../context/explorer-context";
-import GitCommitsPanel from "../git-commits/git-commits-panel";
+import GitCommitsPanel from "../panels/git-commits/git-commits-panel";
 import SettingsPanel from "./settings-panel";
 
 const SideBar: React.FC = () => {

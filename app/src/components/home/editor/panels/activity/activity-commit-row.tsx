@@ -4,42 +4,13 @@ import { FiClock, FiExternalLink, FiGitCommit } from "react-icons/fi";
 import { cn, relativeTime } from "@/lib/utils";
 import type { TimelineCommit } from "@/store/activity/activity-store";
 
-import styles from "./activity-panel.module.css";
+import { COMMIT_TYPES, parseCommit } from "../shared/commit-type-utils";
+import styles from "../shared/shared-panel.module.css";
 
 interface ActivityCommitRowProps {
   commit: TimelineCommit;
   index: number;
   showRepo?: boolean;
-}
-
-const COMMIT_TYPES: Record<string, { color: string; bg: string }> = {
-  feat: { color: "text-ctp-green", bg: "bg-ctp-green/10" },
-  fix: { color: "text-ctp-red", bg: "bg-ctp-red/10" },
-  refactor: { color: "text-ctp-mauve", bg: "bg-ctp-mauve/10" },
-  style: { color: "text-ctp-pink", bg: "bg-ctp-pink/10" },
-  chore: { color: "text-ctp-overlay1", bg: "bg-ctp-surface0/60" },
-  docs: { color: "text-ctp-blue", bg: "bg-ctp-blue/10" },
-  build: { color: "text-ctp-peach", bg: "bg-ctp-peach/10" },
-  ci: { color: "text-ctp-teal", bg: "bg-ctp-teal/10" },
-  perf: { color: "text-ctp-yellow", bg: "bg-ctp-yellow/10" },
-  test: { color: "text-ctp-sapphire", bg: "bg-ctp-sapphire/10" },
-  revert: { color: "text-ctp-maroon", bg: "bg-ctp-maroon/10" },
-};
-
-function parseCommit(message: string): {
-  type: string | null;
-  scope: string | null;
-  body: string;
-} {
-  const match = message.match(/^(\w+)(\((.+?)\))?!?:\s*(.*)/);
-  if (match && COMMIT_TYPES[match[1]]) {
-    return {
-      type: match[1],
-      scope: match[3] ?? null,
-      body: match[4] ?? message,
-    };
-  }
-  return { type: null, scope: null, body: message };
 }
 
 const ActivityCommitRow: React.FC<ActivityCommitRowProps> = ({
