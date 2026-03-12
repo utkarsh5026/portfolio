@@ -83,6 +83,11 @@ def _app_cmd(args, allow_failure: bool = False):
     return run_cmd(args, allow_failure=allow_failure, cwd=APP_DIR)
 
 
+def _root_cmd(args, allow_failure: bool = False):
+    """Run a command from the repo root directory."""
+    return run_cmd(args, allow_failure=allow_failure, cwd=None)
+
+
 def target_install():
     print_header("Installing Dependencies")
     print_step("Running bun install...")
@@ -158,12 +163,13 @@ def target_gen_activity():
 
 def target_build():
     print_header("Building for Production")
-    _app_cmd(["bun", "run", "build"])
+    _root_cmd(["bun", "scripts/build.js"])
     print_success("Build completed successfully!")
 
 
 def target_build_force():
     print_header("Force Building (Cleaning Caches)")
+    target_gen_git_all()
     print_step("Cleaning TypeScript cache before build...")
     _app_cmd(["bun", "run", "force-build"])
     print_success("Force build completed!")
