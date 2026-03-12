@@ -150,6 +150,12 @@ def target_gen_git_all():
     print_success("All git data generated!")
 
 
+def target_gen_activity():
+    print_header("Generating Activity Feed")
+    _app_cmd(["bun", "run", "gen:activity"])
+    print_success("Activity feed generated!")
+
+
 def target_build():
     print_header("Building for Production")
     _app_cmd(["bun", "run", "build"])
@@ -353,6 +359,7 @@ TARGETS = {
     "gen-git-commits": (target_gen_git_commits, "Generate git commits JSON", "Build"),
     "gen-git-meta": (target_gen_git_meta, "Generate component-level git blame metadata", "Build"),
     "gen-git-all": (target_gen_git_all, "Generate all git data in parallel", "Build"),
+    "gen-activity": (target_gen_activity, "Generate cross-repo activity feed JSON", "Build"),
     "build": (target_build, "Build for production", "Build"),
     "build-force": (
         target_build_force,

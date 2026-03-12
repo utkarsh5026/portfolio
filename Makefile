@@ -39,7 +39,9 @@ watch-prod:
 	@$(PY) makefile.py watch-prod
 
 # Build
-.PHONY: build build-force analyze analyze-verbose gen-git-stats gen-git-commits gen-git-meta gen-git-all
+.PHONY: build build-force analyze analyze-verbose gen-git-stats gen-git-commits gen-git-meta gen-git-all gen-activity
+gen-activity:
+	@$(PY) makefile.py gen-activity
 gen-git-stats:
 	@$(PY) makefile.py gen-git-stats
 gen-git-commits:

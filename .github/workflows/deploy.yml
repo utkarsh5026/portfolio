@@ -38,6 +38,11 @@ jobs:
       - name: Regenerate git-commits.json
         run: bun scripts/generate-git-commits.js
 
+      - name: Regenerate activity-feed.json
+        run: bun scripts/generate-activity-feed.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build
         working-directory: ./app
         env:

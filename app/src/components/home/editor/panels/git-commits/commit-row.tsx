@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { FiClock, FiGitCommit } from "react-icons/fi";
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn, relativeTime } from "@/lib/utils";
 import type { GitCommit } from "@/store";
 
-import styles from "./git-commits.module.css";
+import { COMMIT_TYPES, parseCommitType } from "../shared/commit-type-utils";
+import styles from "../shared/shared-panel.module.css";
 
 interface CommitRowProps {
   commit: GitCommit;
@@ -12,7 +14,6 @@ interface CommitRowProps {
 }
 
 export const CommitRow: React.FC<CommitRowProps> = ({ commit, index }) => {
-  const [imgError, setImgError] = useState(false);
   const relTime = relativeTime(commit.date);
 
   const commitUrl = `https://github.com/utkarsh5026/portfolio/commit/${commit.hash}`;
@@ -30,20 +31,12 @@ export const CommitRow: React.FC<CommitRowProps> = ({ commit, index }) => {
     >
       {/* Avatar */}
       <div className="mt-0.5 flex-shrink-0 relative">
-        {!imgError ? (
-          <img
-            src={commit.avatarUrl}
-            alt={commit.author}
-            width={24}
-            height={24}
-            onError={() => setImgError(true)}
-            className="w-6 h-6 rounded-full ring-1 ring-ctp-surface1 object-cover group-hover:ring-ctp-lavender transition-all duration-200"
-          />
-        ) : (
-          <div className="w-6 h-6 rounded-full bg-ctp-surface0 ring-1 ring-ctp-surface1 group-hover:ring-ctp-lavender flex items-center justify-center text-[10px] text-ctp-subtext0 font-medium uppercase select-none transition-all duration-200">
+        <Avatar className="w-6 h-6 ring-1 ring-ctp-surface1 group-hover:ring-ctp-lavender transition-all duration-200">
+          <AvatarImage src={commit.avatarUrl} alt={commit.author} />
+          <AvatarFallback className="bg-ctp-surface0 text-[10px] text-ctp-subtext0 font-medium uppercase">
             {commit.author.charAt(0)}
-          </div>
-        )}
+          </AvatarFallback>
+        </Avatar>
         <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-ctp-mantle group-hover:bg-ctp-base flex items-center justify-center transition-colors">
           <FiGitCommit className="w-1.5 h-1.5 text-ctp-teal" />
         </span>
@@ -98,38 +91,6 @@ export const CommitRow: React.FC<CommitRowProps> = ({ commit, index }) => {
   );
 };
 
-const COMMIT_TYPES: Record<
-  string,
-  { label: string; color: string; bg: string }
-> = {
-  feat: { label: "feat", color: "text-ctp-green", bg: "bg-ctp-green/10" },
-  fix: { label: "fix", color: "text-ctp-red", bg: "bg-ctp-red/10" },
-  refactor: {
-    label: "refactor",
-    color: "text-ctp-mauve",
-    bg: "bg-ctp-mauve/10",
-  },
-  style: { label: "style", color: "text-ctp-pink", bg: "bg-ctp-pink/10" },
-  chore: {
-    label: "chore",
-    color: "text-ctp-overlay1",
-    bg: "bg-ctp-surface0/60",
-  },
-  docs: { label: "docs", color: "text-ctp-blue", bg: "bg-ctp-blue/10" },
-  build: { label: "build", color: "text-ctp-peach", bg: "bg-ctp-peach/10" },
-  ci: { label: "ci", color: "text-ctp-teal", bg: "bg-ctp-teal/10" },
-  perf: { label: "perf", color: "text-ctp-yellow", bg: "bg-ctp-yellow/10" },
-  test: { label: "test", color: "text-ctp-sapphire", bg: "bg-ctp-sapphire/10" },
-  revert: { label: "revert", color: "text-ctp-maroon", bg: "bg-ctp-maroon/10" },
-  deps: { label: "deps", color: "text-ctp-lavender", bg: "bg-ctp-lavender/10" },
-};
-
-function parseCommitType(message: string): string | null {
-  const match = message.match(/^(\w+)(\(.+?\))?!?:\s/);
-  if (match && COMMIT_TYPES[match[1]]) return match[1];
-  return null;
-}
-
 interface CommitTypeBadgeProps {
   message: string;
 }
@@ -138,7 +99,7 @@ const CommitTypeBadge: React.FC<CommitTypeBadgeProps> = ({ message }) => {
   const type = parseCommitType(message);
   if (!type) return null;
 
-  const { label, color, bg } = COMMIT_TYPES[type];
+  const { color, bg } = COMMIT_TYPES[type];
 
   return (
     <span
@@ -148,7 +109,7 @@ const CommitTypeBadge: React.FC<CommitTypeBadgeProps> = ({ message }) => {
         bg
       )}
     >
-      {label}
+      {type}
     </span>
   );
 };

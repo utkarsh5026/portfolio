@@ -106,7 +106,7 @@ const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({
                   y={16 + row * (CELL_SIZE + GAP) + CELL_SIZE - 2}
                   className="fill-ctp-overlay0"
                   fontSize={8}
-                  fontFamily="Source Code Pro, monospace"
+                  fontFamily="Cascadia Code, monospace"
                 >
                   {label}
                 </text>

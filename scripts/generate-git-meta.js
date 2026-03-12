@@ -28,7 +28,11 @@ const { Project, SyntaxKind } = require(tsMorphPath);
  */
 
 /**
- * @typedef {{ section: string, file: string, lines: [number, number] } & CommitMeta} ComponentMeta
+ * @typedef {{ added: number, deleted: number }} DiffStat
+ */
+
+/**
+ * @typedef {{ section: string, file: string, lines: [number, number], diffStat: DiffStat } & CommitMeta} ComponentMeta
  */
 
 /**
@@ -136,6 +140,34 @@ function run(cmd, cwd = REPO_ROOT) {
   } catch {
     return "";
   }
+}
+
+/** @type {Map<string, DiffStat>} */
+const diffStatCache = new Map();
+
+/**
+ * Get total insertions/deletions for a commit hash.
+ * Results are cached so each hash is only fetched once.
+ * @param {string} hash
+ * @returns {DiffStat}
+ */
+function getDiffStat(hash) {
+  if (diffStatCache.has(hash)) return diffStatCache.get(hash);
+
+  const out = run(`git show --stat --format="" ${hash}`);
+  let added = 0;
+  let deleted = 0;
+
+  if (out) {
+    const addMatch = out.match(/(\d+) insertion/);
+    const delMatch = out.match(/(\d+) deletion/);
+    if (addMatch) added = parseInt(addMatch[1], 10);
+    if (delMatch) deleted = parseInt(delMatch[1], 10);
+  }
+
+  const stat = { added, deleted };
+  diffStatCache.set(hash, stat);
+  return stat;
 }
 
 /**
@@ -313,6 +345,7 @@ function main() {
         file: relFile,
         lines: [comp.start, comp.end],
         ...meta,
+        diffStat: getDiffStat(meta.hash),
       };
 
       console.log(
@@ -363,6 +396,7 @@ function main() {
         file: relFile,
         lines: [1, lineCount],
         ...meta,
+        diffStat: getDiffStat(meta.hash),
       };
 
       console.log(
