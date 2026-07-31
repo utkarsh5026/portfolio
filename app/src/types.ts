@@ -55,6 +55,8 @@ export type ExplainCards = {
 
 export type Project = {
   name: string;
+  /** One or two lines, no emoji — the scannable line in the simple view. */
+  summary?: string;
   description: string;
   technologies: TechName[];
   keyFeatures?: string[];

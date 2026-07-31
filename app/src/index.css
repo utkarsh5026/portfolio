@@ -341,7 +341,11 @@
   color: var(--editor-blue);
 }
 
-/* Scrollbar styling */
+/* Scrollbar styling.
+   These used to point at --editor-overlay0/1, which were never defined, so
+   every custom scrollbar fell back to the browser's default light painting —
+   invisible while the editor kept the body from scrolling, obvious as soon as
+   a page scrolled the document. */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -352,12 +356,32 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--editor-overlay0);
+  background-color: rgb(var(--ctp-surface1));
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--editor-overlay1);
+  background-color: rgb(var(--ctp-surface2));
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox, and a hint to the UA so native widgets match the flavor. */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--ctp-surface1)) transparent;
+}
+
+html.mocha,
+html.macchiato,
+html.frappe {
+  color-scheme: dark;
+}
+
+html.latte {
+  color-scheme: light;
 }
 
 /* Hide scrollbar but keep functionality */

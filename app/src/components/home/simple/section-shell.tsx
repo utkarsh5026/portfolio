@@ -19,7 +19,7 @@ const SectionShell: React.FC<SectionShellProps> = ({ id, title, children }) => (
   <section
     id={id}
     data-simple-section={id}
-    className="scroll-mt-16 border-t border-ctp-surface0/70 py-12 lg:grid lg:grid-cols-[7rem_1fr] lg:gap-10 lg:py-14"
+    className="scroll-mt-16 border-t border-ctp-surface0/70 py-12 lg:grid lg:grid-cols-[10rem_1fr] lg:gap-12 lg:py-14"
   >
     <RevealOnScroll className="mb-6 lg:mb-0">
       <h2

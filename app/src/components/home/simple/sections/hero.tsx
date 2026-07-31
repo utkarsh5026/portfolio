@@ -6,7 +6,7 @@ import { contactLinks, profile } from "../data";
 import styles from "../simple.module.css";
 
 const Hero: React.FC = () => (
-  <header className="pb-14 pt-10 lg:grid lg:grid-cols-[7rem_1fr] lg:gap-10 lg:pb-20 lg:pt-14">
+  <header className="pb-14 pt-10 lg:grid lg:grid-cols-[10rem_1fr] lg:gap-12 lg:pb-20 lg:pt-14">
     {/* Sits in the left margin on wide screens, above the name on narrow
         ones. personal-min.webp is the same 896×1200 source at a seventh of
         the weight — plenty at this size. */}
@@ -18,7 +18,7 @@ const Hero: React.FC = () => (
         height={1200}
         loading="eager"
         decoding="async"
-        className="w-20 rounded-sm border border-ctp-surface1/60 object-cover sm:w-24 lg:w-[5.5rem]"
+        className="w-32 rounded-sm border border-ctp-surface1/60 object-cover sm:w-36 lg:w-full"
       />
     </div>
 

@@ -49,7 +49,7 @@ const SimpleView: React.FC = () => {
           <Contact />
         </main>
 
-        <footer className="border-t border-ctp-surface0/70 py-10 lg:grid lg:grid-cols-[7rem_1fr] lg:gap-10">
+        <footer className="border-t border-ctp-surface0/70 py-10 lg:grid lg:grid-cols-[10rem_1fr] lg:gap-12">
           <div aria-hidden className="hidden lg:block" />
           <button
             type="button"

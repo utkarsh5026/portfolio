@@ -9,7 +9,6 @@ import RevealOnScroll from "../reveal-on-scroll";
 import SectionShell from "../section-shell";
 import styles from "../simple.module.css";
 
-const INITIAL_COUNT = 8;
 const PRIVATE_REPO = "private-repository";
 
 const techLabel = (tech: string) =>
@@ -42,7 +41,7 @@ const ProjectEntry: React.FC<{ project: Project }> = ({ project }) => {
       </div>
 
       <p className="mt-2 max-w-[38rem] text-[14px] leading-[1.7] text-ctp-subtext0">
-        {project.description}
+        {project.summary ?? project.description}
       </p>
 
       <p className="mt-3 font-source text-[12px] leading-[1.7] text-ctp-overlay0">
@@ -100,24 +99,39 @@ const ProjectEntry: React.FC<{ project: Project }> = ({ project }) => {
       </div>
 
       {open && (
-        <ul
+        <div
           className={cn(
-            "mt-4 flex max-w-[38rem] flex-col gap-2.5",
+            "mt-4 max-w-[38rem] border-l border-ctp-surface0 pl-5",
             styles.enter
           )}
         >
-          {features.map((feature) => {
-            const { title, detail } = splitFeature(feature);
-            return (
-              <li
-                key={feature}
-                className="text-[13px] leading-[1.65] text-ctp-subtext0"
-              >
-                <span className="text-ctp-subtext1">{title}.</span> {detail}
-              </li>
-            );
-          })}
-        </ul>
+          {/* The summary is the scannable line; the full description only
+              earns its length once someone has asked for detail. */}
+          {project.summary && (
+            <p className="text-[13px] leading-[1.7] text-ctp-subtext0">
+              {project.description}
+            </p>
+          )}
+
+          <ul
+            className={cn(
+              "flex flex-col gap-2.5",
+              project.summary && "mt-3 border-t border-ctp-surface0/60 pt-3"
+            )}
+          >
+            {features.map((feature) => {
+              const { title, detail } = splitFeature(feature);
+              return (
+                <li
+                  key={feature}
+                  className="text-[13px] leading-[1.65] text-ctp-subtext0"
+                >
+                  <span className="text-ctp-subtext1">{title}.</span> {detail}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       )}
     </article>
   );
@@ -127,14 +141,10 @@ const Projects: React.FC = () => {
   const projects = useProjectStore((s) => s.projects);
   const error = useProjectStore((s) => s.error);
   const fetchProjects = useProjectStore((s) => s.fetchProjects);
-  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     fetchProjects();
   }, [fetchProjects]);
-
-  const visible = expanded ? projects : projects.slice(0, INITIAL_COUNT);
-  const hidden = projects.length - visible.length;
 
   return (
     <SectionShell id="projects" title="Projects">
@@ -153,26 +163,15 @@ const Projects: React.FC = () => {
         </p>
       )}
 
+      {/* Every project fits now that the list shows summaries rather than
+          full descriptions — no "show more" to click through. */}
       <div className="-my-6 divide-y divide-ctp-surface0/60">
-        {visible.map((project) => (
+        {projects.map((project) => (
           <RevealOnScroll key={project.name}>
             <ProjectEntry project={project} />
           </RevealOnScroll>
         ))}
       </div>
-
-      {hidden > 0 && (
-        <button
-          type="button"
-          onClick={() => setExpanded(true)}
-          className={cn(
-            "mt-10 font-source text-[12px] text-ctp-overlay1 transition-colors duration-300 hover:text-ctp-mauve",
-            styles.link
-          )}
-        >
-          {hidden} more →
-        </button>
-      )}
     </SectionShell>
   );
 };
