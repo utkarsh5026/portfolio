@@ -7,7 +7,20 @@ import styles from "../simple.module.css";
 
 const Hero: React.FC = () => (
   <header className="pb-14 pt-10 lg:grid lg:grid-cols-[7rem_1fr] lg:gap-10 lg:pb-20 lg:pt-14">
-    <div aria-hidden className="hidden lg:block" />
+    {/* Sits in the left margin on wide screens, above the name on narrow
+        ones. personal-min.webp is the same 896×1200 source at a seventh of
+        the weight — plenty at this size. */}
+    <div className={cn("mb-8 lg:mb-0", styles.enter)}>
+      <img
+        src="/personal-min.webp"
+        alt="Utkarsh Priyadarshi"
+        width={896}
+        height={1200}
+        loading="eager"
+        decoding="async"
+        className="w-20 rounded-sm border border-ctp-surface1/60 object-cover sm:w-24 lg:w-[5.5rem]"
+      />
+    </div>
 
     <div>
       <h1
