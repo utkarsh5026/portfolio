@@ -7,16 +7,9 @@
 
 export const profile = {
   name: "Utkarsh Priyadarshi",
-  role: "Full-Stack Developer & DevOps Engineer",
-  location: "India · Open to remote",
+  role: "Full-stack developer, DevOps engineer",
   summary:
-    "I build scalable web applications and the infrastructure that keeps them running — from React interfaces down to Go services, databases and CI/CD pipelines.",
-  highlights: [
-    "B.Tech CSE, 9.52 CGPA",
-    "DevOps intern at IDeaS (a SAS company)",
-    "16+ shipped side projects",
-    "Writes about databases & language internals",
-  ],
+    "I like systems work. I've written a relational database, a Git implementation and a programming language from scratch — in Go and TypeScript — and spent six months at IDeaS automating the database migration and monitoring nobody wanted to do by hand.",
 } as const;
 
 export const RESUME_URL =
@@ -26,7 +19,6 @@ export type ContactLink = {
   label: string;
   value: string;
   href: string;
-  color: string;
 };
 
 export const contactLinks: ContactLink[] = [
@@ -34,25 +26,26 @@ export const contactLinks: ContactLink[] = [
     label: "Email",
     value: "utkarshpriyadarshi5026@gmail.com",
     href: "mailto:utkarshpriyadarshi5026@gmail.com",
-    color: "text-ctp-blue",
   },
   {
     label: "GitHub",
-    value: "github.com/utkarsh5026",
+    value: "utkarsh5026",
     href: "https://github.com/utkarsh5026",
-    color: "text-ctp-mauve",
   },
   {
     label: "LinkedIn",
-    value: "in/utkarsh-priyadarshi",
+    value: "utkarsh-priyadarshi",
     href: "https://www.linkedin.com/in/utkarsh-priyadarshi-8b5a731b9/",
-    color: "text-ctp-sapphire",
   },
   {
     label: "Twitter",
-    value: "@UtkarshPriyad10",
+    value: "UtkarshPriyad10",
     href: "https://x.com/UtkarshPriyad10",
-    color: "text-ctp-sky",
+  },
+  {
+    label: "Résumé",
+    value: "PDF",
+    href: RESUME_URL,
   },
 ];
 

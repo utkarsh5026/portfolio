@@ -1,4 +1,3 @@
-import { Code2 } from "lucide-react";
 import React, { useEffect } from "react";
 
 import About from "./sections/about";
@@ -14,7 +13,7 @@ import SimpleNav from "./simple-nav";
 import useViewSwitch from "./use-view-switch";
 
 /**
- * The recruiter view: everything on one scrollable page, no editor chrome.
+ * The recruiter view: one measured column, no editor chrome.
  *
  * Same content as the full experience, ordered for skimming — who I am, what
  * I've shipped, what I know, how to reach me.
@@ -33,16 +32,13 @@ const SimpleView: React.FC = () => {
   }, []);
 
   return (
-    <div
-      id="top"
-      className="min-h-screen bg-ctp-base text-ctp-text antialiased"
-    >
+    <div id="top" className="min-h-screen bg-ctp-base antialiased">
       <SimpleNav />
 
-      <main className="mx-auto max-w-4xl px-5 sm:px-8">
+      <div className="mx-auto max-w-[54rem] px-6 sm:px-8">
         <Hero />
 
-        <div className="divide-y divide-ctp-surface0">
+        <main>
           <Experience />
           <Projects />
           <Skills />
@@ -51,24 +47,19 @@ const SimpleView: React.FC = () => {
           <Learning />
           <About />
           <Contact />
-        </div>
-      </main>
+        </main>
 
-      <footer className="border-t border-ctp-surface0">
-        <div className="mx-auto flex max-w-4xl flex-col items-center justify-between gap-4 px-5 py-8 sm:flex-row sm:px-8">
-          <p className="font-source text-xs text-ctp-overlay0">
-            Built with React, TypeScript & Tailwind.
-          </p>
+        <footer className="border-t border-ctp-surface0/70 py-10 lg:grid lg:grid-cols-[7rem_1fr] lg:gap-10">
+          <div aria-hidden className="hidden lg:block" />
           <button
             type="button"
             onClick={() => switchView("editor")}
-            className="inline-flex items-center gap-2 text-xs font-medium text-ctp-subtext0 transition-colors duration-300 hover:text-ctp-text"
+            className="font-source text-[12px] text-ctp-overlay0 transition-colors duration-300 hover:text-ctp-mauve"
           >
-            <Code2 className="h-3.5 w-3.5 text-ctp-mauve" />
-            Prefer the full interactive version?
+            There is a fuller, more interactive version of this site →
           </button>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
   );
 };

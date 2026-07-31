@@ -7,49 +7,32 @@ import RevealOnScroll from "./reveal-on-scroll";
 interface SectionShellProps {
   id: string;
   title: string;
-  /** Short line under the title, e.g. "1 role · 8 technologies". */
-  eyebrow?: string;
-  /** Full Tailwind class for the accent dot, e.g. "bg-ctp-peach". */
-  accentClass: string;
   children: React.ReactNode;
-  className?: string;
 }
 
 /**
- * Consistent heading + spacing for every block of the simple view.
- * `scroll-mt` keeps anchors clear of the sticky nav.
+ * Editorial layout: on wide screens the section name sits in the left margin
+ * and the content runs in a single measured column. On narrow screens the
+ * label drops above the content.
  */
-const SectionShell: React.FC<SectionShellProps> = ({
-  id,
-  title,
-  eyebrow,
-  accentClass,
-  children,
-  className,
-}) => (
+const SectionShell: React.FC<SectionShellProps> = ({ id, title, children }) => (
   <section
     id={id}
     data-simple-section={id}
-    className={cn("scroll-mt-24 py-12 sm:py-16", className)}
+    className="scroll-mt-16 border-t border-ctp-surface0/70 py-12 lg:grid lg:grid-cols-[7rem_1fr] lg:gap-10 lg:py-14"
   >
-    <RevealOnScroll className="mb-8 sm:mb-10">
-      <div className="flex items-baseline gap-3">
-        <span
-          className={cn("h-1.5 w-1.5 rounded-full", accentClass)}
-          aria-hidden
-        />
-        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-ctp-text">
-          {title}
-        </h2>
-      </div>
-      {eyebrow && (
-        <p className="mt-2 pl-[1.125rem] text-xs sm:text-sm text-ctp-overlay1 font-source">
-          {eyebrow}
-        </p>
-      )}
+    <RevealOnScroll className="mb-6 lg:mb-0">
+      <h2
+        className={cn(
+          "font-source text-[11px] uppercase tracking-[0.18em] text-ctp-overlay0",
+          "lg:sticky lg:top-16"
+        )}
+      >
+        {title}
+      </h2>
     </RevealOnScroll>
 
-    {children}
+    <div className="min-w-0">{children}</div>
   </section>
 );
 

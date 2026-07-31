@@ -1,4 +1,3 @@
-import { Code2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
@@ -7,14 +6,13 @@ import { profile, simpleSections } from "./data";
 import useViewSwitch from "./use-view-switch";
 
 /**
- * Sticky top bar: jump links with a scroll spy, plus the escape hatch back to
- * the full editor experience.
+ * Slim jump bar. It stays out of the way until you scroll past the header,
+ * then holds the section links and the way back to the editor.
  */
 const SimpleNav: React.FC = () => {
   const switchView = useViewSwitch();
   const [activeId, setActiveId] = useState<string>("");
   const [scrolled, setScrolled] = useState(false);
-  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const sections = Array.from(
@@ -33,7 +31,7 @@ const SimpleNav: React.FC = () => {
           );
         }
       },
-      { rootMargin: "-20% 0px -70% 0px", threshold: 0 }
+      { rootMargin: "-15% 0px -75% 0px", threshold: 0 }
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -41,12 +39,7 @@ const SimpleNav: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const onScroll = () => {
-      const scrollable = document.body.scrollHeight - window.innerHeight;
-      setScrolled(window.scrollY > 24);
-      setProgress(scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0);
-    };
-
+    const onScroll = () => setScrolled(window.scrollY > 120);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -55,57 +48,49 @@ const SimpleNav: React.FC = () => {
   return (
     <div
       className={cn(
-        "sticky top-0 z-40 transition-colors duration-300",
+        "sticky top-0 z-40 border-b transition-colors duration-500",
         scrolled
-          ? "bg-ctp-base/85 backdrop-blur-md border-b border-ctp-surface0"
-          : "bg-transparent border-b border-transparent"
+          ? "border-ctp-surface0/70 bg-ctp-base/90 backdrop-blur"
+          : "border-transparent bg-transparent"
       )}
     >
-      {/* Reading progress */}
-      <div
-        className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-ctp-mauve via-ctp-blue to-ctp-teal origin-left transition-transform duration-150"
-        style={{ transform: `scaleX(${progress / 100})` }}
-        aria-hidden
-      />
-
-      <nav className="mx-auto flex h-14 max-w-4xl items-center gap-4 px-5 sm:px-8">
+      <nav className="mx-auto flex h-12 max-w-[54rem] items-center gap-5 px-6 sm:px-8">
         <a
           href="#top"
           className={cn(
-            "shrink-0 font-source text-sm font-semibold text-ctp-text transition-opacity duration-300",
-            scrolled ? "opacity-100" : "opacity-0 pointer-events-none"
+            "shrink-0 font-source text-[12px] text-ctp-subtext1 transition-opacity duration-500",
+            scrolled ? "opacity-100" : "pointer-events-none opacity-0"
           )}
         >
-          {profile.name.split(" ")[0]}
+          {profile.name}
         </a>
 
-        <div className="flex-1 overflow-x-auto scrollbar-hide">
-          <ul className="flex items-center gap-1">
-            {simpleSections.map((section) => (
-              <li key={section.id}>
-                <a
-                  href={`#${section.id}`}
-                  className={cn(
-                    "block whitespace-nowrap rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors duration-300",
-                    activeId === section.id
-                      ? "bg-ctp-surface0 text-ctp-text"
-                      : "text-ctp-overlay1 hover:text-ctp-text"
-                  )}
-                >
-                  {section.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* Below sm there isn't room for these without truncating mid-word,
+            and scrolling is the natural motion on a phone anyway. */}
+        <ul className="hidden flex-1 items-center gap-4 overflow-x-auto scrollbar-hide sm:flex">
+          {simpleSections.map((section) => (
+            <li key={section.id}>
+              <a
+                href={`#${section.id}`}
+                className={cn(
+                  "block whitespace-nowrap py-1 text-[12px] transition-colors duration-300",
+                  activeId === section.id
+                    ? "text-ctp-text"
+                    : "text-ctp-overlay0 hover:text-ctp-subtext0"
+                )}
+              >
+                {section.label}
+              </a>
+            </li>
+          ))}
+        </ul>
 
         <button
           type="button"
           onClick={() => switchView("editor")}
-          className="shrink-0 inline-flex items-center gap-2 rounded-lg border border-ctp-surface1 px-3 py-1.5 text-xs font-medium text-ctp-subtext0 transition-colors duration-300 hover:border-ctp-mauve/50 hover:text-ctp-text"
+          className="ml-auto shrink-0 whitespace-nowrap font-source text-[12px] text-ctp-overlay0 transition-colors duration-300 hover:text-ctp-mauve"
         >
-          <Code2 className="h-3.5 w-3.5 text-ctp-mauve" />
-          <span className="hidden sm:inline">Full experience</span>
+          Editor view
         </button>
       </nav>
     </div>

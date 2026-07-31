@@ -1,4 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
 import React from "react";
 
 import { currentLearningTechnologies } from "@/components/home/portfolio/learning/data";
@@ -13,52 +12,30 @@ const isRealRepo = (link?: string) =>
   Boolean(link) && !link!.includes("yourusername");
 
 const Learning: React.FC = () => (
-  <SectionShell
-    id="learning"
-    title="Currently learning"
-    accentClass="bg-ctp-teal"
-    eyebrow="What I'm digging into right now, and why"
-  >
-    <div className="grid gap-4 sm:grid-cols-2">
-      {currentLearningTechnologies.map((tech, index) => (
-        <RevealOnScroll key={tech.name} delay={Math.min(index, 5) * 0.04}>
-          <article
-            className={cn(
-              "h-full rounded-xl border border-ctp-surface0 bg-ctp-mantle/40 p-5 hover:border-ctp-surface1",
-              styles.card
-            )}
-          >
-            <div className="flex items-center justify-between gap-3">
-              <h3 className="text-sm font-semibold text-ctp-text">
-                {tech.name}
-              </h3>
-              <span className="shrink-0 rounded-full border border-ctp-surface1 px-2 py-0.5 text-[10px] uppercase tracking-wider text-ctp-overlay1">
-                {tech.category}
-              </span>
-            </div>
-
-            <p className="mt-2.5 text-[13px] leading-relaxed text-ctp-subtext0">
-              {tech.description}
-            </p>
-
-            {isRealRepo(tech.repoLink) && (
-              <a
-                href={tech.repoLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  "mt-3 inline-flex items-center gap-1 text-[11px] font-medium text-ctp-teal",
-                  styles.link
-                )}
-              >
-                Repository
-                <ArrowUpRight className="h-3 w-3" />
-              </a>
-            )}
-          </article>
+  <SectionShell id="learning" title="Learning">
+    <ul className="flex flex-col gap-7">
+      {currentLearningTechnologies.map((tech) => (
+        <RevealOnScroll as="li" key={tech.name}>
+          <h3 className="text-[15px] font-medium text-ctp-text">{tech.name}</h3>
+          <p className="mt-1.5 max-w-[38rem] text-[14px] leading-[1.7] text-ctp-subtext0">
+            {tech.description}
+          </p>
+          {isRealRepo(tech.repoLink) && (
+            <a
+              href={tech.repoLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                "mt-2 inline-block font-source text-[12px] text-ctp-overlay1 transition-colors duration-300 hover:text-ctp-mauve",
+                styles.link
+              )}
+            >
+              Source
+            </a>
+          )}
         </RevealOnScroll>
       ))}
-    </div>
+    </ul>
   </SectionShell>
 );
 
