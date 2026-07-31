@@ -1,0 +1,108 @@
+/* Reveal-on-scroll ------------------------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.revealVisible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Entrance for the hero, which is above the fold and never intersects late */
+
+.enter {
+  opacity: 0;
+  animation: simpleFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes simpleFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Card hover lift -------------------------------------------------------- */
+
+.card {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    background-color 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* Underline that grows on hover, used for text links --------------------- */
+
+.link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.link:hover {
+  background-size: 100% 1px;
+}
+
+/* Soft ambient glow behind the hero -------------------------------------- */
+
+.heroGlow {
+  background: radial-gradient(
+    60% 60% at 20% 0%,
+    rgb(var(--ctp-mauve) / 0.1) 0%,
+    rgb(var(--ctp-blue) / 0.05) 45%,
+    transparent 100%
+  );
+}
+
+/* Details disclosure ----------------------------------------------------- */
+
+.details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.details[open] .chevron {
+  transform: rotate(90deg);
+}
+
+.chevron {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.disclosure {
+  animation: simpleFadeUp 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .enter,
+  .card,
+  .link,
+  .chevron,
+  .disclosure {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

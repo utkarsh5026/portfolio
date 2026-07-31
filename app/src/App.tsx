@@ -23,6 +23,9 @@ function App() {
         <Route path="/articles" element={<MainPortfolio />} />
         <Route path="/resume" element={<MainPortfolio />} />
 
+        {/* Shareable link straight to the plain, one-page recruiter view */}
+        <Route path="/simple" element={<MainPortfolio forceSimple />} />
+
         {/* Individual project deep-link — editor loads with that project tab active */}
         <Route path="/projects/:slug" element={<MainPortfolio />} />
 
