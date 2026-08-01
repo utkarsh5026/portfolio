@@ -2,6 +2,8 @@
   "name": "Your Project Name",
   "tagline": "One punchy sentence about your project 🚀",
 
+  "summary": "One or two lines, under ~140 characters, no emoji. What the project is and the single most concrete fact about it. Shown in the simple view's project list.",
+
   "description": "Brief 2-3 sentence description. Sentence 1: Who and what problem. Sentence 2: Your solution and key metric.",
 
   "keyFeatures": [

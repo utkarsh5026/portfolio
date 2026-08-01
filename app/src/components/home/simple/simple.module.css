@@ -1,0 +1,57 @@
+/* A quiet fade for content entering the viewport. This is the only motion on
+   the page beyond link and disclosure transitions. */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.revealVisible {
+  opacity: 1;
+  transform: none;
+}
+
+.enter {
+  opacity: 0;
+  animation: simpleFade 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes simpleFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Links: a hairline that only appears on hover, so a page dense with links
+   doesn't read as a wall of underlines. */
+
+.link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 1px;
+  transition: background-size 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.link:hover {
+  background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .enter,
+  .link {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

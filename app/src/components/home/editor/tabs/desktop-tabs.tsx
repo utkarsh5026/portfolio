@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import type { SectionTab, Tab } from "../context/editor-store";
 import { useEditorStore } from "../context/editor-store";
 import styles from "../editor-ui.module.css";
+import SimpleViewButton from "../simple-view-button";
 import { TabActions } from "./tab-actions";
 import { getActiveTabColor, getIconColor, sectionIconMap } from "./tab-style";
 
@@ -141,6 +142,9 @@ const DesktopTabs: React.FC = () => {
           })}
         </div>
       </div>
+
+      {/* ── Simple (recruiter) view escape hatch ── */}
+      <SimpleViewButton />
 
       {/* ── Tab actions menu (far right) ── */}
       <TabActions

@@ -2,6 +2,7 @@
   {
     "name": "Automotive Training & Workforce Analytics DSS",
     "tagline": "Transform workforce data into strategic insights 📊",
+    "summary": "Analytics platform for Skoda, VW and Audi that cut manager reporting on 200K+ training records from three days to five minutes.",
     "description": "Enterprise analytics platform for Skoda, VW, and Audi processing 200K+ training records. Reduced manager analysis time from 3 days to under 5 minutes through automated Pandas pipelines and interactive Plotly dashboards.",
     "keyFeatures": [
       "Real-Time Multi-Brand Analytics Engine: Django REST API with Pandas for cross-brand metric aggregation. Sub-second query response times via Redis caching. High-availability data retrieval using PostgreSQL read replicas.",
@@ -26,6 +27,7 @@
   {
     "name": "StoreMy",
     "tagline": "A production-grade relational database built from scratch in Go 🗄️",
+    "summary": "A complete relational database written in Go — slotted-page storage, Two-Phase Locking, write-ahead logging and a cost-based query optimizer.",
 
     "description": "Most developers use databases as black boxes — StoreMy tears the box open. It implements the complete RDBMS stack without any external database libraries: a slotted-page storage engine, Two-Phase Locking with deadlock detection, Write-Ahead Logging for crash recovery, a cost-based query optimizer, and a terminal UI — all across ~100,000 lines of Go organized into 13 strict architectural layers.",
 
@@ -45,6 +47,7 @@
     {
     "name": "Enigma",
     "tagline": "Build and debug your own programming language in the browser 🚀",
+    "summary": "A programming language and its interpreter, plus a browser IDE with live AST visualization and a step-through debugger.",
     "description": "Full-featured interpreter for Enigma, a custom programming language built from scratch with 240+ TypeScript files implementing lexer, parser, and tree-walking evaluator. Interactive web IDE with Monaco editor featuring real-time AST visualization, step-by-step debugger with execution state tracking, and instant syntax analysis processing 1000+ tokens per second.",
     "keyFeatures": [
       "Complete Language Implementation Pipeline: Hand-crafted lexer supporting f-strings and multi-line comments. Pratt parser implementation with operator precedence and error recovery. Tree-walking evaluator supporting closures, OOP, and first-class functions. Standard library with 20+ built-in functions including map, filter, and reduce.",
@@ -70,6 +73,7 @@
   {
     "name": "First Principles",
     "tagline": "Transform technical learning with gamified reading analytics 📚",
+    "summary": "A documentation platform holding 1,881 technical documents, with reading heatmaps and recommendations that track what you actually learn.",
     "description": "Mobile-first documentation platform with 1,881+ curated technical documents across 15+ engineering topics. Features reading analytics dashboard with GitHub-style heatmaps, achievement system, and personalized recommendations to drive engagement and track learning progress.",
     "keyFeatures": [
       "Advanced Reading Analytics Engine: Real-time session tracking using React + Zustand state management. GitHub-style activity heatmaps and radial category charts via Recharts. Interactive D3-force graphs to visualize complex document relationships.",
@@ -95,6 +99,7 @@
   {
     "name": "SourceControl",
     "tagline": "Production-grade Git implementation from scratch in pure Go 🔧",
+    "summary": "Git reimplemented in Go from the object store up — Merkle trees, binary index format and a real CLI, with a 121% test-to-code ratio.",
     "description": "Fully-functional version control system reimplementing Git's core internals in Go without wrapping git commands. Implements content-addressable object storage, Merkle tree structures, binary index format, and complete CLI with 16,354 lines of tests achieving 121% test-to-code ratio for production reliability.",
     "keyFeatures": [
       "Content-Addressable Object Store with SHA-1: Custom implementation of Git's sharded directory structure (`.source/objects/ab/cdef...`). Type-safe wrappers for `ObjectHash`, `CompressedData`, and `SerializedObject`. Atomic write operations using the write-rename pattern to prevent corruption.",
@@ -109,6 +114,7 @@
   {
     "name": "DevPortfolio",
     "tagline": "VS Code-inspired portfolio with cinematic multi-stage storytelling 🎬",
+    "summary": "This site. A VS Code-style portfolio with a working terminal, 15+ Linux commands and a six-stage loading sequence.",
     "description": "Immersive developer portfolio featuring a 6-stage narrative loading sequence, fully functional VS Code-inspired interface with integrated terminal supporting 15+ custom Linux commands, and interactive guided tour system. Built with React 18 + TypeScript processing 276 source files with advanced code splitting achieving <100ms TTI on initial load.",
     "keyFeatures": [
       "Multi-Stage Cinematic Loading Narrative: AnimeJS-powered 6-stage storytelling sequence including 'Panic' and 'Compilation' phases. Smooth scene transitions with fragment-based DOM manipulation for 60fps animations. Smart state persistence to skip intro sequences for returning visitors.",
@@ -136,6 +142,7 @@
   {
     "name": "Mayonation",
     "tagline": "Lightweight TypeScript animation library with GPU acceleration ⚡",
+    "summary": "A GPU-accelerated web animation library under 5kb gzipped, handling timeline choreography and SVG path morphing.",
     "description": "High-performance web animation library processing 3,349+ lines of TypeScript with <5kb gzipped bundle. Achieved <1ms animation start time and 60fps GPU-accelerated rendering through transform caching, matrix decomposition, and hardware layer promotion. Handles timeline choreography, SVG path morphing, and complex transform sequences.",
     "keyFeatures": [
       "Timeline Orchestration Engine: Advanced position-based scheduling supporting absolute, relative, and label timing. Synchronized playback management for multiple CSSAnimator instances. Full seek/pause/resume controls for complex choreographed sequences.",
@@ -151,6 +158,7 @@
   {
     "name": "AuthGuard",
     "tagline": "Enterprise authentication and authorization service 🛡️",
+    "summary": "A microservice auth platform with OAuth2, SAML and MFA, giving enterprise apps centralized user management and SSO.",
     "description": "Microservice-based auth platform with OAuth2, SAML, and MFA support. Provides centralized user management and SSO for enterprise applications.",
     "keyFeatures": [
       "Multi-Protocol Auth Server: Full OAuth 2.0, OpenID Connect, and SAML 2.0 protocol implementation. Secure JWT and SAML token generation with customizable claims. Automated refresh token rotation and token revocation endpoints.",
@@ -165,6 +173,7 @@
   {
     "name": "MDHD",
     "tagline": "Transform documentation into AI-powered focused reading sessions 📚",
+    "summary": "A markdown reader that breaks long documents into cards and answers questions about them using RAG over vector embeddings.",
     "description": "Intelligent markdown reader with RAG-powered AI assistant that breaks lengthy documents into digestible, card-based sections. Processes 18,400+ lines of TypeScript code delivering context-aware Q&A through vector embeddings and multi-provider LLM integration (OpenAI, Anthropic, Google) with 50+ customizable themes across 17 categories.",
     "keyFeatures": [
       "RAG-Powered AI Chat System: LangChain.js implementation utilizing OpenAI embeddings for vector search. FAISS-node in-memory store enabling high-speed similarity matching. Multi-LLM support (GPT-4, Claude, Gemini) for context-aware Q&A on any section.",
@@ -190,6 +199,7 @@
   {
     "name": "Reducer",
     "tagline": "Educational Redux reimplementation teaching state management internals 📚",
+    "summary": "Redux rebuilt from scratch in TypeScript — middleware composition, slice reducers, Immer updates — to show how it actually works.",
     "description": "TypeScript-native state management library built from scratch to demystify Redux architecture. Implements core Redux patterns including middleware composition, slice-based reducers, and immutable updates using Immer, serving as both a functional library and educational resource for understanding state management internals.",
     "keyFeatures": [
       "Type-Safe Store with Immutability: Custom Store class implementing the single-source-of-truth observer pattern. Strict `Object.freeze` enforcement for immutable state access. Built-in reentrancy protection to prevent dangerous nested dispatches. Reference equality checks within `combineReducers` for performance optimization.",
@@ -204,6 +214,7 @@
   {
     "name": "ProgChain",
     "tagline": "AI-powered programming education platform 🎓",
+    "summary": "An AI-tutored coding course platform with automated grading, personalized learning paths and real-time feedback.",
     "description": "Interactive coding courses with AI tutoring and automated grading. Features personalized learning paths and real-time code feedback.",
     "keyFeatures": [
       "AI Code Tutor System: GPT-4 powered assistant providing intelligent hints and explanations. Real-time debugging support with context-aware code suggestions. Interactive dialogue system for concept reinforcement and guidance.",
@@ -220,6 +231,7 @@
   {
     "name": "Genshin Companion",
     "tagline": "Game companion app for Genshin Impact players 🎮",
+    "summary": "A companion app for Genshin Impact: character builds, team recommendations, a damage calculator and wish history analysis.",
     "description": "Character builds, team recommendations, and resource tracking. Features damage calculator and wish history analysis.",
     "keyFeatures": [
       "Character Build Database: Comprehensive database of artifact sets, weapons, and optimal stats. Automated stat calculation with build optimization suggestions. Meta-based team composition recommendations for every character.",
@@ -236,6 +248,7 @@
   {
     "name": "Studio",
     "tagline": "Design-to-code platform for developers 🎨",
+    "summary": "Turns Figma designs into production React — component extraction, responsive layouts and design token export.",
     "description": "Convert Figma designs to production React code. Features component extraction, responsive layouts, and design token export.",
     "keyFeatures": [
       "Figma API Integration: Secure plugin authentication for direct access to design files. Advanced parsing engine for precise layer and asset extraction. Auto-sync capabilities enabling real-time updates from Figma changes.",
@@ -250,6 +263,7 @@
   {
     "name": "chankit",
     "tagline": "Transform Go channels into reactive, type-safe data pipelines 🚀",
+    "summary": "Sixty-plus composable operations that turn Go channels into type-safe reactive pipelines, with zero external dependencies.",
     "description": "Production-ready Go library providing 60+ channel operations with fluent pipeline API and reactive patterns. Achieved 4.4:1 test-to-code ratio (7,139 test lines) with zero external dependencies and sub-millisecond transformation overhead through type-safe generics.",
     "keyFeatures": [
       "Type-Safe Fluent Pipeline API: Chainable interface leveraging Go 1.18+ generics for compile-time safety. Support for Map/Filter/Reduce transformations and LINQ-style aliases. Lazy evaluation architecture delaying execution until terminal operations.",
@@ -274,6 +288,7 @@
   {
     "name": "InPeace",
     "tagline": "Psychological friction-based website blocker using multi-stage challenges 🧘‍♂️",
+    "summary": "A Chrome extension that puts distracting sites behind a four-stage challenge, so visiting them takes deliberate effort.",
     "description": "Chrome extension that blocks distracting websites through a progressive 4-stage behavioral challenge system. Reduces mindless browsing by requiring users to complete a flashlight-search mini-game (10 clicks with 2-second timers) and reflection steps before granting 30-minute temporary access, tracking daily visit attempts per site.",
     "keyFeatures": [
       "Interactive Flashlight Challenge System: Custom JavaScript mini-game requiring 10 sequential clicks on a moving target. Immersive 'spotlight' effect using CSS radial-gradients tracking mouse position at 60fps. Smart viewport constraints preventing off-screen button placement. High-stakes mechanics with 2-second timers that reset progress on failure.",
@@ -289,6 +304,7 @@
   {
     "name": "gopool",
     "tagline": "A High-Performance Worker Pool for Go 🚀",
+    "summary": "A generics-based Go worker pool with seven interchangeable scheduling strategies, including an LMAX Disruptor.",
     "description": "A type-safe, production-ready worker pool library built on Go 1.18+ generics. It exposes a single, unified API with 7 interchangeable scheduling strategies including an LMAX Disruptor implementation for sub-microsecond latency.",
     "keyFeatures": [
       "Generic, Type-Safe API: Compile-time type safety with zero `interface{}` casts. Supports processing slices, maps, or streaming channels. Context-first API honoring cancellation and deadlines.",
