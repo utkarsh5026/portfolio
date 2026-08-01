@@ -16,7 +16,7 @@ const Learning: React.FC = () => (
     <ul className="flex flex-col gap-7">
       {currentLearningTechnologies.map((tech) => (
         <RevealOnScroll as="li" key={tech.name}>
-          <h3 className="text-[15px] font-medium text-ctp-text">{tech.name}</h3>
+          <h3 className="text-[16px] font-medium text-ctp-text">{tech.name}</h3>
           <p className="mt-1.5 max-w-[38rem] text-[14px] leading-[1.7] text-ctp-subtext0">
             {tech.description}
           </p>

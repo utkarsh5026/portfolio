@@ -9,17 +9,22 @@ export type ViewMode = "editor" | "simple";
 
 interface ViewModeState {
   mode: ViewMode;
+  /** True once the visitor has noticed the simple-view button. */
+  hintSeen: boolean;
   setMode: (mode: ViewMode) => void;
   toggleMode: () => void;
+  markHintSeen: () => void;
 }
 
 const useViewModeStore = create<ViewModeState>()(
   persist(
     (set, get) => ({
       mode: "editor",
-      setMode: (mode) => set({ mode }),
+      hintSeen: false,
+      setMode: (mode) => set({ mode, hintSeen: true }),
       toggleMode: () =>
         set({ mode: get().mode === "editor" ? "simple" : "editor" }),
+      markHintSeen: () => set({ hintSeen: true }),
     }),
     { name: "portfolio-view-mode" }
   )

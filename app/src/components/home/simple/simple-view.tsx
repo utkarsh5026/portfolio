@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 
+import useProjectStore from "@/store/projects/projects-store";
+
 import About from "./sections/about";
 import Contact from "./sections/contact";
 import Education from "./sections/education";
@@ -20,6 +22,13 @@ import useViewSwitch from "./use-view-switch";
  */
 const SimpleView: React.FC = () => {
   const switchView = useViewSwitch();
+  const fetchProjects = useProjectStore((s) => s.fetchProjects);
+
+  // Fetched once here rather than in the projects section, because the hero
+  // counts them too.
+  useEffect(() => {
+    fetchProjects();
+  }, [fetchProjects]);
 
   useEffect(() => {
     const root = document.documentElement;

@@ -209,8 +209,16 @@
   * {
     @apply border-border;
   }
+  /* Not bg-background/text-foreground: those resolve to the shadcn light-mode
+     values, because the flavor class is .mocha and never .dark, so the body
+     painted white under every page. Invisible while a full-height dark div
+     covered it, visible as a flash before mount and as a white band when the
+     simple view overscrolls. The Catppuccin vars track the flavor, including
+     latte. */
+  html,
   body {
-    @apply bg-background text-foreground;
+    background-color: rgb(var(--ctp-base));
+    color: rgb(var(--ctp-text));
   }
 }
 
@@ -374,12 +382,8 @@ html {
   scrollbar-color: rgb(var(--ctp-surface1)) transparent;
 }
 
-html.mocha,
-html.macchiato,
-html.frappe {
-  color-scheme: dark;
-}
-
+/* The dark flavors already declare color-scheme in the base layer; latte is
+   the one light flavor and had no rule. */
 html.latte {
   color-scheme: light;
 }

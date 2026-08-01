@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { cn } from "@/lib/utils";
 import useViewModeStore from "@/store/view-mode-store";
+
+import styles from "./simple-view-button.module.css";
 
 interface SimpleViewButtonProps {
   className?: string;
@@ -10,14 +12,24 @@ interface SimpleViewButtonProps {
 }
 
 /**
- * The escape hatch out of the editor UI. Sits top-right so a recruiter who
- * doesn't want to explore an IDE can get to a plain, scrollable page.
+ * The escape hatch out of the editor UI. It is the one filled control in the
+ * chrome, because a recruiter who doesn't want to explore an IDE has to spot
+ * it within a couple of seconds or they never will.
  */
 const SimpleViewButton: React.FC<SimpleViewButtonProps> = ({
   className,
   compact = false,
 }) => {
   const setMode = useViewModeStore((s) => s.setMode);
+  const hintSeen = useViewModeStore((s) => s.hintSeen);
+  const markHintSeen = useViewModeStore((s) => s.markHintSeen);
+
+  // The nudge runs once per visitor, then never again.
+  useEffect(() => {
+    if (hintSeen) return;
+    const timer = window.setTimeout(markHintSeen, 8000);
+    return () => window.clearTimeout(timer);
+  }, [hintSeen, markHintSeen]);
 
   return (
     <button
@@ -25,10 +37,12 @@ const SimpleViewButton: React.FC<SimpleViewButtonProps> = ({
       onClick={() => setMode("simple")}
       title="Switch to a plain one-page version of this portfolio"
       className={cn(
-        "shrink-0 whitespace-nowrap rounded-md border border-ctp-surface1/60 font-source text-xs",
-        "text-ctp-subtext0 transition-colors duration-300",
-        "hover:border-ctp-surface2 hover:text-ctp-text",
-        compact ? "h-9 px-3" : "mr-2 h-7 self-center px-3",
+        "relative shrink-0 whitespace-nowrap rounded-md font-source text-xs font-medium",
+        "bg-ctp-mauve text-ctp-crust shadow-sm",
+        "transition-[background-color,transform] duration-300",
+        "hover:bg-ctp-lavender active:scale-[0.98]",
+        compact ? "h-8 px-3" : "mr-2 h-7 self-center px-3.5",
+        !hintSeen && styles.nudge,
         className
       )}
     >

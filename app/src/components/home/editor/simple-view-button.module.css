@@ -1,0 +1,32 @@
+/* A finite nudge, not a permanent animation. Three slow pulses on a first
+   visit is enough to catch the eye; after that the button is just a button. */
+
+.nudge::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  border: 1px solid rgb(var(--ctp-mauve));
+  opacity: 0;
+  pointer-events: none;
+  animation: simpleViewNudge 1.8s ease-out 3;
+  animation-delay: 1.2s;
+}
+
+@keyframes simpleViewNudge {
+  0% {
+    opacity: 0.65;
+    transform: scale(1);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.22);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nudge::after {
+    animation: none;
+  }
+}

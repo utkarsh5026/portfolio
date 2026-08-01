@@ -13,10 +13,10 @@ const Education: React.FC = () => (
       {education.map((item) => (
         <RevealOnScroll as="li" key={item.degree}>
           <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
-            <h3 className="text-[15px] font-medium text-ctp-text">
+            <h3 className="text-[16px] font-medium text-ctp-text">
               {item.degree}
             </h3>
-            <span className="shrink-0 font-source text-[12px] text-ctp-overlay0">
+            <span className="shrink-0 font-source text-[11px] uppercase tracking-[0.12em] text-ctp-overlay0">
               {item.duration}
             </span>
           </div>
